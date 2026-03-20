@@ -12,7 +12,7 @@ const AI_SERVER_URL = 'http://localhost:8000';
 // Integrates with Anthropic API for unlimited plant ID
 // ═══════════════════════════════════════════════════════
 
-const CLAUDE_API_KEY = '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'; // ← Ilagay mo dito ang bagong API key mo
+const CLAUDE_API_KEY = ''; // ← Ilagay mo dito ang bagong API key mo
 const CLAUDE_MODEL   = 'claude-sonnet-4-20250514';
 let currentCity = 'San Miguel, Bulacan';
 let currentWeather = null;
