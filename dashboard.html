@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmCast — Smart Farm Weather</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="style.css">
+<!-- Leaflet.js for Weather Maps -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Roboflow AI — no script needed, uses REST API directly -->
+</head>
+<body>
+<script>
+  // Auth guard — redirect to login if no token
+  if (!localStorage.getItem('fc_token')) {
+    window.location.href = 'login.html';
+  }
+</script>
+<div id="toast-root"></div>
+ 
+<div class="app">
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar" id="mainSidebar">
+
+    <!-- Logo + Toggle -->
+    <div class="sidebar-logo">
+      <button class="sidebar-toggle-btn" id="sidebarToggleBtn" onclick="toggleSidebar()" title="Toggle Sidebar">
+        <span class="material-symbols-outlined" id="sidebarToggleIcon">chevron_left</span>
+      </button>
+      <span class="logo-text sidebar-text">FarmCast</span>
+    </div>
+
+    <div class="nav-label sidebar-text">Main Menu</div>
+    <div class="nav-item active" data-page="dashboard" onclick="setNav(this,'dashboard')" title="Dashboard">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="sidebar-text">Dashboard</span>
+    </div>
+    <div class="nav-item" data-page="weather-maps" onclick="setNav(this,'weather-maps')" title="Weather Maps">
+      <span class="material-symbols-outlined">map</span>
+      <span class="sidebar-text">Weather Maps</span>
+    </div>
+    <div class="nav-item" data-page="my-crops" onclick="setNav(this,'my-crops')" title="My Crops">
+      <span class="material-symbols-outlined">grass</span>
+      <span class="sidebar-text">My Crops</span>
+    </div>
+    <div class="nav-item" data-page="pest-alerts" onclick="setNav(this,'pest-alerts')" title="Pest Alerts">
+      <span class="material-symbols-outlined">pest_control</span>
+      <span class="sidebar-text">Pest Alerts</span>
+      <span class="nav-badge" id="pestBadge">2</span>
+    </div>
+    <div class="nav-item" data-page="planting-calendar" onclick="setNav(this,'planting-calendar')" title="Planting Calendar">
+      <span class="material-symbols-outlined">calendar_month</span>
+      <span class="sidebar-text">Planting Calendar</span>
+    </div>
+    <div class="nav-item" data-page="irrigation" onclick="setNav(this,'irrigation')" title="Irrigation">
+      <span class="material-symbols-outlined">water_drop</span>
+      <span class="sidebar-text">Irrigation</span>
+    </div>
+
+    <div class="nav-item" data-page="plant-scanner" onclick="setNav(this,'plant-scanner')" title="Plant Scanner">
+      <span class="material-symbols-outlined">yard</span>
+      <span class="sidebar-text">Plant Scanner</span>
+      <span class="nav-badge sidebar-text" style="background:linear-gradient(135deg,#3fb950,#58a6ff)">AI</span>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label sidebar-text">Reports</div>
+      <div class="nav-item" data-page="farm-analytics" onclick="setNav(this,'farm-analytics')" title="Farm Analytics">
+        <span class="material-symbols-outlined">bar_chart</span>
+        <span class="sidebar-text">Farm Analytics</span>
+      </div>
+      <div class="nav-item" data-page="harvest-history" onclick="setNav(this,'harvest-history')" title="Harvest History">
+        <span class="material-symbols-outlined">history</span>
+        <span class="sidebar-text">Harvest History</span>
+      </div>
+    </div>
+
+    <div class="nav-item" data-page="settings" onclick="setNav(this,'settings')" title="Settings">
+      <span class="material-symbols-outlined">settings</span>
+      <span class="sidebar-text">Settings</span>
+    </div>
+
+    <div class="sidebar-spacer"></div>
+    <div class="sidebar-user" onclick="setNav(document.querySelector('[data-page=settings]'),'settings')" style="cursor:pointer" title="Open Settings">
+      <div class="user-avatar">👨‍🌾</div>
+      <div class="sidebar-text">
+        <div class="user-name" id="sidebarUserName">Juan Dela Cruz</div>
+        <div class="user-farm" id="sidebarUserFarm">Bulacan Farm · 3.2 ha</div>
+      </div>
+    </div>
+  </aside>
+ 
+  <!-- ══ MAIN ══ -->
+  <div class="main">
+    <!-- Top Bar -->
+    <div class="topbar">
+      <div class="topbar-title" id="topbarTitle">Farm Weather + Planting Calendar</div>
+      <div class="topbar-search">
+        <span class="material-symbols-outlined">search</span>
+        <input type="text" id="citySearch" placeholder="Search location…" onkeydown="if(event.key==='Enter') searchCity()">
+      </div>
+      <div class="topbar-btn" onclick="searchCity()" title="Search">
+        <span class="material-symbols-outlined" style="font-size:18px">location_on</span>
+      </div>
+      <div class="topbar-btn" title="Notifications" onclick="toggleNotificationPanel()" id="notifBtn">
+        <span class="material-symbols-outlined" style="font-size:18px">notifications</span>
+        <div class="badge" id="notifBadge" style="display:none"></div>
+      </div>
+      <div class="topbar-btn" title="Refresh" onclick="refreshWeather()">
+        <span class="material-symbols-outlined" style="font-size:18px" id="refreshIcon">refresh</span>
+      </div>
+    </div>
+ 
+    <!-- ══════════════════════════════
+         PAGE: DASHBOARD
+    ══════════════════════════════ -->
+    <div class="page" id="page-dashboard">
+      <div class="dashboard-grid">
+        <div class="col-main">
+          <!-- Weather Hero -->
+          <div class="weather-hero fade-in">
+            <div class="weather-hero-top">
+              <div>
+                <div class="weather-location">
+                  <span class="material-symbols-outlined">location_on</span>
+                  <span id="heroLocation">Loading location…</span>
+                </div>
+                <div class="weather-city" id="heroCity">—</div>
+                <div class="weather-date" id="heroDate">—</div>
+              </div>
+              <button class="weather-refresh" onclick="refreshWeather()" id="heroRefreshBtn">
+                <span class="material-symbols-outlined" id="heroRefreshIcon">refresh</span>
+                <span class="weather-refresh-text">Refresh</span>
+              </button>
+            </div>
+            <div class="weather-main">
+              <div class="weather-icon-big" id="heroIcon">
+                <!-- Animated weather scene injected by JS -->
+              </div>
+              <div class="weather-temp-wrap">
+                <div class="weather-temp" id="heroTemp">--<sup>°C</sup></div>
+                <div class="weather-desc" id="heroDesc">Loading weather…</div>
+                <div class="weather-feels" id="heroFeels">Feels like --°C</div>
+              </div>
+            </div>
+            <div class="weather-stats">
+              <div class="weather-stat">
+                <div class="weather-stat-icon material-symbols-outlined">water_drop</div>
+                <div class="weather-stat-label">Humidity</div>
+                <div class="weather-stat-val" id="statHumidity">--%</div>
+              </div>
+              <div class="weather-stat">
+                <div class="weather-stat-icon amber material-symbols-outlined">air</div>
+                <div class="weather-stat-label">Wind</div>
+                <div class="weather-stat-val" id="statWind">-- kph</div>
+              </div>
+              <div class="weather-stat">
+                <div class="weather-stat-icon blue material-symbols-outlined">cloud</div>
+                <div class="weather-stat-label">Cloud Cover</div>
+                <div class="weather-stat-val" id="statCloud">--%</div>
+              </div>
+              <div class="weather-stat">
+                <div class="weather-stat-icon material-symbols-outlined">visibility</div>
+                <div class="weather-stat-label">Visibility</div>
+                <div class="weather-stat-val" id="statVis">-- km</div>
+              </div>
+            </div>
+            <div class="farm-condition" id="farmCondBanner">
+              <div class="condition-dot"></div>
+              <div class="condition-text" id="farmCondText"><strong>Loading farm conditions…</strong></div>
+            </div>
+          </div>
+ 
+          <!-- 7-Day Forecast Strip -->
+          <div class="card fade-in fade-in-1">
+            <div class="card-header">
+              <div class="card-title"><span class="material-symbols-outlined">calendar_today</span>7-Day Forecast</div>
+              <div class="card-action">View full <span class="material-symbols-outlined" style="font-size:14px">chevron_right</span></div>
+            </div>
+            <div class="forecast-strip" id="forecastStrip">
+              <div style="color:var(--text-muted);padding:10px;font-size:.85rem">Loading forecast…</div>
+            </div>
+          </div>
+ 
+          <!-- Smart Planting Calendar -->
+          <div class="card fade-in fade-in-2">
+            <div class="card-header" onclick="toggleCard(this)" style="cursor:pointer">
+              <div class="card-title"><span class="material-symbols-outlined">event</span>Smart Planting Calendar</div>
+              <div class="card-action"><span class="material-symbols-outlined card-collapse-icon">expand_less</span></div>
+            </div>
+            <div class="card-collapsible calendar-scroll" style="padding-top:14px;">
+              <div class="calendar-row" id="calendarRow">
+                <div style="color:var(--text-muted);padding:10px;font-size:.85rem">Loading calendar…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- RIGHT COL -->
+        <div class="col-side">
+          <div class="card fade-in fade-in-1">
+            <div class="card-header">
+              <div class="card-title"><span class="material-symbols-outlined">analytics</span>Quick Stats</div>
+            </div>
+            <div class="quick-stats-grid">
+              <div class="qs-box">
+                <div class="qs-icon">🌱</div>
+                <div class="qs-label">Active Crops</div>
+                <div class="qs-value qs-green" id="qsActiveCrops">6</div>
+                <div class="qs-sub">3 ready to harvest</div>
+              </div>
+              <div class="qs-box">
+                <div class="qs-icon">💧</div>
+                <div class="qs-label">Water Need</div>
+                <div class="qs-value qs-blue" id="waterNeed">--</div>
+                <div class="qs-sub">today</div>
+              </div>
+              <div class="qs-box">
+                <div class="qs-icon">🌡️</div>
+                <div class="qs-label">Soil Temp</div>
+                <div class="qs-value qs-amber" id="soilTemp">--°C</div>
+                <div class="qs-sub">estimated</div>
+              </div>
+              <div class="qs-box">
+                <div class="qs-icon">☀️</div>
+                <div class="qs-label">UV Index</div>
+                <div class="qs-value qs-red" id="uvIndex">--</div>
+                <div class="qs-sub" id="uvLabel">--</div>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="card fade-in fade-in-2">
+            <div class="card-header" onclick="toggleCard(this)" style="cursor:pointer">
+              <div class="card-title"><span class="material-symbols-outlined">pest_control</span>Pest Alerts</div>
+              <div class="card-action"><span class="material-symbols-outlined card-collapse-icon">expand_less</span></div>
+            </div>
+            <div class="card-collapsible pest-list" id="pestList"></div>
+          </div>
+ 
+          <div class="card fade-in fade-in-3">
+            <div class="card-header collapsible-header" style="cursor:pointer">
+              <div class="card-title" onclick="toggleCard(this.closest('.card-header'))"><span class="material-symbols-outlined">checklist</span>Daily Tasks</div>
+              <div class="card-action" style="display:flex;gap:8px;align-items:center"><span onclick="addTask()" style="display:flex;align-items:center;gap:3px">Add <span class="material-symbols-outlined" style="font-size:14px">add</span></span><span class="material-symbols-outlined card-collapse-icon" onclick="toggleCard(this.closest('.card-header'))">expand_less</span></div>
+            </div>
+            <div class="card-collapsible task-list" id="taskList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ══════════════════════════════
+         PAGE: WEATHER MAPS
+    ══════════════════════════════ -->
+    <div class="page" id="page-weather-maps" style="display:none">
+      <div class="maps-layout">
+ 
+        <!-- Map Controls Sidebar -->
+        <div class="map-controls-panel">
+          <div class="map-panel-header">
+            <span class="material-symbols-outlined">layers</span>
+            Map Layers
+          </div>
+ 
+          <!-- Layer Selector -->
+          <div class="map-layer-group">
+            <div class="map-layer-label">Weather Layer</div>
+            <div class="map-layer-btn active" onclick="setMapLayer(this,'precipitation_new')" data-layer="precipitation_new">
+              <span class="material-symbols-outlined">water_drop</span>
+              <div>
+                <div class="mlb-name">Precipitation</div>
+                <div class="mlb-desc">Rain & snow intensity</div>
+              </div>
+            </div>
+            <div class="map-layer-btn" onclick="setMapLayer(this,'temp_new')" data-layer="temp_new">
+              <span class="material-symbols-outlined">device_thermostat</span>
+              <div>
+                <div class="mlb-name">Temperature</div>
+                <div class="mlb-desc">Surface air temp</div>
+              </div>
+            </div>
+            <div class="map-layer-btn" onclick="setMapLayer(this,'wind_new')" data-layer="wind_new">
+              <span class="material-symbols-outlined">air</span>
+              <div>
+                <div class="mlb-name">Wind Speed</div>
+                <div class="mlb-desc">Wind at 10m height</div>
+              </div>
+            </div>
+            <div class="map-layer-btn" onclick="setMapLayer(this,'clouds_new')" data-layer="clouds_new">
+              <span class="material-symbols-outlined">cloud</span>
+              <div>
+                <div class="mlb-name">Cloud Cover</div>
+                <div class="mlb-desc">Cloud density %</div>
+              </div>
+            </div>
+            <div class="map-layer-btn" onclick="setMapLayer(this,'pressure_new')" data-layer="pressure_new">
+              <span class="material-symbols-outlined">compress</span>
+              <div>
+                <div class="mlb-name">Pressure</div>
+                <div class="mlb-desc">Sea level pressure</div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Map Style -->
+          <div class="map-layer-group" style="margin-top:16px">
+            <div class="map-layer-label">Map Style</div>
+            <div class="map-style-btns">
+              <div class="map-style-btn active" onclick="setMapStyle(this,'dark')" data-style="dark">Dark</div>
+              <div class="map-style-btn" onclick="setMapStyle(this,'satellite')" data-style="satellite">Satellite</div>
+              <div class="map-style-btn" onclick="setMapStyle(this,'street')" data-style="street">Street</div>
+            </div>
+          </div>
+ 
+          <!-- Current Location Weather -->
+          <div class="map-weather-summary" id="mapWeatherSummary">
+            <div class="map-ws-header">
+              <span class="material-symbols-outlined">location_on</span>
+              <span id="mapWsCity">—</span>
+            </div>
+            <div class="map-ws-grid">
+              <div class="map-ws-item">
+                <div class="map-ws-icon">🌡️</div>
+                <div class="map-ws-val" id="mapWsTemp">--°C</div>
+                <div class="map-ws-lbl">Temp</div>
+              </div>
+              <div class="map-ws-item">
+                <div class="map-ws-icon">💧</div>
+                <div class="map-ws-val" id="mapWsHumid">--%</div>
+                <div class="map-ws-lbl">Humidity</div>
+              </div>
+              <div class="map-ws-item">
+                <div class="map-ws-icon">💨</div>
+                <div class="map-ws-val" id="mapWsWind">-- kph</div>
+                <div class="map-ws-lbl">Wind</div>
+              </div>
+              <div class="map-ws-item">
+                <div class="map-ws-icon">☁️</div>
+                <div class="map-ws-val" id="mapWsCloud">--%</div>
+                <div class="map-ws-lbl">Cloud</div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Quick Farm Locations -->
+          <div class="map-layer-group" style="margin-top:16px">
+            <div class="map-layer-label">Farm Locations</div>
+            <div class="farm-location-list" id="farmLocationList">
+              <div class="farm-loc-item" onclick="flyToFarm(14.99, 120.93, 'Bulacan Farm')">
+                <span class="material-symbols-outlined">agriculture</span>
+                <div><div class="fli-name">Bulacan Farm</div><div class="fli-coords">14.99°N, 120.93°E</div></div>
+                <span class="material-symbols-outlined fli-arrow">chevron_right</span>
+              </div>
+              <div class="farm-loc-item" onclick="flyToFarm(14.09, 121.15, 'Laguna Field')">
+                <span class="material-symbols-outlined">agriculture</span>
+                <div><div class="fli-name">Laguna Field</div><div class="fli-coords">14.09°N, 121.15°E</div></div>
+                <span class="material-symbols-outlined fli-arrow">chevron_right</span>
+              </div>
+              <div class="farm-loc-item" onclick="flyToFarm(15.47, 120.59, 'Pampanga Lot')">
+                <span class="material-symbols-outlined">agriculture</span>
+                <div><div class="fli-name">Pampanga Lot</div><div class="fli-coords">15.47°N, 120.59°E</div></div>
+                <span class="material-symbols-outlined fli-arrow">chevron_right</span>
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- Map Container -->
+        <div class="map-main">
+          <div id="weatherMap" style="width:100%;height:100%;border-radius:0 var(--r) var(--r) 0;"></div>
+          <!-- Map overlay info -->
+          <div class="map-click-hint" id="mapClickHint">
+            <span class="material-symbols-outlined">touch_app</span>
+            Click anywhere on the map to get weather for that location
+          </div>
+          <!-- Map legend -->
+          <div class="map-legend" id="mapLegend">
+            <div class="map-legend-title" id="mapLegendTitle">Precipitation</div>
+            <div class="map-legend-bar" id="mapLegendBar">
+              <div class="legend-gradient precip-gradient"></div>
+              <div class="legend-labels"><span>None</span><span>Heavy</span></div>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+ 
+    <!-- ══════════════════════════════
+         PAGE: MY CROPS
+    ══════════════════════════════ -->
+    <div class="page" id="page-my-crops" style="display:none">
+ 
+      <!-- Crops Top Stats -->
+      <div class="crops-stats-row fade-in">
+        <div class="crop-stat-box">
+          <div class="csb-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">🌱</div>
+          <div class="csb-info">
+            <div class="csb-val" id="csbTotal">8</div>
+            <div class="csb-lbl">Total Crops</div>
+          </div>
+        </div>
+        <div class="crop-stat-box">
+          <div class="csb-icon" style="background:rgba(88,166,255,0.15);color:var(--blue)">🌿</div>
+          <div class="csb-info">
+            <div class="csb-val" id="csbGrowing">5</div>
+            <div class="csb-lbl">Growing</div>
+          </div>
+        </div>
+        <div class="crop-stat-box">
+          <div class="csb-icon" style="background:rgba(227,160,8,0.15);color:var(--amber)">🌾</div>
+          <div class="csb-info">
+            <div class="csb-val" id="csbReady">2</div>
+            <div class="csb-lbl">Ready to Harvest</div>
+          </div>
+        </div>
+        <div class="crop-stat-box">
+          <div class="csb-icon" style="background:rgba(248,81,73,0.15);color:var(--red)">⚠️</div>
+          <div class="csb-info">
+            <div class="csb-val" id="csbAtRisk">1</div>
+            <div class="csb-lbl">At Risk</div>
+          </div>
+        </div>
+        <div class="crop-stat-box">
+          <div class="csb-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">💧</div>
+          <div class="csb-info">
+            <div class="csb-val" id="csbWatered">6</div>
+            <div class="csb-lbl">Watered Today</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Filter + Add -->
+      <div class="crops-toolbar fade-in fade-in-1">
+        <div class="crops-filter-tabs">
+          <div class="cft active" onclick="filterCrops(this,'all')">All Crops</div>
+          <div class="cft" onclick="filterCrops(this,'growing')">Growing</div>
+          <div class="cft" onclick="filterCrops(this,'ready')">Ready to Harvest</div>
+          <div class="cft" onclick="filterCrops(this,'at-risk')">At Risk</div>
+        </div>
+        <button class="btn-add-crop" onclick="openAddCropModal()">
+          <span class="material-symbols-outlined">add</span> Add Crop
+        </button>
+      </div>
+ 
+      <!-- Crops Grid -->
+      <div class="crops-grid fade-in fade-in-2" id="cropsGrid">
+        <!-- filled by JS -->
+      </div>
+ 
+      <!-- Add Crop Modal -->
+      <div class="modal-overlay" id="addCropModal" onclick="if(event.target===this)closeAddCropModal()">
+        <div class="modal-box">
+          <div class="modal-header">
+            <div class="modal-title"><span class="material-symbols-outlined">grass</span> Add New Crop</div>
+            <div class="modal-close" onclick="closeAddCropModal()">
+              <span class="material-symbols-outlined">close</span>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Crop Type</label>
+                <select id="cropTypeSelect">
+                  <option value="">Select crop…</option>
+                  <option value="Tomato">🍅 Tomato</option>
+                  <option value="Eggplant">🍆 Eggplant</option>
+                  <option value="Corn">🌽 Corn</option>
+                  <option value="Okra">🥦 Okra</option>
+                  <option value="Sitaw">🫛 Sitaw</option>
+                  <option value="Ampalaya">🥒 Ampalaya</option>
+                  <option value="Pechay">🥬 Pechay</option>
+                  <option value="Kamote">🍠 Kamote</option>
+                  <option value="Rice">🌾 Rice</option>
+                  <option value="Garlic">🧄 Garlic</option>
+                  <option value="Onion">🧅 Onion</option>
+                  <option value="Cabbage">🥦 Cabbage</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Area (sq m)</label>
+                <input type="number" id="cropArea" placeholder="e.g. 500" min="1">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date Planted</label>
+                <input type="date" id="cropDatePlanted">
+              </div>
+              <div class="form-group">
+                <label>Expected Harvest</label>
+                <input type="date" id="cropDateHarvest">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Field Location</label>
+                <input type="text" id="cropLocation" placeholder="e.g. North Field, Block A">
+              </div>
+              <div class="form-group">
+                <label>Irrigation Type</label>
+                <select id="cropIrrigation">
+                  <option value="Manual">Manual Watering</option>
+                  <option value="Drip">Drip Irrigation</option>
+                  <option value="Sprinkler">Sprinkler</option>
+                  <option value="Flood">Flood Irrigation</option>
+                  <option value="Rain">Rain-fed</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Notes</label>
+              <textarea id="cropNotes" placeholder="Additional notes about this crop…" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeAddCropModal()">Cancel</button>
+            <button class="btn-save" onclick="saveNewCrop()">
+              <span class="material-symbols-outlined">save</span> Save Crop
+            </button>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+    <!-- end page-my-crops -->
+
+    <!-- ══ PAGE: PLANT HEALTH SCANNER ══ -->
+    <div class="page" id="page-plant-scanner" style="display:none">
+
+      <!-- Scanner Header -->
+      <div class="scanner-page-header fade-in">
+        <div class="scanner-title">
+          <span class="material-symbols-outlined" style="color:var(--green);font-size:22px">yard</span>
+          Plant Health Scanner
+          <span class="scanner-ai-badge">🤖 AI Models</span>
+        </div>
+        <div class="scanner-model-status ready" id="scannerModelStatus">
+          <span class="material-symbols-outlined" style="font-size:13px">smart_toy</span>
+          <span id="scannerModelText">Python YOLOv8 Ready</span>
+        </div>
+      </div>
+
+      <!-- Main Side by Side Layout -->
+      <div class="scanner-split-layout fade-in">
+
+        <!-- LEFT: Camera -->
+        <div class="scanner-left-panel">
+
+          <!-- Default Upload UI -->
+          <div class="sdz-content" id="sdzContent">
+            <div class="sdz-icon">🌿</div>
+            <div class="sdz-title">Scan any plant for diseases</div>
+            <div class="sdz-sub">Works on vegetables, fruits, ornamentals, and more</div>
+            <div class="sdz-btns">
+              <button class="sdz-btn green" onclick="openScannerCamera()">
+                <span class="material-symbols-outlined">photo_camera</span> Live Camera
+              </button>
+              <button class="sdz-btn blue" onclick="document.getElementById('scannerFileInput').click()">
+                <span class="material-symbols-outlined">upload_file</span> Upload Photo
+              </button>
+              <input type="file" id="scannerFileInput" accept="image/*" style="display:none" onchange="handleScannerFile(event)">
+            </div>
+          </div>
+
+          <!-- Camera View -->
+          <div class="scanner-camera-view" id="scannerCameraView" style="display:none">
+            <video id="scannerVideo" autoplay playsinline muted></video>
+            <canvas id="scannerCanvas" style="display:none"></canvas>
+            <div class="rt-labels-bar">
+              <div class="rt-labels-title">🔍 Detecting:</div>
+              <div class="rt-live-labels" id="rtLiveLabels">
+                <span class="rt-label-empty">Point camera at a plant…</span>
+              </div>
+              <div class="rt-status-badge detecting" id="rtStatusBadge">🔴 Live</div>
+            </div>
+            <div class="scanner-cam-btns">
+              <button class="sdz-btn green" onclick="captureScannerPhoto()">
+                <span class="material-symbols-outlined">camera</span> Capture & Analyze
+              </button>
+              <button class="sdz-btn" onclick="closeScannerCamera()">
+                <span class="material-symbols-outlined">close</span> Cancel
+              </button>
+            </div>
+          </div>
+
+          <!-- Preview View -->
+          <div class="scanner-preview-view" id="scannerPreviewView" style="display:none">
+            <img id="scannerPreviewImg" src="" alt="Plant Photo">
+            <div class="scanner-preview-btns">
+              <button class="sdz-btn" onclick="resetScanner()">
+                <span class="material-symbols-outlined">refresh</span> New Scan
+              </button>
+              <button class="sdz-btn green" onclick="runPlantScan()">
+                <span class="material-symbols-outlined">biotech</span> Analyze Plant
+              </button>
+            </div>
+          </div>
+
+          <!-- Analyzing View -->
+          <div class="scanner-analyzing-view" id="scannerAnalyzingView" style="display:none">
+            <div class="scanner-pulse-ring"></div>
+            <div class="scanner-scan-line"></div>
+            <img id="scannerAnalyzingImg" src="" alt="">
+            <div class="scanner-analyzing-overlay">
+              <div class="scanner-analyzing-text">Scanning plant…</div>
+              <div class="scanner-analyzing-sub" id="scannerAnalyzingSub">Running AI models…</div>
+            </div>
+          </div>
+
+          <!-- Tips sa baba ng camera -->
+          <div class="scanner-tips-inline">
+            <span>📸 Good lighting</span>
+            <span>🔍 Focus on leaf/stem</span>
+            <span>🟢 Green = plant</span>
+            <span>🔴 Red = disease</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Result + History -->
+        <div class="scanner-right-panel">
+
+          <!-- Default state — walang result pa -->
+          <div class="scanner-right-empty" id="scannerRightEmpty">
+            <span class="material-symbols-outlined" style="font-size:48px;opacity:0.2;color:var(--green)">yard</span>
+            <p style="color:var(--text-muted);font-size:0.85rem;text-align:center">
+              Capture or upload a photo<br>to see the AI analysis here
+            </p>
+          </div>
+
+          <!-- Result -->
+          <div class="scanner-result-card fade-in" id="scannerResultCard" style="display:none">
+            <div class="src-header" id="srcHeader">
+              <div class="src-plant-info">
+                <div class="src-plant-emoji" id="srcPlantEmoji">🌿</div>
+                <div>
+                  <div class="src-plant-name" id="srcPlantName">Analyzing…</div>
+                  <div class="src-plant-type" id="srcPlantType">Plant Type</div>
+                </div>
+              </div>
+              <div class="src-health-badge" id="srcHealthBadge">
+                <span id="srcHealthIcon">✅</span>
+                <span id="srcHealthLabel">Healthy</span>
+              </div>
+            </div>
+            <div class="src-disease-info" id="srcDiseaseInfo" style="display:none">
+              <div class="src-disease-header">
+                <span class="material-symbols-outlined" style="color:var(--red)">coronavirus</span>
+                <div>
+                  <div class="src-disease-name" id="srcDiseaseName">Disease Name</div>
+                  <div class="src-disease-conf" id="srcDiseaseConf">—</div>
+                </div>
+                <div class="src-severity-badge" id="srcSeverityBadge">HIGH</div>
+              </div>
+              <div class="src-disease-desc" id="srcDiseaseDesc"></div>
+            </div>
+            <div class="src-confidence">
+              <div class="src-conf-label">
+                <span>AI Confidence</span><span id="srcConfPct">—</span>
+              </div>
+              <div class="src-conf-bar">
+                <div class="src-conf-fill" id="srcConfFill" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="src-recs">
+              <div class="src-recs-title">
+                <span class="material-symbols-outlined" style="font-size:16px">tips_and_updates</span>
+                Recommendations
+              </div>
+              <div class="src-recs-list" id="srcRecsList"></div>
+            </div>
+            <div class="src-actions">
+              <button class="src-btn scan-again" onclick="resetScanner()">
+                <span class="material-symbols-outlined">refresh</span> Scan Again
+              </button>
+              <button class="src-btn save-result" onclick="saveScanResult()">
+                <span class="material-symbols-outlined">save</span> Save Result
+              </button>
+            </div>
+          </div>
+
+          <!-- Scan History -->
+          <div class="scanner-history-inline">
+            <div class="scanner-history-inline-header">
+              <div class="card-title" style="font-size:0.82rem">
+                <span class="material-symbols-outlined" style="font-size:16px">history</span> Scan History
+              </div>
+              <div class="card-action" onclick="clearScanHistory()" style="color:var(--red);font-size:0.72rem;cursor:pointer">
+                <span class="material-symbols-outlined" style="font-size:13px">delete_sweep</span> Clear
+              </div>
+            </div>
+            <div class="scanner-history-list" id="scannerHistoryList">
+              <div class="scanner-history-empty">
+                <span class="material-symbols-outlined" style="font-size:30px;opacity:0.3">yard</span>
+                <p>No scans yet.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Python YOLOv8 Info -->
+          <div class="scanner-yolo-info">
+            <span class="material-symbols-outlined" style="font-size:14px;color:var(--green)">smart_toy</span>
+            <span>Python YOLOv8 + Claude AI</span>
+            <span style="color:var(--text-dim)">·</span>
+            <span style="color:var(--text-dim)">Real-time detection</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+        <!-- ══ PAGE: PEST ALERTS ══ -->
+    <div class="page" id="page-pest-alerts" style="display:none">
+      <div class="pest-page-grid">
+        <div class="pest-col-main">
+          <div class="pest-alert-banner" id="pestAlertBanner">
+            <div class="pab-icon">🔍</div>
+            <div class="pab-text">
+              <strong id="pabTitle">Analyzing weather conditions…</strong>
+              <span id="pabSub">Based on current humidity, temperature, and rainfall</span>
+            </div>
+          </div>
+          <div class="card fade-in" style="margin-top:16px">
+            <div class="card-header">
+              <div class="card-title"><span class="material-symbols-outlined">bug_report</span>Active Pest Risks</div>
+              <div class="card-action" onclick="refreshPestPage()"><span class="material-symbols-outlined" style="font-size:16px">refresh</span> Refresh</div>
+            </div>
+            <div class="pest-full-list" id="pestFullList"></div>
+          </div>
+          <div class="card fade-in fade-in-1" style="margin-top:16px">
+            <div class="card-header">
+              <div class="card-title"><span class="material-symbols-outlined">history</span>Pest Sighting Log</div>
+              <div class="card-action" onclick="openLogPestModal()"><span class="material-symbols-outlined" style="font-size:14px">add</span> Log Sighting</div>
+            </div>
+            <div class="pest-log-list" id="pestLogList"></div>
+          </div>
+        </div>
+        <div class="pest-col-side">
+          <div class="card fade-in">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">shield</span>Prevention Tips</div></div>
+            <div class="prevention-tips" id="preventionTips"></div>
+          </div>
+          <div class="card fade-in fade-in-1" style="margin-top:16px">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">menu_book</span>Pest Guide</div></div>
+            <div class="pest-guide-list" id="pestGuideList"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-overlay" id="logPestModal" onclick="if(event.target===this)closeLogPestModal()">
+        <div class="modal-box" style="max-width:460px">
+          <div class="modal-header">
+            <div class="modal-title"><span class="material-symbols-outlined">pest_control</span> Log Pest Sighting</div>
+            <div class="modal-close" onclick="closeLogPestModal()"><span class="material-symbols-outlined">close</span></div>
+          </div>
+          <div class="modal-body">
+            <div class="form-row">
+              <div class="form-group"><label>Pest Type</label>
+                <select id="logPestType"><option value="">Select pest…</option><option>Aphids</option><option>Stem Borer</option><option>Whitefly</option><option>Root Rot</option><option>Leaf Miner</option><option>Thrips</option><option>Spider Mites</option><option>Cutworm</option><option>Other</option></select>
+              </div>
+              <div class="form-group"><label>Severity</label>
+                <select id="logPestSeverity"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Affected Crop</label><input type="text" id="logPestCrop" placeholder="e.g. Tomato, Corn"></div>
+              <div class="form-group"><label>Location</label><input type="text" id="logPestLocation" placeholder="e.g. North Field A"></div>
+            </div>
+            <div class="form-group"><label>Notes / Treatment Applied</label>
+              <textarea id="logPestNotes" placeholder="Describe what you observed and action taken…" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeLogPestModal()">Cancel</button>
+            <button class="btn-save" onclick="savePestLog()"><span class="material-symbols-outlined">save</span> Save Log</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PAGE: PLANTING CALENDAR ══ -->
+    <div class="page" id="page-planting-calendar" style="display:none">
+      <div class="cal-page-header fade-in">
+        <button class="cal-nav-btn" onclick="changeCalMonth(-1)"><span class="material-symbols-outlined">chevron_left</span></button>
+        <div class="cal-month-title" id="calMonthTitle">March 2026</div>
+        <button class="cal-nav-btn" onclick="changeCalMonth(1)"><span class="material-symbols-outlined">chevron_right</span></button>
+        <button class="cal-today-btn" onclick="goToToday()">Today</button>
+      </div>
+      <div class="cal-page-layout fade-in fade-in-1">
+        <div class="cal-main-col">
+          <div class="cal-page-grid cal-header-row">
+            <div class="cal-page-day-header">Sun</div><div class="cal-page-day-header">Mon</div>
+            <div class="cal-page-day-header">Tue</div><div class="cal-page-day-header">Wed</div>
+            <div class="cal-page-day-header">Thu</div><div class="cal-page-day-header">Fri</div>
+            <div class="cal-page-day-header">Sat</div>
+          </div>
+          <div class="cal-page-grid cal-days-grid" id="calDaysGrid"></div>
+        </div>
+        <div class="cal-side-col">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="material-symbols-outlined">event</span><span id="calSelectedDateTitle">Select a date</span></div>
+            </div>
+            <div class="cal-day-events" id="calDayEvents"><div class="cal-no-events">Click a date to see crop events</div></div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">sunny</span>Best Planting Months</div></div>
+            <div class="best-planting-list" id="bestPlantingList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PAGE: IRRIGATION ══ -->
+    <div class="page" id="page-irrigation" style="display:none">
+      <div class="irr-stats-row fade-in">
+        <div class="irr-stat-box">
+          <div class="isb-icon" style="background:rgba(88,166,255,0.15);color:var(--blue)">💧</div>
+          <div><div class="isb-val" id="irrTotalFields">0</div><div class="isb-lbl">Active Fields</div></div>
+        </div>
+        <div class="irr-stat-box">
+          <div class="isb-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">✅</div>
+          <div><div class="isb-val" id="irrWateredToday">0</div><div class="isb-lbl">Watered Today</div></div>
+        </div>
+        <div class="irr-stat-box">
+          <div class="isb-icon" style="background:rgba(227,160,8,0.15);color:var(--amber)">⏰</div>
+          <div><div class="isb-val" id="irrDueToday">0</div><div class="isb-lbl">Due for Watering</div></div>
+        </div>
+        <div class="irr-stat-box">
+          <div class="isb-icon" style="background:rgba(248,81,73,0.15);color:var(--red)">🌧️</div>
+          <div><div class="isb-val" id="irrRainChance">--%</div><div class="isb-lbl">Rain Chance</div></div>
+        </div>
+      </div>
+      <div class="irr-recommendation fade-in fade-in-1" id="irrRecommendation">
+        <div class="irr-rec-icon">💡</div>
+        <div class="irr-rec-text">
+          <strong id="irrRecTitle">Loading recommendation…</strong>
+          <span id="irrRecSub">Based on current weather conditions</span>
+        </div>
+      </div>
+      <div class="irr-layout fade-in fade-in-2">
+        <div class="irr-main-col">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="material-symbols-outlined">water</span>Field Irrigation Status</div>
+              <div class="card-action" onclick="openAddFieldModal()"><span class="material-symbols-outlined" style="font-size:14px">add</span> Add Field</div>
+            </div>
+            <div class="irr-field-list" id="irrFieldList"></div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">bar_chart</span>Weekly Water Usage</div></div>
+            <div class="water-chart-wrap" id="waterChartWrap"></div>
+          </div>
+        </div>
+        <div class="irr-side-col">
+          <div class="card">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">schedule</span>Today's Schedule</div></div>
+            <div class="irr-schedule-list" id="irrScheduleList"></div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">tips_and_updates</span>Water-Saving Tips</div></div>
+            <div class="water-tips-list" id="waterTipsList"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-overlay" id="addFieldModal" onclick="if(event.target===this)closeAddFieldModal()">
+        <div class="modal-box" style="max-width:480px">
+          <div class="modal-header">
+            <div class="modal-title"><span class="material-symbols-outlined">water_drop</span> Add Irrigation Field</div>
+            <div class="modal-close" onclick="closeAddFieldModal()"><span class="material-symbols-outlined">close</span></div>
+          </div>
+          <div class="modal-body">
+            <div class="form-row">
+              <div class="form-group"><label>Field Name</label><input type="text" id="fieldName" placeholder="e.g. North Field A"></div>
+              <div class="form-group"><label>Crop Planted</label><input type="text" id="fieldCrop" placeholder="e.g. Tomato"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Area (sq m)</label><input type="number" id="fieldArea" placeholder="e.g. 300"></div>
+              <div class="form-group"><label>Irrigation Type</label>
+                <select id="fieldIrrType"><option>Manual</option><option>Drip</option><option>Sprinkler</option><option>Flood</option><option>Rain-fed</option></select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Frequency (days)</label><input type="number" id="fieldFreq" placeholder="e.g. 2" min="1" max="14"></div>
+              <div class="form-group"><label>Water per Session (L)</label><input type="number" id="fieldWaterAmt" placeholder="e.g. 500"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeAddFieldModal()">Cancel</button>
+            <button class="btn-save" onclick="saveNewField()"><span class="material-symbols-outlined">save</span> Save Field</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ NOTIFICATION PANEL (slide-in) ══ -->
+    <div class="notif-panel" id="notifPanel">
+      <div class="notif-panel-header">
+        <div class="notif-panel-title">
+          <span class="material-symbols-outlined">notifications</span>
+          Notifications
+        </div>
+        <div class="notif-panel-actions">
+          <button class="notif-mark-all" onclick="markAllNotifRead()">Mark all read</button>
+          <button class="notif-clear-all" onclick="clearAllNotif()">Clear all</button>
+          <button class="notif-close" onclick="toggleNotificationPanel()">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
+      <div class="notif-filter-tabs">
+        <div class="nft active" onclick="filterNotif(this,'all')">All</div>
+        <div class="nft" onclick="filterNotif(this,'weather')">Weather</div>
+        <div class="nft" onclick="filterNotif(this,'pest')">Pest</div>
+        <div class="nft" onclick="filterNotif(this,'harvest')">Harvest</div>
+        <div class="nft" onclick="filterNotif(this,'system')">System</div>
+      </div>
+      <div class="notif-list" id="notifList">
+        <!-- filled by JS -->
+      </div>
+      <div class="notif-panel-footer">
+        <span id="notifFooterText">0 unread notifications</span>
+      </div>
+    </div>
+    <div class="notif-overlay" id="notifOverlay" onclick="toggleNotificationPanel()"></div>
+
+    <!-- ══ PAGE: SETTINGS ══ -->
+    <div class="page" id="page-settings" style="display:none">
+
+      <div class="settings-layout">
+
+        <!-- Settings Sidebar Nav -->
+        <div class="settings-nav">
+          <div class="settings-nav-item active" onclick="showSettingsSection(this,'s-profile')">
+            <span class="material-symbols-outlined">person</span> Account & Profile
+          </div>
+          <div class="settings-nav-item" onclick="showSettingsSection(this,'s-location')">
+            <span class="material-symbols-outlined">location_on</span> Location & Environment
+          </div>
+          <div class="settings-nav-item" onclick="showSettingsSection(this,'s-notifications')">
+            <span class="material-symbols-outlined">notifications</span> Smart Notifications
+          </div>
+          <div class="settings-nav-item" onclick="showSettingsSection(this,'s-crops')">
+            <span class="material-symbols-outlined">grass</span> Planting & Crop Preferences
+          </div>
+          <div class="settings-nav-item" onclick="showSettingsSection(this,'s-display')">
+            <span class="material-symbols-outlined">palette</span> Display & Accessibility
+          </div>
+          <div class="settings-nav-item" onclick="showSettingsSection(this,'s-data')">
+            <span class="material-symbols-outlined">storage</span> System & Data
+          </div>
+        </div>
+
+        <!-- Settings Content -->
+        <div class="settings-content">
+
+          <!-- ─── 1. ACCOUNT & PROFILE ─── -->
+          <div class="settings-section active" id="s-profile">
+            <div class="settings-section-title">
+              <span class="material-symbols-outlined">person</span> Account & Profile
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Profile Information</div>
+              <div class="sc-body">
+                <div class="profile-avatar-row">
+                  <div class="profile-avatar" id="profileAvatarDisplay">👨‍🌾</div>
+                  <div class="profile-avatar-options">
+                    <div class="avatar-label">Choose Avatar</div>
+                    <div class="avatar-picker" id="avatarPicker">
+                      <span onclick="setAvatar('👨‍🌾')">👨‍🌾</span>
+                      <span onclick="setAvatar('👩‍🌾')">👩‍🌾</span>
+                      <span onclick="setAvatar('🧑‍🌾')">🧑‍🌾</span>
+                      <span onclick="setAvatar('👴')">👴</span>
+                      <span onclick="setAvatar('👵')">👵</span>
+                      <span onclick="setAvatar('🌾')">🌾</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="settingName" placeholder="e.g. Juan Dela Cruz">
+                  </div>
+                  <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="settingEmail" placeholder="e.g. juan@farm.ph">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Farm Name / Alias</label>
+                    <input type="text" id="settingFarmName" placeholder="e.g. Lupang Hinirang Farm">
+                  </div>
+                  <div class="form-group">
+                    <label>Role</label>
+                    <select id="settingRole">
+                      <option value="owner">Farm Owner</option>
+                      <option value="worker">Farm Worker</option>
+                      <option value="tech">Agricultural Technician</option>
+                      <option value="researcher">Researcher / Student</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Farm Size (hectares)</label>
+                    <input type="number" id="settingFarmSize" placeholder="e.g. 3.2" step="0.1" min="0">
+                  </div>
+                  <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="settingPhone" placeholder="e.g. 09XX-XXX-XXXX">
+                  </div>
+                </div>
+                <button class="settings-save-btn" onclick="saveProfileSettings()">
+                  <span class="material-symbols-outlined">save</span> Save Profile
+                </button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Account Status</div>
+              <div class="sc-body">
+                <div class="account-status-row">
+                  <div class="asr-item">
+                    <span class="material-symbols-outlined asr-icon ok">check_circle</span>
+                    <div>
+                      <div class="asr-label">App Version</div>
+                      <div class="asr-val">FarmCast v1.0.0</div>
+                    </div>
+                  </div>
+                  <div class="asr-item">
+                    <span class="material-symbols-outlined asr-icon ok">cloud_done</span>
+                    <div>
+                      <div class="asr-label">Data Status</div>
+                      <div class="asr-val">Saved locally</div>
+                    </div>
+                  </div>
+                  <div class="asr-item">
+                    <span class="material-symbols-outlined asr-icon warn">schedule</span>
+                    <div>
+                      <div class="asr-label">Last Active</div>
+                      <div class="asr-val" id="settingLastActive">—</div>
+                    </div>
+                  </div>
+                </div>
+                <button class="settings-danger-btn" onclick="confirmSignOut()">
+                  <span class="material-symbols-outlined">logout</span> Sign Out
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 2. LOCATION & ENVIRONMENT ─── -->
+          <div class="settings-section" id="s-location">
+            <div class="settings-section-title">
+              <span class="material-symbols-outlined">location_on</span> Location & Environment
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Farm Location</div>
+              <div class="sc-body">
+                <div class="form-group" style="margin-bottom:12px">
+                  <label>Search City / Municipality</label>
+                  <div style="display:flex;gap:8px">
+                    <input type="text" id="settingLocationSearch" placeholder="e.g. San Miguel, Bulacan" style="flex:1">
+                    <button class="settings-action-btn" onclick="applyLocationFromSearch()">
+                      <span class="material-symbols-outlined">search</span> Apply
+                    </button>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Latitude</label>
+                    <input type="number" id="settingLat" placeholder="e.g. 14.99" step="0.0001">
+                  </div>
+                  <div class="form-group">
+                    <label>Longitude</label>
+                    <input type="number" id="settingLon" placeholder="e.g. 120.93" step="0.0001">
+                  </div>
+                </div>
+                <button class="settings-action-btn" onclick="getGPSLocation()" style="margin-bottom:12px">
+                  <span class="material-symbols-outlined">my_location</span> Use My GPS Location
+                </button>
+                <div class="location-status" id="locationStatus"></div>
+                <button class="settings-save-btn" onclick="saveLocationSettings()">
+                  <span class="material-symbols-outlined">save</span> Save Location
+                </button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Default Dashboard View</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Default Page on Open</div>
+                    <div class="sr-sub">Which page shows first when you open FarmCast</div>
+                  </div>
+                  <select class="setting-select" id="settingDefaultPage" onchange="saveSettingImmediate('defaultPage', this.value)">
+                    <option value="dashboard">Dashboard</option>
+                    <option value="weather-maps">Weather Maps</option>
+                    <option value="planting-calendar">Planting Calendar</option>
+                    <option value="my-crops">My Crops</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 3. SMART NOTIFICATIONS ─── -->
+          <div class="settings-section" id="s-notifications">
+            <div class="settings-section-title">
+              <span class="material-symbols-outlined">notifications</span> Smart Notifications
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Pest Alert Settings</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Pest Alert Sensitivity</div>
+                    <div class="sr-sub">How aggressively the system warns you about pest risks</div>
+                  </div>
+                  <div class="sensitivity-selector" id="pestSensitivity">
+                    <div class="sens-btn" onclick="setSensitivity(this,'low')">Low</div>
+                    <div class="sens-btn active" onclick="setSensitivity(this,'medium')">Medium</div>
+                    <div class="sens-btn" onclick="setSensitivity(this,'high')">High</div>
+                  </div>
+                </div>
+                <div class="setting-row" style="margin-top:12px">
+                  <div class="sr-info">
+                    <div class="sr-label">Enable Pest Notifications</div>
+                    <div class="sr-sub">Get alerted when pest risk conditions are detected</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="togglePestNotif" checked onchange="saveSettingImmediate('pestNotif', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Weather Alert Thresholds</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Temperature Alert</div>
+                    <div class="sr-sub">Alert when temperature exceeds this value</div>
+                  </div>
+                  <div class="threshold-input-wrap">
+                    <input type="number" class="threshold-input" id="thresholdTemp" value="35" min="20" max="45">
+                    <span class="threshold-unit" id="thresholdTempUnit">°C</span>
+                  </div>
+                </div>
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Heavy Rain Alert</div>
+                    <div class="sr-sub">Notify when heavy rain conditions are detected</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="toggleRainAlert" checked onchange="saveSettingImmediate('rainAlert', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">High Wind Alert</div>
+                    <div class="sr-sub">Alert when wind speed exceeds 40 kph</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="toggleWindAlert" checked onchange="saveSettingImmediate('windAlert', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Daily Weather Briefing</div>
+                    <div class="sr-sub">Receive a daily weather summary notification</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="toggleDailyBriefing" checked onchange="saveSettingImmediate('dailyBriefing', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Briefing Time</div>
+                    <div class="sr-sub">When to send the daily weather summary</div>
+                  </div>
+                  <input type="time" class="setting-time-input" id="settingBriefingTime" value="05:00" onchange="saveSettingImmediate('briefingTime', this.value)">
+                </div>
+                <button class="settings-save-btn" onclick="saveThresholdSettings()">
+                  <span class="material-symbols-outlined">save</span> Save Thresholds
+                </button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Quiet Hours</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Enable Quiet Hours</div>
+                    <div class="sr-sub">Suppress all notifications during these hours</div>
+                  </div>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="toggleQuietHours" checked onchange="saveSettingImmediate('quietHours', this.checked)">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="form-row" style="margin-top:12px">
+                  <div class="form-group">
+                    <label>Quiet From</label>
+                    <input type="time" id="quietFrom" value="21:00" onchange="saveSettingImmediate('quietFrom', this.value)">
+                  </div>
+                  <div class="form-group">
+                    <label>Quiet Until</label>
+                    <input type="time" id="quietUntil" value="06:00" onchange="saveSettingImmediate('quietUntil', this.value)">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Harvest Reminders</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Days Before Harvest to Remind</div>
+                    <div class="sr-sub">Get notified this many days before expected harvest date</div>
+                  </div>
+                  <div class="threshold-input-wrap">
+                    <input type="number" class="threshold-input" id="harvestReminderDays" value="7" min="1" max="30">
+                    <span class="threshold-unit">days</span>
+                  </div>
+                </div>
+                <button class="settings-save-btn" onclick="saveThresholdSettings()">
+                  <span class="material-symbols-outlined">save</span> Save
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 4. PLANTING & CROP PREFERENCES ─── -->
+          <div class="settings-section" id="s-crops">
+            <div class="settings-section-title">
+              <span class="material-symbols-outlined">grass</span> Planting & Crop Preferences
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Favorite Crops (Priority in Dashboard)</div>
+              <div class="sc-body">
+                <div class="sr-sub" style="margin-bottom:14px">Select crops that will appear first in recommendations and calendar highlights.</div>
+                <div class="fav-crops-grid" id="favCropsGrid">
+                  <!-- filled by JS -->
+                </div>
+                <button class="settings-save-btn" onclick="saveFavCrops()">
+                  <span class="material-symbols-outlined">save</span> Save Preferences
+                </button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Calendar View</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Planting Calendar Display</div>
+                    <div class="sr-sub">How to display the planting calendar</div>
+                  </div>
+                  <div class="sensitivity-selector" id="calViewSelector">
+                    <div class="sens-btn active" onclick="setCalView(this,'calendar')">Calendar</div>
+                    <div class="sens-btn" onclick="setCalView(this,'list')">List</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 5. DISPLAY & ACCESSIBILITY ─── -->
+          <div class="settings-section" id="s-display">
+            <div class="settings-section-title">
+              <span class="material-symbols-outlined">palette</span> Display & Accessibility
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Theme</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">App Theme</div>
+                    <div class="sr-sub">Dark mode recommended for outdoor use under bright sunlight</div>
+                  </div>
+                  <div class="theme-selector" id="themeSelector">
+                    <div class="theme-opt dark active" onclick="setTheme(this,'dark')">
+                      <span class="material-symbols-outlined">dark_mode</span> Dark
+                    </div>
+                    <div class="theme-opt light" onclick="setTheme(this,'light')">
+                      <span class="material-symbols-outlined">light_mode</span> Light
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Measurement Units</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Temperature Unit</div>
+                    <div class="sr-sub">Switch between Celsius and Fahrenheit across the entire app</div>
+                  </div>
+                  <div class="unit-selector" id="tempUnitSelector">
+                    <div class="unit-btn active" onclick="setTempUnit(this,'C')">°C Celsius</div>
+                    <div class="unit-btn" onclick="setTempUnit(this,'F')">°F Fahrenheit</div>
+                  </div>
+                </div>
+                <div class="setting-row" style="margin-top:12px">
+                  <div class="sr-info">
+                    <div class="sr-label">Wind Speed Unit</div>
+                    <div class="sr-sub">Switch between km/h and mph</div>
+                  </div>
+                  <div class="unit-selector" id="windUnitSelector">
+                    <div class="unit-btn active" onclick="setWindUnit(this,'kph')">km/h</div>
+                    <div class="unit-btn" onclick="setWindUnit(this,'mph')">mph</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Font Size</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Text Size</div>
+                    <div class="sr-sub">Larger text for easier reading in the field</div>
+                  </div>
+                  <div class="sensitivity-selector" id="fontSizeSelector">
+                    <div class="sens-btn" onclick="setFontSize(this,'small')">Small</div>
+                    <div class="sens-btn active" onclick="setFontSize(this,'medium')">Medium</div>
+                    <div class="sens-btn" onclick="setFontSize(this,'large')">Large</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ─── 6. SYSTEM & DATA ─── -->
+          <div class="settings-section" id="s-data">
+            <div class="settings-section-title">
+              <span class="material-symbols-outlined">storage</span> System & Data Maintenance
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Data Backup & Export</div>
+              <div class="sc-body">
+                <div class="data-action-grid">
+                  <div class="data-action-item">
+                    <div class="dai-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">📊</div>
+                    <div class="dai-info">
+                      <div class="dai-title">Export Crops as CSV</div>
+                      <div class="dai-sub">Download your crop list as a spreadsheet</div>
+                    </div>
+                    <button class="dai-btn" onclick="exportCSV('crops')">Export</button>
+                  </div>
+                  <div class="data-action-item">
+                    <div class="dai-icon" style="background:rgba(227,160,8,0.15);color:var(--amber)">🌾</div>
+                    <div class="dai-info">
+                      <div class="dai-title">Export Harvest History as CSV</div>
+                      <div class="dai-sub">Download all harvest records</div>
+                    </div>
+                    <button class="dai-btn" onclick="exportCSV('harvest')">Export</button>
+                  </div>
+                  <div class="data-action-item">
+                    <div class="dai-icon" style="background:rgba(88,166,255,0.15);color:var(--blue)">💧</div>
+                    <div class="dai-info">
+                      <div class="dai-title">Export Irrigation Fields as CSV</div>
+                      <div class="dai-sub">Download your irrigation field data</div>
+                    </div>
+                    <button class="dai-btn" onclick="exportCSV('irrigation')">Export</button>
+                  </div>
+                  <div class="data-action-item">
+                    <div class="dai-icon" style="background:rgba(248,81,73,0.15);color:var(--red)">🐛</div>
+                    <div class="dai-info">
+                      <div class="dai-title">Export Pest Log as CSV</div>
+                      <div class="dai-sub">Download pest sighting history</div>
+                    </div>
+                    <button class="dai-btn" onclick="exportCSV('pests')">Export</button>
+                  </div>
+                </div>
+                <div class="backup-status" id="backupStatus">
+                  <span class="material-symbols-outlined" style="font-size:16px;color:var(--green)">check_circle</span>
+                  Last export: <span id="lastExportTime">Never</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Language</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Interface Language</div>
+                    <div class="sr-sub">Change the language of the app interface</div>
+                  </div>
+                  <select class="setting-select" id="settingLanguage" onchange="saveSettingImmediate('language', this.value)">
+                    <option value="en">English</option>
+                    <option value="tl">Filipino (Tagalog)</option>
+                    <option value="taglish">Taglish</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="sc-header">Help & Support</div>
+              <div class="sc-body">
+                <div class="help-links">
+                  <div class="help-link-item" onclick="toast('Opening bug report form...','ok')">
+                    <span class="material-symbols-outlined">bug_report</span>
+                    <div><div class="hli-title">Report a Bug</div><div class="hli-sub">Help us improve FarmCast</div></div>
+                    <span class="material-symbols-outlined" style="margin-left:auto;color:var(--text-dim)">chevron_right</span>
+                  </div>
+                  <div class="help-link-item" onclick="toast('Opening developer contact...','ok')">
+                    <span class="material-symbols-outlined">mail</span>
+                    <div><div class="hli-title">Contact Developer</div><div class="hli-sub">Get support for your thesis</div></div>
+                    <span class="material-symbols-outlined" style="margin-left:auto;color:var(--text-dim)">chevron_right</span>
+                  </div>
+                  <div class="help-link-item" onclick="toast('FarmCast v1.0.0 — Built for thesis 🌾','ok')">
+                    <span class="material-symbols-outlined">info</span>
+                    <div><div class="hli-title">About FarmCast</div><div class="hli-sub">Version 1.0.0</div></div>
+                    <span class="material-symbols-outlined" style="margin-left:auto;color:var(--text-dim)">chevron_right</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card danger-zone">
+              <div class="sc-header" style="color:var(--red)">Danger Zone</div>
+              <div class="sc-body">
+                <div class="setting-row">
+                  <div class="sr-info">
+                    <div class="sr-label">Reset All Data</div>
+                    <div class="sr-sub">Delete all crops, harvest records, pest logs, and settings. Cannot be undone.</div>
+                  </div>
+                  <button class="settings-danger-btn" onclick="confirmResetData()">
+                    <span class="material-symbols-outlined">delete_forever</span> Reset All Data
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PAGE: FARM ANALYTICS ══ -->
+    <div class="page" id="page-farm-analytics" style="display:none">
+      <div class="an-kpi-row fade-in">
+        <div class="an-kpi-box">
+          <div class="an-kpi-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">🌾</div>
+          <div class="an-kpi-info"><div class="an-kpi-val" id="anTotalHarvest">0 kg</div><div class="an-kpi-lbl">Total Harvest (Season)</div><div class="an-kpi-sub" id="anHarvestSub">—</div></div>
+        </div>
+        <div class="an-kpi-box">
+          <div class="an-kpi-icon" style="background:rgba(88,166,255,0.15);color:var(--blue)">💧</div>
+          <div class="an-kpi-info"><div class="an-kpi-val" id="anTotalWater">0 L</div><div class="an-kpi-lbl">Water Used (This Week)</div><div class="an-kpi-sub" id="anWaterSub">—</div></div>
+        </div>
+        <div class="an-kpi-box">
+          <div class="an-kpi-icon" style="background:rgba(227,160,8,0.15);color:var(--amber)">📈</div>
+          <div class="an-kpi-info"><div class="an-kpi-val" id="anYieldRate">0%</div><div class="an-kpi-lbl">Yield Success Rate</div><div class="an-kpi-sub" id="anYieldSub">—</div></div>
+        </div>
+        <div class="an-kpi-box">
+          <div class="an-kpi-icon" style="background:rgba(248,81,73,0.15);color:var(--red)">⚠️</div>
+          <div class="an-kpi-info"><div class="an-kpi-val" id="anPestCount">0</div><div class="an-kpi-lbl">Pest Sightings (Month)</div><div class="an-kpi-sub" id="anPestSub">—</div></div>
+        </div>
+        <div class="an-kpi-box">
+          <div class="an-kpi-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">🌱</div>
+          <div class="an-kpi-info"><div class="an-kpi-val" id="anActiveCrops">0</div><div class="an-kpi-lbl">Active Crops</div><div class="an-kpi-sub" id="anActiveSub">—</div></div>
+        </div>
+      </div>
+
+      <div class="an-grid fade-in fade-in-1">
+        <div class="an-main-col">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title"><span class="material-symbols-outlined">bar_chart</span>Crop Growth Progress</div>
+              <div class="card-action" id="anChartFilter">
+                <span class="an-filter-tab active" onclick="setAnFilter(this,'all')">All</span>
+                <span class="an-filter-tab" onclick="setAnFilter(this,'growing')">Growing</span>
+                <span class="an-filter-tab" onclick="setAnFilter(this,'ready')">Ready</span>
+              </div>
+            </div>
+            <div class="an-bar-chart" id="anBarChart"></div>
+          </div>
+
+          <div class="card" style="margin-top:16px">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">device_thermostat</span>Weather Impact on Crops</div></div>
+            <div class="an-weather-impact" id="anWeatherImpact"></div>
+          </div>
+
+          <div class="card" style="margin-top:16px">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">pie_chart</span>Land Use by Crop</div></div>
+            <div class="an-land-chart" id="anLandChart"></div>
+          </div>
+        </div>
+
+        <div class="an-side-col">
+          <div class="card">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">emoji_events</span>Crop Performance</div></div>
+            <div class="an-perf-list" id="anPerfList"></div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">water_drop</span>Irrigation Efficiency</div></div>
+            <div class="an-irr-eff" id="anIrrEff"></div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">calendar_month</span>Monthly Summary</div></div>
+            <div class="an-monthly-summary" id="anMonthlySummary"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PAGE: HARVEST HISTORY ══ -->
+    <div class="page" id="page-harvest-history" style="display:none">
+
+      <div class="hh-stats-row fade-in">
+        <div class="hh-stat-box"><div class="hhs-icon">🌾</div><div class="hhs-val" id="hhTotalHarvests">0</div><div class="hhs-lbl">Total Harvests</div></div>
+        <div class="hh-stat-box"><div class="hhs-icon">⚖️</div><div class="hhs-val" id="hhTotalKg">0 kg</div><div class="hhs-lbl">Total Yield</div></div>
+        <div class="hh-stat-box"><div class="hhs-icon">📅</div><div class="hhs-val" id="hhThisMonth">0</div><div class="hhs-lbl">This Month</div></div>
+        <div class="hh-stat-box"><div class="hhs-icon">🏆</div><div class="hhs-val" id="hhBestCrop">—</div><div class="hhs-lbl">Best Crop</div></div>
+      </div>
+
+      <div class="hh-toolbar fade-in fade-in-1">
+        <div class="hh-filter-tabs">
+          <div class="hft active" onclick="filterHarvest(this,'all')">All</div>
+          <div class="hft" onclick="filterHarvest(this,'excellent')">Excellent</div>
+          <div class="hft" onclick="filterHarvest(this,'good')">Good</div>
+          <div class="hft" onclick="filterHarvest(this,'poor')">Poor</div>
+        </div>
+        <div class="hh-toolbar-right">
+          <select class="hh-sort-select" id="hhSortSelect" onchange="renderHarvestHistory()">
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="yield-desc">Highest Yield</option>
+            <option value="crop">By Crop</option>
+          </select>
+          <button class="btn-add-crop" onclick="openLogHarvestModal()">
+            <span class="material-symbols-outlined">add</span> Log Harvest
+          </button>
+        </div>
+      </div>
+
+      <div class="card fade-in fade-in-2">
+        <div class="hh-table-wrap">
+          <table class="hh-table">
+            <thead>
+              <tr>
+                <th>Crop</th><th>Date Harvested</th><th>Location</th>
+                <th>Area (m²)</th><th>Yield (kg)</th><th>Quality</th><th>Notes</th><th></th>
+              </tr>
+            </thead>
+            <tbody id="hhTableBody">
+              <tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:20px">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card fade-in fade-in-3" style="margin-top:16px">
+        <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">bar_chart</span>Yield by Crop (kg)</div></div>
+        <div class="hh-yield-chart" id="hhYieldChart"></div>
+      </div>
+
+      <!-- Log Harvest Modal -->
+      <div class="modal-overlay" id="logHarvestModal" onclick="if(event.target===this)closeLogHarvestModal()">
+        <div class="modal-box" style="max-width:520px">
+          <div class="modal-header">
+            <div class="modal-title"><span class="material-symbols-outlined">agriculture</span> Log Harvest</div>
+            <div class="modal-close" onclick="closeLogHarvestModal()"><span class="material-symbols-outlined">close</span></div>
+          </div>
+          <div class="modal-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Crop Type</label>
+                <select id="hhCropType">
+                  <option value="">Select crop…</option>
+                  <option>Tomato</option><option>Eggplant</option><option>Corn</option>
+                  <option>Okra</option><option>Sitaw</option><option>Ampalaya</option>
+                  <option>Pechay</option><option>Kamote</option><option>Rice</option>
+                  <option>Garlic</option><option>Onion</option><option>Cabbage</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Date Harvested</label>
+                <input type="date" id="hhDate">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Location / Field</label><input type="text" id="hhLocation" placeholder="e.g. North Field A"></div>
+              <div class="form-group"><label>Area Harvested (m²)</label><input type="number" id="hhArea" placeholder="e.g. 300"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Yield (kg)</label><input type="number" id="hhYield" placeholder="e.g. 150" step="0.1"></div>
+              <div class="form-group">
+                <label>Quality Rating</label>
+                <select id="hhQuality">
+                  <option value="excellent">⭐⭐⭐ Excellent</option>
+                  <option value="good">⭐⭐ Good</option>
+                  <option value="poor">⭐ Poor</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label>Notes</label><textarea id="hhNotes" placeholder="Any observations about this harvest…" rows="2"></textarea></div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeLogHarvestModal()">Cancel</button>
+            <button class="btn-save" onclick="saveHarvestLog()"><span class="material-symbols-outlined">save</span> Save Harvest</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ AI CROP DISEASE DETECTION MODAL ══ -->
+<div class="modal-overlay" id="aiDetectModal" onclick="if(event.target===this)closeAIDetect()">
+  <div class="modal-box ai-modal-box">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span class="material-symbols-outlined" style="color:var(--green)">biotech</span>
+        AI Crop Disease Detection
+      </div>
+      <div class="modal-close" onclick="closeAIDetect()"><span class="material-symbols-outlined">close</span></div>
+    </div>
+    <div class="modal-body">
+      <!-- Crop Info Banner -->
+      <div class="ai-crop-info" id="aiCropInfo">
+        <span class="ai-crop-emoji" id="aiCropEmoji">🌱</span>
+        <div>
+          <div class="ai-crop-name" id="aiCropName">Crop Name</div>
+          <div class="ai-crop-sub">Upload a clear photo of the leaves or stem</div>
+        </div>
+        <div class="ai-model-status" id="aiModelStatus">
+          <span class="material-symbols-outlined" style="font-size:14px">smart_toy</span>
+          AI Ready
+        </div>
+      </div>
+
+      <!-- Upload Area -->
+      <div class="ai-upload-area" id="aiUploadArea">
+        <div class="ai-upload-icon">📸</div>
+        <div class="ai-upload-text">Take a photo or upload from gallery</div>
+        <div class="ai-upload-sub">Best results: close-up photo of leaves, clear lighting</div>
+        <div class="ai-upload-btns">
+          <button class="ai-upload-btn camera" onclick="openAICamera()">
+            <span class="material-symbols-outlined">photo_camera</span> Camera
+          </button>
+          <button class="ai-upload-btn file" onclick="document.getElementById('aiFileInput').click()">
+            <span class="material-symbols-outlined">upload_file</span> Upload Photo
+          </button>
+          <input type="file" id="aiFileInput" accept="image/*" style="display:none" onchange="handleAIFile(event)">
+        </div>
+      </div>
+
+      <!-- Camera View -->
+      <div class="ai-camera-wrap" id="aiCameraWrap" style="display:none">
+        <video id="aiCameraVideo" autoplay playsinline></video>
+        <canvas id="aiCameraCanvas" style="display:none"></canvas>
+        <div class="ai-camera-overlay"><div class="ai-camera-frame"></div></div>
+        <div class="ai-camera-btns">
+          <button class="ai-upload-btn camera" onclick="captureAIPhoto()">
+            <span class="material-symbols-outlined">camera</span> Capture
+          </button>
+          <button class="ai-upload-btn file" onclick="closeAICamera()">
+            <span class="material-symbols-outlined">close</span> Cancel
+          </button>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div class="ai-preview-wrap" id="aiPreviewWrap" style="display:none">
+        <img id="aiPreviewImg" src="" alt="Crop Photo Preview">
+        <button class="ai-retake-btn" onclick="retakeAIPhoto()">
+          <span class="material-symbols-outlined">refresh</span> Retake Photo
+        </button>
+      </div>
+
+      <!-- Analyzing -->
+      <div class="ai-analyzing" id="aiAnalyzing" style="display:none">
+        <div class="ai-spinner"></div>
+        <div class="ai-analyzing-text">Analyzing crop health…</div>
+        <div class="ai-analyzing-sub" id="aiAnalyzingSub">Please wait…</div>
+      </div>
+
+      <!-- Result -->
+      <div class="ai-result" id="aiResult" style="display:none">
+        <div class="ai-result-header" id="aiResultHeader">
+          <div class="ai-result-icon" id="aiResultIcon">✅</div>
+          <div style="flex:1">
+            <div class="ai-result-status" id="aiResultStatus">Healthy Crop</div>
+            <div class="ai-result-conf" id="aiResultConf">—</div>
+          </div>
+        </div>
+        <div class="ai-disease-card" id="aiDiseaseCard" style="display:none">
+          <div class="ai-disease-name" id="aiDiseaseName"></div>
+          <div class="ai-disease-desc" id="aiDiseaseDesc"></div>
+        </div>
+        <div class="ai-recs-title">Recommendations</div>
+        <div class="ai-recs-list" id="aiRecsList"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeAIDetect()">Close</button>
+      <button class="btn-save" id="aiAnalyzeBtn" onclick="runAIDetection()" style="display:none">
+        <span class="material-symbols-outlined">biotech</span> Analyze Now
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="api.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
