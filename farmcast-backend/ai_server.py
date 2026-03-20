@@ -12,9 +12,10 @@ import base64
 import io
 import json
 import re
+import os
 
 # ── CONFIG ──
-CLAUDE_API_KEY = "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"  # ← Ilagay mo dito
+CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY"),  # ← Ilagay mo dito
 
 app = FastAPI(title="FarmCast AI Server", version="1.0.0")
 
