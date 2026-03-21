@@ -4,3 +4,4 @@ node_modules/
 _pycache__/
 *.pyc
 .env.local
+yolov8x-oiv7.pt
