@@ -5,7 +5,7 @@
 // <script src="api.js"></script>
 // ============================================
 
-const BACKEND_URL = 'http://localhost:5000/api';
+const BACKEND_URL = 'https://farmcast-production.up.railway.app/api';
 
 // ── TOKEN HELPERS ──
 function getToken()        { return localStorage.getItem('fc_token'); }
