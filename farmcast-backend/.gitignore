@@ -2,6 +2,5 @@ node_modules/
 .env
 *.log
 _pycache__/
-*.pt
 *.pyc
 .env.local
