@@ -51,7 +51,9 @@ def get_yolo_model():
     if yolo_model is None:
         from ultralytics import YOLO
         # YOLOv8x-oiv7 — trained on Open Images V7 (600+ classes, more plants!)
-        model_path = "yolov8n.pt"
+        model_path = "yolov8x-oiv7.pt"  # Make sure to download this model and place it in the same directory
+        if not os.path.exists(model_path):
+            print("Downloading YOLOv8x Open Images V7 model...")
         yolo_model = YOLO(model_path)
         print("✅ YOLOv8 Open Images V7 model loaded!")
     return yolo_model
