@@ -3,7 +3,7 @@
 // Connected to backend API
 // ============================================
 
-const BACKEND_URL = 'http://localhost:5000/api';
+const BACKEND_URL = 'https://farmcast-production.up.railway.app/api';
 
 const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
