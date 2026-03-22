@@ -3,7 +3,7 @@
 // Connected to backend API
 // ============================================
 
-const BACKEND_URL = 'https://farmcast-rOhs.onrender.com/api';
+const BACKEND_URL = 'https://farmcast-r0hs.onrender.com/api';
 
 const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
