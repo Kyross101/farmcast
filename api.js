@@ -5,7 +5,7 @@
 // <script src="api.js"></script>
 // ============================================
 
-const BACKEND_URL = 'https://farmcast-rOhs.onrender.com/api';
+const BACKEND_URL = 'https://farmcast-r0hs.onrender.com/api';
 
 // ── TOKEN HELPERS ──
 function getToken()        { return localStorage.getItem('fc_token'); }
