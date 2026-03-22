@@ -3312,52 +3312,51 @@ async function runPlantScan() {
   document.getElementById('scannerPreviewView').style.display    = 'none';
   document.getElementById('scannerAnalyzingView').style.display  = 'flex';
   document.getElementById('scannerAnalyzingImg').src             = scannerImageData;
-  document.getElementById('scannerAnalyzingSub').textContent     = 'Calling Roboflow AI (2 models)…';
+  document.getElementById('scannerAnalyzingSub').textContent     = '🤖 Running Python AI + Claude…';
   document.getElementById('scannerResultCard').style.display     = 'none';
 
   try {
-    document.getElementById('scannerAnalyzingSub').textContent = 'Identifying plant + checking for diseases…';
+    document.getElementById('scannerAnalyzingSub').textContent = '🐍 Analyzing plant…';
 
-    // Call both models in parallel
-    const [plantRes, diseaseRes] = await Promise.allSettled([
-      callRoboflowAPI(scannerImageData, ROBOFLOW_MODEL_PLANT),
-      callRoboflowAPI(scannerImageData, ROBOFLOW_MODEL_DISEASE)
-    ]);
+    // Call Python AI Server
+    const result = await scanWithPythonAI(scannerImageData);
+    console.log('Python AI result:', result);
 
-    const plantPreds   = plantRes.status   === 'fulfilled' ? (plantRes.value.predictions   || []) : [];
-    const diseasePreds = diseaseRes.status === 'fulfilled' ? (diseaseRes.value.predictions || []) : [];
+    const analysis   = result.analysis   || {};
+    const detections = result.detections || [];
 
-    console.log('Plant predictions:',   plantPreds);
-    console.log('Disease predictions:', diseasePreds);
-
-    // Identify plant from Model 1
-    let identified = { name: 'Unknown Plant', emoji: '🌿', type: 'Unknown' };
-    if (plantPreds.length > 0) {
-      const top = plantPreds[0];
+    let identified = { name: 'Unknown Plant', type: 'Unknown', confidence: 0 };
+    if (analysis.plant_name && analysis.plant_name !== 'No Plant Detected') {
       identified = {
-        name:  top.class.charAt(0).toUpperCase() + top.class.slice(1),
-        emoji: '', // No emoji
-        type:  'Detected',
-        confidence: Math.round((top.confidence||0)*100)
+        name:       analysis.plant_name,
+        emoji:      '',
+        type:       analysis.plant_type || 'Plant',
+        confidence: analysis.confidence || 90,
+      };
+    } else if (detections.length > 0) {
+      identified = {
+        name:       detections[0].label,
+        emoji:      '',
+        type:       'Detected',
+        confidence: detections[0].confidence,
       };
     }
 
-    // Identify disease from Model 2
     let disease = { name: 'Healthy', severity: 'none', confidence: 92, color: 'green' };
-    if (diseasePreds.length > 0) {
-      const top = diseasePreds[0];
-      const conf = Math.round((top.confidence||0)*100);
-      const sev  = conf > 75 ? 'high' : conf > 50 ? 'medium' : 'low';
+    if (analysis.health_status && analysis.health_status !== 'Healthy' && analysis.severity !== 'none') {
+      const sev = analysis.severity || 'medium';
       disease = {
-        name:       top.class.charAt(0).toUpperCase() + top.class.slice(1),
+        name:       analysis.health_status,
         severity:   sev,
-        confidence: conf,
-        color:      sev === 'high' ? 'red' : sev === 'medium' ? 'amber' : 'green'
+        confidence: analysis.confidence || 85,
+        color:      sev === 'high' ? 'red' : sev === 'medium' ? 'amber' : 'green',
+        treatments: analysis.treatments || [],
+        description: analysis.description || '',
       };
     }
 
-    await new Promise(r => setTimeout(r, 400));
-    showScannerResult(identified, disease, [...plantPreds, ...diseasePreds]);
+    await new Promise(r => setTimeout(r, 300));
+    showScannerResult(identified, disease, detections);
 
   } catch (err) {
     console.error('Scanner error:', err);
@@ -3685,431 +3684,7 @@ If no plant is visible, use plant_name: "No Plant Detected". Be specific with pl
   }
 }
 
-// ── PYTHON AI SERVER — Main scan function ──
-const AI_SERVER_URL_SCAN = AI_SERVER_URL + '/scan';
 
-async function scanWithPythonAI(imageData) {
-  // Convert base64 to blob/file for FormData
-  const base64 = imageData.replace(/^data:image\/[a-z]+;base64,/, '');
-  const byteChars = atob(base64);
-  const byteNums  = new Array(byteChars.length);
-  for (let i = 0; i < byteChars.length; i++) {
-    byteNums[i] = byteChars.charCodeAt(i);
-  }
-  const byteArray = new Uint8Array(byteNums);
-  const blob      = new Blob([byteArray], { type: 'image/jpeg' });
-
-  const formData = new FormData();
-  formData.append('file', blob, 'plant.jpg');
-
-  const res = await fetch(AI_SERVER_URL_SCAN, {
-    method: 'POST',
-    body:   formData,
-  });
-
-  if (!res.ok) throw new Error(`AI Server error: ${res.status}`);
-  return await res.json();
-}
-
-// ── Override runPlantScan — now uses Python AI Server ──
-const _origRunPlantScan = runPlantScan;
-runPlantScan = async function() {
-  if (!scannerImageData) { toast('Please provide a plant photo first.', 'warn'); return; }
-
-  document.getElementById('scannerPreviewView').style.display    = 'none';
-  document.getElementById('scannerAnalyzingView').style.display  = 'flex';
-  document.getElementById('scannerAnalyzingImg').src             = scannerImageData;
-  document.getElementById('scannerAnalyzingSub').textContent     = '🤖 Running YOLOv8 + Claude AI…';
-  document.getElementById('scannerResultCard').style.display     = 'none';
-
-  try {
-    document.getElementById('scannerAnalyzingSub').textContent = '🐍 Python AI Server analyzing…';
-
-    // Call Python AI Server
-    const result = await scanWithPythonAI(scannerImageData);
-    console.log('Python AI Server result:', result);
-
-    const analysis   = result.analysis   || {};
-    const detections = result.detections || [];
-
-    // ── Build identified plant from Claude AI result ──
-    let identified = { name: 'Unknown Plant', type: 'Unknown', confidence: 0, source: 'AI' };
-    if (analysis.plant_name && analysis.plant_name !== 'No Plant Detected') {
-      identified = {
-        name:       analysis.plant_name,
-        emoji:      '',
-        type:       analysis.plant_type || 'Plant',
-        confidence: analysis.confidence || 90,
-        source:     'Claude AI + YOLOv8'
-      };
-    } else if (detections.length > 0) {
-      identified = {
-        name:       detections[0].label,
-        emoji:      '',
-        type:       'Detected',
-        confidence: detections[0].confidence,
-        source:     'YOLOv8'
-      };
-    }
-
-    // ── Build disease from Claude AI result ──
-    let disease = { name: 'Healthy', severity: 'none', confidence: 92, color: 'green' };
-    if (analysis.health_status && analysis.health_status !== 'Healthy' && analysis.severity !== 'none') {
-      const sev = analysis.severity || 'medium';
-      disease = {
-        name:       analysis.health_status,
-        severity:   sev,
-        confidence: analysis.confidence || 85,
-        color:      sev === 'high' ? 'red' : sev === 'medium' ? 'amber' : 'green',
-        treatments: analysis.treatments || [],
-        description:analysis.description || '',
-        source:     'Claude AI'
-      };
-    }
-
-    await new Promise(r => setTimeout(r, 300));
-    showScannerResult(identified, disease, detections);
-
-  } catch (err) {
-    console.error('Python AI Server error:', err);
-    // Fallback to old Roboflow + Claude if Python server is down
-    toast('⚠️ Python AI Server offline — using fallback AI…', 'warn');
-    await _origRunPlantScan();
-  }
-};
-
-// ═══════════════════════════════════════════════════════
-// SIDEBAR TOGGLE
-// ═══════════════════════════════════════════════════════
-
-let sidebarCollapsed = false;
-
-function toggleSidebar() {
-  const sidebar = document.getElementById('mainSidebar');
-  if (!sidebar) return;
-
-  sidebarCollapsed = !sidebarCollapsed;
-
-  if (sidebarCollapsed) {
-    sidebar.classList.add('collapsed');
-  } else {
-    sidebar.classList.remove('collapsed');
-  }
-
-  // Re-init map if open (fix map size after sidebar toggle)
-  if (typeof weatherMap !== 'undefined' && weatherMap) {
-    setTimeout(() => weatherMap.invalidateSize(), 350);
-  }
-
-  // Save state
-  localStorage.setItem('fc_sidebarCollapsed', sidebarCollapsed);
-}
-
-// Restore sidebar state on page load
-document.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('fc_sidebarCollapsed') === 'true') {
-    const sidebar = document.getElementById('mainSidebar');
-    if (sidebar) {
-      sidebarCollapsed = true;
-      sidebar.classList.add('collapsed');
-    }
-  }
-});
-
-// ═══════════════════════════════════════════════════════
-// ANIMATED WEATHER SCENE
-// ═══════════════════════════════════════════════════════
-
-function renderAnimatedWeather(iconCode, desc = '') {
-  const el = document.getElementById('heroIcon');
-  if (!el) return;
-  const d = desc.toLowerCase();
-
-  // Sunny / Clear
-  if (iconCode.startsWith('01')) {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="sun-rays">
-          ${[0,45,90,135,180,225,270,315].map(deg =>
-            `<div class="sun-ray" style="transform:rotate(${deg}deg) translateX(-50%)"></div>`
-          ).join('')}
-        </div>
-        <div class="sun"></div>
-      </div>`;
-
-  // Few clouds / Partly cloudy
-  } else if (iconCode.startsWith('02') || iconCode.startsWith('03')) {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="sun-behind"></div>
-        <div class="cloud cloud-back"></div>
-        <div class="cloud cloud-main"></div>
-      </div>`;
-
-  // Overcast / Cloudy
-  } else if (iconCode.startsWith('04')) {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="cloud cloud-back"></div>
-        <div class="cloud cloud-main"></div>
-      </div>`;
-
-  // Drizzle / Light rain
-  } else if (iconCode.startsWith('09')) {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="rain-cloud"></div>
-        <div class="rain-drops">
-          ${[1,2,3,4,5,6].map(() => `<div class="rain-drop"></div>`).join('')}
-        </div>
-      </div>`;
-
-  // Rain
-  } else if (iconCode.startsWith('10')) {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="sun-behind" style="opacity:0.5;top:5px;left:5px;width:28px;height:28px"></div>
-        <div class="rain-cloud"></div>
-        <div class="rain-drops">
-          ${[1,2,3,4,5,6].map(() => `<div class="rain-drop"></div>`).join('')}
-        </div>
-      </div>`;
-
-  // Thunderstorm
-  } else if (iconCode.startsWith('11')) {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="thunder-cloud"></div>
-        <div class="rain-drops" style="top:38px;left:14px">
-          ${[1,2,3,4].map(() => `<div class="rain-drop"></div>`).join('')}
-        </div>
-        <div class="lightning"></div>
-      </div>`;
-
-  // Snow
-  } else if (iconCode.startsWith('13')) {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="snow-cloud"></div>
-        <div class="snowflakes">
-          <div class="snowflake">❄</div>
-          <div class="snowflake">❄</div>
-          <div class="snowflake">❄</div>
-          <div class="snowflake">❄</div>
-        </div>
-      </div>`;
-
-  // Mist / Fog / Haze
-  } else if (iconCode.startsWith('50')) {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="fog-lines">
-          <div class="fog-line"></div>
-          <div class="fog-line"></div>
-          <div class="fog-line"></div>
-          <div class="fog-line"></div>
-        </div>
-      </div>`;
-
-  // Default fallback
-  } else {
-    el.innerHTML = `
-      <div class="weather-scene">
-        <div class="sun"></div>
-      </div>`;
-  }
-}
-
-// ═══════════════════════════════════════════════════════
-// MINI ANIMATED WEATHER — for forecast strip & calendar
-// ═══════════════════════════════════════════════════════
-
-function getMiniWeatherScene(iconCode) {
-  if (!iconCode) return '<span style="font-size:20px">🌤️</span>';
-
-  // Sunny
-  if (iconCode.startsWith('01')) return `
-    <div class="mini-scene">
-      <div class="mini-sun">
-        <div class="mini-sun-core"></div>
-        <div class="mini-sun-rays"></div>
-      </div>
-    </div>`;
-
-  // Partly cloudy
-  if (iconCode.startsWith('02')) return `
-    <div class="mini-scene">
-      <div class="mini-sun-sm"></div>
-      <div class="mini-cloud"></div>
-    </div>`;
-
-  // Cloudy
-  if (iconCode.startsWith('03') || iconCode.startsWith('04')) return `
-    <div class="mini-scene">
-      <div class="mini-cloud"></div>
-      <div class="mini-cloud mini-cloud-2"></div>
-    </div>`;
-
-  // Rain / Drizzle
-  if (iconCode.startsWith('09') || iconCode.startsWith('10')) return `
-    <div class="mini-scene">
-      <div class="mini-cloud mini-dark"></div>
-      <div class="mini-rain">
-        <div class="mini-drop"></div>
-        <div class="mini-drop"></div>
-        <div class="mini-drop"></div>
-      </div>
-    </div>`;
-
-  // Thunder
-  if (iconCode.startsWith('11')) return `
-    <div class="mini-scene">
-      <div class="mini-cloud mini-dark"></div>
-      <div class="mini-lightning">⚡</div>
-    </div>`;
-
-  // Snow
-  if (iconCode.startsWith('13')) return `
-    <div class="mini-scene">
-      <div class="mini-cloud"></div>
-      <div class="mini-snow">❄</div>
-    </div>`;
-
-  // Mist
-  if (iconCode.startsWith('50')) return `
-    <div class="mini-scene">
-      <div class="mini-fog"></div>
-    </div>`;
-
-  return '<span style="font-size:20px">🌤️</span>';
-}
-
-// ═══════════════════════════════════════════════════════
-// LANGUAGE SYSTEM — English, Filipino, Taglish
-// ═══════════════════════════════════════════════════════
-
-const LANG = {
-  en: {
-    // Navigation
-    dashboard: 'Dashboard', weatherMaps: 'Weather Maps', myCrops: 'My Crops',
-    pestAlerts: 'Pest Alerts', plantingCalendar: 'Planting Calendar',
-    irrigation: 'Irrigation', plantScanner: 'Plant Scanner',
-    farmAnalytics: 'Farm Analytics', harvestHistory: 'Harvest History',
-    settings: 'Settings',
-    // Dashboard
-    quickStats: 'Quick Stats', activeCrops: 'Active Crops',
-    waterNeed: 'Water Need', soilTemp: 'Soil Temp', uvIndex: 'UV Index',
-    dailyTasks: 'Daily Tasks', pestAlertsTile: 'Pest Alerts',
-    forecast: '7-Day Forecast', plantingCal: 'Smart Planting Calendar',
-    // Crops
-    addCrop: 'Add Crop', markWatered: 'Mark Watered', watered: 'Watered ✓',
-    harvest: 'Harvest', growing: 'Growing', ready: 'Ready', atRisk: 'At Risk',
-    // Common
-    refresh: 'Refresh', save: 'Save', cancel: 'Cancel', delete: 'Delete',
-    loading: 'Loading…', today: 'Today', readyToHarvest: 'ready to harvest',
-  },
-  tl: {
-    // Navigation
-    dashboard: 'Dashboard', weatherMaps: 'Mapa ng Panahon', myCrops: 'Mga Pananim Ko',
-    pestAlerts: 'Babala sa Peste', plantingCalendar: 'Kalendaryo ng Pagtatanim',
-    irrigation: 'Patubig', plantScanner: 'Scanner ng Halaman',
-    farmAnalytics: 'Pagsusuri ng Bukid', harvestHistory: 'Kasaysayan ng Ani',
-    settings: 'Mga Setting',
-    // Dashboard
-    quickStats: 'Mabilis na Istatistika', activeCrops: 'Aktibong Pananim',
-    waterNeed: 'Pangangailangan ng Tubig', soilTemp: 'Temp ng Lupa', uvIndex: 'UV Index',
-    dailyTasks: 'Pang-araw-araw na Gawain', pestAlertsTile: 'Babala sa Peste',
-    forecast: '7-Araw na Hula', plantingCal: 'Matalinong Kalendaryo ng Pagtatanim',
-    // Crops
-    addCrop: 'Magdagdag ng Halaman', markWatered: 'Markahang Diniligan',
-    watered: 'Diniligan ✓', harvest: 'Umani', growing: 'Lumalaki',
-    ready: 'Handa na', atRisk: 'May Panganib',
-    // Common
-    refresh: 'I-refresh', save: 'I-save', cancel: 'Kanselahin', delete: 'Burahin',
-    loading: 'Naglo-load…', today: 'Ngayon', readyToHarvest: 'handa nang anihin',
-  },
-  taglish: {
-    // Navigation
-    dashboard: 'Dashboard', weatherMaps: 'Weather Maps', myCrops: 'Mga Crops Ko',
-    pestAlerts: 'Pest Alerts', plantingCalendar: 'Planting Calendar',
-    irrigation: 'Irrigation', plantScanner: 'Plant Scanner',
-    farmAnalytics: 'Farm Analytics', harvestHistory: 'Harvest History',
-    settings: 'Settings',
-    // Dashboard
-    quickStats: 'Quick Stats', activeCrops: 'Active na Crops',
-    waterNeed: 'Kailangan ng Tubig', soilTemp: 'Soil Temp', uvIndex: 'UV Index',
-    dailyTasks: 'Mga Gawain Ngayon', pestAlertsTile: 'Pest Alerts',
-    forecast: '7-Day Forecast', plantingCal: 'Smart Planting Calendar',
-    // Crops
-    addCrop: 'Mag-add ng Crop', markWatered: 'I-mark na Diniligan',
-    watered: 'Diniligan na ✓', harvest: 'Mag-harvest', growing: 'Lumalaki',
-    ready: 'Ready na', atRisk: 'May Risk',
-    // Common
-    refresh: 'I-refresh', save: 'I-save', cancel: 'Cancel', delete: 'I-delete',
-    loading: 'Loading…', today: 'Ngayon', readyToHarvest: 'ready na i-harvest',
-  }
-};
-
-function getLang(key) {
-  const lang = appSettings?.language || 'en';
-  return LANG[lang]?.[key] || LANG['en'][key] || key;
-}
-
-function applyLanguage(lang) {
-  appSettings.language = lang;
-  lsSave('fc_settings', appSettings);
-
-  // Update nav items
-  const navMap = {
-    'dashboard': getLang('dashboard'),
-    'weather-maps': getLang('weatherMaps'),
-    'my-crops': getLang('myCrops'),
-    'pest-alerts': getLang('pestAlerts'),
-    'planting-calendar': getLang('plantingCalendar'),
-    'irrigation': getLang('irrigation'),
-    'plant-scanner': getLang('plantScanner'),
-    'farm-analytics': getLang('farmAnalytics'),
-    'harvest-history': getLang('harvestHistory'),
-    'settings': getLang('settings'),
-  };
-
-  document.querySelectorAll('.nav-item[data-page]').forEach(el => {
-    const page = el.getAttribute('data-page');
-    if (navMap[page]) {
-      const textEl = el.querySelector('.sidebar-text');
-      if (textEl) textEl.textContent = navMap[page];
-    }
-  });
-
-  // Update quick stats labels
-  const qs = document.querySelectorAll('.qs-label');
-  const qlabels = [getLang('activeCrops'), getLang('waterNeed'), getLang('soilTemp'), getLang('uvIndex')];
-  qs.forEach((el, i) => { if (qlabels[i]) el.textContent = qlabels[i]; });
-
-  // Update refresh button
-  const refreshTxt = document.querySelector('.weather-refresh-text');
-  if (refreshTxt) refreshTxt.textContent = getLang('refresh');
-
-  // Update add crop button
-  const addCropBtn = document.querySelector('.btn-add-crop');
-  if (addCropBtn) addCropBtn.innerHTML = `<span class="material-symbols-outlined">add</span> ${getLang('addCrop')}`;
-
-  // Update topbar title
-  const topbarTitle = document.getElementById('topbarTitle');
-  if (topbarTitle) {
-    const currentPage = document.querySelector('.nav-item.active')?.getAttribute('data-page');
-    if (currentPage && navMap[currentPage]) topbarTitle.textContent = navMap[currentPage];
-  }
-
-  toast(`Language changed to ${lang === 'en' ? 'English' : lang === 'tl' ? 'Filipino' : 'Taglish'}! 🌐`, 'ok');
-}
-
-// Patch saveSettingImmediate for language
-const _origSaveSettingImmediate = saveSettingImmediate;
-saveSettingImmediate = async function(key, value) {
-  await _origSaveSettingImmediate(key, value);
-  if (key === 'language') applyLanguage(value);
-};
 
 // Apply language on init
 window.addEventListener('load', () => {
