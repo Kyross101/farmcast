@@ -19,6 +19,8 @@ CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY"),  # ← Ilagay mo dito
 
 app = FastAPI(title="FarmCast AI Server", version="1.0.0")
 
+PORT = int(os.environ.get("PORT", 8000))
+
 # ── CORS — Allow FarmCast frontend ──
 app.add_middleware(
     CORSMiddleware,
@@ -28,34 +30,16 @@ app.add_middleware(
 )
 
 # ── YOLO MODEL (lazy load) ──
-# Using YOLOv8 trained on Open Images V7 — has more plant/food classes
-# Including: mango, papaya, banana, tomato, lemon, orange, apple, etc.
+# Using YOLOv8n — nano model, only 6MB, auto-downloads from ultralytics
 yolo_model = None
-
-# Plant & disease related class names from Open Images V7
-PLANT_CLASSES = {
-    # Fruits & Vegetables
-    'banana', 'apple', 'orange', 'mango', 'pineapple', 'grape', 'strawberry',
-    'watermelon', 'lemon', 'tomato', 'potato', 'carrot', 'broccoli', 'cucumber',
-    'cabbage', 'corn', 'mushroom', 'onion', 'pepper', 'squash', 'zucchini',
-    'coconut', 'papaya', 'avocado', 'peach', 'pear', 'fig', 'grapefruit',
-    # General plant terms
-    'plant', 'flower', 'leaf', 'tree', 'bush', 'grass', 'herb', 'shrub',
-    'seedling', 'sprout', 'vegetable', 'fruit', 'root', 'stem', 'branch',
-    # Disease indicators
-    'blight', 'spot', 'mold', 'fungus', 'rust', 'rot', 'wilt', 'lesion',
-}
 
 def get_yolo_model():
     global yolo_model
     if yolo_model is None:
         from ultralytics import YOLO
-        # YOLOv8x-oiv7 — trained on Open Images V7 (600+ classes, more plants!)
-        model_path = "yolov8x-oiv7.pt"  # Make sure to download this model and place it in the same directory
-        if not os.path.exists(model_path):
-            print("Downloading YOLOv8x Open Images V7 model...")
-        yolo_model = YOLO(model_path)
-        print("✅ YOLOv8 Open Images V7 model loaded!")
+        # yolov8n.pt — smallest model, 6MB, auto-downloads!
+        yolo_model = YOLO("yolov8n.pt")
+        print("✅ YOLOv8n model loaded!")
     return yolo_model
 
 # ── CLAUDE CLIENT ──
