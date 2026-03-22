@@ -5,7 +5,7 @@
 const API_KEY = '2e3d2d2d9957fd5364e42c6cf4fe73e5'; // OWM API key
 // Roboflow API config
 // Python AI Server (YOLOv8 + Claude AI)
-const AI_SERVER_URL = 'https://farmcast-production.up.railway.app';
+const AI_SERVER_URL = 'http://localhost:8000'; // ← Ilagay mo dito ang URL ng iyong AI server
 
 // ═══════════════════════════════════════════════════════
 // TASK 4 — CLAUDE AI PLANT IDENTIFICATION
