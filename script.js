@@ -2990,7 +2990,7 @@ function showAIResult(disease, rawPredictions) {
 }
 
 // ── Roboflow API is always ready — no preloading needed ──
-console.log('✅ Roboflow AI ready! Model: plant-disease-kkt3g/1');
+
 
 // ═══════════════════════════════════════════════════════
 // PLANT HEALTH SCANNER — Real-time Object Detection
