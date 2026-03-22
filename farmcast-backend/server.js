@@ -14,20 +14,10 @@ const app = express();
 // ── MIDDLEWARE ──
 app.use(cors({
   origin: function(origin, callback) {
-    // Allow requests with no origin (mobile apps, Postman, etc.)
     if (!origin) return callback(null, true);
-    // Allow localhost for development
-    if (origin.match(/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/)) {
-      return callback(null, true);
-    }
-    // Allow Render deployment URLs
-    if (origin.match(/\.onrender\.com$/)) {
-      return callback(null, true);
-    }
-    // Allow Railway deployment URLs
-    if (origin.match(/\.railway\.app$/)) {
-      return callback(null, true);
-    }
+    if (origin.match(/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/)) return callback(null, true);
+    if (origin.match(/\.onrender\.com$/)) return callback(null, true);
+    if (origin.match(/\.railway\.app$/)) return callback(null, true);
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true
@@ -35,10 +25,9 @@ app.use(cors({
 app.use(express.json({ limit: '2mb' }));
 
 // ── SERVE FRONTEND STATIC FILES ──
-// Serve HTML, CSS, JS files from the parent farmcast folder
 app.use(express.static(path.join(__dirname, '..')));
 
-// ── ROUTES ──
+// ── API ROUTES ──
 app.use('/api/auth',        require('./routes/auth'));
 app.use('/api/crops',       require('./routes/crops'));
 app.use('/api/harvest',     require('./routes/harvest'));
@@ -47,21 +36,14 @@ app.use('/api/pests',       require('./routes/pests'));
 app.use('/api/settings',    require('./routes/settings'));
 app.use('/api/scanhistory', require('./routes/scanhistory'));
 
-// ── SERVE PAGES ──
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'login.html'));
-});
-app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'dashboard.html'));
-});
-// Default route — serve login page
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'login.html'));
-});
-
 // ── HEALTH CHECK ──
 app.get('/health', (req, res) => {
   res.json({ message: '🌾 FarmCast API is running!', status: 'ok' });
+});
+
+// ── SERVE LOGIN PAGE (default) ──
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'login.html'));
 });
 
 // ── CONNECT TO MONGODB ──
