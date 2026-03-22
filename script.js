@@ -3306,6 +3306,29 @@ function showScannerPreview(src) {
 }
 
 // ── RUN PLANT SCAN (on captured/uploaded photo) ──
+// ── SCAN WITH PYTHON AI SERVER ──
+async function scanWithPythonAI(imageData) {
+  const base64 = imageData.replace(/^data:image\/[a-z]+;base64,/, '');
+  const byteChars = atob(base64);
+  const byteNums  = new Array(byteChars.length);
+  for (let i = 0; i < byteChars.length; i++) {
+    byteNums[i] = byteChars.charCodeAt(i);
+  }
+  const byteArray = new Uint8Array(byteNums);
+  const blob      = new Blob([byteArray], { type: 'image/jpeg' });
+
+  const formData = new FormData();
+  formData.append('file', blob, 'plant.jpg');
+
+  const res = await fetch(`${AI_SERVER_URL}/scan`, {
+    method: 'POST',
+    body:   formData,
+  });
+
+  if (!res.ok) throw new Error(`AI Server error: ${res.status}`);
+  return await res.json();
+}
+
 async function runPlantScan() {
   if (!scannerImageData) { toast('Please provide a plant photo first.', 'warn'); return; }
 
