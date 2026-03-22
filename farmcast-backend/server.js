@@ -18,6 +18,7 @@ app.use(cors({
     if (origin.match(/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/)) return callback(null, true);
     if (origin.match(/\.onrender\.com$/)) return callback(null, true);
     if (origin.match(/\.railway\.app$/)) return callback(null, true);
+    if (origin.match(/\.github\.io$/)) return callback(null, true);
     callback(new Error('Not allowed by CORS'));
   },
   credentials: true
