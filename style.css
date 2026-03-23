@@ -559,11 +559,47 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   .col-side{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 }
 @media(max-width:768px){
-  .sidebar{display:none;}
+  .sidebar{
+    display:flex;
+    position:fixed;
+    left:-240px;
+    top:0;
+    height:100vh;
+    z-index:999;
+    transition:left 0.3s ease;
+    box-shadow:4px 0 20px rgba(0,0,0,0.4);
+  }
+  .sidebar.mobile-open {
+    left:0;
+  }
+  .sidebar.collapsed {
+    left:-240px !important;
+  }
+  .main{width:100%;}
   .topbar{padding:12px 16px;}
-  .page{padding:16px;}
+  .page{padding:12px;}
   .col-side{grid-template-columns:1fr;}
   .weather-stats{grid-template-columns:repeat(2,1fr);}
+  
+  /* Mobile overlay */
+  .sidebar-overlay {
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    z-index:998;
+  }
+  .sidebar-overlay.active { display:block; }
+  
+  /* Mobile topbar menu button */
+  .mobile-menu-btn {
+    display:flex !important;
+  }
+}
+
+@media(min-width:769px){
+  .mobile-menu-btn { display:none !important; }
+  .sidebar-overlay { display:none !important; }
 }
 
 /* ═══════════════════════════════════════════════════════

@@ -93,11 +93,16 @@
       </div>
     </div>
   </aside>
- 
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMobileSidebar()"></div>
+
   <!-- ══ MAIN ══ -->
   <div class="main">
     <!-- Top Bar -->
     <div class="topbar">
+      <!-- Mobile menu button -->
+      <button class="mobile-menu-btn topbar-btn" onclick="toggleMobileSidebar()" title="Menu" style="display:none">
+        <span class="material-symbols-outlined" style="font-size:20px">menu</span>
+      </button>
       <div class="topbar-title" id="topbarTitle">Farm Weather + Planting Calendar</div>
       <div class="topbar-search">
         <span class="material-symbols-outlined">search</span>
