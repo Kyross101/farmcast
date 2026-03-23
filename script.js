@@ -3717,3 +3717,101 @@ window.addEventListener('load', () => {
     }
   }, 500);
 });
+
+// ═══════════════════════════════════════════════════════
+// ANIMATED WEATHER FUNCTIONS (RESTORED)
+// ═══════════════════════════════════════════════════════
+
+function renderAnimatedWeather(iconCode, desc = '') {
+  const el = document.getElementById('heroIcon');
+  if (!el) return;
+
+  if (iconCode.startsWith('01')) {
+    el.innerHTML = `<div class="weather-scene">
+      <div class="sun-rays">${[0,45,90,135,180,225,270,315].map(deg =>
+        `<div class="sun-ray" style="transform:rotate(${deg}deg) translateX(-50%)"></div>`
+      ).join('')}</div>
+      <div class="sun"></div></div>`;
+  } else if (iconCode.startsWith('02') || iconCode.startsWith('03')) {
+    el.innerHTML = `<div class="weather-scene">
+      <div class="sun-behind"></div>
+      <div class="cloud cloud-back"></div>
+      <div class="cloud cloud-main"></div></div>`;
+  } else if (iconCode.startsWith('04')) {
+    el.innerHTML = `<div class="weather-scene">
+      <div class="cloud cloud-back"></div>
+      <div class="cloud cloud-main"></div></div>`;
+  } else if (iconCode.startsWith('09')) {
+    el.innerHTML = `<div class="weather-scene">
+      <div class="rain-cloud"></div>
+      <div class="rain-drops">${[1,2,3,4,5,6].map(()=>`<div class="rain-drop"></div>`).join('')}</div></div>`;
+  } else if (iconCode.startsWith('10')) {
+    el.innerHTML = `<div class="weather-scene">
+      <div class="sun-behind" style="opacity:0.5;top:5px;left:5px;width:28px;height:28px"></div>
+      <div class="rain-cloud"></div>
+      <div class="rain-drops">${[1,2,3,4,5,6].map(()=>`<div class="rain-drop"></div>`).join('')}</div></div>`;
+  } else if (iconCode.startsWith('11')) {
+    el.innerHTML = `<div class="weather-scene">
+      <div class="thunder-cloud"></div>
+      <div class="rain-drops" style="top:38px;left:14px">${[1,2,3,4].map(()=>`<div class="rain-drop"></div>`).join('')}</div>
+      <div class="lightning"></div></div>`;
+  } else if (iconCode.startsWith('13')) {
+    el.innerHTML = `<div class="weather-scene">
+      <div class="snow-cloud"></div>
+      <div class="snowflakes"><div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div><div class="snowflake">❄</div></div></div>`;
+  } else if (iconCode.startsWith('50')) {
+    el.innerHTML = `<div class="weather-scene">
+      <div class="fog-lines"><div class="fog-line"></div><div class="fog-line"></div><div class="fog-line"></div><div class="fog-line"></div></div></div>`;
+  } else {
+    el.innerHTML = `<div class="weather-scene"><div class="sun"></div></div>`;
+  }
+}
+
+function getMiniWeatherScene(iconCode) {
+  if (!iconCode) return '<span style="font-size:20px">🌤️</span>';
+
+  if (iconCode.startsWith('01')) return `
+    <div class="mini-scene"><div class="mini-sun">
+      <div class="mini-sun-core"></div>
+      <div class="mini-sun-rays"></div>
+    </div></div>`;
+
+  if (iconCode.startsWith('02')) return `
+    <div class="mini-scene">
+      <div class="mini-sun-sm"></div>
+      <div class="mini-cloud"></div>
+    </div>`;
+
+  if (iconCode.startsWith('03') || iconCode.startsWith('04')) return `
+    <div class="mini-scene">
+      <div class="mini-cloud"></div>
+      <div class="mini-cloud mini-cloud-2"></div>
+    </div>`;
+
+  if (iconCode.startsWith('09') || iconCode.startsWith('10')) return `
+    <div class="mini-scene">
+      <div class="mini-cloud mini-dark"></div>
+      <div class="mini-rain">
+        <div class="mini-drop"></div>
+        <div class="mini-drop"></div>
+        <div class="mini-drop"></div>
+      </div>
+    </div>`;
+
+  if (iconCode.startsWith('11')) return `
+    <div class="mini-scene">
+      <div class="mini-cloud mini-dark"></div>
+      <div class="mini-lightning">⚡</div>
+    </div>`;
+
+  if (iconCode.startsWith('13')) return `
+    <div class="mini-scene">
+      <div class="mini-cloud"></div>
+      <div class="mini-snow">❄</div>
+    </div>`;
+
+  if (iconCode.startsWith('50')) return `
+    <div class="mini-scene"><div class="mini-fog"></div></div>`;
+
+  return '<span style="font-size:20px">🌤️</span>';
+}
