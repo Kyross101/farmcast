@@ -3009,7 +3009,7 @@ let rtIsRunning        = false;
 let rtCanvas           = null;
 let rtCtx              = null;
 let rtLastCapture      = 0;
-const RT_INTERVAL      = 1500; // ms between API calls (avoid rate limit)
+const RT_INTERVAL      = 3000; // ms between API calls (3s for Render free tier)
 
 // Colors for bounding boxes
 const BOX_COLORS = {
@@ -3814,4 +3814,48 @@ function getMiniWeatherScene(iconCode) {
     <div class="mini-scene"><div class="mini-fog"></div></div>`;
 
   return '<span style="font-size:20px">🌤️</span>';
+}
+
+// ═══════════════════════════════════════════════════════
+// SIDEBAR TOGGLE
+// ═══════════════════════════════════════════════════════
+let sidebarCollapsed = false;
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('mainSidebar');
+  if (!sidebar) return;
+  sidebarCollapsed = !sidebarCollapsed;
+  if (sidebarCollapsed) {
+    sidebar.classList.add('collapsed');
+  } else {
+    sidebar.classList.remove('collapsed');
+  }
+  if (typeof weatherMap !== 'undefined' && weatherMap) {
+    setTimeout(() => weatherMap.invalidateSize(), 350);
+  }
+  localStorage.setItem('fc_sidebarCollapsed', sidebarCollapsed);
+}
+
+// Restore sidebar state on load
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('fc_sidebarCollapsed') === 'true') {
+    sidebarCollapsed = true;
+    const sidebar = document.getElementById('mainSidebar');
+    if (sidebar) sidebar.classList.add('collapsed');
+  }
+});
+
+// ── MOBILE SIDEBAR TOGGLE ──
+function toggleMobileSidebar() {
+  const sidebar  = document.getElementById('mainSidebar');
+  const overlay  = document.getElementById('sidebarOverlay');
+  const isOpen   = sidebar.classList.contains('mobile-open');
+
+  if (isOpen) {
+    sidebar.classList.remove('mobile-open');
+    if (overlay) overlay.classList.remove('active');
+  } else {
+    sidebar.classList.add('mobile-open');
+    if (overlay) overlay.classList.add('active');
+  }
 }
