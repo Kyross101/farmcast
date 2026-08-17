@@ -1,9 +1,3 @@
-# ============================================
-# FARMCAST AI SERVER — ai_server.py
-# Python FastAPI + YOLOv8 + Claude AI
-# Run: uvicorn ai_server:app --port 8000 --reload
-# ============================================
-
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
@@ -14,14 +8,13 @@ import json
 import re
 import os
 
-# ── CONFIG ──
-CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY"),  # ← Ilagay mo dito
+# ── CONFIG ── ✅ FIXED: walang trailing comma
+CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 
 app = FastAPI(title="FarmCast AI Server", version="1.0.0")
 
 PORT = int(os.environ.get("PORT", 8000))
 
-# ── CORS — Allow FarmCast frontend ──
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -29,42 +22,29 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── YOLO MODEL (lazy load) ──
-# Using YOLOv8n — nano model, only 6MB, auto-downloads from ultralytics
 yolo_model = None
 
 def get_yolo_model():
     global yolo_model
     if yolo_model is None:
         from ultralytics import YOLO
-        # yolov8n.pt — smallest model, 6MB, auto-downloads!
         yolo_model = YOLO("yolov8n.pt")
         print("✅ YOLOv8n model loaded!")
     return yolo_model
 
-# ── CLAUDE CLIENT ──
 def get_claude_client():
     return anthropic.Anthropic(api_key=CLAUDE_API_KEY)
 
-# ── HEALTH CHECK ──
 @app.get("/")
 def health():
     return {"status": "ok", "message": "🌿 FarmCast AI Server is running!"}
 
-# ── MAIN SCAN ENDPOINT ──
 @app.post("/scan")
 async def scan_plant(file: UploadFile = File(...)):
-    """
-    Main plant scanning endpoint.
-    1. YOLOv8 — object detection + bounding boxes
-    2. Claude AI — plant ID + disease analysis
-    """
     try:
-        # Read uploaded image
         contents = await file.read()
         image    = Image.open(io.BytesIO(contents)).convert("RGB")
 
-        # Resize if too large (max 1024px)
         max_size = 1024
         if max(image.size) > max_size:
             ratio = max_size / max(image.size)
@@ -73,18 +53,16 @@ async def scan_plant(file: UploadFile = File(...)):
 
         img_width, img_height = image.size
 
-        # Convert to base64 for Claude
         buffer = io.BytesIO()
         image.save(buffer, format="JPEG", quality=85)
         img_bytes  = buffer.getvalue()
         img_base64 = base64.standard_b64encode(img_bytes).decode("utf-8")
 
-        # ── Step 1: YOLOv8 Detection ──
+        # ── Step 1: YOLOv8 ──
         detections = []
         try:
             model   = get_yolo_model()
             results = model(image, conf=0.3, verbose=False)
-
             for result in results:
                 boxes = result.boxes
                 if boxes is not None:
@@ -93,9 +71,8 @@ async def scan_plant(file: UploadFile = File(...)):
                         conf  = float(box.conf[0])
                         cls   = int(box.cls[0])
                         label = model.names[cls]
-
                         detections.append({
-                            "label":      label,
+                            "label": label,
                             "confidence": round(conf * 100, 1),
                             "bbox": {
                                 "x":      round(x1 / img_width, 4),
@@ -108,7 +85,7 @@ async def scan_plant(file: UploadFile = File(...)):
             print(f"YOLOv8 error: {e}")
             detections = []
 
-        # ── Step 2: Claude AI Analysis ──
+        # ── Step 2: Claude AI ──
         claude_result = {
             "plant_name":    "Unknown Plant",
             "plant_type":    "Unknown",
@@ -121,7 +98,6 @@ async def scan_plant(file: UploadFile = File(...)):
 
         try:
             client = get_claude_client()
-
             prompt = """You are an expert botanist and plant pathologist specializing in Philippine crops.
 Analyze this plant image carefully and respond ONLY with a valid JSON object — no markdown, no extra text.
 
@@ -164,38 +140,32 @@ Rules:
                 }]
             )
 
-            # Parse Claude response
-            raw  = message.content[0].text.strip()
-            # Remove markdown code blocks if present
+            raw   = message.content[0].text.strip()
             clean = re.sub(r'```(?:json)?', '', raw).strip().strip('`').strip()
             claude_result = json.loads(clean)
 
         except json.JSONDecodeError as e:
-            print(f"Claude JSON parse error: {e}\nRaw: {raw}")
+            print(f"Claude JSON parse error: {e}")
         except Exception as e:
             print(f"Claude AI error: {e}")
 
-        # ── Build final response ──
         return {
             "success":    True,
             "image_size": {"width": img_width, "height": img_height},
-            "detections": detections,  # YOLOv8 bounding boxes
-            "analysis":   claude_result,  # Claude AI analysis
+            "detections": detections,
+            "analysis":   claude_result,
         }
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# ── QUICK IDENTIFY ENDPOINT (Claude only, no YOLO) ──
 @app.post("/identify")
 async def identify_plant(file: UploadFile = File(...)):
-    """Quick plant identification using Claude AI only."""
     try:
-        contents   = await file.read()
-        image      = Image.open(io.BytesIO(contents)).convert("RGB")
+        contents = await file.read()
+        image    = Image.open(io.BytesIO(contents)).convert("RGB")
 
-        # Resize
         if max(image.size) > 800:
             ratio    = 800 / max(image.size)
             new_size = (int(image.width * ratio), int(image.height * ratio))
@@ -237,18 +207,13 @@ async def identify_plant(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# ── REAL-TIME DETECT ENDPOINT (YOLOv8 only — fast!) ──
+
 @app.post("/detect")
 async def detect_realtime(file: UploadFile = File(...)):
-    """
-    Real-time detection endpoint — YOLOv8 only, no Claude AI.
-    Fast enough for real-time camera frames.
-    """
     try:
         contents = await file.read()
         image    = Image.open(io.BytesIO(contents)).convert("RGB")
 
-        # Resize for speed — smaller = faster
         if max(image.size) > 640:
             ratio    = 640 / max(image.size)
             new_size = (int(image.width * ratio), int(image.height * ratio))
@@ -256,10 +221,9 @@ async def detect_realtime(file: UploadFile = File(...)):
 
         img_width, img_height = image.size
 
-        # Run YOLOv8
-        model       = get_yolo_model()
-        results     = model(image, conf=0.30, verbose=False)
-        detections  = []
+        model      = get_yolo_model()
+        results    = model(image, conf=0.30, verbose=False)
+        detections = []
 
         for result in results:
             boxes = result.boxes
@@ -269,7 +233,6 @@ async def detect_realtime(file: UploadFile = File(...)):
                     conf  = float(box.conf[0])
                     cls   = int(box.cls[0])
                     label = model.names[cls]
-
                     detections.append({
                         "label":      label,
                         "confidence": round(conf * 100, 1),
@@ -281,12 +244,11 @@ async def detect_realtime(file: UploadFile = File(...)):
                         }
                     })
 
-        # Sort by confidence — highest first
         detections.sort(key=lambda d: d["confidence"], reverse=True)
 
         return {
             "success":    True,
-            "detections": detections[:10],  # top 10 only
+            "detections": detections[:10],
             "image_size": {"width": img_width, "height": img_height}
         }
 
