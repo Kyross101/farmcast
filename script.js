@@ -2990,24 +2990,32 @@ function closeScannerCamera() {
 }
 
 // ── REAL-TIME DETECTION LOOP ──
+// ── UPDATED REAL-TIME DETECTION LOOP (WITH OVERLAY Z-INDEX FIX) ──
 function startRealTimeDetection() {
   if (rtIsRunning) return;
   rtIsRunning = true;
 
-  // Get or create overlay canvas
+  // Siguraduhing may overlay canvas na nakapatong sa video
   let rtCanvasEl = document.getElementById('rtDetectionCanvas');
-  if (!rtCanvasEl) {
+  const cameraWrap = document.getElementById('scannerCameraView');
+
+  if (!rtCanvasEl && cameraWrap) {
     rtCanvasEl = document.createElement('canvas');
     rtCanvasEl.id = 'rtDetectionCanvas';
-    rtCanvasEl.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;border-radius:var(--r);';
-    document.getElementById('scannerCameraView').style.position = 'relative';
-    document.getElementById('scannerCameraView').appendChild(rtCanvasEl);
+    // MGA DAGDAG SA CSS: position absolute, z-index 10, at pointer-events none
+    rtCanvasEl.style.cssText = 'position:absolute; top:0; left:0; width:100%; height:100%; z-index:10; pointer-events:none; border-radius:var(--r);';
+    cameraWrap.style.position = 'relative';
+    cameraWrap.appendChild(rtCanvasEl);
+  } else if (rtCanvasEl) {
+    rtCanvasEl.style.display = 'block';
+    rtCanvasEl.style.zIndex = '10';
   }
-  rtCanvasEl.style.display = 'block';
-  rtCanvas = rtCanvasEl;
-  rtCtx    = rtCanvas.getContext('2d');
 
-  // Update status
+  rtCanvas = rtCanvasEl;
+  if (rtCanvas) {
+    rtCtx = rtCanvas.getContext('2d');
+  }
+
   const statusBadge = document.getElementById('rtStatusBadge');
   if (statusBadge) {
     statusBadge.textContent = '🔴 Detecting…';
@@ -3020,7 +3028,7 @@ function startRealTimeDetection() {
     if (now - rtLastCapture < RT_INTERVAL) return;
     rtLastCapture = now;
     await runRealTimeFrame();
-  }, 300); // check every 300ms, but only call API every RT_INTERVAL
+  }, 300);
 }
 
 function stopRealTimeDetection() {
@@ -3163,84 +3171,53 @@ async function runRealTimeFrame() {
   }
 }
 
-
-// ── DRAW BOUNDING BOXES ──
+// ── UPDATED DRAW BOUNDING BOXES (LOWER CONFIDENCE THRESHOLD) ──
 function drawBoundingBoxes(predictions, color, video, type) {
   if (!predictions.length || !rtCtx) return;
 
   predictions.forEach(pred => {
     const conf = Math.round((pred.confidence || 0) * 100);
 
-    if (conf < 30) return;
+    // INBABA MULA 30% PATUNGONG 15% PARA LUMABAS AGAD ANG BOX
+    if (conf < 15) return;
 
-    // Coordinates are already TOP-LEFT canvas pixels.
+    // x at y ay top-left coordinates sa canvas
     const x = pred.x;
     const y = pred.y;
     const w = pred.width;
     const h = pred.height;
 
+    // Iguhit ang pangunahing Bounding Box
     rtCtx.strokeStyle = color;
-    rtCtx.lineWidth = 2.5;
+    rtCtx.lineWidth   = 3; // Ginawang mas makapal para kitang-kita sa ilaw
     rtCtx.strokeRect(x, y, w, h);
 
+    // Label Header
     const label = `${pred.class} ${conf}%`;
-
-    rtCtx.font = 'bold 13px DM Sans, sans-serif';
-
+    rtCtx.font = 'bold 14px DM Sans, sans-serif';
     const textW = rtCtx.measureText(label).width;
-
-    // Keep label inside canvas when box is near the top.
-    const labelY = Math.max(0, y - 22);
+    const labelY = Math.max(0, y - 24);
 
     rtCtx.fillStyle = color;
-    rtCtx.fillRect(
-      x,
-      labelY,
-      textW + 12,
-      22
-    );
+    rtCtx.fillRect(x, labelY, textW + 14, 24);
 
+    // Label Text
     rtCtx.fillStyle = '#ffffff';
+    rtCtx.fillText(label, x + 6, Math.max(16, labelY + 17));
 
-    rtCtx.fillText(
-      label,
-      x + 6,
-      Math.max(14, labelY + 16)
-    );
-
-    // Corner markers
+    // Corner Target Markers (Puting sulok para sa magandang UI)
     const cs = 12;
-
     rtCtx.strokeStyle = '#ffffff';
-    rtCtx.lineWidth = 1.5;
+    rtCtx.lineWidth   = 2;
 
     // Top-left
-    rtCtx.beginPath();
-    rtCtx.moveTo(x, y + cs);
-    rtCtx.lineTo(x, y);
-    rtCtx.lineTo(x + cs, y);
-    rtCtx.stroke();
-
+    rtCtx.beginPath(); rtCtx.moveTo(x, y + cs); rtCtx.lineTo(x, y); rtCtx.lineTo(x + cs, y); rtCtx.stroke();
     // Top-right
-    rtCtx.beginPath();
-    rtCtx.moveTo(x + w - cs, y);
-    rtCtx.lineTo(x + w, y);
-    rtCtx.lineTo(x + w, y + cs);
-    rtCtx.stroke();
-
+    rtCtx.beginPath(); rtCtx.moveTo(x + w - cs, y); rtCtx.lineTo(x + w, y); rtCtx.lineTo(x + w, y + cs); rtCtx.stroke();
     // Bottom-left
-    rtCtx.beginPath();
-    rtCtx.moveTo(x, y + h - cs);
-    rtCtx.lineTo(x, y + h);
-    rtCtx.lineTo(x + cs, y + h);
-    rtCtx.stroke();
-
+    rtCtx.beginPath(); rtCtx.moveTo(x, y + h - cs); rtCtx.lineTo(x, y + h); rtCtx.lineTo(x + cs, y + h); rtCtx.stroke();
     // Bottom-right
-    rtCtx.beginPath();
-    rtCtx.moveTo(x + w - cs, y + h);
-    rtCtx.lineTo(x + w, y + h);
-    rtCtx.lineTo(x + w, y + h - cs);
-    rtCtx.stroke();
+    rtCtx.beginPath(); rtCtx.moveTo(x + w - cs, y + h); rtCtx.lineTo(x + w, y + h); rtCtx.lineTo(x + w, y + h - cs); rtCtx.stroke();
   });
 }
 
