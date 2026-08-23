@@ -2916,7 +2916,7 @@ let rtIsRunning        = false;
 let rtCanvas           = null;
 let rtCtx              = null;
 let rtLastCapture      = 0;
-const RT_INTERVAL      = 2500; // ms between API calls (2.5s for Render free tier)
+const RT_INTERVAL      = 3500; // ms between API calls (3.5s for Render free tier)
 
 // Colors for bounding boxes
 const BOX_COLORS = {
@@ -3028,7 +3028,7 @@ function startRealTimeDetection() {
     if (now - rtLastCapture < RT_INTERVAL) return;
     rtLastCapture = now;
     await runRealTimeFrame();
-  }, 300);
+  }, 500);
 }
 
 function stopRealTimeDetection() {
