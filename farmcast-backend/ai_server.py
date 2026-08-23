@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import anthropic
@@ -7,6 +7,7 @@ import io
 import json
 import re
 import os
+import uvicorn
 
 # ── CONFIG ──
 CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
@@ -86,11 +87,6 @@ async def scan_plant(file: UploadFile = File(...)):
                         })
         except Exception as e:
             print(f"YOLO detection error: {e}")
-            return {
-                "success": False,
-                "error": "YOLO detection failed",
-                "detail": str(e)
-            }
 
         # ── Step 2: Claude AI Analysis ──
         claude_result = {
@@ -125,7 +121,6 @@ Rules:
 - treatments should be practical and specific (3-5 items)
 - confidence is 0-100"""
 
-            # Fixed: Updated to valid production Claude model string
             message = client.messages.create(
                 model="claude-3-5-sonnet-20241022",
                 max_tokens=800,
@@ -163,7 +158,7 @@ Rules:
         }
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return {"success": False, "error": str(e), "detections": []}
 
 
 @app.post("/identify")
@@ -211,7 +206,7 @@ async def identify_plant(file: UploadFile = File(...)):
         return {"success": True, "analysis": result}
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        return {"success": False, "error": str(e)}
 
 
 @app.post("/detect")
@@ -259,4 +254,12 @@ async def detect_realtime(file: UploadFile = File(...)):
         }
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Nagbabalik ng JSON sa halip na mag-throw ng unhandled exception
+        return {
+            "success": False,
+            "error": str(e),
+            "detections": []
+        }
+
+if __name__ == "__main__":
+    uvicorn.run("ai_server:app", host="0.0.0.0", port=PORT, reload=True)
