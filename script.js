@@ -3,7 +3,7 @@
 // ═══════════════════════════════════════════
 
 const API_KEY = '2e3d2d2d9957fd5364e42c6cf4fe73e5'; // OWM API key
-// Roboflow API config
+// Roboflow API config – DEPRECATED, removed
 // Python AI Server (YOLOv8 + Claude AI)
 const AI_SERVER_URL = 'https://farmcast-1.onrender.com'; // ← Ilagay mo dito ang URL ng iyong AI server
 
@@ -12,8 +12,9 @@ const AI_SERVER_URL = 'https://farmcast-1.onrender.com'; // ← Ilagay mo dito a
 // Integrates with Anthropic API for unlimited plant ID
 // ═══════════════════════════════════════════════════════
 
-const CLAUDE_API_KEY = ''; // ← Ilagay mo dito ang bagong API key mo
-const CLAUDE_MODEL   = 'claude-sonnet-4-20250514';
+// REMOVED: browser-side Claude API key and function (moved to backend)
+// All Claude calls now go through the Python server.
+
 let currentCity = 'San Miguel, Bulacan';
 let currentWeather = null;
 
@@ -1660,7 +1661,7 @@ function saveProfileSettings() {
 
 function confirmSignOut() {
   if (!confirm('Sign out of FarmCast? Your local data will be preserved.')) return;
-  toast('Signed out. See you next time! 👋', 'ok');
+  toast('Sign out. See you next time! 👋', 'ok');
 }
 
 // ═══ LOCATION SETTINGS ═══
@@ -2703,19 +2704,9 @@ function showAISection(section) {
   document.getElementById('aiResult').style.display      = section === 'result'   ? 'flex' : 'none';
 }
 
-// ── ROBOFLOW API — Call inference endpoint ──
-async function callRoboflowAPI(base64Image, modelUrl) {
-  const base64 = base64Image.replace(/^data:image\/[a-z]+;base64,/, '');
-  const res = await fetch(`${modelUrl}?api_key=${ROBOFLOW_API_KEY}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: base64
-  });
-  if (!res.ok) throw new Error(`Roboflow API error: ${res.status}`);
-  return await res.json();
-}
+// ── Roboflow removed – replaced with Python server call ──
 
-// Kept for compatibility — Roboflow is always ready
+// Kept for compatibility – no model loading needed
 async function loadAIModel() {
   aiReady = true;
   return true;
@@ -2787,156 +2778,76 @@ function retakeAIPhoto() {
   showAISection('upload');
 }
 
-// ── RUN AI DETECTION (Roboflow API) ──
+// ── RUN AI DETECTION (using Python server, not Roboflow) ──
 async function runAIDetection() {
   if (!aiImageData) { toast('Please take or upload a photo first.', 'warn'); return; }
 
   showAISection('analyzing');
   document.getElementById('aiAnalyzeBtn').style.display = 'none';
-  document.getElementById('aiAnalyzingSub').textContent = 'Connecting to Roboflow AI…';
+  document.getElementById('aiAnalyzingSub').textContent = 'Connecting to AI server…';
 
   try {
-    document.getElementById('aiAnalyzingSub').textContent = 'Analyzing crop for diseases…';
+    document.getElementById('aiAnalyzingSub').textContent = 'Analyzing crop with YOLO + Claude…';
 
-    // Call Roboflow API
-    const result = await callRoboflowAPI(aiImageData);
-    console.log('Roboflow result:', result);
+    // Use the same Python server as the scanner
+    const result = await scanWithPythonAI(aiImageData);
 
-    let detectedDisease = null;
-
-    if (result.predictions && result.predictions.length > 0) {
-      // Use top prediction from Roboflow
-      detectedDisease = mapRoboflowToDisease(result.predictions, aiCurrentCropType);
-    } else {
-      // No disease detected = healthy
-      detectedDisease = { name: 'No Disease Detected', severity: 'none', confidence: 92, color: 'green' };
+    if (!result.success) {
+      throw new Error(result.error || 'AI server returned an error');
     }
 
-    await new Promise(resolve => setTimeout(resolve, 500));
-    showAIResult(detectedDisease, result.predictions || []);
+    // Extract plant and disease info from result
+    const analysis   = result.analysis   || {};
+    const detections = result.detections || [];
+
+    let identified = { name: 'Unknown Plant', type: 'Unknown', confidence: 0 };
+    if (analysis.plant_name && analysis.plant_name !== 'No Plant Detected') {
+      identified = {
+        name:       analysis.plant_name,
+        emoji:      '',
+        type:       analysis.plant_type || 'Plant',
+        confidence: analysis.confidence || 90,
+      };
+    } else if (detections.length > 0) {
+      identified = {
+        name:       detections[0].label,
+        emoji:      '',
+        type:       'Detected',
+        confidence: detections[0].confidence,
+      };
+    } else {
+      throw new Error('No plant detected in the image.');
+    }
+
+    let disease = { name: 'Healthy', severity: 'none', confidence: 92, color: 'green' };
+    if (analysis.health_status && analysis.health_status !== 'Healthy' && analysis.severity !== 'none') {
+      const sev = analysis.severity || 'medium';
+      disease = {
+        name:       analysis.health_status,
+        severity:   sev,
+        confidence: analysis.confidence || 85,
+        color:      sev === 'high' ? 'red' : sev === 'medium' ? 'amber' : 'green',
+        treatments: analysis.treatments || [],
+        description: analysis.description || '',
+      };
+    }
+
+    await new Promise(r => setTimeout(r, 300));
+    showAIResult(disease, detections);
 
   } catch (err) {
-    console.error('Roboflow AI Detection error:', err);
-    // Fallback to simulation on API error
-    const fallback = simulateDetection(aiCurrentCropType);
-    showAIResult(fallback, []);
-    toast('AI service unavailable. Using offline analysis.', 'warn');
+    console.error('AI Detection error:', err);
+    // No fallback simulation – show error
+    toast(`AI analysis failed: ${err.message}`, 'err');
+    showAISection('upload');
+    document.getElementById('aiAnalyzeBtn').style.display = 'flex';
   }
 }
 
-// ── MAP ROBOFLOW PREDICTIONS TO DISEASE INFO ──
-function mapRoboflowToDisease(predictions, cropType) {
-  const top = predictions[0];
-  const className   = (top.class || '').toLowerCase();
-  const confidence  = Math.round((top.confidence || 0.8) * 100);
-
-  // Map Roboflow class names to our disease DB
-  const classMap = {
-    'healthy':              { name: 'Healthy',              severity: 'none',   color: 'green' },
-    'late blight':          { name: 'Late Blight',           severity: 'high',   color: 'red'   },
-    'early blight':         { name: 'Early Blight',          severity: 'medium', color: 'amber' },
-    'leaf curl':            { name: 'Leaf Curl Virus',        severity: 'high',   color: 'red'   },
-    'bacterial blight':     { name: 'Bacterial Blight',      severity: 'high',   color: 'red'   },
-    'brown spot':           { name: 'Brown Spot',            severity: 'medium', color: 'amber' },
-    'blast':                { name: 'Rice Blast',            severity: 'high',   color: 'red'   },
-    'gray leaf spot':       { name: 'Gray Leaf Spot',        severity: 'medium', color: 'amber' },
-    'powdery mildew':       { name: 'Powdery Mildew',        severity: 'medium', color: 'amber' },
-    'rust':                 { name: 'Rust Disease',          severity: 'medium', color: 'amber' },
-    'anthracnose':          { name: 'Anthracnose',           severity: 'high',   color: 'red'   },
-    'mosaic':               { name: 'Mosaic Virus',          severity: 'high',   color: 'red'   },
-    'downy mildew':         { name: 'Downy Mildew',          severity: 'medium', color: 'amber' },
-    'leaf spot':            { name: 'Leaf Spot Disease',     severity: 'medium', color: 'amber' },
-    'blight':               { name: 'Blight Disease',        severity: 'high',   color: 'red'   },
-    'wilt':                 { name: 'Wilt Disease',          severity: 'high',   color: 'red'   },
-    'rot':                  { name: 'Root/Stem Rot',         severity: 'high',   color: 'red'   },
-  };
-
-  // Find matching disease
-  for (const [key, disease] of Object.entries(classMap)) {
-    if (className.includes(key)) {
-      return { ...disease, confidence };
-    }
-  }
-
-  // Try crop-specific diseases
-  const cropDiseases = DISEASE_DB[cropType]?.diseases;
-  if (cropDiseases) {
-    for (const disease of cropDiseases) {
-      if (disease.keywords.some(kw => className.includes(kw))) {
-        return { ...disease, confidence };
-      }
-    }
-  }
-
-  // Unknown class but detected something — treat as medium risk
-  if (confidence > 60) {
-    return { name: className.charAt(0).toUpperCase() + className.slice(1), severity: 'medium', color: 'amber', confidence };
-  }
-
-  return { name: 'Healthy', severity: 'none', color: 'green', confidence: 88 };
-}
-
-// ── MATCH DISEASE FROM PREDICTIONS ──
+// ── MATCH DISEASE FROM PREDICTIONS (REMOVED simulation) ──
 function matchDiseaseFromPredictions(predictions, cropType) {
-  const cropDiseases = DISEASE_DB[cropType]?.diseases || DISEASE_DB['Tomato'].diseases;
-  const predText = predictions.map(p => p.className.toLowerCase()).join(' ');
-
-  // Try to match keywords
-  for (const disease of cropDiseases) {
-    const matches = disease.keywords.filter(kw => predText.includes(kw));
-    if (matches.length >= 1) return { ...disease, confidence: Math.round(predictions[0]?.probability * 100) || 72 };
-  }
-
-  // Check top prediction probability for health assessment
-  const topProb = predictions[0]?.probability || 0;
-  if (topProb > 0.4) {
-    // High confidence in some classification — check if it looks healthy
-    const healthyDisease = cropDiseases.find(d => d.severity === 'none');
-    if (healthyDisease) return { ...healthyDisease, confidence: Math.round(topProb * 100) };
-  }
-
-  // Default: use simulation
-  return simulateDetection(cropType);
-}
-
-// ── SIMULATE DETECTION (fallback) ──
-function simulateDetection(cropType) {
-  const cropDiseases = DISEASE_DB[cropType]?.diseases;
-  if (!cropDiseases) {
-    // Generic result for unknown crops
-    return {
-      name: 'Analysis Complete',
-      severity: 'none',
-      color: 'green',
-      confidence: 88,
-      keywords: []
-    };
-  }
-
-  // Weather-based simulation — use current weather to determine likely disease
-  let selectedDisease;
-  if (currentWeather) {
-    const h = currentWeather.main.humidity;
-    const t = currentWeather.main.temp;
-    const isRain = currentWeather.weather[0].description.toLowerCase().includes('rain');
-
-    if (isRain && h > 85) {
-      // Rainy + humid = fungal disease likely
-      selectedDisease = cropDiseases.find(d => d.severity === 'high') || cropDiseases[0];
-    } else if (h > 70 && t > 28) {
-      // Humid + hot = medium risk
-      selectedDisease = cropDiseases.find(d => d.severity === 'medium') || cropDiseases[0];
-    } else {
-      // Good conditions = likely healthy
-      selectedDisease = cropDiseases.find(d => d.severity === 'none') || cropDiseases[0];
-    }
-  } else {
-    // Random for demo
-    const idx = Math.floor(Math.random() * cropDiseases.length);
-    selectedDisease = cropDiseases[idx];
-  }
-
-  return { ...selectedDisease, confidence: Math.floor(Math.random() * 15) + 78 };
+  // No longer used – kept for compatibility
+  return null;
 }
 
 // ── SHOW AI RESULT ──
@@ -2972,10 +2883,10 @@ function showAIResult(disease, rawPredictions) {
   }
 
   // Recommendations
-  const recs = TREATMENTS[disease.severity] || TREATMENTS.none;
-  document.getElementById('aiRecsList').innerHTML = recs.map(r => `
-    <div class="ai-rec-item">${r}</div>
-  `).join('');
+  const recs = disease.treatments && disease.treatments.length > 0
+    ? disease.treatments.map(r => `<div class="ai-rec-item">${r}</div>`)
+    : TREATMENTS[disease.severity]?.map(r => `<div class="ai-rec-item">${r}</div>`) || [];
+  document.getElementById('aiRecsList').innerHTML = recs.join('');
 
   // Add to pest log if disease detected
   if (!isHealthy && aiCurrentCropType) {
@@ -2989,14 +2900,10 @@ function showAIResult(disease, rawPredictions) {
   }
 }
 
-// ── Roboflow API is always ready — no preloading needed ──
-
 
 // ═══════════════════════════════════════════════════════
 // PLANT HEALTH SCANNER — Real-time Object Detection
-// Uses two Roboflow models:
-//   Model 1: Fruits & Vegetables (identify plant)
-//   Model 2: Detecting Diseases (detect disease)
+// Uses Python AI Server (YOLOv8 + Claude)
 // ═══════════════════════════════════════════════════════
 
 // ── STATE ──
@@ -3009,7 +2916,7 @@ let rtIsRunning        = false;
 let rtCanvas           = null;
 let rtCtx              = null;
 let rtLastCapture      = 0;
-const RT_INTERVAL      = 3000; // ms between API calls (3s for Render free tier)
+const RT_INTERVAL      = 2500; // ms between API calls (2.5s for Render free tier)
 
 // Colors for bounding boxes
 const BOX_COLORS = {
@@ -3027,7 +2934,7 @@ function initScannerPage() {
   const statusTxt = document.getElementById('scannerModelText');
   if (statusEl) {
     statusEl.className    = 'scanner-model-status ready';
-    statusTxt.textContent = '🌿 2 Models Ready';
+    statusTxt.textContent = '🌿 AI Server Ready';
   }
 }
 
@@ -3113,7 +3020,7 @@ function startRealTimeDetection() {
     if (now - rtLastCapture < RT_INTERVAL) return;
     rtLastCapture = now;
     await runRealTimeFrame();
-  }, 200); // check every 200ms, but only call API every RT_INTERVAL
+  }, 300); // check every 300ms, but only call API every RT_INTERVAL
 }
 
 function stopRealTimeDetection() {
@@ -3126,65 +3033,136 @@ async function runRealTimeFrame() {
   const video = document.getElementById('scannerVideo');
   if (!video || !video.videoWidth) return;
 
-  // Capture frame from video
   const capCanvas = document.getElementById('scannerCanvas');
-  capCanvas.width  = video.videoWidth;
-  capCanvas.height = video.videoHeight;
-  capCanvas.getContext('2d').drawImage(video, 0, 0);
+  if (!capCanvas) return;
 
-  // Resize canvas overlay
-  rtCanvas.width  = video.clientWidth  || video.offsetWidth  || 640;
+  capCanvas.width = video.videoWidth;
+  capCanvas.height = video.videoHeight;
+
+  const capCtx = capCanvas.getContext('2d');
+  capCtx.drawImage(video, 0, 0);
+
+  // Match overlay canvas to the visible video size
+  rtCanvas.width = video.clientWidth || video.offsetWidth || 640;
   rtCanvas.height = video.clientHeight || video.offsetHeight || 480;
   rtCtx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
 
   try {
-    // Convert canvas frame to blob for Python server
-    const blob = await new Promise(resolve => capCanvas.toBlob(resolve, 'image/jpeg', 0.7));
+    const blob = await new Promise(resolve =>
+      capCanvas.toBlob(resolve, 'image/jpeg', 0.7)
+    );
+
+    if (!blob) {
+      throw new Error('Could not capture camera frame');
+    }
+
     const formData = new FormData();
     formData.append('file', blob, 'frame.jpg');
 
-    // Call Python YOLOv8 /detect endpoint
     const res = await fetch(`${AI_SERVER_URL}/detect`, {
       method: 'POST',
-      body:   formData,
+      body: formData
     });
 
-    if (!res.ok) return;
-    const data = await res.json();
-    const detections = data.detections || [];
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
 
-    // Separate plant vs disease detections by label keywords
-    const diseaseKeywords = ['blight','spot','rust','mildew','rot','wilt','virus','mosaic','smut','blast','disease','infected'];
-    const plantPreds   = [];
+    const data = await res.json();
+
+    if (data.success === false) {
+      throw new Error(data.error || 'Detection failed');
+    }
+
+    const detections = Array.isArray(data.detections)
+      ? data.detections
+      : [];
+
+    if (detections.length === 0) {
+      const labelEl = document.getElementById('rtLiveLabels');
+
+      if (labelEl) {
+        labelEl.innerHTML =
+          '<span class="rt-label-empty">🔍 No plant detected. Try a different angle.</span>';
+      }
+
+      return;
+    }
+
+    const diseaseKeywords = [
+      'blight',
+      'spot',
+      'rust',
+      'mildew',
+      'rot',
+      'wilt',
+      'virus',
+      'mosaic',
+      'smut',
+      'blast',
+      'disease',
+      'infected'
+    ];
+
+    const plantPreds = [];
     const diseasePreds = [];
 
     detections.forEach(det => {
-      const label = det.label.toLowerCase();
-      const isDis = diseaseKeywords.some(kw => label.includes(kw));
-      // Convert Python bbox format to Roboflow-compatible format
+      if (!det.bbox || !det.label) return;
+
+      const label = String(det.label).toLowerCase();
+
+      const isDisease = diseaseKeywords.some(
+        keyword => label.includes(keyword)
+      );
+
+      // Backend bbox uses normalized TOP-LEFT coordinates.
       const pred = {
-        class:      det.label,
-        confidence: det.confidence / 100,
-        x: (det.bbox.x + det.bbox.width  / 2) * rtCanvas.width,
-        y: (det.bbox.y + det.bbox.height / 2) * rtCanvas.height,
-        width:  det.bbox.width  * rtCanvas.width,
-        height: det.bbox.height * rtCanvas.height,
+        class: det.label,
+        confidence: Number(det.confidence || 0) / 100,
+
+        x: Number(det.bbox.x || 0) * rtCanvas.width,
+        y: Number(det.bbox.y || 0) * rtCanvas.height,
+
+        width: Number(det.bbox.width || 0) * rtCanvas.width,
+        height: Number(det.bbox.height || 0) * rtCanvas.height
       };
-      if (isDis) diseasePreds.push(pred);
-      else        plantPreds.push(pred);
+
+      if (isDisease) {
+        diseasePreds.push(pred);
+      } else {
+        plantPreds.push(pred);
+      }
     });
 
-    // Draw bounding boxes
-    drawBoundingBoxes(plantPreds,   BOX_COLORS.plant,   video, 'plant');
-    drawBoundingBoxes(diseasePreds, BOX_COLORS.disease, video, 'disease');
+    drawBoundingBoxes(
+      plantPreds,
+      BOX_COLORS.plant,
+      video,
+      'plant'
+    );
 
-    // Update live label display
+    drawBoundingBoxes(
+      diseasePreds,
+      BOX_COLORS.disease,
+      video,
+      'disease'
+    );
+
     updateRTLabels(plantPreds, diseasePreds);
 
   } catch (err) {
-    // Silent fail — Python server might be starting up
+    console.warn('RT detection error:', err);
+
+    const labelEl = document.getElementById('rtLiveLabels');
+
+    if (labelEl) {
+      labelEl.innerHTML =
+        '<span class="rt-label-empty" style="color:var(--red)">⚠️ Detection unavailable</span>';
+    }
   }
 }
+
 
 // ── DRAW BOUNDING BOXES ──
 function drawBoundingBoxes(predictions, color, video, type) {
@@ -3192,42 +3170,77 @@ function drawBoundingBoxes(predictions, color, video, type) {
 
   predictions.forEach(pred => {
     const conf = Math.round((pred.confidence || 0) * 100);
-    if (conf < 30) return; // skip low confidence
 
-    // Coords are already in canvas pixel space
-    const x = pred.x - pred.width  / 2;
-    const y = pred.y - pred.height / 2;
+    if (conf < 30) return;
+
+    // Coordinates are already TOP-LEFT canvas pixels.
+    const x = pred.x;
+    const y = pred.y;
     const w = pred.width;
     const h = pred.height;
 
-    // Draw box
     rtCtx.strokeStyle = color;
-    rtCtx.lineWidth   = 2.5;
+    rtCtx.lineWidth = 2.5;
     rtCtx.strokeRect(x, y, w, h);
 
-    // Draw filled label background
     const label = `${pred.class} ${conf}%`;
-    rtCtx.font = 'bold 13px DM Sans, sans-serif';
-    const textW = rtCtx.measureText(label).width;
-    rtCtx.fillStyle = color;
-    rtCtx.fillRect(x, y - 22, textW + 12, 22);
 
-    // Draw label text
+    rtCtx.font = 'bold 13px DM Sans, sans-serif';
+
+    const textW = rtCtx.measureText(label).width;
+
+    // Keep label inside canvas when box is near the top.
+    const labelY = Math.max(0, y - 22);
+
+    rtCtx.fillStyle = color;
+    rtCtx.fillRect(
+      x,
+      labelY,
+      textW + 12,
+      22
+    );
+
     rtCtx.fillStyle = '#ffffff';
-    rtCtx.fillText(label, x + 6, y - 6);
+
+    rtCtx.fillText(
+      label,
+      x + 6,
+      Math.max(14, labelY + 16)
+    );
 
     // Corner markers
-    const cs = 12; // corner size
+    const cs = 12;
+
     rtCtx.strokeStyle = '#ffffff';
-    rtCtx.lineWidth   = 1.5;
+    rtCtx.lineWidth = 1.5;
+
     // Top-left
-    rtCtx.beginPath(); rtCtx.moveTo(x, y+cs); rtCtx.lineTo(x, y); rtCtx.lineTo(x+cs, y); rtCtx.stroke();
+    rtCtx.beginPath();
+    rtCtx.moveTo(x, y + cs);
+    rtCtx.lineTo(x, y);
+    rtCtx.lineTo(x + cs, y);
+    rtCtx.stroke();
+
     // Top-right
-    rtCtx.beginPath(); rtCtx.moveTo(x+w-cs, y); rtCtx.lineTo(x+w, y); rtCtx.lineTo(x+w, y+cs); rtCtx.stroke();
+    rtCtx.beginPath();
+    rtCtx.moveTo(x + w - cs, y);
+    rtCtx.lineTo(x + w, y);
+    rtCtx.lineTo(x + w, y + cs);
+    rtCtx.stroke();
+
     // Bottom-left
-    rtCtx.beginPath(); rtCtx.moveTo(x, y+h-cs); rtCtx.lineTo(x, y+h); rtCtx.lineTo(x+cs, y+h); rtCtx.stroke();
+    rtCtx.beginPath();
+    rtCtx.moveTo(x, y + h - cs);
+    rtCtx.lineTo(x, y + h);
+    rtCtx.lineTo(x + cs, y + h);
+    rtCtx.stroke();
+
     // Bottom-right
-    rtCtx.beginPath(); rtCtx.moveTo(x+w-cs, y+h); rtCtx.lineTo(x+w, y+h); rtCtx.lineTo(x+w, y+h-cs); rtCtx.stroke();
+    rtCtx.beginPath();
+    rtCtx.moveTo(x + w - cs, y + h);
+    rtCtx.lineTo(x + w, y + h);
+    rtCtx.lineTo(x + w, y + h - cs);
+    rtCtx.stroke();
   });
 }
 
@@ -3305,7 +3318,6 @@ function showScannerPreview(src) {
   document.getElementById('scannerPreviewImg').src             = src;
 }
 
-// ── RUN PLANT SCAN (on captured/uploaded photo) ──
 // ── SCAN WITH PYTHON AI SERVER ──
 async function scanWithPythonAI(imageData) {
   const base64 = imageData.replace(/^data:image\/[a-z]+;base64,/, '');
@@ -3329,6 +3341,7 @@ async function scanWithPythonAI(imageData) {
   return await res.json();
 }
 
+// ── RUN PLANT SCAN (on captured/uploaded photo) ──
 async function runPlantScan() {
   if (!scannerImageData) { toast('Please provide a plant photo first.', 'warn'); return; }
 
@@ -3345,6 +3358,10 @@ async function runPlantScan() {
     const result = await scanWithPythonAI(scannerImageData);
     console.log('Python AI result:', result);
 
+    if (!result.success) {
+      throw new Error(result.error || 'AI server error');
+    }
+
     const analysis   = result.analysis   || {};
     const detections = result.detections || [];
 
@@ -3352,17 +3369,19 @@ async function runPlantScan() {
     if (analysis.plant_name && analysis.plant_name !== 'No Plant Detected') {
       identified = {
         name:       analysis.plant_name,
-        emoji:      '',
+        emoji:      getPlantEmoji(analysis.plant_name),
         type:       analysis.plant_type || 'Plant',
         confidence: analysis.confidence || 90,
       };
     } else if (detections.length > 0) {
       identified = {
         name:       detections[0].label,
-        emoji:      '',
+        emoji:      getPlantEmoji(detections[0].label),
         type:       'Detected',
         confidence: detections[0].confidence,
       };
+    } else {
+      throw new Error('No plant detected in the image.');
     }
 
     let disease = { name: 'Healthy', severity: 'none', confidence: 92, color: 'green' };
@@ -3383,7 +3402,7 @@ async function runPlantScan() {
 
   } catch (err) {
     console.error('Scanner error:', err);
-    toast('AI service error. Please try again.', 'err');
+    toast(`AI analysis failed: ${err.message}`, 'err');
     resetScanner();
   }
 }
@@ -3444,7 +3463,7 @@ function showScannerResult(plant, disease, rawPredictions) {
     sev.style.color       = col;
     sev.style.borderColor = `${col}55`;
     document.getElementById('srcDiseaseDesc').textContent =
-      `${disease.name} detected by Roboflow AI. Severity: ${disease.severity.toUpperCase()}. Prompt action recommended.`;
+      `${disease.name} detected by YOLO + Claude. Severity: ${disease.severity.toUpperCase()}. Prompt action recommended.`;
   } else {
     diseaseInfo.style.display = 'none';
   }
@@ -3454,17 +3473,21 @@ function showScannerResult(plant, disease, rawPredictions) {
   document.getElementById('srcConfFill').style.width = `${conf}%`;
   document.getElementById('srcConfFill').style.background = conf > 80 ? 'var(--green)' : conf > 60 ? 'var(--amber)' : 'var(--red)';
 
-  // Simple recommendations based on severity
-  const recMap = {
-    high:   ['🚨 Isolate affected plant immediately','💊 Apply appropriate fungicide/bactericide','✂️ Remove and destroy infected parts','📞 Consult local DA agricultural technician'],
-    medium: ['⚠️ Monitor plant daily for progression','🌿 Apply neem oil spray preventively','✂️ Prune infected leaves carefully','💧 Reduce overhead watering'],
-    low:    ['📋 Continue monitoring every 3-5 days','🌱 Apply preventive organic spray','💧 Maintain proper watering schedule'],
-    none:   ['✅ Plant appears healthy — maintain current practices','💧 Keep regular watering schedule','🔍 Continue routine monitoring every 3-5 days'],
-  };
-  // Use Claude AI treatments if available, otherwise use default recMap
+  // Use Claude AI treatments if available, otherwise fallback to default
   const claudeTreatments = disease.treatments && disease.treatments.length > 0 ? disease.treatments : null;
-  const recs = claudeTreatments || recMap[disease.severity] || recMap.none;
-  document.getElementById('srcRecsList').innerHTML = recs.map(r => `<div class="src-rec-item">${r}</div>`).join('');
+  let recs;
+  if (claudeTreatments) {
+    recs = claudeTreatments.map(r => `<div class="src-rec-item">${r}</div>`);
+  } else {
+    const recMap = {
+      high:   ['🚨 Isolate affected plant immediately','💊 Apply appropriate fungicide/bactericide','✂️ Remove and destroy infected parts','📞 Consult local DA agricultural technician'],
+      medium: ['⚠️ Monitor plant daily for progression','🌿 Apply neem oil spray preventively','✂️ Prune infected leaves carefully','💧 Reduce overhead watering'],
+      low:    ['📋 Continue monitoring every 3-5 days','🌱 Apply preventive organic spray','💧 Maintain proper watering schedule'],
+      none:   ['✅ Plant appears healthy — maintain current practices','💧 Keep regular watering schedule','🔍 Continue routine monitoring every 3-5 days'],
+    };
+    recs = (recMap[disease.severity] || recMap.none).map(r => `<div class="src-rec-item">${r}</div>`);
+  }
+  document.getElementById('srcRecsList').innerHTML = recs.join('');
 
   currentScanResult = {
     id: Date.now(), timestamp: new Date().toISOString(),
@@ -3579,12 +3602,10 @@ function viewHistoryItem(id) {
 
 async function deleteHistoryItem(id) {
   try {
-    // Delete from MongoDB
     await fcScanHistory.delete(id);
   } catch (err) {
     console.warn('Backend delete failed, removing locally:', err);
   }
-  // Remove from local array
   scannerHistory = scannerHistory.filter(h => String(h._id||h.id) !== String(id));
   localStorage.setItem('fc_scanHistory', JSON.stringify(scannerHistory));
   renderScannerHistory();
@@ -3655,57 +3676,8 @@ function toggleCard(headerEl) {
   }
 }
 
-async function identifyPlantWithClaude(base64Image) {
-  try {
-    // Remove data URL prefix
-    const mediaType = base64Image.match(/data:(image\/\w+);base64,/)?.[1] || 'image/jpeg';
-    const base64    = base64Image.replace(/^data:image\/\w+;base64,/, '');
-
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': CLAUDE_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({
-        model: CLAUDE_MODEL,
-        max_tokens: 1000,
-        messages: [{
-          role: 'user',
-          content: [
-            {
-              type: 'image',
-              source: { type: 'base64', media_type: mediaType, data: base64 }
-            },
-            {
-              type: 'text',
-              text: `You are an expert botanist and plant pathologist. Analyze this plant image and respond ONLY in this exact JSON format (no markdown, no extra text):
-{
-  "plant_name": "exact common name of the plant",
-  "plant_type": "type (Vegetable/Fruit/Ornamental/Cereal/Herb/Tree/Unknown)",
-  "health_status": "Healthy or the disease name if diseased",
-  "severity": "none/low/medium/high",
-  "confidence": 85,
-  "description": "brief 1 sentence description of what you see"
-}
-If no plant is visible, use plant_name: "No Plant Detected". Be specific with plant names.`
-            }
-          ]
-        }]
-      })
-    });
-
-    if (!response.ok) throw new Error(`Claude API error: ${response.status}`);
-    const data = await response.json();
-    const text = data.content[0]?.text || '{}';
-
-    // Parse JSON response
-    const clean  = text.replace(/```json|```/g, '').trim();
-    const result = JSON.parse(clean);
-    return result;
-
-  } catch (err) {
-    console.error('Claude AI error:', err);
-    return null;
-  }
-}
+// ── REMOVED identifyPlantWithClaude (browser-side) ──
+// All Claude calls now go through the Python server.
 
 
 
