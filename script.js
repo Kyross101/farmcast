@@ -2991,18 +2991,20 @@ function closeScannerCamera() {
 
 // ── REAL-TIME DETECTION LOOP ──
 // ── UPDATED REAL-TIME DETECTION LOOP (WITH OVERLAY Z-INDEX FIX) ──
+// ── SEQUENTIAL REAL-TIME DETECTION (PREVENTS OVERLOAD & 502 ERRORS) ──
+let isDetectingFrame = false; // Flag para maiwasan ang overlapping requests
+
 function startRealTimeDetection() {
   if (rtIsRunning) return;
   rtIsRunning = true;
+  isDetectingFrame = false;
 
-  // Siguraduhing may overlay canvas na nakapatong sa video
   let rtCanvasEl = document.getElementById('rtDetectionCanvas');
   const cameraWrap = document.getElementById('scannerCameraView');
 
   if (!rtCanvasEl && cameraWrap) {
     rtCanvasEl = document.createElement('canvas');
     rtCanvasEl.id = 'rtDetectionCanvas';
-    // MGA DAGDAG SA CSS: position absolute, z-index 10, at pointer-events none
     rtCanvasEl.style.cssText = 'position:absolute; top:0; left:0; width:100%; height:100%; z-index:10; pointer-events:none; border-radius:var(--r);';
     cameraWrap.style.position = 'relative';
     cameraWrap.appendChild(rtCanvasEl);
@@ -3022,13 +3024,15 @@ function startRealTimeDetection() {
     statusBadge.className   = 'rt-status-badge detecting';
   }
 
+  // Tinitingnan lang kung pwedeng mag-scan nang hindi pinupuwersa ang server
   rtDetectionLoop = setInterval(async () => {
     if (!rtIsRunning) return;
-    const now = Date.now();
-    if (now - rtLastCapture < RT_INTERVAL) return;
-    rtLastCapture = now;
+    
+    // KUNG BUSY PA ANG SERVER SA NAKALIPAS NA FRAME, WAG MUNA MAG-SEND!
+    if (isDetectingFrame) return;
+
     await runRealTimeFrame();
-  }, 500);
+  }, 1000); // Check bawat 1 segundo
 }
 
 function stopRealTimeDetection() {
@@ -3045,25 +3049,25 @@ async function runRealTimeFrame() {
   const capCanvas = document.getElementById('scannerCanvas');
   if (!capCanvas) return;
 
+  // I-LOCK ANG PROCESS: Huwag hayaang mag-overlap ang requests
+  isDetectingFrame = true;
+
   capCanvas.width = video.videoWidth;
   capCanvas.height = video.videoHeight;
 
   const capCtx = capCanvas.getContext('2d');
   capCtx.drawImage(video, 0, 0);
 
-  // Match overlay canvas to the visible video size
   rtCanvas.width = video.clientWidth || video.offsetWidth || 640;
   rtCanvas.height = video.clientHeight || video.offsetHeight || 480;
   rtCtx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
 
   try {
     const blob = await new Promise(resolve =>
-      capCanvas.toBlob(resolve, 'image/jpeg', 0.7)
+      capCanvas.toBlob(resolve, 'image/jpeg', 0.6) // Reduced quality to 0.6 for faster transmission
     );
 
-    if (!blob) {
-      throw new Error('Could not capture camera frame');
-    }
+    if (!blob) throw new Error('Could not capture frame');
 
     const formData = new FormData();
     formData.append('file', blob, 'frame.jpg');
@@ -3073,96 +3077,51 @@ async function runRealTimeFrame() {
       body: formData
     });
 
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status}`);
-    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const data = await res.json();
-    
-    // DIAGNOSTIC LOG: Silipin ang ibinabalik ng server sa Console
-    console.log('📡 AI Server Detection Response:', data);
+    console.log('📡 AI Response:', data);
 
-    if (data.success === false) {
-      throw new Error(data.error || 'Detection failed');
-    }
-
-    const detections = Array.isArray(data.detections)
-      ? data.detections
-      : [];
+    const detections = Array.isArray(data.detections) ? data.detections : [];
 
     if (detections.length === 0) {
       const labelEl = document.getElementById('rtLiveLabels');
-
       if (labelEl) {
-        labelEl.innerHTML =
-          '<span class="rt-label-empty">🔍 No plant detected. Try a different angle.</span>';
+        labelEl.innerHTML = '<span class="rt-label-empty">🔍 Point camera at a plant…</span>';
       }
+    } else {
+      const diseaseKeywords = ['blight','spot','rust','mildew','rot','wilt','virus','mosaic','smut','blast','disease','infected'];
+      const plantPreds = [];
+      const diseasePreds = [];
 
-      return;
+      detections.forEach(det => {
+        if (!det.bbox || !det.label) return;
+        const label = String(det.label).toLowerCase();
+        const isDisease = diseaseKeywords.some(kw => label.includes(kw));
+
+        const pred = {
+          class: det.label,
+          confidence: Number(det.confidence || 0) / 100,
+          x: Number(det.bbox.x || 0) * rtCanvas.width,
+          y: Number(det.bbox.y || 0) * rtCanvas.height,
+          width: Number(det.bbox.width || 0) * rtCanvas.width,
+          height: Number(det.bbox.height || 0) * rtCanvas.height
+        };
+
+        if (isDisease) diseasePreds.push(pred);
+        else plantPreds.push(pred);
+      });
+
+      drawBoundingBoxes(plantPreds, BOX_COLORS.plant, video, 'plant');
+      drawBoundingBoxes(diseasePreds, BOX_COLORS.disease, video, 'disease');
+      updateRTLabels(plantPreds, diseasePreds);
     }
-
-    const diseaseKeywords = [
-      'blight', 'spot', 'rust', 'mildew', 'rot', 
-      'wilt', 'virus', 'mosaic', 'smut', 'blast', 
-      'disease', 'infected'
-    ];
-
-    const plantPreds = [];
-    const diseasePreds = [];
-
-    detections.forEach(det => {
-      if (!det.bbox || !det.label) return;
-
-      const label = String(det.label).toLowerCase();
-
-      const isDisease = diseaseKeywords.some(
-        keyword => label.includes(keyword)
-      );
-
-      // Backend bbox uses normalized TOP-LEFT coordinates.
-      const pred = {
-        class: det.label,
-        confidence: Number(det.confidence || 0) / 100,
-
-        x: Number(det.bbox.x || 0) * rtCanvas.width,
-        y: Number(det.bbox.y || 0) * rtCanvas.height,
-
-        width: Number(det.bbox.width || 0) * rtCanvas.width,
-        height: Number(det.bbox.height || 0) * rtCanvas.height
-      };
-
-      if (isDisease) {
-        diseasePreds.push(pred);
-      } else {
-        plantPreds.push(pred);
-      }
-    });
-
-    drawBoundingBoxes(
-      plantPreds,
-      BOX_COLORS.plant,
-      video,
-      'plant'
-    );
-
-    drawBoundingBoxes(
-      diseasePreds,
-      BOX_COLORS.disease,
-      video,
-      'disease'
-    );
-
-    updateRTLabels(plantPreds, diseasePreds);
 
   } catch (err) {
     console.warn('RT detection error:', err);
-
-    const labelEl = document.getElementById('rtLiveLabels');
-
-    if (labelEl) {
-      labelEl.innerHTML =
-        '<span class="rt-label-empty" style="color:var(--red)">⚠️ Detection unavailable</span>';
-    }
+  } finally {
+    // UNLOCK THE PROCESS: Pwede na uling mag-send ng kasunod na frame
+    isDetectingFrame = false;
   }
 }
 
