@@ -3037,6 +3037,7 @@ function stopRealTimeDetection() {
   if (rtCtx && rtCanvas) rtCtx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
 }
 
+// ── REAL-TIME FRAME RUNNER WITH DIAGNOSTIC LOGGING ──
 async function runRealTimeFrame() {
   const video = document.getElementById('scannerVideo');
   if (!video || !video.videoWidth) return;
@@ -3077,6 +3078,9 @@ async function runRealTimeFrame() {
     }
 
     const data = await res.json();
+    
+    // DIAGNOSTIC LOG: Silipin ang ibinabalik ng server sa Console
+    console.log('📡 AI Server Detection Response:', data);
 
     if (data.success === false) {
       throw new Error(data.error || 'Detection failed');
@@ -3098,18 +3102,9 @@ async function runRealTimeFrame() {
     }
 
     const diseaseKeywords = [
-      'blight',
-      'spot',
-      'rust',
-      'mildew',
-      'rot',
-      'wilt',
-      'virus',
-      'mosaic',
-      'smut',
-      'blast',
-      'disease',
-      'infected'
+      'blight', 'spot', 'rust', 'mildew', 'rot', 
+      'wilt', 'virus', 'mosaic', 'smut', 'blast', 
+      'disease', 'infected'
     ];
 
     const plantPreds = [];
