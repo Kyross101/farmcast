@@ -1,7 +1,33 @@
+# Dependencies & Virtual Environments
 node_modules/
+venv/
+env/
+ENV/
+
+# Sensitive Environment Variables & API Keys
 .env
-*.log
-_pycache__/
-*.pyc
 .env.local
+.env.*.local
+
+# Python Cache & Compiled Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Machine Learning Large Weights (Models)
 *.pt
+*.onnx
+*.engine
+
+# System & IDE Config Files
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Log Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
