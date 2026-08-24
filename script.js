@@ -3055,24 +3055,32 @@ function stopRealTimeDetection() {
   }
 }
 
-// ── REAL-TIME FRAME RUNNER (Pointed to Localhost Port 8000) ──
+// ── REAL-TIME FRAME RUNNER ──
 async function runRealTimeFrame() {
   const video = document.getElementById('scannerVideo');
   if (!video || !video.videoWidth) return;
 
   const capCanvas = document.getElementById('scannerCanvas');
-  // FIXED: Now accurately checks for 'rtDetectionCanvas'
-  const rtCanvas = document.getElementById('rtDetectionCanvas') || document.getElementById('scannerOverlayCanvas');
+  let rtCanvas = document.getElementById('rtDetectionCanvas');
+  const cameraWrap = document.getElementById('scannerCameraView');
+
+  // Ensure overlay canvas exists and matches video dimensions
+  if (!rtCanvas && cameraWrap) {
+    rtCanvas = document.createElement('canvas');
+    rtCanvas.id = 'rtDetectionCanvas';
+    rtCanvas.style.cssText = 'position:absolute; top:0; left:0; width:100%; height:100%; z-index:10; pointer-events:none;';
+    cameraWrap.style.position = 'relative';
+    cameraWrap.appendChild(rtCanvas);
+  }
+
   if (!capCanvas || !rtCanvas) return;
 
   const rtCtx = rtCanvas.getContext('2d');
-
-  // Lock process during active POST request
   isDetectingFrame = true;
 
+  // Sync internal canvas resolutions with display dimensions
   capCanvas.width = video.videoWidth;
   capCanvas.height = video.videoHeight;
-
   const capCtx = capCanvas.getContext('2d');
   capCtx.drawImage(video, 0, 0);
 
@@ -3082,32 +3090,25 @@ async function runRealTimeFrame() {
 
   try {
     const blob = await new Promise(resolve =>
-      capCanvas.toBlob(resolve, 'image/jpeg', 0.6)
+      capCanvas.toBlob(resolve, 'image/jpeg', 0.65)
     );
 
-    if (!blob) throw new Error('Could not capture frame');
+    if (!blob) throw new Error('Failed to create frame blob');
 
     const formData = new FormData();
     formData.append('file', blob, 'frame.jpg');
 
-    // Call Local FastAPI Server
     const res = await fetch('http://127.0.0.1:8000/detect', {
       method: 'POST',
       body: formData
     });
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) throw new Error(`HTTP Error ${res.status}`);
 
     const data = await res.json();
-
     const detections = Array.isArray(data.detections) ? data.detections : [];
 
-    if (detections.length === 0) {
-      const labelEl = document.getElementById('rtLiveLabels');
-      if (labelEl) {
-        labelEl.innerHTML = '<span class="rt-label-empty">🔍 Point camera at a plant…</span>';
-      }
-    } else {
+    if (detections.length > 0) {
       const diseaseKeywords = ['blight','spot','rust','mildew','rot','wilt','virus','mosaic','smut','blast','disease','infected'];
       const plantPreds = [];
       const diseasePreds = [];
@@ -3119,80 +3120,82 @@ async function runRealTimeFrame() {
 
         const pred = {
           class: det.label,
-          confidence: Number(det.confidence || 0) / 100,
-          x: Number(det.bbox.x || 0) * rtCanvas.width,
-          y: Number(det.bbox.y || 0) * rtCanvas.height,
-          width: Number(det.bbox.width || 0) * rtCanvas.width,
-          height: Number(det.bbox.height || 0) * rtCanvas.height
+          confidence: det.confidence,
+          x: Number(det.bbox.x) * rtCanvas.width,
+          y: Number(det.bbox.y) * rtCanvas.height,
+          width: Number(det.bbox.width) * rtCanvas.width,
+          height: Number(det.bbox.height) * rtCanvas.height
         };
 
         if (isDisease) diseasePreds.push(pred);
         else plantPreds.push(pred);
       });
 
-      if (typeof drawBoundingBoxes === 'function') {
-        drawBoundingBoxes(plantPreds, BOX_COLORS.plant, video, 'plant');
-        drawBoundingBoxes(diseasePreds, BOX_COLORS.disease, video, 'disease');
-      }
+      drawBoundingBoxes(plantPreds, '#3fb950', video, 'plant');
+      drawBoundingBoxes(diseasePreds, '#f85149', video, 'disease');
+      
       if (typeof updateRTLabels === 'function') {
         updateRTLabels(plantPreds, diseasePreds);
       }
     }
-
   } catch (err) {
-    console.warn('RT detection error:', err);
+    console.warn('Real-time detection frame error:', err);
   } finally {
     isDetectingFrame = false;
   }
 }
 
-// ── UPDATED DRAW BOUNDING BOXES (LOWER CONFIDENCE THRESHOLD) ──
-function drawBoundingBoxes(predictions, color, video, type) {
-  if (!predictions.length || !rtCtx) return;
+// ── ROBUST BOUNDING BOX RENDERER ──
+function drawBoundingBoxes(predictions, color, videoElement, type) {
+  const rtCanvasEl = document.getElementById('rtDetectionCanvas');
+  if (!rtCanvasEl || !predictions || predictions.length === 0) return;
+
+  const ctx = rtCanvasEl.getContext('2d');
 
   predictions.forEach(pred => {
-    const conf = Math.round((pred.confidence || 0) * 100);
+    // Standardize confidence value between 0 and 100
+    const rawConf = pred.confidence > 1 ? pred.confidence : pred.confidence * 100;
+    const conf = Math.round(rawConf);
 
-    // INBABA MULA 30% PATUNGONG 15% PARA LUMABAS AGAD ANG BOX
+    // Render detections with a minimum confidence threshold of 15%
     if (conf < 15) return;
 
-    // x at y ay top-left coordinates sa canvas
     const x = pred.x;
     const y = pred.y;
     const w = pred.width;
     const h = pred.height;
 
-    // Iguhit ang pangunahing Bounding Box
-    rtCtx.strokeStyle = color;
-    rtCtx.lineWidth   = 3; // Ginawang mas makapal para kitang-kita sa ilaw
-    rtCtx.strokeRect(x, y, w, h);
+    // Draw main outer bounding box
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    ctx.strokeRect(x, y, w, h);
 
-    // Label Header
-    const label = `${pred.class} ${conf}%`;
-    rtCtx.font = 'bold 14px DM Sans, sans-serif';
-    const textW = rtCtx.measureText(label).width;
-    const labelY = Math.max(0, y - 24);
+    // Draw solid label background tag
+    const label = `${pred.class} (${conf}%)`;
+    ctx.font = 'bold 13px "DM Sans", sans-serif';
+    const textWidth = ctx.measureText(label).width;
+    const labelY = Math.max(0, y - 22);
 
-    rtCtx.fillStyle = color;
-    rtCtx.fillRect(x, labelY, textW + 14, 24);
+    ctx.fillStyle = color;
+    ctx.fillRect(x, labelY, textWidth + 12, 22);
 
-    // Label Text
-    rtCtx.fillStyle = '#ffffff';
-    rtCtx.fillText(label, x + 6, Math.max(16, labelY + 17));
+    // Draw white label text
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText(label, x + 6, Math.max(15, labelY + 16));
 
-    // Corner Target Markers (Puting sulok para sa magandang UI)
-    const cs = 12;
-    rtCtx.strokeStyle = '#ffffff';
-    rtCtx.lineWidth   = 2;
+    // Draw corner indicators for visual tracking
+    const cs = 10; // Corner line length
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth = 2;
 
-    // Top-left
-    rtCtx.beginPath(); rtCtx.moveTo(x, y + cs); rtCtx.lineTo(x, y); rtCtx.lineTo(x + cs, y); rtCtx.stroke();
-    // Top-right
-    rtCtx.beginPath(); rtCtx.moveTo(x + w - cs, y); rtCtx.lineTo(x + w, y); rtCtx.lineTo(x + w, y + cs); rtCtx.stroke();
-    // Bottom-left
-    rtCtx.beginPath(); rtCtx.moveTo(x, y + h - cs); rtCtx.lineTo(x, y + h); rtCtx.lineTo(x + cs, y + h); rtCtx.stroke();
-    // Bottom-right
-    rtCtx.beginPath(); rtCtx.moveTo(x + w - cs, y + h); rtCtx.lineTo(x + w, y + h); rtCtx.lineTo(x + w, y + h - cs); rtCtx.stroke();
+    // Top-Left
+    ctx.beginPath(); ctx.moveTo(x, y + cs); ctx.lineTo(x, y); ctx.lineTo(x + cs, y); ctx.stroke();
+    // Top-Right
+    ctx.beginPath(); ctx.moveTo(x + w - cs, y); ctx.lineTo(x + w, y); ctx.lineTo(x + w, y + cs); ctx.stroke();
+    // Bottom-Left
+    ctx.beginPath(); ctx.moveTo(x, y + cs); ctx.lineTo(x, y + h); ctx.lineTo(x + cs, y + h); ctx.stroke();
+    // Bottom-Right
+    ctx.beginPath(); ctx.moveTo(x + w - cs, y + h); ctx.lineTo(x + w, y + h); ctx.lineTo(x + w, y + h - cs); ctx.stroke();
   });
 }
 
