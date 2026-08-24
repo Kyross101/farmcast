@@ -5,3 +5,4 @@ anthropic
 Pillow
 python-multipart
 requests
+opencv-python-headless
