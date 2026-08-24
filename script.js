@@ -2993,7 +2993,8 @@ function closeScannerCamera() {
 // ── REAL-TIME DETECTION LOOP ──
 // ── UPDATED REAL-TIME DETECTION LOOP (WITH OVERLAY Z-INDEX FIX) ──
 // ── SEQUENTIAL REAL-TIME DETECTION (PREVENTS OVERLOAD & 502 ERRORS) ──
-let isDetectingFrame = false; // Flag para maiwasan ang overlapping requests
+// ── REAL-TIME DETECTION LOOP (FIXED CANVAS ID MATCHING) ──
+let isDetectingFrame = false;
 
 function startRealTimeDetection() {
   if (rtIsRunning) return;
@@ -3025,15 +3026,11 @@ function startRealTimeDetection() {
     statusBadge.className   = 'rt-status-badge detecting';
   }
 
-  // Tinitingnan lang kung pwedeng mag-scan nang hindi pinupuwersa ang server
+  // Poll local AI server every 200ms for active bounding boxes
   rtDetectionLoop = setInterval(async () => {
-    if (!rtIsRunning) return;
-    
-    // KUNG BUSY PA ANG SERVER SA NAKALIPAS NA FRAME, WAG MUNA MAG-SEND!
-    if (isDetectingFrame) return;
-
+    if (!rtIsRunning || isDetectingFrame) return;
     await runRealTimeFrame();
-  }, 1000); // Check bawat 1 segundo
+  }, 200);
 }
 
 function stopRealTimeDetection() {
@@ -3042,18 +3039,19 @@ function stopRealTimeDetection() {
   if (rtCtx && rtCanvas) rtCtx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
 }
 
-// ── REAL-TIME FRAME RUNNER (Fixed Localhost Port 8000) ──
+// ── REAL-TIME FRAME RUNNER (Pointed to Localhost Port 8000) ──
 async function runRealTimeFrame() {
   const video = document.getElementById('scannerVideo');
   if (!video || !video.videoWidth) return;
 
   const capCanvas = document.getElementById('scannerCanvas');
-  const rtCanvas = document.getElementById('scannerOverlayCanvas') || document.getElementById('rtCanvas');
+  // FIXED: Now accurately checks for 'rtDetectionCanvas'
+  const rtCanvas = document.getElementById('rtDetectionCanvas') || document.getElementById('scannerOverlayCanvas');
   if (!capCanvas || !rtCanvas) return;
 
   const rtCtx = rtCanvas.getContext('2d');
 
-  // Lock process to prevent frame overlapping
+  // Lock process during active POST request
   isDetectingFrame = true;
 
   capCanvas.width = video.videoWidth;
@@ -3076,7 +3074,7 @@ async function runRealTimeFrame() {
     const formData = new FormData();
     formData.append('file', blob, 'frame.jpg');
 
-    // FIXED: Directly calling local Python FastAPI server
+    // Call Local FastAPI Server
     const res = await fetch('http://127.0.0.1:8000/detect', {
       method: 'POST',
       body: formData
@@ -3085,7 +3083,6 @@ async function runRealTimeFrame() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const data = await res.json();
-    console.log('📡 Local AI Response:', data);
 
     const detections = Array.isArray(data.detections) ? data.detections : [];
 
@@ -3129,7 +3126,6 @@ async function runRealTimeFrame() {
   } catch (err) {
     console.warn('RT detection error:', err);
   } finally {
-    // Unlock process to allow next frame capture
     isDetectingFrame = false;
   }
 }
