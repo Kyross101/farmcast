@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
+from dotenv import load_dotenv
 import anthropic
 import base64
 import io
@@ -9,8 +10,15 @@ import re
 import os
 import uvicorn
 
+# Load environment variables from .env file if available
+load_dotenv()
+
 # ── CONFIGURATION ──
-CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+# Option 1: Reads from .env file, OR Option 2: Uses direct fallback key string
+CLAUDE_API_KEY = os.environ.get(
+    "ANTHROPIC_API_KEY", 
+    "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"
+)
 YOLO_MODEL_PATH = os.environ.get("FARMCAST_YOLO_MODEL", "yolov8n.pt")
 
 app = FastAPI(title="FarmCast AI Server", version="1.0.0")
@@ -93,10 +101,10 @@ async def detect_realtime(file: UploadFile = File(...)):
             "detections": []
         }
 
-# ── 2. FULL PLANT SCAN & ANALYSIS ENDPOINT (FIXES THE 404 ERROR) ──
+# ── 2. FULL PLANT SCAN & ANALYSIS ENDPOINT ──
 @app.post("/scan")
 async def scan_plant(file: UploadFile = File(...)):
-    """Handles Capture & Analyze request for complete plant health diagnosis."""
+    """Handles Capture & Analyze request for complete plant health diagnosis using Claude AI."""
     try:
         contents = await file.read()
         image = Image.open(io.BytesIO(contents)).convert("RGB")
@@ -127,7 +135,7 @@ async def scan_plant(file: UploadFile = File(...)):
                         }
                     })
 
-        # Basic response structure
+        # Fallback response structure
         analysis = {
             "plant_name": "Scanned Sample",
             "plant_type": "Crop",
@@ -142,7 +150,7 @@ async def scan_plant(file: UploadFile = File(...)):
             ]
         }
 
-        # Use Claude AI if API key is provided
+        # Execute Claude AI visual analysis
         if CLAUDE_API_KEY:
             try:
                 buffer = io.BytesIO()
@@ -150,15 +158,15 @@ async def scan_plant(file: UploadFile = File(...)):
                 img_base64 = base64.standard_b64encode(buffer.getvalue()).decode("utf-8")
 
                 client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
-                prompt = """Analyze this plant image. Respond ONLY with a valid JSON object:
+                prompt = """You are an expert plant pathologist. Analyze this plant image and respond ONLY with a valid JSON object:
 {
-  "plant_name": "Name",
-  "plant_type": "Category",
-  "health_status": "Status/Disease",
+  "plant_name": "exact plant name",
+  "plant_type": "category (Vegetable/Fruit/Ornamental/etc)",
+  "health_status": "Healthy OR specific disease name",
   "severity": "none/low/medium/high",
-  "confidence": 90,
-  "description": "1-2 sentences",
-  "treatments": ["step 1", "step 2"]
+  "confidence": 95,
+  "description": "1-2 sentence detailed observation of symptoms",
+  "treatments": ["actionable step 1", "actionable step 2", "actionable step 3"]
 }"""
                 message = client.messages.create(
                     model="claude-3-5-sonnet-20241022",
@@ -174,8 +182,9 @@ async def scan_plant(file: UploadFile = File(...)):
                 raw = message.content[0].text.strip()
                 clean = re.sub(r'```(?:json)?', '', raw).strip().strip('`').strip()
                 analysis = json.loads(clean)
+                print("🧠 Claude AI Visual Analysis completed successfully!")
             except Exception as claude_err:
-                print(f"Claude API skipped or error: {claude_err}")
+                print(f"⚠️ Claude API Error: {claude_err}")
 
         return {
             "success": True,
