@@ -15,10 +15,7 @@ load_dotenv()
 
 # ── CONFIGURATION ──
 # Option 1: Reads from .env file, OR Option 2: Uses direct fallback key string
-CLAUDE_API_KEY = os.environ.get(
-    "ANTHROPIC_API_KEY", 
-    "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"
-)
+CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 YOLO_MODEL_PATH = os.environ.get("FARMCAST_YOLO_MODEL", "yolov8n.pt")
 
 app = FastAPI(title="FarmCast AI Server", version="1.0.0")

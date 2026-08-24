@@ -1,3 +1,4 @@
 node_modules/
 .env
+farmcast-backend/.env
 *.log
