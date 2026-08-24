@@ -5,7 +5,8 @@
 const API_KEY = '2e3d2d2d9957fd5364e42c6cf4fe73e5'; // OWM API key
 // Roboflow API config – DEPRECATED, removed
 // Python AI Server (YOLOv8 + Claude AI)
-const AI_SERVER_URL = 'https://farmcast-1.onrender.com'; // ← Ilagay mo dito ang URL ng iyong AI server
+// Local FastAPI Server Base URL
+const AI_SERVER_URL = 'http://127.0.0.1:8000'; // ← Ilagay mo dito ang URL ng iyong AI server
 
 // ═══════════════════════════════════════════════════════
 // TASK 4 — CLAUDE AI PLANT IDENTIFICATION
@@ -3041,15 +3042,18 @@ function stopRealTimeDetection() {
   if (rtCtx && rtCanvas) rtCtx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
 }
 
-// ── REAL-TIME FRAME RUNNER WITH DIAGNOSTIC LOGGING ──
+// ── REAL-TIME FRAME RUNNER (Fixed Localhost Port 8000) ──
 async function runRealTimeFrame() {
   const video = document.getElementById('scannerVideo');
   if (!video || !video.videoWidth) return;
 
   const capCanvas = document.getElementById('scannerCanvas');
-  if (!capCanvas) return;
+  const rtCanvas = document.getElementById('scannerOverlayCanvas') || document.getElementById('rtCanvas');
+  if (!capCanvas || !rtCanvas) return;
 
-  // I-LOCK ANG PROCESS: Huwag hayaang mag-overlap ang requests
+  const rtCtx = rtCanvas.getContext('2d');
+
+  // Lock process to prevent frame overlapping
   isDetectingFrame = true;
 
   capCanvas.width = video.videoWidth;
@@ -3064,7 +3068,7 @@ async function runRealTimeFrame() {
 
   try {
     const blob = await new Promise(resolve =>
-      capCanvas.toBlob(resolve, 'image/jpeg', 0.6) // Reduced quality to 0.6 for faster transmission
+      capCanvas.toBlob(resolve, 'image/jpeg', 0.6)
     );
 
     if (!blob) throw new Error('Could not capture frame');
@@ -3072,7 +3076,8 @@ async function runRealTimeFrame() {
     const formData = new FormData();
     formData.append('file', blob, 'frame.jpg');
 
-    const res = await fetch(`${AI_SERVER_URL}/detect`, {
+    // FIXED: Directly calling local Python FastAPI server
+    const res = await fetch('http://127.0.0.1:8000/detect', {
       method: 'POST',
       body: formData
     });
@@ -3080,7 +3085,7 @@ async function runRealTimeFrame() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const data = await res.json();
-    console.log('📡 AI Response:', data);
+    console.log('📡 Local AI Response:', data);
 
     const detections = Array.isArray(data.detections) ? data.detections : [];
 
@@ -3112,15 +3117,19 @@ async function runRealTimeFrame() {
         else plantPreds.push(pred);
       });
 
-      drawBoundingBoxes(plantPreds, BOX_COLORS.plant, video, 'plant');
-      drawBoundingBoxes(diseasePreds, BOX_COLORS.disease, video, 'disease');
-      updateRTLabels(plantPreds, diseasePreds);
+      if (typeof drawBoundingBoxes === 'function') {
+        drawBoundingBoxes(plantPreds, BOX_COLORS.plant, video, 'plant');
+        drawBoundingBoxes(diseasePreds, BOX_COLORS.disease, video, 'disease');
+      }
+      if (typeof updateRTLabels === 'function') {
+        updateRTLabels(plantPreds, diseasePreds);
+      }
     }
 
   } catch (err) {
     console.warn('RT detection error:', err);
   } finally {
-    // UNLOCK THE PROCESS: Pwede na uling mag-send ng kasunod na frame
+    // Unlock process to allow next frame capture
     isDetectingFrame = false;
   }
 }
