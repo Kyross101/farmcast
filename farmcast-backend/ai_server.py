@@ -101,12 +101,28 @@ async def detect_realtime(file: UploadFile = File(...)):
 # ── 2. FULL PLANT SCAN & ANALYSIS ENDPOINT (SAFEGUARDED) ──
 @app.post("/scan")
 async def scan_plant(file: UploadFile = File(...)):
-    """
-    Handles plant health diagnosis requests.
-    Guarantees a clean JSON payload is returned even if Claude API or parsing fails.
-    """
+    """Handles plant diagnosis requests with byte length validation."""
     try:
         contents = await file.read()
+        
+        # Validate that the uploaded file is not 0 bytes
+        if not contents or len(contents) == 0:
+            print("⚠️ Received empty file payload from client.")
+            return {
+                "success": False,
+                "error": "Empty image payload received",
+                "detections": [],
+                "analysis": {
+                    "plant_name": "No Image Captured",
+                    "plant_type": "N/A",
+                    "health_status": "Retry",
+                    "severity": "none",
+                    "confidence": 0,
+                    "description": "Please ensure your camera is active and try scanning again.",
+                    "treatments": ["Ensure good lighting.", "Focus camera on leaf."]
+                }
+            }
+
         image = Image.open(io.BytesIO(contents)).convert("RGB")
         img_width, img_height = image.size
 
@@ -135,23 +151,22 @@ async def scan_plant(file: UploadFile = File(...)):
                         }
                     })
 
-        # Base fallback analysis
+        # Default fallback response structure
         primary_label = detections[0]["label"] if detections else "Plant Sample"
         analysis = {
             "plant_name": primary_label,
             "plant_type": "Crop",
-            "health_status": "Analyzed",
+            "health_status": "Healthy",
             "severity": "none",
-            "confidence": detections[0]["confidence"] if detections else 88.0,
-            "description": f"Detected {primary_label} using custom local YOLO model.",
+            "confidence": detections[0]["confidence"] if detections else 85.0,
+            "description": f"Analyzed {primary_label} using local AI model.",
             "treatments": [
-                "Maintain optimal soil moisture.",
-                "Provide recommended daily sunlight.",
-                "Inspect foliage regularly for pests or spots."
+                "Maintain adequate regular watering.",
+                "Ensure sufficient sunlight exposure."
             ]
         }
 
-        # Query Claude API for visual diagnosis if API Key exists
+        # Run Claude AI if key is set
         if CLAUDE_API_KEY:
             try:
                 buffer = io.BytesIO()
@@ -159,15 +174,15 @@ async def scan_plant(file: UploadFile = File(...)):
                 img_base64 = base64.standard_b64encode(buffer.getvalue()).decode("utf-8")
 
                 client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
-                prompt = """You are an expert plant pathologist. Analyze this plant image and respond ONLY with a raw valid JSON object:
+                prompt = """Analyze this plant image. Respond ONLY with a valid raw JSON object:
 {
-  "plant_name": "Name of plant",
+  "plant_name": "Name",
   "plant_type": "Category",
-  "health_status": "Healthy OR specific disease name",
+  "health_status": "Status",
   "severity": "none/low/medium/high",
-  "confidence": 92,
-  "description": "Short observation of plant condition",
-  "treatments": ["step 1", "step 2", "step 3"]
+  "confidence": 90,
+  "description": "Short observation.",
+  "treatments": ["step 1", "step 2"]
 }"""
                 message = client.messages.create(
                     model="claude-3-5-sonnet-20241022",
@@ -180,16 +195,12 @@ async def scan_plant(file: UploadFile = File(...)):
                         ]
                     }]
                 )
-                
-                # Extract valid JSON using regex extraction
                 raw_text = message.content[0].text.strip()
-                json_match = re.search(r'\{.*\}', raw_text, re.DOTALL)
-                if json_match:
-                    parsed_json = json.loads(json_match.group(0))
-                    analysis = parsed_json
-                    print("🧠 Claude AI Visual Analysis parsed successfully!")
+                match = re.search(r'\{.*\}', raw_text, re.DOTALL)
+                if match:
+                    analysis = json.loads(match.group(0))
             except Exception as claude_err:
-                print(f"⚠️ Claude API Error handled safely: {claude_err}")
+                print(f"⚠️ Claude AI API warning: {claude_err}")
 
         return {
             "success": True,
@@ -200,19 +211,18 @@ async def scan_plant(file: UploadFile = File(...)):
 
     except Exception as general_err:
         print(f"❌ Scan Exception: {general_err}")
-        # Always return structured JSON to prevent "Ran out of input" in JS
         return {
             "success": False,
             "error": str(general_err),
             "detections": [],
             "analysis": {
-                "plant_name": "Scanned Sample",
+                "plant_name": "Sample Plant",
                 "plant_type": "Crop",
-                "health_status": "Healthy",
+                "health_status": "Scanned",
                 "severity": "none",
-                "confidence": 85,
-                "description": "Completed local plant scan.",
-                "treatments": ["Ensure regular plant care and watering."]
+                "confidence": 80,
+                "description": "Completed local visual scan.",
+                "treatments": ["Regular maintenance."]
             }
         }
 

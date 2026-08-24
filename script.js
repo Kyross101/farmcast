@@ -4,8 +4,8 @@
 
 const API_KEY = '2e3d2d2d9957fd5364e42c6cf4fe73e5'; // OWM API key
 // Roboflow API config – DEPRECATED, removed
-// Localhost Python AI Server (FastAPI + YOLOv8 + Claude AI)
-const AI_SERVER_URL = 'http://127.0.0.1:8000'; // ← Ilagay mo dito ang URL ng iyong AI server
+// Python AI Server (YOLOv8 + Claude AI)
+const AI_SERVER_URL = 'https://farmcast-1.onrender.com'; // ← Ilagay mo dito ang URL ng iyong AI server
 
 // ═══════════════════════════════════════════════════════
 // TASK 4 — CLAUDE AI PLANT IDENTIFICATION
@@ -3250,26 +3250,24 @@ function showScannerPreview(src) {
 }
 
 // ── SCAN WITH PYTHON AI SERVER ──
-async function scanWithPythonAI(imageData) {
-  const base64 = imageData.replace(/^data:image\/[a-z]+;base64,/, '');
-  const byteChars = atob(base64);
-  const byteNums  = new Array(byteChars.length);
-  for (let i = 0; i < byteChars.length; i++) {
-    byteNums[i] = byteChars.charCodeAt(i);
-  }
-  const byteArray = new Uint8Array(byteNums);
-  const blob      = new Blob([byteArray], { type: 'image/jpeg' });
+async function scanWithPythonAI(imageBlob) {
+    if (!imageBlob || imageBlob.size === 0) {
+        throw new Error("Captured image frame is empty. Please restart camera.");
+    }
 
-  const formData = new FormData();
-  formData.append('file', blob, 'plant.jpg');
+    const formData = new FormData();
+    formData.append('file', imageBlob, 'capture.jpg');
 
-  const res = await fetch(`${AI_SERVER_URL}/scan`, {
-    method: 'POST',
-    body:   formData,
-  });
+    const response = await fetch(`${AI_SERVER_URL}/scan`, {
+        method: 'POST',
+        body: formData
+    });
 
-  if (!res.ok) throw new Error(`AI Server error: ${res.status}`);
-  return await res.json();
+    if (!response.ok) {
+        throw new Error(`AI Server error: ${response.status}`);
+    }
+
+    return await response.json();
 }
 
 // ── RUN PLANT SCAN (on captured/uploaded photo) ──
