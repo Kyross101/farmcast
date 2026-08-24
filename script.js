@@ -3277,7 +3277,6 @@ function dataURItoBlob(dataURI) {
 // 2. MAIN AI SCAN FUNCTION (Fixes Blob Error)
 // ==========================================
 async function scanWithPythonAI(imageData) {
-    // Automatically converts base64 scannerImageData to a valid Blob
     const imageBlob = dataURItoBlob(imageData);
 
     if (!imageBlob) {
@@ -3285,10 +3284,10 @@ async function scanWithPythonAI(imageData) {
     }
 
     const formData = new FormData();
-    // Safely appends the converted image blob
     formData.append('file', imageBlob, 'capture.jpg');
 
-    const response = await fetch(`${AI_SERVER_URL}/scan`, {
+    // Direktang nakaturo sa Localhost Port 8000
+    const response = await fetch('http://127.0.0.1:8000/scan', {
         method: 'POST',
         body: formData
     });
