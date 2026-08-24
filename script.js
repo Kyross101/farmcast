@@ -3055,7 +3055,7 @@ function stopRealTimeDetection() {
   }
 }
 
-// ── REAL-TIME FRAME RUNNER ──
+// ── REAL-TIME FRAME RUNNER WITH GETBOUNDINGCLIENTRECT ──
 async function runRealTimeFrame() {
   const video = document.getElementById('scannerVideo');
   if (!video || !video.videoWidth) return;
@@ -3064,36 +3064,60 @@ async function runRealTimeFrame() {
   let rtCanvas = document.getElementById('rtDetectionCanvas');
   const cameraWrap = document.getElementById('scannerCameraView');
 
-  // Ensure overlay canvas exists and matches video dimensions
+  // Ensure overlay canvas exists and is visible
   if (!rtCanvas && cameraWrap) {
     rtCanvas = document.createElement('canvas');
     rtCanvas.id = 'rtDetectionCanvas';
-    rtCanvas.style.cssText = 'position:absolute; top:0; left:0; width:100%; height:100%; z-index:10; pointer-events:none;';
+    rtCanvas.style.cssText = `
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      pointer-events: none;
+      border-radius: var(--r);
+    `;
     cameraWrap.style.position = 'relative';
     cameraWrap.appendChild(rtCanvas);
+  } else if (rtCanvas) {
+    rtCanvas.style.display = 'block';
+    rtCanvas.style.zIndex = '10';
   }
 
   if (!capCanvas || !rtCanvas) return;
 
-  const rtCtx = rtCanvas.getContext('2d');
-  isDetectingFrame = true;
-
-  // Sync internal canvas resolutions with display dimensions
+  // Capture frame
   capCanvas.width = video.videoWidth;
   capCanvas.height = video.videoHeight;
   const capCtx = capCanvas.getContext('2d');
   capCtx.drawImage(video, 0, 0);
 
-  rtCanvas.width = video.clientWidth || video.offsetWidth || 640;
-  rtCanvas.height = video.clientHeight || video.offsetHeight || 480;
-  rtCtx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
+  // Get actual display size using getBoundingClientRect()
+  const rect = video.getBoundingClientRect();
+  const displayWidth = Math.round(rect.width) || 640;
+  const displayHeight = Math.round(rect.height) || 480;
+
+  // Resize overlay canvas to match display size
+  if (rtCanvas.width !== displayWidth || rtCanvas.height !== displayHeight) {
+    rtCanvas.width = displayWidth;
+    rtCanvas.height = displayHeight;
+    console.log(`[RT] Canvas resized to ${displayWidth}x${displayHeight}`);
+  }
+
+  const ctx = rtCanvas.getContext('2d');
+  ctx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
+
+  if (displayWidth === 0 || displayHeight === 0) {
+    console.warn('[RT] Video display size zero – skipping');
+    return;
+  }
 
   try {
     const blob = await new Promise(resolve =>
       capCanvas.toBlob(resolve, 'image/jpeg', 0.65)
     );
-
-    if (!blob) throw new Error('Failed to create frame blob');
+    if (!blob) throw new Error('No blob');
 
     const formData = new FormData();
     formData.append('file', blob, 'frame.jpg');
@@ -3103,99 +3127,89 @@ async function runRealTimeFrame() {
       body: formData
     });
 
-    if (!res.ok) throw new Error(`HTTP Error ${res.status}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const data = await res.json();
-    const detections = Array.isArray(data.detections) ? data.detections : [];
+    const detections = data.detections || [];
 
-    if (detections.length > 0) {
-      const diseaseKeywords = ['blight','spot','rust','mildew','rot','wilt','virus','mosaic','smut','blast','disease','infected'];
-      const plantPreds = [];
-      const diseasePreds = [];
-
-      detections.forEach(det => {
-        if (!det.bbox || !det.label) return;
-        const label = String(det.label).toLowerCase();
-        const isDisease = diseaseKeywords.some(kw => label.includes(kw));
-
-        const pred = {
-          class: det.label,
-          confidence: det.confidence,
-          x: Number(det.bbox.x) * rtCanvas.width,
-          y: Number(det.bbox.y) * rtCanvas.height,
-          width: Number(det.bbox.width) * rtCanvas.width,
-          height: Number(det.bbox.height) * rtCanvas.height
-        };
-
-        if (isDisease) diseasePreds.push(pred);
-        else plantPreds.push(pred);
-      });
-
-      drawBoundingBoxes(plantPreds, '#3fb950', video, 'plant');
-      drawBoundingBoxes(diseasePreds, '#f85149', video, 'disease');
-      
-      if (typeof updateRTLabels === 'function') {
-        updateRTLabels(plantPreds, diseasePreds);
-      }
+    if (detections.length === 0) {
+      const labelEl = document.getElementById('rtLiveLabels');
+      if (labelEl) labelEl.innerHTML = '<span class="rt-label-empty">🔍 No plant detected</span>';
+      return;
     }
+
+    const diseaseKeywords = ['blight','spot','rust','mildew','rot','wilt','virus','mosaic','smut','blast','disease','infected'];
+    const plantPreds = [], diseasePreds = [];
+
+    detections.forEach(det => {
+      if (!det.bbox || !det.label) return;
+      const label = String(det.label).toLowerCase();
+      const isDisease = diseaseKeywords.some(kw => label.includes(kw));
+      const pred = {
+        class: det.label,
+        confidence: det.confidence,
+        x: Number(det.bbox.x) * rtCanvas.width,
+        y: Number(det.bbox.y) * rtCanvas.height,
+        width: Number(det.bbox.width) * rtCanvas.width,
+        height: Number(det.bbox.height) * rtCanvas.height,
+      };
+      if (isDisease) diseasePreds.push(pred);
+      else plantPreds.push(pred);
+    });
+
+    // Draw bounding boxes using updated drawBoundingBoxes
+    drawBoundingBoxes(plantPreds, '#3fb950', 'plant');
+    drawBoundingBoxes(diseasePreds, '#f85149', 'disease');
+
+    if (typeof updateRTLabels === 'function') {
+      updateRTLabels(plantPreds, diseasePreds);
+    }
+
   } catch (err) {
-    console.warn('Real-time detection frame error:', err);
-  } finally {
-    isDetectingFrame = false;
+    console.warn('[RT] Detection error:', err);
+    const labelEl = document.getElementById('rtLiveLabels');
+    if (labelEl) labelEl.innerHTML = '<span class="rt-label-empty" style="color:var(--red)">⚠️ Detection unavailable</span>';
   }
 }
 
-// ── ROBUST BOUNDING BOX RENDERER ──
-function drawBoundingBoxes(predictions, color, videoElement, type) {
+// ── UPDATED DRAW BOUNDING BOXES (DeepSeek Fix) ──
+function drawBoundingBoxes(predictions, color, type) {
   const rtCanvasEl = document.getElementById('rtDetectionCanvas');
   if (!rtCanvasEl || !predictions || predictions.length === 0) return;
 
   const ctx = rtCanvasEl.getContext('2d');
+  if (rtCanvasEl.width === 0 || rtCanvasEl.height === 0) {
+    console.warn('[drawBBox] Canvas zero size');
+    return;
+  }
 
   predictions.forEach(pred => {
-    // Standardize confidence value between 0 and 100
-    const rawConf = pred.confidence > 1 ? pred.confidence : pred.confidence * 100;
-    const conf = Math.round(rawConf);
+    const conf = Math.round(pred.confidence);
+    if (conf < 10) return; // Lower threshold to ensure rendering
 
-    // Render detections with a minimum confidence threshold of 15%
-    if (conf < 15) return;
+    const x = pred.x, y = pred.y, w = pred.width, h = pred.height;
+    if (x + w < 0 || y + h < 0 || x > rtCanvasEl.width || y > rtCanvasEl.height) return;
 
-    const x = pred.x;
-    const y = pred.y;
-    const w = pred.width;
-    const h = pred.height;
-
-    // Draw main outer bounding box
     ctx.strokeStyle = color;
     ctx.lineWidth = 3;
     ctx.strokeRect(x, y, w, h);
 
-    // Draw solid label background tag
     const label = `${pred.class} (${conf}%)`;
     ctx.font = 'bold 13px "DM Sans", sans-serif';
-    const textWidth = ctx.measureText(label).width;
+    const tw = ctx.measureText(label).width;
     const labelY = Math.max(0, y - 22);
-
     ctx.fillStyle = color;
-    ctx.fillRect(x, labelY, textWidth + 12, 22);
-
-    // Draw white label text
+    ctx.fillRect(x, labelY, tw + 12, 22);
     ctx.fillStyle = '#FFFFFF';
     ctx.fillText(label, x + 6, Math.max(15, labelY + 16));
 
-    // Draw corner indicators for visual tracking
-    const cs = 10; // Corner line length
+    const cs = 10;
     ctx.strokeStyle = '#FFFFFF';
     ctx.lineWidth = 2;
-
-    // Top-Left
-    ctx.beginPath(); ctx.moveTo(x, y + cs); ctx.lineTo(x, y); ctx.lineTo(x + cs, y); ctx.stroke();
-    // Top-Right
-    ctx.beginPath(); ctx.moveTo(x + w - cs, y); ctx.lineTo(x + w, y); ctx.lineTo(x + w, y + cs); ctx.stroke();
-    // Bottom-Left
-    ctx.beginPath(); ctx.moveTo(x, y + cs); ctx.lineTo(x, y + h); ctx.lineTo(x + cs, y + h); ctx.stroke();
-    // Bottom-Right
-    ctx.beginPath(); ctx.moveTo(x + w - cs, y + h); ctx.lineTo(x + w, y + h); ctx.lineTo(x + w, y + h - cs); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, y+cs); ctx.lineTo(x, y); ctx.lineTo(x+cs, y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x+w-cs, y); ctx.lineTo(x+w, y); ctx.lineTo(x+w, y+cs); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, y+h-cs); ctx.lineTo(x, y+h); ctx.lineTo(x+cs, y+h); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x+w-cs, y+h); ctx.lineTo(x+w, y+h); ctx.lineTo(x+w, y+h-cs); ctx.stroke();
   });
 }
 

@@ -91,22 +91,32 @@ async def detect_realtime(file: UploadFile = File(...)):
 # ── 2. FULL PLANT SCAN & ANALYSIS ENDPOINT ──
 @app.post("/scan")
 async def scan_plant(file: UploadFile = File(...)):
-    """Handles plant diagnosis requests, extracting bounding boxes and Claude AI reports safely."""
     try:
         await file.seek(0)
         contents = await file.read()
-        
-        if not contents or len(contents) == 0:
-            raise ValueError("Empty image buffer passed to server")
+        if not contents or len(contents) < 100:
+            return {
+                "success": False,
+                "error": "Empty or corrupt image",
+                "detections": [],
+                "analysis": {}
+            }
 
-        image = Image.open(io.BytesIO(contents)).convert("RGB")
+        try:
+            image = Image.open(io.BytesIO(contents)).convert("RGB")
+        except Exception as img_err:
+            return {
+                "success": False,
+                "error": f"Invalid image: {str(img_err)}",
+                "detections": [],
+                "analysis": {}
+            }
+
         img_width, img_height = image.size
 
-        # Run custom YOLO model inference
         model = get_yolo_model()
         results = model(image, conf=0.25, verbose=False)
         detections = []
-
         for result in results:
             boxes = result.boxes
             if boxes is not None:
@@ -115,7 +125,6 @@ async def scan_plant(file: UploadFile = File(...)):
                     conf = float(box.conf[0])
                     cls = int(box.cls[0])
                     label = model.names[cls]
-                    
                     detections.append({
                         "label": str(label),
                         "confidence": round(conf * 100, 1),
@@ -127,22 +136,17 @@ async def scan_plant(file: UploadFile = File(...)):
                         }
                     })
 
-        # Base fallback analysis
-        primary_label = detections[0]["label"] if detections else "Plant Sample"
+        # Base analysis (fallback)
         analysis = {
-            "plant_name": primary_label,
+            "plant_name": detections[0]["label"] if detections else "Plant",
             "plant_type": "Crop",
             "health_status": "Healthy",
             "severity": "none",
             "confidence": detections[0]["confidence"] if detections else 85.0,
-            "description": f"Scanned {primary_label} using custom local YOLO model.",
-            "treatments": [
-                "Maintain adequate regular watering.",
-                "Ensure sufficient daily sunlight exposure."
-            ]
+            "description": f"Scanned {detections[0]['label'] if detections else 'plant'} using local YOLO.",
+            "treatments": ["Maintain regular watering.", "Ensure adequate sunlight."]
         }
 
-        # Safely execute Claude API visual analysis
         if CLAUDE_API_KEY:
             try:
                 buffer = io.BytesIO()
@@ -171,15 +175,14 @@ async def scan_plant(file: UploadFile = File(...)):
                         ]
                     }]
                 )
-                
                 raw_text = message.content[0].text.strip() if message.content else ""
                 if raw_text:
                     match = re.search(r'\{.*\}', raw_text, re.DOTALL)
-                    if match and match.group(0).strip():
-                        analysis = json.loads(match.group(0).strip())
-                        print("🧠 Claude AI Visual Analysis parsed successfully!")
+                    if match:
+                        analysis = json.loads(match.group(0))
+                        print("✅ Claude analysis parsed")
             except Exception as claude_err:
-                print(f"⚠️ Claude AI API warning: {claude_err}")
+                print(f"⚠️ Claude error: {claude_err}")
 
         return {
             "success": True,
@@ -188,21 +191,13 @@ async def scan_plant(file: UploadFile = File(...)):
             "analysis": analysis
         }
 
-    except Exception as general_err:
-        print(f"❌ Scan Exception handled: {general_err}")
+    except Exception as e:
+        print(f"❌ Scan exception: {e}")
         return {
-            "success": True,
-            "image_size": {"width": 640, "height": 480},
+            "success": False,
+            "error": str(e),
             "detections": [],
-            "analysis": {
-                "plant_name": "Scanned Crop",
-                "plant_type": "Plant",
-                "health_status": "Healthy",
-                "severity": "none",
-                "confidence": 85,
-                "description": "Plant analysis completed via local engine.",
-                "treatments": ["Maintain regular watering and monitoring."]
-            }
+            "analysis": {}
         }
 
 if __name__ == "__main__":
