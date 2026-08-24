@@ -3249,13 +3249,43 @@ function showScannerPreview(src) {
   document.getElementById('scannerPreviewImg').src             = src;
 }
 
-// ── SCAN WITH PYTHON AI SERVER ──
-async function scanWithPythonAI(imageBlob) {
-    if (!imageBlob || imageBlob.size === 0) {
-        throw new Error("Captured image frame is empty. Please restart camera.");
+// ==========================================
+// 1. HELPER: Convert Base64/DataURI to Blob
+// ==========================================
+function dataURItoBlob(dataURI) {
+    if (!dataURI) return null;
+    if (dataURI instanceof Blob) return dataURI;
+
+    try {
+        const byteString = atob(dataURI.split(',')[1]);
+        const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        const ab = new ArrayBuffer(byteString.length);
+        const ia = new Uint8Array(ab);
+        
+        for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        
+        return new Blob([ab], { type: mimeString });
+    } catch (e) {
+        console.error("Error converting image data to Blob:", e);
+        return null;
+    }
+}
+
+// ==========================================
+// 2. MAIN AI SCAN FUNCTION (Fixes Blob Error)
+// ==========================================
+async function scanWithPythonAI(imageData) {
+    // Automatically converts base64 scannerImageData to a valid Blob
+    const imageBlob = dataURItoBlob(imageData);
+
+    if (!imageBlob) {
+        throw new Error("Invalid image format. Please capture or upload a photo again.");
     }
 
     const formData = new FormData();
+    // Safely appends the converted image blob
     formData.append('file', imageBlob, 'capture.jpg');
 
     const response = await fetch(`${AI_SERVER_URL}/scan`, {
@@ -3270,70 +3300,75 @@ async function scanWithPythonAI(imageBlob) {
     return await response.json();
 }
 
-// ── RUN PLANT SCAN (on captured/uploaded photo) ──
+// ==========================================
+// 3. RUN PLANT SCAN HANDLER
+// ==========================================
 async function runPlantScan() {
-  if (!scannerImageData) { toast('Please provide a plant photo first.', 'warn'); return; }
-
-  document.getElementById('scannerPreviewView').style.display    = 'none';
-  document.getElementById('scannerAnalyzingView').style.display  = 'flex';
-  document.getElementById('scannerAnalyzingImg').src             = scannerImageData;
-  document.getElementById('scannerAnalyzingSub').textContent     = '🤖 Running Python AI + Claude…';
-  document.getElementById('scannerResultCard').style.display     = 'none';
-
-  try {
-    document.getElementById('scannerAnalyzingSub').textContent = '🐍 Analyzing plant…';
-
-    // Call Python AI Server
-    const result = await scanWithPythonAI(scannerImageData);
-    console.log('Python AI result:', result);
-
-    if (!result.success) {
-      throw new Error(result.error || 'AI server error');
+    if (!scannerImageData) { 
+        toast('Please provide a plant photo first.', 'warn'); 
+        return; 
     }
 
-    const analysis   = result.analysis   || {};
-    const detections = result.detections || [];
+    document.getElementById('scannerPreviewView').style.display    = 'none';
+    document.getElementById('scannerAnalyzingView').style.display  = 'flex';
+    document.getElementById('scannerAnalyzingImg').src             = scannerImageData;
+    document.getElementById('scannerAnalyzingSub').textContent     = '🤖 Running Python AI + Claude…';
+    document.getElementById('scannerResultCard').style.display     = 'none';
 
-    let identified = { name: 'Unknown Plant', type: 'Unknown', confidence: 0 };
-    if (analysis.plant_name && analysis.plant_name !== 'No Plant Detected') {
-      identified = {
-        name:       analysis.plant_name,
-        emoji:      getPlantEmoji(analysis.plant_name),
-        type:       analysis.plant_type || 'Plant',
-        confidence: analysis.confidence || 90,
-      };
-    } else if (detections.length > 0) {
-      identified = {
-        name:       detections[0].label,
-        emoji:      getPlantEmoji(detections[0].label),
-        type:       'Detected',
-        confidence: detections[0].confidence,
-      };
-    } else {
-      throw new Error('No plant detected in the image.');
+    try {
+        document.getElementById('scannerAnalyzingSub').textContent = '🐍 Analyzing plant…';
+
+        // Call Python AI Server with converted image payload
+        const result = await scanWithPythonAI(scannerImageData);
+        console.log('Python AI result:', result);
+
+        if (!result.success) {
+            throw new Error(result.error || 'AI server error');
+        }
+
+        const analysis   = result.analysis   || {};
+        const detections = result.detections || [];
+
+        let identified = { name: 'Unknown Plant', type: 'Unknown', confidence: 0 };
+        if (analysis.plant_name && analysis.plant_name !== 'No Plant Detected') {
+            identified = {
+                name:       analysis.plant_name,
+                emoji:      getPlantEmoji(analysis.plant_name),
+                type:       analysis.plant_type || 'Plant',
+                confidence: analysis.confidence || 90,
+            };
+        } else if (detections.length > 0) {
+            identified = {
+                name:       detections[0].label,
+                emoji:      getPlantEmoji(detections[0].label),
+                type:       'Detected',
+                confidence: detections[0].confidence,
+            };
+        } else {
+            throw new Error('No plant detected in the image.');
+        }
+
+        let disease = { name: 'Healthy', severity: 'none', confidence: 92, color: 'green' };
+        if (analysis.health_status && analysis.health_status !== 'Healthy' && analysis.severity !== 'none') {
+            const sev = analysis.severity || 'medium';
+            disease = {
+                name:       analysis.health_status,
+                severity:   sev,
+                confidence: analysis.confidence || 85,
+                color:      sev === 'high' ? 'red' : sev === 'medium' ? 'amber' : 'green',
+                treatments: analysis.treatments || [],
+                description: analysis.description || '',
+            };
+        }
+
+        await new Promise(r => setTimeout(r, 300));
+        showScannerResult(identified, disease, detections);
+
+    } catch (err) {
+        console.error('Scanner error:', err);
+        toast(`AI analysis failed: ${err.message}`, 'err');
+        resetScanner();
     }
-
-    let disease = { name: 'Healthy', severity: 'none', confidence: 92, color: 'green' };
-    if (analysis.health_status && analysis.health_status !== 'Healthy' && analysis.severity !== 'none') {
-      const sev = analysis.severity || 'medium';
-      disease = {
-        name:       analysis.health_status,
-        severity:   sev,
-        confidence: analysis.confidence || 85,
-        color:      sev === 'high' ? 'red' : sev === 'medium' ? 'amber' : 'green',
-        treatments: analysis.treatments || [],
-        description: analysis.description || '',
-      };
-    }
-
-    await new Promise(r => setTimeout(r, 300));
-    showScannerResult(identified, disease, detections);
-
-  } catch (err) {
-    console.error('Scanner error:', err);
-    toast(`AI analysis failed: ${err.message}`, 'err');
-    resetScanner();
-  }
 }
 
 // ── GET PLANT EMOJI ──
