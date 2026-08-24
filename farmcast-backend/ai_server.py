@@ -10,16 +10,13 @@ import re
 import os
 import uvicorn
 
-# Load environment variables from .env file
 load_dotenv()
 
-# ── CONFIGURATION ──
 CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 YOLO_MODEL_PATH = os.environ.get("FARMCAST_YOLO_MODEL", "plant_disease.pt")
 
 app = FastAPI(title="FarmCast AI Server", version="1.0.0")
 
-# Enable CORS for local frontend requests
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -48,17 +45,19 @@ def health_check():
 async def detect_realtime(file: UploadFile = File(...)):
     """Handles real-time camera frame detection using custom YOLOv8 model."""
     try:
+        await file.seek(0)
         contents = await file.read()
-        image = Image.open(io.BytesIO(contents)).convert("RGB")
+        
+        if not contents:
+            return {"success": False, "detections": []}
 
-        # Resize image for fast local inference
+        image = Image.open(io.BytesIO(contents)).convert("RGB")
         if max(image.size) > 640:
             ratio = 640 / max(image.size)
             new_size = (int(image.width * ratio), int(image.height * ratio))
             image = image.resize(new_size, Image.LANCZOS)
 
         img_width, img_height = image.size
-
         model = get_yolo_model()
         results = model(image, conf=0.25, verbose=False)
         detections = []
@@ -84,42 +83,21 @@ async def detect_realtime(file: UploadFile = File(...)):
                     })
 
         detections.sort(key=lambda d: d["confidence"], reverse=True)
-
-        return {
-            "success": True,
-            "detections": detections[:10],
-            "image_size": {"width": img_width, "height": img_height}
-        }
+        return {"success": True, "detections": detections[:10], "image_size": {"width": img_width, "height": img_height}}
 
     except Exception as e:
-        return {
-            "success": False,
-            "error": str(e),
-            "detections": []
-        }
+        return {"success": False, "error": str(e), "detections": []}
 
-# ── 2. FULL PLANT SCAN & ANALYSIS ENDPOINT (SAFEGUARDED) ──
+# ── 2. FULL PLANT SCAN & ANALYSIS ENDPOINT ──
 @app.post("/scan")
 async def scan_plant(file: UploadFile = File(...)):
-    """Handles plant diagnosis requests and safely parses JSON without throwing 'Ran out of input'."""
+    """Handles plant diagnosis requests, extracting bounding boxes and Claude AI reports safely."""
     try:
+        await file.seek(0)
         contents = await file.read()
         
         if not contents or len(contents) == 0:
-            return {
-                "success": False,
-                "error": "Empty file received",
-                "detections": [],
-                "analysis": {
-                    "plant_name": "No Image Captured",
-                    "plant_type": "N/A",
-                    "health_status": "Retry",
-                    "severity": "none",
-                    "confidence": 0,
-                    "description": "Please capture a clear photo of the plant.",
-                    "treatments": ["Ensure good lighting and focus."]
-                }
-            }
+            raise ValueError("Empty image buffer passed to server")
 
         image = Image.open(io.BytesIO(contents)).convert("RGB")
         img_width, img_height = image.size
@@ -149,7 +127,7 @@ async def scan_plant(file: UploadFile = File(...)):
                         }
                     })
 
-        # Default fallback response structure
+        # Base fallback analysis
         primary_label = detections[0]["label"] if detections else "Plant Sample"
         analysis = {
             "plant_name": primary_label,
@@ -195,17 +173,13 @@ async def scan_plant(file: UploadFile = File(...)):
                 )
                 
                 raw_text = message.content[0].text.strip() if message.content else ""
-                
-                # Check if raw_text is non-empty before running regex search
                 if raw_text:
                     match = re.search(r'\{.*\}', raw_text, re.DOTALL)
                     if match and match.group(0).strip():
-                        parsed = json.loads(match.group(0).strip())
-                        if parsed:
-                            analysis = parsed
-                            print("🧠 Claude AI Visual Analysis parsed successfully!")
+                        analysis = json.loads(match.group(0).strip())
+                        print("🧠 Claude AI Visual Analysis parsed successfully!")
             except Exception as claude_err:
-                print(f"⚠️ Claude AI API warning handled safely: {claude_err}")
+                print(f"⚠️ Claude AI API warning: {claude_err}")
 
         return {
             "success": True,
