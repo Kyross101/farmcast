@@ -3033,10 +3033,26 @@ function startRealTimeDetection() {
   }, 200);
 }
 
+// ── STOP REAL-TIME DETECTION (Clean Reset) ──
 function stopRealTimeDetection() {
   rtIsRunning = false;
-  if (rtDetectionLoop) { clearInterval(rtDetectionLoop); rtDetectionLoop = null; }
-  if (rtCtx && rtCanvas) rtCtx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
+  isDetectingFrame = false; // Reset lock flag for future camera sessions
+
+  // Clear interval loop
+  if (rtDetectionLoop) { 
+    clearInterval(rtDetectionLoop); 
+    rtDetectionLoop = null; 
+  }
+
+  // Clear and hide canvas overlay
+  const rtCanvasEl = document.getElementById('rtDetectionCanvas') || rtCanvas;
+  if (rtCanvasEl) {
+    const ctx = rtCanvasEl.getContext('2d');
+    if (ctx) {
+      ctx.clearRect(0, 0, rtCanvasEl.width, rtCanvasEl.height);
+    }
+    rtCanvasEl.style.display = 'none'; // Hide overlay completely
+  }
 }
 
 // ── REAL-TIME FRAME RUNNER (Pointed to Localhost Port 8000) ──
