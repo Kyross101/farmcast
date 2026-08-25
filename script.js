@@ -3385,19 +3385,45 @@ async function runPlantScan() {
             throw new Error('No plant detected in the image.');
         }
 
-        let disease = { name: 'Healthy', severity: 'none', confidence: 92, color: 'green' };
-        if (analysis.health_status && analysis.health_status !== 'Healthy' && analysis.severity !== 'none') {
-            const sev = analysis.severity || 'medium';
-            disease = {
-                name:       analysis.health_status,
-                severity:   sev,
-                confidence: analysis.confidence || 85,
-                color:      sev === 'high' ? 'red' : sev === 'medium' ? 'amber' : 'green',
-                treatments: analysis.treatments || [],
-                description: analysis.description || '',
-            };
-        }
+       let disease = {
+    name: 'Healthy',
+    severity: 'none',
+    confidence: analysis.confidence || 85,
+    color: 'none',
+    treatments: [],
+    description: ''
+};
 
+const healthStatus = String(analysis.health_status || '').trim();
+const severity = String(analysis.severity || 'none').toLowerCase();
+
+if (
+    healthStatus &&
+    healthStatus.toLowerCase() !== 'healthy' &&
+    healthStatus.toLowerCase() !== 'no disease' &&
+    healthStatus.toLowerCase() !== 'no disease detected'
+) {
+    const sev =
+        ['high', 'medium', 'low'].includes(severity)
+            ? severity
+            : 'medium';
+
+    disease = {
+        name: healthStatus,
+        severity: sev,
+        confidence: analysis.confidence || 85,
+        color:
+            sev === 'high'
+                ? 'red'
+                : sev === 'medium'
+                    ? 'amber'
+                    : 'low',
+        treatments: Array.isArray(analysis.treatments)
+            ? analysis.treatments
+            : [],
+        description: analysis.description || ''
+    };
+}
         await new Promise(r => setTimeout(r, 300));
         showScannerResult(identified, disease, detections);
 
