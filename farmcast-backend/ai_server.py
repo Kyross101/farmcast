@@ -13,7 +13,7 @@ import uvicorn
 load_dotenv()
 
 CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
-YOLO_MODEL_PATH = os.environ.get("FARMCAST_YOLO_MODEL", "plant_disease.pt")
+YOLO_MODEL_PATH = os.environ.get("FARMCAST_YOLO_MODEL", "yolov8n.pt")
 
 app = FastAPI(title="FarmCast AI Server", version="1.0.0")
 
