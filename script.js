@@ -2,7 +2,7 @@
 // FARMCAST — Main Application Script
 // ═══════════════════════════════════════════
 
-const API_KEY = '2e3d2d2d9957fd5364e42c6cf4fe73e5'; // OWM API key
+const API_KEY = 'd0b23ea9dcaa2c9af041da23885eb307'; // OWM API key
 // Roboflow API config – DEPRECATED, removed
 // Python AI Server (YOLOv8 + Claude AI)
 // Local FastAPI Server Base URL
