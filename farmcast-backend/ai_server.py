@@ -199,14 +199,25 @@ def get_disease_recommendation(health_status):
         }
     if "smut" in status:
         return {
-        "severity": "medium",
-        "description": "Signs consistent with a smut disease were detected.",
-        "treatments": [
-            "Remove heavily affected plant material.",
-            "Keep the growing area clean of infected plant debris.",
-            "Clean tools after handling affected plants.",
-            "Monitor nearby plants for similar symptoms."
-        ]
+           "severity": "medium",
+           "description": "Signs consistent with a smut disease were detected.",
+           "treatments": [
+               "Remove heavily affected plant material.",
+               "Keep the growing area clean of infected plant debris.",
+               "Clean tools after handling affected plants.",
+               "Monitor nearby plants for similar symptoms."
+            ]
+    }
+    if "mold" in status:
+        return {
+           "severity": "medium",
+           "description": "Signs consistent with a plant mold disease were detected.",
+           "treatments": [
+               "Remove heavily affected leaves.",
+               "Improve airflow around the plant.",
+               "Avoid prolonged moisture on the foliage.",
+               "Monitor nearby leaves for similar symptoms."
+            ]
     }
 
     return {
@@ -433,17 +444,60 @@ async def scan_plant(file: UploadFile = File(...)):
             top_detection = detections[0]
 
 
+            is_ambiguous = False
+
+            if len(detections) >= 2:
+                second_detection = detections[1]
+
+                confidence_gap = (
+                    top_detection["confidence"]
+                    - second_detection["confidence"]
+                )
+
+                if confidence_gap < 10:
+                    is_ambiguous = True
+
+
             parsed = parse_disease_label(top_detection["label"])
+            
+            
             recommendation = get_disease_recommendation(
                 parsed["health_status"]
             )
+            
+            confidence = top_detection["confidence"]
+
+            if is_ambiguous:
+                diagnosis = "Unable to determine"
+                recommendation = {
+                    "severity": "unknown",
+                    "description": (
+                        "The AI found multiple possible conditions "
+                        "with similar confidence. Try scanning a clearer "
+                        "photo of the affected leaf."
+                    ),
+                    "treatments": [
+                        "Take another photo in good lighting.",
+                        "Keep the affected leaf clearly visible.",
+                        "Avoid including too much background in the image."
+                    ]
+                }
+
+            elif parsed["health_status"] in [
+                "Healthy",
+                "No specific disease detected"
+            ]:
+                diagnosis = parsed["health_status"]
+
+            else:
+                diagnosis = f"Possible {parsed['health_status']}"
 
             analysis = {
                 "plant_name": parsed["plant_name"],
                 "plant_type": "Crop",
-                "health_status": parsed["health_status"],
+                "health_status": diagnosis,
                 "severity": recommendation["severity"],
-                "confidence": top_detection["confidence"],
+                "confidence": confidence,
                 "description": recommendation["description"],
                 "treatments": recommendation["treatments"]
             }
