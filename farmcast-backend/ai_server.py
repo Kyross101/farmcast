@@ -22,6 +22,7 @@ DISEASE_MODEL_PATH = os.environ.get(
 
 CROP_CONFIDENCE = float(os.environ.get("FARMCAST_CROP_CONF", "0.40"))
 DISEASE_CONFIDENCE = float(os.environ.get("FARMCAST_DISEASE_CONF", "0.25"))
+LOW_CONFIDENCE_THRESHOLD = float(os.environ.get("FARMCAST_LOW_CONFIDENCE_THRESHOLD", "50.0"))
 
 app = FastAPI(title="FarmCast AI Server", version="1.1.0")
 
@@ -443,7 +444,6 @@ async def scan_plant(file: UploadFile = File(...)):
         if detections:
             top_detection = detections[0]
 
-
             is_ambiguous = False
 
             if len(detections) >= 2:
@@ -457,18 +457,17 @@ async def scan_plant(file: UploadFile = File(...)):
                 if confidence_gap < 10:
                     is_ambiguous = True
 
-
             parsed = parse_disease_label(top_detection["label"])
-            
-            
+
+            confidence = top_detection["confidence"]
+ 
             recommendation = get_disease_recommendation(
                 parsed["health_status"]
             )
-            
-            confidence = top_detection["confidence"]
 
             if is_ambiguous:
                 diagnosis = "Unable to determine"
+
                 recommendation = {
                     "severity": "unknown",
                     "description": (
@@ -482,6 +481,22 @@ async def scan_plant(file: UploadFile = File(...)):
                         "Avoid including too much background in the image."
                     ]
                 }
+
+            elif confidence < LOW_CONFIDENCE_THRESHOLD:
+                diagnosis = "Unable to determine"
+
+                recommendation = {
+                    "severity": "unknown",
+                    "description": (
+                        "The AI confidence is too low for a reliable result. "
+                        "Try scanning the affected leaf again with a clearer image."
+                    ),
+                    "treatments": [
+                        "Take another photo in good lighting.",
+                        "Keep the affected leaf centered in the image.",
+                        "Avoid blurry or distant photos."
+            ]
+        }
 
             elif parsed["health_status"] in [
                 "Healthy",
@@ -501,6 +516,7 @@ async def scan_plant(file: UploadFile = File(...)):
                 "description": recommendation["description"],
                 "treatments": recommendation["treatments"]
             }
+
         else:
             analysis = {
                 "plant_name": "Unknown",
