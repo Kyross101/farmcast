@@ -67,6 +67,7 @@ CROP_MAPPING = {
     "sweet potato": "Kamote",
     "garlic/ail": "Garlic",
     "onion": "Onion",
+    "potato": "Potato"
 }
 
 DISEASE_CROP_MAPPING = {
@@ -76,11 +77,13 @@ DISEASE_CROP_MAPPING = {
     "garlic": "Garlic",
     "rice": "Rice",
     "cabbage": "Cabbage",
+    "potato": "Potato",
 }
 
 HEALTHY_LABELS = {
     "tomato healthy",
     "corn healthy",
+    "potato healthy",
 }
 
 NEUTRAL_LEAF_LABELS = {
@@ -90,6 +93,7 @@ NEUTRAL_LEAF_LABELS = {
     "garlic leaf",
     "rice leaf",
     "cabbage leaf",
+    "potato leaf",
 }
 
 def map_crop_label(yolo_label):
@@ -193,6 +197,17 @@ def get_disease_recommendation(health_status):
                 "Monitor nearby plants for similar symptoms."
             ]
         }
+    if "smut" in status:
+        return {
+        "severity": "medium",
+        "description": "Signs consistent with a smut disease were detected.",
+        "treatments": [
+            "Remove heavily affected plant material.",
+            "Keep the growing area clean of infected plant debris.",
+            "Clean tools after handling affected plants.",
+            "Monitor nearby plants for similar symptoms."
+        ]
+    }
 
     return {
         "severity": "unknown",
