@@ -2942,6 +2942,17 @@ function initScannerPage() {
   }
 }
 
+// ── SCAN AGAIN ──
+async function scanAgain() {
+  // Reset previous result and realtime state
+  resetScanner();
+
+  // Open camera again.
+  // openScannerCamera() will restart realtime detection
+  // once the video metadata is ready.
+  await openScannerCamera();
+}
+
 // ── RESET SCANNER ──
 function resetScanner() {
   stopRealTimeDetection();
