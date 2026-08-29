@@ -4,17 +4,14 @@
 
 const API_KEY = 'd0b23ea9dcaa2c9af041da23885eb307'; // OWM API key
 // Roboflow API config – DEPRECATED, removed
-// Python AI Server (YOLOv8 + Claude AI)
+// Python AI Server (YOLOv8 plant and disease models)
 // Local FastAPI Server Base URL
 const AI_SERVER_URL = 'http://127.0.0.1:8000'; // ← Ilagay mo dito ang URL ng iyong AI server
 
-// ═══════════════════════════════════════════════════════
-// TASK 4 — CLAUDE AI PLANT IDENTIFICATION
-// Integrates with Anthropic API for unlimited plant ID
-// ═══════════════════════════════════════════════════════
-
-// REMOVED: browser-side Claude API key and function (moved to backend)
-// All Claude calls now go through the Python server.
+// ============================================================
+// FARMCAST AI — LOCAL PLANT & DISEASE DETECTION
+// Uses the Python FastAPI server with local YOLO models.
+// ============================================================
 
 let currentCity = 'San Miguel, Bulacan';
 let currentWeather = null;
@@ -2788,7 +2785,7 @@ async function runAIDetection() {
   document.getElementById('aiAnalyzingSub').textContent = 'Connecting to AI server…';
 
   try {
-    document.getElementById('aiAnalyzingSub').textContent = 'Analyzing crop with YOLO + Claude…';
+    document.getElementById('aiAnalyzingSub').textContent = 'Analyzing plant with FarmCast AI…';
 
     // Use the same Python server as the scanner
     const result = await scanWithPythonAI(aiImageData);
@@ -2801,37 +2798,45 @@ async function runAIDetection() {
     const analysis   = result.analysis   || {};
     const detections = result.detections || [];
 
-    let identified = { name: 'Unknown Plant', type: 'Unknown', confidence: 0 };
-    if (analysis.plant_name && analysis.plant_name !== 'No Plant Detected') {
-      identified = {
-        name:       analysis.plant_name,
-        emoji:      '',
-        type:       analysis.plant_type || 'Plant',
-        confidence: analysis.confidence || 90,
-      };
-    } else if (detections.length > 0) {
-      identified = {
-        name:       detections[0].label,
-        emoji:      '',
-        type:       'Detected',
-        confidence: detections[0].confidence,
-      };
-    } else {
-      throw new Error('No plant detected in the image.');
+    if (!analysis || !analysis.health_status) {
+      throw new Error('AI server returned no reliable analysis.');
     }
 
-    let disease = { name: 'Healthy', severity: 'none', confidence: 92, color: 'green' };
-    if (analysis.health_status && analysis.health_status !== 'Healthy' && analysis.severity !== 'none') {
-      const sev = analysis.severity || 'medium';
-      disease = {
-        name:       analysis.health_status,
-        severity:   sev,
-        confidence: analysis.confidence || 85,
-        color:      sev === 'high' ? 'red' : sev === 'medium' ? 'amber' : 'green',
-        treatments: analysis.treatments || [],
-        description: analysis.description || '',
-      };
+    const identified = {
+      name:       analysis.plant_name || 'Unknown',
+      emoji:      CROP_EMOJIS[analysis.plant_name] || '🌿',
+      type:       analysis.plant_type || 'Crop',
+      confidence: Number(analysis.confidence ?? 0),
+    };
+
+    const healthStatus = analysis.health_status || 'Unable to determine';
+    const severity     = analysis.severity || 'unknown';
+    const confidence   = Number(analysis.confidence ?? 0);
+
+    let color = 'amber';
+
+    if (healthStatus === 'Healthy') {
+  color = 'green';
+    } else if (healthStatus === 'No specific disease detected') {
+  color = 'green';
+    } else if (healthStatus === 'Unable to determine') {
+  color = 'amber';
+    } else if (severity === 'high') {
+  color = 'red';
+    } else if (severity === 'medium') {
+  color = 'amber';
     }
+
+    const disease = {
+      name:        healthStatus,
+      severity:    severity,
+      confidence:  confidence,
+      color:       color,
+      treatments:  Array.isArray(analysis.treatments)
+        ? analysis.treatments
+        : [],
+      description: analysis.description || '',
+    };
 
     await new Promise(r => setTimeout(r, 300));
     showAIResult(disease, detections);
@@ -2864,7 +2869,7 @@ function showAIResult(disease, rawPredictions) {
   document.getElementById('aiResultIcon').textContent   = isHealthy ? '✅' : disease.severity === 'high' ? '🚨' : '⚠️';
   document.getElementById('aiResultStatus').textContent = disease.name;
   document.getElementById('aiResultStatus').style.color = col;
-  document.getElementById('aiResultConf').textContent   = `${disease.confidence || 80}% confidence`;
+  document.getElementById('aiResultConf').textContent   = `${Number(disease.confidence ?? 0)}% AI confidence`;
 
   // Disease card
   const diseaseCard = document.getElementById('aiDiseaseCard');
@@ -2902,10 +2907,8 @@ function showAIResult(disease, rawPredictions) {
 }
 
 
-// ═══════════════════════════════════════════════════════
 // PLANT HEALTH SCANNER — Real-time Object Detection
-// Uses Python AI Server (YOLOv8 + Claude)
-// ═══════════════════════════════════════════════════════
+// Uses the Python FastAPI AI server with local YOLO models
 
 // ── STATE ──
 let scannerCamStream   = null;
@@ -3055,19 +3058,25 @@ function stopRealTimeDetection() {
   }
 }
 
-// ── REAL-TIME FRAME RUNNER WITH GETBOUNDINGCLIENTRECT ──
+// Prevent overlapping real-time AI requests
+let rtDetectionBusy = false;
+
+// ── REAL-TIME FRAME RUNNER ──
 async function runRealTimeFrame() {
+  if (rtDetectionBusy) return;
+
   const video = document.getElementById('scannerVideo');
-  if (!video || !video.videoWidth) return;
+  if (!video || !video.videoWidth || !video.videoHeight) return;
 
   const capCanvas = document.getElementById('scannerCanvas');
   let rtCanvas = document.getElementById('rtDetectionCanvas');
   const cameraWrap = document.getElementById('scannerCameraView');
 
-  // Ensure overlay canvas exists and is visible
+  // Ensure overlay canvas exists
   if (!rtCanvas && cameraWrap) {
     rtCanvas = document.createElement('canvas');
     rtCanvas.id = 'rtDetectionCanvas';
+
     rtCanvas.style.cssText = `
       position: absolute;
       top: 0;
@@ -3078,8 +3087,10 @@ async function runRealTimeFrame() {
       pointer-events: none;
       border-radius: var(--r);
     `;
+
     cameraWrap.style.position = 'relative';
     cameraWrap.appendChild(rtCanvas);
+
   } else if (rtCanvas) {
     rtCanvas.style.display = 'block';
     rtCanvas.style.zIndex = '10';
@@ -3087,88 +3098,147 @@ async function runRealTimeFrame() {
 
   if (!capCanvas || !rtCanvas) return;
 
-  // Capture frame
-  capCanvas.width = video.videoWidth;
-  capCanvas.height = video.videoHeight;
-  const capCtx = capCanvas.getContext('2d');
-  capCtx.drawImage(video, 0, 0);
-
-  // Get actual display size using getBoundingClientRect()
-  const rect = video.getBoundingClientRect();
-  const displayWidth = Math.round(rect.width) || 640;
-  const displayHeight = Math.round(rect.height) || 480;
-
-  // Resize overlay canvas to match display size
-  if (rtCanvas.width !== displayWidth || rtCanvas.height !== displayHeight) {
-    rtCanvas.width = displayWidth;
-    rtCanvas.height = displayHeight;
-    console.log(`[RT] Canvas resized to ${displayWidth}x${displayHeight}`);
-  }
-
-  const ctx = rtCanvas.getContext('2d');
-  ctx.clearRect(0, 0, rtCanvas.width, rtCanvas.height);
-
-  if (displayWidth === 0 || displayHeight === 0) {
-    console.warn('[RT] Video display size zero – skipping');
-    return;
-  }
+  rtDetectionBusy = true;
 
   try {
+    // ── Capture camera frame ──
+    capCanvas.width = video.videoWidth;
+    capCanvas.height = video.videoHeight;
+
+    const capCtx = capCanvas.getContext('2d');
+    capCtx.drawImage(
+      video,
+      0,
+      0,
+      capCanvas.width,
+      capCanvas.height
+    );
+
+    // ── Match overlay to displayed video size ──
+    const rect = video.getBoundingClientRect();
+
+    const displayWidth = Math.round(rect.width);
+    const displayHeight = Math.round(rect.height);
+
+    if (displayWidth <= 0 || displayHeight <= 0) {
+      return;
+    }
+
+    if (
+      rtCanvas.width !== displayWidth ||
+      rtCanvas.height !== displayHeight
+    ) {
+      rtCanvas.width = displayWidth;
+      rtCanvas.height = displayHeight;
+
+      console.log(
+        `[RT] Canvas resized to ${displayWidth}x${displayHeight}`
+      );
+    }
+
+    // ── Convert frame to JPEG ──
     const blob = await new Promise(resolve =>
       capCanvas.toBlob(resolve, 'image/jpeg', 0.65)
     );
-    if (!blob) throw new Error('No blob');
+
+    if (!blob) {
+      throw new Error('Unable to capture camera frame.');
+    }
 
     const formData = new FormData();
     formData.append('file', blob, 'frame.jpg');
 
-    const res = await fetch('http://127.0.0.1:8000/detect', {
-      method: 'POST',
-      body: formData
-    });
+    // ── Send to crop detector ──
+    const res = await fetch(
+      `${AI_SERVER_URL}/detect`,
+      {
+        method: 'POST',
+        body: formData
+      }
+    );
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
 
     const data = await res.json();
-    const detections = data.detections || [];
+    const detections = Array.isArray(data.detections)
+      ? data.detections
+      : [];
 
+    const ctx = rtCanvas.getContext('2d');
+
+    // Clear only AFTER we have a new response
+    ctx.clearRect(
+      0,
+      0,
+      rtCanvas.width,
+      rtCanvas.height
+    );
+
+    // ── No crop detected ──
     if (detections.length === 0) {
-      const labelEl = document.getElementById('rtLiveLabels');
-      if (labelEl) labelEl.innerHTML = '<span class="rt-label-empty">🔍 No plant detected</span>';
+      const labelEl =
+        document.getElementById('rtLiveLabels');
+
+      if (labelEl) {
+        labelEl.innerHTML =
+          '<span class="rt-label-empty">🔍 No supported crop detected</span>';
+      }
+
       return;
     }
 
-    const diseaseKeywords = ['blight','spot','rust','mildew','rot','wilt','virus','mosaic','smut','blast','disease','infected'];
-    const plantPreds = [], diseasePreds = [];
+    // /detect is now crop detection only
+    const plantPreds = [];
 
     detections.forEach(det => {
       if (!det.bbox || !det.label) return;
-      const label = String(det.label).toLowerCase();
-      const isDisease = diseaseKeywords.some(kw => label.includes(kw));
-      const pred = {
-        class: det.label,
-        confidence: det.confidence,
-        x: Number(det.bbox.x) * rtCanvas.width,
-        y: Number(det.bbox.y) * rtCanvas.height,
-        width: Number(det.bbox.width) * rtCanvas.width,
-        height: Number(det.bbox.height) * rtCanvas.height,
-      };
-      if (isDisease) diseasePreds.push(pred);
-      else plantPreds.push(pred);
+
+      const bbox = det.bbox;
+
+      plantPreds.push({
+        class: String(det.label),
+        confidence: Number(det.confidence ?? 0),
+
+        // Backend bbox uses normalized TOP-LEFT x/y
+        x: Number(bbox.x) * rtCanvas.width,
+        y: Number(bbox.y) * rtCanvas.height,
+
+        width:
+          Number(bbox.width) * rtCanvas.width,
+
+        height:
+          Number(bbox.height) * rtCanvas.height
+      });
     });
 
-    // Draw bounding boxes using updated drawBoundingBoxes
-    drawBoundingBoxes(plantPreds, '#3fb950', 'plant');
-    drawBoundingBoxes(diseasePreds, '#f85149', 'disease');
+    console.log('[RT] Crop predictions:', plantPreds);
+
+    // Crop detector = green boxes
+    drawBoundingBoxes(
+      plantPreds,
+      '#3fb950',
+      'plant'
+    );
 
     if (typeof updateRTLabels === 'function') {
-      updateRTLabels(plantPreds, diseasePreds);
+      updateRTLabels(plantPreds, []);
     }
 
   } catch (err) {
     console.warn('[RT] Detection error:', err);
-    const labelEl = document.getElementById('rtLiveLabels');
-    if (labelEl) labelEl.innerHTML = '<span class="rt-label-empty" style="color:var(--red)">⚠️ Detection unavailable</span>';
+
+    const labelEl =
+      document.getElementById('rtLiveLabels');
+
+    if (labelEl) {
+      labelEl.innerHTML =
+        '<span class="rt-label-empty" style="color:var(--red)">⚠️ Detection unavailable</span>';
+    }
+
+  } finally {
+    rtDetectionBusy = false;
   }
 }
 
@@ -3219,23 +3289,36 @@ function updateRTLabels(plantPreds, diseasePreds) {
   if (!labelEl) return;
 
   const allPreds = [
-    ...plantPreds.map(p   => ({ ...p, type:'plant' })),
-    ...diseasePreds.map(p => ({ ...p, type:'disease' }))
-  ].filter(p => (p.confidence||0) > 0.3) // confidence is 0-1 scale
-   .sort((a,b) => b.confidence - a.confidence)
-   .slice(0, 5);
+    ...plantPreds.map(p   => ({ ...p, type: 'plant' })),
+    ...diseasePreds.map(p => ({ ...p, type: 'disease' }))
+  ]
+    .filter(p => Number(p.confidence ?? 0) > 0)
+    .sort((a, b) => Number(b.confidence ?? 0) - Number(a.confidence ?? 0))
+    .slice(0, 5);
 
   if (allPreds.length === 0) {
-    labelEl.innerHTML = '<span class="rt-label-empty">Point camera at a plant…</span>';
+    labelEl.innerHTML =
+      '<span class="rt-label-empty">Point camera at a plant…</span>';
     return;
   }
 
   labelEl.innerHTML = allPreds.map(p => {
-    const conf  = Math.round((p.confidence||0)*100);
-    const color = p.type === 'disease' ? 'red' : 'green';
-    const icon  = p.type === 'disease' ? '🦠' : '🌿';
-    const label = p.class || p.label || 'Unknown';
-    return `<span class="rt-label-tag ${color}">${icon} ${label} <strong>${conf}%</strong></span>`;
+    const conf = Math.round(Number(p.confidence ?? 0));
+
+    const color =
+      p.type === 'disease' ? 'red' : 'green';
+
+    const icon =
+      p.type === 'disease' ? '🦠' : '🌿';
+
+    const label =
+      p.class || p.label || 'Unknown';
+
+    return `
+      <span class="rt-label-tag ${color}">
+        ${icon} ${label} <strong>${conf}%</strong>
+      </span>
+    `;
   }).join('');
 }
 
@@ -3349,7 +3432,7 @@ async function runPlantScan() {
     document.getElementById('scannerPreviewView').style.display    = 'none';
     document.getElementById('scannerAnalyzingView').style.display  = 'flex';
     document.getElementById('scannerAnalyzingImg').src             = scannerImageData;
-    document.getElementById('scannerAnalyzingSub').textContent     = '🤖 Running Python AI + Claude…';
+    document.getElementById('scannerAnalyzingSub').textContent     = '🤖 Running FarmCast AI scan…';
     document.getElementById('scannerResultCard').style.display     = 'none';
 
     try {
@@ -3366,72 +3449,65 @@ async function runPlantScan() {
         const analysis   = result.analysis   || {};
         const detections = result.detections || [];
 
-        let identified = { name: 'Unknown Plant', type: 'Unknown', confidence: 0 };
-        if (analysis.plant_name && analysis.plant_name !== 'No Plant Detected') {
-            identified = {
-                name:       analysis.plant_name,
-                emoji:      getPlantEmoji(analysis.plant_name),
-                type:       analysis.plant_type || 'Plant',
-                confidence: analysis.confidence || 90,
-            };
-        } else if (detections.length > 0) {
-            identified = {
-                name:       detections[0].label,
-                emoji:      getPlantEmoji(detections[0].label),
-                type:       'Detected',
-                confidence: detections[0].confidence,
-            };
-        } else {
-            throw new Error('No plant detected in the image.');
-        }
+       if (!analysis || !analysis.health_status) {
+           throw new Error('AI server returned no reliable analysis.');
+       }
 
-       let disease = {
-    name: 'Healthy',
-    severity: 'none',
-    confidence: analysis.confidence || 85,
-    color: 'none',
-    treatments: [],
-    description: ''
-};
+       const identified = {
+           name: analysis.plant_name || 'Unknown',
+           emoji: getPlantEmoji(analysis.plant_name || 'Unknown'),
+           type: analysis.plant_type || 'Crop',
+           confidence: Number(analysis.confidence ?? 0),
+       };
 
-const healthStatus = String(analysis.health_status || '').trim();
-const severity = String(analysis.severity || 'none').toLowerCase();
+       const healthStatus = String(
+           analysis.health_status || 'Unable to determine'
+       ).trim();
 
-if (
-    healthStatus &&
-    healthStatus.toLowerCase() !== 'healthy' &&
-    healthStatus.toLowerCase() !== 'no disease' &&
-    healthStatus.toLowerCase() !== 'no disease detected'
-) {
-    const sev =
-        ['high', 'medium', 'low'].includes(severity)
-            ? severity
-            : 'medium';
+       const severity = String(
+           analysis.severity || 'unknown'
+       ).toLowerCase();
 
-    disease = {
-        name: healthStatus,
-        severity: sev,
-        confidence: analysis.confidence || 85,
-        color:
-            sev === 'high'
-                ? 'red'
-                : sev === 'medium'
-                    ? 'amber'
-                    : 'low',
-        treatments: Array.isArray(analysis.treatments)
-            ? analysis.treatments
-            : [],
-        description: analysis.description || ''
-    };
-}
-        await new Promise(r => setTimeout(r, 300));
-        showScannerResult(identified, disease, detections);
+       const confidence = Number(
+           analysis.confidence ?? 0
+       );
 
-    } catch (err) {
-        console.error('Scanner error:', err);
-        toast(`AI analysis failed: ${err.message}`, 'err');
-        resetScanner();
-    }
+       let color = 'amber';
+
+       if (
+          healthStatus === 'Healthy' ||
+          healthStatus === 'No specific disease detected'
+       ) {
+          color = 'green';
+       } else if (healthStatus === 'Unable to determine') {
+          color = 'amber';
+       } else if (severity === 'high') {
+          color = 'red';
+       } else if (severity === 'medium') {
+          color = 'amber';
+       } else if (severity === 'low') {
+          color = 'low';
+       }
+
+       const disease = {
+           name: healthStatus,
+           severity: severity,
+           confidence: confidence,
+           color: color,
+           treatments: Array.isArray(analysis.treatments)
+               ? analysis.treatments
+               : [],
+           description: analysis.description || '',
+       };
+
+       await new Promise(r => setTimeout(r, 300));
+       showScannerResult(identified, disease, detections);
+
+       } catch (err) {
+           console.error('Scanner error:', err);
+           toast(`AI analysis failed: ${err.message}`, 'err');
+           resetScanner();
+       }
 }
 
 // ── GET PLANT EMOJI ──
@@ -3457,81 +3533,239 @@ function getPlantEmoji(className) {
 function showScannerResult(plant, disease, rawPredictions) {
   document.getElementById('scannerAnalyzingView').style.display = 'none';
   document.getElementById('scannerResultCard').style.display    = 'flex';
-  // Hide empty state
+
   const emptyEl = document.getElementById('scannerRightEmpty');
   if (emptyEl) emptyEl.style.display = 'none';
 
-  const isHealthy = disease.severity === 'none' || disease.name === 'Healthy';
-  const colorMap  = { red:'#f85149', amber:'#e3a008', low:'#58a6ff', none:'#3fb950' };
-  const col       = colorMap[disease.color] || '#3fb950';
+  const statusName = String(disease.name || 'Unable to determine').trim();
+  const severity   = String(disease.severity || 'unknown').toLowerCase();
+  const confidence = Number(disease.confidence ?? 0);
 
-  // Show plant icon instead of emoji
+  const isHealthy =
+    statusName === 'Healthy' ||
+    statusName === 'No specific disease detected';
+
+  const isUnknown =
+    statusName === 'Unable to determine';
+
+  const isPossibleDisease =
+    !isHealthy &&
+    !isUnknown;
+
+  const colorMap = {
+    red:   '#f85149',
+    amber: '#e3a008',
+    low:   '#58a6ff',
+    green: '#3fb950',
+    none:  '#3fb950'
+  };
+
+  let col = colorMap[disease.color] || '#e3a008';
+
+  if (isHealthy) {
+    col = '#3fb950';
+  } else if (isUnknown) {
+    col = '#e3a008';
+  }
+
+  // ── Plant info ──
   const plantEmojiEl = document.getElementById('srcPlantEmoji');
-  plantEmojiEl.innerHTML = '<span class="material-symbols-outlined" style="font-size:2rem;color:var(--green)">yard</span>';
-  document.getElementById('srcPlantName').textContent  = plant.name;
-  document.getElementById('srcPlantType').textContent  = `${plant.type} • ${plant.confidence || '—'}% confidence`;
 
+  plantEmojiEl.innerHTML =
+    '<span class="material-symbols-outlined" style="font-size:2rem;color:var(--green)">yard</span>';
+
+  document.getElementById('srcPlantName').textContent =
+    plant.name || 'Unknown';
+
+  document.getElementById('srcPlantType').textContent =
+    `${plant.type || 'Crop'} • ${Number(plant.confidence ?? 0)}% AI confidence`;
+
+  // ── Health badge ──
   const badge = document.getElementById('srcHealthBadge');
-  badge.style.background  = isHealthy ? 'var(--green-dim)' : `${col}22`;
-  badge.style.borderColor = isHealthy ? 'rgba(63,185,80,0.3)' : `${col}55`;
-  badge.style.color       = isHealthy ? 'var(--green)' : col;
-  document.getElementById('srcHealthIcon').textContent  = isHealthy ? '✅' : disease.severity === 'high' ? '🚨' : '⚠️';
-  document.getElementById('srcHealthLabel').textContent = isHealthy ? 'Healthy' : disease.severity === 'high' ? 'Diseased' : 'At Risk';
 
+  if (isHealthy) {
+    badge.style.background  = 'var(--green-dim)';
+    badge.style.borderColor = 'rgba(63,185,80,0.3)';
+    badge.style.color       = 'var(--green)';
+
+    document.getElementById('srcHealthIcon').textContent = '✅';
+
+    document.getElementById('srcHealthLabel').textContent =
+      statusName === 'Healthy'
+        ? 'Healthy'
+        : 'No Specific Disease Detected';
+
+  } else if (isUnknown) {
+    badge.style.background  = `${col}22`;
+    badge.style.borderColor = `${col}55`;
+    badge.style.color       = col;
+
+    document.getElementById('srcHealthIcon').textContent = '❓';
+    document.getElementById('srcHealthLabel').textContent =
+      'Unable to Determine';
+
+  } else {
+    badge.style.background  = `${col}22`;
+    badge.style.borderColor = `${col}55`;
+    badge.style.color       = col;
+
+    document.getElementById('srcHealthIcon').textContent =
+      severity === 'high' ? '🚨' : '⚠️';
+
+    document.getElementById('srcHealthLabel').textContent =
+      'Possible Disease';
+  }
+
+  // ── Disease / analysis info ──
   const diseaseInfo = document.getElementById('srcDiseaseInfo');
-  if (!isHealthy) {
+
+  if (isHealthy) {
+    diseaseInfo.style.display = 'none';
+
+  } else {
     diseaseInfo.style.display = 'block';
-    document.getElementById('srcDiseaseName').textContent = disease.name;
-    document.getElementById('srcDiseaseName').style.color = col;
-    document.getElementById('srcDiseaseConf').textContent = `${disease.confidence}% confidence`;
+
+    document.getElementById('srcDiseaseName').textContent =
+      statusName;
+
+    document.getElementById('srcDiseaseName').style.color =
+      col;
+
+    document.getElementById('srcDiseaseConf').textContent =
+      `${confidence}% AI confidence`;
+
     const sev = document.getElementById('srcSeverityBadge');
-    sev.textContent = (disease.severity||'LOW').toUpperCase();
+
+    if (isUnknown) {
+      sev.textContent = 'UNCERTAIN';
+    } else {
+      sev.textContent = severity.toUpperCase();
+    }
+
     sev.style.background  = `${col}22`;
     sev.style.color       = col;
     sev.style.borderColor = `${col}55`;
+
+    const description =
+      disease.description ||
+      (
+        isUnknown
+          ? 'The AI could not produce a reliable diagnosis from this image.'
+          : `FarmCast AI detected a possible plant condition.`
+      );
+
     document.getElementById('srcDiseaseDesc').textContent =
-      `${disease.name} detected by YOLO + Claude. Severity: ${disease.severity.toUpperCase()}. Prompt action recommended.`;
-  } else {
-    diseaseInfo.style.display = 'none';
+      description;
   }
 
-  const conf = disease.confidence || 85;
-  document.getElementById('srcConfPct').textContent  = `${conf}%`;
-  document.getElementById('srcConfFill').style.width = `${conf}%`;
-  document.getElementById('srcConfFill').style.background = conf > 80 ? 'var(--green)' : conf > 60 ? 'var(--amber)' : 'var(--red)';
+  // ── Confidence meter ──
+  const safeConfidence = Math.max(
+    0,
+    Math.min(100, confidence)
+  );
 
-  // Use Claude AI treatments if available, otherwise fallback to default
-  const claudeTreatments = disease.treatments && disease.treatments.length > 0 ? disease.treatments : null;
-  let recs;
-  if (claudeTreatments) {
-    recs = claudeTreatments.map(r => `<div class="src-rec-item">${r}</div>`);
+  document.getElementById('srcConfPct').textContent =
+    `${safeConfidence}%`;
+
+  document.getElementById('srcConfFill').style.width =
+    `${safeConfidence}%`;
+
+  document.getElementById('srcConfFill').style.background =
+    safeConfidence >= 80
+      ? 'var(--green)'
+      : safeConfidence >= 50
+        ? 'var(--amber)'
+        : 'var(--red)';
+
+  // ── Recommendations ──
+  let recs = [];
+
+  if (
+    Array.isArray(disease.treatments) &&
+    disease.treatments.length > 0
+  ) {
+    recs = disease.treatments.map(
+      r => `<div class="src-rec-item">${r}</div>`
+    );
+
+  } else if (isHealthy) {
+    recs = [
+      '✅ Continue normal crop care.',
+      '💧 Maintain a regular watering schedule.',
+      '🔍 Continue routine monitoring for visible symptoms.'
+    ].map(
+      r => `<div class="src-rec-item">${r}</div>`
+    );
+
+  } else if (isUnknown) {
+    recs = [
+      '📷 Take another photo in good lighting.',
+      '🍃 Keep the affected leaf clearly visible.',
+      '🔍 Avoid blurry, distant, or cluttered images.'
+    ].map(
+      r => `<div class="src-rec-item">${r}</div>`
+    );
+
   } else {
-    const recMap = {
-      high:   ['🚨 Isolate affected plant immediately','💊 Apply appropriate fungicide/bactericide','✂️ Remove and destroy infected parts','📞 Consult local DA agricultural technician'],
-      medium: ['⚠️ Monitor plant daily for progression','🌿 Apply neem oil spray preventively','✂️ Prune infected leaves carefully','💧 Reduce overhead watering'],
-      low:    ['📋 Continue monitoring every 3-5 days','🌱 Apply preventive organic spray','💧 Maintain proper watering schedule'],
-      none:   ['✅ Plant appears healthy — maintain current practices','💧 Keep regular watering schedule','🔍 Continue routine monitoring every 3-5 days'],
-    };
-    recs = (recMap[disease.severity] || recMap.none).map(r => `<div class="src-rec-item">${r}</div>`);
+    recs = [
+      '🔍 Monitor the affected plant closely.',
+      '✂️ Remove heavily affected plant material when appropriate.',
+      '💧 Avoid prolonged moisture on affected leaves.',
+      '📋 Rescan the plant if symptoms change or spread.'
+    ].map(
+      r => `<div class="src-rec-item">${r}</div>`
+    );
   }
-  document.getElementById('srcRecsList').innerHTML = recs.join('');
 
+  document.getElementById('srcRecsList').innerHTML =
+    recs.join('');
+
+  // ── Save current result ──
   currentScanResult = {
-    id: Date.now(), timestamp: new Date().toISOString(),
-    plant: plant.name, emoji: plant.emoji || '🌿', type: plant.type,
-    disease: isHealthy ? 'Healthy' : disease.name,
-    severity: disease.severity || 'none',
-    confidence: disease.confidence || 85,
+    id: Date.now(),
+    timestamp: new Date().toISOString(),
+
+    plant: plant.name || 'Unknown',
+    emoji: plant.emoji || '🌿',
+    type: plant.type || 'Crop',
+
+    disease: statusName,
+    severity: severity,
+    confidence: safeConfidence,
+
     imageData: scannerImageData,
   };
 
-  if (!isHealthy) {
-    addNotification('pest', `🦠 Disease Detected: ${disease.name}`,
-      `AI detected ${disease.name} on ${plant.name}. Severity: ${(disease.severity||'').toUpperCase()}.`
+  // ── Notifications / toast ──
+  if (isPossibleDisease) {
+    addNotification(
+      'pest',
+      `🦠 Possible Disease: ${statusName}`,
+      `FarmCast AI found ${statusName} on ${plant.name || 'the scanned crop'}. AI confidence: ${safeConfidence}%.`
     );
-    toast(`⚠️ ${disease.name} detected on ${plant.name}!`, 'warn');
+
+    toast(
+      `⚠️ ${statusName} found on ${plant.name || 'crop'}.`,
+      'warn'
+    );
+
+  } else if (isUnknown) {
+    toast(
+      '⚠️ AI could not determine a reliable diagnosis. Try scanning again.',
+      'warn'
+    );
+
+  } else if (statusName === 'No specific disease detected') {
+    toast(
+      `✅ No specific disease detected on ${plant.name || 'crop'}.`,
+      'ok'
+    );
+
   } else {
-    toast(`✅ ${plant.name} looks healthy!`, 'ok');
+    toast(
+      `✅ ${plant.name || 'Plant'} appears healthy.`,
+      'ok'
+    );
   }
 }
 
@@ -3592,28 +3826,108 @@ async function loadScanHistory() {
 function renderScannerHistory() {
   const list = document.getElementById('scannerHistoryList');
   if (!list) return;
+
   if (scannerHistory.length === 0) {
     list.innerHTML = `<div class="scanner-history-empty">
       <span class="material-symbols-outlined" style="font-size:36px;opacity:0.3">yard</span>
-      <p>No scans yet.<br>Scan a plant to get started!</p></div>`;
+      <p>No scans yet.<br>Scan a plant to get started!</p>
+    </div>`;
     return;
   }
-  const colorMap = { high:'var(--red)', medium:'var(--amber)', low:'var(--blue)', none:'var(--green)' };
+
+  const colorMap = {
+    high:   'var(--red)',
+    medium: 'var(--amber)',
+    low:    'var(--blue)',
+    none:   'var(--green)',
+    unknown:'var(--amber)'
+  };
+
   list.innerHTML = scannerHistory.map(item => {
-    const date = new Date(item.timestamp||item.createdAt).toLocaleDateString('en-PH',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
-    const col  = colorMap[item.severity] || 'var(--green)';
-    const isHealthy = item.severity === 'none';
+    const date = new Date(
+      item.timestamp || item.createdAt
+    ).toLocaleDateString('en-PH', {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    const diseaseName = String(
+      item.disease || 'Unable to determine'
+    ).trim();
+
+    const severity = String(
+      item.severity || 'unknown'
+    ).toLowerCase();
+
+    const confidence = Number(
+      item.confidence ?? 0
+    );
+
+    const isHealthy =
+      diseaseName === 'Healthy';
+
+    const isNoSpecificDisease =
+      diseaseName === 'No specific disease detected';
+
+    const isUnknown =
+      diseaseName === 'Unable to determine';
+
+    let col = colorMap[severity] || 'var(--amber)';
+    let statusText = `⚠️ ${diseaseName}`;
+
+    if (isHealthy) {
+      col = 'var(--green)';
+      statusText = '✅ Healthy';
+
+    } else if (isNoSpecificDisease) {
+      col = 'var(--green)';
+      statusText = '✅ No Specific Disease Detected';
+
+    } else if (isUnknown) {
+      col = 'var(--amber)';
+      statusText = '❓ Unable to Determine';
+    }
+
     const itemId = item._id || item.id || 0;
+
     return `<div class="scanner-history-item">
-      ${item.imageData ? `<img src="${item.imageData}" class="shi-thumb" alt="">` : `<div class="shi-thumb shi-no-img">${item.emoji||'🌿'}</div>`}
-      <div class="shi-info" onclick="viewHistoryItem('${itemId}')" style="cursor:pointer;flex:1">
-        <div class="shi-plant">${item.emoji||'🌿'} ${item.plant}</div>
-        <div class="shi-disease" style="color:${col}">${isHealthy?'✅ Healthy':`⚠️ ${item.disease}`}</div>
+      ${
+        item.imageData
+          ? `<img src="${item.imageData}" class="shi-thumb" alt="">`
+          : `<div class="shi-thumb shi-no-img">${item.emoji || '🌿'}</div>`
+      }
+
+      <div
+        class="shi-info"
+        onclick="viewHistoryItem('${itemId}')"
+        style="cursor:pointer;flex:1"
+      >
+        <div class="shi-plant">
+          ${item.emoji || '🌿'} ${item.plant || 'Unknown'}
+        </div>
+
+        <div class="shi-disease" style="color:${col}">
+          ${statusText}
+        </div>
+
         <div class="shi-date">${date}</div>
       </div>
+
       <div class="shi-right">
-        <div class="shi-badge" style="background:${col}22;color:${col};border-color:${col}44">${item.confidence}%</div>
-        <button class="shi-delete-btn" onclick="deleteHistoryItem('${itemId}')" title="Delete this scan">
+        <div
+          class="shi-badge"
+          style="background:${col}22;color:${col};border-color:${col}44"
+        >
+          ${confidence}%
+        </div>
+
+        <button
+          class="shi-delete-btn"
+          onclick="deleteHistoryItem('${itemId}')"
+          title="Delete this scan"
+        >
           <span class="material-symbols-outlined">delete</span>
         </button>
       </div>
@@ -3621,10 +3935,41 @@ function renderScannerHistory() {
   }).join('');
 }
 
+
+// ── VIEW HISTORY ITEM ──
 function viewHistoryItem(id) {
-  const item = scannerHistory.find(h => String(h._id||h.id) === String(id));
+  const item = scannerHistory.find(
+    h => String(h._id || h.id) === String(id)
+  );
+
   if (!item) return;
-  toast(`${item.emoji||'🌿'} ${item.plant} — ${item.disease} (${item.confidence}% confidence)`, item.severity === 'none' ? 'ok' : 'warn');
+
+  const diseaseName = String(
+    item.disease || 'Unable to determine'
+  ).trim();
+
+  const confidence = Number(
+    item.confidence ?? 0
+  );
+
+  const isHealthy =
+    diseaseName === 'Healthy' ||
+    diseaseName === 'No specific disease detected';
+
+  const isUnknown =
+    diseaseName === 'Unable to determine';
+
+  let toastType = 'warn';
+
+  if (isHealthy) {
+    toastType = 'ok';
+  }
+
+  const message = isUnknown
+    ? `${item.emoji || '🌿'} ${item.plant || 'Unknown'} — Unable to determine (${confidence}% AI confidence)`
+    : `${item.emoji || '🌿'} ${item.plant || 'Unknown'} — ${diseaseName} (${confidence}% AI confidence)`;
+
+  toast(message, toastType);
 }
 
 async function deleteHistoryItem(id) {
@@ -3701,12 +4046,8 @@ function toggleCard(headerEl) {
     // Remove max-height after animation
     setTimeout(() => { collapsible.style.maxHeight = ''; collapsible.style.overflow = ''; }, 350);
   }
+
 }
-
-// ── REMOVED identifyPlantWithClaude (browser-side) ──
-// All Claude calls now go through the Python server.
-
-
 
 // Apply language on init
 window.addEventListener('load', () => {

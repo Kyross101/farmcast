@@ -7,6 +7,7 @@ import json
 import re
 import os
 import uvicorn
+import gc
 
 load_dotenv()
 
@@ -37,26 +38,71 @@ app.add_middleware(
 crop_model = None
 disease_model = None
 
+def release_crop_model():
+    """Release crop model memory if it is currently loaded."""
+    global crop_model
+
+    if crop_model is not None:
+        print("🧹 Releasing crop model from memory...")
+        crop_model = None
+        gc.collect()
+
+        try:
+            import torch
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        except Exception:
+            pass
+
+
+def release_disease_model():
+    """Release disease model memory if it is currently loaded."""
+    global disease_model
+
+    if disease_model is not None:
+        print("🧹 Releasing disease model from memory...")
+        disease_model = None
+        gc.collect()
+
+        try:
+            import torch
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        except Exception:
+            pass
+
 
 def get_crop_model():
-    """Lazy-load the YOLO V1 fruit/vegetable model."""
+    """Lazy-load crop model and release disease model first."""
     global crop_model
+
     if crop_model is None:
+        release_disease_model()
+
         from ultralytics import YOLO
+
+        print(f"🌱 Loading crop model: {CROP_MODEL_PATH}")
         crop_model = YOLO(CROP_MODEL_PATH)
-        print(f"✅ Crop model loaded successfully from: {CROP_MODEL_PATH}")
-        print(f"🌱 Crop model classes: {crop_model.names}")
+
+        print("✅ Crop model loaded successfully.")
+
     return crop_model
 
 
 def get_disease_model():
-    """Lazy-load the plant disease detection model."""
+    """Lazy-load disease model and release crop model first."""
     global disease_model
+
     if disease_model is None:
+        release_crop_model()
+
         from ultralytics import YOLO
+
+        print(f"🦠 Loading disease model: {DISEASE_MODEL_PATH}")
         disease_model = YOLO(DISEASE_MODEL_PATH)
-        print(f"✅ Disease model loaded successfully from: {DISEASE_MODEL_PATH}")
-        print(f"🦠 Disease model classes: {disease_model.names}")
+
+        print("✅ Disease model loaded successfully.")
+
     return disease_model
 
 
@@ -344,19 +390,25 @@ async def detect_realtime(file: UploadFile = File(...)):
 
             for box in boxes:
                 cls = int(box.cls[0])
-                raw_label = model.names[cls]
+                raw_label = str(model.names[cls]).strip()
+
                 farmcast_crop = map_crop_label(raw_label)
 
-                if farmcast_crop is None:
-                    continue
+                # Use canonical FarmCast name if mapped.
+                # Otherwise keep the raw YOLO label so the live
+                # detector can still show a bounding box.
+                display_label = farmcast_crop or raw_label
 
                 detection = build_detection(
                     box,
-                    farmcast_crop,
+                    display_label,
                     img_width,
                     img_height
                 )
-                detection["raw_label"] = str(raw_label)
+
+                detection["raw_label"] = raw_label
+                detection["farmcast_crop"] = farmcast_crop
+
                 detections.append(detection)
 
         detections.sort(

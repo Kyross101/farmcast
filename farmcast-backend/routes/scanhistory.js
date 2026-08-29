@@ -35,9 +35,9 @@ router.post('/', async (req, res) => {
       plant,
       emoji:      emoji      || '🌿',
       plantType:  plantType  || 'Unknown',
-      disease:    disease    || 'Healthy',
-      severity:   severity   || 'none',
-      confidence: confidence || 85,
+      disease:    disease ?? 'Unable to determine',
+      severity:   severity ?? 'unknown',
+      confidence: confidence ?? 0,
       imageData:  imageData  || '',
       notes:      notes      || '',
     });
