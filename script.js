@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════
 // FARMCAST — Main Application Script
 // ═══════════════════════════════════════════
-
+const CARTO_API_KEY = 'cb1_2kci_1_b5ea7c7c5d649df09e91ba41';
 const API_KEY = 'd0b23ea9dcaa2c9af041da23885eb307'; // OWM API key
 // Roboflow API config – DEPRECATED, removed
 // Python AI Server (YOLOv8 plant and disease models)
@@ -373,9 +373,13 @@ const OWM_LAYERS = {
 };
  
 const BASE_TILES = {
-  dark:      'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-  satellite: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  street:    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  dark: `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=${CARTO_API_KEY}`,
+
+  satellite:
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+
+  street:
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 };
  
 let mapInitialized = false;
