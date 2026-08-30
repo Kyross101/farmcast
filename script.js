@@ -4190,25 +4190,46 @@ function toggleSidebar() {
 }
 
 // Restore sidebar state on load
+// Desktop only — mobile sidebar should always start uncollapsed
 document.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('fc_sidebarCollapsed') === 'true') {
+  const sidebar = document.getElementById('mainSidebar');
+  if (!sidebar) return;
+
+  if (
+    window.innerWidth > 768 &&
+    localStorage.getItem('fc_sidebarCollapsed') === 'true'
+  ) {
     sidebarCollapsed = true;
-    const sidebar = document.getElementById('mainSidebar');
-    if (sidebar) sidebar.classList.add('collapsed');
+    sidebar.classList.add('collapsed');
+  } else {
+    sidebar.classList.remove('collapsed');
   }
 });
 
 // ── MOBILE SIDEBAR TOGGLE ──
 function toggleMobileSidebar() {
-  const sidebar  = document.getElementById('mainSidebar');
-  const overlay  = document.getElementById('sidebarOverlay');
-  const isOpen   = sidebar.classList.contains('mobile-open');
+  const sidebar = document.getElementById('mainSidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+
+  if (!sidebar) return;
+
+  const isOpen = sidebar.classList.contains('mobile-open');
 
   if (isOpen) {
     sidebar.classList.remove('mobile-open');
-    if (overlay) overlay.classList.remove('active');
+
+    if (overlay) {
+      overlay.classList.remove('active');
+    }
   } else {
+    // Important:
+    // Desktop collapsed state must not affect mobile menu
+    sidebar.classList.remove('collapsed');
+
     sidebar.classList.add('mobile-open');
-    if (overlay) overlay.classList.add('active');
+
+    if (overlay) {
+      overlay.classList.add('active');
+    }
   }
 }
