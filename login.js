@@ -91,7 +91,7 @@ loginForm.addEventListener('submit', async (e) => {
     localStorage.setItem('fc_authUser', JSON.stringify(data.user));
 
     showtoast(`Welcome back, ${data.user.name || data.user.username}! 🌾`, 'success');
-    setTimeout(() => window.location.href = 'dashboard.html', 1200);
+    setTimeout(() => window.location.href = 'index.html', 1200);
 
   } catch (err) {
     showtoast('Cannot connect to server. Is the backend running?', 'error');
@@ -138,7 +138,7 @@ registerForm.addEventListener('submit', async (e) => {
     localStorage.setItem('fc_authUser', JSON.stringify(data.user));
 
     showtoast(`Registered successfully! Welcome, ${data.user.username}! 🌱`, 'success');
-    setTimeout(() => window.location.href = 'dashboard.html', 1200);
+    setTimeout(() => window.location.href = 'index.html', 1200);
 
   } catch (err) {
     showtoast('Cannot connect to server. Is the backend running?', 'error');
