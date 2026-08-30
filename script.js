@@ -4040,16 +4040,35 @@ async function clearScanHistory() {
 
 // ── PATCH setNav to include plant-scanner ──
 const _scannerSetNav = setNav;
+
 setNav = function(el, pageId) {
   if (pageId === 'plant-scanner') {
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     el.classList.add('active');
+
     document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+
     document.getElementById('page-plant-scanner').style.display = 'block';
     document.getElementById('topbarTitle').textContent = 'Plant Health Scanner';
+
     initScannerPage();
   } else {
     _scannerSetNav(el, pageId);
+  }
+
+  // Mobile: always close drawer after navigation
+  if (window.innerWidth <= 768) {
+    const sidebar = document.getElementById('mainSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    if (sidebar) {
+      sidebar.classList.remove('mobile-open');
+      sidebar.classList.remove('collapsed');
+    }
+
+    if (overlay) {
+      overlay.classList.remove('active');
+    }
   }
 };
 
