@@ -6,7 +6,7 @@ const API_KEY = 'd0b23ea9dcaa2c9af041da23885eb307'; // OWM API key
 // Roboflow API config – DEPRECATED, removed
 // Python AI Server (YOLOv8 plant and disease models)
 // Local FastAPI Server Base URL
-const AI_SERVER_URL = 'http://127.0.0.1:8000'; // ← Ilagay mo dito ang URL ng iyong AI server
+const AI_SERVER_URL = 'https://better-while-worldwide-relevant.trycloudflare.com'; // ← Ilagay mo dito ang URL ng iyong AI server
 
 // ============================================================
 // FARMCAST AI — LOCAL PLANT & DISEASE DETECTION
@@ -3423,7 +3423,7 @@ async function scanWithPythonAI(imageData) {
     formData.append('file', imageBlob, 'capture.jpg');
 
     // Direktang nakaturo sa Localhost Port 8000
-    const response = await fetch('http://127.0.0.1:8000/scan', {
+    const response = await fetch('${AI_SERVER_URL}/scan', {
         method: 'POST',
         body: formData
     });
