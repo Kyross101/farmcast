@@ -5,7 +5,7 @@
 // <script src="api.js"></script>
 // ============================================
 
-const BACKEND_URL = 'http://127.0.0.1:5000/api';
+const BACKEND_URL = 'https://fundamental-authority-nov-devoted.trycloudflare.com/api';
 
 // ── TOKEN HELPERS ──
 function getToken()        { return localStorage.getItem('fc_token'); }
