@@ -3164,9 +3164,7 @@ async function runRealTimeFrame() {
     formData.append('file', blob, 'frame.jpg');
 
     // ── Send to crop detector ──
-    const res = await fetch(
-      `${AI_SERVER_URL}/detect`,
-      {
+    const res = await fetch(`${AI_SERVER_URL}/detect`, {
         method: 'POST',
         body: formData
       }
@@ -3423,7 +3421,7 @@ async function scanWithPythonAI(imageData) {
     formData.append('file', imageBlob, 'capture.jpg');
 
     // Direktang nakaturo sa Localhost Port 8000
-    const response = await fetch('${AI_SERVER_URL}/scan', {
+    const response = await fetch(`${AI_SERVER_URL}/scan`, {
         method: 'POST',
         body: formData
     });
