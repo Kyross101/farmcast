@@ -330,28 +330,52 @@ const PAGE_TITLES = {
 };
  
 function setNav(el, pageId) {
+
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
   el.classList.add('active');
- 
+
   // Hide all pages
   document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
- 
+
   if (pageId === 'dashboard') {
+
     document.getElementById('page-dashboard').style.display = 'block';
     document.getElementById('topbarTitle').textContent = PAGE_TITLES['dashboard'];
+
   } else if (pageId === 'weather-maps') {
+
     document.getElementById('page-weather-maps').style.display = 'block';
     document.getElementById('topbarTitle').textContent = PAGE_TITLES['weather-maps'];
     initWeatherMap();
+
   } else if (pageId === 'my-crops') {
+
     document.getElementById('page-my-crops').style.display = 'block';
     document.getElementById('topbarTitle').textContent = PAGE_TITLES['my-crops'];
     renderCropsPage();
+
   } else {
+
     // Pages not yet built — show dashboard fallback
     document.getElementById('page-dashboard').style.display = 'block';
     document.getElementById('topbarTitle').textContent = PAGE_TITLES['dashboard'];
     toast('This section is coming soon!', 'warn');
+  }
+
+  // Mobile: close sidebar after selecting a page
+  if (window.innerWidth <= 768) {
+    const sidebar = document.getElementById('mainSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    if (sidebar) {
+      sidebar.classList.remove('mobile-open');
+      sidebar.classList.remove('collapsed');
+    }
+
+    if (overlay) {
+      overlay.classList.remove('active');
+    }
   }
 }
  
