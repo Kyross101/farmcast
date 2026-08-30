@@ -3,7 +3,7 @@
 // Connected to backend API
 // ============================================
 
-const BACKEND_URL = 'https://fundamental-authority-nov-devoted.trycloudflare.com';
+const BACKEND_URL = 'https://fundamental-authority-nov-devoted.trycloudflare.com/api';
 
 const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
