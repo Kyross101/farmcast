@@ -4222,10 +4222,11 @@ function toggleMobileSidebar() {
       overlay.classList.remove('active');
     }
   } else {
-    // Important:
-    // Desktop collapsed state must not affect mobile menu
+    // Mobile must NEVER use desktop collapsed state
     sidebar.classList.remove('collapsed');
+    sidebarCollapsed = false;
 
+    // Open mobile drawer
     sidebar.classList.add('mobile-open');
 
     if (overlay) {

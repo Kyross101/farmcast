@@ -558,7 +558,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   .dashboard-grid{grid-template-columns:1fr;}
   .col-side{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 }
+
 @media(max-width:768px){
+
   .sidebar{
     display:flex;
     position:fixed;
@@ -569,19 +571,50 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
     transition:left 0.3s ease;
     box-shadow:4px 0 20px rgba(0,0,0,0.4);
   }
-  .sidebar.mobile-open {
-    left:0;
+
+  .sidebar.mobile-open,
+  .sidebar.mobile-open.collapsed {
+    left: 0 !important;
+    width: var(--sidebar-w) !important;
+    padding: 20px 12px !important;
   }
-  .sidebar.collapsed {
-    left:-240px !important;
+
+  .sidebar.mobile-open .sidebar-text,
+  .sidebar.mobile-open.collapsed .sidebar-text {
+    opacity: 1 !important;
+    max-width: 200px !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
   }
+
+  .sidebar.mobile-open .nav-label,
+  .sidebar.mobile-open.collapsed .nav-label {
+    display: block !important;
+  }
+
+  .sidebar.mobile-open .nav-item,
+  .sidebar.mobile-open.collapsed .nav-item {
+    justify-content: flex-start !important;
+    padding: 10px 12px !important;
+    gap: 12px !important;
+  }
+
+  .sidebar.mobile-open .sidebar-logo,
+  .sidebar.mobile-open.collapsed .sidebar-logo {
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .sidebar.collapsed:not(.mobile-open) {
+    left: -240px !important;
+  }
+
   .main{width:100%;}
   .topbar{padding:12px 16px;}
   .page{padding:12px;}
   .col-side{grid-template-columns:1fr;}
   .weather-stats{grid-template-columns:repeat(2,1fr);}
-  
-  /* Mobile overlay */
+
   .sidebar-overlay {
     display:none;
     position:fixed;
@@ -589,17 +622,14 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
     background:rgba(0,0,0,0.5);
     z-index:998;
   }
-  .sidebar-overlay.active { display:block; }
-  
-  /* Mobile topbar menu button */
+
+  .sidebar-overlay.active {
+    display:block;
+  }
+
   .mobile-menu-btn {
     display:flex !important;
   }
-}
-
-@media(min-width:769px){
-  .mobile-menu-btn { display:none !important; }
-  .sidebar-overlay { display:none !important; }
 }
 
 /* ═══════════════════════════════════════════════════════
