@@ -4218,17 +4218,28 @@ function getMiniWeatherScene(iconCode) {
 let sidebarCollapsed = false;
 
 function toggleSidebar() {
+
+  // Mobile: use mobile drawer behavior instead
+  if (window.innerWidth <= 768) {
+    toggleMobileSidebar();
+    return;
+  }
+
   const sidebar = document.getElementById('mainSidebar');
   if (!sidebar) return;
+
   sidebarCollapsed = !sidebarCollapsed;
+
   if (sidebarCollapsed) {
     sidebar.classList.add('collapsed');
   } else {
     sidebar.classList.remove('collapsed');
   }
+
   if (typeof weatherMap !== 'undefined' && weatherMap) {
     setTimeout(() => weatherMap.invalidateSize(), 350);
   }
+
   localStorage.setItem('fc_sidebarCollapsed', sidebarCollapsed);
 }
 
@@ -4258,6 +4269,9 @@ function toggleMobileSidebar() {
 
   const isOpen = sidebar.classList.contains('mobile-open');
 
+  // Mobile should never keep desktop collapsed state
+  sidebar.classList.remove('collapsed');
+
   if (isOpen) {
     sidebar.classList.remove('mobile-open');
 
@@ -4265,11 +4279,6 @@ function toggleMobileSidebar() {
       overlay.classList.remove('active');
     }
   } else {
-    // Mobile must NEVER use desktop collapsed state
-    sidebar.classList.remove('collapsed');
-    sidebarCollapsed = false;
-
-    // Open mobile drawer
     sidebar.classList.add('mobile-open');
 
     if (overlay) {
