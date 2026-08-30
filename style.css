@@ -567,49 +567,53 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
     left:-240px;
     top:0;
     height:100vh;
+    width:var(--sidebar-w);
     z-index:999;
-    transition:left 0.3s ease;
+    transition:left 0.3s ease, width 0.3s ease;
     box-shadow:4px 0 20px rgba(0,0,0,0.4);
   }
 
-  .sidebar.mobile-open,
+  /* Hamburger opens full sidebar */
+  .sidebar.mobile-open {
+    left:0 !important;
+    width:var(--sidebar-w) !important;
+    padding:20px 12px !important;
+  }
+
+  /* Arrow collapses sidebar to icons-only */
   .sidebar.mobile-open.collapsed {
-    left: 0 !important;
-    width: var(--sidebar-w) !important;
-    padding: 20px 12px !important;
+    left:0 !important;
+    width:var(--sidebar-collapsed-w) !important;
+    padding:20px 8px !important;
   }
 
-  .sidebar.mobile-open .sidebar-text,
   .sidebar.mobile-open.collapsed .sidebar-text {
-    opacity: 1 !important;
-    max-width: 200px !important;
-    overflow: visible !important;
-    pointer-events: auto !important;
+    opacity:0 !important;
+    max-width:0 !important;
+    overflow:hidden !important;
+    pointer-events:none !important;
   }
 
-  .sidebar.mobile-open .nav-label,
-  .sidebar.mobile-open.collapsed .nav-label {
-    display: block !important;
-  }
-
-  .sidebar.mobile-open .nav-item,
   .sidebar.mobile-open.collapsed .nav-item {
-    justify-content: flex-start !important;
-    padding: 10px 12px !important;
-    gap: 12px !important;
+    justify-content:center !important;
+    padding:10px !important;
+    gap:0 !important;
   }
 
-  .sidebar.mobile-open .sidebar-logo,
   .sidebar.mobile-open.collapsed .sidebar-logo {
-    justify-content: flex-start !important;
-    gap: 10px !important;
+    justify-content:center !important;
   }
 
-  .sidebar.collapsed:not(.mobile-open) {
-    left: -240px !important;
+  /* Full mobile sidebar text */
+  .sidebar.mobile-open:not(.collapsed) .sidebar-text {
+    opacity:1 !important;
+    max-width:200px !important;
+    overflow:visible !important;
+    pointer-events:auto !important;
   }
 
   .main{width:100%;}
+
   .topbar{padding:12px 16px;}
   .page{padding:12px;}
   .col-side{grid-template-columns:1fr;}
@@ -631,7 +635,6 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
     display:flex !important;
   }
 }
-
 /* ═══════════════════════════════════════════════════════
    WEATHER MAPS PAGE
 ═══════════════════════════════════════════════════════ */
@@ -1285,19 +1288,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 
 @media(max-width:768px) {
-  .irr-stats-row { grid-template-columns: repeat(2,1fr); }
-  .sidebar.mobile-open {
-  left: 0 !important;
-  width: var(--sidebar-w);
-  padding: 20px 12px;
-}
-
-.sidebar.mobile-open .sidebar-text {
-  opacity: 1;
-  max-width: 200px;
-  overflow: visible;
-  pointer-events: auto;
-}
+  .irr-stats-row {
+    grid-template-columns: repeat(2,1fr);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════
