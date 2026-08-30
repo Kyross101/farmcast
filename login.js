@@ -3,7 +3,7 @@
 // Connected to backend API
 // ============================================
 
-const BACKEND_URL = 'http://127.0.0.1:5000/api';
+const BACKEND_URL = 'https://mary-course-caps-place.trycloudflare.com';
 
 const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
