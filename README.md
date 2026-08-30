@@ -12,7 +12,7 @@
 
 ## 🌐 Live Demo
 
-👉 **[https://farmcast-r0hs.onrender.com](https://farmcast-r0hs.onrender.com)**
+👉 **https://kyross101.github.io/farmcast/**
 
 > ⚠️ **Note:** Hosted on Render free tier — the app may take **1-2 minutes** to wake up on first visit. Please be patient!
 
@@ -101,7 +101,7 @@
 
 ```
 farmcast/
-├── dashboard.html          ← Main app page
+├── index.html          ← Main app page
 ├── login.html              ← Login/Register page
 ├── api.js                  ← Centralized API helper
 ├── script.js               ← Main frontend logic (~3800 lines)
