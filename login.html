@@ -21,10 +21,20 @@
                 <input type="text" placeholder="Username" required>
                 <i class='bx bxs-user'></i>
             </div>
-            <div class="input-box">
-                <input type="password" placeholder="Password" required>
-                <i class='bx bxs-lock-alt'></i>
-            </div>
+           <div class="input-box password-box">
+               <input type="password" id="loginPassword" placeholder="Password" required>
+
+               <i class='bx bxs-lock-alt input-icon'></i>
+
+               <button
+                   type="button"
+                   class="password-toggle"
+                   onclick="togglePassword('loginPassword', this)"
+                   aria-label="Show password"
+               >
+                   <i class='bx bx-show'></i>
+               </button>
+           </div>
             <div class="forgot-link">
                 <a href="#">Forgot Password?</a>
             </div>
@@ -51,9 +61,19 @@
                 <input type="email" placeholder="Email" required>
                 <i class='bx bxs-envelope'></i>
             </div>
-            <div class="input-box">
-                <input type="password" placeholder="Password" required>
-                <i class='bx bxs-lock-alt'></i>
+            <div class="input-box password-box">
+                <input type="password" id="registerPassword" placeholder="Password" required>
+
+                <i class='bx bxs-lock-alt input-icon'></i>
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    onclick="togglePassword('registerPassword', this)"
+                    aria-label="Show password"
+                >
+                    <i class='bx bx-show'></i>
+                </button>
             </div>
             <button type="submit" class="btn">Register</button>
             <p>or register with social platforms</p>
@@ -83,6 +103,23 @@
     </div>
 
 </div>
+
+<script>
+function togglePassword(inputId, button) {
+    const input = document.getElementById(inputId);
+    const icon = button.querySelector('i');
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'bx bx-hide';
+        button.setAttribute('aria-label', 'Hide password');
+    } else {
+        input.type = 'password';
+        icon.className = 'bx bx-show';
+        button.setAttribute('aria-label', 'Show password');
+    }
+}
+</script>
 
 <script src="login.js"></script>
 </body>
