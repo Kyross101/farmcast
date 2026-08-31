@@ -8,6 +8,7 @@
 const router   = require('express').Router();
 const bcrypt   = require('bcryptjs');
 const jwt      = require('jsonwebtoken');
+const crypto   = require('crypto');
 const User     = require('../models/User');
 const authMW   = require('../middleware/auth');
 
@@ -108,6 +109,123 @@ router.get('/me', authMW, async (req, res) => {
     res.json(user);
   } catch (err) {
     res.status(500).json({ message: 'Server error.' });
+  }
+});
+
+// ── FORGOT PASSWORD ──
+router.post('/forgot-password', async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        message: 'Please enter your email address.'
+      });
+    }
+
+    const user = await User.findOne({
+      email: email.trim().toLowerCase()
+    });
+
+    // Always return same response for security
+    if (!user) {
+      return res.json({
+        message: 'If an account exists for this email, a reset link has been created.'
+      });
+    }
+
+    // Create random reset token
+    const rawToken = crypto.randomBytes(32).toString('hex');
+
+    // Store only hashed token in database
+    const hashedToken = crypto
+      .createHash('sha256')
+      .update(rawToken)
+      .digest('hex');
+
+    user.resetPasswordToken = hashedToken;
+
+    // Token expires after 15 minutes
+    user.resetPasswordExpires = Date.now() + 15 * 60 * 1000;
+
+    await user.save();
+
+    /*
+      TEMPORARY:
+      For now this returns the raw token so we can test the reset flow.
+
+      Once email sending is connected,
+      REMOVE resetToken from this response.
+    */
+    res.json({
+      message: 'Password reset request created.',
+      resetToken: rawToken
+    });
+
+  } catch (err) {
+    console.error('Forgot password error:', err);
+
+    res.status(500).json({
+      message: 'Server error while requesting password reset.'
+    });
+  }
+});
+
+
+// ── RESET PASSWORD ──
+router.post('/reset-password', async (req, res) => {
+  try {
+    const { token, password } = req.body;
+
+    if (!token || !password) {
+      return res.status(400).json({
+        message: 'Reset token and new password are required.'
+      });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({
+        message: 'Password must be at least 6 characters.'
+      });
+    }
+
+    // Hash incoming token so it matches database value
+    const hashedToken = crypto
+      .createHash('sha256')
+      .update(token)
+      .digest('hex');
+
+    const user = await User.findOne({
+      resetPasswordToken: hashedToken,
+      resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        message: 'Reset link is invalid or has expired.'
+      });
+    }
+
+    // Hash new password
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+
+    // Invalidate reset token
+    user.resetPasswordToken = null;
+    user.resetPasswordExpires = null;
+
+    await user.save();
+
+    res.json({
+      message: 'Password changed successfully. You can now log in.'
+    });
+
+  } catch (err) {
+    console.error('Reset password error:', err);
+
+    res.status(500).json({
+      message: 'Server error while resetting password.'
+    });
   }
 });
 
