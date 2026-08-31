@@ -3,7 +3,7 @@
 // ============================================
 
 const BACKEND_URL =
-  'https://vincent-qty-blocked-romantic.trycloudflare.com/api';
+  'https://beverage-replication-variables-flat.trycloudflare.com/api';
 
 const resetForm =
   document.getElementById('resetPasswordForm');
