@@ -3877,3 +3877,36 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     height: 3px;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   MOBILE SIDEBAR — VERTICAL SCROLL FIX
+═══════════════════════════════════════════════ */
+@media screen and (max-width: 768px) {
+
+  .sidebar,
+  .sidebar.mobile-open,
+  .sidebar.mobile-open.collapsed {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+
+    touch-action: pan-y;
+  }
+
+  /* Allow the bottom profile/name to be reached */
+  .sidebar-spacer {
+    flex: 1 0 20px;
+    min-height: 20px;
+  }
+
+  .sidebar-user {
+    flex-shrink: 0;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+}
