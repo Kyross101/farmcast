@@ -23,7 +23,7 @@ async function apiFetch(endpoint, options = {}) {
     ...(options.headers || {})
   };
 
-  const res = await fetch(`${BACKEND_URL}${endpoint}`, {
+  const res = await fetch(`${API_BASE}${endpoint}`, {
     ...options,
     headers
   });
