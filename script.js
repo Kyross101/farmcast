@@ -1687,7 +1687,13 @@ function saveProfileSettings() {
 
 function confirmSignOut() {
   if (!confirm('Sign out of FarmCast? Your local data will be preserved.')) return;
-  toast('Sign out. See you next time! 👋', 'ok');
+
+  // Remove authentication data only
+  localStorage.removeItem('fc_token');
+  localStorage.removeItem('fc_user');
+
+  // Redirect back to login page
+  window.location.href = 'login.html';
 }
 
 // ═══ LOCATION SETTINGS ═══
