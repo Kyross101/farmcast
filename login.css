@@ -694,3 +694,202 @@ body::before {
     height:46px;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   FARM SCENE ANIMATION
+═══════════════════════════════════════════════ */
+
+.farm-scene {
+  position: relative;
+  width: 260px;
+  height: 180px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.farmer {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+
+  transform: translateX(-50%);
+  font-size: 6rem;
+
+  z-index: 3;
+
+  animation: farmerFloat 3s ease-in-out infinite;
+}
+
+@keyframes farmerFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+.farm-sun {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+
+  font-size: 2.2rem;
+
+  animation: sunPulse 4s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+.farm-cloud {
+  position: absolute;
+
+  font-size: 2rem;
+  opacity: 0.85;
+
+  z-index: 1;
+}
+
+.cloud-1 {
+  top: 18px;
+  left: -60px;
+
+  animation: cloudMove1 12s linear infinite;
+}
+
+.cloud-2 {
+  top: 48px;
+  left: -100px;
+
+  font-size: 1.5rem;
+  opacity: 0.6;
+
+  animation: cloudMove2 18s linear infinite;
+}
+
+@keyframes cloudMove1 {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(360px);
+  }
+}
+
+@keyframes cloudMove2 {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(420px);
+  }
+}
+
+.farm-crops {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+
+  font-size: 2rem;
+
+  z-index: 2;
+}
+
+.farm-crops span {
+  display: inline-block;
+  transform-origin: bottom center;
+
+  animation: cropSway 2.2s ease-in-out infinite;
+}
+
+.farm-crops span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.farm-crops span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.farm-crops span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.farm-crops span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+@keyframes cropSway {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.farm-brand {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+@media(max-width:650px) {
+
+  .farm-scene {
+    width: 190px;
+    height: 115px;
+    margin-bottom: 4px;
+  }
+
+  .farmer {
+    font-size: 4.2rem;
+    bottom: 20px;
+  }
+
+  .farm-crops {
+    font-size: 1.4rem;
+    gap: 6px;
+  }
+
+  .farm-sun {
+    font-size: 1.6rem;
+  }
+
+  .farm-cloud {
+    font-size: 1.4rem;
+  }
+
+  .toggle-panel .farm-logo {
+    font-size: 1.8rem;
+    margin-bottom: 2px;
+  }
+
+  .farm-brand h1 {
+    font-size: 1.2rem;
+  }
+
+  .farm-brand p {
+    font-size: 0.72rem;
+  }
+}
