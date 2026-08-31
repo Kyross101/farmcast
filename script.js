@@ -6,7 +6,7 @@ const API_KEY = 'd0b23ea9dcaa2c9af041da23885eb307'; // OWM API key
 // Roboflow API config – DEPRECATED, removed
 // Python AI Server (YOLOv8 plant and disease models)
 // Local FastAPI Server Base URL
-const AI_SERVER_URL = 'https://recognized-condo-believes-alex.trycloudflare.com'; // ← Ilagay mo dito ang URL ng iyong AI server
+const AI_SERVER_URL = window.FARMCAST_CONFIG.AI_URL; // ← Ilagay mo dito ang URL ng iyong AI server
 
 // ============================================================
 // FARMCAST AI — LOCAL PLANT & DISEASE DETECTION
