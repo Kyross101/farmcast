@@ -5,7 +5,7 @@
 // <script src="api.js"></script>
 // ============================================
 
-const BACKEND_URL = 'https://fundamental-authority-nov-devoted.trycloudflare.com/api';
+const BACKEND_URL = 'https://shipped-fell-permalink-screensaver.trycloudflare.com/api';
 
 // ── TOKEN HELPERS ──
 function getToken()        { return localStorage.getItem('fc_token'); }
