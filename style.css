@@ -2195,6 +2195,125 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 /* ═══════════════════════════════════════════════════════
    PLANT HEALTH SCANNER PAGE
 ═══════════════════════════════════════════════════════ */
+
+@media(max-width:768px){
+
+  /* Upload / Camera buttons */
+  .sdz-btns,
+  .scanner-cam-btns,
+  .scanner-preview-btns,
+  .src-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+    gap:10px;
+  }
+
+  .sdz-btn,
+  .src-btn{
+    width:100%;
+    min-height:46px;
+    justify-content:center;
+    padding:11px 14px;
+    font-size:0.9rem;
+  }
+
+  /* Upload card */
+  .scanner-upload-card{
+    padding:12px;
+  }
+
+  .scanner-dropzone{
+    min-height:240px;
+  }
+
+  .sdz-content{
+    padding:24px 12px;
+  }
+
+  .sdz-icon{
+    font-size:3rem;
+  }
+
+  .sdz-title{
+    font-size:0.95rem;
+  }
+
+  .sdz-sub{
+    font-size:0.75rem;
+    line-height:1.4;
+  }
+
+  /* Camera */
+  .scanner-camera-view video{
+    max-height:280px;
+  }
+
+  .scanner-cam-frame{
+    width:180px;
+    height:180px;
+  }
+
+  /* Preview */
+  .scanner-preview-view img{
+    max-height:320px;
+    object-fit:contain;
+  }
+
+  /* Result header */
+  .src-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .src-health-badge{
+    align-self:flex-start;
+  }
+
+  /* Disease info */
+  .src-disease-header{
+    flex-wrap:wrap;
+  }
+
+  .src-severity-badge{
+    margin-left:0;
+  }
+
+  /* Result actions */
+  .src-btn.save-result{
+    flex:unset;
+  }
+
+  /* History */
+  .scanner-history-item{
+    align-items:flex-start;
+  }
+
+  .shi-thumb{
+    width:52px;
+    height:52px;
+  }
+
+  .shi-badge{
+    font-size:0.6rem;
+  }
+
+  /* Result card */
+  .scanner-result-card{
+    padding:14px;
+    gap:12px;
+  }
+
+  .src-plant-emoji{
+    font-size:2.1rem;
+  }
+
+  .src-plant-name{
+    font-size:1rem;
+  }
+}
+
 .scanner-layout {
   display: grid;
   grid-template-columns: 1fr 300px;
