@@ -1772,23 +1772,28 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
 @media(max-width:640px) {
 
-  /* Settings navigation */
-  .settings-nav {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-    padding: 8px;
-  }
+  /* Settings navigation — mobile vertical */
+.settings-nav {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 6px;
+  padding: 10px;
+  width: 100%;
+}
 
-  .settings-nav-item {
-    padding: 10px;
-    font-size: 0.78rem;
-    gap: 7px;
-  }
+.settings-nav-item {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 0.88rem;
+  gap: 10px;
+  justify-content: flex-start;
+}
 
-  .settings-nav-item .material-symbols-outlined {
-    font-size: 18px;
-  }
+.settings-nav-item .material-symbols-outlined {
+  font-size: 19px;
+  flex-shrink: 0;
+}
 
   /* Main content */
   .settings-content,
@@ -1860,8 +1865,6 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   .unit-selector,
   .theme-selector {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 6px;
   }
 
