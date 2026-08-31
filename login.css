@@ -505,3 +505,44 @@ form {
       rotate(2deg);
   }
 }
+
+/* ═══════════════════════════════════════════════
+   MOBILE TOGGLE CLEANUP
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  /* Prevent hidden panels from peeking outside */
+  .container {
+    overflow: hidden;
+  }
+
+  /* LOGIN MODE:
+     hide the Welcome Back panel completely */
+  .toggle-panel.toggle-right {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* REGISTER MODE:
+     hide Hello Welcome panel completely */
+  .container.active .toggle-panel.toggle-left {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Show Welcome Back panel only in register mode */
+  .container.active .toggle-panel.toggle-right {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Stop logo animation from peeking outside panel */
+  .toggle-panel .farm-logo {
+    animation: none;
+    transform: none;
+  }
+}
