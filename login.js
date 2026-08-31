@@ -244,32 +244,12 @@ forgotSubmit.addEventListener('click', async () => {
       'success'
     );
 
-    /*
-      TEMPORARY TESTING:
+    showtoast(
+  'If an account exists, a reset link has been sent to your email.',
+  'success'
+);
 
-      Your backend currently returns resetToken.
-      We'll use it in the next step to test the
-      reset-password page.
-
-      Once email sending works, REMOVE this.
-    */
-    if (data.resetToken) {
-      console.log(
-        'FarmCast temporary reset token:',
-        data.resetToken
-      );
-
-      sessionStorage.setItem(
-        'fc_reset_token',
-        data.resetToken
-      );
-    }
-
-    closeForgotModal();
-
-    setTimeout(() => {
-      window.location.href = 'reset-password.html';
-    }, 1000);
+closeForgotModal();
 
   } catch (err) {
 
