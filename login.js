@@ -3,7 +3,7 @@
 // Connected to backend API
 // ============================================
 
-const BACKEND_URL = 'https://beverage-replication-variables-flat.trycloudflare.com/api';
+const BACKEND_URL = window.FARMCAST_CONFIG.API_URL;
 
 const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');

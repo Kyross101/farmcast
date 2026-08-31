@@ -5,7 +5,7 @@
 // <script src="api.js"></script>
 // ============================================
 
-const BACKEND_URL = 'https://beverage-replication-variables-flat.trycloudflare.com/api';
+const API_BASE = window.FARMCAST_CONFIG.API_URL;
 
 // ── TOKEN HELPERS ──
 function getToken()        { return localStorage.getItem('fc_token'); }

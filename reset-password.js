@@ -2,8 +2,7 @@
 // FARMCAST — reset-password.js
 // ============================================
 
-const BACKEND_URL =
-  'https://beverage-replication-variables-flat.trycloudflare.com/api';
+const BACKEND_URL = window.FARMCAST_CONFIG.API_URL;
 
 const resetForm =
   document.getElementById('resetPasswordForm');
