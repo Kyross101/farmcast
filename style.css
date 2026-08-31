@@ -351,6 +351,89 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .weather-stat-icon{font-size:14px;color:var(--green);margin-bottom:2px;}
 .weather-stat-icon.amber{color:var(--amber);}
 .weather-stat-icon.blue{color:var(--blue);}
+
+/* ═══════════════════════════════════════════════
+   DASHBOARD WEATHER — MOBILE OVERFLOW FIX
+═══════════════════════════════════════════════ */
+@media (max-width: 640px) {
+
+  .weather-hero {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .weather-hero-top {
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .weather-hero-top > div:first-child {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .weather-location,
+  .weather-city,
+  .weather-date {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .weather-location {
+    white-space: nowrap;
+  }
+
+  .weather-refresh {
+    flex-shrink: 0;
+  }
+
+  /* Weather temperature area */
+  .weather-main {
+    width: 100%;
+    min-width: 0;
+    gap: 12px;
+  }
+
+  .weather-temp-wrap {
+    min-width: 0;
+    flex: 1;
+  }
+
+  /* Keep all 4 stats inside the card */
+  .weather-stats {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .weather-stat {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .weather-stat-label,
+  .weather-stat-val {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  /* Farm condition must also stay inside */
+  .farm-condition {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .condition-text {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+}
  
 /* FARM CONDITION BANNER */
 .farm-condition{
@@ -696,8 +779,8 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
     font-size:2.6rem;
   }
 
-  .weather-stats{
-    grid-template-columns:repeat(2,1fr);
+   .weather-stats{
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:8px;
   }
 
@@ -723,7 +806,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   }
 
   .col-side{grid-template-columns:1fr;}
-  .weather-stats{grid-template-columns:repeat(2,1fr);}
+  .weather-stats{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 
   .sidebar-overlay {
     display:none;
