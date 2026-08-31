@@ -3910,3 +3910,75 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     margin-bottom: 12px;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   SIDEBAR — LOGO + USER ALIGNMENT FIX
+═══════════════════════════════════════════════ */
+
+/* ── FarmCast logo/header ── */
+.sidebar-logo {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 4px;
+}
+
+.sidebar-logo .logo-text,
+.sidebar-logo .sidebar-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.logo-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── User profile at bottom ── */
+.sidebar-user {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.sidebar-user .user-avatar {
+  flex: 0 0 36px;
+}
+
+/* User text container */
+.sidebar-user > div:last-child {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.user-name,
+.user-farm {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Keep collapsed sidebar centered */
+.sidebar.collapsed .sidebar-logo {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar.collapsed .sidebar-user {
+  justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-user > div:last-child {
+  display: none;
+}
