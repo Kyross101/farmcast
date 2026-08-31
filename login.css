@@ -616,80 +616,184 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════════
-   FARMCAST LOGIN — MOBILE
+   LOGIN MOBILE — CLEAN FIX
 ═══════════════════════════════════════════════ */
 
-@media(max-width:650px) {
+@media(max-width:650px){
 
-  body {
+  body{
+    min-height:100svh;
     align-items:flex-start;
     overflow-y:auto;
+    padding:0;
   }
 
-  .container {
+  .container{
+    position:relative;
     width:100%;
+    height:auto;
     min-height:100svh;
-    height:100svh;
-
     margin:0;
-
     border-radius:0;
-    border:none;
+    overflow:visible;
+    background:#07110c;
   }
 
-  .form-box {
-    height:68%;
-    padding:28px 24px 24px;
+  /* Disable desktop slide behavior */
+  .container.active .form-box{
+    right:auto;
+    bottom:auto;
   }
 
-  .toggle-panel {
-    height:32%;
-    padding:18px 24px;
+  .toggle-box{
+    position:relative;
+    width:100%;
+    height:auto;
   }
 
-  .container.active .form-box {
-    bottom:32%;
+  .toggle-box::before{
+    display:none;
   }
 
-  .container.active .toggle-box::before {
-    top:68%;
+  /* LOGIN FORM */
+  .form-box{
+    position:relative;
+    right:auto;
+    bottom:auto;
+    width:100%;
+    height:auto;
+    min-height:auto;
+    padding:32px 24px 40px;
+    background:#07110c;
+    visibility:visible;
   }
 
-  .container.active .toggle-panel.toggle-left {
-    top:-32%;
+  .form-box.login{
+    display:flex;
   }
 
-  .toggle-panel.toggle-right {
-    bottom:-32%;
+  .form-box.register{
+    display:none;
   }
 
-  .toggle-panel h1 {
+  .container.active .form-box.login{
+    display:none;
+  }
+
+  .container.active .form-box.register{
+    display:flex;
+    visibility:visible;
+  }
+
+  /* TOP GREEN PANEL */
+  .toggle-panel{
+    position:relative;
+    width:100%;
+    height:auto;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+
+    padding:26px 24px 28px;
+
+    background:
+      linear-gradient(
+        145deg,
+        #1d8f3a,
+        #2ea043
+      );
+
+    border-radius:0 0 42px 42px;
+
+    text-align:center;
+  }
+
+  .toggle-panel.toggle-left{
+    display:flex;
+  }
+
+  .toggle-panel.toggle-right{
+    display:none;
+  }
+
+  .container.active .toggle-panel.toggle-left{
+    display:none;
+  }
+
+  .container.active .toggle-panel.toggle-right{
+    display:flex;
+  }
+
+  /* FARM SCENE */
+  .farm-scene{
+    width:160px;
+    height:90px;
+    margin:0 auto 6px;
+  }
+
+  .farmer{
+    font-size:3.6rem;
+    bottom:14px;
+  }
+
+  .farm-crops{
+    font-size:1.2rem;
+    gap:4px;
+  }
+
+  .farm-sun{
+    font-size:1.4rem;
+  }
+
+  .farm-cloud{
+    font-size:1.2rem;
+  }
+
+  /* Header */
+  .toggle-panel h1{
     font-size:1.45rem;
+    margin-bottom:4px;
   }
 
-  .toggle-panel .farm-logo {
-    font-size:2.5rem;
-    margin-bottom:6px;
+  .toggle-panel p{
+    font-size:.8rem;
+    margin:4px 0 12px;
   }
 
-  .toggle-panel p {
-    margin:4px 0 10px;
+  .toggle-panel .btn{
+    width:180px;
+    height:44px;
   }
 
-  .form-box {
-    overflow-y:auto;
+  /* Form typography */
+  .form-box h1{
+    font-size:2rem;
+    margin-bottom:22px;
   }
 
-  .input-box {
+  .input-box{
     margin:14px 0;
   }
 
-  .input-box input {
-    min-height:52px;
+  .input-box input{
+    min-height:54px;
     font-size:16px;
   }
 
-  .social-icons a {
+  .forgot-link{
+    margin:-4px 0 16px;
+  }
+
+  .btn{
+    min-height:52px;
+  }
+
+  .social-icons{
+    margin-top:8px;
+  }
+
+  .social-icons a{
     width:46px;
     height:46px;
   }
