@@ -3,7 +3,7 @@
 // Connected to backend API
 // ============================================
 
-const BACKEND_URL = 'https://vincent-qty-blocked-romantic.trycloudflare.com/api';
+const BACKEND_URL = 'https://beverage-replication-variables-flat.trycloudflare.com/api';
 
 const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
@@ -143,5 +143,155 @@ registerForm.addEventListener('submit', async (e) => {
   } catch (err) {
     showtoast('Cannot connect to server. Is the backend running?', 'error');
     setLoading(registerSubmitBtn, false);
+  }
+});
+
+// ============================================
+// FORGOT PASSWORD
+// ============================================
+
+const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+const forgotModal        = document.getElementById('forgotModal');
+const forgotClose        = document.getElementById('forgotClose');
+const forgotBack         = document.getElementById('forgotBack');
+const forgotSubmit       = document.getElementById('forgotSubmit');
+const forgotEmail        = document.getElementById('forgotEmail');
+
+function openForgotModal() {
+  forgotModal.classList.add('show');
+
+  setTimeout(() => {
+    forgotEmail.focus();
+  }, 150);
+}
+
+function closeForgotModal() {
+  forgotModal.classList.remove('show');
+  forgotEmail.value = '';
+}
+
+forgotPasswordLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  openForgotModal();
+});
+
+forgotClose.addEventListener('click', closeForgotModal);
+forgotBack.addEventListener('click', closeForgotModal);
+
+// Close when clicking outside modal card
+forgotModal.addEventListener('click', (e) => {
+  if (e.target === forgotModal) {
+    closeForgotModal();
+  }
+});
+
+// Close using Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && forgotModal.classList.contains('show')) {
+    closeForgotModal();
+  }
+});
+
+forgotSubmit.addEventListener('click', async () => {
+
+  const email = forgotEmail.value.trim();
+
+  if (!email) {
+    showtoast('Please enter your email address.', 'error');
+    return;
+  }
+
+  if (!forgotEmail.checkValidity()) {
+    showtoast('Please enter a valid email address.', 'error');
+    return;
+  }
+
+  const originalText = forgotSubmit.textContent;
+
+  forgotSubmit.disabled = true;
+  forgotSubmit.textContent = 'Sending...';
+
+  try {
+
+    const res = await fetch(
+      `${BACKEND_URL}/auth/forgot-password`,
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          email
+        })
+      }
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      showtoast(
+        data.message || 'Unable to process password reset.',
+        'error'
+      );
+
+      return;
+    }
+
+    showtoast(
+      'Password reset request created successfully.',
+      'success'
+    );
+
+    /*
+      TEMPORARY TESTING:
+
+      Your backend currently returns resetToken.
+      We'll use it in the next step to test the
+      reset-password page.
+
+      Once email sending works, REMOVE this.
+    */
+    if (data.resetToken) {
+      console.log(
+        'FarmCast temporary reset token:',
+        data.resetToken
+      );
+
+      sessionStorage.setItem(
+        'fc_reset_token',
+        data.resetToken
+      );
+    }
+
+    closeForgotModal();
+
+    setTimeout(() => {
+      window.location.href = 'reset-password.html';
+    }, 1000);
+
+  } catch (err) {
+
+    console.error(err);
+
+    showtoast(
+      'Cannot connect to the FarmCast server.',
+      'error'
+    );
+
+  } finally {
+
+    forgotSubmit.disabled = false;
+    forgotSubmit.textContent = originalText;
+
+  }
+
+});
+
+// Press Enter inside email field
+forgotEmail.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    forgotSubmit.click();
   }
 });

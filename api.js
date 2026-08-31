@@ -5,7 +5,7 @@
 // <script src="api.js"></script>
 // ============================================
 
-const BACKEND_URL = 'https://vincent-qty-blocked-romantic.trycloudflare.com/api';
+const BACKEND_URL = 'https://beverage-replication-variables-flat.trycloudflare.com/api';
 
 // ── TOKEN HELPERS ──
 function getToken()        { return localStorage.getItem('fc_token'); }
