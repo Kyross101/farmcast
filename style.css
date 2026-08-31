@@ -3838,3 +3838,42 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     overflow-wrap: break-word;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   SMART PLANTING CALENDAR — MOBILE HORIZONTAL SLIDE
+═══════════════════════════════════════════════ */
+@media screen and (max-width: 640px) {
+
+  .calendar-scroll {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow-x: auto !important;
+    overflow-y: hidden;
+
+    padding: 14px 16px 18px !important;
+
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+
+  .calendar-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+
+    width: max-content;
+    min-width: max-content;
+  }
+
+  .cal-day {
+    flex: 0 0 150px;
+    width: 150px;
+    min-width: 150px;
+  }
+
+  .calendar-scroll::-webkit-scrollbar {
+    height: 3px;
+  }
+}
