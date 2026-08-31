@@ -1766,6 +1766,195 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   .setting-row { flex-direction: column; align-items: flex-start; }
 }
 
+/* ═══════════════════════════════════════════════
+   SETTINGS — MOBILE POLISH
+═══════════════════════════════════════════════ */
+
+@media(max-width:640px) {
+
+  /* Settings navigation */
+  .settings-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .settings-nav-item {
+    padding: 10px;
+    font-size: 0.78rem;
+    gap: 7px;
+  }
+
+  .settings-nav-item .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  /* Main content */
+  .settings-content,
+  .settings-section {
+    gap: 12px;
+  }
+
+  .settings-section-title {
+    font-size: 1rem;
+    padding-bottom: 10px;
+  }
+
+  /* Cards */
+  .settings-card {
+    border-radius: 12px;
+  }
+
+  .sc-header {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .sc-body {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  /* Profile avatar */
+  .profile-avatar-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .profile-avatar {
+    width: 62px;
+    height: 62px;
+    font-size: 2.5rem;
+  }
+
+  .avatar-picker {
+    flex-wrap: wrap;
+  }
+
+  .avatar-picker span {
+    font-size: 1.4rem;
+  }
+
+  /* Setting rows */
+  .setting-row {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .sr-info {
+    width: 100%;
+  }
+
+  .sr-label {
+    font-size: 0.85rem;
+  }
+
+  .sr-sub {
+    font-size: 0.72rem;
+  }
+
+  /* Selectors */
+  .sensitivity-selector,
+  .unit-selector,
+  .theme-selector {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .sens-btn,
+  .unit-btn,
+  .theme-opt {
+    justify-content: center;
+    text-align: center;
+    padding: 8px 6px;
+  }
+
+  /* Inputs */
+  .setting-select,
+  .setting-time-input {
+    width: 100%;
+    min-height: 42px;
+    font-size: 16px;
+  }
+
+  .threshold-input-wrap {
+    width: 100%;
+  }
+
+  .threshold-input {
+    width: 90px;
+    min-height: 42px;
+  }
+
+  /* Save button */
+  .settings-save-btn {
+    width: 100%;
+    min-height: 46px;
+    justify-content: center;
+  }
+
+  /* Account status */
+  .account-status-row {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .asr-item {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+  }
+
+  /* Favorite crops */
+  .fav-crops-grid {
+    gap: 6px;
+  }
+
+  .fav-crop-item {
+    padding: 7px 11px;
+    font-size: 0.76rem;
+  }
+
+  /* Data management */
+  .data-action-item {
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .dai-info {
+    min-width: calc(100% - 60px);
+  }
+
+  .dai-btn {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  /* General action buttons */
+  .settings-action-btn {
+    width: 100%;
+    min-height: 42px;
+    justify-content: center;
+  }
+
+  /* Danger / Sign Out */
+  .settings-danger-btn {
+    width: 100%;
+    min-height: 46px;
+    justify-content: center;
+  }
+
+  /* Help */
+  .help-link-item {
+    padding: 11px 12px;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════
    FARM ANALYTICS PAGE
 ═══════════════════════════════════════════════════════ */
