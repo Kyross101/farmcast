@@ -403,16 +403,19 @@ form {
 /* Password eye — icon only */
 .password-toggle {
   position: absolute;
-  right: 14px;
+  right: 18px;
   top: 50%;
   transform: translateY(-50%);
 
-  width: 38px;
-  height: 38px;
+  width: auto;
+  height: auto;
+  padding: 0;
 
-  border: none;
-  outline: none;
-  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+
+  background: none !important;
   box-shadow: none !important;
 
   color: #3fb950;
@@ -422,34 +425,35 @@ form {
   align-items: center;
   justify-content: center;
 
-  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* No background when hovered/clicked/focused */
 .password-toggle:hover,
 .password-toggle:active,
-.password-toggle:focus {
-  background: transparent !important;
+.password-toggle:focus,
+.password-toggle:focus-visible {
+  border: 0 !important;
+  outline: 0 !important;
+  background: none !important;
   box-shadow: none !important;
-  outline: none;
 }
 
-/* Eye icon only */
 .password-toggle i {
-  position: static;
-  transform: none;
+  position: static !important;
+  transform: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
   font-size: 24px;
   color: #3fb950;
-  background: transparent !important;
-}
 
-.password-toggle i {
-  position: static;
-  transform: none;
-
-  font-size: 22px;
-
-  color: inherit;
+  border: 0 !important;
+  outline: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
 }
 
 /* Login button */
