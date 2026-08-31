@@ -352,89 +352,6 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .weather-stat-icon.amber{color:var(--amber);}
 .weather-stat-icon.blue{color:var(--blue);}
 
-/* ═══════════════════════════════════════════════
-   DASHBOARD WEATHER — MOBILE OVERFLOW FIX
-═══════════════════════════════════════════════ */
-@media (max-width: 640px) {
-
-  .weather-hero {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  .weather-hero-top {
-    width: 100%;
-    min-width: 0;
-    gap: 10px;
-  }
-
-  .weather-hero-top > div:first-child {
-    min-width: 0;
-    flex: 1;
-  }
-
-  .weather-location,
-  .weather-city,
-  .weather-date {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .weather-location {
-    white-space: nowrap;
-  }
-
-  .weather-refresh {
-    flex-shrink: 0;
-  }
-
-  /* Weather temperature area */
-  .weather-main {
-    width: 100%;
-    min-width: 0;
-    gap: 12px;
-  }
-
-  .weather-temp-wrap {
-    min-width: 0;
-    flex: 1;
-  }
-
-  /* Keep all 4 stats inside the card */
-  .weather-stats {
-    width: 100%;
-    min-width: 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .weather-stat {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .weather-stat-label,
-  .weather-stat-val {
-    min-width: 0;
-    overflow-wrap: break-word;
-  }
-
-  /* Farm condition must also stay inside */
-  .farm-condition {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .condition-text {
-    min-width: 0;
-    overflow-wrap: break-word;
-  }
-}
- 
 /* FARM CONDITION BANNER */
 .farm-condition{
   display:flex;align-items:center;gap:10px;
@@ -3805,4 +3722,119 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 /* Override old scanner-layout for new pages */
 #page-plant-scanner .scanner-layout {
   display: none;
+}
+
+/* ═══════════════════════════════════════════════
+   FINAL MOBILE WEATHER FIX
+   KEEP THIS AT THE VERY BOTTOM OF style.css
+═══════════════════════════════════════════════ */
+@media screen and (max-width: 640px) {
+
+  #page-dashboard {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .dashboard-grid,
+  .col-main,
+  .weather-hero {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .weather-hero {
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  /* Header */
+  .weather-hero-top {
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .weather-hero-top > div:first-child {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .weather-location {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .weather-city,
+  .weather-date {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .weather-refresh {
+    flex-shrink: 0;
+  }
+
+  /* Main weather */
+  .weather-main {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    gap: 12px;
+  }
+
+  .weather-icon-big {
+    flex-shrink: 0;
+  }
+
+  .weather-temp-wrap {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .weather-temp {
+    font-size: 2.6rem;
+  }
+
+  /* CRITICAL: keep all 4 stats inside mobile width */
+  .weather-stats {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .weather-stat {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    padding: 12px;
+    overflow: hidden;
+  }
+
+  .weather-stat-label,
+  .weather-stat-val {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Condition banner */
+  .farm-condition {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .condition-text {
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
 }
