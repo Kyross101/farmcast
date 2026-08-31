@@ -3912,26 +3912,36 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 }
 
 /* ═══════════════════════════════════════════════
-   SIDEBAR — LOGO + USER ALIGNMENT FIX
+   SIDEBAR — FINAL LOGO + USER ALIGNMENT FIX
 ═══════════════════════════════════════════════ */
 
-/* ── FarmCast logo/header ── */
+/* ── FarmCast header ── */
 .sidebar-logo {
   width: 100%;
   min-width: 0;
+
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 0 4px;
+  justify-content: flex-start;
+
+  gap: 10px;
+  padding: 0 2px;
+  box-sizing: border-box;
 }
 
-.sidebar-logo .logo-text,
-.sidebar-logo .sidebar-text {
-  min-width: 0;
+.sidebar-toggle-btn {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+}
+
+.sidebar-logo .logo-text {
   flex: 1;
-}
+  min-width: 0;
 
-.logo-text {
+  font-size: 1.15rem;
+  line-height: 1;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3949,7 +3959,6 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   flex: 0 0 36px;
 }
 
-/* User text container */
 .sidebar-user > div:last-child {
   flex: 1;
   min-width: 0;
@@ -3959,6 +3968,7 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .user-name,
 .user-farm {
   display: block;
+
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -3968,11 +3978,20 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   text-overflow: ellipsis;
 }
 
-/* Keep collapsed sidebar centered */
+/* ── Expanded sidebar ── */
+.sidebar:not(.collapsed) .sidebar-logo {
+  justify-content: flex-start;
+}
+
+/* ── Collapsed sidebar ── */
 .sidebar.collapsed .sidebar-logo {
-  justify-content: center;
-  padding-left: 0;
-  padding-right: 0;
+  justify-content: center !important;
+  gap: 0;
+  padding: 0 !important;
+}
+
+.sidebar.collapsed .sidebar-logo .logo-text {
+  display: none !important;
 }
 
 .sidebar.collapsed .sidebar-user {
