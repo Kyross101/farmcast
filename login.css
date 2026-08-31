@@ -140,7 +140,8 @@ form {
   box-shadow: 0 0 0 3px rgba(63,185,80,0.12);
 }
 
-.input-box i {
+/* Normal field icons only */
+.input-box > i {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -403,7 +404,7 @@ form {
 /* Password eye — icon only */
 .password-toggle {
   position: absolute;
-  right: 18px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
 
@@ -447,7 +448,7 @@ form {
   margin: 0 !important;
   padding: 0 !important;
 
-  font-size: 24px;
+  font-size: 22px;
   color: #3fb950;
 
   border: 0 !important;
