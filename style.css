@@ -3312,6 +3312,90 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   font-weight: 600;
 }
 
+/* ═══════════════════════════════════════════════════════
+   PLANT SCANNER — MOBILE
+═══════════════════════════════════════════════════════ */
+
+@media(max-width:768px){
+
+  .scanner-page-header{
+    padding:12px;
+    gap:8px;
+  }
+
+  .scanner-split-layout{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .scanner-left-panel{
+    min-height:unset;
+  }
+
+  .scanner-left-panel .sdz-content{
+    min-height:260px;
+    padding:22px 14px;
+  }
+
+  .scanner-left-panel .scanner-camera-view video{
+    height:260px;
+  }
+
+  .scanner-left-panel .scanner-preview-view{
+    padding:10px;
+  }
+
+  .scanner-left-panel .scanner-preview-view img{
+    height:auto;
+    max-height:320px;
+    object-fit:contain;
+  }
+
+  .scanner-left-panel .scanner-analyzing-view{
+    height:260px;
+  }
+
+  .scanner-tips-inline{
+    gap:6px;
+    padding:8px;
+  }
+
+  .scanner-tips-inline span{
+    font-size:0.65rem;
+    padding:4px 7px;
+  }
+
+  .scanner-right-panel{
+    max-height:none;
+    overflow-y:visible;
+    gap:10px;
+  }
+
+  .scanner-right-empty{
+    min-height:180px;
+    padding:28px 14px;
+  }
+
+  .scanner-right-panel .scanner-result-card{
+    padding:12px;
+    gap:10px;
+  }
+
+  .scanner-history-inline .scanner-history-list{
+    max-height:300px;
+  }
+
+  .scanner-history-inline-header{
+    padding:10px 12px;
+  }
+
+  .scanner-yolo-info{
+    padding:8px 10px;
+    font-size:0.68rem;
+    flex-wrap:wrap;
+  }
+}
+
 /* ── Responsive ── */
 @media(max-width: 900px) {
   .scanner-split-layout {
