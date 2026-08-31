@@ -3,7 +3,7 @@
 // Connected to backend API
 // ============================================
 
-const BACKEND_URL = 'https://shipped-fell-permalink-screensaver.trycloudflare.com/api';
+const BACKEND_URL = 'https://vincent-qty-blocked-romantic.trycloudflare.com/api';
 
 const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
