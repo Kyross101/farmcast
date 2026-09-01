@@ -169,6 +169,8 @@ GitHub Pages — FarmCast Frontend
                         ├── Crop Detection
                         └── Plant Disease Detection
 
+```
+
 ## 📁 Project Structure
 ```bash
 farmcast/
@@ -326,12 +328,14 @@ AI predictions and third-party weather information may vary in accuracy.
 - Email: kyrossgeanepalen@gmail.com
 ```
 
-## 📄📄 License
-```bash
-All rights reserved.
+## 📄 License
+
+**All rights reserved.**
 
 This project and its source code may not be copied, redistributed, modified, sold, or used commercially without permission from the project owner.
-```
-```bash
-<p align="center"> <strong>🌾 FarmCast — Smarter insights. Healthier crops. Better farming.</strong> </p> ```
-```
+
+---
+
+<p align="center">
+  <strong>🌾 FarmCast — Smarter insights. Healthier crops. Better farming.</strong>
+</p>
