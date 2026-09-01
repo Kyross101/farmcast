@@ -3451,7 +3451,7 @@ async function scanWithPythonAI(imageData) {
     formData.append('file', imageBlob, 'capture.jpg');
 
     // Direktang nakaturo sa Localhost Port 8000
-    const response = await fetch(`${AI_SERVER_URL}/scan`, {
+    const response = await fetch(`${AI_SERVER_URL}/scan`, { // ito kasi, url kapag binago mo yung url sa live deploymeent, meron karing iaadapt dito, na fetch sa python server na nagrurun sa backend
         method: 'POST',
         body: formData
     });
