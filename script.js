@@ -3194,7 +3194,7 @@ async function runRealTimeFrame() {
     formData.append('file', blob, 'frame.jpg');
 
     // ── Send to crop detector ──
-    const res = await fetch(`${AI_SERVER_URL}/detect`, {
+    const res = await fetch(`${AI_SERVER_URL}/detect`, { // ito  kasi url rin to sya para sa detect, kapag inadapt mo yung url sa taas
         method: 'POST',
         body: formData
       }
