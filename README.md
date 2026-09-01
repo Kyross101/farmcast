@@ -170,8 +170,7 @@ GitHub Pages — FarmCast Frontend
                         └── Plant Disease Detection
 
 ## 📁 Project Structure
-
-```
+```bash
 farmcast/
 ├── index.html         
 ├── login.html   
@@ -207,8 +206,6 @@ farmcast/
         ├── settings.js
         └── scanhistory.js
 ```
-
----
 
 ## ⚙️ Frontend Configuration
 FarmCast uses config.js as the central location for backend service endpoints.
@@ -257,19 +254,22 @@ node server.js
 ```
 
 ### 4. Start the Python AI backend
+```bash
 Run the FarmCast FastAPI AI server on port 8000 using the AI environment and model files configured for the project
 ```
 
 ### 5. Development tunnels
+```bash
 During the current development deployment, Cloudflare Quick Tunnels expose the local backend services.
 
 Update only the corresponding values in config.js when the temporary tunnel addresses change.
----
+```
 
 ## 🔒 Security
 
 FarmCast uses several security practices:
 
+```bash
 - Password hashing
 - JWT-based authentication
 - Expiring password reset tokens
@@ -281,11 +281,10 @@ FarmCast uses several security practices:
 .env files and other sensitive configuration must never be committed to source control.
 
 Because frontend JavaScript is delivered to the browser, public frontend configuration should never contain private secrets.
-
----
+```
 
 ## 🚦Current Status
-
+```bash
 FarmCast v1.0 — Core functionality operational
 
 Working areas include:
@@ -304,39 +303,35 @@ Working areas include:
 - Responsive desktop/mobile interfaces
 
 The project is currently in its final feature-polish and deployment-optimization stage.
-
----
+```
 
 ## 🎓 Project Purpose
-
+```bash
 FarmCast was developed as an academic smart-agriculture project exploring how modern web technologies, weather information, farm-management tools, and artificial intelligence can be combined to support agricultural decision-making, with a focus on Filipino farmers.
-
----
+```
 
 ## ⚠️ Disclaimer
-
+```bash
 FarmCast's AI plant-health results, weather information, and agricultural recommendations are intended as decision-support information.
 
 They should not be treated as a replacement for professional agricultural diagnosis or expert advice.
 
 AI predictions and third-party weather information may vary in accuracy.
-
----
+```
 
 ## 👨‍💻 Developer
-
+```bash
 **Kyross Geane Palen**
 - GitHub: [@Kyross101](https://github.com/Kyross101)
 - Email: kyrossgeanepalen@gmail.com
-
----
+```
 
 ## 📄📄 License
-
+```bash
 All rights reserved.
 
 This project and its source code may not be copied, redistributed, modified, sold, or used commercially without permission from the project owner.
-
----
-
+```
+```bash
 <p align="center"> <strong>🌾 FarmCast — Smarter insights. Healthier crops. Better farming.</strong> </p> ```
+```
