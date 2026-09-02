@@ -2183,10 +2183,10 @@ function addOfficialAdvisory({
     }
   }
 
-  return addNotification(
-    'official',
-    `🔴 ${title}`,
-    `${body} Location: ${location}. Source: ${source}. Issued: ${issuedText}.`
+ return addNotification(
+   'official',
+   title,
+   `${body} Location: ${location}. Source: ${source}. Issued: ${issuedText}.`
   );
 }
 
@@ -2458,7 +2458,11 @@ function renderNotifList() {
 
   list.innerHTML = filtered.map(n => {
     const time = timeAgo(new Date(n.time));
-    return `<div class="notif-item${n.read?'':' unread'}" onclick="markNotifRead('${n.id}')">
+    return `
+      <div
+        class="notif-item${n.read ? '' : ' unread'}${n.type === 'official' ? ' notif-official' : ''}"
+        onclick="markNotifRead('${n.id}')"
+      >
       <div class="ni-icon type-${n.type}">${n.icon}</div>
       <div class="ni-body">
         <div class="ni-title">${n.title}</div>

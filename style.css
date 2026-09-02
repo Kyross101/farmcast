@@ -1508,6 +1508,117 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   padding: 0 3px;
 }
 
+/* ============================================================
+   OFFICIAL PAGASA NOTIFICATION
+============================================================ */
+
+.notif-item.notif-official {
+  position: relative;
+  overflow: hidden;
+
+  margin: 8px 10px;
+  padding: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(248, 81, 73, 0.10),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  border: 1px solid rgba(248, 81, 73, 0.22);
+  border-radius: 12px;
+}
+
+.notif-item.notif-official::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 3px;
+
+  background: var(--red);
+}
+
+.notif-item.notif-official:hover {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(248, 81, 73, 0.15),
+      rgba(255, 255, 255, 0.035)
+    );
+}
+
+
+/* OFFICIAL ICON */
+
+.notif-official .ni-icon.type-official {
+  background: rgba(248, 81, 73, 0.14);
+
+  border: 1px solid rgba(248, 81, 73, 0.22);
+
+  color: var(--red);
+}
+
+
+/* TITLE */
+
+.notif-official .ni-title {
+  color: var(--text);
+  font-size: 0.86rem;
+}
+
+
+/* Add OFFICIAL label above title */
+
+.notif-official .ni-body::before {
+  content: "DOST-PAGASA • OFFICIAL";
+
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--red);
+
+  font-size: 0.62rem;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+}
+
+
+/* MESSAGE */
+
+.notif-official .ni-text {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+
+/* TIME */
+
+.notif-official .ni-time {
+  display: inline-flex;
+  align-items: center;
+
+  margin-top: 7px;
+
+  color: var(--text-dim);
+}
+
+
+/* UNREAD DOT */
+
+.notif-official .ni-dot {
+  background: var(--red);
+
+  box-shadow:
+    0 0 0 3px rgba(248, 81, 73, 0.12);
+}
+
 /* ═══════════════════════════════════════════════════════
    SETTINGS PAGE
 ═══════════════════════════════════════════════════════ */
