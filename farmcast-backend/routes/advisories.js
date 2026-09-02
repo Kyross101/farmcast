@@ -131,7 +131,7 @@ router.get('/', async (req, res) => {
     });
 
     const advisories = recentFiles.map(file => ({
-      id: `pagasa-weather-${file.filename}`,
+      id: `pagasa-weather-${file.filename}-${file.issuedAt.getTime()}`,
 
       source: 'DOST-PAGASA',
 
