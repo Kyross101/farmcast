@@ -2129,7 +2129,11 @@ function checkWeatherAlerts(data) {
 
   // Temperature alert
   if (temp > threshold && appSettings.tempUnit === 'C') {
-    addNotification('weather', `🌡️ High Temperature Alert`, `Temperature in ${data.name} is ${displayTemp(temp)}, exceeding your ${threshold}°C threshold. Water crops immediately.`);
+   addNotification(
+     'weather',
+     '🌡️ FarmCast Heat Risk',
+     `Temperature in ${data.name} is ${displayTemp(temp)}, above your configured threshold of ${threshold}°C. Monitor crops for heat stress and review irrigation needs.`
+    );
   }
   // Heavy rain
   if (isHeavyRain && appSettings.rainAlert) {
@@ -2154,9 +2158,10 @@ function checkWeatherAlerts(data) {
     const humThresh = sensitivity === 'low' ? 85 : sensitivity === 'high' ? 60 : 70;
     if (h > humThresh) {
       addNotification(
-  'pest',
-  '🦗 Elevated Pest Risk',
-  `Humidity is currently ${h}% in ${data.name}. These conditions may favor certain pests or fungal diseases. Inspect crops for visible signs before taking action.`);
+        'pest',
+        '🦗 Elevated Pest Risk',
+        `Humidity is currently ${h}% in ${data.name}. These conditions may favor certain pests or fungal diseases. Inspect crops for visible signs before taking action.`
+      );
     }
   }
 }
@@ -3010,15 +3015,26 @@ function showAIResult(disease, rawPredictions) {
   document.getElementById('aiRecsList').innerHTML = recs.join('');
 
   // Add to pest log if disease detected
-  if (!isHealthy && aiCurrentCropType) {
-    const crop = myCrops.find(c => String(c._id || c.id) === String(aiCurrentCropId));
-   addNotification(
-     'plant-health',
-     `🦠 Possible ${disease.name}`,
-     `The AI scanner identified signs consistent with ${disease.name} on ${aiCurrentCropType}. Review the scan result and inspect the plant before taking action.`
+ if (!isHealthy && aiCurrentCropType) {
+   const crop = myCrops.find(
+     c => String(c._id || c.id) === String(aiCurrentCropId)
    );
-    toast(`⚠️ Disease detected on ${aiCurrentCropType}! Check notifications.`, 'warn');
-  } else if (isHealthy) {
+
+  const confidence = disease.confidence
+    ? `${Math.round(disease.confidence * 100)}%`
+    : null;
+
+  addNotification(
+    'plant-health',
+    `🦠 Possible ${disease.name}`,
+    `The AI scanner identified signs consistent with ${disease.name} on ${aiCurrentCropType} at ${crop?.location || 'your farm'}.${confidence ? ` Confidence: ${confidence}.` : ''} Inspect the plant and review the scan result before taking action.`
+  );
+
+  toast(
+    `⚠️ Possible ${disease.name} detected on ${aiCurrentCropType}. Check notifications.`,
+    'warn'
+  );
+} else if (isHealthy) {
     toast(`✅ ${aiCurrentCropType} looks healthy! No disease detected.`, 'ok');
   }
 }
