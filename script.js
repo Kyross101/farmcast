@@ -2158,6 +2158,137 @@ function addOfficialAdvisory({
   );
 }
 
+async function loadOfficialAdvisories() {
+  try {
+    const response = await fetch(
+      `${window.FARMCAST_CONFIG.API_URL}/advisories`
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    const advisories = Array.isArray(data.advisories)
+      ? data.advisories
+      : [];
+
+    renderOfficialAdvisories(advisories);
+
+  } catch (error) {
+    console.warn(
+      'Unable to load official advisories:',
+      error.message
+    );
+
+    renderOfficialAdvisories([]);
+  }
+}
+
+function renderOfficialAdvisories(advisories) {
+  const container = document.getElementById(
+    'officialAdvisoryList'
+  );
+
+  if (!container) return;
+
+  if (!advisories.length) {
+    container.innerHTML = `
+      <div class="official-advisory-empty">
+        <div class="official-advisory-empty-icon">
+          ✅
+        </div>
+
+        <div>
+          <strong>No active official advisories</strong>
+
+          <p>
+            No verified government weather advisory
+            is currently available through FarmCast.
+          </p>
+        </div>
+      </div>
+    `;
+
+    return;
+  }
+
+  container.innerHTML = advisories.map(advisory => {
+
+    const issuedDate = advisory.issuedAt
+      ? new Date(advisory.issuedAt)
+      : null;
+
+    const issuedText =
+      issuedDate &&
+      !Number.isNaN(issuedDate.getTime())
+        ? issuedDate.toLocaleString('en-PH', {
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          })
+        : 'Issuance time unavailable';
+
+    return `
+      <article class="official-advisory-card">
+
+        <div class="official-advisory-header">
+
+          <span class="official-advisory-badge">
+            🔴 OFFICIAL
+          </span>
+
+          <span class="official-advisory-source">
+            ${escapeAdvisoryHtml(
+              advisory.source || 'Official Source'
+            )}
+          </span>
+
+        </div>
+
+        <h3>
+          ${escapeAdvisoryHtml(
+            advisory.title || 'Weather Advisory'
+          )}
+        </h3>
+
+        <p class="official-advisory-message">
+          ${escapeAdvisoryHtml(
+            advisory.message || ''
+          )}
+        </p>
+
+        <div class="official-advisory-meta">
+
+          <span>
+            📍
+            ${escapeAdvisoryHtml(
+              advisory.location || 'Philippines'
+            )}
+          </span>
+
+          <span>
+            🕒 ${issuedText}
+          </span>
+
+        </div>
+
+      </article>
+    `;
+  }).join('');
+}
+
+function escapeAdvisoryHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+
+
 function checkWeatherAlerts(data) {
   if (!data) return;
   const temp = data.main.temp;
