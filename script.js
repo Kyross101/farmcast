@@ -166,27 +166,70 @@ function renderPestAlerts(data){
   const desc = data.weather[0].description.toLowerCase();
   const isRaining = desc.includes('rain');
 
+  // Weather-based pest RISK only.
+  // These conditions do NOT confirm that a pest is actually present.
   const active = PESTS.filter(p => {
-    if(p.condition==='humid' && humidity > 70) return true;
-    if(p.condition==='hot'   && temp > 30)     return true;
-    if(p.condition==='dry'   && humidity < 50) return true;
-    if(p.condition==='rainy' && isRaining)     return true;
+    if (p.condition === 'humid' && humidity > 70) return true;
+    if (p.condition === 'hot'   && temp > 30)     return true;
+    if (p.condition === 'dry'   && humidity < 50) return true;
+    if (p.condition === 'rainy' && isRaining)     return true;
+
     return false;
   });
 
-  // Always show at least 2
-  const show = active.length >= 2 ? active : PESTS.slice(0,2);
+  const pestList = document.getElementById('pestList');
 
-  document.getElementById('pestList').innerHTML = show.map(p => `
-    <div class="pest-item ${p.level}" onclick="toast('Pest detail: ${p.name} — ${p.detail}','warn')">
-      <div class="pest-icon">${p.icon}</div>
-      <div class="pest-info">
-        <div class="pest-name">${p.name}</div>
-        <div class="pest-detail">${p.detail}</div>
+  if (!pestList) return;
+
+  // No elevated weather-related pest risk
+  if (active.length === 0) {
+    pestList.innerHTML = `
+      <div class="pest-item">
+        <div class="pest-icon">✅</div>
+
+        <div class="pest-info">
+          <div class="pest-name">
+            No Elevated Pest Risk
+          </div>
+
+          <div class="pest-detail">
+            Current weather conditions do not indicate an elevated
+            weather-related pest risk. Continue regular crop inspection.
+          </div>
+        </div>
       </div>
+    `;
+
+    return;
+  }
+
+  // Show only pest risks supported by current weather conditions
+  pestList.innerHTML = active.map(p => `
+    <div
+      class="pest-item ${p.level}"
+      onclick="toast(
+        'Pest risk: ${p.name} — ${p.detail}',
+        'warn'
+      )"
+    >
+      <div class="pest-icon">
+        ${p.icon}
+      </div>
+
+      <div class="pest-info">
+        <div class="pest-name">
+          ${p.name} Risk
+        </div>
+
+        <div class="pest-detail">
+          ${p.detail}. Weather conditions may favor this risk.
+          Inspect crops for visible signs before taking action.
+        </div>
+      </div>
+
       <div class="pest-level level-${p.level}">
         <div class="pest-pulse"></div>
-        ${p.level.charAt(0).toUpperCase()+p.level.slice(1)}
+        ${p.level.charAt(0).toUpperCase() + p.level.slice(1)} Risk
       </div>
     </div>
   `).join('');
@@ -203,6 +246,27 @@ function renderTasks(){
     </div>
   `).join('');
 }
+
+function toggleTask(i){
+  tasks[i].done = !tasks[i].done;
+  renderTasks();
+}
+
+function addTask(){
+  const label = prompt('New task name:');
+  if(!label) return;
+
+  tasks.push({
+    label,
+    time:'TBD',
+    done:false,
+    priority:'low'
+  });
+
+  renderTasks();
+  toast('Task added!','ok');
+}
+
 function toggleTask(i){ tasks[i].done = !tasks[i].done; renderTasks(); }
 function addTask(){
   const label = prompt('New task name:');
@@ -2033,7 +2097,13 @@ function addNotification(type, title, body) {
     if (inQuiet) return; // suppress during quiet hours
   }
 
-  const iconMap = { weather:'⛅', pest:'🦗', harvest:'🌾', system:'⚙️' };
+  const iconMap = {
+    weather: '⛅',
+    pest: '🦗',
+    'plant-health': '🦠',
+    harvest: '🌾',
+    system: '⚙️'
+  };
   notifications.unshift({
     id: nextNotifId++,
     type, icon: iconMap[type] || '📢',
@@ -2063,11 +2133,19 @@ function checkWeatherAlerts(data) {
   }
   // Heavy rain
   if (isHeavyRain && appSettings.rainAlert) {
-    addNotification('weather', '🌧️ Heavy Rain Warning', `Heavy rain detected in ${data.name}. Avoid field operations. Check drainage systems.`);
+    addNotification(
+      'weather',
+     '🌧️ FarmCast Rain Risk',
+     `Rain and high humidity are currently detected in ${data.name}. Monitor field drainage and avoid unnecessary irrigation. Source: FarmCast weather analysis.`
+    );
   }
   // High wind
   if (windKph > 40 && appSettings.windAlert) {
-    addNotification('weather', '💨 High Wind Warning', `Wind speed is ${displayWind(data.wind.speed)} in ${data.name}. Secure young plants and delay planting activities.`);
+    addNotification(
+      'weather',
+      '💨 FarmCast Strong Wind Risk',
+      `Strong wind conditions are detected in ${data.name}. Consider securing young plants and delaying sensitive field activities. Source: FarmCast weather analysis.`
+    );
   }
   // Pest sensitivity check
   if (appSettings.pestNotif) {
@@ -2075,7 +2153,10 @@ function checkWeatherAlerts(data) {
     const sensitivity = appSettings.pestSensitivity;
     const humThresh = sensitivity === 'low' ? 85 : sensitivity === 'high' ? 60 : 70;
     if (h > humThresh) {
-      addNotification('pest', '🦗 Pest Risk Detected', `Humidity (${h}%) in ${data.name} has reached the threshold for aphid and fungal disease risk.`);
+      addNotification(
+  'pest',
+  '🦗 Elevated Pest Risk',
+  `Humidity is currently ${h}% in ${data.name}. These conditions may favor certain pests or fungal diseases. Inspect crops for visible signs before taking action.`);
     }
   }
 }
@@ -2931,9 +3012,11 @@ function showAIResult(disease, rawPredictions) {
   // Add to pest log if disease detected
   if (!isHealthy && aiCurrentCropType) {
     const crop = myCrops.find(c => String(c._id || c.id) === String(aiCurrentCropId));
-    addNotification('pest', `🦠 Disease Detected: ${disease.name}`,
-      `AI detected ${disease.name} on ${aiCurrentCropType} at ${crop?.location || 'your farm'}. Severity: ${disease.severity.toUpperCase()}.`
-    );
+   addNotification(
+     'plant-health',
+     `🦠 Possible ${disease.name}`,
+     `The AI scanner identified signs consistent with ${disease.name} on ${aiCurrentCropType}. Review the scan result and inspect the plant before taking action.`
+   );
     toast(`⚠️ Disease detected on ${aiCurrentCropType}! Check notifications.`, 'warn');
   } else if (isHealthy) {
     toast(`✅ ${aiCurrentCropType} looks healthy! No disease detected.`, 'ok');
