@@ -4001,3 +4001,108 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .sidebar.collapsed .sidebar-user > div:last-child {
   display: none;
 }
+
+/* ══════════════════════════════
+   OFFICIAL GOVERNMENT ADVISORIES
+══════════════════════════════ */
+
+.official-advisory-section {
+  margin-top: 0;
+}
+
+.official-advisory-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.official-advisory-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0.65;
+}
+
+.official-source-tag {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.official-advisory-card {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(220, 50, 50, 0.25);
+  background: rgba(220, 50, 50, 0.06);
+  margin-bottom: 12px;
+}
+
+.official-advisory-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.official-advisory-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.official-advisory-source {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.official-advisory-card h3 {
+  margin: 0 0 8px;
+}
+
+.official-advisory-message {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.official-advisory-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.official-advisory-empty {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.official-advisory-empty p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.official-advisory-empty-icon {
+  font-size: 24px;
+}
+
+@media (max-width: 600px) {
+  .official-advisory-title-row {
+    align-items: flex-start;
+  }
+
+  .official-advisory-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
