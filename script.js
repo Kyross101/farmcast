@@ -1520,6 +1520,7 @@ function saveNewField() {
 const LS_SETTINGS    = 'fc_settings';
 const LS_NOTIFS      = 'fc_notifications';
 const LS_NOTIF_ID    = 'fc_nextNotifId';
+const LS_OFFICIAL_SEEN = 'fc_official_advisories_seen';
 
 // ── DEFAULT SETTINGS ──
 const DEFAULT_SETTINGS = {
@@ -2131,6 +2132,35 @@ function addNotification(type, title, body) {
   renderNotifList();
 }
 
+function getSeenOfficialAdvisories() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(LS_OFFICIAL_SEEN) || '[]'
+    );
+
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
+}
+
+function markOfficialAdvisorySeen(id) {
+  if (!id) return;
+
+  const seen = getSeenOfficialAdvisories();
+
+  if (!seen.includes(id)) {
+    seen.push(id);
+  }
+
+  const trimmed = seen.slice(-100);
+
+  localStorage.setItem(
+    LS_OFFICIAL_SEEN,
+    JSON.stringify(trimmed)
+  );
+}
+
 function addOfficialAdvisory({
   title,
   body,
@@ -2158,6 +2188,30 @@ function addOfficialAdvisory({
   );
 }
 
+function notifyNewOfficialAdvisories(advisories) {
+  const seen = getSeenOfficialAdvisories();
+
+  advisories.forEach(advisory => {
+    if (!advisory.id) return;
+
+    if (seen.includes(advisory.id)) {
+      return;
+    }
+
+    addOfficialAdvisory({
+      title: advisory.title || 'Weather Advisory',
+      body:
+        advisory.message ||
+        'DOST-PAGASA has published an official advisory.',
+      source: advisory.source || 'DOST-PAGASA',
+      location: advisory.location || 'Philippines',
+      issuedAt: advisory.issuedAt
+    });
+
+    markOfficialAdvisorySeen(advisory.id);
+  });
+}
+
 async function loadOfficialAdvisories() {
   try {
     const response = await fetch(
@@ -2175,6 +2229,7 @@ async function loadOfficialAdvisories() {
       : [];
 
     renderOfficialAdvisories(advisories);
+    notifyNewOfficialAdvisories(advisories);
 
   } catch (error) {
     console.warn(
@@ -2183,6 +2238,7 @@ async function loadOfficialAdvisories() {
     );
 
     renderOfficialAdvisories([]);
+    
   }
 }
 
