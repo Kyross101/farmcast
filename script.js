@@ -2340,7 +2340,10 @@ function renderOfficialAdvisories(advisories) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            View Official PAGASA Advisory
+            <span>
+               📄 View Official PAGASA Advisory
+            </span>
+
             <span class="material-symbols-outlined">
               open_in_new
             </span>

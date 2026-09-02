@@ -4033,100 +4033,208 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 }
 
 .official-advisory-card {
-  padding: 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(220, 50, 50, 0.25);
-  background: rgba(220, 50, 50, 0.06);
-  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+  padding: 18px;
+  margin-bottom: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(248, 81, 73, 0.08),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  border: 1px solid rgba(248, 81, 73, 0.22);
+  border-radius: 16px;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+/* red accent line */
+.official-advisory-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 4px;
+
+  background: #f85149;
+}
+
+.official-advisory-card:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(248, 81, 73, 0.4);
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+
+/* HEADER */
 
 .official-advisory-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
 }
 
 .official-advisory-badge {
-  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 5px 9px;
+
+  background: rgba(248, 81, 73, 0.12);
+  border: 1px solid rgba(248, 81, 73, 0.2);
+  border-radius: 999px;
+
+  color: #f85149;
+
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.7px;
 }
 
 .official-advisory-source {
   font-size: 12px;
-  opacity: 0.7;
+  font-weight: 600;
+
+  color: var(--text-muted);
 }
+
+
+/* TITLE */
 
 .official-advisory-card h3 {
   margin: 0 0 8px;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  color: var(--text);
 }
+
+
+/* MESSAGE */
 
 .official-advisory-message {
   margin: 0;
-  line-height: 1.55;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+  line-height: 1.6;
 }
+
+
+/* META INFORMATION */
 
 .official-advisory-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 12px;
-  font-size: 12px;
-  opacity: 0.7;
+  gap: 8px;
+
+  margin-top: 14px;
 }
 
-.official-advisory-empty {
+.official-advisory-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 6px 9px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+}
+
+
+/* OFFICIAL SOURCE BUTTON */
+
+.official-advisory-link {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
+  justify-content: space-between;
+
+  gap: 10px;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  margin-top: 15px;
+  padding: 11px 13px;
+
+  background: rgba(248, 81, 73, 0.09);
+  border: 1px solid rgba(248, 81, 73, 0.22);
+  border-radius: 10px;
+
+  color: #f85149;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.official-advisory-empty p {
-  margin: 4px 0 0;
-  font-size: 13px;
-  opacity: 0.7;
+.official-advisory-link:hover {
+  background: rgba(248, 81, 73, 0.16);
+  border-color: rgba(248, 81, 73, 0.4);
 }
 
-.official-advisory-empty-icon {
-  font-size: 24px;
+.official-advisory-link .material-symbols-outlined {
+  font-size: 17px;
 }
+
+
+/* MOBILE */
 
 @media (max-width: 600px) {
-  .official-advisory-title-row {
-    align-items: flex-start;
+
+  .official-advisory-card {
+    padding: 16px;
   }
 
   .official-advisory-header {
     align-items: flex-start;
+  }
+
+  .official-advisory-card h3 {
+    font-size: 16px;
+  }
+
+  .official-advisory-message {
+    font-size: 12px;
+  }
+
+  .official-advisory-meta {
     flex-direction: column;
   }
-}
 
-.official-advisory-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 14px;
-  padding: 9px 12px;
-  border-radius: 9px;
-  background: rgba(248, 81, 73, 0.12);
-  border: 1px solid rgba(248, 81, 73, 0.25);
-  color: var(--red);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  transition: 0.2s;
-}
+  .official-advisory-meta span {
+    width: fit-content;
+  }
 
-.official-advisory-link:hover {
-  background: rgba(248, 81, 73, 0.2);
-}
-
-.official-advisory-link .material-symbols-outlined {
-  font-size: 16px;
+  .official-advisory-link {
+    padding: 12px;
+  }
 }
