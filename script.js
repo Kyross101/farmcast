@@ -2107,7 +2107,7 @@ function addNotification(type, title, body) {
     const inQuiet = qFrom > qUntil
       ? (hour >= qFrom || hour < qUntil)
       : (hour >= qFrom && hour < qUntil);
-    if (inQuiet) return; // suppress during quiet hours
+    if (inQuiet) return false; // suppress during quiet hours
   }
 
   const iconMap = {
@@ -2130,6 +2130,8 @@ function addNotification(type, title, body) {
   lsSave(LS_NOTIF_ID, nextNotifId);
   updateNotifBadge();
   renderNotifList();
+
+  return true;
 }
 
 function getSeenOfficialAdvisories() {
@@ -2181,7 +2183,7 @@ function addOfficialAdvisory({
     }
   }
 
-  addNotification(
+  return addNotification(
     'official',
     `🔴 ${title}`,
     `${body} Location: ${location}. Source: ${source}. Issued: ${issuedText}.`
@@ -2198,7 +2200,7 @@ function notifyNewOfficialAdvisories(advisories) {
       return;
     }
 
-    addOfficialAdvisory({
+    const added = addOfficialAdvisory({
       title: advisory.title || 'Weather Advisory',
       body:
         advisory.message ||
@@ -2208,7 +2210,9 @@ function notifyNewOfficialAdvisories(advisories) {
       issuedAt: advisory.issuedAt
     });
 
-    markOfficialAdvisorySeen(advisory.id);
+    if (added) {
+      markOfficialAdvisorySeen(advisory.id);
+    }
   });
 }
 
