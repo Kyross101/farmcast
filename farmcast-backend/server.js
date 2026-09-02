@@ -36,6 +36,7 @@ app.use('/api/irrigation',  require('./routes/irrigation'));
 app.use('/api/pests',       require('./routes/pests'));
 app.use('/api/settings',    require('./routes/settings'));
 app.use('/api/scanhistory', require('./routes/scanhistory'));
+app.use('/api/advisories',  require('./routes/advisories'));
 
 // ── HEALTH CHECK ──
 app.get('/health', (req, res) => {
