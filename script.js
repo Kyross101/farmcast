@@ -3020,8 +3020,8 @@ function showAIResult(disease, rawPredictions) {
      c => String(c._id || c.id) === String(aiCurrentCropId)
    );
 
-  const confidence = disease.confidence
-    ? `${Math.round(disease.confidence * 100)}%`
+  const confidence = Number.isFinite(Number(disease.confidence))
+    ? `${Number(disease.confidence).toFixed(1)}%`
     : null;
 
   addNotification(
@@ -3881,13 +3881,13 @@ function showScannerResult(plant, disease, rawPredictions) {
   // ── Notifications / toast ──
   if (isPossibleDisease) {
     addNotification(
-      'pest',
-      `🦠 Possible Disease: ${statusName}`,
-      `FarmCast AI found ${statusName} on ${plant.name || 'the scanned crop'}. AI confidence: ${safeConfidence}%.`
+      'plant-health',
+      `🦠 Possible ${statusName}`,
+      `FarmCast AI identified signs consistent with ${statusName} on ${plant.name || 'the scanned crop'}. AI confidence: ${safeConfidence}%. Inspect the plant and review the scan result before taking action.`
     );
 
     toast(
-      `⚠️ ${statusName} found on ${plant.name || 'crop'}.`,
+      `⚠️ Possible ${statusName} on ${plant.name || 'crop'}. Check the scan result.`,
       'warn'
     );
 
