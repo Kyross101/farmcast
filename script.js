@@ -90,9 +90,21 @@ function assessFarmCondition(data){
   const desc = data.weather[0].description.toLowerCase();
   const isRaining = desc.includes('rain') || desc.includes('drizzle');
 
-  if(windKph > 40) return { type:'danger', text:'<strong>⚠️ High Wind Warning:</strong> Delay planting & harvesting activities. Secure young plants.' };
-  if(isRaining && humidity > 85) return { type:'warn', text:'<strong>🌧️ Heavy Rain Alert:</strong> Avoid field operations. Check drainage systems.' };
-  if(temp > 36) return { type:'warn', text:'<strong>🌡️ Heat Stress Alert:</strong> Water crops early morning and late afternoon. Monitor for wilting.' };
+  if(windKph > 40)
+    return {
+      type:'danger',
+      text:'<strong>💨 FarmCast Strong Wind Risk:</strong> Strong wind conditions may affect farm operations. Consider securing young plants and delaying sensitive field activities.'
+    };
+  if(isRaining && humidity > 85)
+    return {
+      type:'warn',
+      text:'<strong>🌧️ FarmCast Rain Risk:</strong> Rain and high humidity are present. Monitor drainage and field conditions.'
+    };
+  if(temp > 36)
+    return {
+      type:'warn',
+      text:'<strong>🌡️ FarmCast Heat Stress Risk:</strong> High temperature may increase crop heat stress. Monitor crops and check soil moisture before irrigating.'
+    };
   if(humidity > 80 && temp > 28) return { type:'warn', text:'<strong>💦 High Humidity:</strong> Monitor for fungal diseases. Ensure proper crop spacing.' };
   if(temp >= 22 && temp <= 32 && humidity >= 50 && humidity <= 75)
     return { type:'ok', text:'<strong>✅ Ideal Farm Conditions:</strong> Good temperature and humidity. Perfect day for planting and fieldwork!' };
@@ -2099,6 +2111,7 @@ function addNotification(type, title, body) {
 
   const iconMap = {
     weather: '⛅',
+    official: '🔴',
     pest: '🦗',
     'plant-health': '🦠',
     harvest: '🌾',
@@ -2116,6 +2129,33 @@ function addNotification(type, title, body) {
   lsSave(LS_NOTIF_ID, nextNotifId);
   updateNotifBadge();
   renderNotifList();
+}
+
+function addOfficialAdvisory({
+  title,
+  body,
+  source = 'PAGASA',
+  location = currentCity,
+  issuedAt = null
+}) {
+  let issuedText = 'Check official source for issuance time';
+
+  if (issuedAt) {
+    const issuedDate = new Date(issuedAt);
+
+    if (!isNaN(issuedDate.getTime())) {
+      issuedText = issuedDate.toLocaleString('en-PH', {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      });
+    }
+  }
+
+  addNotification(
+    'official',
+    `🔴 ${title}`,
+    `${body} Location: ${location}. Source: ${source}. Issued: ${issuedText}.`
+  );
 }
 
 function checkWeatherAlerts(data) {
