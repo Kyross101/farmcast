@@ -2095,7 +2095,7 @@ if (notifications.length === 0) {
   nextNotifId = 4;
 }
 
-function addNotification(type, title, body) {
+function addNotification(type, title, body, sourceUrl = null) {
   // Check quiet hours
   if (appSettings.quietHours) {
     const now  = new Date();
@@ -2119,11 +2119,14 @@ function addNotification(type, title, body) {
     system: '⚙️'
   };
   notifications.unshift({
-    id: nextNotifId++,
-    type, icon: iconMap[type] || '📢',
-    title, body,
-    time: new Date().toISOString(),
-    read: false
+  id: nextNotifId++,
+  type,
+  icon: iconMap[type] || '📢',
+  title,
+  body,
+  sourceUrl,
+  time: new Date().toISOString(),
+  read: false
   });
   if (notifications.length > 50) notifications = notifications.slice(0, 50);
   lsSave(LS_NOTIFS, notifications);
@@ -2168,7 +2171,8 @@ function addOfficialAdvisory({
   body,
   source = 'PAGASA',
   location = currentCity,
-  issuedAt = null
+  issuedAt = null,
+  sourceUrl = null
 }) {
   let issuedText = 'Check official source for issuance time';
 
@@ -2186,7 +2190,8 @@ function addOfficialAdvisory({
  return addNotification(
    'official',
    title,
-   `${body} Location: ${location}. Source: ${source}. Issued: ${issuedText}.`
+   `${body} Location: ${location}. Source: ${source}. Issued: ${issuedText}.`,
+   sourceUrl
   );
 }
 
@@ -2206,8 +2211,11 @@ function notifyNewOfficialAdvisories(advisories) {
         advisory.message ||
         'DOST-PAGASA has published an official advisory.',
       source: advisory.source || 'DOST-PAGASA',
-      location: advisory.location || 'Philippines',
-      issuedAt: advisory.issuedAt
+      location:
+        advisory.location ||
+        'See advisory for affected areas',
+      issuedAt: advisory.issuedAt,
+      sourceUrl: advisory.sourceUrl || null
     });
 
     if (added) {
@@ -2461,7 +2469,7 @@ function renderNotifList() {
     return `
       <div
         class="notif-item${n.read ? '' : ' unread'}${n.type === 'official' ? ' notif-official' : ''}"
-        onclick="markNotifRead('${n.id}')"
+        onclick="handleNotifClick('${n.id}')"
       >
       <div class="ni-icon type-${n.type}">${n.icon}</div>
       <div class="ni-body">
@@ -2488,8 +2496,15 @@ function timeAgo(date) {
 }
 
 function markNotifRead(id) {
-  const n = notifications.find(x => x.id === id);
-  if (n) { n.read = true; lsSave(LS_NOTIFS, notifications); }
+  const n = notifications.find(
+    x => String(x.id) === String(id)
+  );
+
+  if (n) {
+    n.read = true;
+    lsSave(LS_NOTIFS, notifications);
+  }
+
   updateNotifBadge();
   renderNotifList();
 }
@@ -2502,9 +2517,35 @@ function markAllNotifRead() {
   toast('All notifications marked as read.', 'ok');
 }
 
+function handleNotifClick(id) {
+  const notif = notifications.find(
+    n => String(n.id) === String(id)
+  );
+
+  if (!notif) return;
+
+  markNotifRead(id);
+
+  if (
+    notif.type === 'official' &&
+    notif.sourceUrl
+  ) {
+    window.open(
+      notif.sourceUrl,
+      '_blank',
+      'noopener,noreferrer'
+    );
+  }
+}
+
+
 function deleteNotif(e, id) {
   e.stopPropagation();
-  notifications = notifications.filter(n => n.id !== id);
+
+  notifications = notifications.filter(
+    n => String(n.id) !== String(id)
+  );
+
   lsSave(LS_NOTIFS, notifications);
   updateNotifBadge();
   renderNotifList();
