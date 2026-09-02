@@ -2137,6 +2137,19 @@ function addNotification(type, title, body, sourceUrl = null) {
   return true;
 }
 
+function hasRecentNotification(type, title, cooldownHours = 6) {
+  const cooldownMs = cooldownHours * 60 * 60 * 1000;
+  const now = Date.now();
+
+  return notifications.some(n => {
+    if (n.type !== type || n.title !== title) return false;
+
+    const notifTime = new Date(n.time).getTime();
+
+    return now - notifTime < cooldownMs;
+  });
+}
+
 function getSeenOfficialAdvisories() {
   try {
     const saved = JSON.parse(
@@ -2376,6 +2389,7 @@ function escapeAdvisoryHtml(value) {
 
 function checkWeatherAlerts(data) {
   if (!data) return;
+
   const temp = data.main.temp;
   const desc = data.weather[0].description.toLowerCase();
   const windKph = data.wind.speed * 3.6;
@@ -2385,39 +2399,64 @@ function checkWeatherAlerts(data) {
 
   // Temperature alert
   if (temp > threshold && appSettings.tempUnit === 'C') {
-   addNotification(
-     'weather',
-     '🌡️ FarmCast Heat Risk',
-     `Temperature in ${data.name} is ${displayTemp(temp)}, above your configured threshold of ${threshold}°C. Monitor crops for heat stress and review irrigation needs.`
-    );
+    const title = '🌡️ FarmCast Heat Risk';
+
+    if (!hasRecentNotification('weather', title, 6)) {
+      addNotification(
+        'weather',
+        title,
+        `Temperature in ${data.name} is ${displayTemp(temp)}, above your configured threshold of ${threshold}°C. Monitor crops for heat stress and review irrigation needs.`
+      );
+    }
   }
+
   // Heavy rain
   if (isHeavyRain && appSettings.rainAlert) {
-    addNotification(
-      'weather',
-     '🌧️ FarmCast Rain Risk',
-     `Rain and high humidity are currently detected in ${data.name}. Monitor field drainage and avoid unnecessary irrigation. Source: FarmCast weather analysis.`
-    );
+    const title = '🌧️ FarmCast Rain Risk';
+
+    if (!hasRecentNotification('weather', title, 6)) {
+      addNotification(
+        'weather',
+        title,
+        `Rain and high humidity are currently detected in ${data.name}. Monitor field drainage and avoid unnecessary irrigation. Source: FarmCast weather analysis.`
+      );
+    }
   }
+
   // High wind
   if (windKph > 40 && appSettings.windAlert) {
-    addNotification(
-      'weather',
-      '💨 FarmCast Strong Wind Risk',
-      `Strong wind conditions are detected in ${data.name}. Consider securing young plants and delaying sensitive field activities. Source: FarmCast weather analysis.`
-    );
+    const title = '💨 FarmCast Strong Wind Risk';
+
+    if (!hasRecentNotification('weather', title, 6)) {
+      addNotification(
+        'weather',
+        title,
+        `Strong wind conditions are detected in ${data.name}. Consider securing young plants and delaying sensitive field activities. Source: FarmCast weather analysis.`
+      );
+    }
   }
+
   // Pest sensitivity check
   if (appSettings.pestNotif) {
     const h = data.main.humidity;
     const sensitivity = appSettings.pestSensitivity;
-    const humThresh = sensitivity === 'low' ? 85 : sensitivity === 'high' ? 60 : 70;
+    const humThresh =
+      sensitivity === 'low'
+        ? 85
+        : sensitivity === 'high'
+        ? 60
+        : 70;
+
     if (h > humThresh) {
-      addNotification(
-        'pest',
-        '🦗 Elevated Pest Risk',
-        `Humidity is currently ${h}% in ${data.name}. These conditions may favor certain pests or fungal diseases. Inspect crops for visible signs before taking action.`
-      );
+      const title = '🦗 Elevated Pest Risk';
+
+      if (!hasRecentNotification('pest', title, 6)) {
+        addNotification(
+          'pest',
+          title,
+          `Humidity is currently ${h}% in ${data.name}. These conditions may favor certain pests or fungal diseases. Inspect crops for visible signs before taking action.`
+        );
+      }
     }
   }
 }
