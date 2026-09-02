@@ -2273,6 +2273,20 @@ function renderOfficialAdvisories(advisories) {
 
         </div>
 
+        ${advisory.sourceUrl ? `
+          <a
+            class="official-advisory-link"
+            href="${escapeAdvisoryHtml(advisory.sourceUrl)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Official PAGASA Advisory
+            <span class="material-symbols-outlined">
+              open_in_new
+            </span>
+          </a>
+        ` : ''}
+
       </article>
     `;
   }).join('');

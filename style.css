@@ -4106,3 +4106,27 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     flex-direction: column;
   }
 }
+
+.official-advisory-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  background: rgba(248, 81, 73, 0.12);
+  border: 1px solid rgba(248, 81, 73, 0.25);
+  color: var(--red);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.official-advisory-link:hover {
+  background: rgba(248, 81, 73, 0.2);
+}
+
+.official-advisory-link .material-symbols-outlined {
+  font-size: 16px;
+}
