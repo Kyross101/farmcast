@@ -4521,8 +4521,14 @@ function toggleSidebar() {
 
 // Restore sidebar state on load
 // Desktop only — mobile sidebar should always start uncollapsed
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Load official government advisories
+  loadOfficialAdvisories();
+
   const sidebar = document.getElementById('mainSidebar');
+
   if (!sidebar) return;
 
   if (
@@ -4534,6 +4540,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     sidebar.classList.remove('collapsed');
   }
+
 });
 
 // ── MOBILE SIDEBAR TOGGLE ──
