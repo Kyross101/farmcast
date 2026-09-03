@@ -2622,10 +2622,14 @@ function deleteNotif(e, id) {
 
 function clearAllNotif() {
   if (!confirm('Clear all notifications?')) return;
+
   notifications = [];
+
   lsSave(LS_NOTIFS, notifications);
+
   updateNotifBadge();
   renderNotifList();
+
   toast('All notifications cleared.', 'ok');
 }
 
