@@ -1113,55 +1113,56 @@ function renderPestPage() {
         </div>
       </div>
     `;
+}   else {
+    pestFullList.innerHTML = active.map(p => `
+      <div class="pest-full-item ${p.level}">
+        <div class="pfi-top">
+          <div class="pfi-icon">${p.icon}</div>
 
-  return;
-}
+          <div class="pfi-info">
+            <div class="pfi-name">
+              ${p.name} Risk
+            </div>
 
-pestFullList.innerHTML = active.map(p => `
-  <div class="pest-full-item ${p.level}">
-    <div class="pfi-top">
-      <div class="pfi-icon">${p.icon}</div>
+            <div class="pfi-crops">
+              May affect: ${p.crops.slice(0, 3).join(', ')}
+            </div>
+          </div>
 
-      <div class="pfi-info">
-        <div class="pfi-name">
-          ${p.name} Risk
+          <div class="pest-level level-${p.level}">
+            <div class="pest-pulse"></div>
+            ${p.level.charAt(0).toUpperCase() + p.level.slice(1)} Risk
+          </div>
         </div>
 
-        <div class="pfi-crops">
-          May affect: ${p.crops.slice(0, 3).join(', ')}
+        <div class="pfi-detail">
+          <div class="pfi-section">
+            <span class="pfi-label">Signs to inspect:</span>
+            ${p.signs}
+          </div>
+
+          <div class="pfi-section">
+            <span class="pfi-label">If confirmed:</span>
+            ${p.treatment}
+          </div>
         </div>
-      </div>
 
-      <div class="pest-level level-${p.level}">
-        <div class="pest-pulse"></div>
-        ${p.level.charAt(0).toUpperCase() + p.level.slice(1)} Risk
+        <button
+          class="pfi-log-btn"
+          onclick="quickLogPest('${p.name}')"
+        >
+          + Log Sighting
+        </button>
       </div>
-    </div>
-
-    <div class="pfi-detail">
-      <div class="pfi-section">
-        <span class="pfi-label">Signs to inspect:</span>
-        ${p.signs}
-      </div>
-
-      <div class="pfi-section">
-        <span class="pfi-label">If confirmed:</span>
-        ${p.treatment}
-      </div>
-    </div>
-
-    <button
-      class="pfi-log-btn"
-      onclick="quickLogPest('${p.name}')"
-    >
-      + Log Sighting
-    </button>
-  </div>
-`).join('');
+    `).join('');
+  }
 
   // Pest badge count
   const badge = document.getElementById('pestBadge');
-  if (badge) badge.textContent = show.filter(p => p.level === 'high').length;
+
+  if (badge) {
+    badge.textContent = active.filter(p => p.level === 'high').length;
+  }
 
   // Prevention tips
   document.getElementById('preventionTips').innerHTML = [
