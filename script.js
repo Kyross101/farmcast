@@ -279,15 +279,6 @@ function addTask(){
   toast('Task added!','ok');
 }
 
-function toggleTask(i){ tasks[i].done = !tasks[i].done; renderTasks(); }
-function addTask(){
-  const label = prompt('New task name:');
-  if(!label) return;
-  tasks.push({ label, time:'TBD', done:false, priority:'low' });
-  renderTasks();
-  toast('Task added!','ok');
-}
-
 // ── RENDER FORECAST + CALENDAR ──
 function renderForecastAndCalendar(forecastData, currentData){
   const timezone = currentData.timezone;
