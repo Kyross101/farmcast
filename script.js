@@ -2282,11 +2282,11 @@ function renderOfficialAdvisories(advisories) {
         </div>
 
         <div>
-          <strong>No active official advisories</strong>
+          <strong>No recent official advisories</strong>
 
           <p>
-            No verified government weather advisory
-            is currently available through FarmCast.
+            No recent DOST-PAGASA weather advisory
+            documents were detected by FarmCast.
           </p>
         </div>
       </div>
@@ -2300,6 +2300,25 @@ function renderOfficialAdvisories(advisories) {
     const issuedDate = advisory.issuedAt
       ? new Date(advisory.issuedAt)
       : null;
+
+    const issuedTime =
+      issuedDate && !Number.isNaN(issuedDate.getTime())
+        ? issuedDate.getTime()
+        : null;
+
+    const ageHours = issuedTime
+      ? (Date.now() - issuedTime) / (1000 * 60 * 60)
+      : null;
+
+    const advisoryStatus =
+      ageHours !== null && ageHours <= 3
+        ? 'NEW'
+        : 'RECENT';
+
+    const advisoryStatusClass =
+      advisoryStatus === 'NEW'
+        ? 'status-new'
+        : 'status-recent';
 
     const issuedText =
       issuedDate &&
@@ -2315,11 +2334,17 @@ function renderOfficialAdvisories(advisories) {
 
         <div class="official-advisory-header">
 
-          <span class="official-advisory-badge">
-            🔴 OFFICIAL
-          </span>
+          <div class="official-advisory-badges">
+            <span class="official-advisory-badge">
+               🔴 OFFICIAL
+            </span>
 
-          <span class="official-advisory-source">
+            <span class="official-advisory-status ${advisoryStatusClass}">
+              ${advisoryStatus}
+            </span>
+        </div>
+
+        <span class="official-advisory-source">
             ${escapeAdvisoryHtml(
               advisory.source || 'Official Source'
             )}

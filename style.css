@@ -4519,3 +4519,37 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     padding: 12px;
   }
 }
+
+/* ============================================================
+   OFFICIAL ADVISORY STATUS
+============================================================ */
+
+.official-advisory-badges {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.official-advisory-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.official-advisory-status.status-new {
+  background: rgba(248, 81, 73, 0.14);
+  border: 1px solid rgba(248, 81, 73, 0.28);
+  color: var(--red);
+}
+
+.official-advisory-status.status-recent {
+  background: rgba(227, 160, 8, 0.12);
+  border: 1px solid rgba(227, 160, 8, 0.25);
+  color: #e3a008;
+}
