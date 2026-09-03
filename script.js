@@ -1085,7 +1085,7 @@ function renderPestPage() {
 
     const h = currentWeather.main.humidity; 
     const t = currentWeather.main.temp;
-    
+
     const isRain = currentWeather.weather[0].description.toLowerCase().includes('rain');
     if (p.condition==='humid' && h > 70) return true;
     if (p.condition==='hot'   && t > 30) return true;
@@ -4778,10 +4778,53 @@ function toggleSidebar() {
 // Restore sidebar state on load
 // Desktop only — mobile sidebar should always start uncollapsed
 
+function enableHorizontalDragScroll() {
+  const sliders = document.querySelectorAll('.calendar-scroll');
+
+  sliders.forEach(slider => {
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    slider.addEventListener('mousedown', e => {
+      isDown = true;
+      slider.classList.add('dragging');
+
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('dragging');
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('dragging');
+    });
+
+    slider.addEventListener('mousemove', e => {
+      if (!isDown) return;
+
+      e.preventDefault();
+
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  });
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Load official government advisories
   loadOfficialAdvisories();
+
+  // Enable desktop drag scrolling
+  enableHorizontalDragScroll();
 
   const sidebar = document.getElementById('mainSidebar');
 

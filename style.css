@@ -395,9 +395,29 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 /* ══════════════════════════════
    PLANTING CALENDAR
 ══════════════════════════════ */
-.calendar-scroll{overflow-x:auto;padding:0 20px 20px;}
-.calendar-scroll::-webkit-scrollbar{height:4px;}
-.calendar-row{display:flex;gap:12px;min-width:max-content;}
+.calendar-scroll{
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:0 20px 20px;
+
+  cursor:grab;
+  -webkit-user-select:none;
+  user-select:none;
+
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+}
+
+.calendar-scroll.dragging{
+  cursor:grabbing;
+  scroll-behavior:auto;
+}
+
+.calendar-row{
+  display:flex;
+  gap:12px;
+  min-width:max-content;
+}
 .cal-day{
   width:158px;flex-shrink:0;
 }
