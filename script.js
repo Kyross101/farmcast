@@ -2324,9 +2324,10 @@ function renderOfficialAdvisories(advisories) {
       issuedDate &&
       !Number.isNaN(issuedDate.getTime())
         ? issuedDate.toLocaleString('en-PH', {
+            timeZone: 'Asia/Manila',
             dateStyle: 'medium',
             timeStyle: 'short'
-          })
+          }) + ' PHT'
         : 'Issuance time unavailable';
 
     return `
@@ -2366,16 +2367,22 @@ function renderOfficialAdvisories(advisories) {
 
         <div class="official-advisory-meta">
 
-          <span>
-            📍
-            ${escapeAdvisoryHtml(
-              advisory.location || 'Philippines'
-            )}
+          <span class="official-meta-item">
+            <span class="official-meta-label">Affected areas</span>
+            <span>
+              📍 ${escapeAdvisoryHtml(
+                advisory.location ||
+                'See official advisory for affected areas'
+              )}
+            </span>
           </span>
 
-          <span>
-            🕒 ${issuedText}
-          </span>
+            <span class="official-meta-item">
+              <span class="official-meta-label">Issued</span>
+              <span>
+                🕒 ${issuedText}
+              </span>
+            </span>
 
         </div>
 
@@ -2387,7 +2394,7 @@ function renderOfficialAdvisories(advisories) {
             rel="noopener noreferrer"
           >
             <span>
-               📄 View Official PAGASA Advisory
+              📄 Open Official PAGASA Document
             </span>
 
             <span class="material-symbols-outlined">

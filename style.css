@@ -4553,3 +4553,23 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   border: 1px solid rgba(227, 160, 8, 0.25);
   color: #e3a008;
 }
+
+/* ============================================================
+   OFFICIAL ADVISORY META POLISH
+============================================================ */
+
+.official-meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.official-meta-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.75;
+}
