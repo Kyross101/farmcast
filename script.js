@@ -2340,13 +2340,14 @@ function renderOfficialAdvisories(advisories) {
         ? 'status-new'
         : 'status-recent';
 
-    const issuedText = issuedAt
-      ? new Date(issuedAt).toLocaleString('en-PH', {
-          timeZone: 'Asia/Manila',
-          dateStyle: 'medium',
-          timeStyle: 'short'
-        }) + ' PHT'
-      : 'Issuance time unavailable';
+    const issuedText =
+      issuedDate && !Number.isNaN(issuedDate.getTime())
+        ? issuedDate.toLocaleString('en-PH', {
+            timeZone: 'Asia/Manila',
+            dateStyle: 'medium',
+            timeStyle: 'short'
+          }) + ' PHT'
+        : 'Issuance time unavailable';
 
     return `
       <article class="official-advisory-card">
