@@ -4613,3 +4613,39 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   color: var(--text-secondary);
   line-height: 1.4;
 }
+
+/* ============================================================
+   NOTIFICATION FILTER TABS — MOBILE SCROLL
+============================================================ */
+
+.notif-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.notif-filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.notif-filter-tabs .nft {
+  flex: 0 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .notif-filter-tabs {
+    padding-right: 12px;
+  }
+
+  .notif-filter-tabs .nft {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 11px;
+  }
+}
