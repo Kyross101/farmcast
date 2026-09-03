@@ -2244,7 +2244,9 @@ async function loadOfficialAdvisories() {
     );
 
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+      throw new Error(
+        `Advisory service returned ${response.status}`
+      );
     }
 
     const data = await response.json();
@@ -2262,9 +2264,27 @@ async function loadOfficialAdvisories() {
       error.message
     );
 
-    renderOfficialAdvisories([]);
-    
-  }
+    const container =
+      document.getElementById('officialAdvisoryList');
+
+    if (container) {
+      container.innerHTML = `
+        <div class="official-advisory-empty">
+          <div class="official-advisory-empty-icon">
+            ⚠️
+          </div>
+
+          <div>
+            <strong>Official advisory source unavailable</strong>
+            <p>
+              FarmCast could not retrieve the latest
+              DOST-PAGASA advisory documents.
+            </p>
+          </div>
+        </div>
+      `;
+    }
+  }  
 }
 
 function renderOfficialAdvisories(advisories) {
