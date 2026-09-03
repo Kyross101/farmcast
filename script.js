@@ -1081,34 +1081,83 @@ function renderPestPage() {
 
   // Active pest risks based on weather
   const active = PEST_FULL_DB.filter(p => {
-    if (!currentWeather) return true;
-    const h = currentWeather.main.humidity, t = currentWeather.main.temp;
+    if (!currentWeather) return false;
+
+    const h = currentWeather.main.humidity; 
+    const t = currentWeather.main.temp;
+    
     const isRain = currentWeather.weather[0].description.toLowerCase().includes('rain');
     if (p.condition==='humid' && h > 70) return true;
     if (p.condition==='hot'   && t > 30) return true;
     if (p.condition==='dry'   && h < 50) return true;
     if (p.condition==='rainy' && isRain) return true;
+
     return false;
   });
-  const show = active.length >= 3 ? active : PEST_FULL_DB.slice(0, 3);
+  const pestFullList = document.getElementById('pestFullList');
 
-  document.getElementById('pestFullList').innerHTML = show.map(p => `
-    <div class="pest-full-item ${p.level}">
-      <div class="pfi-top">
-        <div class="pfi-icon">${p.icon}</div>
-        <div class="pfi-info">
-          <div class="pfi-name">${p.name}</div>
-          <div class="pfi-crops">Affects: ${p.crops.slice(0,3).join(', ')}</div>
+  if (!pestFullList) return;
+
+  if (active.length === 0) {
+    pestFullList.innerHTML = `
+      <div class="pest-full-empty">
+        <div class="pest-full-empty-icon">✅</div>
+
+        <div>
+          <strong>No Elevated Pest Risk</strong>
+
+          <p>
+            Current weather conditions do not indicate an elevated
+            weather-related pest risk. Continue regular crop inspection.
+          </p>
         </div>
-        <div class="pest-level level-${p.level}"><div class="pest-pulse"></div>${p.level.charAt(0).toUpperCase()+p.level.slice(1)}</div>
       </div>
-      <div class="pfi-detail">
-        <div class="pfi-section"><span class="pfi-label">Signs:</span> ${p.signs}</div>
-        <div class="pfi-section"><span class="pfi-label">Treatment:</span> ${p.treatment}</div>
+    `;
+
+  return;
+}
+
+pestFullList.innerHTML = active.map(p => `
+  <div class="pest-full-item ${p.level}">
+    <div class="pfi-top">
+      <div class="pfi-icon">${p.icon}</div>
+
+      <div class="pfi-info">
+        <div class="pfi-name">
+          ${p.name} Risk
+        </div>
+
+        <div class="pfi-crops">
+          May affect: ${p.crops.slice(0, 3).join(', ')}
+        </div>
       </div>
-      <button class="pfi-log-btn" onclick="quickLogPest('${p.name}')">+ Log Sighting</button>
+
+      <div class="pest-level level-${p.level}">
+        <div class="pest-pulse"></div>
+        ${p.level.charAt(0).toUpperCase() + p.level.slice(1)} Risk
+      </div>
     </div>
-  `).join('');
+
+    <div class="pfi-detail">
+      <div class="pfi-section">
+        <span class="pfi-label">Signs to inspect:</span>
+        ${p.signs}
+      </div>
+
+      <div class="pfi-section">
+        <span class="pfi-label">If confirmed:</span>
+        ${p.treatment}
+      </div>
+    </div>
+
+    <button
+      class="pfi-log-btn"
+      onclick="quickLogPest('${p.name}')"
+    >
+      + Log Sighting
+    </button>
+  </div>
+`).join('');
 
   // Pest badge count
   const badge = document.getElementById('pestBadge');
