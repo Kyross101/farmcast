@@ -2201,10 +2201,10 @@ function addOfficialAdvisory({
   }
 
   return addNotification(
-   'official',
-   title,
-   `${body} Issued: ${issuedText}. Tap to open the official PAGASA document.`,
-   sourceUrl
+    'official',
+    title,
+    `Official PAGASA weather advisory available. Issued: ${issuedText}. Tap to open the official document.`,
+    sourceUrl
   );
 }
 
