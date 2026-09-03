@@ -2200,10 +2200,10 @@ function addOfficialAdvisory({
     }
   }
 
- return addNotification(
+  return addNotification(
    'official',
    title,
-   `${body} Location: ${location}. Source: ${source}. Issued: ${issuedText}.`,
+   `${body} Issued: ${issuedText}. Tap to open the official PAGASA document.`,
    sourceUrl
   );
 }
@@ -2320,15 +2320,13 @@ function renderOfficialAdvisories(advisories) {
         ? 'status-new'
         : 'status-recent';
 
-    const issuedText =
-      issuedDate &&
-      !Number.isNaN(issuedDate.getTime())
-        ? issuedDate.toLocaleString('en-PH', {
-            timeZone: 'Asia/Manila',
-            dateStyle: 'medium',
-            timeStyle: 'short'
-          }) + ' PHT'
-        : 'Issuance time unavailable';
+    const issuedText = issuedAt
+      ? new Date(issuedAt).toLocaleString('en-PH', {
+          timeZone: 'Asia/Manila',
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        }) + ' PHT'
+      : 'Issuance time unavailable';
 
     return `
       <article class="official-advisory-card">
