@@ -4,9 +4,9 @@ const router = express.Router();
 const PAGASA_ADVISORY_INDEX =
   'https://pubfiles.pagasa.dost.gov.ph/tamss/weather/weather_advisory/';
 
-// How recent an advisory file must be before FarmCast treats it as active.
-// Conservative V1: 24 hours.
-const ACTIVE_WINDOW_MS = 24 * 60 * 60 * 1000;
+// How recent an advisory document must be before FarmCast displays it.
+// This is a FarmCast recency window, not PAGASA's official validity period.
+const RECENT_WINDOW_MS = 24 * 60 * 60 * 1000;
 
 
 // ------------------------------------------------------------
@@ -126,7 +126,7 @@ router.get('/', async (req, res) => {
 
       return (
         age >= 0 &&
-        age <= ACTIVE_WINDOW_MS
+        age <= RECENT_WINDOW_MS
       );
     });
 
@@ -140,7 +140,7 @@ router.get('/', async (req, res) => {
       message:
         'DOST-PAGASA has published an official weather advisory. Open the official source document for the complete advisory details.',
 
-      location: 'Philippines',
+      location: 'See official advisory for affected areas',
 
       issuedAt: file.issuedAt.toISOString(),
 
