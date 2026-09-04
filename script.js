@@ -2233,18 +2233,20 @@ function addOfficialAdvisory({
   if (issuedAt) {
     const issuedDate = new Date(issuedAt);
 
-    if (!isNaN(issuedDate.getTime())) {
-      issuedText = issuedDate.toLocaleString('en-PH', {
-        dateStyle: 'medium',
-        timeStyle: 'short'
-      });
+    if (!Number.isNaN(issuedDate.getTime())) {
+      issuedText =
+        issuedDate.toLocaleString('en-PH', {
+          timeZone: 'Asia/Manila',
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        }) + ' PHT';
     }
   }
 
   return addNotification(
     'official',
     title,
-    `Official PAGASA weather advisory available. Issued: ${issuedText}. Tap to open the official document.`,
+    `DOST-PAGASA published an official weather advisory. Issued: ${issuedText}. Tap to open the official PAGASA document.`,
     sourceUrl
   );
 }
