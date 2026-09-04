@@ -63,10 +63,7 @@ function toast(msg, type='ok'){
 }
 
 // ── NAV ──
-function setNav(el){
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  el.classList.add('active');
-}
+// Navigation is handled by the unified setNav() function below.
 
 // ── WEATHER ICON ──
 function getWeatherEmoji(iconCode, desc=''){
@@ -396,55 +393,8 @@ const PAGE_TITLES = {
   'my-crops':     'My Crops'
 };
  
-function setNav(el, pageId) {
-
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-
-  el.classList.add('active');
-
-  // Hide all pages
-  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-
-  if (pageId === 'dashboard') {
-
-    document.getElementById('page-dashboard').style.display = 'block';
-    document.getElementById('topbarTitle').textContent = PAGE_TITLES['dashboard'];
-
-  } else if (pageId === 'weather-maps') {
-
-    document.getElementById('page-weather-maps').style.display = 'block';
-    document.getElementById('topbarTitle').textContent = PAGE_TITLES['weather-maps'];
-    initWeatherMap();
-
-  } else if (pageId === 'my-crops') {
-
-    document.getElementById('page-my-crops').style.display = 'block';
-    document.getElementById('topbarTitle').textContent = PAGE_TITLES['my-crops'];
-    renderCropsPage();
-
-  } else {
-
-    // Pages not yet built — show dashboard fallback
-    document.getElementById('page-dashboard').style.display = 'block';
-    document.getElementById('topbarTitle').textContent = PAGE_TITLES['dashboard'];
-    toast('This section is coming soon!', 'warn');
-  }
-
-  // Mobile: close sidebar after selecting a page
-  if (window.innerWidth <= 768) {
-    const sidebar = document.getElementById('mainSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-
-    if (sidebar) {
-      sidebar.classList.remove('mobile-open');
-      sidebar.classList.remove('collapsed');
-    }
-
-    if (overlay) {
-      overlay.classList.remove('active');
-    }
-  }
-}
+// ── NAV ──
+// Navigation is handled by the unified setNav() function below.
  
 // ═══════════════════════════════════════════════════════
 // WEATHER MAPS — Leaflet.js + OpenWeatherMap tile layers
@@ -977,44 +927,123 @@ saveNewCrop = function() {
   toast(`${type} added to your crops! 🌱`, 'ok');
 };
 
-// Also update setNav to include the 3 new pages
-const _origSetNav = setNav;
-setNav = function(el, pageId) {
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  el.classList.add('active');
-  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-  const titles = {
-    'dashboard':'Farm Weather + Planting Calendar',
-    'weather-maps':'Weather Maps',
-    'my-crops':'My Crops',
-    'pest-alerts':'Pest Alerts',
-    'planting-calendar':'Planting Calendar',
-    'irrigation':'Irrigation'
-  };
-  const title = titles[pageId] || 'FarmCast';
-  document.getElementById('topbarTitle').textContent = title;
-  if (pageId === 'dashboard') {
-    document.getElementById('page-dashboard').style.display = 'block';
-  } else if (pageId === 'weather-maps') {
-    document.getElementById('page-weather-maps').style.display = 'block';
-    initWeatherMap();
-  } else if (pageId === 'my-crops') {
-    document.getElementById('page-my-crops').style.display = 'block';
-    renderCropsPage();
-  } else if (pageId === 'pest-alerts') {
-    document.getElementById('page-pest-alerts').style.display = 'block';
-    renderPestPage();
-  } else if (pageId === 'planting-calendar') {
-    document.getElementById('page-planting-calendar').style.display = 'block';
-    renderCalPage();
-  } else if (pageId === 'irrigation') {
-    document.getElementById('page-irrigation').style.display = 'block';
-    renderIrrigationPage();
-  } else {
-    document.getElementById('page-dashboard').style.display = 'block';
-    toast('This section is coming soon!', 'warn');
+function setNav(el, pageId) {
+  // Remove active state from navigation
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.remove('active');
+  });
+
+  if (el) {
+    el.classList.add('active');
   }
-};
+
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(p => {
+    p.style.display = 'none';
+  });
+
+  const titles = {
+    'dashboard': 'Farm Weather + Planting Calendar',
+    'weather-maps': 'Weather Maps',
+    'my-crops': 'My Crops',
+    'pest-alerts': 'Pest Alerts',
+    'planting-calendar': 'Planting Calendar',
+    'irrigation': 'Irrigation',
+    'settings': 'Settings',
+    'farm-analytics': 'Farm Analytics',
+    'harvest-history': 'Harvest History',
+    'plant-scanner': 'Plant Health Scanner'
+  };
+
+  const page = document.getElementById(`page-${pageId}`);
+
+  if (!page) {
+    console.warn(`FarmCast page not found: ${pageId}`);
+
+    const dashboard = document.getElementById('page-dashboard');
+
+    if (dashboard) {
+      dashboard.style.display = 'block';
+    }
+
+    return;
+  }
+
+  // Show selected page
+  page.style.display = 'block';
+
+  const title = document.getElementById('topbarTitle');
+
+  if (title) {
+    title.textContent = titles[pageId] || 'FarmCast';
+  }
+
+  // Page-specific initialization
+  switch (pageId) {
+    case 'dashboard':
+      renderTasks();
+      break;
+
+    case 'weather-maps':
+      initWeatherMap();
+      break;
+
+    case 'my-crops':
+      renderCropsPage();
+      break;
+
+    case 'pest-alerts':
+      renderPestPage();
+      break;
+
+    case 'planting-calendar':
+      renderCalPage();
+      break;
+
+    case 'irrigation':
+      renderIrrigationPage();
+      break;
+
+    case 'settings':
+      updateSettingsFormValues();
+      renderFavCropsGrid();
+
+      const lastActive = document.getElementById('settingLastActive');
+
+      if (lastActive) {
+        lastActive.textContent =
+          new Date().toLocaleString('en-PH');
+      }
+      break;
+
+    case 'farm-analytics':
+      renderFarmAnalytics();
+      break;
+
+    case 'harvest-history':
+      renderHarvestHistory();
+      break;
+
+    case 'plant-scanner':
+      initScannerPage();
+      break;
+  }
+
+  // Mobile: close sidebar after navigation
+  if (window.innerWidth <= 768) {
+    const sidebar = document.getElementById('mainSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    if (sidebar) {
+      sidebar.classList.remove('mobile-open');
+      sidebar.classList.remove('collapsed');
+    }
+
+    if (overlay) {
+      overlay.classList.remove('active');
+    }
+  }
+}
 
 // ═══════════════════════════════════════════════════════
 // PEST ALERTS PAGE
@@ -2716,24 +2745,6 @@ function toggleNotificationPanel() {
   }
 }
 
-// ── Patch setNav to include Settings ──
-const _prevSetNav2 = setNav;
-setNav = function(el, pageId) {
-  if (pageId === 'settings') {
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    el.classList.add('active');
-    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-    document.getElementById('page-settings').style.display = 'block';
-    document.getElementById('topbarTitle').textContent = 'Settings';
-    updateSettingsFormValues();
-    renderFavCropsGrid();
-    const la = document.getElementById('settingLastActive');
-    if (la) la.textContent = new Date().toLocaleString('en-PH');
-  } else {
-    _prevSetNav2(el, pageId);
-  }
-};
-
 // ── INIT — Connect frontend to backend ──
 async function initApp() {
   // 1. Apply settings from localStorage first (instant)
@@ -3112,28 +3123,6 @@ function renderAnMonthlySummary() {
         </div>`).join('')}
     </div>`;
 }
-
-// ── Final setNav patch: add farm-analytics and harvest-history ──
-const _fixSetNav = setNav;
-setNav = function(el, pageId) {
-  if (pageId === 'farm-analytics') {
-    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-    el.classList.add('active');
-    document.querySelectorAll('.page').forEach(p=>p.style.display='none');
-    document.getElementById('page-farm-analytics').style.display = 'block';
-    document.getElementById('topbarTitle').textContent = 'Farm Analytics';
-    renderFarmAnalytics();
-  } else if (pageId === 'harvest-history') {
-    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-    el.classList.add('active');
-    document.querySelectorAll('.page').forEach(p=>p.style.display='none');
-    document.getElementById('page-harvest-history').style.display = 'block';
-    document.getElementById('topbarTitle').textContent = 'Harvest History';
-    renderHarvestHistory();
-  } else {
-    _fixSetNav(el, pageId);
-  }
-};
 
 // ═══════════════════════════════════════════════════════
 // AI CROP DISEASE DETECTION — TensorFlow.js
@@ -4572,40 +4561,6 @@ async function clearScanHistory() {
     toast('Scan history cleared locally.', 'warn');
   }
 }
-
-// ── PATCH setNav to include plant-scanner ──
-const _scannerSetNav = setNav;
-
-setNav = function(el, pageId) {
-  if (pageId === 'plant-scanner') {
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    el.classList.add('active');
-
-    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-
-    document.getElementById('page-plant-scanner').style.display = 'block';
-    document.getElementById('topbarTitle').textContent = 'Plant Health Scanner';
-
-    initScannerPage();
-  } else {
-    _scannerSetNav(el, pageId);
-  }
-
-  // Mobile: always close drawer after navigation
-  if (window.innerWidth <= 768) {
-    const sidebar = document.getElementById('mainSidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-
-    if (sidebar) {
-      sidebar.classList.remove('mobile-open');
-      sidebar.classList.remove('collapsed');
-    }
-
-    if (overlay) {
-      overlay.classList.remove('active');
-    }
-  }
-};
 
 // ═══════════════════════════════════════════════════════
 // TASK 1 — COLLAPSIBLE DASHBOARD CARDS
