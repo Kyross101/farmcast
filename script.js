@@ -1234,7 +1234,10 @@ function openGrowthStageModal(id) {
 }
 
 function closeGrowthStageModal() {
-  document.getElementById('growthStageModal').style.display = 'none';
+  editingGrowthObservationId = null;
+
+  document.getElementById('growthStageModal').style.display =
+    'none';
 }
 
 async function saveGrowthStage() {
@@ -1286,13 +1289,8 @@ async function saveGrowthStage() {
     const wasEditing = Boolean(editingGrowthObservationId);
 
     editingGrowthObservationId = null;
-
-    function closeGrowthStageModal() {
-      editingGrowthObservationId = null;
-
-      document.getElementById('growthStageModal').style.display =
-        'none';
-    }
+    
+    closeGrowthStageModal();
     
     renderCropsPage();
 
