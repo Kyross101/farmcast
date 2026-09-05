@@ -1033,6 +1033,14 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   display: flex; justify-content: space-between;
   font-size: 0.7rem; color: var(--text-muted); margin-bottom: 5px;
 }
+
+.cdc-timeline-note {
+  margin-top: 6px;
+  font-size: 0.66rem;
+  line-height: 1.4;
+  color: var(--text-dim);
+}
+
 .cdc-progress-bar {
   height: 6px; background: var(--bg3);
   border-radius: 99px; overflow: hidden;

@@ -716,11 +716,16 @@ function renderCropsPage() {
         <!-- Progress bar -->
         <div class="cdc-progress-wrap">
           <div class="cdc-progress-label">
-            <span>Growth Progress</span>
+            <span>Estimated Crop Timeline</span>
             <span>${st.progress}%</span>
           </div>
+
           <div class="cdc-progress-bar">
             <div class="cdc-progress-fill ${st.color}" style="width:${st.progress}%"></div>
+          </div>
+
+          <div class="cdc-timeline-note">
+            Calendar-based estimate only — actual crop growth may vary.
           </div>
         </div>
  
@@ -733,7 +738,7 @@ function renderCropsPage() {
           </div>
           <div class="cdc-meta-item">
             <span class="material-symbols-outlined">event_available</span>
-            <div><div class="cmi-val">${harvestFmt}</div><div class="cmi-lbl">Expected Harvest</div></div>
+            <div><div class="cmi-val">${harvestFmt}</div><div class="cmi-lbl">Estimated Harvest</div></div>
           </div>
           <div class="cdc-meta-item">
             <span class="material-symbols-outlined">straighten</span>
@@ -855,6 +860,9 @@ function saveNewCrop() {
   const type =
     document.getElementById('cropTypeSelect').value;
 
+  const plantingMethod =
+    document.getElementById('cropPlantingMethod').value;
+
   const area = parseInt(
     document.getElementById('cropArea').value
   );
@@ -882,6 +890,7 @@ function saveNewCrop() {
   myCrops.push({
     id: nextCropId++,
     type,
+    plantingMethod,
     area,
     planted,
     harvest,

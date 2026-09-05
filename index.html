@@ -537,13 +537,23 @@
                 <input type="number" id="cropArea" placeholder="e.g. 500" min="1">
               </div>
             </div>
+
+            <div class="form-group">
+              <label>Planting Method</label>
+              <select id="cropPlantingMethod">
+                <option value="direct-seeded">Direct Seeded</option>
+                <option value="transplanted">Transplanted</option>
+              </select>
+            </div>
+
             <div class="form-row">
               <div class="form-group">
                 <label>Date Planted</label>
                 <input type="date" id="cropDatePlanted">
               </div>
+              
               <div class="form-group">
-                <label>Expected Harvest</label>
+                <label>Estimated Harvest</label>
                 <input type="date" id="cropDateHarvest">
               </div>
             </div>
