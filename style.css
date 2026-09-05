@@ -4898,6 +4898,19 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .growth-history-list {
   display: flex;
   flex-direction: column;
+
+  max-height: 240px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.growth-history-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.growth-history-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
 }
 
 .growth-history-item {
@@ -4958,6 +4971,25 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   font-size: .76rem;
   line-height: 1.45;
   overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.growth-history-note.collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Show more / Show less button */
+.growth-note-toggle { 
+  margin-top: 4px; 
+  padding: 0; 
+  border: none; 
+  background: none; 
+  color: var(--green); 
+  font-size: .68rem; 
+  cursor: pointer; 
 }
 
 .growth-history-note.muted,

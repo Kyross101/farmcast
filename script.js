@@ -717,9 +717,23 @@ function renderGrowthHistory(crop) {
           ${
             item.note
               ? `
-                <div class="growth-history-note">
+                <div
+                  class="growth-history-note collapsed"
+                  id="growthNote-${item._id || item.date + '-' + item.stage}">
                   ${escapeHtml(item.note)}
                 </div>
+
+                ${
+                  item.note && item.note.length > 90
+                    ? `
+                      <button
+                        class="growth-note-toggle"
+                        onclick="toggleGrowthNote('${item._id || item.date + '-' + item.stage}', this)">
+                        Show more
+                      </button>
+                    `
+                    : ''
+                }
               `
               : `
                 <div class="growth-history-note muted">
@@ -737,6 +751,20 @@ function renderGrowthHistory(crop) {
       </div>
     `;
   }).join('');
+}
+
+function toggleGrowthNote(id, btn) {
+  const note = document.getElementById(`growthNote-${id}`);
+
+  if (!note) return;
+
+  const isCollapsed =
+    note.classList.contains('collapsed');
+
+  note.classList.toggle('collapsed');
+
+  btn.textContent =
+    isCollapsed ? 'Show less' : 'Show more';
 }
 
 
