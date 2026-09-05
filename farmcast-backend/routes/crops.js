@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
       irrigation: irrigation || 'Manual',
       notes: notes || ''
     });
-    
+
     res.status(201).json({ message: `${type} added successfully! 🌱`, crop });
   } catch (err) {
     res.status(500).json({ message: 'Error adding crop.' });
@@ -68,7 +68,7 @@ router.put('/:id', async (req, res) => {
     const updated = await Crop.findByIdAndUpdate(
       req.params.id,
       { ...req.body },
-      { new: true }
+      { returnDocument: 'after' }
     );
     res.json({ message: 'Crop updated!', crop: updated });
   } catch (err) {
