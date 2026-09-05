@@ -944,6 +944,62 @@ function closeGrowthStageModal() {
   document.getElementById('growthStageModal').style.display = 'none';
 }
 
+async function saveGrowthStage() {
+  const cropId =
+    document.getElementById('growthStageCropId').value;
+
+  const stage =
+    document.getElementById('growthStageSelect').value;
+
+  const date =
+    document.getElementById('growthStageDate').value;
+
+  const note =
+    document.getElementById('growthStageNote').value.trim();
+
+  if (!cropId || !stage || !date) {
+    toast('Please complete the growth stage and observation date.', 'warn');
+    return;
+  }
+
+  const crop = myCrops.find(
+    c => String(c.id) === String(cropId)
+  );
+
+  if (!crop) {
+    toast('Crop not found.', 'err');
+    return;
+  }
+
+  const observation = {
+    stage,
+    date,
+    note,
+    source: 'farmer'
+  };
+
+  const updatedHistory = Array.isArray(crop.growthHistory)
+    ? [...crop.growthHistory, observation]
+    : [observation];
+
+  try {
+    // Local state first
+    crop.currentStage = stage;
+    crop.growthHistory = updatedHistory;
+
+    saveCropsLS();
+
+    closeGrowthStageModal();
+    renderCropsPage();
+
+    toast('Growth stage observation saved!', 'ok');
+
+  } catch (err) {
+    console.error('Failed to save growth stage:', err);
+    toast('Failed to save growth stage.', 'err');
+  }
+}
+
 function saveNewCrop() {
   const type =
     document.getElementById('cropTypeSelect').value;
