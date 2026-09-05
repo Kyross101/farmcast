@@ -301,6 +301,104 @@ function patchScriptJsWithAPI() {
     }
   };
 
+  // Override saveGrowthStage — save observation to MongoDB
+  saveGrowthStage = async function() {
+    const cropId =
+      document.getElementById('growthStageCropId').value;
+
+    const stage =
+      document.getElementById('growthStageSelect').value;
+
+    const date =
+      document.getElementById('growthStageDate').value;
+
+    const note =
+      document.getElementById('growthStageNote').value.trim();
+
+    if (!cropId || !stage || !date) {
+      toast(
+        'Please complete the growth stage and observation date.',
+        'warn'
+      );
+      return;
+    }
+
+    const crop = myCrops.find(
+      c => String(c.id) === String(cropId)
+    );
+
+    if (!crop) {
+      toast('Crop not found.', 'err');
+      return;
+    }
+
+    // Do not allow future observations
+    const today = new Date();
+    const localToday =
+      `${today.getFullYear()}-` +
+      `${String(today.getMonth() + 1).padStart(2, '0')}-` +
+      `${String(today.getDate()).padStart(2, '0')}`;
+
+    if (date > localToday) {
+      toast('Observation date cannot be in the future.', 'warn');
+      return;
+    }
+
+    const observation = {
+      stage,
+      date,
+      note,
+      source: 'farmer'
+    };
+
+    // Add the new observation
+    const growthHistory = [
+      ...(Array.isArray(crop.growthHistory)
+        ? crop.growthHistory
+        : []),
+      observation
+    ];
+
+    // Keep history chronological
+    growthHistory.sort((a, b) =>
+      String(a.date).localeCompare(String(b.date))
+    );
+
+    // The newest observation determines the current stage
+    const currentStage =
+      growthHistory[growthHistory.length - 1].stage;
+
+    try {
+      const updatedCrop = await fcCrops.update(cropId, {
+        currentStage,
+        growthHistory
+      });
+
+      // Replace local copy with the version returned by MongoDB
+      const cropIndex = myCrops.findIndex(
+        c => String(c.id) === String(cropId)
+      );
+
+      if (cropIndex !== -1) {
+        myCrops[cropIndex] = updatedCrop;
+      }
+
+      closeGrowthStageModal();
+      renderCropsPage();
+
+      toast('Growth observation saved to FarmCast! 🌱', 'ok');
+
+    } catch (err) {
+      console.error('Failed to save growth observation:', err);
+
+      toast(
+        `Could not save observation: ${err.message}`,
+        'err'
+      );
+    }
+  };
+
+
   // Override toggleWater
   toggleWater = async function(id) {
     const crop = myCrops.find(c => String(c.id) === String(id) || String(c._id) === String(id));
