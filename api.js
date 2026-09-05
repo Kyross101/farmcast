@@ -344,20 +344,41 @@ function patchScriptJsWithAPI() {
       return;
     }
 
-    const observation = {
-      stage,
-      date,
-      note,
-      source: 'farmer'
-    };
+    let growthHistory = Array.isArray(crop.growthHistory)
+      ? [...crop.growthHistory]
+      : [];
 
-    // Add the new observation
-    const growthHistory = [
-      ...(Array.isArray(crop.growthHistory)
-        ? crop.growthHistory
-        : []),
-      observation
-    ];
+    if (editingGrowthObservationId) {
+
+      const observationIndex = growthHistory.findIndex(
+        item =>
+          String(item._id) ===
+          String(editingGrowthObservationId)
+      );
+
+      if (observationIndex === -1) {
+        toast('Observation not found.', 'err');
+        return;
+      }
+
+      growthHistory[observationIndex] = {
+        ...growthHistory[observationIndex],
+        stage,
+        date,
+        note,
+        source: 'farmer'
+      };
+
+    } else {
+
+      growthHistory.push({
+        stage,
+        date,
+        note,
+        source: 'farmer'
+      });
+
+    }
 
     // Keep history chronological
     growthHistory.sort((a, b) =>

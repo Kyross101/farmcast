@@ -5046,3 +5046,36 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .growth-history-delete-btn .material-symbols-outlined {
   font-size: 16px;
 }
+
+.growth-history-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.growth-history-edit-btn,
+.growth-history-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.growth-history-edit-btn:hover {
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--blue);
+}
+
+.growth-history-edit-btn .material-symbols-outlined,
+.growth-history-delete-btn .material-symbols-outlined {
+  font-size: 16px;
+}

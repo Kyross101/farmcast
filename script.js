@@ -749,14 +749,25 @@ function renderGrowthHistory(crop) {
             </div>
 
             ${
-              item._id
+             item._id
                 ? `
-                  <button
-                    class="growth-history-delete-btn"
-                    onclick="deleteGrowthObservation('${crop.id}', '${item._id}')"
-                    title="Delete observation">
-                    <span class="material-symbols-outlined">delete</span>
-                  </button>
+                 <div class="growth-history-actions">
+
+                   <button
+                     class="growth-history-edit-btn"
+                     onclick="openEditGrowthObservation('${crop.id}', '${item._id}')"
+                     title="Edit observation">
+                     <span class="material-symbols-outlined">edit</span>
+                   </button>
+
+                   <button
+                     class="growth-history-delete-btn"
+                     onclick="deleteGrowthObservation('${crop.id}', '${item._id}')"
+                     title="Delete observation">
+                     <span class="material-symbols-outlined">delete</span>
+                   </button>
+
+                  </div>
                 `
                 : ''
             }
@@ -782,6 +793,48 @@ function toggleGrowthNote(id, btn) {
   btn.textContent =
     isCollapsed ? 'Show less' : 'Show more';
 }
+
+function openEditGrowthObservation(cropId, observationId) {
+  const crop = myCrops.find(
+    c => String(c.id) === String(cropId)
+  );
+
+  if (!crop) {
+    toast('Crop not found.', 'err');
+    return;
+  }
+
+  const history = Array.isArray(crop.growthHistory)
+    ? crop.growthHistory
+    : [];
+
+  const observation = history.find(
+    item => String(item._id) === String(observationId)
+  );
+
+  if (!observation) {
+    toast('Observation not found.', 'err');
+    return;
+  }
+
+  editingGrowthObservationId = observationId;
+
+  document.getElementById('growthStageCropId').value =
+    crop.id;
+
+  document.getElementById('growthStageSelect').value =
+    observation.stage;
+
+  document.getElementById('growthStageDate').value =
+    observation.date;
+
+  document.getElementById('growthStageNote').value =
+    observation.note || '';
+
+  document.getElementById('growthStageModal').style.display =
+    'flex';
+}
+
 
 async function deleteGrowthObservation(cropId, observationId) {
   const crop = myCrops.find(
@@ -1150,6 +1203,8 @@ function closeAddCropModal() {
   document.getElementById('addCropModal').style.display = 'none';
 }
  
+let editingGrowthObservationId = null;
+
 function openGrowthStageModal(id) {
   const crop = myCrops.find(
     c => String(c.id) === String(id)
@@ -1161,6 +1216,7 @@ function openGrowthStageModal(id) {
   }
 
   document.getElementById('growthStageCropId').value = crop.id;
+  editingGrowthObservationId = null;
 
   document.getElementById('growthStageSelect').value =
     crop.currentStage || 'seedling';
@@ -1225,11 +1281,27 @@ async function saveGrowthStage() {
     crop.growthHistory = updatedHistory;
 
     saveCropsLS();
+    
 
-    closeGrowthStageModal();
+    const wasEditing = Boolean(editingGrowthObservationId);
+
+    editingGrowthObservationId = null;
+
+    function closeGrowthStageModal() {
+      editingGrowthObservationId = null;
+
+      document.getElementById('growthStageModal').style.display =
+        'none';
+    }
+    
     renderCropsPage();
 
-    toast('Growth stage observation saved!', 'ok');
+    toast(
+      wasEditing
+        ? 'Growth observation updated! ✅'
+        : 'Growth observation saved to FarmCast! 🌱',
+      'ok'
+    );
 
   } catch (err) {
     console.error('Failed to save growth stage:', err);
