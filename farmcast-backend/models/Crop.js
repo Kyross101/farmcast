@@ -5,7 +5,15 @@ const mongoose = require('mongoose');
 
 const CropSchema = new mongoose.Schema({
   user:       { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+
   type:       { type: String, required: true },
+
+  plantingMethod: {
+    type: String,
+    enum: ['direct-seeded', 'transplanted'],
+    default: 'direct-seeded'
+  },
+
   area:       { type: Number, required: true },
   planted:    { type: String, required: true },
   harvest:    { type: String, required: true },
