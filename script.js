@@ -765,28 +765,65 @@ function renderCropsPage() {
 }
  
 function toggleWater(id) {
-  const crop = myCrops.find(c => c.id === id);
+  const crop = myCrops.find(
+    c => String(c.id) === String(id)
+  );
+
   if (!crop) return;
+
   crop.watered = !crop.watered;
+
+  saveCropsLS();
   renderCropsPage();
-  toast(`${crop.type} marked as ${crop.watered ? 'watered' : 'not watered'}`, crop.watered ? 'ok' : 'warn');
+
+  toast(
+    `${crop.type} marked as ${crop.watered ? 'watered' : 'not watered'}`,
+    crop.watered ? 'ok' : 'warn'
+  );
 }
  
 function markHarvested(id) {
-  const crop = myCrops.find(c => c.id === id);
+  const crop = myCrops.find(
+    c => String(c.id) === String(id)
+  );
+
   if (!crop) return;
-  if (!confirm(`Mark ${crop.type} as harvested and remove from active crops?`)) return;
-  myCrops = myCrops.filter(c => c.id !== id);
+
+  if (!confirm(
+    `Mark ${crop.type} as harvested and remove from active crops?`
+  )) return;
+
+  myCrops = myCrops.filter(
+    c => String(c.id) !== String(id)
+  );
+
+  saveCropsLS();
   renderCropsPage();
-  toast(`${crop.type} marked as harvested! Great job! 🎉`, 'ok');
+
+  toast(
+    `${crop.type} marked as harvested! Great job! 🎉`,
+    'ok'
+  );
 }
  
 function deleteCrop(id) {
-  const crop = myCrops.find(c => c.id === id);
+  const crop = myCrops.find(
+    c => String(c.id) === String(id)
+  );
+
   if (!crop) return;
-  if (!confirm(`Delete ${crop.type} from your crop list?`)) return;
-  myCrops = myCrops.filter(c => c.id !== id);
+
+  if (!confirm(
+    `Delete ${crop.type} from your crop list?`
+  )) return;
+
+  myCrops = myCrops.filter(
+    c => String(c.id) !== String(id)
+  );
+
+  saveCropsLS();
   renderCropsPage();
+
   toast(`${crop.type} deleted.`, 'warn');
 }
  
@@ -815,23 +852,52 @@ function closeAddCropModal() {
 }
  
 function saveNewCrop() {
-  const type      = document.getElementById('cropTypeSelect').value;
-  const area      = parseInt(document.getElementById('cropArea').value);
-  const planted   = document.getElementById('cropDatePlanted').value;
-  const harvest   = document.getElementById('cropDateHarvest').value;
-  const location  = document.getElementById('cropLocation').value.trim();
-  const irrigation= document.getElementById('cropIrrigation').value;
-  const notes     = document.getElementById('cropNotes').value.trim();
- 
+  const type =
+    document.getElementById('cropTypeSelect').value;
+
+  const area = parseInt(
+    document.getElementById('cropArea').value
+  );
+
+  const planted =
+    document.getElementById('cropDatePlanted').value;
+
+  const harvest =
+    document.getElementById('cropDateHarvest').value;
+
+  const location =
+    document.getElementById('cropLocation').value.trim();
+
+  const irrigation =
+    document.getElementById('cropIrrigation').value;
+
+  const notes =
+    document.getElementById('cropNotes').value.trim();
+
   if (!type || !area || !planted || !harvest || !location) {
     toast('Please fill in all required fields.', 'warn');
     return;
   }
-  myCrops.push({ id: nextCropId++, type, area, planted, harvest, location, irrigation, notes, watered: false });
+
+  myCrops.push({
+    id: nextCropId++,
+    type,
+    area,
+    planted,
+    harvest,
+    location,
+    irrigation,
+    notes,
+    watered: false
+  });
+
+  saveCropsLS();
   closeAddCropModal();
   renderCropsPage();
+
   toast(`${type} added to your crops! 🌱`, 'ok');
 }
+
 // ═══════════════════════════════════════════════════════
 // LOCALSTORAGE — persist myCrops, tasks, pest logs, irr fields
 // ═══════════════════════════════════════════════════════
@@ -870,65 +936,9 @@ myCrops    = lsLoad(LS_CROPS,     DEFAULT_CROPS);
 nextCropId = lsLoad(LS_CROPS_ID,  9);
 tasks      = lsLoad(LS_TASKS,     tasks);  // keep default tasks as fallback
 
-// Patch save into existing crop functions
-const _origSaveNewCrop = saveNewCrop;
-// We'll patch directly below
 
 function saveCropsLS() { lsSave(LS_CROPS, myCrops); lsSave(LS_CROPS_ID, nextCropId); }
 function saveTasksLS() { lsSave(LS_TASKS, tasks); }
-
-// Patch toggleWater to also save
-const _origToggleWater = toggleWater;
-toggleWater = function(id) {
-  const crop = myCrops.find(c => c.id === id);
-  if (!crop) return;
-  crop.watered = !crop.watered;
-  saveCropsLS();
-  renderCropsPage();
-  toast(`${crop.type} marked as ${crop.watered ? 'watered' : 'not watered'}`, crop.watered ? 'ok' : 'warn');
-};
-
-// Patch markHarvested to also save
-const _origMarkHarvested = markHarvested;
-markHarvested = function(id) {
-  const crop = myCrops.find(c => c.id === id);
-  if (!crop) return;
-  if (!confirm(`Mark ${crop.type} as harvested and remove from active crops?`)) return;
-  myCrops = myCrops.filter(c => c.id !== id);
-  saveCropsLS();
-  renderCropsPage();
-  toast(`${crop.type} marked as harvested! Great job! 🎉`, 'ok');
-};
-
-// Patch deleteCrop to also save
-const _origDeleteCrop = deleteCrop;
-deleteCrop = function(id) {
-  const crop = myCrops.find(c => c.id === id);
-  if (!crop) return;
-  if (!confirm(`Delete ${crop.type} from your crop list?`)) return;
-  myCrops = myCrops.filter(c => c.id !== id);
-  saveCropsLS();
-  renderCropsPage();
-  toast(`${crop.type} deleted.`, 'warn');
-};
-
-// Patch saveNewCrop to also save
-const _origSaveNC = saveNewCrop;
-saveNewCrop = function() {
-  const type      = document.getElementById('cropTypeSelect').value;
-  const area      = parseInt(document.getElementById('cropArea').value);
-  const planted   = document.getElementById('cropDatePlanted').value;
-  const harvest   = document.getElementById('cropDateHarvest').value;
-  const location  = document.getElementById('cropLocation').value.trim();
-  const irrigation= document.getElementById('cropIrrigation').value;
-  const notes     = document.getElementById('cropNotes').value.trim();
-  if (!type || !area || !planted || !harvest || !location) { toast('Please fill in all required fields.', 'warn'); return; }
-  myCrops.push({ id: nextCropId++, type, area, planted, harvest, location, irrigation, notes, watered: false });
-  saveCropsLS();
-  closeAddCropModal();
-  renderCropsPage();
-  toast(`${type} added to your crops! 🌱`, 'ok');
-};
 
 function setNav(el, pageId) {
   // Remove active state from navigation
