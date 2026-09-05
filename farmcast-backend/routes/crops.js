@@ -27,16 +27,32 @@ router.get('/', async (req, res) => {
 // POST add crop
 router.post('/', async (req, res) => {
   try {
-    const { type, area, planted, harvest, location, irrigation, notes } = req.body;
+    const {
+      type,
+      plantingMethod,
+      area,
+      planted,
+      harvest,
+      location,
+      irrigation,
+      notes
+    } = req.body;
+
     if (!type || !area || !planted || !harvest || !location)
       return res.status(400).json({ message: 'Please fill in all required fields.' });
 
     const crop = await Crop.create({
       user: req.user.id,
-      type, area, planted, harvest, location,
+      type,
+      plantingMethod: plantingMethod || 'direct-seeded',
+      area,
+      planted,
+      harvest,
+      location,
       irrigation: irrigation || 'Manual',
       notes: notes || ''
     });
+    
     res.status(201).json({ message: `${type} added successfully! 🌱`, crop });
   } catch (err) {
     res.status(500).json({ message: 'Error adding crop.' });

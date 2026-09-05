@@ -13,6 +13,50 @@ const CropSchema = new mongoose.Schema({
     enum: ['direct-seeded', 'transplanted'],
     default: 'direct-seeded'
   },
+  
+  currentStage: {
+  type: String,
+  enum: [
+    'seedling',
+    'vegetative',
+    'flowering',
+    'fruiting',
+    'ready'
+  ],
+  default: 'seedling'
+},
+
+growthHistory: [
+  {
+    stage: {
+      type: String,
+      enum: [
+        'seedling',
+        'vegetative',
+        'flowering',
+        'fruiting',
+        'ready'
+      ],
+      required: true
+    },
+
+    date: {
+      type: String,
+      required: true
+    },
+
+    note: {
+      type: String,
+      default: ''
+    },
+
+    source: {
+      type: String,
+      enum: ['farmer', 'system'],
+      default: 'farmer'
+    }
+  }
+],
 
   area:       { type: Number, required: true },
   planted:    { type: String, required: true },
