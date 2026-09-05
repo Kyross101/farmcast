@@ -866,7 +866,24 @@ function renderCropsPage() {
               Update Stage
             </button>
           </div>
-          
+
+
+          <div class="crop-stage-current">
+            <div class="crop-stage-emoji">${stage.emoji}</div>
+
+            <div>
+              <div class="crop-stage-name">${stage.label}</div>
+              <div class="crop-stage-date">
+                ${
+                  latestObservation
+                    ? `Farmer observed · ${observedDate}`
+                    : 'No field observation recorded yet'
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- HISTORY SECOND -->
           <div class="crop-growth-history">
 
             <div class="growth-history-header">
@@ -885,23 +902,6 @@ function renderCropsPage() {
 
             <div class="growth-history-list">
               ${renderGrowthHistory(crop)}
-            </div>
-
-          </div>
-
-
-          <div class="crop-stage-current">
-            <div class="crop-stage-emoji">${stage.emoji}</div>
-
-            <div>
-              <div class="crop-stage-name">${stage.label}</div>
-              <div class="crop-stage-date">
-                ${
-                  latestObservation
-                    ? `Farmer observed · ${observedDate}`
-                    : 'No field observation recorded yet'
-                }
-              </div>
             </div>
           </div>
         </div>
