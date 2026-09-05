@@ -602,6 +602,117 @@ const CROP_INFO = {
   Cabbage:  { days: 75,  minTemp: 10, maxTemp: 24, water: 'High' }
 };
  
+const CROP_HARVEST_WINDOWS = {
+  Pechay: {
+    'direct-seeded': {
+      minDays: 30,
+      maxDays: 40,
+      basis: 'after sowing',
+      source: 'ATI'
+    },
+    transplanted: {
+      minDays: 21,
+      maxDays: 28,
+      basis: 'after transplanting',
+      source: 'ATI'
+    }
+  },
+
+  Eggplant: {
+    transplanted: {
+      minDays: 46,
+      maxDays: 50,
+      basis: 'after transplanting',
+      source: 'ATI'
+    }
+  },
+
+  Cabbage: {
+    transplanted: {
+      minDays: 55,
+      maxDays: 60,
+      basis: 'after transplanting',
+      source: 'ATI'
+    }
+  }
+};
+
+function addDaysToDate(dateString, days) {
+  const date = new Date(`${dateString}T00:00:00`);
+
+  date.setDate(
+    date.getDate() + days
+  );
+
+  return date;
+}
+
+function getEstimatedHarvestWindow(crop) {
+  const cropRules =
+    CROP_HARVEST_WINDOWS[crop.type];
+
+  const plantingMethod =
+    crop.plantingMethod || 'direct-seeded';
+
+  const rule =
+    cropRules?.[plantingMethod];
+
+  // No validated FarmCast range yet.
+  // Keep the existing estimate rather than inventing one.
+  if (!rule) {
+    return {
+      available: false,
+      start: null,
+      end: null,
+      source: null,
+      basis: null
+    };
+  }
+
+  if (!crop.planted) {
+    return {
+      available: false,
+      start: null,
+      end: null,
+      source: rule.source,
+      basis: rule.basis
+    };
+  }
+
+  const start =
+    addDaysToDate(
+      crop.planted,
+      rule.minDays
+    );
+
+  const end =
+    addDaysToDate(
+      crop.planted,
+      rule.maxDays
+    );
+
+  return {
+    available: true,
+    start,
+    end,
+    minDays: rule.minDays,
+    maxDays: rule.maxDays,
+    source: rule.source,
+    basis: rule.basis
+  };
+}
+
+function formatFarmDate(date) {
+  return date.toLocaleDateString(
+    'en-PH',
+    {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    }
+  );
+}
+
 // Sample initial crops data
 let myCrops = [
   { id:1, type:'Tomato',   area:300, planted:'2026-01-20', harvest:'2026-04-05', location:'North Field A', irrigation:'Drip',      notes:'Primera variety. Germination successful.', watered:true  },
@@ -1079,7 +1190,15 @@ function renderCropsPage() {
 
     const plantedFmt  = new Date(crop.planted).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
     const harvestFmt  = new Date(crop.harvest).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
- 
+    
+    const harvestWindow =
+      getEstimatedHarvestWindow(crop);
+
+    const harvestWindowText =
+      harvestWindow.available
+        ? `${formatFarmDate(harvestWindow.start)} – ${formatFarmDate(harvestWindow.end)}`
+        : harvestFmt;
+
     // Weather compatibility
     let weatherCompatHtml = '';
     if (currentWeather && info.minTemp !== undefined) {
@@ -1210,18 +1329,53 @@ function renderCropsPage() {
             <span class="material-symbols-outlined">calendar_today</span>
             <div><div class="cmi-val">${plantedFmt}</div><div class="cmi-lbl">Date Planted</div></div>
           </div>
-          <div class="cdc-meta-item">
-            <span class="material-symbols-outlined">event_available</span>
-            <div><div class="cmi-val">${harvestFmt}</div><div class="cmi-lbl">Estimated Harvest</div></div>
+
+         <div class="cdc-meta-item">
+           <span class="material-symbols-outlined">
+             event_available
+           </span>
+
+           <div>
+             <div class="cmi-val">
+               ${escapeHtml(harvestWindowText)}
+             </div>
+
+             <div class="cmi-lbl">
+               ${
+                 harvestWindow.available
+                   ? 'Estimated Harvest Window'
+                   : 'Estimated Harvest'
+               }
+             </div>
+
+            ${
+              harvestWindow.available
+                ? `
+                  <div class="cmi-source">
+                    ${harvestWindow.minDays}–${harvestWindow.maxDays}
+                    days ${escapeHtml(harvestWindow.basis)}
+                    · ${escapeHtml(harvestWindow.source)}
+                  </div>
+                `
+                : `
+                  <div class="cmi-source">
+                    Current FarmCast estimate
+                  </div>
+                `
+            }
           </div>
+        </div>
+
           <div class="cdc-meta-item">
             <span class="material-symbols-outlined">straighten</span>
             <div><div class="cmi-val">${crop.area} m²</div><div class="cmi-lbl">Area</div></div>
           </div>
+
           <div class="cdc-meta-item">
             <span class="material-symbols-outlined">water_drop</span>
             <div><div class="cmi-val">${crop.irrigation}</div><div class="cmi-lbl">Irrigation</div></div>
           </div>
+
         </div>
  
         ${crop.notes ? `<div class="cdc-notes">"${crop.notes}"</div>` : ''}

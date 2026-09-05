@@ -1151,7 +1151,16 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .cdc-meta-item .material-symbols-outlined { font-size: 16px; color: var(--green); flex-shrink: 0; }
 .cmi-val { font-size: 0.8rem; font-weight: 600; color: var(--text); }
 .cmi-lbl { font-size: 0.65rem; color: var(--text-muted); margin-top: 1px; }
- 
+
+.cmi-source {
+  margin-top: 3px;
+
+  font-size: .65rem;
+  line-height: 1.35;
+
+  color: var(--text-muted);
+}
+
 .cdc-notes {
   font-size: 0.75rem; color: var(--text-muted);
   font-style: italic; padding: 8px 10px;
