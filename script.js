@@ -932,8 +932,12 @@ function openGrowthStageModal(id) {
   document.getElementById('growthStageSelect').value =
     crop.currentStage || 'seedling';
 
+  const today = new Date();
+
   document.getElementById('growthStageDate').value =
-    new Date().toISOString().split('T')[0];
+    `${today.getFullYear()}-` +
+    `${String(today.getMonth() + 1).padStart(2, '0')}-` +
+    `${String(today.getDate()).padStart(2, '0')}`;
 
   document.getElementById('growthStageNote').value = '';
 
