@@ -256,24 +256,31 @@ function renderTasks(){
   `).join('');
 }
 
-function toggleTask(i){
+function toggleTask(i) {
+  if (!tasks[i]) return;
+
   tasks[i].done = !tasks[i].done;
+
+  saveTasksLS();
   renderTasks();
 }
 
-function addTask(){
+function addTask() {
   const label = prompt('New task name:');
-  if(!label) return;
+
+  if (!label) return;
 
   tasks.push({
-    label,
-    time:'TBD',
-    done:false,
-    priority:'low'
+    label: label.trim(),
+    time: 'TBD',
+    done: false,
+    priority: 'low'
   });
 
+  saveTasksLS();
   renderTasks();
-  toast('Task added!','ok');
+
+  toast('Task added!', 'ok');
 }
 
 // ── RENDER FORECAST + CALENDAR ──
@@ -869,10 +876,6 @@ const _origSaveNewCrop = saveNewCrop;
 
 function saveCropsLS() { lsSave(LS_CROPS, myCrops); lsSave(LS_CROPS_ID, nextCropId); }
 function saveTasksLS() { lsSave(LS_TASKS, tasks); }
-
-// Patch toggleTask to also save
-const _origToggleTask = toggleTask;
-toggleTask = function(i) { _origToggleTask(i); saveTasksLS(); };
 
 // Patch toggleWater to also save
 const _origToggleWater = toggleWater;
