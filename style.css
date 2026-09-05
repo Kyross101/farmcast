@@ -4691,3 +4691,85 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     font-size: 11px;
   }
 }
+
+/* ══════════════════════════════════════════════
+   MY CROPS — MOBILE HORIZONTAL SWIPE
+══════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Summary cards: swipe left/right */
+  .crops-stats-row {
+    display: flex;
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 8px;
+
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .crops-stats-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .crop-stat-box {
+    flex: 0 0 170px;
+    min-width: 170px;
+
+    scroll-snap-align: start;
+  }
+
+  /* Toolbar stacks nicely on mobile */
+  .crops-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  /* Filter tabs: swipe left/right */
+  .crops-filter-tabs {
+    display: flex;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    gap: 6px;
+    padding-bottom: 4px;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .crops-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cft {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  /* Add Crop button full width */
+  .btn-add-crop {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Crop cards stay inside phone width */
+  .crops-grid {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+  }
+
+  .crop-detail-card {
+    min-width: 0;
+    width: 100%;
+  }
+}
