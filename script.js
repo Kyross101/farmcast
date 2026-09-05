@@ -742,10 +742,26 @@ function renderGrowthHistory(crop) {
               `
           }
 
-          <div class="growth-history-source">
-            Farmer observation
-          </div>
+          <div class="growth-history-footer">
 
+            <div class="growth-history-source">
+              Farmer observation
+            </div>
+
+            ${
+              item._id
+                ? `
+                  <button
+                    class="growth-history-delete-btn"
+                    onclick="deleteGrowthObservation('${crop.id}', '${item._id}')"
+                    title="Delete observation">
+                    <span class="material-symbols-outlined">delete</span>
+                  </button>
+                `
+                : ''
+            }
+
+          </div>
         </div>
 
       </div>
@@ -765,6 +781,81 @@ function toggleGrowthNote(id, btn) {
 
   btn.textContent =
     isCollapsed ? 'Show less' : 'Show more';
+}
+
+async function deleteGrowthObservation(cropId, observationId) {
+  const crop = myCrops.find(
+    c => String(c.id) === String(cropId)
+  );
+
+  if (!crop) {
+    toast('Crop not found.', 'err');
+    return;
+  }
+
+  const history = Array.isArray(crop.growthHistory)
+    ? crop.growthHistory
+    : [];
+
+  const observation = history.find(
+    item => String(item._id) === String(observationId)
+  );
+
+  if (!observation) {
+    toast('Observation not found.', 'err');
+    return;
+  }
+
+  const confirmed = confirm(
+    'Delete this field observation? This cannot be undone.'
+  );
+
+  if (!confirmed) return;
+
+  const growthHistory = history.filter(
+    item => String(item._id) !== String(observationId)
+  );
+
+  // Keep observations chronological
+  growthHistory.sort((a, b) =>
+    String(a.date).localeCompare(String(b.date))
+  );
+
+  // Latest remaining observation determines current stage.
+  // If none remain, return to seedling.
+  const currentStage = growthHistory.length
+    ? growthHistory[growthHistory.length - 1].stage
+    : 'seedling';
+
+  try {
+    const updatedCrop = await fcCrops.update(cropId, {
+      currentStage,
+      growthHistory
+    });
+
+    const cropIndex = myCrops.findIndex(
+      c => String(c.id) === String(cropId)
+    );
+
+    if (cropIndex !== -1) {
+      myCrops[cropIndex] = updatedCrop;
+    }
+
+    renderCropsPage();
+
+    toast('Growth observation deleted.', 'ok');
+
+  } catch (err) {
+    console.error(
+      'Failed to delete growth observation:',
+      err
+    );
+
+    toast(
+      `Could not delete observation: ${err.message}`,
+      'err'
+    );
+  }
 }
 
 
