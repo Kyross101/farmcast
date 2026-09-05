@@ -551,7 +551,7 @@
                 <label>Date Planted</label>
                 <input type="date" id="cropDatePlanted">
               </div>
-              
+
               <div class="form-group">
                 <label>Estimated Harvest</label>
                 <input type="date" id="cropDateHarvest">
@@ -588,6 +588,84 @@
       </div>
  
     </div>
+
+   <!-- Update Crop Growth Stage Modal -->
+   <div
+     class="modal-overlay"
+     id="growthStageModal"
+     onclick="if(event.target===this)closeGrowthStageModal()">
+
+    <div class="modal-box">
+
+      <div class="modal-header">
+        <div class="modal-title">
+          <span class="material-symbols-outlined">eco</span>
+          Update Crop Stage
+        </div>
+
+        <div class="modal-close" onclick="closeGrowthStageModal()">
+          <span class="material-symbols-outlined">close</span>
+        </div>
+      </div>
+
+      <div class="modal-body">
+
+        <input type="hidden" id="growthStageCropId">
+
+        <div class="form-group">
+          <label for="growthStageSelect">Observed Growth Stage</label>
+          <select id="growthStageSelect" name="growthStageSelect">
+            <option value="seedling">🌱 Seedling</option>
+            <option value="vegetative">🌿 Vegetative</option>
+            <option value="flowering">🌼 Flowering</option>
+            <option value="fruiting">🍅 Fruiting</option>
+            <option value="ready">🌾 Ready for Harvest</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="growthStageDate">Date Observed</label>
+          <input
+            type="date"
+            id="growthStageDate"
+            name="growthStageDate">
+        </div>
+
+        <div class="form-group">
+          <label>Field Observation</label>
+          <textarea
+            id="growthStageNote"
+            rows="3"
+            placeholder="e.g. First flowers appeared, leaves look healthy…"></textarea>
+        </div>
+
+        <div class="cdc-timeline-note">
+          This stage is based on the farmer's field observation,
+          not an AI prediction.
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button
+          class="btn-cancel"
+          type="button"
+          onclick="closeGrowthStageModal()">
+          Cancel
+        </button>
+
+        <button
+          class="btn-save"
+          type="button"
+          onclick="saveGrowthStage()">
+          <span class="material-symbols-outlined">save</span>
+          Save Observation
+        </button>
+      </div>
+
+    </div>
+  </div>
+
     <!-- end page-my-crops -->
 
     <!-- ══ PAGE: PLANT HEALTH SCANNER ══ -->

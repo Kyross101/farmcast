@@ -1034,13 +1034,6 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   font-size: 0.7rem; color: var(--text-muted); margin-bottom: 5px;
 }
 
-.cdc-timeline-note {
-  margin-top: 6px;
-  font-size: 0.66rem;
-  line-height: 1.4;
-  color: var(--text-dim);
-}
-
 .cdc-progress-bar {
   height: 6px; background: var(--bg3);
   border-radius: 99px; overflow: hidden;
@@ -1049,6 +1042,90 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   height: 100%; border-radius: 99px;
   transition: width 0.8s ease;
 }
+
+.cdc-timeline-note {
+  margin-top: 6px;
+  font-size: 0.66rem;
+  line-height: 1.4;
+  color: var(--text-dim);
+}
+
+/* ── Actual Crop Stage ── */
+
+.crop-stage-box {
+  margin: 12px 0;
+  padding: 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+
+.crop-stage-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.crop-stage-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.crop-stage-subtitle {
+  margin-top: 2px;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.crop-stage-current {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.crop-stage-emoji {
+  font-size: 1.7rem;
+}
+
+.crop-stage-name {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.crop-stage-date {
+  margin-top: 2px;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+}
+
+.crop-stage-update-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 9px;
+  border: 1px solid var(--border2);
+  border-radius: 7px;
+  background: var(--bg2);
+  color: var(--green);
+  font-family: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.crop-stage-update-btn .material-symbols-outlined {
+  font-size: 14px;
+}
+
+.crop-stage-update-btn:hover {
+  border-color: var(--green);
+}
+
+
 .cdc-progress-fill.green { background: linear-gradient(90deg, #2ea043, #3fb950); }
 .cdc-progress-fill.amber { background: linear-gradient(90deg, #b07800, #e3a008); }
 .cdc-progress-fill.red   { background: linear-gradient(90deg, #a52525, #f85149); }

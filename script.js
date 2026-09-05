@@ -684,6 +684,34 @@ function renderCropsPage() {
     const st = getCropStatus(crop);
     const emoji = CROP_EMOJIS[crop.type] || '🌿';
     const info  = CROP_INFO[crop.type] || {};
+    const stageInfo = {
+      seedling:   { emoji: '🌱', label: 'Seedling' },
+      vegetative: { emoji: '🌿', label: 'Vegetative' },
+      flowering:  { emoji: '🌼', label: 'Flowering' },
+      fruiting:   { emoji: '🍅', label: 'Fruiting' },
+      ready:      { emoji: '🌾', label: 'Ready for Harvest' }
+    };
+
+    const currentStage = crop.currentStage || 'seedling';
+    const stage = stageInfo[currentStage] || stageInfo.seedling;
+
+    const history = Array.isArray(crop.growthHistory)
+      ? crop.growthHistory
+      : [];
+
+    const latestObservation = history.length
+      ? history[history.length - 1]
+      : null;
+
+    const observedDate = latestObservation?.date
+      ? new Date(latestObservation.date + 'T00:00:00')
+          .toLocaleDateString('en-PH', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          })
+      : 'Not recorded yet';
+
     const plantedFmt  = new Date(crop.planted).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
     const harvestFmt  = new Date(crop.harvest).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
  
@@ -730,7 +758,40 @@ function renderCropsPage() {
         </div>
  
         ${weatherCompatHtml}
- 
+        
+        <div class="crop-stage-box">
+          <div class="crop-stage-heading">
+            <div>
+              <div class="crop-stage-title">Actual Crop Stage</div>
+              <div class="crop-stage-subtitle">
+                Farmer-observed field update
+              </div>
+            </div>
+
+            <button
+              class="crop-stage-update-btn"
+              onclick="openGrowthStageModal('${crop.id}')">
+              <span class="material-symbols-outlined">edit</span>
+              Update Stage
+            </button>
+          </div>
+
+          <div class="crop-stage-current">
+            <div class="crop-stage-emoji">${stage.emoji}</div>
+
+            <div>
+              <div class="crop-stage-name">${stage.label}</div>
+              <div class="crop-stage-date">
+                ${
+                  latestObservation
+                    ? `Farmer observed · ${observedDate}`
+                    : 'No field observation recorded yet'
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="cdc-meta-grid">
           <div class="cdc-meta-item">
             <span class="material-symbols-outlined">calendar_today</span>
@@ -856,6 +917,33 @@ function closeAddCropModal() {
   document.getElementById('addCropModal').style.display = 'none';
 }
  
+function openGrowthStageModal(id) {
+  const crop = myCrops.find(
+    c => String(c.id) === String(id)
+  );
+
+  if (!crop) {
+    toast('Crop not found.', 'err');
+    return;
+  }
+
+  document.getElementById('growthStageCropId').value = crop.id;
+
+  document.getElementById('growthStageSelect').value =
+    crop.currentStage || 'seedling';
+
+  document.getElementById('growthStageDate').value =
+    new Date().toISOString().split('T')[0];
+
+  document.getElementById('growthStageNote').value = '';
+
+  document.getElementById('growthStageModal').style.display = 'flex';
+}
+
+function closeGrowthStageModal() {
+  document.getElementById('growthStageModal').style.display = 'none';
+}
+
 function saveNewCrop() {
   const type =
     document.getElementById('cropTypeSelect').value;
