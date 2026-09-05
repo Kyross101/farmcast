@@ -4858,3 +4858,123 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     width: 100%;
   }
 }
+
+/* ═══════════════════════════════════════
+   CROP GROWTH HISTORY
+═══════════════════════════════════════ */
+
+.crop-growth-history {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.growth-history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.growth-history-header > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.growth-history-header .material-symbols-outlined {
+  font-size: 17px;
+  color: var(--green);
+}
+
+.growth-history-count {
+  font-size: .7rem;
+  color: var(--text-muted);
+}
+
+.growth-history-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.growth-history-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 8px;
+  padding-bottom: 14px;
+}
+
+.growth-history-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 30px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.growth-history-marker {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  font-size: 16px;
+}
+
+.growth-history-content {
+  min-width: 0;
+}
+
+.growth-history-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.growth-history-top strong {
+  font-size: .8rem;
+}
+
+.growth-history-top span {
+  font-size: .68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.growth-history-note {
+  margin-top: 4px;
+  font-size: .76rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.growth-history-note.muted,
+.growth-history-source {
+  color: var(--text-muted);
+}
+
+.growth-history-source {
+  margin-top: 4px;
+  font-size: .65rem;
+}
+
+.growth-history-empty {
+  padding: 10px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  text-align: center;
+  font-size: .75rem;
+  color: var(--text-muted);
+}

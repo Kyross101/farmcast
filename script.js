@@ -649,6 +649,97 @@ function filterCrops(el, filter) {
   renderCropsPage();
 }
  
+function escapeHtml(value = '') {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+function renderGrowthHistory(crop) {
+  const history = Array.isArray(crop.growthHistory)
+    ? [...crop.growthHistory]
+    : [];
+
+  if (history.length === 0) {
+    return `
+      <div class="growth-history-empty">
+        No field observations recorded yet.
+      </div>
+    `;
+  }
+
+  const stageInfo = {
+    seedling:   { icon: '🌱', label: 'Seedling' },
+    vegetative: { icon: '🌿', label: 'Vegetative' },
+    flowering:  { icon: '🌼', label: 'Flowering' },
+    fruiting:   { icon: '🍅', label: 'Fruiting' },
+    ready:      { icon: '✅', label: 'Ready' }
+  };
+
+  // Newest observation first
+  history.sort((a, b) =>
+    String(b.date).localeCompare(String(a.date))
+  );
+
+  return history.map(item => {
+    const info =
+      stageInfo[item.stage] ||
+      { icon: '🌱', label: item.stage || 'Unknown' };
+
+    const dateText = item.date
+      ? new Date(`${item.date}T00:00:00`).toLocaleDateString(
+          'en-PH',
+          {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          }
+        )
+      : 'Unknown date';
+
+    return `
+      <div class="growth-history-item">
+
+        <div class="growth-history-marker">
+          ${info.icon}
+        </div>
+
+        <div class="growth-history-content">
+
+          <div class="growth-history-top">
+            <strong>${escapeHtml(info.label)}</strong>
+            <span>${escapeHtml(dateText)}</span>
+          </div>
+
+          ${
+            item.note
+              ? `
+                <div class="growth-history-note">
+                  ${escapeHtml(item.note)}
+                </div>
+              `
+              : `
+                <div class="growth-history-note muted">
+                  No field observation note.
+                </div>
+              `
+          }
+
+          <div class="growth-history-source">
+            Farmer observation
+          </div>
+
+        </div>
+
+      </div>
+    `;
+  }).join('');
+}
+
+
 function renderCropsPage() {
   const filtered = myCrops.filter(crop => {
     if (currentCropFilter === 'all') return true;
@@ -775,6 +866,29 @@ function renderCropsPage() {
               Update Stage
             </button>
           </div>
+          
+          <div class="crop-growth-history">
+
+            <div class="growth-history-header">
+              <div>
+                <span class="material-symbols-outlined">
+                  history
+                </span>
+                Growth History
+              </div>
+
+              <span class="growth-history-count">
+                ${history.length}
+                ${history.length === 1 ? 'observation' : 'observations'}
+              </span>
+            </div>
+
+            <div class="growth-history-list">
+              ${renderGrowthHistory(crop)}
+            </div>
+
+          </div>
+
 
           <div class="crop-stage-current">
             <div class="crop-stage-emoji">${stage.emoji}</div>
