@@ -641,6 +641,107 @@ function getCropStatus(crop) {
   if (weatherRisk)   return { label: 'At Risk', color: 'red',   progress, daysLeft, weatherRisk };
   return               { label: 'Growing', color: 'green',  progress, daysLeft, weatherRisk };
 }
+
+function getCropTimelineCheck(crop) {
+  const history = Array.isArray(crop.growthHistory)
+    ? [...crop.growthHistory]
+    : [];
+
+  const stageInfo = {
+    seedling: 'Seedling',
+    vegetative: 'Vegetative',
+    flowering: 'Flowering',
+    fruiting: 'Fruiting',
+    ready: 'Ready for Harvest'
+  };
+
+  // No farmer observation yet
+  if (history.length === 0) {
+    return {
+      type: 'neutral',
+      icon: 'info',
+      title: 'No field observation yet',
+      message:
+        'Add a field observation to compare actual crop condition with the estimated timeline.'
+    };
+  }
+
+  // Get the actual newest observation by date
+  history.sort((a, b) =>
+    String(a.date).localeCompare(String(b.date))
+  );
+
+  const latest = history[history.length - 1];
+
+  const harvestDate = new Date(
+    `${crop.harvest}T00:00:00`
+  );
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const daysDifference = Math.ceil(
+    (harvestDate - today) /
+    (1000 * 60 * 60 * 24)
+  );
+
+  const stageLabel =
+    stageInfo[latest.stage] ||
+    latest.stage ||
+    'Unknown';
+
+  // Farmer observation takes priority
+  if (latest.stage === 'ready') {
+    return {
+      type: 'ready',
+      icon: 'check_circle',
+      title: 'Farmer marked this crop Ready',
+      message:
+        'Field observation takes priority over the calendar-based harvest estimate.'
+    };
+  }
+
+  // Estimated harvest date already passed
+  if (daysDifference < 0) {
+    const overdueDays = Math.abs(daysDifference);
+
+    return {
+      type: 'warning',
+      icon: 'warning',
+      title:
+        `Estimated harvest date passed ${overdueDays} ` +
+        `${overdueDays === 1 ? 'day' : 'days'} ago`,
+      message:
+        `Latest farmer-observed stage: ${stageLabel}. ` +
+        'Review the harvest estimate based on actual field condition.'
+    };
+  }
+
+  // Estimated harvest is today
+  if (daysDifference === 0) {
+    return {
+      type: 'warning',
+      icon: 'event',
+      title: 'Estimated harvest date is today',
+      message:
+        `Latest farmer-observed stage: ${stageLabel}. ` +
+        'Confirm crop readiness in the field before harvesting.'
+    };
+  }
+
+  // Normal future estimate
+  return {
+    type: 'normal',
+    icon: 'schedule',
+    title:
+      `${daysDifference} ` +
+      `${daysDifference === 1 ? 'day' : 'days'} ` +
+      'before estimated harvest',
+    message:
+      `Latest farmer-observed stage: ${stageLabel}.`
+  };
+}
+
  
 function filterCrops(el, filter) {
   document.querySelectorAll('.cft').forEach(t => t.classList.remove('active'));
@@ -945,6 +1046,7 @@ function renderCropsPage() {
  
   document.getElementById('cropsGrid').innerHTML = filtered.map(crop => {
     const st = getCropStatus(crop);
+    const timelineCheck = getCropTimelineCheck(crop);
     const emoji = CROP_EMOJIS[crop.type] || '🌿';
     const info  = CROP_INFO[crop.type] || {};
     const stageInfo = {
@@ -1054,6 +1156,31 @@ function renderCropsPage() {
               </div>
             </div>
           </div>
+          
+          <div class="crop-timeline-check ${timelineCheck.type}">
+
+            <div class="crop-timeline-check-icon">
+              <span class="material-symbols-outlined">
+                ${timelineCheck.icon}
+              </span>
+          </div>
+
+          <div class="crop-timeline-check-content">
+            <div class="crop-timeline-check-label">
+              Timeline Check
+            </div>
+
+            <div class="crop-timeline-check-title">
+              ${escapeHtml(timelineCheck.title)}
+            </div>
+
+            <div class="crop-timeline-check-message">
+              ${escapeHtml(timelineCheck.message)}
+            </div>
+          </div>
+
+        </div>
+
 
           <!-- HISTORY SECOND -->
           <div class="crop-growth-history">
@@ -1291,7 +1418,7 @@ async function saveGrowthStage() {
     editingGrowthObservationId = null;
     
     closeGrowthStageModal();
-    
+
     renderCropsPage();
 
     toast(

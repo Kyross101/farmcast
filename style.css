@@ -5011,6 +5011,93 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   color: var(--text-muted);
 }
 
+.crop-timeline-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin-top: 12px;
+  padding: 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg2);
+}
+
+.crop-timeline-check-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 8px;
+  background: var(--bg3);
+}
+
+.crop-timeline-check-icon .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.crop-timeline-check-content {
+  min-width: 0;
+}
+
+.crop-timeline-check-label {
+  margin-bottom: 2px;
+
+  font-size: .67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+
+  color: var(--text-muted);
+}
+
+.crop-timeline-check-title {
+  font-size: .82rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.crop-timeline-check-message {
+  margin-top: 3px;
+
+  font-size: .73rem;
+  line-height: 1.45;
+
+  color: var(--text-muted);
+}
+
+.crop-timeline-check.ready {
+  border-color: rgba(63, 185, 80, .35);
+}
+
+.crop-timeline-check.ready
+.crop-timeline-check-icon {
+  color: var(--green);
+  background: rgba(63, 185, 80, .12);
+}
+
+.crop-timeline-check.warning {
+  border-color: rgba(227, 160, 8, .4);
+}
+
+.crop-timeline-check.warning
+.crop-timeline-check-icon {
+  color: var(--amber);
+  background: rgba(227, 160, 8, .12);
+}
+
+.crop-timeline-check.normal
+.crop-timeline-check-icon {
+  color: var(--blue);
+  background: rgba(88, 166, 255, .12);
+}
+
 /* ═══════════════════════════════════════
   CSS ng delete button
 ═══════════════════════════════════════ */
