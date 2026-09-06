@@ -674,6 +674,21 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Sitaw: {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 70,
+      basis: 'after sowing',
+      derived: false,
+      source: {
+        agency: 'Agricultural Training Institute (ATI)',
+        office: 'ATI Cordillera',
+        title: 'Pole Sitaw Production for Urban and Backyard Gardening',
+        url: 'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/pole_sitaw_flyer.pdf'
+      }
+    }
+  },
+
 
 };
 
@@ -1477,7 +1492,7 @@ function renderCropsPage() {
                     </div>
 
                     <details class="cmi-source-details">
-                      <summary>Source details</summary>
+                      <summary>View Source details</summary>
 
                       <div class="cmi-source-agency">
                         ${harvestWindow.source.agency}
