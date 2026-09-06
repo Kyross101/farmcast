@@ -1054,7 +1054,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 
 .crop-stage-box {
   margin: 12px 0;
-  padding: 12px;
+  padding: 14px;
   background: var(--bg3);
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
@@ -1065,7 +1065,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .crop-stage-title {
@@ -1084,6 +1084,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-bottom: 2px;
 }
 
 .crop-stage-emoji {
