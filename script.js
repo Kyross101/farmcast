@@ -713,6 +713,19 @@ function formatFarmDate(date) {
   );
 }
 
+function getPlantingDateLabel(crop) {
+  if (crop.plantingMethod === 'transplanted') {
+    return 'Date Transplanted';
+  }
+
+  if (crop.plantingMethod === 'direct-seeded') {
+    return 'Date Sown';
+  }
+
+  // Compatibility for older crop records
+  return 'Date Planted';
+}
+
 // Sample initial crops data
 let myCrops = [
   { id:1, type:'Tomato',   area:300, planted:'2026-01-20', harvest:'2026-04-05', location:'North Field A', irrigation:'Drip',      notes:'Primera variety. Germination successful.', watered:true  },
@@ -1190,7 +1203,9 @@ function renderCropsPage() {
 
     const plantedFmt  = new Date(crop.planted).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
     const harvestFmt  = new Date(crop.harvest).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
-    
+    const plantingDateLabel =
+      getPlantingDateLabel(crop);
+
     const harvestWindow =
       getEstimatedHarvestWindow(crop);
 
@@ -1326,8 +1341,19 @@ function renderCropsPage() {
 
         <div class="cdc-meta-grid">
           <div class="cdc-meta-item">
-            <span class="material-symbols-outlined">calendar_today</span>
-            <div><div class="cmi-val">${plantedFmt}</div><div class="cmi-lbl">Date Planted</div></div>
+            <span class="material-symbols-outlined">
+              calendar_today
+            </span>
+
+            <div>
+              <div class="cmi-val">
+                ${plantedFmt}
+              </div>
+
+              <div class="cmi-lbl">
+                ${plantingDateLabel}
+              </div>
+            </div>
           </div>
 
          <div class="cdc-meta-item">
