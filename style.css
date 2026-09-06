@@ -1161,6 +1161,36 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   color: var(--text-muted);
 }
 
+/* NEW — ATI source details */
+.cmi-source-agency {
+  margin-top: 5px;
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.cmi-source-title {
+  margin-top: 2px;
+  font-size: .66rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
+.cmi-source-link {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: .67rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.cmi-source-link:hover {
+  text-decoration: underline;
+}
+
+
+
 .cdc-notes {
   font-size: 0.75rem; color: var(--text-muted);
   font-style: italic; padding: 8px 10px;

@@ -608,13 +608,24 @@ const CROP_HARVEST_WINDOWS = {
       minDays: 30,
       maxDays: 40,
       basis: 'after sowing',
-      source: 'ATI'
+      source: {
+        agency: 'Agricultural Training Institute (ATI)',
+        office: 'ATI Cordillera',
+        title: 'Pechay Production for Urban and Home Gardening',
+        url: 'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/pechay_production_for_urban_gardening_leaflet.pdf'
+      }
     },
+
     transplanted: {
       minDays: 21,
       maxDays: 28,
       basis: 'after transplanting',
-      source: 'ATI'
+      source: {
+        agency: 'Agricultural Training Institute (ATI)',
+        office: 'ATI Central Visayas',
+        title: 'Pechay Production Guide',
+        url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/PECHAY%20final_2.pdf'
+      }
     }
   },
 
@@ -623,7 +634,12 @@ const CROP_HARVEST_WINDOWS = {
       minDays: 46,
       maxDays: 50,
       basis: 'after transplanting',
-      source: 'ATI'
+      source: {
+        agency: 'Agricultural Training Institute (ATI)',
+        office: 'ATI MIMAROPA',
+        title: 'Gabay sa Produksyon ng Talong',
+        url: 'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/gabay_sa_produksyon_ng_talong1.pdf'
+      }
     }
   },
 
@@ -632,7 +648,12 @@ const CROP_HARVEST_WINDOWS = {
       minDays: 55,
       maxDays: 60,
       basis: 'after transplanting',
-      source: 'ATI'
+      source: {
+        agency: 'Agricultural Training Institute (ATI)',
+        office: 'ATI Central Visayas',
+        title: 'Cabbage Production Guide',
+        url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Cabbage%20Production%20Guide.pdf'
+      }
     }
   }
 };
@@ -1378,9 +1399,28 @@ function renderCropsPage() {
               harvestWindow.available
                 ? `
                   <div class="cmi-source">
-                    ${harvestWindow.minDays}–${harvestWindow.maxDays}
-                    days ${escapeHtml(harvestWindow.basis)}
-                    · ${escapeHtml(harvestWindow.source)}
+                    <div>
+                      ${harvestWindow.minDays}–${harvestWindow.maxDays}
+                      days ${harvestWindow.basis}
+                    </div>
+
+                    <div class="cmi-source-agency">
+                      Source: ${harvestWindow.source.agency}
+                    </div>
+
+                    <div class="cmi-source-title">
+                      ${harvestWindow.source.title}
+                    </div>
+
+                    <a
+                      class="cmi-source-link"
+                      href="${harvestWindow.source.url}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onclick="event.stopPropagation()"
+                    >
+                      View official reference ↗
+                    </a>
                   </div>
                 `
                 : `
