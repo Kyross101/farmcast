@@ -692,6 +692,21 @@ const CROP_HARVEST_WINDOWS = {
 
 };
 
+const CROP_STAGE_HARVEST_WINDOWS = {
+  Ampalaya: {
+    stage: 'flowering',
+    minDays: 18,
+    maxDays: 20,
+    basis: 'after farmer-observed flowering',
+    source: {
+      agency: 'Agricultural Training Institute (ATI)',
+      office: 'ATI MIMAROPA',
+      title: 'Gabay sa Produksyon ng Ampalaya',
+      url: 'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/gabay_sa_produksyon_ng_ampalaya_final_2.pdf'
+    }
+  }
+};
+
 function addDaysToDate(dateString, days) {
   const date = new Date(`${dateString}T00:00:00`);
 
@@ -754,6 +769,62 @@ function getEstimatedHarvestWindow(crop) {
     maxDays: rule.maxDays,
     source: rule.source,
     basis: rule.basis
+  };
+}
+
+function getStageBasedHarvestWindow(crop) {
+  const rule = CROP_STAGE_HARVEST_WINDOWS[crop?.type];
+
+  if (!rule) {
+    return { available: false };
+  }
+
+  const history = Array.isArray(crop.growthHistory)
+    ? [...crop.growthHistory]
+    : [];
+
+  const observations = history
+    .filter(item =>
+      item?.stage === rule.stage &&
+      item?.date
+    )
+    .sort((a, b) =>
+      new Date(b.date) - new Date(a.date)
+    );
+
+  const observation = observations[0];
+
+  if (!observation) {
+    return {
+      available: false,
+      awaitingStage: rule.stage,
+      rule
+    };
+  }
+
+  const startDate = addDaysToDate(
+    observation.date,
+    rule.minDays
+  );
+
+  const endDate = addDaysToDate(
+    observation.date,
+    rule.maxDays
+  );
+
+  if (!startDate || !endDate) {
+    return { available: false };
+  }
+
+  return {
+    available: true,
+    startDate,
+    endDate,
+    observationDate: observation.date,
+    minDays: rule.minDays,
+    maxDays: rule.maxDays,
+    basis: rule.basis,
+    source: rule.source
   };
 }
 
@@ -1297,6 +1368,9 @@ function renderCropsPage() {
 
     const elapsedPlanting = 
       getElapsedPlantingTime(crop);
+
+    const stageHarvestWindow = 
+      getStageBasedHarvestWindow(crop);
 
     const harvestWindowText =
       harvestWindow.available
