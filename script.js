@@ -1515,7 +1515,9 @@ document
 
 function openAddCropModal() {
   document.getElementById('addCropModal').style.display = 'flex';
-  
+
+  updateCropPlantingDateLabel();
+
   // Set default dates
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('cropDatePlanted').value = today;
