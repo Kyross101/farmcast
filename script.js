@@ -1261,22 +1261,6 @@ function renderCropsPage() {
           <div class="cdc-status status-${st.color}">${st.label}</div>
         </div>
  
-        <!-- Progress bar -->
-        <div class="cdc-progress-wrap">
-          <div class="cdc-progress-label">
-            <span>Estimated Crop Timeline</span>
-            <span>${st.progress}%</span>
-          </div>
-
-          <div class="cdc-progress-bar">
-            <div class="cdc-progress-fill ${st.color}" style="width:${st.progress}%"></div>
-          </div>
-
-          <div class="cdc-timeline-note">
-            Calendar-based estimate only — actual crop growth may vary.
-          </div>
-        </div>
- 
         ${weatherCompatHtml}
         
         <div class="crop-stage-box">
