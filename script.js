@@ -655,7 +655,26 @@ const CROP_HARVEST_WINDOWS = {
         url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Cabbage%20Production%20Guide.pdf'
       }
     }
-  }
+  },
+  
+  Okra: {
+    'direct-seeded': {
+      minDays: 44,
+      maxDays: 81,
+      basis: 'after sowing',
+      derived: true,
+      derivationNote:
+        'Derived from ATI guidance: flowering at about 40–75 days after planting, with young fruits harvested about 4–6 days after flowering.',
+      source: {
+        agency: 'Agricultural Training Institute (ATI)',
+        office: 'ATI Cordillera',
+        title: 'Okra Production Guide',
+        url: 'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/okra_production_flyer_.pdf'
+      }
+    }
+  },
+
+
 };
 
 function addDaysToDate(dateString, days) {
@@ -1446,6 +1465,12 @@ function renderCropsPage() {
                       ${harvestWindow.minDays}–${harvestWindow.maxDays}
                       days ${harvestWindow.basis}
                     </div>
+
+                    ${harvestWindow.derived ? `
+                      <div class="cmi-source-derived">
+                        Derived estimate from source flowering and harvest guidance
+                      </div>
+                    ` : ''}
 
                     <div class="cmi-source-agency">
                       Source: ${harvestWindow.source.agency}
