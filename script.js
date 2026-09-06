@@ -1508,6 +1508,11 @@ function updateCropPlantingDateLabel() {
   label.textContent = 'Date Planted';
 }
 
+document
+  .getElementById('cropPlantingMethod')
+  ?.addEventListener('change', updateCropPlantingDateLabel
+  );
+
 function openAddCropModal() {
   document.getElementById('addCropModal').style.display = 'flex';
   
