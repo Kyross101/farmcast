@@ -954,9 +954,12 @@ function getCropTimelineCheck(crop) {
 
   const latest = history[history.length - 1];
 
-  const harvestDate = new Date(
-    `${crop.harvest}T00:00:00`
-  );
+  const stageHarvestWindow =
+    getStageBasedHarvestWindow(crop);
+
+  const harvestDate = stageHarvestWindow.available
+    ? new Date(`${stageHarvestWindow.startDate}T00:00:00`)
+    : new Date(`${crop.harvest}T00:00:00`);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -1017,7 +1020,12 @@ function getCropTimelineCheck(crop) {
     title:
       `${daysDifference} ` +
       `${daysDifference === 1 ? 'day' : 'days'} ` +
-      'before estimated harvest',
+      (
+        stageHarvestWindow.available
+          ? 'before harvest guidance window'
+          : 'before estimated harvest'
+      ),
+
     message:
       `Latest farmer-observed stage: ${stageLabel}.`
   };
