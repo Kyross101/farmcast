@@ -1379,7 +1379,7 @@ function renderCropsPage() {
         </div>
 
         <div class="cdc-meta-grid">
-          <div class="cdc-meta-item">
+          <div class="cdc-meta-item cdc-meta-primary">
             <span class="material-symbols-outlined">
               calendar_today
             </span>
@@ -1395,7 +1395,7 @@ function renderCropsPage() {
             </div>
           </div>
 
-         <div class="cdc-meta-item">
+          <div class="cdc-meta-item cdc-meta-primary cdc-harvest-meta">
            <span class="material-symbols-outlined">
              event_available
            </span>

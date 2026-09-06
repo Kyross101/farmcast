@@ -1152,6 +1152,27 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .cmi-val { font-size: 0.8rem; font-weight: 600; color: var(--text); }
 .cmi-lbl { font-size: 0.65rem; color: var(--text-muted); margin-top: 1px; }
 
+/* Important crop dates use the full card width */
+.cdc-meta-primary {
+  grid-column: 1 / -1;
+  align-items: flex-start;
+  padding: 11px 12px;
+}
+
+.cdc-meta-primary .cmi-val {
+  font-size: .82rem;
+}
+
+.cdc-harvest-meta {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.cdc-harvest-meta > div {
+  min-width: 0;
+  width: 100%;
+}
+
 .cmi-source {
   margin-top: 3px;
 
@@ -1178,6 +1199,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 
 .cmi-source-link {
   display: inline-flex;
+  max-width: 100%;
   align-items: center;
   justify-content: center;
   gap: 5px;
