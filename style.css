@@ -1055,7 +1055,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .crop-stage-box {
   margin: 12px 0;
   padding: 14px;
-  background: var(--bg3);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border);
   border-radius: var(--r-sm);
 }
@@ -5117,8 +5117,8 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
   flex-shrink: 0;
 
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 
   border-radius: 8px;
   background: var(--bg3);
@@ -5144,9 +5144,14 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 }
 
 .crop-timeline-check-title {
-  font-size: .82rem;
-  font-weight: 700;
+  font-size: .72rem;
+  font-weight: 600;
   line-height: 1.35;
+}
+
+.crop-timeline-check-text {
+  font-size: .68rem;
+  line-height: 1.45;
 }
 
 .crop-timeline-check-message {
