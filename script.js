@@ -1472,13 +1472,21 @@ function renderCropsPage() {
                       </div>
                     ` : ''}
 
-                    <div class="cmi-source-agency">
-                      Source: ${harvestWindow.source.agency}
+                    <div class="cmi-source-summary">
+                      ATI-based estimate
                     </div>
 
-                    <div class="cmi-source-title">
-                      ${harvestWindow.source.title}
-                    </div>
+                    <details class="cmi-source-details">
+                      <summary>Source details</summary>
+
+                      <div class="cmi-source-agency">
+                        ${harvestWindow.source.agency}
+                      </div>
+
+                      <div class="cmi-source-title">
+                        ${harvestWindow.source.title}
+                      </div>
+                    </details>
 
                     <a
                       class="cmi-source-link"
