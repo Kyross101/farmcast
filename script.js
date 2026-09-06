@@ -1533,69 +1533,118 @@ function renderCropsPage() {
              event_available
            </span>
 
+
+
            <div>
-             <div class="cmi-val">
-               ${escapeHtml(harvestWindowText)}
-             </div>
+             ${
+               stageHarvestWindow.available
+                 ? `
+                   <div class="cmi-val">
+                     ${formatFarmDate(stageHarvestWindow.startDate)} – ${formatFarmDate(stageHarvestWindow.endDate)}
+                   </div>
 
-             <div class="cmi-lbl">
-               ${
-                 harvestWindow.available
-                   ? 'Estimated Harvest Window'
-                   : 'Estimated Harvest'
+                   <div class="cmi-lbl">
+                     Estimated Harvest Guidance
+                   </div>
+
+                   <div class="cmi-source">
+                     <div>
+                       ${stageHarvestWindow.minDays}–${stageHarvestWindow.maxDays}
+                       days ${stageHarvestWindow.basis}
+                     </div>
+
+                     <div class="cmi-source-summary">
+                       ATI-based guidance
+                     </div>
+
+                     <details class="cmi-source-details">
+                       <summary>View source details</summary>
+
+                       <div class="cmi-source-agency">
+                         ${stageHarvestWindow.source.agency}
+                       </div>
+
+                       <div class="cmi-source-title">
+                         ${stageHarvestWindow.source.title}
+                       </div>
+                     </details>
+
+                     <a
+                       class="cmi-source-link"
+                       href="${stageHarvestWindow.source.url}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       onclick="event.stopPropagation()"
+                     >
+                       View official reference ↗
+                     </a>
+                   </div>
+                 `
+                 : `
+                   <div class="cmi-val">
+                     ${escapeHtml(harvestWindowText)}
+                   </div>
+
+                   <div class="cmi-lbl">
+                     ${
+                       harvestWindow.available
+                         ? 'Estimated Harvest Window'
+                         : 'Estimated Harvest'
+                     }
+                   </div>
+
+                   ${
+                     harvestWindow.available
+                       ? `
+                         <div class="cmi-source">
+                           <div>
+                             ${harvestWindow.minDays}–${harvestWindow.maxDays}
+                             days ${harvestWindow.basis}
+                           </div>
+
+                           ${harvestWindow.derived ? `
+                             <div class="cmi-source-derived">
+                               Derived estimate from source flowering and harvest guidance
+                             </div>
+                           ` : ''}
+
+                           <div class="cmi-source-summary">
+                             ATI-based estimate
+                           </div>
+
+                           <details class="cmi-source-details">
+                             <summary>View source details</summary>
+
+                             <div class="cmi-source-agency">
+                               ${harvestWindow.source.agency}
+                             </div>
+
+                             <div class="cmi-source-title">
+                               ${harvestWindow.source.title}
+                             </div>
+                           </details>
+
+                           <a
+                             class="cmi-source-link"
+                             href="${harvestWindow.source.url}"
+                             target="_blank"
+                             rel="noopener noreferrer"
+                             onclick="event.stopPropagation()"
+                           >
+                             View official reference ↗
+                           </a>
+                         </div>
+                       `
+                       : `
+                         <div class="cmi-source">
+                           Current FarmCast estimate
+                         </div>
+                       `
                }
-             </div>
-
-            ${
-              harvestWindow.available
-                ? `
-                  <div class="cmi-source">
-                    <div>
-                      ${harvestWindow.minDays}–${harvestWindow.maxDays}
-                      days ${harvestWindow.basis}
-                    </div>
-
-                    ${harvestWindow.derived ? `
-                      <div class="cmi-source-derived">
-                        Derived estimate from source flowering and harvest guidance
-                      </div>
-                    ` : ''}
-
-                    <div class="cmi-source-summary">
-                      ATI-based estimate
-                    </div>
-
-                    <details class="cmi-source-details">
-                      <summary>View Source details</summary>
-
-                      <div class="cmi-source-agency">
-                        ${harvestWindow.source.agency}
-                      </div>
-
-                      <div class="cmi-source-title">
-                        ${harvestWindow.source.title}
-                      </div>
-                    </details>
-
-                    <a
-                      class="cmi-source-link"
-                      href="${harvestWindow.source.url}"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onclick="event.stopPropagation()"
-                    >
-                      View official reference ↗
-                    </a>
-                  </div>
-                `
-                : `
-                  <div class="cmi-source">
-                    Current FarmCast estimate
-                  </div>
-                `
-            }
-          </div>
-        </div>
+             `
+  }
+</div>
+</div>
 
           <div class="cdc-meta-item">
             <span class="material-symbols-outlined">straighten</span>
