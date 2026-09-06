@@ -1403,14 +1403,14 @@ function renderCropsPage() {
             </span>
 
             <div>
+              <div class="cmi-lbl">
+                ${plantingDateLabel}
+              </div>
+
               <div class="cmi-val">
                 ${plantedFmt}
               </div>
 
-              <div class="cmi-lbl">
-                ${plantingDateLabel}
-              </div>
-              
               ${elapsedPlanting ? `
                 <div class="cmi-elapsed">
                   ${elapsedPlanting.label}
