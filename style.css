@@ -1177,16 +1177,39 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 
 .cmi-source-link {
-  display: inline-block;
-  margin-top: 5px;
-  font-size: .67rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  margin-top: 8px;
+  padding: 7px 10px;
+
+  font-size: .68rem;
+  font-weight: 700;
+  line-height: 1;
+
   color: var(--primary);
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 7px;
+
   text-decoration: none;
+  cursor: pointer;
+
+  transition: background .2s ease,
+              border-color .2s ease,
+              transform .15s ease;
 }
 
 .cmi-source-link:hover {
-  text-decoration: underline;
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.45);
+  text-decoration: none;
+}
+
+.cmi-source-link:active {
+  transform: scale(0.97);
 }
 
 
