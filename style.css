@@ -1092,7 +1092,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 
 .crop-stage-name {
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--text);
 }
@@ -1114,7 +1114,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   color: var(--green);
   font-family: inherit;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -5101,7 +5101,7 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   align-items: flex-start;
   gap: 10px;
 
-  margin-top: 14px;
+  margin-top: 12px;
   padding: 12px 0 0;
 
   border-top: 1px solid var(--border);
