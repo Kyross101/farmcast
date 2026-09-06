@@ -734,6 +734,37 @@ function formatFarmDate(date) {
   );
 }
 
+function getElapsedPlantingTime(crop) {
+  if (!crop?.planted) return null;
+
+  const start = new Date(`${crop.planted}T00:00:00`);
+
+  if (Number.isNaN(start.getTime())) {
+    return null;
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const days = Math.max(
+    0,
+    Math.floor((today - start) / 86400000)
+  );
+
+  let basis = 'planting';
+
+  if (crop.plantingMethod === 'direct-seeded') {
+    basis = 'sowing';
+  } else if (crop.plantingMethod === 'transplanted') {
+    basis = 'transplanting';
+  }
+
+  return {
+    days,
+    label: `${days} ${days === 1 ? 'day' : 'days'} since ${basis}`
+  };
+}
+
 function getPlantingDateLabel(crop) {
   if (crop.plantingMethod === 'transplanted') {
     return 'Date Transplanted';
@@ -1230,6 +1261,9 @@ function renderCropsPage() {
     const harvestWindow =
       getEstimatedHarvestWindow(crop);
 
+    const elapsedPlanting = 
+      getElapsedPlantingTime(crop);
+
     const harvestWindowText =
       harvestWindow.available
         ? `${formatFarmDate(harvestWindow.start)} – ${formatFarmDate(harvestWindow.end)}`
@@ -1313,7 +1347,7 @@ function renderCropsPage() {
               ${escapeHtml(timelineCheck.title)}
             </div>
 
-            <div class="crop-timeline-check-message">
+            <div class="crop-timeline-check-text">
               ${escapeHtml(timelineCheck.message)}
             </div>
           </div>
@@ -1376,6 +1410,13 @@ function renderCropsPage() {
               <div class="cmi-lbl">
                 ${plantingDateLabel}
               </div>
+              
+              ${elapsedPlanting ? `
+                <div class="cmi-elapsed">
+                  ${elapsedPlanting.label}
+                </div>
+              ` : ''}
+
             </div>
           </div>
 
