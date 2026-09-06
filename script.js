@@ -1337,27 +1337,45 @@ function renderCropsPage() {
         </div>
 
 
-          <!-- HISTORY SECOND -->
-          <div class="crop-growth-history">
+          <!-- COLLAPSIBLE GROWTH HISTORY -->
+          <details class="crop-growth-history crop-growth-history-collapsible">
 
-            <div class="growth-history-header">
-              <div>
+            <summary class="growth-history-summary">
+
+              <div class="growth-history-summary-left">
                 <span class="material-symbols-outlined">
                   history
                 </span>
-                Growth History
+
+                <div>
+                  <div class="growth-history-summary-title">
+                    Growth History
+                  </div>
+
+                  <div class="growth-history-summary-sub">
+                    ${history.length}
+                    ${history.length === 1 ? 'observation' : 'observations'}
+                  </div>
+                </div>
               </div>
 
-              <span class="growth-history-count">
-                ${history.length}
-                ${history.length === 1 ? 'observation' : 'observations'}
-              </span>
-            </div>
+              <div class="growth-history-summary-action">
+                <span class="growth-history-view-text">
+                  View
+                </span>
+
+                <span class="material-symbols-outlined growth-history-chevron">
+                  expand_more
+                </span>
+              </div>
+
+            </summary>
 
             <div class="growth-history-list">
               ${renderGrowthHistory(crop)}
             </div>
-          </div>
+
+          </details>
         </div>
 
         <div class="cdc-meta-grid">

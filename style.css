@@ -5228,3 +5228,90 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .growth-history-delete-btn .material-symbols-outlined {
   font-size: 16px;
 }
+
+/* ============================================
+   MY CROPS — COLLAPSIBLE GROWTH HISTORY
+============================================ */
+
+.crop-growth-history-collapsible {
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.growth-history-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.growth-history-summary::-webkit-details-marker {
+  display: none;
+}
+
+.growth-history-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.growth-history-summary-left > .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--green);
+}
+
+.growth-history-summary-title {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.growth-history-summary-sub {
+  margin-top: 2px;
+  font-size: .64rem;
+  color: var(--text-muted);
+}
+
+.growth-history-summary-action {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  flex-shrink: 0;
+
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.growth-history-chevron {
+  font-size: 18px;
+  transition: transform .2s ease;
+}
+
+.crop-growth-history-collapsible[open]
+  .growth-history-chevron {
+  transform: rotate(180deg);
+}
+
+.crop-growth-history-collapsible[open]
+  .growth-history-view-text {
+  font-size: 0;
+}
+
+.crop-growth-history-collapsible[open]
+  .growth-history-view-text::after {
+  content: "Hide";
+  font-size: .68rem;
+}
+
+.crop-growth-history-collapsible
+  .growth-history-list {
+  margin-top: 12px;
+}
