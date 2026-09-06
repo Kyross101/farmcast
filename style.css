@@ -1145,13 +1145,18 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   gap: 8px; margin-bottom: 12px;
 }
 .cdc-meta-item {
-  display: flex; align-items: center; gap: 8px;
-  padding: 8px 10px; border-radius: var(--r-sm);
-  background: var(--bg3); border: 1px solid var(--border);
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  padding: 8px 10px; 
+  border-radius: var(--r-sm);
+  background: var(--bg3); 
+  border: 1px solid var(--border);
+  min-width: 0;
 }
 .cdc-meta-item .material-symbols-outlined { font-size: 16px; color: var(--green); flex-shrink: 0; }
-.cmi-val { font-size: 0.8rem; font-weight: 600; color: var(--text); }
-.cmi-lbl { font-size: 0.65rem; color: var(--text-muted); margin-top: 1px; }
+.cmi-val { font-size: 0.78rem; font-weight: 600; color: var(--text); }
+.cmi-lbl { font-size: 0.64rem; color: var(--text-muted); margin-top: 1px; }
 
 /* Important crop dates use the full card width */
 .cdc-meta-primary {
