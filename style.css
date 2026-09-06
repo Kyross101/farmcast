@@ -4949,9 +4949,9 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 ═══════════════════════════════════════ */
 
 .crop-growth-history {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
 }
 
 .growth-history-header {
@@ -5291,7 +5291,7 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
 .growth-history-summary-title {
   font-size: .78rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text);
 }
 
