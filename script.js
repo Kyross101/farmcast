@@ -1485,7 +1485,29 @@ function deleteCrop(id) {
 
   toast(`${crop.type} deleted.`, 'warn');
 }
- 
+
+function updateCropPlantingDateLabel() {
+  const plantingMethod =
+    document.getElementById('cropPlantingMethod')?.value;
+
+  const label =
+    document.getElementById('cropPlantedLabel');
+
+  if (!label) return;
+
+  if (plantingMethod === 'transplanted') {
+    label.textContent = 'Date Transplanted';
+    return;
+  }
+
+  if (plantingMethod === 'direct-seeded') {
+    label.textContent = 'Date Sown';
+    return;
+  }
+
+  label.textContent = 'Date Planted';
+}
+
 function openAddCropModal() {
   document.getElementById('addCropModal').style.display = 'flex';
   
