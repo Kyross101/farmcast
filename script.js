@@ -724,6 +724,60 @@ const CROP_HARVEST_WINDOWS = {
 
 };
 
+const RICE_VARIETY_HARVEST_RULES = {
+  'tubigan 22': {
+    displayName: 'Tubigan 22',
+
+    'direct-seeded': {
+      minDays: 108,
+      maxDays: 108,
+      basis: 'after direct seeding',
+      source: {
+        agency: 'Philippine Rice Research Institute (PhilRice)',
+        title: 'Varieties for More',
+        url: 'https://www.philrice.gov.ph/varieties-for-more/'
+      }
+    },
+
+    'transplanted': {
+      minDays: 115,
+      maxDays: 115,
+      basis: 'after transplanting',
+      source: {
+        agency: 'Philippine Rice Research Institute (PhilRice)',
+        title: 'Varieties for More',
+        url: 'https://www.philrice.gov.ph/varieties-for-more/'
+      }
+    }
+  },
+
+  'nsic rc226': {
+    displayName: 'NSIC Rc226',
+
+    'direct-seeded': {
+      minDays: 104,
+      maxDays: 104,
+      basis: 'after direct wet seeding',
+      source: {
+        agency: 'Philippine Rice Research Institute (PhilRice)',
+        title: 'New varieties released for irrigated lowlands',
+        url: 'https://www.philrice.gov.ph/new-varieties-released-for-irrigated-lowlands/'
+      }
+    },
+
+    'transplanted': {
+      minDays: 112,
+      maxDays: 112,
+      basis: 'after transplanting',
+      source: {
+        agency: 'Philippine Rice Research Institute (PhilRice)',
+        title: 'New varieties released for irrigated lowlands',
+        url: 'https://www.philrice.gov.ph/new-varieties-released-for-irrigated-lowlands/'
+      }
+    }
+  }
+};
+
 const CROP_STAGE_HARVEST_WINDOWS = {
   Ampalaya: {
     stage: 'flowering',
@@ -762,7 +816,66 @@ function addDaysToDate(dateString, days) {
   return date;
 }
 
+function normalizeRiceVarietyName(value = '') {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, ' ');
+}
+
+function getRiceVarietyHarvestRule(crop) {
+  if (crop.type !== 'Rice' || !crop.variety) {
+    return null;
+  }
+
+  const varietyKey =
+    normalizeRiceVarietyName(crop.variety);
+
+  const varietyRules =
+    RICE_VARIETY_HARVEST_RULES[varietyKey];
+
+  if (!varietyRules) {
+    return null;
+  }
+
+  const plantingMethod =
+    crop.plantingMethod || 'direct-seeded';
+
+  return varietyRules[plantingMethod] || null;
+}
+
 function getEstimatedHarvestWindow(crop) {
+   // 1. Rice variety-specific rule
+  const riceVarietyRule =
+    getRiceVarietyHarvestRule(crop);
+
+  if (riceVarietyRule) {
+    const startDate =
+      addDaysToDate(
+        crop.planted,
+        riceVarietyRule.minDays
+      );
+
+    const endDate =
+      addDaysToDate(
+        crop.planted,
+        riceVarietyRule.maxDays
+      );
+
+    return {
+      available: true,
+      sourceBacked: true,
+      varietyBased: true,
+      minDays: riceVarietyRule.minDays,
+      maxDays: riceVarietyRule.maxDays,
+      basis: riceVarietyRule.basis,
+      startDate,
+      endDate,
+      source: riceVarietyRule.source
+    };
+  }
+
+  // 2. Existing crop + planting method rules
   const cropRules =
     CROP_HARVEST_WINDOWS[crop.type];
 
