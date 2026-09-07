@@ -1232,7 +1232,10 @@ function getCropTimelineCheck(crop) {
   const harvestDate = stageHarvestWindow.available
     ? new Date(stageHarvestWindow.startDate)
     : estimatedHarvestWindow.available
-      ? new Date(estimatedHarvestWindow.startDate)
+      ? new Date(
+          estimatedHarvestWindow.startDate ||
+          estimatedHarvestWindow.start
+        )
       : new Date(`${crop.harvest}T00:00:00`);
 
   const today = new Date();
