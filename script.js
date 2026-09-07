@@ -820,7 +820,8 @@ function normalizeRiceVarietyName(value = '') {
   return value
     .trim()
     .toLowerCase()
-    .replace(/\s+/g, ' ');
+    .replace(/\s+/g, ' ')
+    .replace(/\brc\s+(\d+)/g, 'rc$1');
 }
 
 function getRiceVarietyHarvestRule(crop) {
