@@ -806,6 +806,23 @@ const CROP_STAGE_HARVEST_WINDOWS = {
   }
 };
 
+function updateCropVarietySuggestions() {
+  const cropSelect = document.getElementById('cropTypeSelect');
+  const varietyInput = document.getElementById('cropVariety');
+
+  if (!cropSelect || !varietyInput) return;
+
+  const isRice = cropSelect.value === 'Rice';
+
+  if (isRice) {
+    varietyInput.setAttribute('list', 'riceVarietySuggestions');
+    varietyInput.placeholder = 'e.g. NSIC Rc226';
+  } else {
+    varietyInput.removeAttribute('list');
+    varietyInput.placeholder = 'Enter variety (optional)';
+  }
+}
+
 function addDaysToDate(dateString, days) {
   const date = new Date(`${dateString}T00:00:00`);
 
