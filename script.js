@@ -1181,7 +1181,7 @@ function getCropTimelineCheck(crop) {
   const hasSourceBackedHarvestWindow =
     stageHarvestWindow.available ||
     estimatedHarvestWindow.available;
-    
+
   const harvestDate = stageHarvestWindow.available
     ? new Date(stageHarvestWindow.startDate)
     : estimatedHarvestWindow.available
@@ -1609,7 +1609,9 @@ function renderCropsPage() {
 
     const harvestWindowText =
       harvestWindow.available
-        ? `${formatFarmDate(harvestWindow.start)} – ${formatFarmDate(harvestWindow.end)}`
+        ? harvestWindow.minDays === harvestWindow.maxDays
+          ? formatFarmDate(harvestWindow.start)
+          : `${formatFarmDate(harvestWindow.start)} – ${formatFarmDate(harvestWindow.end)}`
         : harvestFmt;
 
     // Weather compatibility
