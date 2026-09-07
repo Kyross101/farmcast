@@ -776,6 +776,51 @@ const RICE_VARIETY_HARVEST_RULES = {
         url: 'https://www.philrice.gov.ph/new-varieties-released-for-irrigated-lowlands/'
       }
     }
+  },
+
+  'mestiso 29': {
+    displayName: 'Mestiso 29',
+
+    'transplanted': {
+      minDays: 110,
+      maxDays: 110,
+      basis: 'after transplanting',
+      source: {
+        agency: 'Philippine Rice Research Institute (PhilRice)',
+        title: 'Varieties for More',
+       url: 'https://www.philrice.gov.ph/varieties-for-more/'
+      }
+    }
+  },
+
+  'mestiso 19': {
+    displayName: 'Mestiso 19',
+
+    'transplanted': {
+      minDays: 110,
+     maxDays: 110,
+      basis: 'after transplanting',
+      source: {
+        agency: 'Philippine Rice Research Institute (PhilRice)',
+        title: 'Varieties for More',
+        url: 'https://www.philrice.gov.ph/varieties-for-more/'
+      }
+    }
+  },
+
+  'mestiso 20': {
+    displayName: 'Mestiso 20',
+
+    'transplanted': {
+      minDays: 111,
+      maxDays: 111,
+      basis: 'after transplanting',
+      source: {
+        agency: 'Philippine Rice Research Institute (PhilRice)',
+        title: 'Varieties for More',
+        url: 'https://www.philrice.gov.ph/varieties-for-more/'
+      }
+    }
   }
 };
 
