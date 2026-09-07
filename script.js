@@ -1175,12 +1175,14 @@ function getCropTimelineCheck(crop) {
 
   const latest = history[history.length - 1];
 
-  const stageHarvestWindow =
-    getStageBasedHarvestWindow(crop);
+  const stageHarvestWindow = getStageBasedHarvestWindow(crop);
+  const estimatedHarvestWindow = getEstimatedHarvestWindow(crop);
 
   const harvestDate = stageHarvestWindow.available
     ? new Date(stageHarvestWindow.startDate)
-    : new Date(`${crop.harvest}T00:00:00`);
+    : estimatedHarvestWindow.available
+      ? new Date(estimatedHarvestWindow.startDate)
+      : new Date(`${crop.harvest}T00:00:00`);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -1242,7 +1244,7 @@ function getCropTimelineCheck(crop) {
       `${daysDifference} ` +
       `${daysDifference === 1 ? 'day' : 'days'} ` +
       (
-        stageHarvestWindow.available
+        hasSourceBackedHarvestWindow
           ? 'before harvest guidance window'
           : 'before estimated harvest'
       ),
