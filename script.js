@@ -1607,7 +1607,7 @@ function renderCropsPage() {
                      </div>
 
                      <div class="cmi-source-summary">
-                       ATI-based guidance
+                       Source-backed guidance
                      </div>
 
                      <details class="cmi-source-details">
@@ -1662,7 +1662,7 @@ function renderCropsPage() {
                            ` : ''}
 
                            <div class="cmi-source-summary">
-                             ATI-based estimate
+                             Source-backed estimate
                            </div>
 
                            <details class="cmi-source-details">
