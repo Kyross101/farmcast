@@ -1448,11 +1448,19 @@ function renderCropsPage() {
           <div class="cdc-emoji">${emoji}</div>
           <div class="cdc-info">
             <div class="cdc-name">${crop.type}</div>
+
+            ${crop.variety ? `
+              <div class="cdc-variety">
+                Variety: ${crop.variety}
+              </div>
+            ` : ''}
+
             <div class="cdc-location">
               <span class="material-symbols-outlined" style="font-size:13px">location_on</span>
               ${crop.location}
             </div>
           </div>
+          
           <div class="cdc-status status-${st.color}">${st.label}</div>
         </div>
  

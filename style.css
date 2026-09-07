@@ -1014,6 +1014,15 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .cdc-emoji  { font-size: 36px; flex-shrink: 0; line-height: 1; }
 .cdc-info   { flex: 1; }
 .cdc-name   { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); }
+
+.cdc-variety {
+  margin-top: 2px;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+
 .cdc-location {
   display: flex; align-items: center; gap: 3px;
   font-size: 0.72rem; color: var(--text-muted); margin-top: 3px;
