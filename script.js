@@ -1177,7 +1177,11 @@ function getCropTimelineCheck(crop) {
 
   const stageHarvestWindow = getStageBasedHarvestWindow(crop);
   const estimatedHarvestWindow = getEstimatedHarvestWindow(crop);
-
+  
+  const hasSourceBackedHarvestWindow =
+    stageHarvestWindow.available ||
+    estimatedHarvestWindow.available;
+    
   const harvestDate = stageHarvestWindow.available
     ? new Date(stageHarvestWindow.startDate)
     : estimatedHarvestWindow.available
