@@ -1815,8 +1815,12 @@ function renderCropsPage() {
                        `
                        : `
                          <div class="cmi-source">
-                           Current FarmCast estimate
-                         </div>
+                           ${
+                             crop.type === 'Rice' && crop.variety
+                               ? `Variety not yet verified in FarmCast — showing current FarmCast estimate`
+                               : `Current FarmCast estimate`
+                            }
+                          </div>
                        `
                }
              `
