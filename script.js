@@ -758,6 +758,7 @@ const RICE_VARIETY_HARVEST_RULES = {
       minDays: 104,
       maxDays: 104,
       basis: 'after direct wet seeding',
+      note: 'Applies to direct wet-seeded establishment.',
       source: {
         agency: 'Philippine Rice Research Institute (PhilRice)',
         title: 'New varieties released for irrigated lowlands',
@@ -932,6 +933,7 @@ function getEstimatedHarvestWindow(crop) {
       minDays: riceVarietyRule.minDays,
       maxDays: riceVarietyRule.maxDays,
       basis: riceVarietyRule.basis,
+      note: riceVarietyRule.note || '',
       startDate,
       endDate,
       source: riceVarietyRule.source
@@ -1847,6 +1849,12 @@ function renderCropsPage() {
                                ? `${harvestWindow.minDays} days ${harvestWindow.basis}`
                                : `${harvestWindow.minDays}–${harvestWindow.maxDays} days ${harvestWindow.basis}`}
                            </div>
+
+                           ${harvestWindow.note ? `
+                             <div class="cmi-source-derived">
+                               ${harvestWindow.note}
+                             </div>
+                           ` : ''}
 
                            ${harvestWindow.derived ? `
                              <div class="cmi-source-derived">
