@@ -1324,15 +1324,21 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   display: none; align-items: center; justify-content: center;
   padding: 20px;
 }
+
 .modal-box {
   background: var(--bg2);
   border: 1px solid var(--border2);
   border-radius: var(--r);
-  width: 100%; max-width: 560px;
+  width: 100%;
+  max-width: 560px;
+
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  overflow: hidden;
-  animation: modalIn 0.25s ease;
 }
+
 @keyframes modalIn { from { opacity:0; transform:scale(0.95); } to { opacity:1; transform:scale(1); } }
 .modal-header {
   display: flex; align-items: center;
@@ -1340,6 +1346,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   padding: 18px 20px;
   border-bottom: 1px solid var(--border);
 }
+
 .modal-title {
   font-family: 'Syne', sans-serif;
   font-size: 1rem; font-weight: 700;
@@ -1410,13 +1417,26 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 @media(max-width:1200px) {
   .crops-stats-row { grid-template-columns: repeat(3,1fr); }
 }
+
 @media(max-width:900px) {
   .maps-layout { grid-template-columns: 1fr; }
   .map-controls-panel { order: 2; max-height: 260px; overflow-y: auto; }
   .map-main { order: 1; min-height: 400px; }
   .crops-stats-row { grid-template-columns: repeat(2,1fr); }
   .form-row { grid-template-columns: 1fr; }
+
+  .modal-overlay {
+    align-items: flex-start;
+    padding: 12px;
+    overflow-y: auto;
+  }
+
+  .modal-box {
+    max-height: calc(100dvh - 24px);
+    margin: 0 auto;
+  }
 }
+
 /* ═══════════════════════════════════════════════════════
    PEST ALERTS PAGE
 ═══════════════════════════════════════════════════════ */
