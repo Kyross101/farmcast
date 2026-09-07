@@ -6,7 +6,14 @@ const mongoose = require('mongoose');
 const CropSchema = new mongoose.Schema({
   user:       { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 
-  type:       { type: String, required: true },
+  type: { type: String, required: true },
+
+  variety: {
+    type: String,
+    trim: true,
+    maxlength: 80,
+    default: ''
+  },
 
   plantingMethod: {
     type: String,

@@ -278,20 +278,31 @@ function patchScriptJsWithAPI() {
 
   // Override saveNewCrop
   saveNewCrop = async function() {
-    const type       = document.getElementById('cropTypeSelect').value;
-    const plantingMethod = document.getElementById('cropPlantingMethod').value;
-    const area       = parseInt(document.getElementById('cropArea').value);
-    const planted    = document.getElementById('cropDatePlanted').value;
-    const harvest    = document.getElementById('cropDateHarvest').value;
-    const location   = document.getElementById('cropLocation').value.trim();
-    const irrigation = document.getElementById('cropIrrigation').value;
-    const notes      = document.getElementById('cropNotes').value.trim();
+    
+    const type       = 
+      document.getElementById('cropTypeSelect').value;
+    const variety =
+      document.getElementById('cropVariety').value.trim();
+    const plantingMethod = 
+      document.getElementById('cropPlantingMethod').value;
+    const area       = 
+      parseInt(document.getElementById('cropArea').value);
+    const planted    = 
+      document.getElementById('cropDatePlanted').value;
+    const harvest    = 
+      document.getElementById('cropDateHarvest').value;
+    const location   = 
+      document.getElementById('cropLocation').value.trim();
+    const irrigation = 
+      document.getElementById('cropIrrigation').value;
+    const notes      = 
+      document.getElementById('cropNotes').value.trim();
 
     if (!type || !area || !planted || !harvest || !location) {
       toast('Please fill in all required fields.', 'warn'); return;
     }
     try {
-      const newCrop = await fcCrops.add({ type, plantingMethod, area, planted, harvest, location, irrigation, notes });
+      const newCrop = await fcCrops.add({ type, variety, plantingMethod, area, planted, harvest, location, irrigation, notes });
       myCrops.push(newCrop);
       closeAddCropModal();
       renderCropsPage();

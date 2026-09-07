@@ -1953,6 +1953,9 @@ async function saveGrowthStage() {
 function saveNewCrop() {
   const type =
     document.getElementById('cropTypeSelect').value;
+  
+  const variety =
+    document.getElementById('cropVariety').value.trim(); 
 
   const plantingMethod =
     document.getElementById('cropPlantingMethod').value;
@@ -1984,6 +1987,7 @@ function saveNewCrop() {
   myCrops.push({
     id: nextCropId++,
     type,
+    variety,
     plantingMethod,
     area,
     planted,
