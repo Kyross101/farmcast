@@ -603,6 +603,21 @@ const CROP_INFO = {
 };
  
 const CROP_HARVEST_WINDOWS = {
+  Tomato: {
+  'transplanted': {
+    minDays: 55,
+    maxDays: 65,
+    basis: 'after transplanting',
+    derived: false,
+    source: {
+      agency: 'Agricultural Training Institute (ATI)',
+      office: 'ATI MIMAROPA',
+      title: 'Gabay sa Produksyon ng Kamatis',
+      url: 'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2024-06/Gabay%20sa%20Produksyon%20ng%20Kamatis.pdf'
+    }
+  }
+},
+  
   Pechay: {
     'direct-seeded': {
       minDays: 30,
