@@ -603,7 +603,7 @@ const CROP_INFO = {
 };
  
 const CROP_HARVEST_WINDOWS = {
-  
+
   Tomato: {
     'transplanted': {
       minDays: 55,
@@ -650,6 +650,7 @@ const CROP_HARVEST_WINDOWS = {
       minDays: 46,
       maxDays: 50,
       basis: 'after transplanting',
+      derived: false,
       source: {
         agency: 'Agricultural Training Institute (ATI)',
         office: 'ATI MIMAROPA',
@@ -719,6 +720,19 @@ const CROP_STAGE_HARVEST_WINDOWS = {
       office: 'ATI MIMAROPA',
       title: 'Gabay sa Produksyon ng Ampalaya',
       url: 'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/gabay_sa_produksyon_ng_ampalaya_final_2.pdf'
+    }
+  },
+
+  Tomato: {
+    stage: 'flowering',
+    minDays: 15,
+    maxDays: 20,
+    basis: 'after farmer-observed flowering',
+    source: {
+      agency: 'Agricultural Training Institute (ATI)',
+      office: 'ATI MIMAROPA',
+      title: 'Gabay sa Produksyon ng Kamatis',
+      url: 'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2024-06/Gabay%20sa%20Produksyon%20ng%20Kamatis.pdf'
     }
   }
 };
