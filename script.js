@@ -1773,8 +1773,9 @@ function renderCropsPage() {
                        ? `
                          <div class="cmi-source">
                            <div>
-                             ${harvestWindow.minDays}–${harvestWindow.maxDays}
-                             days ${harvestWindow.basis}
+                             ${harvestWindow.minDays === harvestWindow.maxDays
+                               ? `${harvestWindow.minDays} days ${harvestWindow.basis}`
+                               : `${harvestWindow.minDays}–${harvestWindow.maxDays} days ${harvestWindow.basis}`}
                            </div>
 
                            ${harvestWindow.derived ? `
@@ -1784,7 +1785,9 @@ function renderCropsPage() {
                            ` : ''}
 
                            <div class="cmi-source-summary">
-                             Source-backed estimate
+                             ${harvestWindow.varietyBased
+                               ? 'PhilRice variety-based maturity guidance'
+                               : 'Source-backed estimate'}
                            </div>
 
                            <details class="cmi-source-details">
