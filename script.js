@@ -659,6 +659,21 @@ const CROP_HARVEST_WINDOWS = {
       }
     }
   },
+  
+  Corn: {
+    'direct-seeded': {
+      minDays: 90,
+      maxDays: 120,
+      basis: 'after sowing',
+      derived: false,
+      source: {
+        agency: 'Agricultural Training Institute (ATI)',
+        office: 'ATI Central Visayas',
+        title: 'MAIS Production Guide',
+        url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/MAIS%20Production%20Guide.pdf'
+      }
+    }
+  },
 
   Cabbage: {
     transplanted: {
