@@ -823,6 +823,51 @@ function updateCropVarietySuggestions() {
   }
 }
 
+function updateCropVarietyHint() {
+  const cropSelect = document.getElementById('cropTypeSelect');
+  const varietyInput = document.getElementById('cropVariety');
+  const hint = document.getElementById('cropVarietyHint');
+
+  if (!cropSelect || !varietyInput || !hint) return;
+
+  const cropType = cropSelect.value;
+  const variety = varietyInput.value.trim();
+
+  if (cropType !== 'Rice' || !variety) {
+    hint.style.display = 'none';
+    hint.textContent = '';
+    return;
+  }
+
+  const normalizedVariety = normalizeRiceVarietyName(variety);
+  const verifiedRule = RICE_VARIETY_HARVEST_RULES[normalizedVariety];
+
+  hint.style.display = 'block';
+
+  if (verifiedRule) {
+    hint.textContent =
+      '✓ Verified variety-specific maturity timing is available in FarmCast.';
+  } else {
+    hint.textContent =
+      'Variety-specific timing is not yet verified. FarmCast fallback estimate will be used.';
+  }
+}
+
+document
+  .getElementById('cropTypeSelect')
+  ?.addEventListener('change', updateCropVarietySuggestions);
+
+document
+  .getElementById('cropTypeSelect')
+  ?.addEventListener('change', updateCropVarietyHint);
+
+document
+  .getElementById('cropVariety')
+  ?.addEventListener('input', updateCropVarietyHint);
+
+updateCropVarietySuggestions();
+updateCropVarietyHint();
+
 function addDaysToDate(dateString, days) {
   const date = new Date(`${dateString}T00:00:00`);
 
