@@ -928,11 +928,17 @@ document
 
 document
   .getElementById('cropVariety')
-  ?.addEventListener('input', updateCropVarietyHint);
+  ?.addEventListener('input', () => {
+    updateCropVarietyHint();
+    updateAddCropHarvestEstimate();
+  });
 
 document
   .getElementById('cropPlantingMethod')
-  ?.addEventListener('change', updateCropVarietyHint);
+  ?.addEventListener('change', () => {
+    updateCropVarietyHint();
+    updateAddCropHarvestEstimate();
+  });
 
 updateCropVarietySuggestions();
 updateCropVarietyHint();
@@ -2149,6 +2155,13 @@ document
   .getElementById('cropPlantingMethod')
   ?.addEventListener('change', updateCropPlantingDateLabel
   );
+
+document
+  .getElementById('cropDatePlanted')
+  ?.addEventListener('change', () => {
+    updateAddCropHarvestEstimate();
+  });
+
 
 function updateAddCropHarvestEstimate() {
   const cropType =
