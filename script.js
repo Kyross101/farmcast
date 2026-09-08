@@ -1872,23 +1872,25 @@ function renderCropsPage() {
          </div>
         </div>
 
+        <button
+          type="button"
+          class="cdc-mobile-toggle"
+          aria-expanded="false"
+          onclick="toggleMobileCropDetails(this)"
+        >
+          <span class="cdc-mobile-toggle-label">
+            View details
+          </span>
+
+          <span class="material-symbols-outlined">
+            expand_more
+          </span>
+        </button>
+
         <!-- START hidden mobile details -->
         <div class="cdc-mobile-details">
-          <button
-            type="button"
-            class="cdc-mobile-toggle"
-            aria-expanded="false"
-            onclick="toggleMobileCropDetails(this)"
-          >
-            <span class="cdc-mobile-toggle-label">
-              View details
-            </span>
-
-            <span class="material-symbols-outlined">
-              expand_more
-            </span>
-          </button>
-        ${weatherCompatHtml}
+          
+          ${weatherCompatHtml}
         
         <div class="crop-stage-box">
           <div class="crop-stage-heading">
