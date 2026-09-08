@@ -1978,11 +1978,13 @@ function renderCropsPage() {
                        `
                        : `
                          <div class="cmi-source">
-                           ${
-                             crop.type === 'Rice' && crop.variety
-                               ? `Variety not yet verified in FarmCast — showing current FarmCast estimate`
-                               : `Current FarmCast estimate`
-                            }
+                          ${
+                            crop.type === 'Rice' && crop.variety
+                              ? getRiceVarietyStatus(crop).varietyVerified
+                                ? `Verified Rice variety, but no source-backed timing is available for the selected planting method — showing current FarmCast estimate`
+                                : `Rice variety not yet verified in FarmCast — showing current FarmCast estimate`
+                              : `Current FarmCast estimate`
+                          }
                           </div>
                        `
                }
