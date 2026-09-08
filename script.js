@@ -2215,8 +2215,8 @@ function openAddCropModal() {
   // Set default dates
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('cropDatePlanted').value = today;
-  const def90 = new Date(Date.now() + 90*24*60*60*1000).toISOString().split('T')[0];
-  document.getElementById('cropDateHarvest').value = def90;
+
+  updateAddCropHarvestEstimate();
   
   // Auto-update harvest date when crop type changes
   document.getElementById('cropTypeSelect').onchange = function() {
