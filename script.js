@@ -2220,12 +2220,10 @@ function openAddCropModal() {
   
   // Auto-update harvest date when crop type changes
   document.getElementById('cropTypeSelect').onchange = function() {
-    const info = CROP_INFO[this.value];
-    if (info) {
-      const planted = new Date(document.getElementById('cropDatePlanted').value);
-      const harvestDate = new Date(planted.getTime() + info.days*24*60*60*1000);
-      document.getElementById('cropDateHarvest').value = harvestDate.toISOString().split('T')[0];
-    }
+    updateCropVarietySuggestions();
+    updateCropVarietyHint();
+    updateCropPlantingDateLabel();
+    updateAddCropHarvestEstimate();
   };
 }
 
