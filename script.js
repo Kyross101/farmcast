@@ -943,6 +943,15 @@ document
 updateCropVarietySuggestions();
 updateCropVarietyHint();
 
+function formatDateInputLocal(date) {
+  return (
+    `${date.getFullYear()}-` +
+    `${String(date.getMonth() + 1).padStart(2, '0')}-` +
+    `${String(date.getDate()).padStart(2, '0')}`
+  );
+}
+
+
 function addDaysToDate(dateString, days) {
   const date = new Date(`${dateString}T00:00:00`);
 
@@ -2207,9 +2216,7 @@ function updateAddCropHarvestEstimate() {
 
     if (harvestDate) {
       harvestInput.value =
-        new Date(harvestDate)
-          .toISOString()
-          .split('T')[0];
+        formatDateInputLocal(new Date(harvestDate));
 
       return;
     }
@@ -2225,7 +2232,7 @@ function updateAddCropHarvestEstimate() {
     addDaysToDate(planted, fallbackDays);
 
   harvestInput.value =
-    fallbackDate.toISOString().split('T')[0];
+    formatDateInputLocal(fallbackDate);
 }
 
 function openAddCropModal() {
