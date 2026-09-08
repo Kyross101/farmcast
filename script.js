@@ -1843,11 +1843,11 @@ function renderCropsPage() {
            </div>
          </div>
         </div>
-        
+
         <!-- START hidden mobile details -->
         <div class="cdc-mobile-details">
 
-        ${weatherCompatHtml}.
+        ${weatherCompatHtml}
         
         <div class="crop-stage-box">
           <div class="crop-stage-heading">
@@ -2124,15 +2124,20 @@ function renderCropsPage() {
             <span class="material-symbols-outlined">${crop.watered ? 'water' : 'water_drop'}</span>
             ${crop.watered ? 'Watered ✓' : 'Mark Watered'}
           </button>
+
           <button class="cdc-btn harvest" onclick="markHarvested('${crop.id}')">
             <span class="material-symbols-outlined">agriculture</span>
             Harvest
           </button>
+
           <button class="cdc-btn delete" onclick="deleteCrop('${crop.id}')">
             <span class="material-symbols-outlined">delete</span>
           </button>
         </div>
-      </div>`;
+
+        </div> <!-- cdc-mobile-details -->
+        </div> <!-- crop-detail-card -->
+        `;
   }).join('');
 }
  

@@ -1432,6 +1432,10 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   display: none;
 }
 
+.cdc-mobile-details {
+  display: block;
+}
+
 @media(max-width:900px) {
   .maps-layout { grid-template-columns: 1fr; }
   .map-controls-panel { order: 2; max-height: 260px; overflow-y: auto; }
@@ -1485,6 +1489,11 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
     font-weight: 600;
     color: var(--text);
   }
+
+  .cdc-mobile-details {
+    display: none;
+  }
+  
 }
 
 /* ═══════════════════════════════════════════════════════
