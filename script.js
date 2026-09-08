@@ -1793,8 +1793,58 @@ function renderCropsPage() {
           
           <div class="cdc-status status-${st.color}">${st.label}</div>
         </div>
- 
-        ${weatherCompatHtml}
+        
+        <div class="cdc-mobile-summary">
+          <div class="cdc-mobile-summary-item">
+            <span class="material-symbols-outlined">
+              eco
+            </span>
+
+            <div>
+              <div class="cdc-mobile-summary-label">
+                Stage
+              </div>
+
+              <div class="cdc-mobile-summary-value">
+                ${stage.label}
+              </div>
+            </div>
+          </div>
+
+          <div class="cdc-mobile-summary-item">
+            <span class="material-symbols-outlined">
+              calendar_today
+            </span>
+
+            <div>
+              <div class="cdc-mobile-summary-label">
+                ${plantingDateLabel}
+              </div>
+
+              <div class="cdc-mobile-summary-value">
+                ${plantedFmt}
+              </div>
+            </div>
+          </div>
+
+         <div class="cdc-mobile-summary-item">
+           <span class="material-symbols-outlined">
+             event_available
+           </span>
+
+           <div>
+             <div class="cdc-mobile-summary-label">
+               Harvest
+             </div>
+
+             <div class="cdc-mobile-summary-value">
+               ${escapeHtml(harvestWindowText)}
+             </div>
+           </div>
+         </div>
+        </div>
+
+        ${weatherCompatHtml}.
         
         <div class="crop-stage-box">
           <div class="crop-stage-heading">
