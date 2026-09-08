@@ -1843,6 +1843,9 @@ function renderCropsPage() {
            </div>
          </div>
         </div>
+        
+        <!-- START hidden mobile details -->
+        <div class="cdc-mobile-details">
 
         ${weatherCompatHtml}.
         
