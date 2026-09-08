@@ -1299,13 +1299,12 @@ function getCropTimelineCheck(crop) {
     (1000 * 60 * 60 * 24)
   );
 
-  const stageLabel =
-    stageInfo[latest.stage] ||
-    latest.stage ||
-    'Unknown';
+  const stageLabel = latest
+    ? (stageInfo[latest.stage] || latest.stage || 'Unknown')
+    : 'No field observation yet';
 
   // Farmer observation takes priority
-  if (latest.stage === 'ready') {
+  if (latest?.stage === 'ready') {
     return {
       type: 'ready',
       icon: 'check_circle',
