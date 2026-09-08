@@ -1736,11 +1736,19 @@ function renderCropsPage() {
     const stageHarvestWindow = 
       getStageBasedHarvestWindow(crop);
 
+    const harvestWindowStart =
+      harvestWindow.startDate ||
+      harvestWindow.start;
+
+    const harvestWindowEnd =
+      harvestWindow.endDate ||
+      harvestWindow.end;
+
     const harvestWindowText =
       harvestWindow.available
         ? harvestWindow.minDays === harvestWindow.maxDays
-          ? formatFarmDate(harvestWindow.start)
-          : `${formatFarmDate(harvestWindow.start)} – ${formatFarmDate(harvestWindow.end)}`
+          ? formatFarmDate(harvestWindowStart)
+          : `${formatFarmDate(harvestWindowStart)} – ${formatFarmDate(harvestWindowEnd)}`
         : harvestFmt;
 
     // Weather compatibility
