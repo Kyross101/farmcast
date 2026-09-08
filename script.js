@@ -1303,6 +1303,19 @@ function getCropTimelineCheck(crop) {
     ? (stageInfo[latest.stage] || latest.stage || 'Unknown')
     : 'No field observation yet';
 
+  const activeHarvestWindow =
+    stageHarvestWindow.available
+      ? stageHarvestWindow
+      : estimatedHarvestWindow.available
+        ? estimatedHarvestWindow
+        : null;
+
+  const harvestTimingLabel = activeHarvestWindow
+    ? activeHarvestWindow.minDays === activeHarvestWindow.maxDays
+      ? `${activeHarvestWindow.minDays} days ${activeHarvestWindow.basis}`
+      : `${activeHarvestWindow.minDays}–${activeHarvestWindow.maxDays} days ${activeHarvestWindow.basis}`
+    : null;
+
   // Farmer observation takes priority
   if (latest?.stage === 'ready') {
     return {
@@ -1356,7 +1369,15 @@ function getCropTimelineCheck(crop) {
       ),
 
     message:
-      `Latest farmer-observed stage: ${stageLabel}.`
+      `${
+        latest
+          ? `Latest farmer-observed stage: ${stageLabel}.`
+          : 'No farmer-observed stage recorded yet.'
+      }${
+        harvestTimingLabel
+          ? ` Source-backed timing: ${harvestTimingLabel}.`
+          : ''
+      }`
   };
 }
 
