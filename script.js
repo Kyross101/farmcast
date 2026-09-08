@@ -798,7 +798,7 @@ const RICE_VARIETY_HARVEST_RULES = {
 
     'transplanted': {
       minDays: 110,
-     maxDays: 110,
+      maxDays: 110,
       basis: 'after transplanting',
       source: {
         agency: 'Philippine Rice Research Institute (PhilRice)',
