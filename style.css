@@ -1436,6 +1436,10 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   display: block;
 }
 
+.cdc-mobile-toggle {
+  display: none;
+}
+
 @media(max-width:900px) {
   .maps-layout { grid-template-columns: 1fr; }
   .map-controls-panel { order: 2; max-height: 260px; overflow-y: auto; }
@@ -1494,6 +1498,31 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
     display: none;
   }
   
+  .cdc-mobile-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 12px;
+    margin: 2px 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg3);
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .cdc-mobile-toggle .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  .crop-detail-card.mobile-expanded .cdc-mobile-details {
+    display: block;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════

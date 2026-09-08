@@ -1666,6 +1666,34 @@ async function deleteGrowthObservation(cropId, observationId) {
   }
 }
 
+function toggleMobileCropDetails(button) {
+  const card = button.closest('.crop-detail-card');
+  if (!card) return;
+
+  const isExpanded =
+    card.classList.toggle('mobile-expanded');
+
+  button.setAttribute(
+    'aria-expanded',
+    String(isExpanded)
+  );
+
+  const label =
+    button.querySelector('.cdc-mobile-toggle-label');
+
+  const icon =
+    button.querySelector('.material-symbols-outlined');
+
+  if (label) {
+    label.textContent =
+      isExpanded ? 'Hide details' : 'View details';
+  }
+
+  if (icon) {
+    icon.textContent =
+      isExpanded ? 'expand_less' : 'expand_more';
+  }
+}
 
 function renderCropsPage() {
   const filtered = myCrops.filter(crop => {
@@ -1846,7 +1874,20 @@ function renderCropsPage() {
 
         <!-- START hidden mobile details -->
         <div class="cdc-mobile-details">
+          <button
+            type="button"
+            class="cdc-mobile-toggle"
+            aria-expanded="false"
+            onclick="toggleMobileCropDetails(this)"
+          >
+            <span class="cdc-mobile-toggle-label">
+              View details
+            </span>
 
+            <span class="material-symbols-outlined">
+              expand_more
+            </span>
+          </button>
         ${weatherCompatHtml}
         
         <div class="crop-stage-box">
