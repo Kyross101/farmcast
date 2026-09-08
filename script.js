@@ -872,6 +872,7 @@ function updateCropVarietySuggestions() {
 function updateCropVarietyHint() {
   const cropSelect = document.getElementById('cropTypeSelect');
   const varietyInput = document.getElementById('cropVariety');
+  const plantingMethodSelect = document.getElementById('cropPlantingMethod');
   const hint = document.getElementById('cropVarietyHint');
 
   if (!cropSelect || !varietyInput || !hint) return;
@@ -885,18 +886,36 @@ function updateCropVarietyHint() {
     return;
   }
 
-  const normalizedVariety = normalizeRiceVarietyName(variety);
-  const verifiedRule = RICE_VARIETY_HARVEST_RULES[normalizedVariety];
+  const normalizedVariety =
+    normalizeRiceVarietyName(variety);
+
+  const varietyRules =
+    RICE_VARIETY_HARVEST_RULES[normalizedVariety];
 
   hint.style.display = 'block';
 
-  if (verifiedRule) {
+  if (!varietyRules) {
     hint.textContent =
-      '✓ Verified variety-specific maturity timing is available in FarmCast.';
-  } else {
-    hint.textContent =
-      'Variety-specific timing is not yet verified. FarmCast fallback estimate will be used.';
+      'Rice variety not yet verified in FarmCast. Current FarmCast estimate will be used.';
+    return;
   }
+
+  const plantingMethod =
+    plantingMethodSelect?.value || 'direct-seeded';
+
+  const methodRule =
+    varietyRules[plantingMethod];
+
+  if (!methodRule) {
+    hint.textContent =
+      '✓ Verified Rice variety, but source-backed timing is not yet available for the selected planting method.';
+    return;
+  }
+
+  hint.textContent =
+    methodRule.note
+      ? `✓ Verified variety-specific timing available. ${methodRule.note}`
+      : '✓ Verified variety-specific timing is available for this planting method.';
 }
 
 document
@@ -910,6 +929,10 @@ document
 document
   .getElementById('cropVariety')
   ?.addEventListener('input', updateCropVarietyHint);
+
+document
+  .getElementById('cropPlantingMethod')
+  ?.addEventListener('change', updateCropVarietyHint);
 
 updateCropVarietySuggestions();
 updateCropVarietyHint();
