@@ -1427,6 +1427,11 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   .crops-stats-row { grid-template-columns: repeat(3,1fr); }
 }
 
+/* normal/base CSS */
+.cdc-mobile-summary {
+  display: none;
+}
+
 @media(max-width:900px) {
   .maps-layout { grid-template-columns: 1fr; }
   .map-controls-panel { order: 2; max-height: 260px; overflow-y: auto; }
@@ -1443,6 +1448,42 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   .modal-box {
     max-height: calc(100dvh - 24px);
     margin: 0 auto;
+  }
+
+   /* ── MY CROPS MOBILE COMPACT ── */
+  .cdc-mobile-summary {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 10px 0 12px;
+  }
+
+  .cdc-mobile-summary-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.025);
+  }
+
+  .cdc-mobile-summary-item .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+
+  .cdc-mobile-summary-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  .cdc-mobile-summary-value {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
   }
 }
 
