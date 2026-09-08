@@ -29,6 +29,7 @@ router.post('/', async (req, res) => {
   try {
     const {
       type,
+      variety,
       plantingMethod,
       area,
       planted,
@@ -44,6 +45,7 @@ router.post('/', async (req, res) => {
     const crop = await Crop.create({
       user: req.user.id,
       type,
+      variety: variety || '',
       plantingMethod: plantingMethod || 'direct-seeded',
       area,
       planted,
