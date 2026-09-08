@@ -1264,23 +1264,16 @@ function getCropTimelineCheck(crop) {
     ready: 'Ready for Harvest'
   };
 
-  // No farmer observation yet
-  if (history.length === 0) {
-    return {
-      type: 'neutral',
-      icon: 'info',
-      title: 'No field observation yet',
-      message:
-        'Add a field observation to compare actual crop condition with the estimated timeline.'
-    };
-  }
+  const hasFieldObservation = history.length > 0;
 
   // Get the actual newest observation by date
   history.sort((a, b) =>
     String(a.date).localeCompare(String(b.date))
   );
 
-  const latest = history[history.length - 1];
+  const latest = hasFieldObservation
+    ? history[history.length - 1]
+    : null;
 
   const stageHarvestWindow = getStageBasedHarvestWindow(crop);
   const estimatedHarvestWindow = getEstimatedHarvestWindow(crop);
