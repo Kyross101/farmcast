@@ -2150,6 +2150,63 @@ document
   ?.addEventListener('change', updateCropPlantingDateLabel
   );
 
+function updateAddCropHarvestEstimate() {
+  const cropType =
+    document.getElementById('cropTypeSelect')?.value;
+
+  const variety =
+    document.getElementById('cropVariety')?.value.trim() || '';
+
+  const plantingMethod =
+    document.getElementById('cropPlantingMethod')?.value || 'direct-seeded';
+
+  const planted =
+    document.getElementById('cropDatePlanted')?.value;
+
+  const harvestInput =
+    document.getElementById('cropDateHarvest');
+
+  if (!cropType || !planted || !harvestInput) return;
+
+  const tempCrop = {
+    type: cropType,
+    variety,
+    plantingMethod,
+    planted
+  };
+
+  const harvestWindow =
+    getEstimatedHarvestWindow(tempCrop);
+
+  // 1. Use source-backed crop/variety rule when available
+  if (harvestWindow?.available) {
+    const harvestDate =
+      harvestWindow.startDate ||
+      harvestWindow.start;
+
+    if (harvestDate) {
+      harvestInput.value =
+        new Date(harvestDate)
+          .toISOString()
+          .split('T')[0];
+
+      return;
+    }
+  }
+
+  // 2. Otherwise use current FarmCast fallback
+  const fallbackDays =
+    CROP_INFO[cropType]?.days;
+
+  if (!fallbackDays) return;
+
+  const fallbackDate =
+    addDaysToDate(planted, fallbackDays);
+
+  harvestInput.value =
+    fallbackDate.toISOString().split('T')[0];
+}
+
 function openAddCropModal() {
   document.getElementById('addCropModal').style.display = 'flex';
 
@@ -2171,6 +2228,8 @@ function openAddCropModal() {
     }
   };
 }
+
+
  
 function closeAddCropModal() {
   document.getElementById('addCropModal').style.display = 'none';
