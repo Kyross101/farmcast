@@ -953,6 +953,43 @@ function getRiceVarietyHarvestRule(crop) {
   return varietyRules[plantingMethod] || null;
 }
 
+function getRiceVarietyStatus(crop) {
+  if (crop.type !== 'Rice' || !crop.variety) {
+    return {
+      hasVariety: false,
+      varietyVerified: false,
+      methodSupported: false
+    };
+  }
+
+  const normalizedVariety =
+    normalizeRiceVarietyName(crop.variety);
+
+  const varietyRules =
+    RICE_VARIETY_HARVEST_RULES[normalizedVariety];
+
+  if (!varietyRules) {
+    return {
+      hasVariety: true,
+      varietyVerified: false,
+      methodSupported: false
+    };
+  }
+
+  const plantingMethod =
+    crop.plantingMethod || 'direct-seeded';
+
+  return {
+    hasVariety: true,
+    varietyVerified: true,
+    methodSupported: Boolean(
+      varietyRules[plantingMethod]
+    ),
+    displayName:
+      varietyRules.displayName || crop.variety
+  };
+}
+
 function getEstimatedHarvestWindow(crop) {
    // 1. Rice variety-specific rule
   const riceVarietyRule =
