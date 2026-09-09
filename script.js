@@ -1462,18 +1462,10 @@ function getPlantingDateLabel(crop) {
   return 'Date Planted';
 }
 
-// Sample initial crops data
-let myCrops = [
-  { id:1, type:'Tomato',   area:300, planted:'2026-01-20', harvest:'2026-04-05', location:'North Field A', irrigation:'Drip',      notes:'Primera variety. Germination successful.', watered:true  },
-  { id:2, type:'Corn',     area:500, planted:'2026-02-01', harvest:'2026-05-01', location:'South Field B', irrigation:'Sprinkler', notes:'Sweet corn hybrid. High yield expected.',  watered:false },
-  { id:3, type:'Pechay',   area:100, planted:'2026-03-01', harvest:'2026-04-05', location:'Greenhouse 1',  irrigation:'Manual',    notes:'Ready for harvest soon.',                watered:true  },
-  { id:4, type:'Eggplant', area:200, planted:'2026-01-10', harvest:'2026-04-01', location:'East Lot',      irrigation:'Drip',      notes:'Monitoring for aphids.',                  watered:false },
-  { id:5, type:'Sitaw',    area:150, planted:'2026-02-15', harvest:'2026-04-21', location:'West Field',    irrigation:'Rain',      notes:'Good growth progress.',                   watered:true  },
-  { id:6, type:'Kamote',   area:400, planted:'2025-12-01', harvest:'2026-04-01', location:'Back Lot',      irrigation:'Rain',      notes:'Near harvest, soil moist.',               watered:false },
-  { id:7, type:'Rice',     area:1000,planted:'2026-02-20', harvest:'2026-06-10', location:'Paddy Field',   irrigation:'Flood',     notes:'At tillering stage.',                     watered:true  },
-  { id:8, type:'Okra',     area:80,  planted:'2026-03-05', harvest:'2026-05-04', location:'Garden Plot',   irrigation:'Manual',    notes:'Seedlings just emerged.',                 watered:false },
-];
-let nextCropId = 9;
+// Active crops are loaded from the backend or localStorage.
+// Do not preload fake/demo crops in production.
+let myCrops = [];
+let nextCropId = 1;
 let currentCropFilter = 'all';
  
 // Get crop status based on dates and weather conditions
@@ -2829,22 +2821,22 @@ function lsLoad(key, fallback) {
 }
 
 // Override myCrops init with localStorage
-const DEFAULT_CROPS = [
-  { id:1, type:'Tomato',   area:300,  planted:'2026-01-20', harvest:'2026-04-05', location:'North Field A', irrigation:'Drip',      notes:'Primera variety. Germination successful.', watered:true  },
-  { id:2, type:'Corn',     area:500,  planted:'2026-02-01', harvest:'2026-05-01', location:'South Field B', irrigation:'Sprinkler', notes:'Sweet corn hybrid. High yield expected.',  watered:false },
-  { id:3, type:'Pechay',   area:100,  planted:'2026-03-01', harvest:'2026-04-05', location:'Greenhouse 1',  irrigation:'Manual',    notes:'Ready for harvest soon.',                 watered:true  },
-  { id:4, type:'Eggplant', area:200,  planted:'2026-01-10', harvest:'2026-04-01', location:'East Lot',      irrigation:'Drip',      notes:'Monitoring for aphids.',                  watered:false },
-  { id:5, type:'Sitaw',    area:150,  planted:'2026-02-15', harvest:'2026-04-21', location:'West Field',    irrigation:'Rain',      notes:'Good growth progress.',                   watered:true  },
-  { id:6, type:'Kamote',   area:400,  planted:'2025-12-01', harvest:'2026-04-01', location:'Back Lot',      irrigation:'Rain',      notes:'Near harvest, soil moist.',               watered:false },
-  { id:7, type:'Rice',     area:1000, planted:'2026-02-20', harvest:'2026-06-10', location:'Paddy Field',   irrigation:'Flood',     notes:'At tillering stage.',                     watered:true  },
-  { id:8, type:'Okra',     area:80,   planted:'2026-03-05', harvest:'2026-05-04', location:'Garden Plot',   irrigation:'Manual',    notes:'Seedlings just emerged.',                 watered:false },
-];
+const DEFAULT_CROPS = [];
 
 // Re-initialize from localStorage (overrides the previous `let myCrops = [...]`)
-myCrops    = lsLoad(LS_CROPS,     DEFAULT_CROPS);
-nextCropId = lsLoad(LS_CROPS_ID,  9);
-tasks      = lsLoad(LS_TASKS,     tasks);  // keep default tasks as fallback
+myCrops =
+  lsLoad(
+    LS_CROPS,
+    DEFAULT_CROPS
+  );
 
+nextCropId =
+  lsLoad(
+    LS_CROPS_ID,
+    1
+  );
+
+tasks      = lsLoad(LS_TASKS,     tasks);  // keep default tasks as fallback
 
 function saveCropsLS() { lsSave(LS_CROPS, myCrops); lsSave(LS_CROPS_ID, nextCropId); }
 function saveTasksLS() { lsSave(LS_TASKS, tasks); }
