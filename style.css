@@ -1536,7 +1536,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
     cursor: pointer;
   }
 
-  .cdc-mobile-toggle .material-symbols-outlined {
+  .cdc-details-toggle .material-symbols-outlined {
     font-size: 18px;
   }
 
@@ -5532,7 +5532,7 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 ═══════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
 
-  .cdc-mobile-toggle {
+  .cdc-details-toggle {
     min-height: 44px;
     padding: 10px 12px;
     border-radius: 10px;
@@ -5545,16 +5545,16 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
       transform 0.1s ease;
   }
 
-  .cdc-mobile-toggle:active {
+  .cdc-details-toggle:active {
     transform: scale(0.98);
   }
 
-  .cdc-mobile-toggle:focus-visible {
+  .cdc-details-toggle:focus-visible {
     outline: 2px solid var(--green);
     outline-offset: 2px;
   }
 
-  .cdc-mobile-toggle .material-symbols-outlined {
+  .cdc-details-toggle .material-symbols-outlined {
     transition: transform 0.2s ease;
   }
 
