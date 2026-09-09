@@ -1085,6 +1085,32 @@ function normalizeRiceVarietyName(value = '') {
     .replace(/\brc\s+(\d+)/g, 'rc$1');
 }
 
+function resolveCropPlantingMethod(crop) {
+  if (!crop) return null;
+
+  if (crop.plantingMethod) {
+    return crop.plantingMethod;
+  }
+
+  // Legacy compatibility only.
+  // Older FarmCast records were created before plantingMethod existed.
+  // Preserve previous behavior only for crops whose old app logic
+  // already treated planting as direct seeding.
+  const legacyDirectSeededCrops = [
+    'Rice',
+    'Corn',
+    'Okra',
+    'Sitaw',
+    'Onion'
+  ];
+
+  if (legacyDirectSeededCrops.includes(crop.type)) {
+    return 'direct-seeded';
+  }
+
+  return null;
+}
+
 function getRiceVarietyHarvestRule(crop) {
   if (crop.type !== 'Rice' || !crop.variety) {
     return null;
@@ -1101,9 +1127,11 @@ function getRiceVarietyHarvestRule(crop) {
   }
 
   const plantingMethod =
-    crop.plantingMethod || 'direct-seeded';
+    resolveCropPlantingMethod(crop);
 
-  return varietyRules[plantingMethod] || null;
+  if (!plantingMethod) {
+    return null;
+  }
 }
 
 function getRiceVarietyStatus(crop) {
@@ -1130,19 +1158,14 @@ function getRiceVarietyStatus(crop) {
   }
 
   const plantingMethod =
-    crop.plantingMethod || 'direct-seeded';
+    resolveCropPlantingMethod(crop);
 
   return {
-    hasVariety: true,
-    varietyVerified: true,
     methodSupported: Boolean(
-      varietyRules[plantingMethod]
+     varietyRules[plantingMethod]
     ),
-    displayName:
-      varietyRules.displayName || crop.variety
-  };
+  }
 }
-
 function getEstimatedHarvestWindow(crop) {
    // 1. Rice variety-specific rule
   const riceVarietyRule =
@@ -1180,10 +1203,12 @@ function getEstimatedHarvestWindow(crop) {
     CROP_HARVEST_WINDOWS[crop.type];
 
   const plantingMethod =
-    crop.plantingMethod || 'direct-seeded';
+   resolveCropPlantingMethod(crop);
 
   const rule =
-    cropRules?.[plantingMethod];
+    plantingMethod
+      ? cropRules?.[plantingMethod]
+      : null;
 
   // No validated FarmCast range yet.
   // Keep the existing estimate rather than inventing one.
