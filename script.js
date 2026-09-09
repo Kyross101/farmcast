@@ -1479,12 +1479,48 @@ let currentCropFilter = 'all';
 // Get crop status based on dates and weather conditions
 function getCropStatus(crop) {
   const today = new Date();
-  const harvestDate = new Date(crop.harvest);
-  const plantDate   = new Date(crop.planted);
-  const daysLeft = Math.ceil((harvestDate - today) / (1000*60*60*24));
-  const daysGrown = Math.ceil((today - plantDate) / (1000*60*60*24));
-  const totalDays = CROP_INFO[crop.type]?.days || 90;
-  const progress = Math.min(100, Math.round((daysGrown / totalDays) * 100));
+  today.setHours(0, 0, 0, 0);
+
+  const harvestDate =
+    new Date(`${crop.harvest}T00:00:00`);
+
+  const plantDate =
+    new Date(`${crop.planted}T00:00:00`);
+
+  const daysLeft =
+    Math.ceil(
+      (harvestDate - today) /
+      86400000
+    );
+
+  const totalPlannedDays =
+    Math.max(
+      1,
+      Math.ceil(
+        (harvestDate - plantDate) /
+        86400000
+      )
+    );
+
+  const daysGrown =
+    Math.max(
+      0,
+      Math.floor(
+        (today - plantDate) /
+        86400000
+      )
+    );
+
+  const progress =
+    Math.max(
+      0,
+      Math.min(
+        100,
+        Math.round(
+          (daysGrown / totalPlannedDays) * 100
+        )
+      )
+    );
  
   // Weather risk check
   let weatherRisk = null;
