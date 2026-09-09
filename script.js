@@ -734,8 +734,37 @@ const CROP_HARVEST_WINDOWS = {
         url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/ONION%20PROD_final.pdf'
       }
     }
-  }
+  },
 
+  Garlic: {
+    cloves: {
+      minDays: 90,
+      maxDays: 120,
+      basis: 'after planting',
+      derived: false,
+      source: {
+        agency: 'Department of Agriculture',
+        office: 'Regional Field Office No. 02',
+        title: 'Garlic Production Guide',
+        url: 'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/garlic_production_guide_final.pdf'
+      }
+    }
+  },
+
+  Kamote: {
+    cuttings: {
+      minDays: 110,
+      maxDays: 130,
+      basis: 'after planting',
+      derived: false,
+      source: {
+        agency: 'Department of Agriculture',
+        office: 'High Value Crops Development Program',
+        title: 'Pag-aalaga ng Kamote',
+        url: 'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Production-Guide.pdf'
+      }
+    }
+  },
 
 };
 
