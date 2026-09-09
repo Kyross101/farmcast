@@ -23,7 +23,7 @@ const CropSchema = new mongoose.Schema({
       'cloves',
       'cuttings'
     ],
-    default: 'direct-seeded'
+    required: true
   },
   
   currentStage: {

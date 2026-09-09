@@ -39,14 +39,24 @@ router.post('/', async (req, res) => {
       notes
     } = req.body;
 
-    if (!type || !area || !planted || !harvest || !location)
-      return res.status(400).json({ message: 'Please fill in all required fields.' });
+    if (
+      !type ||
+      !plantingMethod ||
+      !area ||
+      !planted ||
+      !harvest ||
+      !location
+    ) {
+      return res.status(400).json({
+        message: 'Please fill in all required fields.'
+      });
+    }
 
     const crop = await Crop.create({
       user: req.user.id,
       type,
       variety: variety || '',
-      plantingMethod: plantingMethod || 'direct-seeded',
+      plantingMethod,
       area,
       planted,
       harvest,
@@ -67,11 +77,41 @@ router.put('/:id', async (req, res) => {
     const crop = await Crop.findOne({ _id: req.params.id, user: req.user.id });
     if (!crop) return res.status(404).json({ message: 'Crop not found.' });
 
-    const updated = await Crop.findByIdAndUpdate(
-      req.params.id,
-      { ...req.body },
-      { returnDocument: 'after' }
+    const allowedUpdates = [
+      'type',
+      'variety',
+      'plantingMethod',
+      'area',
+      'planted',
+      'harvest',
+      'location',
+      'irrigation',
+      'notes',
+      'watered',
+      'currentStage',
+      'growthHistory'
+    ];
+
+    const updates = {};
+
+    allowedUpdates.forEach(field => {
+      if (Object.prototype.hasOwnProperty.call(req.body, field)) {
+        updates[field] = req.body[field];
+      }
+    });
+
+    const updated = await Crop.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        user: req.user.id
+      },
+      updates,
+      {
+        returnDocument: 'after',
+        runValidators: true
+      }
     );
+
     res.json({ message: 'Crop updated!', crop: updated });
   } catch (err) {
     res.status(500).json({ message: 'Error updating crop.' });
