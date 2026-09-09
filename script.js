@@ -1930,19 +1930,22 @@ async function deleteGrowthObservation(cropId, observationId) {
   }
 }
 
-function toggleMobileCropDetails(button) {
-  const card = button.closest('.crop-detail-card');
+function toggleCropDetails(button) {
+  const card =
+    button.closest('.crop-detail-card');
+
   if (!card) return;
 
-  const cropId = String(card.dataset.id);
+  const cropId =
+    String(card.dataset.id);
 
   const isExpanded =
-    card.classList.toggle('mobile-expanded');
+    card.classList.toggle('crop-expanded');
 
   if (isExpanded) {
-    expandedMobileCropIds.add(cropId);
+    expandedCropIds.add(cropId);
   } else {
-    expandedMobileCropIds.delete(cropId);
+    expandedCropIds.delete(cropId);
   }
 
   button.setAttribute(
@@ -1951,23 +1954,32 @@ function toggleMobileCropDetails(button) {
   );
 
   const label =
-    button.querySelector('.cdc-mobile-toggle-label');
+    button.querySelector(
+      '.cdc-details-toggle-label'
+    );
 
   const icon =
-    button.querySelector('.material-symbols-outlined');
+    button.querySelector(
+      '.material-symbols-outlined'
+    );
 
   if (label) {
     label.textContent =
-      isExpanded ? 'Hide details' : 'View details';
+      isExpanded
+        ? 'Hide details'
+        : 'View details';
   }
 
   if (icon) {
     icon.textContent =
-      isExpanded ? 'expand_less' : 'expand_more';
+      isExpanded
+        ? 'expand_less'
+        : 'expand_more';
   }
 }
 
-const expandedMobileCropIds = new Set();
+const expandedCropIds =
+  new Set();
 
 function renderCropsPage() {
   const filtered = myCrops.filter(crop => {
@@ -2074,12 +2086,14 @@ function renderCropsPage() {
         </div>`;
     }
 
-    const isMobileExpanded =
-      expandedMobileCropIds.has(String(crop.id));
+    const isExpanded =
+      expandedCropIds.has(
+        String(crop.id)
+      );
 
     return `
       <div
-        class="crop-detail-card ${st.color}${isMobileExpanded ? ' mobile-expanded' : ''}"
+        class="crop-detail-card ${st.color}${isExpanded ? ' crop-expanded' : ''}"
         data-id="${crop.id}"
       >
         <div class="cdc-header">
@@ -2154,22 +2168,21 @@ function renderCropsPage() {
 
         <button
           type="button"
-          class="cdc-mobile-toggle"
-          aria-expanded="${isMobileExpanded}"
-          onclick="toggleMobileCropDetails(this)"
+          class="cdc-details-toggle"
+          aria-expanded="${isExpanded}"
+          onclick="toggleCropDetails(this)"
         >
-          <span class="cdc-mobile-toggle-label">
-            ${isMobileExpanded ? 'Hide details' : 'View details'}
+          <span class="cdc-details-toggle-label">
+           ${isExpanded ? 'Hide details' : 'View details'}
           </span>
 
           <span class="material-symbols-outlined">
-            ${isMobileExpanded ? 'expand_less' : 'expand_more'}
+            ${isExpanded ? 'expand_less' : 'expand_more'}
           </span>
-
         </button>
 
         <!-- START hidden mobile details -->
-        <div class="cdc-mobile-details">
+        <div class="cdc-crop-details">
           
           ${weatherCompatHtml}
         
@@ -2459,7 +2472,7 @@ function renderCropsPage() {
           </button>
         </div>
 
-        </div> <!-- cdc-mobile-details -->
+        </div> <!-- cdc-crop-details -->
         </div> <!-- crop-detail-card -->
         `;
   }).join('');
