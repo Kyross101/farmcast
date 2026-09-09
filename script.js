@@ -721,6 +721,21 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Onion: {
+    'direct-seeded': {
+      minDays: 110,
+      maxDays: 130,
+      basis: 'after planting',
+      derived: false,
+      source: {
+        agency: 'Agricultural Training Institute (ATI)',
+        office: 'ATI Central Visayas',
+        title: 'Techno Guide on Organic Bulb Onion Production',
+        url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/ONION%20PROD_final.pdf'
+      }
+    }
+  }
+
 
 };
 
