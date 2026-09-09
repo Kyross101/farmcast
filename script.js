@@ -1263,7 +1263,9 @@ function getEstimatedHarvestWindow(crop) {
     minDays: rule.minDays,
     maxDays: rule.maxDays,
     source: rule.source,
-    basis: rule.basis
+    basis: rule.basis,
+    note: rule.note || '',
+    derived: Boolean(rule.derived)
   };
 }
 
