@@ -1132,6 +1132,8 @@ function getRiceVarietyHarvestRule(crop) {
   if (!plantingMethod) {
     return null;
   }
+
+  return varietyRules[plantingMethod] || null;
 }
 
 function getRiceVarietyStatus(crop) {
@@ -1161,11 +1163,19 @@ function getRiceVarietyStatus(crop) {
     resolveCropPlantingMethod(crop);
 
   return {
+    hasVariety: true,
+    varietyVerified: true,
     methodSupported: Boolean(
-     varietyRules[plantingMethod]
+      plantingMethod &&
+      varietyRules[plantingMethod]
     ),
-  }
+    displayName:
+      varietyRules.displayName || crop.variety
+
+  };
+  
 }
+
 function getEstimatedHarvestWindow(crop) {
    // 1. Rice variety-specific rule
   const riceVarietyRule =
