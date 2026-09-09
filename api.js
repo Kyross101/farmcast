@@ -219,14 +219,18 @@ const fcSettings = {
 
 async function loadAllDataFromBackend() {
   try {
-    // Check if logged in
     if (!getToken()) {
       window.location.href = 'login.html';
-      return;
+      return false;
     }
 
-    // Load all data in parallel
-    const [crops, harvests, irrFieldsData, pestLogsData, settingsData] = await Promise.all([
+    const [
+      crops,
+      harvests,
+      irrFieldsData,
+      pestLogsData,
+      settingsData
+    ] = await Promise.all([
       fcCrops.getAll(),
       fcHarvest.getAll(),
       fcIrrigation.getAll(),
@@ -234,35 +238,70 @@ async function loadAllDataFromBackend() {
       fcSettings.get()
     ]);
 
-    // Override in-memory arrays used by script.js
-    myCrops        = crops;
+    myCrops = crops;
     harvestHistory = harvests;
-    irrFields      = irrFieldsData;
-    pestLogs       = pestLogsData;
+    irrFields = irrFieldsData;
+    pestLogs = pestLogsData;
 
-    // Apply settings
     if (settingsData) {
-      appSettings = Object.assign({}, DEFAULT_SETTINGS, settingsData);
-      lsSave('fc_settings', appSettings);
+      appSettings =
+        Object.assign(
+          {},
+          DEFAULT_SETTINGS,
+          settingsData
+        );
+
+      lsSave(
+        'fc_settings',
+        appSettings
+      );
     }
 
-    // Update sidebar with user info
     const user = getAuthUser();
+
     if (user) {
-      const nameEl = document.getElementById('sidebarUserName');
-      const farmEl = document.getElementById('sidebarUserFarm');
-      if (nameEl) nameEl.textContent = user.name || user.username;
-      if (farmEl) farmEl.textContent = `${user.farmName || 'My Farm'} · ${user.farmSize || '0'} ha`;
-      const avatarEl = document.querySelector('.user-avatar');
-      if (avatarEl) avatarEl.textContent = user.avatar || '👨‍🌾';
+      const nameEl =
+        document.getElementById('sidebarUserName');
+
+      const farmEl =
+        document.getElementById('sidebarUserFarm');
+
+      if (nameEl) {
+        nameEl.textContent =
+          user.name || user.username;
+      }
+
+      if (farmEl) {
+        farmEl.textContent =
+          `${user.farmName || 'My Farm'} · ${user.farmSize || '0'} ha`;
+      }
+
+      const avatarEl =
+        document.querySelector('.user-avatar');
+
+      if (avatarEl) {
+        avatarEl.textContent =
+          user.avatar || '👨‍🌾';
+      }
     }
 
-    console.log('✅ All data loaded from backend!');
+    console.log(
+      '✅ All data loaded from backend!'
+    );
+
+    return true;
 
   } catch (err) {
-    console.error('Error loading data from backend:', err);
-    // Fallback to localStorage if backend fails
-    console.warn('⚠️ Falling back to localStorage...');
+    console.error(
+      'Error loading data from backend:',
+      err
+    );
+
+    console.warn(
+      '⚠️ Falling back to localStorage...'
+    );
+
+    return false;
   }
 }
 

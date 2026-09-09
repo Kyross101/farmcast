@@ -4675,11 +4675,18 @@ async function initApp() {
   renderNotifList();
 
   // 2. Load all data from backend (replaces localStorage data)
-  await loadAllDataFromBackend();
+  const backendReady =
+    await loadAllDataFromBackend();
 
-  // 3. Apply API patches so all CRUD uses backend
-  patchScriptJsWithAPI();
-
+  // Use backend CRUD only when backend data loaded successfully.
+  // Otherwise keep the existing localStorage CRUD functions.
+  if (backendReady) {
+    patchScriptJsWithAPI();
+  } else {
+    console.warn(
+      '⚠️ FarmCast is using local crop data because the backend is unavailable.'
+    );
+  }
   // 4. Start with default page
   const user = getAuthUser();
   const defaultPage = appSettings.defaultPage || 'dashboard';
