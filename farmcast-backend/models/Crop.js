@@ -17,7 +17,12 @@ const CropSchema = new mongoose.Schema({
 
   plantingMethod: {
     type: String,
-    enum: ['direct-seeded', 'transplanted'],
+    enum: [
+      'direct-seeded',
+      'transplanted',
+      'cloves',
+      'cuttings'
+    ],
     default: 'direct-seeded'
   },
   
