@@ -1670,8 +1670,16 @@ function toggleMobileCropDetails(button) {
   const card = button.closest('.crop-detail-card');
   if (!card) return;
 
+  const cropId = String(card.dataset.id);
+
   const isExpanded =
     card.classList.toggle('mobile-expanded');
+
+  if (isExpanded) {
+    expandedMobileCropIds.add(cropId);
+  } else {
+    expandedMobileCropIds.delete(cropId);
+  }
 
   button.setAttribute(
     'aria-expanded',
@@ -1694,6 +1702,8 @@ function toggleMobileCropDetails(button) {
       isExpanded ? 'expand_less' : 'expand_more';
   }
 }
+
+const expandedMobileCropIds = new Set();
 
 function renderCropsPage() {
   const filtered = myCrops.filter(crop => {
@@ -1799,9 +1809,15 @@ function renderCropsPage() {
           ${ok ? `${Math.round(temp)}°C is ideal for ${crop.type}` : (st.weatherRisk || 'Weather risk detected')}
         </div>`;
     }
- 
+
+    const isMobileExpanded =
+      expandedMobileCropIds.has(String(crop.id));
+
     return `
-      <div class="crop-detail-card ${st.color}" data-id="${crop.id}">
+      <div
+        class="crop-detail-card ${st.color}${isMobileExpanded ? ' mobile-expanded' : ''}"
+        data-id="${crop.id}"
+      >
         <div class="cdc-header">
           <div class="cdc-emoji">${emoji}</div>
           <div class="cdc-info">
@@ -1875,16 +1891,17 @@ function renderCropsPage() {
         <button
           type="button"
           class="cdc-mobile-toggle"
-          aria-expanded="false"
+          aria-expanded="${isMobileExpanded}"
           onclick="toggleMobileCropDetails(this)"
         >
           <span class="cdc-mobile-toggle-label">
-            View details
+            ${isMobileExpanded ? 'Hide details' : 'View details'}
           </span>
 
           <span class="material-symbols-outlined">
-            expand_more
+            ${isMobileExpanded ? 'expand_less' : 'expand_more'}
           </span>
+
         </button>
 
         <!-- START hidden mobile details -->
