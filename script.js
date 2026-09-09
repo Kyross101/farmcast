@@ -712,6 +712,8 @@ const CROP_HARVEST_WINDOWS = {
       maxDays: 70,
       basis: 'after sowing',
       derived: false,
+      note:
+        'Source-backed timing applies specifically to Pole Sitaw.',
       source: {
         agency: 'Agricultural Training Institute (ATI)',
         office: 'ATI Cordillera',
