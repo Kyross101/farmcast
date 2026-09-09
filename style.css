@@ -5537,11 +5537,6 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     transition: transform 0.2s ease;
   }
 
-  .crop-detail-card.mobile-expanded
-  .cdc-mobile-toggle .material-symbols-outlined {
-    transform: rotate(180deg);
-  }
-
   .cdc-mobile-summary-item {
     min-width: 0;
   }
