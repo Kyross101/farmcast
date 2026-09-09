@@ -960,6 +960,7 @@ function updatePlantingMethodOptions() {
   }
 
   updateCropVarietyHint();
+  updateCropPlantingDateLabel();
   updateAddCropHarvestEstimate();
 }
 
@@ -1042,6 +1043,7 @@ document
   .getElementById('cropVariety')
   ?.addEventListener('input', () => {
     updateCropVarietyHint();
+    updateCropPlantingDateLabel();
     updateAddCropHarvestEstimate();
   });
 
@@ -2469,21 +2471,18 @@ function updateAddCropHarvestEstimate() {
 function openAddCropModal() {
   document.getElementById('addCropModal').style.display = 'flex';
 
+  // Make planting-method options match the selected crop
+  updatePlantingMethodOptions();
+
+  updateCropVarietySuggestions();
+  updateCropVarietyHint();
   updateCropPlantingDateLabel();
 
-  // Set default dates
+  // Set default planting date
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('cropDatePlanted').value = today;
 
   updateAddCropHarvestEstimate();
-  
-  // Auto-update harvest date when crop type changes
-  document.getElementById('cropTypeSelect').onchange = function() {
-    updateCropVarietySuggestions();
-    updateCropVarietyHint();
-    updateCropPlantingDateLabel();
-    updateAddCropHarvestEstimate();
-  };
 }
 
 
