@@ -867,6 +867,73 @@ const CROP_STAGE_HARVEST_WINDOWS = {
   }
 };
 
+function updatePlantingMethodOptions() {
+  const cropSelect =
+    document.getElementById('cropTypeSelect');
+
+  const plantingMethodSelect =
+    document.getElementById('cropPlantingMethod');
+
+  if (!cropSelect || !plantingMethodSelect) return;
+
+  const cropType = cropSelect.value;
+
+  let options = [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    },
+    {
+      value: 'transplanted',
+      label: 'Transplanted'
+    }
+  ];
+
+  // Garlic is established using cloves
+  if (cropType === 'Garlic') {
+    options = [
+      {
+        value: 'cloves',
+        label: 'Planted from Cloves'
+      }
+    ];
+  }
+
+  // Kamote is established using vine cuttings/slips
+  if (cropType === 'Kamote') {
+    options = [
+      {
+        value: 'cuttings',
+        label: 'Vine Cuttings / Slips'
+      }
+    ];
+  }
+
+  const previousValue =
+    plantingMethodSelect.value;
+
+  plantingMethodSelect.innerHTML =
+    options
+      .map(option => `
+        <option value="${option.value}">
+          ${option.label}
+        </option>
+      `)
+      .join('');
+
+  const previousStillValid =
+    options.some(
+      option => option.value === previousValue
+    );
+
+  if (previousStillValid) {
+    plantingMethodSelect.value = previousValue;
+  }
+
+  updateCropVarietyHint();
+  updateAddCropHarvestEstimate();
+}
+
 function updateCropVarietySuggestions() {
   const cropSelect = document.getElementById('cropTypeSelect');
   const varietyInput = document.getElementById('cropVariety');
@@ -935,11 +1002,12 @@ function updateCropVarietyHint() {
 
 document
   .getElementById('cropTypeSelect')
-  ?.addEventListener('change', updateCropVarietySuggestions);
+  ?.addEventListener('change', () => {
+    updatePlantingMethodOptions();
+    updateCropVarietySuggestions();
+    updateCropVarietyHint();
+  });
 
-document
-  .getElementById('cropTypeSelect')
-  ?.addEventListener('change', updateCropVarietyHint);
 
 document
   .getElementById('cropVariety')
@@ -955,6 +1023,7 @@ document
     updateAddCropHarvestEstimate();
   });
 
+updatePlantingMethodOptions();
 updateCropVarietySuggestions();
 updateCropVarietyHint();
 
