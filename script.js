@@ -909,36 +909,115 @@ function updatePlantingMethodOptions() {
 
   const cropType = cropSelect.value;
 
-  let options = [
-    {
-      value: 'direct-seeded',
-      label: 'Direct Seeded'
-    },
-    {
-      value: 'transplanted',
-      label: 'Transplanted'
-    }
-  ];
-
-  // Garlic is established using cloves
-  if (cropType === 'Garlic') {
-    options = [
+  const plantingMethodOptions = {
+    Tomato: [
       {
-        value: 'cloves',
-        label: 'Planted from Cloves'
+        value: 'transplanted',
+        label: 'Transplanted'
       }
-    ];
-  }
+    ],
 
-  // Kamote is established using vine cuttings/slips
-  if (cropType === 'Kamote') {
-    options = [
+    Eggplant: [
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
+
+    Corn: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      }
+    ],
+
+    Okra: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      }
+    ],
+
+    Sitaw: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      }
+    ],
+
+    Ampalaya: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      },
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
+
+    Pechay: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      },
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
+
+    Kamote: [
       {
         value: 'cuttings',
         label: 'Vine Cuttings / Slips'
       }
+    ],
+
+    Rice: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      },
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
+
+    Garlic: [
+      {
+        value: 'cloves',
+        label: 'Planted from Cloves'
+      }
+    ],
+
+    Onion: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      }
+    ],
+
+    Cabbage: [
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ]
+  };
+
+  const options =
+    plantingMethodOptions[cropType] || [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      },
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
     ];
-  }
 
   const previousValue =
     plantingMethodSelect.value;
@@ -959,6 +1038,9 @@ function updatePlantingMethodOptions() {
 
   if (previousStillValid) {
     plantingMethodSelect.value = previousValue;
+  } else {
+    plantingMethodSelect.value =
+      options[0]?.value || '';
   }
 
   updateCropVarietyHint();
