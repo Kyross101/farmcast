@@ -55,10 +55,10 @@ let windFlowLastApiRequest = 0;
 let windFlowApiCooldownUntil = 0;
 
 const WIND_FLOW_MIN_API_INTERVAL =
-  15000;
+  300000; // 5 minutes
 
 const WIND_FLOW_429_BACKOFF =
-  60000;
+  900000; // 15 minutes
 
 // ── CROPS DATA ──
 const CROPS = [
