@@ -8,6 +8,7 @@ const API_KEY = 'd0b23ea9dcaa2c9af041da23885eb307'; // OWM API key
 // Local FastAPI Server Base URL
 const AI_SERVER_URL = window.FARMCAST_CONFIG.AI_URL; // ← Ilagay mo dito ang URL ng iyong AI server
 
+const RAINVIEWER_API_URL = 'https://api.rainviewer.com/public/weather-maps.json';
 // ============================================================
 // FARMCAST AI — LOCAL PLANT & DISEASE DETECTION
 // Uses the Python FastAPI server with local YOLO models.
@@ -22,6 +23,16 @@ let aiCurrentCropType = null;
 let aiImageData       = null;
 let aiCameraStream    = null; 
 let aiReady = true; // Always ready - no model loading needed!
+
+// ── RAINVIEWER RADAR ──
+
+let radarFrames = [];
+let radarHost = '';
+let radarLayer = null;
+let radarFrameIndex = 0;
+let radarAnimationTimer = null;
+let radarIsPlaying = false;
+
 
 
 // ── CROPS DATA ──
@@ -520,6 +531,27 @@ async function fetchMapPointWeather(lat, lng) {
 }
  
 function setMapLayer(el, layerName) {
+
+  stopRadarAnimation();
+
+  if (radarLayer && weatherMap) {
+    weatherMap.removeLayer(
+      radarLayer
+    );
+
+    radarLayer = null;
+  }
+
+  const radarPanel =
+    document.getElementById(
+      'radarAnimationPanel'
+    );
+
+  if (radarPanel) {
+    radarPanel.style.display =
+      'none';
+  }
+
   document.querySelectorAll('.map-layer-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   currentMapLayerName = layerName;
@@ -576,7 +608,370 @@ function updateMapWeatherSummary() {
   document.getElementById('mapWsWind').textContent  = `${(d.wind.speed*3.6).toFixed(1)} kph`;
   document.getElementById('mapWsCloud').textContent = `${d.clouds.all}%`;
 }
- 
+
+async function loadRainViewerRadar() {
+  try {
+    const response =
+      await fetch(RAINVIEWER_API_URL);
+
+    if (!response.ok) {
+      throw new Error(
+        `RainViewer request failed: ${response.status}`
+      );
+    }
+
+    const data =
+      await response.json();
+
+    radarHost =
+      data.host || '';
+
+    radarFrames =
+      Array.isArray(data.radar?.past)
+        ? data.radar.past
+        : [];
+
+    if (!radarHost || radarFrames.length === 0) {
+      throw new Error(
+        'No radar frames are currently available.'
+      );
+    }
+
+    radarFrameIndex =
+      radarFrames.length - 1;
+
+    showRadarFrame(
+      radarFrameIndex
+    );
+
+    return true;
+
+  } catch (error) {
+    console.error(
+      'RainViewer radar error:',
+      error
+    );
+
+    toast(
+      'Radar data is temporarily unavailable.',
+      'warn'
+    );
+
+    return false;
+  }
+}
+
+function showRadarFrame(index) {
+  if (
+    !weatherMap ||
+    radarFrames.length === 0
+  ) {
+    return;
+  }
+
+  radarFrameIndex =
+    Math.max(
+      0,
+      Math.min(
+        index,
+        radarFrames.length - 1
+      )
+    );
+
+  const frame =
+    radarFrames[radarFrameIndex];
+
+  if (!frame) return;
+
+  if (radarLayer) {
+    weatherMap.removeLayer(
+      radarLayer
+    );
+  }
+
+  radarLayer =
+    L.tileLayer(
+      `${radarHost}${frame.path}/256/{z}/{x}/{y}/2/1_0.png`,
+      {
+        opacity: 0.72,
+
+        // RainViewer public radar tiles
+        // currently have native data up to zoom 7.
+        maxNativeZoom: 7,
+
+        // Leaflet may upscale the tiles
+        // when the user zooms farther in.
+        maxZoom: 18,
+
+        attribution:
+          'Radar © RainViewer'
+      }
+    );
+
+  radarLayer.addTo(
+    weatherMap
+  );
+
+  updateRadarUI();
+}
+
+async function setRadarLayer(el) {
+  if (!weatherMap) return;
+
+  document
+    .querySelectorAll(
+      '.map-layer-btn'
+    )
+    .forEach(button => {
+      button.classList.remove(
+        'active'
+      );
+    });
+
+  el.classList.add(
+    'active'
+  );
+
+  stopRadarAnimation();
+
+  if (currentWeatherLayer) {
+    weatherMap.removeLayer(
+      currentWeatherLayer
+    );
+
+    currentWeatherLayer = null;
+  }
+
+  currentMapLayerName =
+    'radar';
+
+  const panel =
+    document.getElementById(
+      'radarAnimationPanel'
+    );
+
+  if (panel) {
+    panel.style.display =
+      'block';
+  }
+
+  if (
+    radarFrames.length === 0
+  ) {
+    const loaded =
+      await loadRainViewerRadar();
+
+    if (!loaded) return;
+  } else {
+    showRadarFrame(
+      radarFrameIndex
+    );
+  }
+
+  updateRadarLegend();
+}
+
+function toggleRadarAnimation() {
+  if (radarFrames.length === 0) {
+    return;
+  }
+
+  if (radarIsPlaying) {
+    stopRadarAnimation();
+  } else {
+    startRadarAnimation();
+  }
+}
+
+function startRadarAnimation() {
+  if (
+    radarIsPlaying ||
+    radarFrames.length === 0
+  ) {
+    return;
+  }
+
+  radarIsPlaying = true;
+
+  updateRadarPlayButton();
+
+  radarAnimationTimer =
+    setInterval(() => {
+
+      radarFrameIndex++;
+
+      if (
+        radarFrameIndex >=
+        radarFrames.length
+      ) {
+        radarFrameIndex = 0;
+      }
+
+      showRadarFrame(
+        radarFrameIndex
+      );
+
+    }, 700);
+}
+
+function stopRadarAnimation() {
+  radarIsPlaying = false;
+
+  if (radarAnimationTimer) {
+    clearInterval(
+      radarAnimationTimer
+    );
+
+    radarAnimationTimer = null;
+  }
+
+  updateRadarPlayButton();
+}
+
+function previousRadarFrame() {
+  stopRadarAnimation();
+
+  if (radarFrames.length === 0) {
+    return;
+  }
+
+  radarFrameIndex--;
+
+  if (radarFrameIndex < 0) {
+    radarFrameIndex =
+      radarFrames.length - 1;
+  }
+
+  showRadarFrame(
+    radarFrameIndex
+  );
+}
+
+function nextRadarFrame() {
+  stopRadarAnimation();
+
+  if (radarFrames.length === 0) {
+    return;
+  }
+
+  radarFrameIndex++;
+
+  if (
+    radarFrameIndex >=
+    radarFrames.length
+  ) {
+    radarFrameIndex = 0;
+  }
+
+  showRadarFrame(
+    radarFrameIndex
+  );
+}
+
+function updateRadarUI() {
+  const frame =
+    radarFrames[radarFrameIndex];
+
+  if (!frame) return;
+
+  const timeEl =
+    document.getElementById(
+      'radarFrameTime'
+    );
+
+  if (timeEl) {
+    const frameDate =
+      new Date(
+        frame.time * 1000
+      );
+
+    timeEl.textContent =
+      frameDate.toLocaleString(
+        'en-PH',
+        {
+          hour: 'numeric',
+          minute: '2-digit',
+          month: 'short',
+          day: 'numeric'
+        }
+      );
+  }
+
+  const progress =
+    document.getElementById(
+      'radarFrameProgress'
+    );
+
+  if (progress) {
+    const percent =
+      radarFrames.length <= 1
+        ? 100
+        : (
+            radarFrameIndex /
+            (radarFrames.length - 1)
+          ) * 100;
+
+    progress.style.width =
+      `${percent}%`;
+  }
+}
+
+function updateRadarPlayButton() {
+  const icon =
+    document.getElementById(
+      'radarPlayIcon'
+    );
+
+  const button =
+    document.getElementById(
+      'radarPlayBtn'
+    );
+
+  if (icon) {
+    icon.textContent =
+      radarIsPlaying
+        ? 'pause'
+        : 'play_arrow';
+  }
+
+  if (button) {
+    button.title =
+      radarIsPlaying
+        ? 'Pause radar animation'
+        : 'Play radar animation';
+  }
+}
+
+function updateRadarLegend() {
+  const title =
+    document.getElementById(
+      'mapLegendTitle'
+    );
+
+  const bar =
+    document.getElementById(
+      'mapLegendBar'
+    );
+
+  if (title) {
+    title.textContent =
+      'Radar Precipitation';
+  }
+
+  if (bar) {
+    bar.innerHTML = `
+      <div class="legend-gradient radar-gradient"></div>
+
+      <div class="legend-labels">
+        <span>Light</span>
+        <span>Heavy</span>
+      </div>
+    `;
+  }
+}
+
+
+
 // ═══════════════════════════════════════════════════════
 // MY CROPS — Full CRUD + Weather Assessment
 // ═══════════════════════════════════════════════════════

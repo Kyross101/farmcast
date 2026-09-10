@@ -5570,3 +5570,145 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     overflow: hidden;
   }
 }
+
+/* ═════════════════════════════════════
+   RAINVIEWER RADAR ANIMATION
+═════════════════════════════════════ */
+
+.radar-animation-panel {
+  margin-top: 12px;
+  padding: 12px;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+
+.radar-animation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.radar-animation-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.radar-animation-time {
+  margin-top: 2px;
+
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.radar-live-badge {
+  padding: 3px 7px;
+
+  border-radius: 99px;
+  background: var(--blue-dim);
+
+  color: var(--blue);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+.radar-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.radar-control-btn {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border2);
+  border-radius: 9px;
+
+  background: var(--bg2);
+  color: var(--text-muted);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.radar-control-btn:hover {
+  background: var(--green-dim);
+  border-color: rgba(63,185,80,0.35);
+  color: var(--green);
+}
+
+.radar-play-btn {
+  width: 42px;
+  height: 42px;
+}
+
+.radar-control-btn
+.material-symbols-outlined {
+  font-size: 20px;
+}
+
+.radar-frame-progress {
+  height: 4px;
+
+  margin-top: 10px;
+
+  overflow: hidden;
+
+  background: var(--bg2);
+  border-radius: 99px;
+}
+
+.radar-frame-progress-fill {
+  width: 0;
+  height: 100%;
+
+  background: var(--blue);
+
+  border-radius: inherit;
+
+  transition: width 0.25s ease;
+}
+
+.radar-source {
+  margin-top: 8px;
+
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--text-dim);
+}
+
+.radar-source a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.radar-source a:hover {
+  text-decoration: underline;
+}
+
+.radar-gradient {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(136,221,238,0.4),
+      #00a3e0,
+      #0070a3,
+      #00446b
+    );
+}
