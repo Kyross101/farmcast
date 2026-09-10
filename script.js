@@ -502,6 +502,11 @@ function initWeatherMap() {
     minZoom: 2,
     maxZoom: 18,
   }).setView([lat, lon], 8);
+
+  // Mobile: prevent accidental map movement while scrolling
+  if (window.innerWidth <= 768) {
+    weatherMap.dragging.disable();
+  }
  
   // Base layer — dark by default
   currentBaseLayer = L.tileLayer(BASE_TILES.dark, {
