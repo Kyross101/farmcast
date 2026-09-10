@@ -818,6 +818,16 @@ async function setRadarLayer(el) {
 
   removeWindFlowLayer();
 
+  const windFlowInfo =
+    document.getElementById(
+      'windFlowInfo'
+    );
+
+  if (windFlowInfo) {
+    windFlowInfo.style.display =
+      'none';
+  }
+
   if (!weatherMap) return;
 
   document
