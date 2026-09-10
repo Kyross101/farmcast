@@ -490,9 +490,8 @@ function initWeatherMap() {
  
   // Base layer — dark by default
   currentBaseLayer = L.tileLayer(BASE_TILES.dark, {
-    attribution: '© CartoDB',
+    attribution: '© CARTO',
     maxZoom: 18,
-    subdomains: 'abcd',
     noWrap: true
   }).addTo(weatherMap);
  
@@ -636,9 +635,11 @@ function setMapStyle(el, style) {
  
   if (currentBaseLayer) weatherMap.removeLayer(currentBaseLayer);
   currentBaseLayer = L.tileLayer(BASE_TILES[style], {
-    attribution: '© Map',
+    attribution:
+      style === 'dark'
+        ? '© CARTO'
+        : '© Map',
     maxZoom: 18,
-    subdomains: style === 'dark' ? 'abcd' : 'abc',
     noWrap: true
   }).addTo(weatherMap);
  
