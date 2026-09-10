@@ -11,6 +11,13 @@
 <!-- Leaflet.js for Weather Maps -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Leaflet Velocity for animated wind particles -->
+<script
+  src="https://unpkg.com/leaflet-velocity@2.1.4/dist/leaflet-velocity.min.js"
+></script>
+
+
 <!-- Roboflow AI — no script needed, uses REST API directly -->
 </head>
 <body>
@@ -364,6 +371,27 @@
               <div>
                 <div class="mlb-name">Wind Speed</div>
                 <div class="mlb-desc">Wind at 10m height</div>
+              </div>
+            </div>
+
+            <!-- NEW: Animated Wind Flow -->
+            <div
+              class="map-layer-btn"
+              onclick="setWindFlowLayer(this)"
+              data-layer="wind-flow"
+            >
+              <span class="material-symbols-outlined">
+                air
+              </span>
+
+              <div>
+                <div class="mlb-name">
+                  Wind Flow
+                </div>
+
+                <div class="mlb-desc">
+                  Animated wind direction
+                </div>
               </div>
             </div>
 
