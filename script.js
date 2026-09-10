@@ -1856,9 +1856,6 @@ function scheduleWindFlowRefresh() {
         return;
       }
 
-      const gridKey =
-        getWindFlowGridKey();
-
       // No meaningful regional movement,
       // so keep the current wind data.
       if (
