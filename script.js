@@ -60,6 +60,14 @@ const WIND_FLOW_MIN_API_INTERVAL =
 const WIND_FLOW_429_BACKOFF =
   900000; // 15 minutes
 
+let windFlowDataCache = null;
+let windFlowDataCacheKey = '';
+let windFlowDataCacheTime = 0;
+
+const WIND_FLOW_CACHE_TTL =
+  600000; // 10 minutes
+
+
 // ── CROPS DATA ──
 const CROPS = [
   { name:'Tomato',     emoji:'🍅', minTemp:18, maxTemp:32, noRain:false, windMax:20 },
@@ -1180,7 +1188,36 @@ function buildWindGridCoordinates() {
   return coordinates;
 }
 
+function getWindFlowGridKey() {
+  return [
+    WIND_GRID.north,
+    WIND_GRID.south,
+    WIND_GRID.west,
+    WIND_GRID.east,
+    WIND_GRID.step
+  ].join('|');
+}
+
 async function fetchWindFlowData() {
+
+  const cacheKey =
+    getWindFlowGridKey();
+
+  const now =
+    Date.now();
+
+  const hasFreshCache =
+    windFlowDataCache &&
+    windFlowDataCacheKey ===
+      cacheKey &&
+    now -
+      windFlowDataCacheTime <
+      WIND_FLOW_CACHE_TTL;
+
+  if (hasFreshCache) {
+    return windFlowDataCache;
+  }
+
   const points =
     buildWindGridCoordinates();
 
