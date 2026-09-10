@@ -504,9 +504,22 @@ function initWeatherMap() {
   }).setView([lat, lon], 8);
 
   // Mobile: prevent accidental map movement while scrolling
-  if (window.innerWidth <= 768) {
-    weatherMap.dragging.disable();
+  function syncMapDragging() {
+    if (!weatherMap) return;
+
+    if (window.innerWidth <= 768) {
+      weatherMap.dragging.disable();
+    } else {
+      weatherMap.dragging.enable();
+    }
   }
+
+  syncMapDragging();
+
+  window.addEventListener(
+   'resize',
+    syncMapDragging
+  );
  
   // Base layer — dark by default
   currentBaseLayer = L.tileLayer(BASE_TILES.dark, {
