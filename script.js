@@ -33,6 +33,19 @@ let radarFrameIndex = 0;
 let radarAnimationTimer = null;
 let radarIsPlaying = false;
 
+// ── ANIMATED WIND FLOW ──
+
+let windFlowLayer = null;
+let windFlowLoading = false;
+
+const WIND_GRID = {
+  north: 22,
+  south: 4,
+  west: 116,
+  east: 128,
+  step: 2
+};
+
 
 
 // ── CROPS DATA ──
@@ -436,7 +449,7 @@ const OWM_LAYERS = {
       'Strong<br><small>39+ kph</small>'
     ]
   },
-  
+
   clouds_new:        { name: 'Cloud Cover',   legend: 'cloud-gradient',   labels: ['Clear','Overcast'] },
   pressure_new:      { name: 'Pressure',      legend: 'pressure-gradient',labels: ['Low','High'] }
 };
@@ -543,6 +556,7 @@ async function fetchMapPointWeather(lat, lng) {
 function setMapLayer(el, layerName) {
 
   stopRadarAnimation();
+  removeWindFlowLayer();
 
   if (radarLayer && weatherMap) {
     weatherMap.removeLayer(
@@ -752,6 +766,9 @@ function showRadarFrame(index) {
 }
 
 async function setRadarLayer(el) {
+
+  removeWindFlowLayer();
+  
   if (!weatherMap) return;
 
   document
@@ -1006,7 +1023,399 @@ function updateRadarLegend() {
   }
 }
 
+function buildWindGridCoordinates() {
+  const coordinates = [];
 
+  for (
+    let lat = WIND_GRID.north;
+    lat >= WIND_GRID.south;
+    lat -= WIND_GRID.step
+  ) {
+    for (
+      let lon = WIND_GRID.west;
+      lon <= WIND_GRID.east;
+      lon += WIND_GRID.step
+    ) {
+      coordinates.push({
+        lat,
+        lon
+      });
+    }
+  }
+
+  return coordinates;
+}
+
+async function fetchWindFlowData() {
+  const points =
+    buildWindGridCoordinates();
+
+  const latitudes =
+    points
+      .map(point => point.lat)
+      .join(',');
+
+  const longitudes =
+    points
+      .map(point => point.lon)
+      .join(',');
+
+  const url =
+    'https://api.open-meteo.com/v1/forecast' +
+    `?latitude=${encodeURIComponent(latitudes)}` +
+    `&longitude=${encodeURIComponent(longitudes)}` +
+    '&current=wind_speed_10m,wind_direction_10m' +
+    '&wind_speed_unit=kmh';
+
+  const response =
+    await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(
+      `Open-Meteo request failed: ${response.status}`
+    );
+  }
+
+  const data =
+    await response.json();
+
+  if (!Array.isArray(data)) {
+    throw new Error(
+      'Unexpected Open-Meteo wind response.'
+    );
+  }
+
+  return {
+    points,
+    data
+  };
+}
+
+function windToUV(speedKph, directionDeg) {
+  const speedMs =
+    Number(speedKph) / 3.6;
+
+  const directionRad =
+    Number(directionDeg) *
+    Math.PI / 180;
+
+  return {
+    u:
+      -speedMs *
+      Math.sin(directionRad),
+
+    v:
+      -speedMs *
+      Math.cos(directionRad)
+  };
+}
+
+function buildVelocityData(
+  points,
+  weatherData
+) {
+  const uData = [];
+  const vData = [];
+
+  for (
+    let i = 0;
+    i < points.length;
+    i++
+  ) {
+    const current =
+      weatherData[i]?.current;
+
+    if (
+      !current ||
+      current.wind_speed_10m == null ||
+      current.wind_direction_10m == null
+    ) {
+      uData.push(0);
+      vData.push(0);
+      continue;
+    }
+
+    const vector =
+      windToUV(
+        current.wind_speed_10m,
+        current.wind_direction_10m
+      );
+
+    uData.push(vector.u);
+    vData.push(vector.v);
+  }
+
+  const nx =
+    Math.round(
+      (
+        WIND_GRID.east -
+        WIND_GRID.west
+      ) /
+      WIND_GRID.step
+    ) + 1;
+
+  const ny =
+    Math.round(
+      (
+        WIND_GRID.north -
+        WIND_GRID.south
+      ) /
+      WIND_GRID.step
+    ) + 1;
+
+  const refTime =
+    new Date().toISOString();
+
+  const baseHeader = {
+    parameterUnit: 'm.s-1',
+    parameterCategory: 2,
+
+    nx,
+    ny,
+
+    lo1: WIND_GRID.west,
+    lo2: WIND_GRID.east,
+
+    la1: WIND_GRID.north,
+    la2: WIND_GRID.south,
+
+    dx: WIND_GRID.step,
+    dy: WIND_GRID.step,
+
+    refTime
+  };
+
+  return [
+    {
+      header: {
+        ...baseHeader,
+        parameterNumber: 2,
+        parameterNumberName:
+          'eastward_wind'
+      },
+
+      data: uData
+    },
+
+    {
+      header: {
+        ...baseHeader,
+        parameterNumber: 3,
+        parameterNumberName:
+          'northward_wind'
+      },
+
+      data: vData
+    }
+  ];
+}
+
+async function setWindFlowLayer(el) {
+  if (
+    !weatherMap ||
+    windFlowLoading
+  ) {
+    return;
+  }
+
+  windFlowLoading = true;
+
+  document
+    .querySelectorAll(
+      '.map-layer-btn'
+    )
+    .forEach(button => {
+      button.classList.remove(
+        'active'
+      );
+    });
+
+  el.classList.add('active');
+
+  stopRadarAnimation();
+
+  if (radarLayer) {
+    weatherMap.removeLayer(
+      radarLayer
+    );
+
+    radarLayer = null;
+  }
+
+  const radarPanel =
+    document.getElementById(
+      'radarAnimationPanel'
+    );
+
+  if (radarPanel) {
+    radarPanel.style.display =
+      'none';
+  }
+
+  if (currentWeatherLayer) {
+    weatherMap.removeLayer(
+      currentWeatherLayer
+    );
+
+    currentWeatherLayer = null;
+  }
+
+  removeWindFlowLayer();
+
+  currentMapLayerName =
+    'wind-flow';
+
+  toast(
+    'Loading animated wind data…',
+    'ok'
+  );
+
+  try {
+    const {
+      points,
+      data
+    } =
+      await fetchWindFlowData();
+
+    const velocityData =
+      buildVelocityData(
+        points,
+        data
+      );
+
+    if (
+      typeof L.velocityLayer !==
+      'function'
+    ) {
+      throw new Error(
+        'Leaflet Velocity library is unavailable.'
+      );
+    }
+
+    windFlowLayer =
+      L.velocityLayer({
+        displayValues: true,
+
+        displayOptions: {
+          velocityType:
+            'Model Wind',
+
+          position:
+            'bottomleft',
+
+          emptyString:
+            'No wind data',
+
+          angleConvention:
+            'bearingCW',
+
+          showCardinal: true,
+
+          speedUnit:
+            'k/h',
+
+          directionString:
+            'Direction',
+
+          speedString:
+            'Speed'
+        },
+
+        data:
+          velocityData,
+
+        minVelocity: 0,
+        maxVelocity: 25,
+
+        velocityScale:
+          0.006,
+
+        opacity:
+          0.9
+      });
+
+    windFlowLayer.addTo(
+      weatherMap
+    );
+
+    updateWindFlowLegend();
+
+    toast(
+      'Animated wind flow loaded',
+      'ok'
+    );
+
+  } catch (error) {
+    console.error(
+      'Wind Flow error:',
+      error
+    );
+
+    toast(
+      'Wind Flow is temporarily unavailable.',
+      'err'
+    );
+
+    el.classList.remove(
+      'active'
+    );
+  } finally {
+    windFlowLoading = false;
+  }
+}
+
+function removeWindFlowLayer() {
+  if (
+    windFlowLayer &&
+    weatherMap
+  ) {
+    weatherMap.removeLayer(
+      windFlowLayer
+    );
+
+    windFlowLayer = null;
+  }
+}
+
+function updateWindFlowLegend() {
+  const title =
+    document.getElementById(
+      'mapLegendTitle'
+    );
+
+  const bar =
+    document.getElementById(
+      'mapLegendBar'
+    );
+
+  if (title) {
+    title.textContent =
+      'Animated Wind Flow';
+  }
+
+  if (bar) {
+    bar.innerHTML = `
+      <div class="legend-gradient wind-gradient"></div>
+
+      <div class="legend-labels">
+        <span>
+          Calm
+          <small>slow particles</small>
+        </span>
+
+        <span>
+          Moderate
+          <small>moving wind</small>
+        </span>
+
+        <span>
+          Strong
+          <small>fast particles</small>
+        </span>
+      </div>
+    `;
+  }
+}
 
 // ═══════════════════════════════════════════════════════
 // MY CROPS — Full CRUD + Weather Assessment
