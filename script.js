@@ -587,6 +587,16 @@ function setMapLayer(el, layerName) {
   stopRadarAnimation();
   removeWindFlowLayer();
 
+  const windFlowInfo =
+    document.getElementById(
+     'windFlowInfo'
+    );
+ 
+  if (windFlowInfo) {
+    windFlowInfo.style.display =
+      'none';
+  }
+
   if (radarLayer && weatherMap) {
     weatherMap.removeLayer(
       radarLayer
@@ -1653,6 +1663,32 @@ async function setWindFlowLayer(el) {
   } finally {
     windFlowLoading = false;
   }
+}
+
+const windFlowInfo =
+  document.getElementById(
+    'windFlowInfo'
+  );
+
+const windFlowUpdated =
+  document.getElementById(
+    'windFlowUpdated'
+  );
+
+if (windFlowInfo) {
+  windFlowInfo.style.display =
+    'block';
+}
+
+if (windFlowUpdated) {
+  windFlowUpdated.textContent =
+    `Updated: ${new Date().toLocaleTimeString(
+      'en-PH',
+      {
+        hour: '2-digit',
+        minute: '2-digit'
+      }
+    )}`;
 }
 
 function removeWindFlowLayer() {
