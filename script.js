@@ -38,13 +38,16 @@ let radarIsPlaying = false;
 let windFlowLayer = null;
 let windFlowLoading = false;
 
-const WIND_GRID = {
+let WIND_GRID = {
   north: 22,
   south: 4,
   west: 116,
   east: 128,
   step: 2
 };
+
+let windFlowRefreshTimer = null;
+let windFlowAutoRefreshBound = false;
 
 
 
@@ -768,7 +771,7 @@ function showRadarFrame(index) {
 async function setRadarLayer(el) {
 
   removeWindFlowLayer();
-  
+
   if (!weatherMap) return;
 
   document
@@ -1023,6 +1026,93 @@ function updateRadarLegend() {
   }
 }
 
+function updateWindGridFromMap() {
+  if (!weatherMap) return;
+
+  const bounds = weatherMap.getBounds();
+  const center = weatherMap.getCenter();
+
+  // Limit huge zoomed-out requests.
+  const latSpan = Math.min(
+    Math.abs(
+      bounds.getNorth() -
+      bounds.getSouth()
+    ),
+    40
+  );
+
+  const lonSpan = Math.min(
+    Math.abs(
+      bounds.getEast() -
+      bounds.getWest()
+    ),
+    60
+  );
+
+  // Add a little padding around visible map.
+  let north =
+    center.lat +
+    (latSpan * 0.6);
+
+  let south =
+    center.lat -
+    (latSpan * 0.6);
+
+  let west =
+    center.lng -
+    (lonSpan * 0.6);
+
+  let east =
+    center.lng +
+    (lonSpan * 0.6);
+
+  // Keep coordinates inside safe geographic bounds.
+  north = Math.min(80, north);
+  south = Math.max(-80, south);
+
+  west = Math.max(-179, west);
+  east = Math.min(179, east);
+
+  // Keep roughly 8 × 8 points maximum.
+  const largestSpan =
+    Math.max(
+      north - south,
+      east - west
+    );
+
+  const step = Math.max(
+    0.5,
+    Math.ceil(
+      (largestSpan / 7) * 2
+    ) / 2
+  );
+
+  // Snap bounds to grid interval.
+  north =
+    Math.ceil(north / step) *
+    step;
+
+  south =
+    Math.floor(south / step) *
+    step;
+
+  west =
+    Math.floor(west / step) *
+    step;
+
+  east =
+    Math.ceil(east / step) *
+    step;
+
+  WIND_GRID = {
+    north,
+    south,
+    west,
+    east,
+    step
+  };
+}
+
 function buildWindGridCoordinates() {
   const coordinates = [];
 
@@ -1265,6 +1355,8 @@ async function setWindFlowLayer(el) {
   currentMapLayerName =
     'wind-flow';
 
+  updateWindGridFromMap();
+
   toast(
     'Loading animated wind data…',
     'ok'
@@ -1338,6 +1430,15 @@ async function setWindFlowLayer(el) {
       weatherMap
     );
 
+    if (!windFlowAutoRefreshBound) {
+      weatherMap.on(
+        'moveend',
+        scheduleWindFlowRefresh
+      );
+
+      windFlowAutoRefreshBound = true;
+    }
+
     updateWindFlowLegend();
 
     toast(
@@ -1375,6 +1476,112 @@ function removeWindFlowLayer() {
 
     windFlowLayer = null;
   }
+}
+
+async function refreshWindFlowLayer() {
+  if (
+    !weatherMap ||
+    currentMapLayerName !==
+      'wind-flow' ||
+    windFlowLoading
+  ) {
+    return;
+  }
+
+  windFlowLoading = true;
+
+  try {
+    updateWindGridFromMap();
+
+    const {
+      points,
+      data
+    } =
+      await fetchWindFlowData();
+
+    const velocityData =
+      buildVelocityData(
+        points,
+        data
+      );
+
+    if (
+      currentMapLayerName !==
+      'wind-flow'
+    ) {
+      return;
+    }
+
+    removeWindFlowLayer();
+
+    windFlowLayer =
+      L.velocityLayer({
+        displayValues: true,
+
+        displayOptions: {
+          velocityType:
+            'Model Wind',
+
+          position:
+            'bottomleft',
+
+          emptyString:
+            'No wind data',
+
+          angleConvention:
+            'bearingCW',
+
+          showCardinal: true,
+
+          speedUnit:
+            'k/h',
+
+          directionString:
+            'Direction',
+
+          speedString:
+            'Speed'
+        },
+
+        data:
+          velocityData,
+
+        minVelocity: 0,
+        maxVelocity: 25,
+        velocityScale: 0.006,
+        opacity: 0.9
+      });
+
+    windFlowLayer.addTo(
+      weatherMap
+    );
+
+  } catch (error) {
+    console.error(
+      'Wind Flow refresh error:',
+      error
+    );
+  } finally {
+    windFlowLoading = false;
+  }
+}
+
+function scheduleWindFlowRefresh() {
+  if (
+    currentMapLayerName !==
+    'wind-flow'
+  ) {
+    return;
+  }
+
+  clearTimeout(
+    windFlowRefreshTimer
+  );
+
+  windFlowRefreshTimer =
+    setTimeout(() => {
+      refreshWindFlowLayer();
+    }, 800);
 }
 
 function updateWindFlowLegend() {
