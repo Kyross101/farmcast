@@ -1540,12 +1540,25 @@ async function refreshWindFlowLayer() {
   windFlowLoading = true;
 
   try {
-    updateWindGridFromMap();
+    const hasDetailedGrid =
+      updateWindGridFromMap();
+
+    if (!hasDetailedGrid) {
+      removeWindFlowLayer();
+
+      toast(
+        'Zoom in for detailed wind flow.',
+        'warn'
+      );
+
+      return;
+    }
 
     const {
       points,
       data
     } =
+
       await fetchWindFlowData();
 
     const velocityData =
