@@ -1048,104 +1048,95 @@ function updateRadarLegend() {
 }
 
 function updateWindGridFromMap() {
-  if (!weatherMap) return;
-
-  const bounds = weatherMap.getBounds();
-  const center = weatherMap.getCenter();
-
-  // Limit huge zoomed-out requests.
-  const latSpan = Math.min(
-    Math.abs(
-      bounds.getNorth() -
-      bounds.getSouth()
-    ),
-    40
-  );
-
-  const lonSpan = Math.min(
-    Math.abs(
-      bounds.getEast() -
-      bounds.getWest()
-    ),
-    60
-  );
-
-  // Add a little padding around visible map.
-  let north =
-    center.lat +
-    (latSpan * 0.6);
-
-  let south =
-    center.lat -
-    (latSpan * 0.6);
-
-  let west =
-    center.lng -
-    (lonSpan * 0.6);
-
-  let east =
-    center.lng +
-    (lonSpan * 0.6);
-
-  // Keep coordinates inside safe geographic bounds.
-  north = Math.min(80, north);
-  south = Math.max(-80, south);
-
-  west = Math.max(-179, west);
-  east = Math.min(179, east);
-
-  // Keep roughly 8 × 8 points maximum.
-  const largestSpan =
-    Math.max(
-      north - south,
-      east - west
-    );
-
-  const step = Math.max(
-    0.5,
-    Math.ceil(
-      (largestSpan / 7) * 2
-    ) / 2
-  );
-
-  // Snap bounds to grid interval.
-  north =
-    Math.ceil(north / step) *
-    step;
-
-  south =
-    Math.floor(south / step) *
-    step;
-
-  west =
-    Math.floor(west / step) *
-    step;
-
-  east =
-    Math.ceil(east / step) *
-    step;
-
-  // Clamp AGAIN after snapping.
-  // Snapping can otherwise create values like 180.5°.
-  north = Math.min(80, north);
-  south = Math.max(-80, south);
-
-  west = Math.max(-179, west);
-  east = Math.min(179, east);
-
-  // Make sure bounds still form a valid grid.
-  if (east <= west) {
-    east = Math.min(
-      179,
-      west + step
-    );
+  if (!weatherMap) {
+    return false;
   }
 
-  if (north <= south) {
-    north = Math.min(
+  const center =
+    weatherMap.getCenter();
+
+  const zoom =
+    weatherMap.getZoom();
+
+  // Wind Flow is intended for
+  // detailed regional weather inspection.
+  // At very wide zoom levels, the grid
+  // would become too coarse and misleading.
+  if (zoom < 4) {
+    return false;
+  }
+
+  // Keep a consistent regional resolution
+  // so smaller circulation patterns are
+  // represented better.
+  const step = 2;
+
+  // Regional window centered on
+  // the current map position.
+  let north =
+    center.lat + 10;
+
+  let south =
+    center.lat - 10;
+
+  let west =
+    center.lng - 10;
+
+  let east =
+    center.lng + 10;
+
+  // Snap bounds to the 2-degree grid.
+  north =
+    Math.ceil(
+      north / step
+    ) * step;
+
+  south =
+    Math.floor(
+      south / step
+    ) * step;
+
+  west =
+    Math.floor(
+      west / step
+    ) * step;
+
+  east =
+    Math.ceil(
+      east / step
+    ) * step;
+
+  // Keep coordinates inside
+  // safe geographic limits.
+  north =
+    Math.min(
       80,
-      south + step
+      north
     );
+
+  south =
+    Math.max(
+      -80,
+      south
+    );
+
+  west =
+    Math.max(
+      -179,
+      west
+    );
+
+  east =
+    Math.min(
+      179,
+      east
+    );
+
+  if (
+    north <= south ||
+    east <= west
+  ) {
+    return false;
   }
 
   WIND_GRID = {
@@ -1155,6 +1146,8 @@ function updateWindGridFromMap() {
     east,
     step
   };
+
+  return true;
 }
 
 function buildWindGridCoordinates() {
