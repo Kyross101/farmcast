@@ -1255,9 +1255,7 @@ async function fetchWindFlowData() {
     timeSinceLastRequest <
     WIND_FLOW_MIN_API_INTERVAL
   ) {
-    throw new Error(
-      'Wind data refresh is cooling down.'
-    );
+    return null;
   }
 
   windFlowLastApiRequest =
@@ -1503,12 +1501,18 @@ async function setWindFlowLayer(el) {
   );
 
   try {
-    const {
-      points,
-      data
-    } =
-      await fetchWindFlowData();
+    const windResult =
+    await fetchWindFlowData();
 
+  if (!windResult) {
+    return;
+  }
+
+  const {
+    points,
+    data
+  } = windResult;
+  
     const velocityData =
       buildVelocityData(
         points,
@@ -1645,12 +1649,17 @@ async function refreshWindFlowLayer() {
       return;
     }
 
+    const windResult =
+      await fetchWindFlowData();
+
+    if (!windResult) {
+      return;
+    }
+
     const {
       points,
       data
-    } =
-
-      await fetchWindFlowData();
+    } = windResult;
 
     const velocityData =
       buildVelocityData(
