@@ -568,12 +568,38 @@ function setMapLayer(el, layerName) {
  
   // Update legend
   const info = OWM_LAYERS[layerName];
-  document.getElementById('mapLegendTitle').textContent = info.name;
-  const bar = document.getElementById('mapLegendBar');
-  bar.querySelector('.legend-gradient').className = `legend-gradient ${info.legend}`;
-  const labels = bar.querySelectorAll('.legend-labels span');
-  labels[0].textContent = info.labels[0];
-  labels[1].textContent = info.labels[1];
+
+  const legendTitle =
+    document.getElementById(
+      'mapLegendTitle'
+    );
+
+  const bar =
+    document.getElementById(
+      'mapLegendBar'
+    );
+
+  if (legendTitle) {
+    legendTitle.textContent =
+      info.name;
+  }
+
+  if (bar) {
+    bar.innerHTML = `
+      <div
+        class="legend-gradient ${info.legend}"
+      ></div>
+
+      <div class="legend-labels">
+        ${info.labels
+          .map(
+            label =>
+              `<span>${label}</span>`
+          )
+          .join('')}
+      </div>
+    `;
+  }
  
   toast(`Showing ${info.name} layer`, 'ok');
 }
