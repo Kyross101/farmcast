@@ -429,8 +429,14 @@ const OWM_LAYERS = {
   wind_new: {
     name: 'Wind Speed',
     legend: 'wind-gradient',
-    labels: ['Calm', 'Light', 'Moderate', 'Strong']
+    labels: [
+      'Calm<br><small>0–5 kph</small>',
+      'Light<br><small>6–19 kph</small>',
+      'Moderate<br><small>20–38 kph</small>',
+      'Strong<br><small>39+ kph</small>'
+    ]
   },
+  
   clouds_new:        { name: 'Cloud Cover',   legend: 'cloud-gradient',   labels: ['Clear','Overcast'] },
   pressure_new:      { name: 'Pressure',      legend: 'pressure-gradient',labels: ['Low','High'] }
 };
