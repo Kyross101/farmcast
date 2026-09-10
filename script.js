@@ -490,8 +490,17 @@ function initWeatherMap() {
  
   // Base layer — dark by default
   currentBaseLayer = L.tileLayer(BASE_TILES.dark, {
-    attribution: '© CARTO',
+    attribution:
+      '&copy; OpenStreetMap &copy; CARTO',
+
+    minZoom: 2,
     maxZoom: 18,
+
+    bounds: [
+      [-85.05112878, -180],
+      [85.05112878, 180]
+    ],
+
     noWrap: true
   }).addTo(weatherMap);
  
@@ -637,9 +646,17 @@ function setMapStyle(el, style) {
   currentBaseLayer = L.tileLayer(BASE_TILES[style], {
     attribution:
       style === 'dark'
-        ? '© CARTO'
+        ? '&copy; OpenStreetMap &copy; CARTO'
         : '© Map',
+
+    minZoom: 2,
     maxZoom: 18,
+
+    bounds: [
+      [-85.05112878, -180],
+      [85.05112878, 180]
+    ],
+
     noWrap: true
   }).addTo(weatherMap);
  
