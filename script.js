@@ -51,7 +51,14 @@ let windFlowAutoRefreshBound = false;
 let windFlowLastRefresh = 0;
 let windFlowLastGridKey = '';
 
+let windFlowLastApiRequest = 0;
+let windFlowApiCooldownUntil = 0;
 
+const WIND_FLOW_MIN_API_INTERVAL =
+  15000;
+
+const WIND_FLOW_429_BACKOFF =
+  60000;
 
 // ── CROPS DATA ──
 const CROPS = [
@@ -1194,8 +1201,46 @@ async function fetchWindFlowData() {
     '&current=wind_speed_10m,wind_direction_10m' +
     '&wind_speed_unit=kmh';
 
+  const now =
+    Date.now();
+
+  if (
+    now <
+    windFlowApiCooldownUntil
+  ) {
+    throw new Error(
+      'Wind data temporarily unavailable. Please wait before refreshing.'
+    );
+  }
+
+  const timeSinceLastRequest =
+    now -
+    windFlowLastApiRequest;
+
+  if (
+    timeSinceLastRequest <
+    WIND_FLOW_MIN_API_INTERVAL
+  ) {
+    throw new Error(
+      'Wind data refresh is cooling down.'
+    );
+  }
+
+  windFlowLastApiRequest =
+    now;
+
   const response =
     await fetch(url);
+
+  if (response.status === 429) {
+    windFlowApiCooldownUntil =
+      Date.now() +
+      WIND_FLOW_429_BACKOFF;
+
+    throw new Error(
+      'Open-Meteo rate limit reached. Wind data will retry later.'
+    );
+  }
 
   if (!response.ok) {
     throw new Error(
