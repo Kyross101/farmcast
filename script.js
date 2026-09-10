@@ -1804,7 +1804,7 @@ function scheduleWindFlowRefresh() {
       if (
         now -
           windFlowLastRefresh <
-        5000
+        WIND_FLOW_MIN_API_INTERVAL
       ) {
         return;
       }
@@ -1814,6 +1814,25 @@ function scheduleWindFlowRefresh() {
 
       const hasDetailedGrid =
         updateWindGridFromMap();
+
+      const gridKey =
+        getWindFlowGridKey();
+
+      const cacheIsFresh =
+        windFlowDataCache &&
+        windFlowDataCacheKey ===
+          gridKey &&
+        Date.now() -
+          windFlowDataCacheTime <
+          WIND_FLOW_CACHE_TTL;
+
+      if (
+        cacheIsFresh &&
+        gridKey ===
+          windFlowLastGridKey
+      ) {
+        return;
+      }
 
       // At world / very wide zoom,
       // remove the regional particle field
@@ -1837,13 +1856,8 @@ function scheduleWindFlowRefresh() {
         return;
       }
 
-      const gridKey = [
-        WIND_GRID.north,
-        WIND_GRID.south,
-        WIND_GRID.west,
-        WIND_GRID.east,
-        WIND_GRID.step
-      ].join('|');
+      const gridKey =
+        getWindFlowGridKey();
 
       // No meaningful regional movement,
       // so keep the current wind data.
