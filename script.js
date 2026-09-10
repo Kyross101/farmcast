@@ -1392,7 +1392,19 @@ async function setWindFlowLayer(el) {
   currentMapLayerName =
     'wind-flow';
 
-  updateWindGridFromMap();
+  const hasDetailedGrid =
+    updateWindGridFromMap();
+
+  if (!hasDetailedGrid) {
+    removeWindFlowLayer();
+
+    toast(
+     'Zoom in for detailed wind flow.',
+      'warn'
+    );
+
+    return;
+  }
 
   toast(
     'Loading animated wind data…',
