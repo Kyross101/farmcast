@@ -1643,18 +1643,53 @@ function scheduleWindFlowRefresh() {
   windFlowRefreshTimer =
     setTimeout(() => {
 
-      // Do not refresh more than once
-      // every 5 seconds.
-      const now = Date.now();
-
       if (
-        now - windFlowLastRefresh <
+        currentMapLayerName !==
+        'wind-flow'
+      ) {
+        return;
+      }
+
+      const now =
+        Date.now();
+
+      // Prevent excessive Open-Meteo
+      // refresh requests.
+      if (
+        now -
+          windFlowLastRefresh <
         5000
       ) {
         return;
       }
 
-      updateWindGridFromMap();
+      const hadWindFlowLayer =
+        Boolean(windFlowLayer);
+
+      const hasDetailedGrid =
+        updateWindGridFromMap();
+
+      // At world / very wide zoom,
+      // remove the regional particle field
+      // instead of reusing an old grid.
+      if (!hasDetailedGrid) {
+        removeWindFlowLayer();
+
+        windFlowLastGridKey =
+          '';
+
+        // Show the message only when an
+        // existing wind layer was removed,
+        // preventing repeated toast spam.
+        if (hadWindFlowLayer) {
+          toast(
+            'Zoom in for detailed wind flow.',
+            'warn'
+          );
+        }
+
+        return;
+      }
 
       const gridKey = [
         WIND_GRID.north,
@@ -1664,7 +1699,8 @@ function scheduleWindFlowRefresh() {
         WIND_GRID.step
       ].join('|');
 
-      // Same grid = no need to call API again.
+      // No meaningful regional movement,
+      // so keep the current wind data.
       if (
         gridKey ===
         windFlowLastGridKey
