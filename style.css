@@ -918,9 +918,21 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 
 .legend-labels span {
+  flex: 1;
+  min-width: 0;
   text-align: center;
   line-height: 1.25;
+  padding: 0 4px;
 }
+
+.legend-labels span:first-child {
+  text-align: left;
+}
+
+.legend-labels span:last-child {
+  text-align: right;
+}
+
 
 .legend-labels small {
   display: block;
@@ -928,7 +940,8 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 
   font-size: 0.58rem;
   font-weight: 500;
-  color: var(--text-dim);
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 
