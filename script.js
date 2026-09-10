@@ -1238,9 +1238,6 @@ async function fetchWindFlowData() {
     '&current=wind_speed_10m,wind_direction_10m' +
     '&wind_speed_unit=kmh';
 
-  const now =
-    Date.now();
-
   if (
     now <
     windFlowApiCooldownUntil
@@ -1294,10 +1291,22 @@ async function fetchWindFlowData() {
     );
   }
 
-  return {
+  const result = {
     points,
     data
   };
+
+  windFlowDataCache =
+    result;
+
+  windFlowDataCacheKey =
+    cacheKey;
+
+  windFlowDataCacheTime =
+    Date.now();
+
+  return result;
+
 }
 
 function windToUV(speedKph, directionDeg) {
