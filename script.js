@@ -48,6 +48,8 @@ let WIND_GRID = {
 
 let windFlowRefreshTimer = null;
 let windFlowAutoRefreshBound = false;
+let windFlowLastRefresh = 0;
+let windFlowLastGridKey = '';
 
 
 
@@ -458,7 +460,8 @@ const OWM_LAYERS = {
 };
  
 const BASE_TILES = {
-  dark: `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=${CARTO_API_KEY}`,
+  dark:
+  'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
 
   satellite:
     'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -1104,6 +1107,29 @@ function updateWindGridFromMap() {
     Math.ceil(east / step) *
     step;
 
+  // Clamp AGAIN after snapping.
+  // Snapping can otherwise create values like 180.5°.
+  north = Math.min(80, north);
+  south = Math.max(-80, south);
+
+  west = Math.max(-179, west);
+  east = Math.min(179, east);
+
+  // Make sure bounds still form a valid grid.
+  if (east <= west) {
+    east = Math.min(
+      179,
+      west + step
+    );
+  }
+
+  if (north <= south) {
+    north = Math.min(
+      80,
+      south + step
+    );
+  }
+
   WIND_GRID = {
     north,
     south,
@@ -1580,8 +1606,45 @@ function scheduleWindFlowRefresh() {
 
   windFlowRefreshTimer =
     setTimeout(() => {
+
+      // Do not refresh more than once
+      // every 5 seconds.
+      const now = Date.now();
+
+      if (
+        now - windFlowLastRefresh <
+        5000
+      ) {
+        return;
+      }
+
+      updateWindGridFromMap();
+
+      const gridKey = [
+        WIND_GRID.north,
+        WIND_GRID.south,
+        WIND_GRID.west,
+        WIND_GRID.east,
+        WIND_GRID.step
+      ].join('|');
+
+      // Same grid = no need to call API again.
+      if (
+        gridKey ===
+        windFlowLastGridKey
+      ) {
+        return;
+      }
+
+      windFlowLastGridKey =
+        gridKey;
+
+      windFlowLastRefresh =
+        now;
+
       refreshWindFlowLayer();
-    }, 800);
+
+    }, 1800);
 }
 
 function updateWindFlowLegend() {
