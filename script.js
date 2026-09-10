@@ -1614,6 +1614,12 @@ async function setWindFlowLayer(el) {
       weatherMap
     );
 
+    windFlowLastGridKey =
+      getWindFlowGridKey();
+
+    windFlowLastRefresh =
+      Date.now();
+
     if (!windFlowAutoRefreshBound) {
       weatherMap.on(
         'moveend',
