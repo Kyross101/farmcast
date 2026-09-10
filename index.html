@@ -328,6 +328,7 @@
               </div>
             </div>
 
+            
             <div
               class="map-layer-btn"
               onclick="setRadarLayer(this)"
@@ -348,8 +349,7 @@
               </div>
             </div>
 
-
-
+            <!-- Temperature -->
             <div class="map-layer-btn" onclick="setMapLayer(this,'temp_new')" data-layer="temp_new">
               <span class="material-symbols-outlined">device_thermostat</span>
               <div>
@@ -357,6 +357,8 @@
                 <div class="mlb-desc">Surface air temp</div>
               </div>
             </div>
+
+            <!-- Wind -->
             <div class="map-layer-btn" onclick="setMapLayer(this,'wind_new')" data-layer="wind_new">
               <span class="material-symbols-outlined">air</span>
               <div>
@@ -364,6 +366,8 @@
                 <div class="mlb-desc">Wind at 10m height</div>
               </div>
             </div>
+
+            <!-- Cloud -->
             <div class="map-layer-btn" onclick="setMapLayer(this,'clouds_new')" data-layer="clouds_new">
               <span class="material-symbols-outlined">cloud</span>
               <div>
@@ -371,6 +375,8 @@
                 <div class="mlb-desc">Cloud density %</div>
               </div>
             </div>
+
+            <!-- Pressure -->
             <div class="map-layer-btn" onclick="setMapLayer(this,'pressure_new')" data-layer="pressure_new">
               <span class="material-symbols-outlined">compress</span>
               <div>
@@ -379,7 +385,90 @@
               </div>
             </div>
           </div>
- 
+          
+           <!-- RainViewer Radar Timeline -->
+          <div
+            class="radar-animation-panel"
+            id="radarAnimationPanel"
+            style="display:none"
+          >
+            <div class="radar-animation-header">
+              <div>
+                <div class="radar-animation-title">
+                  Radar Timeline
+                </div>
+
+                <div
+                  class="radar-animation-time"
+                  id="radarFrameTime"
+                >
+                  Loading radar…
+                </div>
+              </div>
+
+              <div class="radar-live-badge">
+                RADAR
+              </div>
+            </div>
+
+            <div class="radar-controls">
+              <button
+                type="button"
+                class="radar-control-btn"
+                onclick="previousRadarFrame()"
+                title="Previous radar frame"
+              >
+                <span class="material-symbols-outlined">
+                  skip_previous
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="radar-control-btn radar-play-btn"
+                id="radarPlayBtn"
+                onclick="toggleRadarAnimation()"
+                title="Play radar animation"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  id="radarPlayIcon"
+                >
+                  play_arrow
+                </span>
+              </button>
+
+              <button
+                type="button"
+                class="radar-control-btn"
+                onclick="nextRadarFrame()"
+                title="Next radar frame"
+              >
+                <span class="material-symbols-outlined">
+                  skip_next
+                </span>
+              </button>
+            </div>
+
+            <div class="radar-frame-progress">
+              <div
+                class="radar-frame-progress-fill"
+                id="radarFrameProgress"
+              ></div>
+            </div>
+
+            <div class="radar-source">
+              Radar data:
+              <a
+                href="https://www.rainviewer.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RainViewer
+              </a>
+            </div>
+          </div>
+
           <!-- Map Style -->
           <div class="map-layer-group" style="margin-top:16px">
             <div class="map-layer-label">Map Style</div>
