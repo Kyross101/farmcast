@@ -1062,6 +1062,33 @@ function updateRadarLegend() {
   }
 }
 
+function isMapCenterInsideWindGrid() {
+  if (!weatherMap) {
+    return false;
+  }
+
+  const center =
+    weatherMap.getCenter();
+
+  const latMargin =
+    WIND_GRID.step * 2;
+
+  const lonMargin =
+    WIND_GRID.step * 2;
+
+  return (
+    center.lat <=
+      WIND_GRID.north - latMargin &&
+    center.lat >=
+      WIND_GRID.south + latMargin &&
+    center.lng >=
+      WIND_GRID.west + lonMargin &&
+    center.lng <=
+      WIND_GRID.east - lonMargin
+  );
+}
+
+
 function updateWindGridFromMap() {
   if (!weatherMap) {
     return false;
@@ -1079,6 +1106,19 @@ function updateWindGridFromMap() {
   // would become too coarse and misleading.
   if (zoom < 4) {
     return false;
+  }
+
+  const cacheIsFresh =
+    windFlowDataCache &&
+    Date.now() -
+      windFlowDataCacheTime <
+      WIND_FLOW_CACHE_TTL;
+
+  if (
+    cacheIsFresh &&
+    isMapCenterInsideWindGrid()
+  ) {
+    return true;
   }
 
   // Keep a consistent regional resolution
