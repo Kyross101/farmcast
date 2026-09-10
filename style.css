@@ -784,6 +784,17 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   .mobile-menu-btn {
     display:flex !important;
   }
+
+  .wind-flow-info {
+    padding: 8px 10px;
+    font-size: 0.68rem;
+    border-radius: 8px;
+  }
+
+  .wind-flow-info > div:last-child {
+    font-size: 0.64rem;
+  }
+
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -944,6 +955,28 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   white-space: nowrap;
 }
 
+.wind-flow-info {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(15, 23, 32, 0.92);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.wind-flow-info > div:first-child {
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.wind-flow-info > div:last-child {
+  margin-top: 4px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
 
 .legend-gradient { height: 10px; border-radius: 5px; }
 .precip-gradient  { background: linear-gradient(to right,#e8f4f8,#4db8ff,#0066cc,#003399); }
