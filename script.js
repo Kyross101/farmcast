@@ -426,7 +426,11 @@ let currentMapLayerName = 'precipitation_new';
 const OWM_LAYERS = {
   precipitation_new: { name: 'Precipitation', legend: 'precip-gradient',  labels: ['None','Heavy'] },
   temp_new:          { name: 'Temperature',   legend: 'temp-gradient',    labels: ['Cold','Hot'] },
-  wind_new:          { name: 'Wind Speed',    legend: 'wind-gradient',    labels: ['Calm','Strong'] },
+  wind_new: {
+    name: 'Wind Speed',
+    legend: 'wind-gradient',
+    labels: ['Calm', 'Light', 'Moderate', 'Strong']
+  },
   clouds_new:        { name: 'Cloud Cover',   legend: 'cloud-gradient',   labels: ['Clear','Overcast'] },
   pressure_new:      { name: 'Pressure',      legend: 'pressure-gradient',labels: ['Low','High'] }
 };
