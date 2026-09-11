@@ -1744,7 +1744,7 @@ if (windModelInfoWrap) {
 
 if (windFlowUpdated) {
   windFlowUpdated.textContent =
-    `Updated: ${new Date().toLocaleTimeString(
+    `Loaded: ${new Date().toLocaleTimeString(
       'en-PH',
       {
         hour: '2-digit',
