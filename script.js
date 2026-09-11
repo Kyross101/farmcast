@@ -1737,10 +1737,7 @@ const windFlowUpdated =
     'windFlowUpdated'
   );
 
-if (windModelInfoWrap) {
-  windModelInfoWrap.style.display =
-    'block';
-}
+
 
 if (windFlowUpdated) {
   windFlowUpdated.textContent =
