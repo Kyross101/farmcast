@@ -978,6 +978,49 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   color: var(--text-muted);
 }
 
+.wind-model-info-wrap {
+  margin-top: 6px;
+}
+
+.wind-model-info-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.wind-model-info-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.wind-model-info-toggle .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.wind-model-info-chevron {
+  margin-left: auto;
+}
+
+.wind-model-info-details {
+  margin-top: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+
 .legend-gradient { height: 10px; border-radius: 5px; }
 .precip-gradient  { background: linear-gradient(to right,#e8f4f8,#4db8ff,#0066cc,#003399); }
 .temp-gradient    { background: linear-gradient(to right,#4db8ff,#66ff66,#ffff00,#ff6600,#cc0000); }
