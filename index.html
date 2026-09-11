@@ -395,6 +395,47 @@
               </div>
             </div>
 
+            <div
+              class="wind-model-info-wrap"
+              id="windModelInfoWrap"
+              style="display:none"
+            >
+              <button
+                class="wind-model-info-toggle"
+                type="button"
+                onclick="toggleWindModelInfo()"
+              >
+                <span class="material-symbols-outlined">
+                  info
+                </span>
+
+                <span>Wind model info</span>
+
+                <span
+                  class="material-symbols-outlined wind-model-info-chevron"
+                  id="windModelInfoChevron"
+                >
+                  expand_more
+                </span>
+              </button>
+
+              <div
+                class="wind-model-info-details"
+                id="windModelInfoDetails"
+                style="display:none"
+              >
+                <div>Source: Open-Meteo</div>
+
+                <div id="windFlowUpdated">
+                  Loaded: --
+                </div>
+
+                <div>
+                  Not an official PAGASA warning
+                </div>
+              </div>
+            </div>
+
 
             <!-- Cloud -->
             <div class="map-layer-btn" onclick="setMapLayer(this,'clouds_new')" data-layer="clouds_new">
