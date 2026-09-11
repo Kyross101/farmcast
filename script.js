@@ -561,6 +561,33 @@ function initWeatherMap() {
   updateMapWeatherSummary();
 }
  
+function toggleWindModelInfo() {
+  const details =
+    document.getElementById(
+      'windModelInfoDetails'
+    );
+
+  const chevron =
+    document.getElementById(
+      'windModelInfoChevron'
+    );
+
+  if (!details) return;
+
+  const isOpen =
+    details.style.display === 'block';
+
+  details.style.display =
+    isOpen ? 'none' : 'block';
+
+  if (chevron) {
+    chevron.textContent =
+      isOpen
+        ? 'expand_more'
+        : 'expand_less';
+  }
+}
+
 async function fetchMapPointWeather(lat, lng) {
   try {
     const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${API_KEY}`);
