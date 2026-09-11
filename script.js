@@ -632,6 +632,16 @@ function setMapLayer(el, layerName) {
   stopRadarAnimation();
   removeWindFlowLayer();
 
+  const windModelInfoWrap =
+    document.getElementById(
+      'windModelInfoWrap'
+    );
+
+  if (windModelInfoWrap) {
+    windModelInfoWrap.style.display =
+      'none';
+  }
+
   const windFlowInfo =
     document.getElementById(
      'windFlowInfo'
@@ -862,6 +872,16 @@ function showRadarFrame(index) {
 async function setRadarLayer(el) {
 
   removeWindFlowLayer();
+
+  const windModelInfoWrap =
+    document.getElementById(
+      'windModelInfoWrap'
+    );
+
+  if (windModelInfoWrap) {
+    windModelInfoWrap.style.display =
+      'none';
+  }
 
   const windFlowInfo =
     document.getElementById(
@@ -1720,10 +1740,15 @@ async function setWindFlowLayer(el) {
   }
 }
 
-const windFlowInfo =
+const windModelInfoWrap =
   document.getElementById(
-    'windFlowInfo'
+    'windModelInfoWrap'
   );
+
+  if (windModelInfoWrap) {
+    windModelInfoWrap.style.display =
+      'block';
+  }
 
 const windFlowUpdated =
   document.getElementById(
