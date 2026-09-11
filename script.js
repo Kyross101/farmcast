@@ -642,15 +642,6 @@ function setMapLayer(el, layerName) {
       'none';
   }
 
-  const windFlowInfo =
-    document.getElementById(
-     'windFlowInfo'
-    );
- 
-  if (windFlowInfo) {
-    windFlowInfo.style.display =
-      'none';
-  }
 
   if (radarLayer && weatherMap) {
     weatherMap.removeLayer(
@@ -883,15 +874,6 @@ async function setRadarLayer(el) {
       'none';
   }
 
-  const windFlowInfo =
-    document.getElementById(
-      'windFlowInfo'
-    );
-
-  if (windFlowInfo) {
-    windFlowInfo.style.display =
-      'none';
-  }
 
   if (!weatherMap) return;
 
