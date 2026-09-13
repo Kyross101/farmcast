@@ -1164,10 +1164,10 @@ function updateWindGridFromMap() {
     weatherMap.getZoom();
 
   const isInsidePhilippinesGrid =
-    center.lat <= 22 &&
-    center.lat >= 4 &&
-    center.lng >= 116 &&
-    center.lng <= 128;
+    center.lat <= 28 &&
+    center.lat >= 0 &&
+    center.lng >= 108 &&
+    center.lng <= 142;
 
   if (!isInsidePhilippinesGrid) {
     return false;
