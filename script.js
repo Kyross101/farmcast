@@ -1262,15 +1262,18 @@ function updateWindGridFromMap() {
     return false;
   }
 
+  const step = 2;
+
   WIND_GRID = {
-    north,
-    south,
-    west,
-    east,
+    north: 22,
+    south: 4,
+    west: 116,
+    east: 128,
     step
   };
 
   return true;
+
 }
 
 function buildWindGridCoordinates() {
