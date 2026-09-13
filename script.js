@@ -1192,7 +1192,7 @@ function updateWindGridFromMap() {
   // Keep a consistent regional resolution
   // so smaller circulation patterns are
   // represented better.
-  const step = 2;
+  
 
   // Wider regional window centered on
   // the current map position.
