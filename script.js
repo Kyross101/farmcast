@@ -1157,9 +1157,6 @@ function updateWindGridFromMap() {
     return false;
   }
 
-  const zoom =
-    weatherMap.getZoom();
-
   const bounds =
     weatherMap.getBounds();
 
