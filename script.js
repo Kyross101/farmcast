@@ -39,11 +39,11 @@ let windFlowLayer = null;
 let windFlowLoading = false;
 
 let WIND_GRID = {
-  north: 22,
-  south: 4,
-  west: 116,
-  east: 128,
-  step: 2
+  north: 28,
+  south: 0,
+  west: 108,
+  east: 142,
+  step: 2,
 };
 
 let windFlowRefreshTimer = null;
@@ -1207,11 +1207,11 @@ function updateWindGridFromMap() {
   const step = 2;
 
   WIND_GRID = {
-    north: 22,
-    south: 4,
-    west: 116,
-    east: 128,
-    step
+    north: 28,
+    south: 0,
+    west: 108,
+    east: 142,
+    step: 2,
   };
 
   return true;
