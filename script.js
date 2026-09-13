@@ -1723,6 +1723,14 @@ async function setWindFlowLayer(el) {
 
 
 function removeWindFlowLayer() {
+  if (windFlowRefreshTimer) {
+    clearTimeout(
+      windFlowRefreshTimer
+    );
+
+    windFlowRefreshTimer = null;
+  }
+
   if (
     windFlowLayer &&
     weatherMap
