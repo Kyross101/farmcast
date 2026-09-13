@@ -638,6 +638,16 @@ function setMapLayer(el, layerName) {
       'none';
   }
 
+  const pagasaStormPanel =
+    document.getElementById(
+      'pagasaStormPanel'
+    );
+
+  if (pagasaStormPanel) {
+    pagasaStormPanel.style.display =
+      'none';
+  }
+
 
   if (radarLayer && weatherMap) {
     weatherMap.removeLayer(
@@ -1790,6 +1800,117 @@ function setPagasaStormLayer(el) {
     'PAGASA Storm Watch selected',
     'ok'
   );
+
+  loadPagasaStormWatch();
+
+}
+
+async function loadPagasaStormWatch() {
+  const panel =
+    document.getElementById(
+      'pagasaStormPanel'
+    );
+
+  const content =
+    document.getElementById(
+      'pagasaStormContent'
+    );
+
+  if (!panel || !content) {
+    return;
+  }
+
+  panel.style.display =
+    'block';
+
+  content.innerHTML =
+    'Loading official PAGASA storm information...';
+
+  try {
+    const response =
+      await fetch(
+        `${window.FARMCAST_CONFIG.API_URL}/advisories`
+      );
+
+    if (!response.ok) {
+      throw new Error(
+        `Advisory request failed: ${response.status}`
+      );
+    }
+
+    const data =
+      await response.json();
+
+    const advisories =
+      Array.isArray(data.advisories)
+        ? data.advisories
+        : [];
+
+    const stormKeywords = [
+      'tropical cyclone',
+      'typhoon',
+      'tropical storm',
+      'severe tropical storm',
+      'tropical depression',
+      'cyclone'
+    ];
+
+    const stormAdvisories =
+      advisories.filter(advisory => {
+        const text =
+          `${advisory.title || ''} ${advisory.message || ''}`
+            .toLowerCase();
+
+        return stormKeywords.some(
+          keyword =>
+            text.includes(keyword)
+        );
+      });
+
+    if (!stormAdvisories.length) {
+      content.innerHTML = `
+        <div>
+          No recent tropical cyclone advisory
+          was found in the current PAGASA feed.
+        </div>
+      `;
+
+      return;
+    }
+
+    const latest =
+      stormAdvisories[0];
+
+    content.innerHTML = `
+      <div>
+        <strong>
+          ${escapeAdvisoryHtml(
+            latest.title ||
+            'PAGASA Tropical Cyclone Advisory'
+          )}
+        </strong>
+
+        <p>
+          ${escapeAdvisoryHtml(
+            latest.message ||
+            'See the official PAGASA advisory for details.'
+          )}
+        </p>
+      </div>
+    `;
+
+  } catch (error) {
+    console.error(
+      'PAGASA Storm Watch error:',
+      error
+    );
+
+    content.innerHTML = `
+      <div>
+        Unable to load PAGASA storm information.
+      </div>
+    `;
+  }
 }
 
 async function refreshWindFlowLayer() {
