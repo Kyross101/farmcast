@@ -1175,14 +1175,19 @@ function updateWindGridFromMap() {
     return false;
   }
 
-  const cacheIsFresh =
+  const currentGridKey =
+    getWindFlowGridKey();
+
+  const cacheIsFreshForCurrentGrid =
     windFlowDataCache &&
+    windFlowDataCacheKey ===
+      currentGridKey &&
     Date.now() -
       windFlowDataCacheTime <
       WIND_FLOW_CACHE_TTL;
 
   if (
-    cacheIsFresh &&
+    cacheIsFreshForCurrentGrid &&
     isMapCenterInsideWindGrid()
   ) {
     return true;
