@@ -880,6 +880,16 @@ async function setRadarLayer(el) {
       'none';
   }
 
+  const pagasaStormPanel =
+    document.getElementById(
+      'pagasaStormPanel'
+    );
+
+  if (pagasaStormPanel) {
+    pagasaStormPanel.style.display =
+      'none';
+  }
+
 
   if (!weatherMap) return;
 
@@ -1534,6 +1544,16 @@ async function setWindFlowLayer(el) {
 
   currentMapLayerName =
     'wind-flow';
+
+  const pagasaStormPanel =
+    document.getElementById(
+      'pagasaStormPanel'
+    );
+
+  if (pagasaStormPanel) {
+    pagasaStormPanel.style.display =
+      'none';
+  }
 
   const hasDetailedGrid =
     updateWindGridFromMap();
