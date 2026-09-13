@@ -1157,19 +1157,24 @@ function updateWindGridFromMap() {
     return false;
   }
 
-  const center =
-    weatherMap.getCenter();
-
   const zoom =
     weatherMap.getZoom();
 
-  const isInsidePhilippinesGrid =
-    center.lat <= 28 &&
-    center.lat >= 0 &&
-    center.lng >= 108 &&
-    center.lng <= 142;
+  const bounds =
+    weatherMap.getBounds();
 
-  if (!isInsidePhilippinesGrid) {
+  const philippinesBounds =
+    L.latLngBounds(
+      [4, 116],
+      [22, 128]
+    );
+
+  const philippinesVisible =
+    bounds.intersects(
+      philippinesBounds
+    );
+
+  if (!philippinesVisible) {
     return false;
   }
 
