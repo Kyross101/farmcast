@@ -1204,63 +1204,6 @@ function updateWindGridFromMap() {
   // represented better.
   
 
-  // Wider regional window centered on
-  // the current map position.
-
-  // Snap bounds to the 2-degree grid.
-  north =
-    Math.ceil(
-      north / step
-    ) * step;
-
-  south =
-    Math.floor(
-      south / step
-    ) * step;
-
-  west =
-    Math.floor(
-      west / step
-    ) * step;
-
-  east =
-    Math.ceil(
-      east / step
-    ) * step;
-
-  // Keep coordinates inside
-  // safe geographic limits.
-  north =
-    Math.min(
-      80,
-      north
-    );
-
-  south =
-    Math.max(
-      -80,
-      south
-    );
-
-  west =
-    Math.max(
-      -179,
-      west
-    );
-
-  east =
-    Math.min(
-      179,
-      east
-    );
-
-  if (
-    north <= south ||
-    east <= west
-  ) {
-    return false;
-  }
-
   const step = 2;
 
   WIND_GRID = {
