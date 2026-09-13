@@ -648,6 +648,16 @@ function setMapLayer(el, layerName) {
       'none';
   }
 
+  const mapLegend =
+    document.getElementById(
+      'mapLegend'
+    );
+
+  if (mapLegend) {
+    mapLegend.style.display =
+      'block';
+  }
+
 
   if (radarLayer && weatherMap) {
     weatherMap.removeLayer(
