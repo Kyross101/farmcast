@@ -1605,7 +1605,7 @@ async function setWindFlowLayer(el) {
     removeWindFlowLayer();
 
     toast(
-     'Zoom in for detailed wind flow.',
+     'Wind Flow is available within the Philippines coverage area.',
       'warn'
     );
 
@@ -1812,7 +1812,7 @@ async function refreshWindFlowLayer() {
       removeWindFlowLayer();
 
       toast(
-        'Zoom in for detailed wind flow.',
+        'Wind Flow is available within the Philippines coverage area.',
         'warn'
       );
 
@@ -1982,7 +1982,7 @@ function scheduleWindFlowRefresh() {
         // preventing repeated toast spam.
         if (hadWindFlowLayer) {
           toast(
-            'Zoom in for detailed wind flow.',
+            'Wind Flow is available within the Philippines coverage area.',
             'warn'
           );
         }
