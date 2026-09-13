@@ -1984,12 +1984,6 @@ function scheduleWindFlowRefresh() {
         return;
       }
 
-      windFlowLastGridKey =
-        gridKey;
-
-      windFlowLastRefresh =
-        now;
-
       refreshWindFlowLayer();
 
     }, 1800);
