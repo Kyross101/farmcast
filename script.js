@@ -1379,9 +1379,7 @@ async function fetchWindFlowData() {
       Date.now() +
       WIND_FLOW_429_BACKOFF;
 
-    throw new Error(
-      'Open-Meteo rate limit reached. Wind data will retry later.'
-    );
+    return null;
   }
 
   if (!response.ok) {
