@@ -1914,6 +1914,13 @@ function scheduleWindFlowRefresh() {
         return;
       }
 
+      if (
+        Date.now() <
+        windFlowApiCooldownUntil
+      ) {
+        return;
+      }
+
       const now =
         Date.now();
 
