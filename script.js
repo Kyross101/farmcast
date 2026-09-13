@@ -1738,6 +1738,60 @@ function removeWindFlowLayer() {
   }
 }
 
+// ── PAGASA STORM / TYPHOON WATCH ──
+function setPagasaStormLayer(el) {
+  if (!weatherMap) return;
+
+  stopRadarAnimation();
+  removeWindFlowLayer();
+
+  if (radarLayer) {
+    weatherMap.removeLayer(radarLayer);
+    radarLayer = null;
+  }
+
+  if (currentWeatherLayer) {
+    weatherMap.removeLayer(currentWeatherLayer);
+    currentWeatherLayer = null;
+  }
+
+  document
+    .querySelectorAll('.map-layer-btn')
+    .forEach(button => {
+      button.classList.remove('active');
+    });
+
+  el.classList.add('active');
+
+  currentMapLayerName =
+    'pagasa-storm';
+
+  const windModelInfoWrap =
+    document.getElementById(
+      'windModelInfoWrap'
+    );
+
+  if (windModelInfoWrap) {
+    windModelInfoWrap.style.display =
+      'none';
+  }
+
+  const radarPanel =
+    document.getElementById(
+      'radarAnimationPanel'
+    );
+
+  if (radarPanel) {
+    radarPanel.style.display =
+      'none';
+  }
+
+  toast(
+    'PAGASA Storm Watch selected',
+    'ok'
+  );
+}
+
 async function refreshWindFlowLayer() {
   if (
     !weatherMap ||
