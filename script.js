@@ -1625,6 +1625,15 @@ async function setWindFlowLayer(el) {
       weatherMap
     );
 
+    setTimeout(() => {
+      weatherMap.invalidateSize({
+        pan: false,
+        animate: false
+      });
+
+      weatherMap.fire('moveend');
+    }, 100);
+
     const windModelInfoWrap =
       document.getElementById(
       'windModelInfoWrap'
