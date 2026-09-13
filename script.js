@@ -1816,6 +1816,16 @@ function setPagasaStormLayer(el) {
       'none';
   }
 
+  const mapLegend =
+    document.getElementById(
+      'mapLegend'
+    );
+
+  if (mapLegend) {
+    mapLegend.style.display =
+      'none';
+  }
+
   toast(
     'PAGASA Storm Watch selected',
     'ok'
