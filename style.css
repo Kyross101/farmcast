@@ -5800,3 +5800,142 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
       #00446b
     );
 }
+
+/* ══════════════════════════════
+   PAGASA STORM WATCH
+══════════════════════════════ */
+
+.pagasa-storm-panel {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 650;
+
+  width: min(
+    390px,
+    calc(100% - 36px)
+  );
+
+  padding: 14px;
+
+  background:
+    rgba(13, 17, 23, 0.94);
+
+  border:
+    1px solid
+    rgba(248, 81, 73, 0.28);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.35);
+
+  backdrop-filter:
+    blur(10px);
+}
+
+
+.pagasa-storm-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+
+.pagasa-storm-header
+.material-symbols-outlined {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: var(--red);
+
+  background:
+    var(--red-dim);
+
+  border-radius: 9px;
+
+  font-size: 21px;
+}
+
+
+.pagasa-storm-title {
+  font-family:
+    'Syne',
+    sans-serif;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  color: var(--text);
+}
+
+
+.pagasa-storm-subtitle {
+  margin-top: 2px;
+
+  font-size: 0.72rem;
+
+  color:
+    var(--text-muted);
+}
+
+
+.pagasa-storm-content {
+  margin-top: 12px;
+  padding-top: 10px;
+
+  border-top:
+    1px solid
+    var(--border);
+
+  font-size: 0.8rem;
+  line-height: 1.5;
+
+  color:
+    var(--text-muted);
+}
+
+
+.pagasa-storm-content strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--text);
+
+  font-size: 0.84rem;
+}
+
+
+.pagasa-storm-content p {
+  margin: 0;
+
+  color:
+    var(--text-muted);
+}
+
+
+@media (
+  max-width: 700px
+) {
+
+  .pagasa-storm-panel {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    width: auto;
+
+    max-height: 190px;
+
+    overflow-y: auto;
+  }
+
+}
