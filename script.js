@@ -1178,13 +1178,6 @@ function updateWindGridFromMap() {
     return false;
   }
 
-  // Wind Flow is intended for
-  // detailed regional weather inspection.
-  // At very wide zoom levels, the grid
-  // would become too coarse and misleading.
-  if (zoom < 3) {
-    return false;
-  }
 
   const currentGridKey =
     getWindFlowGridKey();
