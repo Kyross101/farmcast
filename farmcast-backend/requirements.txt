@@ -6,3 +6,4 @@ Pillow
 python-multipart
 requests
 opencv-python-headless
+python-dotenv
