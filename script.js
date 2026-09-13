@@ -1681,6 +1681,52 @@ async function setWindFlowLayer(el) {
       weatherMap
     );
 
+    const windModelInfoWrap =
+      document.getElementById(
+      'windModelInfoWrap'
+    );
+
+    const windModelInfoDetails =
+      document.getElementById(
+      'windModelInfoDetails'
+    );
+
+    const windModelInfoChevron =
+      document.getElementById(
+      'windModelInfoChevron'
+    );
+
+    const windFlowUpdated =
+      document.getElementById(
+      'windFlowUpdated'
+    );
+
+    if (windModelInfoWrap) {
+      windModelInfoWrap.style.display =
+        'block';
+    }
+
+    if (windModelInfoDetails) {
+      windModelInfoDetails.style.display =
+        'none';
+    }
+
+    if (windModelInfoChevron) {
+      windModelInfoChevron.textContent =
+        'expand_more';
+    }
+
+    if (windFlowUpdated) {
+      windFlowUpdated.textContent =
+        `Loaded: ${new Date().toLocaleTimeString(
+          'en-PH',
+          {
+            hour: '2-digit',
+            minute: '2-digit'
+          }
+        )}`;
+    }
+
     windFlowLastGridKey =
       getWindFlowGridKey();
 
