@@ -900,6 +900,16 @@ async function setRadarLayer(el) {
       'none';
   }
 
+  const mapLegend =
+    document.getElementById(
+      'mapLegend'
+    );
+
+  if (mapLegend) {
+    mapLegend.style.display =
+      'block';
+  }
+
 
   if (!weatherMap) return;
 
