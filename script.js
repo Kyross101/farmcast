@@ -1722,33 +1722,6 @@ async function setWindFlowLayer(el) {
   }
 }
 
-const windModelInfoWrap =
-  document.getElementById(
-    'windModelInfoWrap'
-  );
-
-  if (windModelInfoWrap) {
-    windModelInfoWrap.style.display =
-      'block';
-  }
-
-const windFlowUpdated =
-  document.getElementById(
-    'windFlowUpdated'
-  );
-
-
-
-if (windFlowUpdated) {
-  windFlowUpdated.textContent =
-    `Loaded: ${new Date().toLocaleTimeString(
-      'en-PH',
-      {
-        hour: '2-digit',
-        minute: '2-digit'
-      }
-    )}`;
-}
 
 function removeWindFlowLayer() {
   if (
