@@ -1817,6 +1817,9 @@ async function refreshWindFlowLayer() {
       return;
     }
 
+    // saka lang tanggalin ang old layer
+    removeWindFlowLayer();
+
     const {
       points,
       data
