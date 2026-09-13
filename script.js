@@ -1609,6 +1609,8 @@ async function setWindFlowLayer(el) {
       'warn'
     );
 
+    windFlowLoading = false;
+
     return;
   }
 
@@ -1815,6 +1817,7 @@ async function refreshWindFlowLayer() {
         'Wind Flow is available within the Philippines coverage area.',
         'warn'
       );
+      windFlowLoading = false;
 
       return;
     }
@@ -1985,6 +1988,8 @@ function scheduleWindFlowRefresh() {
             'Wind Flow is available within the Philippines coverage area.',
             'warn'
           );
+          windFlowLoading = false;
+
         }
 
         return;
