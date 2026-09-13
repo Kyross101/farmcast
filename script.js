@@ -1163,6 +1163,16 @@ function updateWindGridFromMap() {
   const zoom =
     weatherMap.getZoom();
 
+  const isInsidePhilippinesGrid =
+    center.lat <= 22 &&
+    center.lat >= 4 &&
+    center.lng >= 116 &&
+    center.lng <= 128;
+
+  if (!isInsidePhilippinesGrid) {
+    return false;
+  }
+
   // Wind Flow is intended for
   // detailed regional weather inspection.
   // At very wide zoom levels, the grid
