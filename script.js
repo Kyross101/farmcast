@@ -507,11 +507,7 @@ function initWeatherMap() {
   function syncMapDragging() {
     if (!weatherMap) return;
 
-    if (window.innerWidth <= 768) {
-      weatherMap.dragging.disable();
-    } else {
-      weatherMap.dragging.enable();
-    }
+    weatherMap.dragging.enable();
   }
 
   syncMapDragging();
