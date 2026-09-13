@@ -1206,17 +1206,6 @@ function updateWindGridFromMap() {
 
   // Wider regional window centered on
   // the current map position.
-  let north =
-    center.lat + 20;
-
-  let south =
-    center.lat - 16;
-
-  let west =
-   center.lng - 22;
-
-  let east =
-    center.lng + 32;
 
   // Snap bounds to the 2-degree grid.
   north =
