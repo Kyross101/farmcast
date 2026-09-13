@@ -1354,9 +1354,7 @@ async function fetchWindFlowData() {
     now <
     windFlowApiCooldownUntil
   ) {
-    throw new Error(
-      'Wind data temporarily unavailable. Please wait before refreshing.'
-    );
+    return null;
   }
 
   const timeSinceLastRequest =
