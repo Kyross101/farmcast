@@ -1177,7 +1177,7 @@ function updateWindGridFromMap() {
   // detailed regional weather inspection.
   // At very wide zoom levels, the grid
   // would become too coarse and misleading.
-  if (zoom < 4) {
+  if (zoom < 3) {
     return false;
   }
 
