@@ -1614,6 +1614,13 @@ async function setWindFlowLayer(el) {
     return;
   }
 
+  if (
+    currentMapLayerName !==
+    'wind-flow'
+  ) {
+    return;
+  }
+
   const {
     points,
     data
