@@ -194,12 +194,9 @@ async function fetchPagasaTropicalCycloneBulletins() {
       Number(match[3]);
 
     const stormName =
+      normalizeStormName(
       match[4]
-        .trim()
-        .replace(
-          /[_-]+/g,
-          ' '
-        );
+    );
 
     const dateText =
       match[5];
