@@ -2061,13 +2061,22 @@ async function loadPagasaStormWatch() {
         : '';
 
     content.innerHTML = `
-      <div>
-        <strong>
-          ${escapeAdvisoryHtml(
-            latest.title ||
-            'PAGASA Tropical Cyclone Advisory'
-          )}
-        </strong>
+      <div class="pagasa-storm-active">
+
+      <div class="pagasa-storm-alert-badge">
+        <span class="material-symbols-outlined">
+          cyclone
+        </span>
+
+        PAGASA cyclone advisory found
+      </div>
+
+      <strong>
+        ${escapeAdvisoryHtml(
+          latest.title ||
+          'PAGASA Tropical Cyclone Advisory'
+        )}
+      </strong>
 
         <div class="pagasa-storm-issued">
           Issued: ${issuedText}
