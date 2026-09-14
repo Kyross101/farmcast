@@ -6044,6 +6044,72 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   font-size: 0.68rem;
 }
 
+.pagasa-storm-error {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 10px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(248, 81, 73, 0.08);
+
+  border:
+    1px solid
+    rgba(248, 81, 73, 0.2);
+}
+
+
+.pagasa-storm-error
+.material-symbols-outlined {
+  flex-shrink: 0;
+
+  color:
+    var(--red);
+
+  font-size: 20px;
+}
+
+
+.pagasa-storm-error strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color:
+    var(--text);
+
+  font-size: 0.8rem;
+}
+
+
+.pagasa-storm-error p {
+  margin: 0;
+
+  color:
+    var(--text-muted);
+
+  font-size: 0.74rem;
+
+  line-height: 1.45;
+}
+
+
+.pagasa-storm-error small {
+  display: block;
+
+  margin-top: 6px;
+
+  color:
+    var(--red);
+
+  font-size: 0.68rem;
+}
+
 @media (
   max-width: 700px
 ) {
