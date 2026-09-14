@@ -193,6 +193,15 @@ async function fetchPagasaTropicalCycloneBulletins() {
     const bulletinNumber =
       Number(match[3]);
 
+    if (
+      !Number.isInteger(
+        bulletinNumber
+      ) ||
+      bulletinNumber <= 0
+    ) {
+      continue;
+    }
+
     const stormName =
       normalizeStormName(
       match[4]
