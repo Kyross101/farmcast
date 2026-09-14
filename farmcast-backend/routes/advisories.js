@@ -114,6 +114,96 @@ async function fetchPagasaWeatherAdvisories() {
   );
 }
 
+// ------------------------------------------------------------
+// Read PAGASA Tropical Cyclone Bulletins.
+// Example:
+// TCB#10_francisco.pdf
+// ------------------------------------------------------------
+async function fetchPagasaTropicalCycloneBulletins() {
+  const response =
+    await fetch(
+      PAGASA_TROPICAL_CYCLONE_INDEX,
+      {
+        headers: {
+          'User-Agent':
+            'FarmCast/1.0'
+        }
+      }
+    );
+
+  if (!response.ok) {
+    throw new Error(
+      `PAGASA tropical cyclone source returned HTTP ${response.status}`
+    );
+  }
+
+  const html =
+    await response.text();
+
+  const regex =
+    /<a\s+href="([^"]+\.pdf)"[^>]*>(TCB#(\d+)_([^<]+)\.pdf)<\/a>\s*(\d{2}-[A-Za-z]{3}-\d{4}\s+\d{2}:\d{2})/gi;
+
+  const bulletins = [];
+
+  let match;
+
+  while (
+    (match =
+      regex.exec(html)) !== null
+  ) {
+    const href =
+      match[1];
+
+    const filename =
+      match[2].trim();
+
+    const bulletinNumber =
+      Number(match[3]);
+
+    const stormName =
+      match[4]
+        .trim()
+        .replace(
+          /[_-]+/g,
+          ' '
+        );
+
+    const dateText =
+      match[5];
+
+    const issuedAt =
+      parsePagasaDate(
+        dateText
+      );
+
+    if (!issuedAt) {
+      continue;
+    }
+
+    bulletins.push({
+      filename,
+
+      bulletinNumber,
+
+      stormName,
+
+      issuedAt,
+
+      sourceUrl:
+        new URL(
+          href,
+          PAGASA_TROPICAL_CYCLONE_INDEX
+        ).href
+    });
+  }
+
+  return bulletins.sort(
+    (a, b) =>
+      b.issuedAt -
+      a.issuedAt
+  );
+}
+
 
 // ------------------------------------------------------------
 // GET /api/advisories
