@@ -5978,6 +5978,72 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     rgba(248, 81, 73, 0.45);
 }
 
+.pagasa-storm-empty {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 10px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(63, 185, 80, 0.08);
+
+  border:
+    1px solid
+    rgba(63, 185, 80, 0.18);
+}
+
+
+.pagasa-storm-empty
+.material-symbols-outlined {
+  flex-shrink: 0;
+
+  color:
+    var(--green);
+
+  font-size: 20px;
+}
+
+
+.pagasa-storm-empty strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color:
+    var(--text);
+
+  font-size: 0.8rem;
+}
+
+
+.pagasa-storm-empty p {
+  margin: 0;
+
+  color:
+    var(--text-muted);
+
+  font-size: 0.74rem;
+
+  line-height: 1.45;
+}
+
+
+.pagasa-storm-empty small {
+  display: block;
+
+  margin-top: 6px;
+
+  color:
+    var(--text-dim);
+
+  font-size: 0.68rem;
+}
+
 @media (
   max-width: 700px
 ) {
