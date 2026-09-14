@@ -178,6 +178,9 @@ async function fetchPagasaTropicalCycloneBulletins() {
 
   const bulletins = [];
 
+  const seenBulletins =
+    new Set();
+
   let match;
 
   while (
@@ -189,6 +192,21 @@ async function fetchPagasaTropicalCycloneBulletins() {
 
     const filename =
       match[2].trim();
+
+    const duplicateKey =
+      filename.toLowerCase();
+
+    if (
+      seenBulletins.has(
+        duplicateKey
+      )
+    ) {
+      continue;
+    }
+
+    seenBulletins.add(
+      duplicateKey
+    );
 
     const bulletinNumber =
       Number(match[3]);
