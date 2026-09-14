@@ -1988,6 +1988,12 @@ async function loadPagasaStormWatch() {
           )
         : 'Not available';
 
+    const sourceText =
+      escapeAdvisoryHtml(
+        latest.source ||
+        'DOST-PAGASA'
+      );
+
     content.innerHTML = `
       <div>
         <strong>
@@ -1999,6 +2005,10 @@ async function loadPagasaStormWatch() {
 
         <div class="pagasa-storm-issued">
           Issued: ${issuedText}
+        </div>
+
+        <div class="pagasa-storm-source">
+          Source: ${sourceText}
         </div>
 
         <p>
