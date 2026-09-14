@@ -1994,6 +1994,40 @@ async function loadPagasaStormWatch() {
         'DOST-PAGASA'
       );
 
+    let officialSourceUrl = '';
+
+    if (latest.sourceUrl) {
+      try {
+        const parsedUrl =
+          new URL(latest.sourceUrl);
+
+        const hostname =
+          parsedUrl.hostname
+            .toLowerCase();
+
+        const isPagasaDomain =
+          hostname ===
+            'pagasa.dost.gov.ph' ||
+          hostname.endsWith(
+            '.pagasa.dost.gov.ph'
+          );
+
+        if (
+          parsedUrl.protocol ===
+            'https:' &&
+          isPagasaDomain
+        ) {
+          officialSourceUrl =
+            parsedUrl.href;
+        }
+      } catch (error) {
+        console.warn(
+          'Invalid PAGASA source URL:',
+          error
+        );
+      }
+    }
+
     content.innerHTML = `
       <div>
         <strong>
