@@ -1969,6 +1969,25 @@ async function loadPagasaStormWatch() {
     const latest =
       stormAdvisories[0];
 
+    const issuedDate =
+      latest.issuedAt
+        ? new Date(latest.issuedAt)
+        : null;
+
+    const issuedText =
+      issuedDate &&
+      !Number.isNaN(
+        issuedDate.getTime()
+      )
+        ? issuedDate.toLocaleString(
+            'en-PH',
+            {
+              dateStyle: 'medium',
+              timeStyle: 'short'
+            }
+          )
+        : 'Not available';
+
     content.innerHTML = `
       <div>
         <strong>
@@ -1977,6 +1996,10 @@ async function loadPagasaStormWatch() {
             'PAGASA Tropical Cyclone Advisory'
           )}
         </strong>
+
+        <div class="pagasa-storm-issued">
+          Issued: ${issuedText}
+        </div>
 
         <p>
           ${escapeAdvisoryHtml(
