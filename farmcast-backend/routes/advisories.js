@@ -204,6 +204,57 @@ async function fetchPagasaTropicalCycloneBulletins() {
   );
 }
 
+// ------------------------------------------------------------
+// Keep only recent bulletins and the latest bulletin
+// for each tropical cyclone.
+// ------------------------------------------------------------
+function getRecentLatestCycloneBulletins(
+  bulletins
+) {
+  const now =
+    Date.now();
+
+  const latestByStorm =
+    new Map();
+
+  for (
+    const bulletin of bulletins
+  ) {
+    const age =
+      now -
+      bulletin.issuedAt.getTime();
+
+    if (
+      age < 0 ||
+      age > RECENT_WINDOW_MS
+    ) {
+      continue;
+    }
+
+    const stormKey =
+      bulletin.stormName
+        .trim()
+        .toLowerCase();
+
+    if (
+      !stormKey ||
+      latestByStorm.has(
+        stormKey
+      )
+    ) {
+      continue;
+    }
+
+    latestByStorm.set(
+      stormKey,
+      bulletin
+    );
+  }
+
+  return Array.from(
+    latestByStorm.values()
+  );
+}
 
 // ------------------------------------------------------------
 // GET /api/advisories
