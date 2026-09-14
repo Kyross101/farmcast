@@ -4,6 +4,9 @@ const router = express.Router();
 const PAGASA_ADVISORY_INDEX =
   'https://pubfiles.pagasa.dost.gov.ph/tamss/weather/weather_advisory/';
 
+const PAGASA_TROPICAL_CYCLONE_INDEX =
+  'https://pubfiles.pagasa.dost.gov.ph/tamss/weather/bulletin/';
+
 // How recent an advisory document must be before FarmCast displays it.
 // This is a FarmCast recency window, not PAGASA's official validity period.
 const RECENT_WINDOW_MS = 24 * 60 * 60 * 1000;
