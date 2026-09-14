@@ -2020,6 +2020,25 @@ async function loadPagasaStormWatch() {
           )}`
         : 'Tropical Cyclone Bulletin';
 
+    const rawLocation =
+      String(
+        latest.location || ''
+      ).trim();
+
+    const hasMeaningfulLocation =
+      rawLocation &&
+      rawLocation.toLowerCase() !==
+        'see official bulletin for affected areas' &&
+      rawLocation.toLowerCase() !==
+        'see official advisory for affected areas';
+
+    const affectedAreaText =
+      hasMeaningfulLocation
+        ? escapeAdvisoryHtml(
+            rawLocation
+          )
+        : '';
+
     let officialSourceUrl = '';
 
     if (latest.sourceUrl) {
