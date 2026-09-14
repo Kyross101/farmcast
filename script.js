@@ -2015,6 +2015,13 @@ async function refreshWindFlowLayer() {
       return;
     }
 
+    if (
+      currentMapLayerName !==
+      'wind-flow'
+    ) {
+      return;
+    }   
+
     // saka lang tanggalin ang old layer
     removeWindFlowLayer();
 
