@@ -56,6 +56,39 @@ function parsePagasaDate(value) {
     : date;
 }
 
+// ------------------------------------------------------------
+// Clean storm names taken from PAGASA bulletin filenames.
+// ------------------------------------------------------------
+function normalizeStormName(
+  rawName
+) {
+  let name =
+    String(
+      rawName || ''
+    ).trim();
+
+  try {
+    name =
+      decodeURIComponent(
+        name
+      );
+  } catch (error) {
+    // Keep the original text if
+    // URL decoding is not possible.
+  }
+
+  return name
+    .replace(
+      /[_-]+/g,
+      ' '
+    )
+    .replace(
+      /\s+/g,
+      ' '
+    )
+    .trim();
+}
+
 
 // ------------------------------------------------------------
 // Read PAGASA's official public advisory directory.
