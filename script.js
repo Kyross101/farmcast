@@ -2039,6 +2039,24 @@ async function loadPagasaStormWatch() {
           )
         : '';
 
+    const affectedAreaHtml =
+      affectedAreaText
+        ? `
+          <div class="pagasa-storm-area">
+            <span class="material-symbols-outlined">
+              location_on
+            </span>
+
+            <span>
+              Affected area:
+              <strong>
+                ${affectedAreaText}
+              </strong>
+            </span>
+          </div>
+        `
+        : '';
+
     let officialSourceUrl = '';
 
     if (latest.sourceUrl) {
@@ -2122,6 +2140,8 @@ async function loadPagasaStormWatch() {
         <div class="pagasa-storm-source">
           Source: ${sourceText}
         </div>
+
+        ${affectedAreaHtml}
 
         <p>
           ${escapeAdvisoryHtml(
