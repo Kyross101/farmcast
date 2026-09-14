@@ -2095,11 +2095,29 @@ async function loadPagasaStormWatch() {
     );
 
     content.innerHTML = `
-      <div>
-        Unable to load PAGASA storm information.
+      <div class="pagasa-storm-error">
+        <span class="material-symbols-outlined">
+          warning
+        </span>
+
+        <div>
+          <strong>
+            PAGASA information unavailable
+          </strong>
+
+          <p>
+            FarmCast could not load the latest
+            storm advisory information right now.
+          </p>
+
+          <small>
+            Please try again later.
+          </small>
+        </div>
       </div>
     `;
   }
+
 }
 
 async function refreshWindFlowLayer() {
