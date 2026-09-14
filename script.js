@@ -2005,6 +2005,21 @@ async function loadPagasaStormWatch() {
         'DOST-PAGASA'
       );
 
+    const stormNameText =
+      escapeAdvisoryHtml(
+        latest.stormName ||
+        'Unnamed cyclone'
+      );
+
+    const bulletinNumberText =
+      Number.isFinite(
+        Number(latest.bulletinNumber)
+      )
+        ? `Bulletin #${Number(
+            latest.bulletinNumber
+          )}`
+        : 'Tropical Cyclone Bulletin';
+
     let officialSourceUrl = '';
 
     if (latest.sourceUrl) {
@@ -2064,6 +2079,14 @@ async function loadPagasaStormWatch() {
         </span>
 
         PAGASA cyclone advisory found
+      </div>
+
+      <div class="pagasa-storm-name">
+        ${stormNameText}
+      </div>
+
+      <div class="pagasa-storm-bulletin">
+        ${bulletinNumberText}
       </div>
 
       <strong>
