@@ -2028,6 +2028,22 @@ async function loadPagasaStormWatch() {
       }
     }
 
+    const officialLinkHtml =
+      officialSourceUrl
+        ? `
+          <a
+            class="pagasa-storm-link"
+            href="${escapeAdvisoryHtml(
+              officialSourceUrl
+            )}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View official PAGASA advisory
+          </a>
+        `
+        : '';
+
     content.innerHTML = `
       <div>
         <strong>
@@ -2051,6 +2067,8 @@ async function loadPagasaStormWatch() {
             'See the official PAGASA advisory for details.'
           )}
         </p>
+        
+        ${officialLinkHtml}
       </div>
     `;
 
