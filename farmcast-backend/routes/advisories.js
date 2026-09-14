@@ -312,6 +312,49 @@ router.get('/', async (req, res) => {
       documentName: file.filename
     }));
 
+    const cycloneAdvisories =
+      cycloneBulletins.map(
+        bulletin => ({
+          id:
+            `pagasa-tcb-${bulletin.filename}-${bulletin.issuedAt.getTime()}`,
+
+          source:
+            'DOST-PAGASA',
+
+          type:
+            'tropical-cyclone-bulletin',
+
+          title:
+            `Tropical Cyclone Bulletin #${bulletin.bulletinNumber} — ${bulletin.stormName.toUpperCase()}`,
+
+          message:
+            `DOST-PAGASA has published Tropical Cyclone Bulletin #${bulletin.bulletinNumber} for ${bulletin.stormName.toUpperCase()}. Open the official bulletin for complete storm details.`,
+
+          location:
+            'See official bulletin for affected areas',
+
+          issuedAt:
+            bulletin.issuedAt.toISOString(),
+
+          validUntil:
+            null,
+
+          sourceUrl:
+            bulletin.sourceUrl,
+
+          documentName:
+            bulletin.filename,
+
+          stormName:
+            bulletin.stormName,
+
+          bulletinNumber:
+            bulletin.bulletinNumber
+        })
+      );
+
+
+
     res.json({
       success: true,
 
