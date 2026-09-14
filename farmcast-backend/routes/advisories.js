@@ -198,6 +198,13 @@ async function fetchPagasaTropicalCycloneBulletins() {
       match[4]
     );
 
+    if (
+      !stormName ||
+      stormName.length < 2
+    ) {
+      continue;
+    }
+
     const dateText =
       match[5];
 
