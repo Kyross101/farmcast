@@ -1923,16 +1923,37 @@ async function loadPagasaStormWatch() {
     ];
 
     const stormAdvisories =
-      advisories.filter(advisory => {
-        const text =
-          `${advisory.title || ''} ${advisory.message || ''}`
-            .toLowerCase();
+      advisories
+        .filter(advisory => {
+          const text =
+            `${advisory.title || ''} ${advisory.message || ''}`
+              .toLowerCase();
 
-        return stormKeywords.some(
-          keyword =>
-            text.includes(keyword)
-        );
-      });
+          return stormKeywords.some(
+            keyword =>
+              text.includes(keyword)
+          );
+        })
+        .sort((a, b) => {
+          const aTime =
+            new Date(
+              a.issuedAt || 0
+            ).getTime();
+
+          const bTime =
+            new Date(
+              b.issuedAt || 0
+            ).getTime();
+
+          return (
+            (Number.isFinite(bTime)
+              ? bTime
+              : 0) -
+            (Number.isFinite(aTime)
+              ? aTime
+              : 0)
+            );
+          });
 
     if (!stormAdvisories.length) {
       content.innerHTML = `
