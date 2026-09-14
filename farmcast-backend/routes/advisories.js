@@ -353,7 +353,31 @@ router.get('/', async (req, res) => {
         })
       );
 
+    
 
+    const combinedAdvisories = [
+      ...cycloneAdvisories,
+      ...advisories
+    ].sort((a, b) => {
+      const aTime =
+        new Date(
+          a.issuedAt || 0
+        ).getTime();
+
+      const bTime =
+        new Date(
+          b.issuedAt || 0
+        ).getTime();
+
+      return (
+        (Number.isFinite(bTime)
+          ? bTime
+          : 0) -
+        (Number.isFinite(aTime)
+          ? aTime
+          : 0)
+      );
+    });
 
     res.json({
       success: true,
@@ -362,9 +386,9 @@ router.get('/', async (req, res) => {
 
       sourceType: 'official-public-files',
 
-      count: advisories.length,
+      count: combinedAdvisories.length,
 
-      advisories
+      advisories: combinedAdvisories
     });
 
   } catch (error) {
