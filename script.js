@@ -1957,9 +1957,25 @@ async function loadPagasaStormWatch() {
 
     if (!stormAdvisories.length) {
       content.innerHTML = `
-        <div>
-          No recent tropical cyclone advisory
-          was found in the current PAGASA feed.
+        <div class="pagasa-storm-empty">
+          <span class="material-symbols-outlined">
+            verified
+          </span>
+
+          <div>
+            <strong>
+              No recent cyclone advisory found
+            </strong>
+
+            <p>
+              No recent tropical cyclone advisory
+              was found in the current PAGASA feed.
+            </p>
+
+            <small>
+              Source: DOST-PAGASA
+            </small>
+          </div>
         </div>
       `;
 
@@ -2067,7 +2083,7 @@ async function loadPagasaStormWatch() {
             'See the official PAGASA advisory for details.'
           )}
         </p>
-        
+
         ${officialLinkHtml}
       </div>
     `;
