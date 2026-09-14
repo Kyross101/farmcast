@@ -1924,16 +1924,11 @@ async function loadPagasaStormWatch() {
 
     const stormAdvisories =
       advisories
-        .filter(advisory => {
-          const text =
-            `${advisory.title || ''} ${advisory.message || ''}`
-              .toLowerCase();
-
-          return stormKeywords.some(
-            keyword =>
-              text.includes(keyword)
-          );
-        })
+        .filter(
+          advisory =>
+            advisory.type ===
+            'tropical-cyclone-bulletin'
+        )
         .sort((a, b) => {
           const aTime =
             new Date(
