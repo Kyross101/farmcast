@@ -342,8 +342,17 @@ function getRecentLatestCycloneBulletins(
 // ------------------------------------------------------------
 router.get('/', async (req, res) => {
   try {
-    const files =
-      await fetchPagasaWeatherAdvisories();
+    let files = [];
+
+    try {
+      files =
+        await fetchPagasaWeatherAdvisories();
+    } catch (advisoryError) {
+      console.error(
+        'PAGASA weather advisory source error:',
+        advisoryError.message
+      );
+    }
 
     let cycloneBulletins = [];
 
