@@ -1913,14 +1913,7 @@ async function loadPagasaStormWatch() {
         ? data.advisories
         : [];
 
-    const stormKeywords = [
-      'tropical cyclone',
-      'typhoon',
-      'tropical storm',
-      'severe tropical storm',
-      'tropical depression',
-      'cyclone'
-    ];
+    
 
     const stormAdvisories =
       advisories
