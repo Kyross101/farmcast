@@ -6123,6 +6123,60 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   font-weight: 700;
 }
 
+.pagasa-storm-secondary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  min-width: 0;
+}
+
+.pagasa-storm-secondary-info strong {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pagasa-storm-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  padding: 5px 7px;
+
+  border-radius: 6px;
+
+  border:
+    1px solid
+    rgba(88, 166, 255, 0.22);
+
+  background:
+    rgba(88, 166, 255, 0.08);
+
+  color:
+    var(--blue);
+
+  font-size: 0.62rem;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.pagasa-storm-secondary-link:hover {
+  background:
+    rgba(88, 166, 255, 0.14);
+
+  border-color:
+    rgba(88, 166, 255, 0.35);
+}
+
 .pagasa-storm-source {
   margin-bottom: 10px;
 }
