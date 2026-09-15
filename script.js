@@ -2004,50 +2004,50 @@ async function loadPagasaStormWatch() {
         issuedDate.getTime()
       )
     ) {
-    const ageMs =
-      Date.now() -
-      issuedDate.getTime();
+      const ageMs =
+        Date.now() -
+        issuedDate.getTime();
 
-    if (ageMs >= 0) {
-      const ageMinutes =
-        Math.floor(
-          ageMs / 60000
-        );
+      if (ageMs >= 0) {
+        const ageMinutes =
+          Math.floor(
+            ageMs / 60000
+          );
 
-    if (ageMinutes < 2) {
-      freshnessText =
-        'Updated just now';
+        if (ageMinutes < 2) {
+          freshnessText =
+            'Updated just now';
 
-      freshnessClass =
-        'fresh';
-    } else if (
-      ageMinutes < 60
-    ) {
-      freshnessText =
-        `Updated ${ageMinutes} minutes ago`;
+          freshnessClass =
+            'fresh';
+        } else if (
+          ageMinutes < 60
+        ) {
+          freshnessText =
+            `Updated ${ageMinutes} minutes ago`;
 
-      freshnessClass =
-        'fresh';
-    } else {
-      const ageHours =
-        Math.floor(
-          ageMinutes / 60
-        );
+          freshnessClass =
+            'fresh';
+        } else {
+          const ageHours =
+            Math.floor(
+              ageMinutes / 60
+            );
 
-      freshnessText =
-        `Updated ${ageHours} ${
-          ageHours === 1
-            ? 'hour'
-            : 'hours'
-        } ago`;
+          freshnessText =
+            `Updated ${ageHours} ${
+              ageHours === 1
+                ? 'hour'
+                : 'hours'
+            } ago`;
 
-      freshnessClass =
-         ageHours < 6
-           ? 'fresh'
-           : ageHours < 12
-             ? 'moderate'
-             : 'older';
-    }
+          freshnessClass =
+            ageHours < 6
+             ? 'fresh'
+             : ageHours < 12
+               ? 'moderate'
+               : 'older';
+        }
 
 
       freshnessText =
