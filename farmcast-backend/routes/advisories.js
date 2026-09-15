@@ -408,7 +408,7 @@ router.get('/', async (req, res) => {
             `Tropical Cyclone Bulletin #${bulletin.bulletinNumber} — ${bulletin.stormName.toUpperCase()}`,
 
           message:
-            `DOST-PAGASA has published Tropical Cyclone Bulletin #${bulletin.bulletinNumber} for ${bulletin.stormName.toUpperCase()}. Open the official bulletin for complete storm details.`,
+            'Open the official DOST-PAGASA bulletin for complete storm details, warnings, and affected areas.',
 
           location:
             'See official bulletin for affected areas',

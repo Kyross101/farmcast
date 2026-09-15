@@ -2095,7 +2095,7 @@ async function loadPagasaStormWatch() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            View official PAGASA advisory
+            View official PAGASA bulletin
           </a>
         `
         : '';
