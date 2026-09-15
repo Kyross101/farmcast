@@ -9,7 +9,8 @@ const PAGASA_TROPICAL_CYCLONE_INDEX =
 
 // How recent an advisory document must be before FarmCast displays it.
 // This is a FarmCast recency window, not PAGASA's official validity period.
-const RECENT_WINDOW_MS = 24 * 60 * 60 * 1000;
+const FARMCAST_RECENT_WINDOW_MS =
+  24 * 60 * 60 * 1000;
 
 
 // ------------------------------------------------------------
@@ -306,7 +307,7 @@ function getRecentLatestCycloneBulletins(
 
     if (
       age < 0 ||
-      age > RECENT_WINDOW_MS
+      age > FARMCAST_RECENT_WINDOW_MS
     ) {
       continue;
     }
@@ -367,7 +368,7 @@ router.get('/', async (req, res) => {
 
       return (
         age >= 0 &&
-        age <= RECENT_WINDOW_MS
+        age <= FARMCAST_RECENT_WINDOW_MS
       );
     });
 

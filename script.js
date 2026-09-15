@@ -1993,7 +1993,7 @@ async function loadPagasaStormWatch() {
         : 'Not available';
 
     let freshnessText =
-      'Freshness unavailable';
+      'Bulletin freshness unavailable';
 
     let freshnessClass =
       'unknown';
