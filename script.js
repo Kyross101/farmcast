@@ -2040,15 +2040,68 @@ async function loadPagasaStormWatch() {
                 )}`
               : 'Tropical Cyclone Bulletin';
 
+          let officialBulletinUrl = '';
+
+          if (advisory.sourceUrl) {
+            try {
+              const parsedUrl =
+                new URL(
+                  advisory.sourceUrl
+                );
+
+              const hostname =
+                parsedUrl.hostname
+                  .toLowerCase();
+
+              const isPagasaDomain =
+                hostname ===
+                  'pagasa.dost.gov.ph' ||
+                hostname.endsWith(
+                  '.pagasa.dost.gov.ph'
+                );
+
+              if (
+                parsedUrl.protocol ===
+                  'https:' &&
+                isPagasaDomain
+              ) {
+                officialBulletinUrl =
+                  parsedUrl.href;
+              }
+            } catch {
+              officialBulletinUrl = '';
+            }
+          }
+
+          const bulletinLinkHtml =
+            officialBulletinUrl
+              ? `
+                <a
+                  class="pagasa-storm-secondary-link"
+                  href="${escapeAdvisoryHtml(
+                    officialBulletinUrl
+                  )}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open official bulletin
+                </a>
+              `
+              : '';
+
           return `
             <div class="pagasa-storm-secondary-item">
-              <strong>
-                ${stormName}
-              </strong>
+              <div class="pagasa-storm-secondary-info">
+                <strong>
+                  ${stormName}
+                </strong>
 
-              <span>
-                ${bulletinNumber}
-              </span>
+                <span>
+                  ${bulletinNumber}
+                </span>
+              </div>
+
+              ${bulletinLinkHtml}
             </div>
           `;
         })
