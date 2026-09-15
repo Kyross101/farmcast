@@ -4978,6 +4978,60 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 }
 
 
+.official-advisory-partial {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin-bottom: 12px;
+  padding: 10px 12px;
+
+  border-radius: 10px;
+
+  background:
+    rgba(88, 166, 255, 0.07);
+
+  border:
+    1px solid
+    rgba(88, 166, 255, 0.18);
+
+  color:
+    var(--text-muted);
+}
+
+.official-advisory-partial
+.material-symbols-outlined {
+  flex-shrink: 0;
+
+  margin-top: 1px;
+
+  font-size: 18px;
+
+  color:
+    var(--blue);
+}
+
+.official-advisory-partial strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color:
+    var(--text);
+
+  font-size: 0.78rem;
+}
+
+.official-advisory-partial p {
+  margin: 0;
+
+  color:
+    var(--text-muted);
+
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
 /* EMPTY STATE */
 
 .official-advisory-empty {
