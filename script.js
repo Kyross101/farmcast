@@ -2286,7 +2286,19 @@ const sourceText =
           additionalStormsText
             ? `
               <div class="pagasa-storm-additional">
-                ${additionalStormsText}
+                <div class="pagasa-storm-additional-count">
+                  ${additionalStormsText}
+                </div>
+
+                ${
+                  additionalStormsHtml
+                    ? `
+                      <div class="pagasa-storm-secondary-list">
+                        ${additionalStormsHtml}
+                      </div>
+                    `
+                    : ''
+                }
               </div>
             `
             : ''
