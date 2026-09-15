@@ -1992,6 +1992,49 @@ async function loadPagasaStormWatch() {
           )
         : 'Not available';
 
+    let freshnessText =
+      'Freshness unavailable';
+
+    if (
+      issuedDate &&
+      !Number.isNaN(
+        issuedDate.getTime()
+      )
+    ) {
+    const ageMs =
+      Date.now() -
+      issuedDate.getTime();
+
+    if (ageMs >= 0) {
+      const ageMinutes =
+        Math.floor(
+          ageMs / 60000
+        );
+
+    if (ageMinutes < 2) {
+      freshnessText =
+        'Updated just now';
+    } else if (
+      ageMinutes < 60
+    ) {
+      freshnessText =
+        `Updated ${ageMinutes} minutes ago`;
+    } else {
+      const ageHours =
+        Math.floor(
+          ageMinutes / 60
+        );
+
+      freshnessText =
+        `Updated ${ageHours} ${
+          ageHours === 1
+            ? 'hour'
+            : 'hours'
+        } ago`;
+    }
+  }
+}
+
     const sourceText =
       escapeAdvisoryHtml(
         latest.source ||
@@ -2122,6 +2165,10 @@ async function loadPagasaStormWatch() {
 
         <div class="pagasa-storm-issued">
           Issued: ${issuedText}
+        </div>
+
+        <div class="pagasa-storm-freshness">
+          ${freshnessText}
         </div>
 
         <div class="pagasa-storm-source">
