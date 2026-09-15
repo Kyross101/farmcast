@@ -2019,6 +2019,41 @@ async function loadPagasaStormWatch() {
           } available`
         : '';
 
+    const additionalStormsHtml =
+      stormAdvisories
+        .slice(1)
+        .map(advisory => {
+          const stormName =
+            escapeAdvisoryHtml(
+              advisory.stormName ||
+              'Unnamed cyclone'
+            );
+
+          const bulletinNumber =
+            Number.isFinite(
+              Number(
+                advisory.bulletinNumber
+              )
+            )
+              ? `Bulletin #${Number(
+                  advisory.bulletinNumber
+                )}`
+              : 'Tropical Cyclone Bulletin';
+
+          return `
+            <div class="pagasa-storm-secondary-item">
+              <strong>
+                ${stormName}
+              </strong>
+
+              <span>
+                ${bulletinNumber}
+              </span>
+            </div>
+          `;
+        })
+        .join('');
+
     const issuedDate =
       latest.issuedAt
         ? new Date(latest.issuedAt)
