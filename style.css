@@ -6048,6 +6048,19 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     var(--text-dim);
 }
 
+.pagasa-storm-freshness-note {
+  margin-top: -4px;
+  margin-bottom: 10px;
+
+  color:
+    var(--text-dim);
+
+  font-size: 0.61rem;
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
 .pagasa-storm-additional {
   margin-bottom: 10px;
 
