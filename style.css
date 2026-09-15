@@ -5994,6 +5994,28 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     var(--text-dim);
 }
 
+.pagasa-storm-additional {
+  margin-bottom: 10px;
+
+  padding: 7px 8px;
+
+  border-radius: 8px;
+
+  background:
+    rgba(88, 166, 255, 0.07);
+
+  border:
+    1px solid
+    rgba(88, 166, 255, 0.18);
+
+  color:
+    var(--text-muted);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 .pagasa-storm-source {
   margin-bottom: 10px;
 }
