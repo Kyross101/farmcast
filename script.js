@@ -1913,7 +1913,10 @@ async function loadPagasaStormWatch() {
         ? data.advisories
         : [];
 
-    
+    const cycloneSourceAvailable =
+      data?.sources
+        ?.tropicalCycloneBulletins ===
+      true;
 
     const stormAdvisories =
       advisories
@@ -1942,6 +1945,34 @@ async function loadPagasaStormWatch() {
               : 0)
             );
           });
+
+    if (!cycloneSourceAvailable) {
+      content.innerHTML = `
+        <div class="pagasa-storm-error">
+          <span class="material-symbols-outlined">
+            cloud_off
+          </span>
+
+          <div>
+            <strong>
+              PAGASA cyclone bulletin source unavailable
+            </strong>
+
+            <p>
+              FarmCast could not reach the official
+              tropical cyclone bulletin source.
+              Please try again later.
+            </p>
+
+            <small>
+              Source: DOST-PAGASA
+            </small>
+          </div>
+        </div>
+      `;
+
+      return;
+    }
 
     if (!stormAdvisories.length) {
       content.innerHTML = `
