@@ -6201,6 +6201,24 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     var(--text-dim);
 }
 
+.pagasa-storm-secondary-note {
+  margin-top: 8px;
+
+  padding-top: 7px;
+
+  border-top:
+    1px solid
+    var(--border);
+
+  color:
+    var(--text-dim);
+
+  font-size: 0.6rem;
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
 .pagasa-storm-secondary-info {
   display: flex;
   flex-direction: column;
