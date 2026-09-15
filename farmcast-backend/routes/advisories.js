@@ -342,26 +342,28 @@ function getRecentLatestCycloneBulletins(
 // ------------------------------------------------------------
 router.get('/', async (req, res) => {
   try {
-    const files = await fetchPagasaWeatherAdvisories();
+    const files =
+      await fetchPagasaWeatherAdvisories();
 
     let cycloneBulletins = [];
 
-  try {
-    const allCycloneBulletins =
-      await fetchPagasaTropicalCycloneBulletins();
+    try {
+      const allCycloneBulletins =
+        await fetchPagasaTropicalCycloneBulletins();
 
-    cycloneBulletins =
-      getRecentLatestCycloneBulletins(
-        allCycloneBulletins
+      cycloneBulletins =
+        getRecentLatestCycloneBulletins(
+          allCycloneBulletins
+        );
+    } catch (cycloneError) {
+      console.error(
+        'PAGASA tropical cyclone source error:',
+        cycloneError.message
       );
-  } catch (cycloneError) {
-    console.error(
-      'PAGASA tropical cyclone source error:',
-      cycloneError.message
-    );
-  }
+    }
 
-    const now = Date.now();
+    const now =
+      Date.now();
 
     const recentFiles = files.filter(file => {
       const age = now - file.issuedAt.getTime();
