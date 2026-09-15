@@ -1972,6 +1972,21 @@ async function loadPagasaStormWatch() {
 
     const latest =
       stormAdvisories[0];
+    
+    const additionalStormCount =
+      Math.max(
+        0,
+        stormAdvisories.length - 1
+      );
+
+    const additionalStormsText =
+      additionalStormCount > 0
+        ? `+${additionalStormCount} other recent ${
+            additionalStormCount === 1
+              ? 'cyclone bulletin'
+              : 'cyclone bulletins'
+          } available`
+        : '';
 
     const issuedDate =
       latest.issuedAt
