@@ -2073,6 +2073,53 @@ async function loadPagasaStormWatch() {
                 )
             : 'Issuance time unavailable';
 
+          let secondaryFreshnessText =
+            'Freshness unavailable';
+
+          let secondaryFreshnessClass =
+            'unknown';
+
+          if (
+            secondaryIssuedDate &&
+            !Number.isNaN(
+              secondaryIssuedDate.getTime()
+            )
+          ) {
+            const secondaryAgeMs =
+              Date.now() -
+              secondaryIssuedDate.getTime();
+
+            if (secondaryAgeMs >= 0) {
+              const secondaryAgeHours =
+                Math.floor(
+                  secondaryAgeMs /
+                  3600000
+                );
+
+              if (secondaryAgeHours < 6) {
+                secondaryFreshnessText =
+                  'Fresh bulletin';
+
+                secondaryFreshnessClass =
+                  'fresh';
+              } else if (
+                secondaryAgeHours < 12
+              ) {
+                secondaryFreshnessText =
+                  'Recent bulletin';
+
+                secondaryFreshnessClass =
+                  'moderate';
+              } else {
+                secondaryFreshnessText =
+                  'Older bulletin';
+
+                secondaryFreshnessClass =
+                  'older';
+              }
+            }
+          }
+
           let officialBulletinUrl = '';
 
           if (advisory.sourceUrl) {
@@ -2136,6 +2183,13 @@ async function loadPagasaStormWatch() {
                 <small class="pagasa-storm-secondary-issued">
                   Issued: ${secondaryIssuedText}
                 </small>
+
+                <div
+                  class="pagasa-storm-secondary-freshness ${secondaryFreshnessClass}"
+                >
+                  ${secondaryFreshnessText}
+                </div>
+
               </div>
 
               ${bulletinLinkHtml}
