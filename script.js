@@ -2235,6 +2235,16 @@ async function loadPagasaStormWatch() {
           ${freshnessText}
         </div>
 
+        ${
+          additionalStormsText
+            ? `
+              <div class="pagasa-storm-additional">
+                ${additionalStormsText}
+              </div>
+            `
+            : ''
+        }
+
         <div class="pagasa-storm-source">
           Source: ${sourceText}
         </div>
