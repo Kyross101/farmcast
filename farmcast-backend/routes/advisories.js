@@ -209,8 +209,8 @@ async function fetchPagasaTropicalCycloneBulletins() {
 
     const stormName =
       normalizeStormName(
-      match[4]
-    );
+        match[4]
+      );
 
     if (
       !stormName ||
