@@ -6293,6 +6293,44 @@ async function loadOfficialAdvisories() {
     }
 
     renderOfficialAdvisories(advisories);
+
+    if (
+      weatherAdvisorySourceAvailable ===
+        false &&
+      advisories.length > 0
+    ) {
+      const container =
+        document.getElementById(
+          'officialAdvisoryList'
+        );
+
+      if (container) {
+        container.insertAdjacentHTML(
+          'afterbegin',
+          `
+            <div class="official-advisory-partial">
+              <span class="material-symbols-outlined">
+                info
+              </span>
+
+              <div>
+                <strong>
+                  Partial PAGASA feed available
+                </strong>
+
+                <p>
+                  Some official weather advisory data
+                  is temporarily unavailable.
+                  Available cyclone bulletins are still
+                  shown below.
+                </p>
+              </div>
+            </div>
+          `
+        );
+      }
+    }
+
     notifyNewOfficialAdvisories(advisories);
 
   } catch (error) {
