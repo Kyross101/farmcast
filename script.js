@@ -6251,6 +6251,47 @@ async function loadOfficialAdvisories() {
       ? data.advisories
       : [];
 
+    const weatherAdvisorySourceAvailable =
+      data?.sources
+        ?.weatherAdvisories;
+
+    if (
+      weatherAdvisorySourceAvailable ===
+        false &&
+      advisories.length === 0
+    ) {
+      const container =
+        document.getElementById(
+          'officialAdvisoryList'
+        );
+
+      if (container) {
+        container.innerHTML = `
+          <div class="official-advisory-empty">
+            <div class="official-advisory-empty-icon">
+              <span class="material-symbols-outlined">
+                cloud_off
+              </span>
+            </div>
+
+            <div>
+              <strong>
+                PAGASA weather advisory source unavailable
+              </strong>
+
+              <p>
+                FarmCast could not reach the official
+                DOST-PAGASA weather advisory source.
+                Please try again later.
+              </p>
+            </div>
+          </div>
+        `;
+      }
+
+      return;
+    }
+
     renderOfficialAdvisories(advisories);
     notifyNewOfficialAdvisories(advisories);
 
