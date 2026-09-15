@@ -2447,12 +2447,6 @@ const sourceText =
                         ${additionalStormsHtml}
                       </div>
 
-                      <div class="pagasa-storm-secondary-note">
-                        FarmCast freshness labels show
-                        bulletin age only, not cyclone
-                        severity or warning level.
-                      </div>
-
                     `
                     : ''
                 }
