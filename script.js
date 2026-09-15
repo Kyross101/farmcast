@@ -2014,8 +2014,8 @@ async function loadPagasaStormWatch() {
       additionalStormCount > 0
         ? `+${additionalStormCount} other recent ${
             additionalStormCount === 1
-              ? 'cyclone bulletin'
-              : 'cyclone bulletins'
+              ? 'cyclone'
+              : 'cyclones'
           } available`
         : '';
 
