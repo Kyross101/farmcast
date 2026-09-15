@@ -72,10 +72,10 @@ function normalizeStormName(
       decodeURIComponent(
         name
       );
-  } catch (error) {
-    // Keep the original text if
-    // URL decoding is not possible.
-  }
+  } catch {
+  // Keep the original text if
+  // URL decoding is not possible.
+}
 
   return name
     .replace(
