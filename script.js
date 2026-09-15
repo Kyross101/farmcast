@@ -2066,9 +2066,9 @@ async function loadPagasaStormWatch() {
             ? 'hour'
             : 'hours'
         } ago`;
-    }
-  }
-}
+          }
+        }
+
 
     const sourceText =
       escapeAdvisoryHtml(
