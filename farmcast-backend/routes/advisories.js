@@ -193,20 +193,6 @@ async function fetchPagasaTropicalCycloneBulletins() {
     const filename =
       match[2].trim();
 
-    const duplicateKey =
-      filename.toLowerCase();
-
-    if (
-      seenBulletins.has(
-        duplicateKey
-      )
-    ) {
-      continue;
-    }
-
-    seenBulletins.add(
-      duplicateKey
-    );
 
     const bulletinNumber =
       Number(match[3]);
@@ -231,6 +217,21 @@ async function fetchPagasaTropicalCycloneBulletins() {
     ) {
       continue;
     }
+
+    const duplicateKey =
+      `${stormName.toLowerCase()}::${bulletinNumber}`;
+
+    if (
+      seenBulletins.has(
+        duplicateKey
+      )
+    ) {
+      continue;
+    }
+
+    seenBulletins.add(
+      duplicateKey
+    );
 
     const dateText =
       match[5];
@@ -262,9 +263,20 @@ async function fetchPagasaTropicalCycloneBulletins() {
   }
 
   return bulletins.sort(
-    (a, b) =>
-      b.issuedAt -
-      a.issuedAt
+    (a, b) => {
+      const timeDiff =
+        b.issuedAt -
+        a.issuedAt;
+
+      if (timeDiff !== 0) {
+        return timeDiff;
+      }
+
+      return (
+        b.bulletinNumber -
+        a.bulletinNumber
+      );
+    }
   );
 }
 
