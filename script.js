@@ -2040,6 +2040,39 @@ async function loadPagasaStormWatch() {
                 )}`
               : 'Tropical Cyclone Bulletin';
 
+          const secondaryIssuedDate =
+            advisory.issuedAt
+              ? new Date(
+                  advisory.issuedAt
+                )
+              : null;
+
+          const secondaryIssuedText =
+            secondaryIssuedDate &&
+            !Number.isNaN(
+              secondaryIssuedDate.getTime()
+            )
+              ? secondaryIssuedDate
+                .toLocaleString(
+                  'en-PH',
+                  {
+                   timeZone:
+                     'Asia/Manila',
+
+                   month: 'short',
+                   day: 'numeric',
+
+                    hour:
+                      'numeric',
+
+                    minute:
+                      '2-digit',
+
+                    hour12: true
+                  }
+                )
+            : 'Issuance time unavailable';
+
           let officialBulletinUrl = '';
 
           if (advisory.sourceUrl) {
@@ -2099,6 +2132,10 @@ async function loadPagasaStormWatch() {
                 <span>
                   ${bulletinNumber}
                 </span>
+
+                <small class="pagasa-storm-secondary-issued">
+                  Issued: ${secondaryIssuedText}
+                </small>
               </div>
 
               ${bulletinLinkHtml}
