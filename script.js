@@ -2075,30 +2075,11 @@ async function loadPagasaStormWatch() {
               'older';
           }
         }
-      
-    
+      }
+    }
 
-
-      freshnessText =
-        `Updated ${ageMinutes} minutes ago`;
-    } else {
-      const ageHours =
-        Math.floor(
-          ageMinutes / 60
-        );
-
-      freshnessText =
-        `Updated ${ageHours} ${
-          ageHours === 1
-            ? 'hour'
-            : 'hours'
-        } ago`;
-          }
-        }
-
-
-    const sourceText =
-      escapeAdvisoryHtml(
+const sourceText =
+  escapeAdvisoryHtml(
         latest.source ||
         'DOST-PAGASA'
       );
