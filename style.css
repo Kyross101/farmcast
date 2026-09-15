@@ -6137,6 +6137,70 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   line-height: 1.35;
 }
 
+.pagasa-storm-secondary-freshness {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  margin-top: 4px;
+  padding: 3px 6px;
+
+  border-radius: 999px;
+
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pagasa-storm-secondary-freshness.fresh {
+  background:
+    rgba(63, 185, 80, 0.12);
+
+  border:
+    1px solid
+    rgba(63, 185, 80, 0.28);
+
+  color:
+    #7ee787;
+}
+
+.pagasa-storm-secondary-freshness.moderate {
+  background:
+    rgba(210, 153, 34, 0.12);
+
+  border:
+    1px solid
+    rgba(210, 153, 34, 0.28);
+
+  color:
+    #e3b341;
+}
+
+.pagasa-storm-secondary-freshness.older {
+  background:
+    rgba(139, 148, 158, 0.10);
+
+  border:
+    1px solid
+    rgba(139, 148, 158, 0.22);
+
+  color:
+    var(--text-muted);
+}
+
+.pagasa-storm-secondary-freshness.unknown {
+  background:
+    rgba(139, 148, 158, 0.06);
+
+  border:
+    1px solid
+    var(--border);
+
+  color:
+    var(--text-dim);
+}
+
 .pagasa-storm-secondary-info {
   display: flex;
   flex-direction: column;
