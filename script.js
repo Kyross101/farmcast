@@ -2016,7 +2016,7 @@ async function loadPagasaStormWatch() {
 
         if (ageMinutes < 2) {
           freshnessText =
-            'Updated just now';
+            'Fresh bulletin · Updated just now';
 
           freshnessClass =
             'fresh';
@@ -2024,7 +2024,7 @@ async function loadPagasaStormWatch() {
           ageMinutes < 60
         ) {
           freshnessText =
-            `Updated ${ageMinutes} minutes ago`;
+            `Fresh bulletin · Updated ${ageMinutes} minutes ago`;
 
           freshnessClass =
             'fresh';
@@ -2034,19 +2034,31 @@ async function loadPagasaStormWatch() {
               ageMinutes / 60
             );
 
-          freshnessText =
-            `Updated ${ageHours} ${
-              ageHours === 1
-                ? 'hour'
-                : 'hours'
-            } ago`;
+          if (ageHours < 6) {
+            freshnessText =
+              `Fresh bulletin · Updated ${ageHours} ${
+                ageHours === 1
+                  ? 'hour'
+                  : 'hours'
+              } ago`;
 
-          freshnessClass =
-            ageHours < 6
-             ? 'fresh'
-             : ageHours < 12
-               ? 'moderate'
-               : 'older';
+            freshnessClass =
+              'fresh';
+          } else if (
+            ageHours < 12
+          ) {
+            freshnessText =
+              `Recent bulletin · Updated ${ageHours} hours ago`;
+
+            freshnessClass =
+              'moderate';
+          } else {
+            freshnessText =
+              `Older bulletin · Updated ${ageHours} hours ago`;
+
+            freshnessClass =
+              'older';
+          }
         }
       
     
