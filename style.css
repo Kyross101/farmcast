@@ -6547,4 +6547,22 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     overflow-y: auto;
   }
 
+  .pagasa-storm-secondary-item {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .pagasa-storm-secondary-info {
+    width: 100%;
+  }
+
+  .pagasa-storm-secondary-link {
+    width: 100%;
+
+    min-height: 34px;
+
+    text-align: center;
+  }
+
 }
