@@ -488,6 +488,14 @@ router.get('/', async (req, res) => {
 
       sourceType: 'official-public-files',
 
+      sources: {
+        weatherAdvisories:
+          weatherAdvisorySourceAvailable,
+
+        tropicalCycloneBulletins:
+          cycloneSourceAvailable
+      },
+
       count: combinedAdvisories.length,
 
       advisories: combinedAdvisories
