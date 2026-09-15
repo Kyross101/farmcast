@@ -218,8 +218,24 @@ async function fetchPagasaTropicalCycloneBulletins() {
       continue;
     }
 
+    const dateText =
+      match[5];
+
+    const issuedAt =
+      parsePagasaDate(
+        dateText
+      );
+
+    if (!issuedAt) {
+      continue;
+    }
+
     const duplicateKey =
-      `${stormName.toLowerCase()}::${bulletinNumber}`;
+      [
+        stormName.toLowerCase(),
+        bulletinNumber,
+        issuedAt.toISOString()
+      ].join('::');
 
     if (
       seenBulletins.has(
@@ -232,18 +248,6 @@ async function fetchPagasaTropicalCycloneBulletins() {
     seenBulletins.add(
       duplicateKey
     );
-
-    const dateText =
-      match[5];
-
-    const issuedAt =
-      parsePagasaDate(
-        dateText
-      );
-
-    if (!issuedAt) {
-      continue;
-    }
 
     bulletins.push({
       filename,
