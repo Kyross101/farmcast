@@ -2119,12 +2119,6 @@ async function loadPagasaStormWatch() {
         ${bulletinNumberText}
       </div>
 
-      <strong>
-        ${escapeAdvisoryHtml(
-          latest.title ||
-          'PAGASA Tropical Cyclone Advisory'
-        )}
-      </strong>
 
         <div class="pagasa-storm-issued">
           Issued: ${issuedText}
