@@ -2108,7 +2108,7 @@ async function loadPagasaStormWatch() {
           cyclone
         </span>
 
-        PAGASA cyclone advisory found
+         Recent PAGASA cyclone bulletin
       </div>
 
       <div class="pagasa-storm-name">
@@ -2132,6 +2132,12 @@ async function loadPagasaStormWatch() {
 
         <div class="pagasa-storm-source">
           Source: ${sourceText}
+        </div>
+
+        <div class="pagasa-storm-window-note">
+          FarmCast recent-feed window: 24 hours.
+          This does not represent PAGASA's official
+          bulletin validity period.
         </div>
 
         ${affectedAreaHtml}
