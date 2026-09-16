@@ -922,7 +922,13 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .fli-coords { font-size: 0.68rem; color: var(--text-muted); margin-top: 1px; font-family: 'DM Sans', monospace; }
 .fli-arrow  { margin-left: auto; font-size: 16px !important; opacity: 0.5; }
  
-.map-main { position: relative; flex: 1; }
+.map-main {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .map-click-hint {
   position: absolute; bottom: 60px; left: 50%;
   transform: translateX(-50%);
