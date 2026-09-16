@@ -6678,6 +6678,14 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     min-height: 40px;
   }
 
+  .map-legend {
+    right: 10px;
+    bottom: 10px;
+
+    min-width: 120px;
+    padding: 8px 10px;
+  }
+
   .pagasa-storm-panel {
     left: 10px;
     right: 10px;
