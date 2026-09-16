@@ -864,6 +864,10 @@ function showRadarFrame(index) {
         // when the user zooms farther in.
         maxZoom: 18,
 
+        updateWhenIdle: true,
+        updateWhenZooming: false,
+        keepBuffer: 1,
+
         attribution:
           'Radar © RainViewer'
       }
