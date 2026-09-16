@@ -789,7 +789,7 @@ async function loadRainViewerRadar() {
 
     radarFrames =
       Array.isArray(data.radar?.past)
-        ? data.radar.past
+        ? data.radar.past.slice(-6)
         : [];
 
     if (!radarHost || radarFrames.length === 0) {
