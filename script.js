@@ -1959,13 +1959,14 @@ async function loadPagasaStormWatch() {
             </strong>
 
             <p>
-              FarmCast could not reach the official
-              tropical cyclone bulletin source.
-              Please try again later.
+              FarmCast could not retrieve the
+              DOST-PAGASA tropical cyclone bulletin
+              feed at this time.
             </p>
 
             <small>
-              Source: DOST-PAGASA
+               This is a source availability issue
+               and does not indicate cyclone status.
             </small>
           </div>
         </div>
