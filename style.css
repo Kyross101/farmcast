@@ -791,8 +791,19 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 /* ═══════════════════════════════════════════════════════
    WEATHER MAPS PAGE
 ═══════════════════════════════════════════════════════ */
-#page-weather-maps { padding: 0; overflow: hidden; height: calc(100vh - 57px); display: flex; flex-direction: column; }
-.maps-layout { display: grid; grid-template-columns: 280px 1fr; height: 100%; }
+#page-weather-maps { 
+  padding: 0; 
+  overflow: hidden; 
+  height: calc(100vh - 57px); 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.maps-layout { 
+  display: grid; 
+  grid-template-columns: 280px minmax(0, 1fr);
+  height: 100%; 
+}
  
 .map-controls-panel {
   background: var(--bg2);
