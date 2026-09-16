@@ -8753,15 +8753,48 @@ function viewHistoryItem(id) {
 }
 
 async function deleteHistoryItem(id) {
-  try {
-    await fcScanHistory.delete(id);
-  } catch (err) {
-    console.warn('Backend delete failed, removing locally:', err);
+  const idText =
+    String(id || '');
+
+  const isMongoId =
+    /^[a-f\d]{24}$/i.test(
+      idText
+    );
+
+  if (isMongoId) {
+    try {
+      await fcScanHistory.delete(
+        idText
+      );
+    } catch (err) {
+      console.warn(
+        'Backend delete failed, removing locally:',
+        err
+      );
+    }
   }
-  scannerHistory = scannerHistory.filter(h => String(h._id||h.id) !== String(id));
-  localStorage.setItem('fc_scanHistory', JSON.stringify(scannerHistory));
+
+  scannerHistory =
+    scannerHistory.filter(
+      h =>
+        String(
+          h._id || h.id
+        ) !== idText
+    );
+
+  localStorage.setItem(
+    'fc_scanHistory',
+    JSON.stringify(
+      scannerHistory
+    )
+  );
+
   renderScannerHistory();
-  toast('Scan deleted! 🗑️', 'warn');
+
+  toast(
+    'Scan deleted! 🗑️',
+    'warn'
+  );
 }
 
 async function clearScanHistory() {
