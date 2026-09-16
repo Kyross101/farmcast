@@ -6720,6 +6720,16 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     padding: 8px 10px;
   }
 
+  .leaflet-control-attribution {
+    max-width: calc(100vw - 20px);
+    padding: 2px 5px !important;
+
+    font-size: 9px !important;
+    line-height: 1.25;
+    white-space: normal;
+    text-align: right;
+  }
+
   .map-click-hint {
     max-width: calc(100% - 24px);
     padding: 7px 12px;
