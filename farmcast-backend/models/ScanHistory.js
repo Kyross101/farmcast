@@ -10,7 +10,16 @@ const ScanHistorySchema = new mongoose.Schema({
   emoji:      { type: String, default: '🌿' },
   plantType:  { type: String, default: 'Unknown' },
   disease:    { type: String, default: 'Healthy' },
-  severity:   { type: String, enum: ['none','low','medium','high'], default: 'none' },
+  severity:   { 
+    type: String, 
+    enum: [
+      'none',
+      'low',
+      'medium',
+      'high',
+      'unknown',
+    ], 
+    default: 'none' },
   confidence: { type: Number, default: 85 },
   imageData:  { type: String, default: '' }, // base64 image (optional)
   notes:      { type: String, default: '' },
