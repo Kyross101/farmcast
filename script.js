@@ -2489,28 +2489,32 @@ const sourceText =
 
     content.innerHTML = `
       <div class="pagasa-storm-error">
+
         <span class="material-symbols-outlined">
           warning
         </span>
 
         <div>
           <strong>
-            PAGASA information unavailable
+            PAGASA Storm Watch could not be loaded
           </strong>
 
           <p>
-            FarmCast could not load the latest
-            storm advisory information right now.
+            FarmCast encountered an error while
+            loading the DOST-PAGASA tropical
+            cyclone bulletin feed.
           </p>
 
           <small>
-            Please try again later.
+            Please try again later. This error
+            does not indicate cyclone status.
           </small>
         </div>
+
       </div>
     `;
   }
-
+  
 }
 
 async function refreshWindFlowLayer() {
