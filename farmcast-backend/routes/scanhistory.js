@@ -7,6 +7,7 @@
 // ============================================
 
 const router      = require('express').Router();
+const mongoose    = require('mongoose');
 const ScanHistory = require('../models/ScanHistory');
 const authMW      = require('../middleware/auth');
 
@@ -51,12 +52,36 @@ router.post('/', async (req, res) => {
 // DELETE one scan
 router.delete('/:id', async (req, res) => {
   try {
-    const scan = await ScanHistory.findOne({ _id: req.params.id, user: req.user.id });
-    if (!scan) return res.status(404).json({ message: 'Scan not found.' });
-    await ScanHistory.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Scan deleted.' });
+
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).json({
+        message: 'Invalid scan ID.'
+      });
+    }
+
+    const scan = await ScanHistory.findOne({
+      _id: req.params.id,
+      user: req.user.id
+    });
+
+    if (!scan) {
+      return res.status(404).json({
+        message: 'Scan not found.'
+      });
+    }
+
+    await ScanHistory.findByIdAndDelete(
+      req.params.id
+    );
+
+    res.json({
+      message: 'Scan deleted.'
+    });
+
   } catch (err) {
-    res.status(500).json({ message: 'Error deleting scan.' });
+    res.status(500).json({
+      message: 'Error deleting scan.'
+    });
   }
 });
 
