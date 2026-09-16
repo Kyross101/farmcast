@@ -1984,7 +1984,7 @@ async function loadPagasaStormWatch() {
 
           <div>
             <strong>
-              No recent cyclone advisory found
+               No recent cyclone bulletin found
             </strong>
 
             <p>
@@ -2514,7 +2514,7 @@ const sourceText =
       </div>
     `;
   }
-  
+
 }
 
 async function refreshWindFlowLayer() {
