@@ -6714,7 +6714,7 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
   .map-legend {
     right: 10px;
-    bottom: 10px;
+    bottom: 38px;
 
     min-width: 120px;
     padding: 8px 10px;
