@@ -838,10 +838,35 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   border-color: rgba(63,185,80,0.25);
   color: var(--green);
 }
-.map-layer-btn .material-symbols-outlined { font-size: 20px; flex-shrink: 0; }
-.mlb-name  { font-size: 0.85rem; font-weight: 600; }
-.mlb-desc  { font-size: 0.7rem; color: var(--text-muted); margin-top: 1px; }
-.map-layer-btn.active .mlb-desc { color: rgba(63,185,80,0.7); }
+
+.map-layer-btn .material-symbols-outlined { font-size: 20px; 
+  flex-shrink: 0; 
+}
+
+.map-layer-btn > div {
+  min-width: 0;
+}
+
+.mlb-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.mlb-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.map-layer-btn.active .mlb-desc { 
+  color: rgba(63,185,80,0.7); 
+}
  
 .map-style-btns { display: flex; gap: 6px; }
 .map-style-btn {
