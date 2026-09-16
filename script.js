@@ -1955,7 +1955,7 @@ async function loadPagasaStormWatch() {
 
           <div>
             <strong>
-              PAGASA cyclone bulletin source unavailable
+               DOST-PAGASA cyclone bulletin source unavailable
             </strong>
 
             <p>
