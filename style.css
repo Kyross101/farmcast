@@ -801,7 +801,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 .map-controls-panel::-webkit-scrollbar { width: 4px; }
 .map-panel-header {
