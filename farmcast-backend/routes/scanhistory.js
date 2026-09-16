@@ -43,10 +43,23 @@ router.post('/', async (req, res) => {
       notes:      notes      || '',
     });
 
-    res.status(201).json({ message: 'Scan result saved! 🌿', scan });
+    res.status(201).json({ 
+      message: 
+      'Scan result saved! 🌿', 
+      scan 
+    });
+
   } catch (err) {
-    res.status(500).json({ message: 'Error saving scan result.' });
+    console.error(
+      'ScanHistory save error:',
+      err
+    );
+
+    res.status(500).json({
+      message: 'Error saving scan result.'
+    });
   }
+  
 });
 
 // DELETE one scan
