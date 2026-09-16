@@ -1891,7 +1891,7 @@ async function loadPagasaStormWatch() {
     'block';
 
   content.innerHTML =
-    'Loading official PAGASA storm information...';
+    'Loading recent DOST-PAGASA tropical cyclone bulletins...';
 
   try {
     const response =
@@ -1987,12 +1987,14 @@ async function loadPagasaStormWatch() {
             </strong>
 
             <p>
-              No recent tropical cyclone advisory
-              was found in the current PAGASA feed.
+              FarmCast did not find a recent
+              DOST-PAGASA tropical cyclone bulletin
+              within its 24-hour recent-feed window.
             </p>
 
             <small>
-              Source: DOST-PAGASA
+              This does not confirm that no cyclone
+              is currently active.
             </small>
           </div>
         </div>
