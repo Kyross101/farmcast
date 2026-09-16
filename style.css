@@ -820,10 +820,17 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
  
 .map-layer-btn {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 12px; border-radius: var(--r-sm);
-  cursor: pointer; transition: all 0.2s;
-  border: 1px solid transparent; color: var(--text-muted);
+  display: flex; 
+  align-items: center; 
+  gap: 12px;
+  min-width: 0;
+  padding: 10px 12px; 
+  border-radius: var(--r-sm);
+  cursor: pointer; 
+  transition: all 0.2s;
+  border: 1px solid transparent; 
+  color: var(--text-muted);
+
 }
 .map-layer-btn:hover { background: rgba(255,255,255,0.05); color: var(--text); }
 .map-layer-btn.active {
