@@ -1006,7 +1006,7 @@ function startRadarAnimation() {
         radarFrameIndex
       );
 
-    }, 700);
+    }, 2000);
 }
 
 function stopRadarAnimation() {
