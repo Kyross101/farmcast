@@ -6695,6 +6695,15 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     text-align: center;
   }
 
+  .leaflet-popup {
+    max-width: calc(100vw - 24px);
+  }
+
+  .leaflet-popup-content {
+    max-width: calc(100vw - 64px);
+    overflow-wrap: anywhere;
+  }
+
   .pagasa-storm-panel {
     left: 10px;
     right: 10px;
