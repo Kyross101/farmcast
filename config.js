@@ -3,7 +3,7 @@
 // ============================================
 
 window.FARMCAST_CONFIG = {
-  API_URL: 'https://respectively-total-subjective-bristol.trycloudflare.com/api', //  5000,   & "C:\Users\HP PROBOOK 450 G5\Downloads\cloudflared.exe" tunnel --url http://127.0.0.1:5000
-  AI_URL: 'https://belfast-pad-framework-velvet.trycloudflare.com',  // 8000,   & "C:\Users\HP PROBOOK 450 G5\Downloads\cloudflared.exe" tunnel --url http://127.0.0.1:8000
+  API_URL: 'https://stan-preview-mon-medication.trycloudflare.com/api', //  5000,   & "C:\Users\HP PROBOOK 450 G5\Downloads\cloudflared.exe" tunnel --url http://127.0.0.1:5000
+  AI_URL: 'https://wishes-hire-otherwise-reforms.trycloudflare.com',  // 8000,   & "C:\Users\HP PROBOOK 450 G5\Downloads\cloudflared.exe" tunnel --url http://127.0.0.1:8000
 
 };
