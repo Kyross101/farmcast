@@ -3103,6 +3103,18 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     gap:10px;
   }
 
+  .src-plant-info {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .src-plant-info > div:last-child {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+  
   .src-health-badge{
     align-self:flex-start;
   }
