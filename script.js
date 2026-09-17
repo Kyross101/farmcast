@@ -9024,6 +9024,72 @@ function enableHorizontalDragScroll() {
 
       slider.scrollLeft = scrollLeft - walk;
     });
+    // Mobile touch swipe
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchScrollLeft = 0;
+
+    slider.addEventListener(
+      'touchstart',
+      e => {
+        const touch = e.touches[0];
+
+        touchStartX =
+          touch.clientX;
+
+        touchStartY =
+          touch.clientY;
+
+        touchScrollLeft =
+          slider.scrollLeft;
+
+        slider.classList.add(
+          'dragging'
+        );
+      },
+      { passive: true }
+    );
+
+    slider.addEventListener(
+      'touchmove',
+      e => {
+        if (!e.touches.length) return;
+
+      const touch =
+        e.touches[0];
+
+      const deltaX =
+        touch.clientX -
+        touchStartX;
+
+      const deltaY =
+        touch.clientY -
+        touchStartY;
+
+      // Horizontal swipe only
+      if (
+        Math.abs(deltaX) >
+        Math.abs(deltaY)
+      ) {
+        e.preventDefault();
+
+        slider.scrollLeft =
+          touchScrollLeft -
+          deltaX;
+      }
+    },
+    { passive: false }
+  );
+
+  slider.addEventListener(
+    'touchend',
+    () => {
+      slider.classList.remove(
+        'dragging'
+      );
+    }
+  );
+
   });
 }
 
