@@ -188,6 +188,25 @@ const CROPS = [
     windMax: null
   },
 
+  {
+    name: 'Calamansi',
+    category: 'fruit',
+    icon: 'assets/crops/calamansi.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingSeason: 'Start of rainy season',
+
+    plantingNote:
+      'Grows well in cool and elevated areas and in sandy soil rich in organic matter. Avoid waterlogged areas.',
+
+    source:
+      'Department of Agriculture - Agricultural Training Institute'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
@@ -265,10 +284,27 @@ function assessFarmCondition(data){
 // ── ASSESS CROP FOR DAY ──
 function assessCrop(crop, temp, windKph, isRaining) {
 
-  if (
-    Number.isFinite(crop.windMax) &&
-    windKph > crop.windMax
-  ) {
+    const hasTemperatureRange =
+      Number.isFinite(crop.minTemp) ||
+      Number.isFinite(crop.maxTemp);
+
+    const hasWindLimit =
+      Number.isFinite(crop.windMax);
+
+    if (
+      !hasTemperatureRange &&
+      !hasWindLimit
+    ) {
+      return {
+        status: 'info',
+        reason: 'See Planting Guide'
+      };
+    }
+
+    if (
+      Number.isFinite(crop.windMax) &&
+      windKph > crop.windMax
+    ) {
     return {
       status: 'risk',
       reason: 'High Wind Warning'
@@ -310,6 +346,8 @@ function assessCrop(crop, temp, windKph, isRaining) {
     reason: 'Suitable Weather Conditions'
   };
 }
+
+
 
 // ── DISPLAY WEATHER DATA ──
 function displayWeatherData(data){

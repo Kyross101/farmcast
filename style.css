@@ -445,6 +445,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .crop-card.ideal{border-left:3px solid var(--green);}
 .crop-card.wait {border-left:3px solid var(--amber);}
 .crop-card.risk {border-left:3px solid var(--red);}
+.crop-card.info {
+  border-left: 3px solid var(--blue);
+}
 .crop-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
 
 .crop-icon {
@@ -480,6 +483,11 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .badge-ideal{background:var(--green-dim);color:var(--green);border:1px solid rgba(63,185,80,0.3);}
 .badge-wait {background:var(--amber-dim);color:var(--amber);border:1px solid rgba(227,160,8,0.3);}
 .badge-risk {background:var(--red-dim);  color:var(--red);  border:1px solid rgba(248,81,73,0.3);}
+.badge-info {
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--blue);
+  border: 1px solid rgba(88, 166, 255, 0.3);
+}
 .crop-reason{font-size:0.72rem;color:var(--text-muted);line-height:1.4;}
  
 /* ══════════════════════════════
