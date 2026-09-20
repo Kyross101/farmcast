@@ -337,7 +337,7 @@ const CROPS = [
   },
 
   {
-    name: 'jackfruit',
+    name: 'Jackfruit',
     localName: 'Nangka',
     category: 'fruit',
     icon: 'assets/crops/jackfruit.svg',
