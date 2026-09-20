@@ -393,6 +393,23 @@ const CROPS = [
       'Department of Agriculture - Bureau of Plant Industry'
   },
 
+  {
+    name: 'Durian',
+    category: 'fruit',
+    icon: 'assets/crops/durian.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Refer to the official BPI Durian Production Guide for site selection, plantation establishment, and crop management practices.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──

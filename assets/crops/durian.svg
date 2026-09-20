@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Durian body -->
+  <path d="M32 11c11 0 19 10 19 23S43 56 32 56 13 47 13 34 21 11 32 11Z" fill="#9caf4b"></path>
+
+  <!-- Spikes -->
+  <path d="M32 10 28 3l7 6Z" fill="#71863a"></path>
+  <path d="M20 15 14 9l8 3Z" fill="#71863a"></path>
+  <path d="M44 15 51 9l-2 8Z" fill="#71863a"></path>
+
+  <path d="M14 27 6 24l8-3Z" fill="#71863a"></path>
+  <path d="M50 27 58 24l-8-3Z" fill="#71863a"></path>
+
+  <path d="M14 40 7 45l8-1Z" fill="#71863a"></path>
+  <path d="M50 40 57 45l-8-1Z" fill="#71863a"></path>
+
+  <path d="M23 52 20 60l7-6Z" fill="#71863a"></path>
+  <path d="M41 52 44 60l-7-6Z" fill="#71863a"></path>
+
+  <!-- Surface details -->
+  <circle cx="24" cy="27" r="2" fill="#7f933e"></circle>
+  <circle cx="34" cy="23" r="2" fill="#7f933e"></circle>
+  <circle cx="42" cy="31" r="2" fill="#7f933e"></circle>
+  <circle cx="27" cy="39" r="2" fill="#7f933e"></circle>
+  <circle cx="38" cy="42" r="2" fill="#7f933e"></circle>
+
+  <!-- Stem -->
+  <path d="M32 12c0-5 2-8 5-11" fill="none" stroke="#4d6b34" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Highlight -->
+  <path d="M21 27c2-6 6-10 11-12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".18"></path>
+
+</svg>
