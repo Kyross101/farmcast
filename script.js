@@ -503,6 +503,51 @@ const CROPS = [
       'Department of Agriculture - Bureau of Plant Industry'
   },
 
+  {
+    name: 'Dragon Fruit',
+    localName: 'Pitaya',
+    category: 'fruit',
+    icon: 'assets/crops/dragon-fruit.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    supportNote:
+      'Requires a strong post or trellis support. An ATI guide describes an 8-foot post with about 2 feet buried in the ground.',
+
+    plantingNote:
+      'Suitable for tropical areas. Provide good sunlight, open growing space, and a strong support structure for the climbing plant.',
+
+    lifespanNote:
+      'With proper care, plants may remain productive for around 20 years.',
+
+    source:
+      'Department of Agriculture - Agricultural Training Institute'
+  },
+
+  {
+    name: 'Pummelo',
+    localName: 'Suha',
+    category: 'fruit',
+    icon: 'assets/crops/pummelo.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Use healthy planting materials and follow recommended tropical fruit orchard establishment and management practices.',
+
+    harvestNote:
+      'BPI maturity guidance indicates that harvest timing varies by variety and fruit development.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──

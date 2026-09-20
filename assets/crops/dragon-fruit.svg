@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Dragon fruit body -->
+  <path d="M32 10c11 0 19 10 19 23 0 14-8 23-19 23S13 47 13 33c0-13 8-23 19-23Z" fill="#d94f78"></path>
+
+  <!-- Green scales -->
+  <path d="M22 18c-7-3-11-1-14 3 6 0 10 3 13 7Z" fill="#63a84f"></path>
+
+  <path d="M42 17c7-3 12-1 15 3-6 1-10 4-13 8Z" fill="#63a84f"></path>
+
+  <path d="M16 34c-6 0-10 3-12 7 6-1 11 1 14 5Z" fill="#5b9b49"></path>
+
+  <path d="M48 34c6 0 10 3 12 7-6-1-11 1-14 5Z" fill="#5b9b49"></path>
+
+  <!-- Top scale -->
+  <path d="M32 12c-3-7 0-11 5-14 1 7-1 12-5 16Z" fill="#4f9147"></path>
+
+  <!-- Highlight -->
+  <path d="M22 28c2-6 6-10 11-12" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity=".22"></path>
+
+</svg>
