@@ -168,6 +168,16 @@ const CROPS = [
     windMax: null
   },
 
+  {
+    name: 'Papaya',
+    category: 'fruit',
+    icon: 'assets/crops/papaya.svg',
+    minTemp: 21,
+    maxTemp: 33,
+    noRain: false,
+    windMax: null
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
