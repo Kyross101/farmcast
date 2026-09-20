@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Guyabano body -->
+  <path d="M32 10c11 0 18 10 18 23 0 14-7 23-18 23S14 47 14 33c0-13 7-23 18-23Z" fill="#79a957"></path>
+
+  <!-- Soft spikes -->
+  <path d="M23 20l-4-4" stroke="#567c42" stroke-width="2.5" stroke-linecap="round"></path>
+  <path d="M33 17v-5" stroke="#567c42" stroke-width="2.5" stroke-linecap="round"></path>
+  <path d="M42 22l4-4" stroke="#567c42" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <path d="M21 32l-5-1" stroke="#567c42" stroke-width="2.5" stroke-linecap="round"></path>
+  <path d="M43 32l5-1" stroke="#567c42" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <path d="M24 43l-4 4" stroke="#567c42" stroke-width="2.5" stroke-linecap="round"></path>
+  <path d="M40 43l4 4" stroke="#567c42" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Stem -->
+  <path d="M32 11c0-5 2-8 5-10" fill="none" stroke="#486a37" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M36 9c5-6 11-7 16-3-4 6-9 9-16 8Z" fill="#4f9147"></path>
+
+  <!-- Highlight -->
+  <path d="M22 28c2-6 6-10 11-12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".20"></path>
+
+</svg>

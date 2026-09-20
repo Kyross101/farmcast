@@ -474,6 +474,35 @@ const CROPS = [
       'Department of Agriculture - Bureau of Plant Industry'
   },
 
+  {
+    name: 'Guyabano',
+    localName: 'Soursop',
+    category: 'fruit',
+    icon: 'assets/crops/guyabano.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    coldDamageBelow: 5,
+
+    elevationNote:
+      'Thrives from sea level up to about 500 meters above sea level.',
+
+    plantingSeason:
+      'Start of rainy season',
+
+    plantingDistance:
+      '3–4 meters apart for asexually propagated plants',
+
+    plantingNote:
+      'Adapted to relatively warm and humid conditions. Prefers fairly deep, friable soil with a pH of about 6.1–6.5.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
