@@ -278,6 +278,27 @@ const CROPS = [
       'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
   },
 
+  {
+    name: 'Coffee Arabica',
+    category: 'tree-crop',
+    variety: 'Arabica',
+    icon: 'assets/crops/coffee-arabica.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    elevationNote:
+      'Mostly cultivated in high-elevation areas around 1,000 meters above sea level.',
+
+    plantingNote:
+      'Arabica is generally suited to high-elevation coffee-growing areas in the Philippines.',
+
+    source:
+      'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──

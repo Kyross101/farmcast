@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Coffee cherries -->
+  <circle cx="25" cy="35" r="9" fill="#c94f46"></circle>
+  <circle cx="39" cy="37" r="9" fill="#b8413b"></circle>
+  <circle cx="33" cy="23" r="8" fill="#d35b50"></circle>
+
+  <!-- Leaves -->
+  <path d="M23 24C13 20 8 13 10 6c10 2 15 8 18 17Z" fill="#4f9b45"></path>
+
+  <path d="M40 25c7-8 15-10 21-6-3 8-10 13-20 13Z" fill="#58a64b"></path>
+
+  <!-- Stem -->
+  <path d="M32 8c0 9 1 18 2 27" fill="none" stroke="#3f7f38" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Cherry highlights -->
+  <path d="M22 31c2-3 4-4 7-4" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".22"></path>
+
+  <path d="M31 20c2-2 4-3 6-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".20"></path>
+
+</svg>
