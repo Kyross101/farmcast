@@ -548,6 +548,24 @@ const CROPS = [
       'Department of Agriculture - Bureau of Plant Industry'
   },
 
+  {
+    name: 'Cashew',
+    localName: 'Kasoy',
+    category: 'fruit',
+    icon: 'assets/crops/cashew.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Use healthy planting materials and follow recommended BPI practices for propagation, orchard establishment, and crop management.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
