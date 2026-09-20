@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Excelsa coffee cherries -->
+  <ellipse cx="22" cy="37" rx="9" ry="11" fill="#7b3f68"></ellipse>
+  <ellipse cx="41" cy="37" rx="9" ry="11" fill="#914d78"></ellipse>
+  <ellipse cx="32" cy="22" rx="8" ry="10" fill="#a65a88"></ellipse>
+
+  <!-- Distinct lighter leaves -->
+  <path d="M25 24C14 22 8 15 9 7c10 1 17 7 20 16Z" fill="#6ea95a"></path>
+
+  <path d="M40 25c8-8 16-9 22-4-5 8-12 12-22 11Z" fill="#7aba63"></path>
+
+  <!-- Stem -->
+  <path d="M32 7c0 10 1 20 2 30" fill="none" stroke="#4b7b40" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Cherry center details -->
+  <path d="M22 30v14M41 30v14M32 16v12" fill="none" stroke="#643354" stroke-width="1.8" stroke-linecap="round" opacity=".55"></path>
+
+  <!-- Highlight -->
+  <path d="M18 33c2-3 4-5 7-5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".25"></path>
+
+</svg>

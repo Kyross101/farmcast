@@ -318,6 +318,24 @@ const CROPS = [
       'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
   },
 
+  {
+    name: 'Coffee Excelsa',
+    category: 'tree-crop',
+    variety: 'Excelsa',
+    icon: 'assets/crops/coffee-excelsa.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Excelsa is one of the coffee types included in Philippine coffee production and industry planning.',
+
+    source:
+      'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
