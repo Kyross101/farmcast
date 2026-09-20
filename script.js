@@ -226,6 +226,23 @@ const CROPS = [
       'Department of Agriculture - Philippine Fiber Industry Development Authority'
   },
 
+  {
+    name: 'Coconut',
+    category: 'tree-crop',
+    icon: 'assets/crops/coconut.svg',
+
+    minTemp: 24,
+    maxTemp: 29,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Thrives under warm tropical conditions and well-drained soil. Prolonged waterlogging can limit growth and reduce yield.',
+
+    source:
+      'Department of Agriculture - Philippine Coconut Authority'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──

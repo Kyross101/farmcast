@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Coconut shell -->
+  <circle cx="32" cy="35" r="19" fill="#9a6238"></circle>
+
+  <!-- Shell shading -->
+  <path d="M17 34c3-10 10-16 19-18" fill="none" stroke="#74472c" stroke-width="3" stroke-linecap="round" opacity=".65"></path>
+
+  <!-- Coconut eyes -->
+  <circle cx="26" cy="30" r="2.5" fill="#5f3824"></circle>
+  <circle cx="34" cy="27" r="2.5" fill="#5f3824"></circle>
+  <circle cx="38" cy="34" r="2.5" fill="#5f3824"></circle>
+
+  <!-- Leaf -->
+  <path d="M31 17c-1-8 4-13 12-15-1 8-5 13-12 17Z" fill="#4f9b45"></path>
+
+  <!-- Highlight -->
+  <path d="M21 39c2 6 7 10 13 11" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".18"></path>
+
+</svg>
