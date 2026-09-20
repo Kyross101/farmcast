@@ -146,9 +146,9 @@ const CROPS = [
     maxTemp: 35,
     noRain: true,
     windMax: 25
-  },
-  
-]
+  }
+
+];
 
 // ── PEST DATA (weather-driven) ──
 const PESTS = [
@@ -5970,16 +5970,12 @@ renderForecastAndCalendar = function(forecastData, currentData) {
       const assess = assessCrop(crop, avgC, avgWind, isRaining);
       return `<div class="crop-card ${assess.status}" onclick="toast('${crop.name}: ${assess.reason}','${assess.status==='ideal'?'ok':assess.status==='wait'?'warn':'err'}')">
         <div class="crop-top">
-          <div class="crop-emoji">
-            ${
-              crop.icon
-                ? `<img
-                     src="${crop.icon}"
-                     alt="${crop.name}"
-                     class="crop-icon-img"
-                   >`
-                : crop.emoji
-            }
+          <div class="crop-icon">
+            <img
+              src="${crop.icon}"
+              alt="${crop.name}"
+              class="crop-icon-img"
+            >
           </div>
 
           <div class="crop-name">
