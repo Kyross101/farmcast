@@ -260,6 +260,24 @@ const CROPS = [
       'Department of Agriculture - Philippine Coconut Authority'
   },
 
+  {
+    name: 'Coffee Robusta',
+    category: 'tree-crop',
+    variety: 'Robusta',
+    icon: 'assets/crops/coffee-robusta.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Robusta can grow across a wider range of altitudes and temperatures than other major coffee types.',
+
+    source:
+      'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
