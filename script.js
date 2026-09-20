@@ -70,7 +70,16 @@ const WIND_FLOW_CACHE_TTL =
 
 // ── CROPS DATA ──
 const CROPS = [
-  { name:'Tomato',     emoji:'🍅', minTemp:18, maxTemp:32, noRain:false, windMax:20 },
+  {
+    name: 'Tomato',
+    emoji: '🍅',
+    icon: 'assets/crops/tomato.svg',
+    minTemp: 18,
+    maxTemp: 32,
+    noRain: false,
+    windMax: 20
+  },
+
   { name:'Eggplant',   emoji:'🍆', minTemp:22, maxTemp:35, noRain:false, windMax:25 },
   { name:'Corn',       emoji:'🌽', minTemp:18, maxTemp:33, noRain:false, windMax:15 },
   { name:'Okra',       emoji:'🥦', minTemp:25, maxTemp:38, noRain:false, windMax:20 },
@@ -5899,7 +5908,24 @@ renderForecastAndCalendar = function(forecastData, currentData) {
     const cropsHtml = shuffled.map(crop => {
       const assess = assessCrop(crop, avgC, avgWind, isRaining);
       return `<div class="crop-card ${assess.status}" onclick="toast('${crop.name}: ${assess.reason}','${assess.status==='ideal'?'ok':assess.status==='wait'?'warn':'err'}')">
-        <div class="crop-top"><div class="crop-emoji">${crop.emoji}</div><div class="crop-name">${crop.name}</div></div>
+        <div class="crop-top">
+          <div class="crop-emoji">
+            ${
+              crop.icon
+                ? `<img
+                     src="${crop.icon}"
+                     alt="${crop.name}"
+                     class="crop-icon-img"
+                   >`
+                : crop.emoji
+            }
+          </div>
+
+          <div class="crop-name">
+            ${crop.name}
+          </div>
+        </div>
+        
         <div class="crop-badge badge-${assess.status}">${assess.status.toUpperCase()}</div>
         <div class="crop-reason">${assess.reason}</div>
       </div>`;
