@@ -551,33 +551,39 @@ function assessFarmCondition(data){
 // ── ASSESS CROP FOR DAY ──
 function assessCrop(crop, temp, windKph, isRaining) {
 
-    const hasTemperatureRange =
-      Number.isFinite(crop.minTemp) ||
-      Number.isFinite(crop.maxTemp);
+  const hasTemperatureRange =
+    Number.isFinite(crop.minTemp) ||
+    Number.isFinite(crop.maxTemp);
 
-    const hasWindLimit =
-      Number.isFinite(crop.windMax);
+  const hasWindLimit =
+    Number.isFinite(crop.windMax);
 
-    if (
-      !hasTemperatureRange &&
-      !hasWindLimit
-    ) {
-      return {
-        status: 'info',
-        reason: 'See Planting Guide'
-      };
-    }
+  const hasColdDamageThreshold =
+    Number.isFinite(crop.coldDamageBelow);
 
-    if (
-      Number.isFinite(crop.windMax) &&
-      windKph > crop.windMax
-    ) {
+  // Severe cold damage threshold
+  if (
+    hasColdDamageThreshold &&
+    temp < crop.coldDamageBelow
+  ) {
+    return {
+      status: 'risk',
+      reason: 'Cold Damage Risk'
+    };
+  }
+
+  // Crop-specific wind threshold
+  if (
+    hasWindLimit &&
+    windKph > crop.windMax
+  ) {
     return {
       status: 'risk',
       reason: 'High Wind Warning'
     };
   }
 
+  // Crops that should avoid active rainfall
   if (
     crop.noRain === true &&
     isRaining
@@ -588,6 +594,7 @@ function assessCrop(crop, temp, windKph, isRaining) {
     };
   }
 
+  // Minimum suitable temperature
   if (
     Number.isFinite(crop.minTemp) &&
     temp < crop.minTemp
@@ -598,6 +605,7 @@ function assessCrop(crop, temp, windKph, isRaining) {
     };
   }
 
+  // Maximum suitable temperature
   if (
     Number.isFinite(crop.maxTemp) &&
     temp > crop.maxTemp
@@ -605,6 +613,14 @@ function assessCrop(crop, temp, windKph, isRaining) {
     return {
       status: 'risk',
       reason: 'Heat Stress Risk'
+    };
+  }
+
+  // No verified suitability temperature range
+  if (!hasTemperatureRange) {
+    return {
+      status: 'info',
+      reason: 'See Planting Guide'
     };
   }
 
