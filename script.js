@@ -80,7 +80,16 @@ const CROPS = [
     windMax: 20
   },
 
-  { name:'Eggplant',   emoji:'🍆', minTemp:22, maxTemp:35, noRain:false, windMax:25 },
+  {
+  name: 'Eggplant',
+  emoji: '🍆',
+  icon: 'assets/crops/eggplant.svg',
+  minTemp: 22,
+  maxTemp: 35,
+  noRain: false,
+  windMax: 25
+},
+
   { name:'Corn',       emoji:'🌽', minTemp:18, maxTemp:33, noRain:false, windMax:15 },
   { name:'Okra',       emoji:'🥦', minTemp:25, maxTemp:38, noRain:false, windMax:20 },
   { name:'Sitaw',      emoji:'🫛', minTemp:20, maxTemp:35, noRain:false, windMax:22 },
@@ -5925,7 +5934,7 @@ renderForecastAndCalendar = function(forecastData, currentData) {
             ${crop.name}
           </div>
         </div>
-        
+
         <div class="crop-badge badge-${assess.status}">${assess.status.toUpperCase()}</div>
         <div class="crop-reason">${assess.reason}</div>
       </div>`;
