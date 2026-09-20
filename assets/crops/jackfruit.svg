@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Jackfruit body -->
+  <path d="M32 9c11 0 18 10 18 23 0 15-7 24-18 24S14 47 14 32C14 19 21 9 32 9Z" fill="#8faa46"></path>
+
+  <!-- Jackfruit textured bumps -->
+  <circle cx="24" cy="23" r="2" fill="#b5c95d"></circle>
+  <circle cx="32" cy="20" r="2" fill="#b5c95d"></circle>
+  <circle cx="40" cy="24" r="2" fill="#b5c95d"></circle>
+
+  <circle cx="21" cy="32" r="2" fill="#b5c95d"></circle>
+  <circle cx="29" cy="29" r="2" fill="#b5c95d"></circle>
+  <circle cx="38" cy="32" r="2" fill="#b5c95d"></circle>
+  <circle cx="45" cy="34" r="2" fill="#b5c95d"></circle>
+
+  <circle cx="24" cy="41" r="2" fill="#b5c95d"></circle>
+  <circle cx="33" cy="39" r="2" fill="#b5c95d"></circle>
+  <circle cx="41" cy="43" r="2" fill="#b5c95d"></circle>
+
+  <!-- Stem -->
+  <path d="M32 10c0-5 2-8 6-10" fill="none" stroke="#496f35" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M37 8c5-6 11-7 16-3-4 6-9 9-16 8Z" fill="#4f8b45"></path>
+
+  <!-- Highlight -->
+  <path d="M21 27c2-6 6-10 11-12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".18"></path>
+
+</svg>

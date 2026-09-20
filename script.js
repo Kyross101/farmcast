@@ -336,6 +336,26 @@ const CROPS = [
       'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
   },
 
+  {
+    name: 'jackfruit',
+    localName: 'Nangka',
+    category: 'fruit',
+    icon: 'assets/crops/jackfruit.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingDistance: '8 m x 8 m',
+
+    plantingNote:
+      'Use healthy planting materials and follow proper plantation establishment and crop management practices.',
+
+    source:
+      'Department of Agriculture - High Value Crops Development Program'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
