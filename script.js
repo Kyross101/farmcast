@@ -72,6 +72,7 @@ const WIND_FLOW_CACHE_TTL =
 const CROPS = [
   {
     name: 'Tomato',
+    category: 'vegetable',
     emoji: '🍅',
     icon: 'assets/crops/tomato.svg',
     minTemp: 18,
@@ -82,6 +83,7 @@ const CROPS = [
 
   {
     name: 'Eggplant',
+    category: 'vegetable',
     emoji: '🍆',
     icon: 'assets/crops/eggplant.svg',
     minTemp: 22,
@@ -92,6 +94,7 @@ const CROPS = [
 
   {
     name: 'Corn',
+    category: 'grain',
     emoji: '🌽',
     icon: 'assets/crops/corn.svg',
     minTemp: 18,
@@ -102,6 +105,7 @@ const CROPS = [
 
   {
     name: 'Okra',
+    category: 'vegetable',
     emoji: '🥦',
     icon: 'assets/crops/okra.svg',
     minTemp: 25,
@@ -112,6 +116,7 @@ const CROPS = [
 
   {
     name: 'Sitaw',
+    category: 'vegetable',
     emoji: '🫛',
     icon: 'assets/crops/sitaw.svg',
     minTemp: 20,
@@ -119,8 +124,10 @@ const CROPS = [
     noRain: false,
     windMax: 22
   },
+
   {
     name: 'Ampalaya',
+    category: 'vegetable',
     emoji: '🥒',
     icon: 'assets/crops/ampalaya.svg',
     minTemp: 24,
@@ -128,8 +135,10 @@ const CROPS = [
     noRain: false,
     windMax: 20
   },
+
   {
     name: 'Pechay',
+    category: 'vegetable',
     emoji: '🥬',
     icon: 'assets/crops/pechay.svg',
     minTemp: 15,
@@ -140,6 +149,7 @@ const CROPS = [
 
   {
     name: 'Kamote',
+    category: 'root-crop',
     emoji: '🍠',
     icon: 'assets/crops/kamote.svg',
     minTemp: 20,
@@ -147,7 +157,6 @@ const CROPS = [
     noRain: true,
     windMax: 25
   }
-
 ];
 
 // ── PEST DATA (weather-driven) ──
