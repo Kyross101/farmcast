@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Mangosteen fruit -->
+  <circle cx="32" cy="36" r="19" fill="#703c78"></circle>
+
+  <!-- Dark lower shading -->
+  <path d="M17 38c3 10 9 16 15 17 8 1 15-5 18-15-9 4-23 4-33-2Z" fill="#59305f" opacity=".65"></path>
+
+  <!-- Green crown -->
+  <path d="M32 18c-6-7-12-7-17-3 5 1 9 4 12 8-6-1-10 1-13 5 7-1 13 1 18 5 5-4 11-6 18-5-3-4-8-6-13-5 3-4 7-7 12-8-5-4-11-4-17 3Z" fill="#4f9147"></path>
+
+  <!-- Highlight -->
+  <path d="M21 34c2-6 6-10 11-12" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity=".22"></path>
+
+  <!-- Small fruit detail -->
+  <circle cx="40" cy="44" r="2.5" fill="#82508a"></circle>
+
+</svg>

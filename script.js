@@ -410,6 +410,32 @@ const CROPS = [
       'Department of Agriculture - Bureau of Plant Industry'
   },
 
+  {
+    name: 'Mangosteen',
+    category: 'fruit',
+    icon: 'assets/crops/mangosteen.svg',
+
+    minTemp: 20,
+    maxTemp: 30,
+    noRain: false,
+    windMax: null,
+
+    elevationNote:
+      'Suitable from sea level up to about 500 meters elevation.',
+
+    plantingSeason:
+      'Transplant after the rainy season has started.',
+
+    plantingDistance:
+      'At least 8 m x 8 m',
+
+   plantingNote:
+      'Prefers a warm, humid environment and rich, porous, deep, moist but well-drained soil.',
+ 
+    source:
+      'Department of Agriculture - Mangosteen Production Guide'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
