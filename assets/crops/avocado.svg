@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Avocado body -->
+  <path d="M32 7c7 0 11 9 15 18 4 8 7 14 7 20 0 9-9 14-22 14S10 54 10 45c0-6 3-12 7-20C21 16 25 7 32 7Z" fill="#6fa84f"></path>
+
+  <!-- Inner flesh -->
+  <path d="M32 15c5 0 8 8 11 15 3 6 5 11 5 15 0 6-7 10-16 10s-16-4-16-10c0-4 2-9 5-15 3-7 6-15 11-15Z" fill="#b8d96a"></path>
+
+  <!-- Seed -->
+  <circle cx="32" cy="42" r="9" fill="#9a633d"></circle>
+
+  <!-- Stem -->
+  <path d="M32 9c0-4 2-7 5-9" fill="none" stroke="#496b36" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M36 8c5-6 11-7 16-3-4 6-9 9-16 8Z" fill="#4f9147"></path>
+
+  <!-- Highlight -->
+  <path d="M20 31c2-6 5-10 9-13" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".22"></path>
+
+</svg>

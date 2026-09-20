@@ -429,11 +429,31 @@ const CROPS = [
     plantingDistance:
       'At least 8 m x 8 m',
 
-   plantingNote:
+    plantingNote:
       'Prefers a warm, humid environment and rich, porous, deep, moist but well-drained soil.',
  
     source:
       'Department of Agriculture - Mangosteen Production Guide'
+  },
+
+  {
+    name: 'Avocado',
+    category: 'fruit',
+    icon: 'assets/crops/avocado.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    annualRainfall:
+      '750–1,000 mm minimum recommended annual rainfall',
+
+    plantingNote:
+      'Grows best in deep, fertile, well-drained sandy or alluvial loam soil. Neutral to slightly acidic soil and alternating wet and dry seasons are suitable.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
   },
 
 ];
