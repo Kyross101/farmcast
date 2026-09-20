@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Cacao pod -->
+  <path d="M32 9c10 0 17 10 17 23S42 55 32 55 15 45 15 32 22 9 32 9Z" fill="#b76b3e"></path>
+
+  <!-- Pod ridges -->
+  <path d="M32 12v40M24 14c-4 12-4 24 0 36M40 14c4 12 4 24 0 36" fill="none" stroke="#8d4e31" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Stem -->
+  <path d="M32 10c0-4 2-7 5-9" fill="none" stroke="#3f7f38" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M36 8c4-6 10-7 15-4-4 5-9 8-15 8Z" fill="#4f9b45"></path>
+
+  <!-- Highlight -->
+  <path d="M22 27c2-6 5-10 9-12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".22"></path>
+
+</svg>

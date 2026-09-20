@@ -243,6 +243,23 @@ const CROPS = [
       'Department of Agriculture - Philippine Coconut Authority'
   },
 
+  {
+    name: 'Cacao',
+    category: 'tree-crop',
+    icon: 'assets/crops/cacao.svg',
+
+    minTemp: 18,
+    maxTemp: 32,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Prefers soil rich in organic matter with pH 5.0–7.5 and well-distributed rainfall throughout the year.',
+
+    source:
+      'Department of Agriculture - Philippine Coconut Authority'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
