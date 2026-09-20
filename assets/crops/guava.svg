@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Guava fruit -->
+  <path d="M32 13c11 0 19 9 19 21 0 13-8 22-19 22S13 47 13 34c0-12 8-21 19-21Z" fill="#78ad52"></path>
+
+  <!-- Lower shading -->
+  <path d="M17 38c3 10 9 16 16 16 8 0 14-6 17-16-9 5-24 5-33 0Z" fill="#659746" opacity=".65"></path>
+
+  <!-- Stem -->
+  <path d="M32 14c0-5 2-9 6-12" fill="none" stroke="#466d35" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M35 11c5-7 12-9 18-5-4 7-10 11-18 10Z" fill="#4e8d46"></path>
+
+  <!-- Guava blossom end -->
+  <path d="M27 51l5-3 5 3-2 5h-6Z" fill="#527c3e"></path>
+
+  <!-- Highlight -->
+  <path d="M21 29c2-6 6-10 11-11" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity=".22"></path>
+
+</svg>

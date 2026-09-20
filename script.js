@@ -456,6 +456,24 @@ const CROPS = [
       'Department of Agriculture - Bureau of Plant Industry'
   },
 
+  {
+    name: 'Guava',
+    localName: 'Bayabas',
+    category: 'fruit',
+    icon: 'assets/crops/guava.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Follow the Bureau of Plant Industry production guide for proper site selection, propagation, planting, and orchard management practices.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
