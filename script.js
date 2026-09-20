@@ -207,6 +207,25 @@ const CROPS = [
       'Department of Agriculture - Agricultural Training Institute'
   },
 
+  {
+    name: 'Pineapple',
+    category: 'fruit',
+    icon: 'assets/crops/pineapple.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingSeason: 'Onset of rainy season',
+
+    plantingNote:
+      'Grows well in porous, well-drained soil with pH 4.5–5.5. Avoid wet or waterlogged soil.',
+
+    source:
+      'Department of Agriculture - Philippine Fiber Industry Development Authority'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
