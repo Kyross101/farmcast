@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Lanzones cluster -->
+  <circle cx="24" cy="26" r="9" fill="#e5ca75"></circle>
+  <circle cx="39" cy="27" r="9" fill="#efd784"></circle>
+  <circle cx="18" cy="40" r="9" fill="#dfc16a"></circle>
+  <circle cx="33" cy="42" r="10" fill="#ead079"></circle>
+  <circle cx="47" cy="40" r="8" fill="#e1c66f"></circle>
+
+  <!-- Small fruit details -->
+  <circle cx="21" cy="23" r="1.5" fill="#bca45b" opacity=".65"></circle>
+  <circle cx="37" cy="24" r="1.5" fill="#bca45b" opacity=".65"></circle>
+  <circle cx="30" cy="39" r="1.5" fill="#bca45b" opacity=".65"></circle>
+  <circle cx="45" cy="38" r="1.5" fill="#bca45b" opacity=".65"></circle>
+
+  <!-- Stem -->
+  <path d="M32 18c0-7 2-12 6-16" fill="none" stroke="#4c7138" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M35 13c5-7 12-9 18-5-4 7-10 11-18 10Z" fill="#4f9147"></path>
+
+  <!-- Highlight -->
+  <path d="M19 22c2-2 4-3 6-3" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".3"></path>
+
+</svg>
