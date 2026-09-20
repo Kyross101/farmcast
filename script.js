@@ -356,6 +356,26 @@ const CROPS = [
       'Department of Agriculture - High Value Crops Development Program'
   },
 
+  {
+    name: 'Rambutan',
+    category: 'fruit',
+    icon: 'assets/crops/rambutan.svg',
+
+    minTemp: 22,
+    maxTemp: 30,
+    noRain: false,
+    windMax: null,
+
+    elevationNote:
+      'Grows well around 500–600 meters above sea level.',
+
+    plantingNote:
+      'Prefers deep, well-drained soil rich in organic matter with a soil pH of about 4.5–6.5.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
