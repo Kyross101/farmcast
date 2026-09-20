@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <path d="M18 26c5-8 14-13 23-11 8 2 13 10 11 18-2 10-11 20-21 24-8 3-17-1-20-9-3-8 1-16 7-22Z" fill="#b86a4d"></path>
+
+  <path d="M25 20c-1-7 2-12 8-15 0 6 2 10 6 14Z" fill="#4f9b45"></path>
+
+  <path d="M27 21c-6-4-11-3-16 1 5 1 9 4 12 8Z" fill="#5fa84f"></path>
+
+  <path d="M20 34c4-5 9-8 15-10" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity=".25"></path>
+
+  <path d="M34 25c5 3 8 7 10 12" fill="none" stroke="#8f4f3a" stroke-width="2" stroke-linecap="round" opacity=".5"></path>
+
+</svg>

@@ -81,22 +81,74 @@ const CROPS = [
   },
 
   {
-  name: 'Eggplant',
-  emoji: '🍆',
-  icon: 'assets/crops/eggplant.svg',
-  minTemp: 22,
-  maxTemp: 35,
-  noRain: false,
-  windMax: 25
-},
+    name: 'Eggplant',
+    emoji: '🍆',
+    icon: 'assets/crops/eggplant.svg',
+    minTemp: 22,
+    maxTemp: 35,
+    noRain: false,
+    windMax: 25
+  },
 
-  { name:'Corn',       emoji:'🌽', minTemp:18, maxTemp:33, noRain:false, windMax:15 },
-  { name:'Okra',       emoji:'🥦', minTemp:25, maxTemp:38, noRain:false, windMax:20 },
-  { name:'Sitaw',      emoji:'🫛', minTemp:20, maxTemp:35, noRain:false, windMax:22 },
-  { name:'Ampalaya',   emoji:'🥒', minTemp:24, maxTemp:36, noRain:false, windMax:20 },
-  { name:'Pechay',     emoji:'🥬', minTemp:15, maxTemp:25, noRain:false, windMax:20 },
-  { name:'Kamote',     emoji:'🍠', minTemp:20, maxTemp:35, noRain:true,  windMax:25 },
-];
+  {
+    name: 'Corn',
+    emoji: '🌽',
+    icon: 'assets/crops/corn.svg',
+    minTemp: 18,
+    maxTemp: 33,
+    noRain: false,
+    windMax: 15
+  },
+
+  {
+    name: 'Okra',
+    emoji: '🥦',
+    icon: 'assets/crops/okra.svg',
+    minTemp: 25,
+    maxTemp: 38,
+    noRain: false,
+    windMax: 20
+  },
+
+  {
+    name: 'Sitaw',
+    emoji: '🫛',
+    icon: 'assets/crops/sitaw.svg',
+    minTemp: 20,
+    maxTemp: 35,
+    noRain: false,
+    windMax: 22
+  },
+  {
+    name: 'Ampalaya',
+    emoji: '🥒',
+    icon: 'assets/crops/ampalaya.svg',
+    minTemp: 24,
+    maxTemp: 36,
+    noRain: false,
+    windMax: 20
+  },
+  {
+    name: 'Pechay',
+    emoji: '🥬',
+    icon: 'assets/crops/pechay.svg',
+    minTemp: 15,
+    maxTemp: 25,
+    noRain: false,
+    windMax: 20
+  },
+
+  {
+    name: 'Kamote',
+    emoji: '🍠',
+    icon: 'assets/crops/kamote.svg',
+    minTemp: 20,
+    maxTemp: 35,
+    noRain: true,
+    windMax: 25
+  },
+  
+]
 
 // ── PEST DATA (weather-driven) ──
 const PESTS = [
