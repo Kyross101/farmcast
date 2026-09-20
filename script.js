@@ -156,7 +156,18 @@ const CROPS = [
     maxTemp: 35,
     noRain: true,
     windMax: 25
-  }
+  },
+
+  {
+    name: 'Banana',
+    category: 'fruit',
+    icon: 'assets/crops/banana.svg',
+    minTemp: 15,
+    maxTemp: 35,
+    noRain: false,
+    windMax: null
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
@@ -232,12 +243,52 @@ function assessFarmCondition(data){
 }
 
 // ── ASSESS CROP FOR DAY ──
-function assessCrop(crop, temp, windKph, isRaining){
-  if(windKph > crop.windMax) return { status:'risk', reason:'High Wind Warning' };
-  if(crop.noRain && isRaining) return { status:'wait', reason:'Avoid Planting in Rain' };
-  if(temp < crop.minTemp) return { status:'wait', reason:'Temperature Too Low' };
-  if(temp > crop.maxTemp) return { status:'risk', reason:'Heat Stress Risk' };
-  return { status:'ideal', reason:'Good Temp & Rain' };
+function assessCrop(crop, temp, windKph, isRaining) {
+
+  if (
+    Number.isFinite(crop.windMax) &&
+    windKph > crop.windMax
+  ) {
+    return {
+      status: 'risk',
+      reason: 'High Wind Warning'
+    };
+  }
+
+  if (
+    crop.noRain === true &&
+    isRaining
+  ) {
+    return {
+      status: 'wait',
+      reason: 'Avoid Planting in Rain'
+    };
+  }
+
+  if (
+    Number.isFinite(crop.minTemp) &&
+    temp < crop.minTemp
+  ) {
+    return {
+      status: 'wait',
+      reason: 'Temperature Too Low'
+    };
+  }
+
+  if (
+    Number.isFinite(crop.maxTemp) &&
+    temp > crop.maxTemp
+  ) {
+    return {
+      status: 'risk',
+      reason: 'Heat Stress Risk'
+    };
+  }
+
+  return {
+    status: 'ideal',
+    reason: 'Suitable Weather Conditions'
+  };
 }
 
 // ── DISPLAY WEATHER DATA ──
