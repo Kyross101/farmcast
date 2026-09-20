@@ -299,6 +299,25 @@ const CROPS = [
       'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
   },
 
+  {
+    name: 'Coffee Liberica',
+    category: 'tree-crop',
+    variety: 'Liberica',
+    localName: 'Kapeng Barako',
+    icon: 'assets/crops/coffee-liberica.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Liberica is one of the major coffee types grown in the Philippines and is locally associated with Kapeng Barako.',
+
+    source:
+      'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──

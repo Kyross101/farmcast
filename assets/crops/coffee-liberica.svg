@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Liberica coffee cherries -->
+  <circle cx="23" cy="36" r="10" fill="#a83f39"></circle>
+  <circle cx="40" cy="37" r="10" fill="#bd4b43"></circle>
+  <circle cx="32" cy="22" r="9" fill="#c8554b"></circle>
+
+  <!-- Large Liberica-style leaves -->
+  <path d="M25 24C13 22 6 15 7 6c11 1 18 7 22 17Z" fill="#4b9143"></path>
+
+  <path d="M39 25c8-10 17-12 24-7-4 10-11 15-23 14Z" fill="#58a64b"></path>
+
+  <!-- Stem -->
+  <path d="M32 7c0 10 1 19 2 29" fill="none" stroke="#3b7336" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Cherry highlight -->
+  <path d="M19 32c2-3 5-5 8-5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".22"></path>
+
+</svg>
