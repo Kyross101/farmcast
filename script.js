@@ -178,6 +178,16 @@ const CROPS = [
     windMax: null
   },
 
+  {
+    name: 'Mango',
+    category: 'fruit',
+    icon: 'assets/crops/mango.svg',
+    minTemp: 22,
+    maxTemp: 34,
+    noRain: false,
+    windMax: null
+  },
+
 ];
 
 // ── PEST DATA (weather-driven) ──
