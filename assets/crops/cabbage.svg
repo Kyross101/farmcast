@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Outer cabbage leaves -->
+  <path d="M32 56C18 56 9 48 10 37c1-7 6-12 13-13-1-7 3-13 9-16 7 3 11 9 10 16 7 1 12 6 13 13 1 11-9 19-23 19Z" fill="#6fa85b"></path>
+
+  <!-- Left outer leaf -->
+  <path d="M27 53c-9-2-14-8-14-15 0-6 4-10 10-12-1 10 1 20 4 27Z" fill="#7dbb67"></path>
+
+  <!-- Right outer leaf -->
+  <path d="M37 53c9-2 14-8 14-15 0-6-4-10-10-12 1 10-1 20-4 27Z" fill="#5d954d"></path>
+
+  <!-- Compact cabbage head -->
+  <circle cx="32" cy="36" r="15" fill="#91c978"></circle>
+
+  <!-- Leaf folds -->
+  <path d="M32 22c-5 7-6 18 0 28" fill="none" stroke="#669e58" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M22 31c5 2 8 6 10 11" fill="none" stroke="#669e58" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <path d="M42 31c-5 2-8 6-10 11" fill="none" stroke="#669e58" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <path d="M23 42c5-2 13-2 18 0" fill="none" stroke="#669e58" stroke-width="1.6" stroke-linecap="round"></path>
+
+  <!-- Highlight -->
+  <path d="M23 27c2-4 5-7 9-9" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".2"></path>
+
+</svg>

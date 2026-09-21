@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Carrot root -->
+  <path d="M22 22c6-3 14-3 20 0-2 14-7 27-10 37-4-11-8-24-10-37Z" fill="#e87932"></path>
+
+  <!-- Root shading -->
+  <path d="M32 24c-2 11-2 22 0 32" fill="none" stroke="#c85f28" stroke-width="2" stroke-linecap="round" opacity=".65"></path>
+
+  <!-- Carrot texture -->
+  <path d="M25 31h7M28 39h8M29 47h5" fill="none" stroke="#b95725" stroke-width="1.5" stroke-linecap="round" opacity=".65"></path>
+
+  <!-- Leaves -->
+  <path d="M29 23C23 15 22 8 25 3c5 6 7 12 6 20Z" fill="#57984a"></path>
+
+  <path d="M33 23c0-9 4-16 9-20 1 8-2 15-7 21Z" fill="#68aa57"></path>
+
+  <path d="M28 22c-7-4-11-9-11-14 7 2 12 7 14 14Z" fill="#4f9147"></path>
+
+  <path d="M36 22c6-5 11-8 16-7-3 6-8 10-16 11Z" fill="#62a452"></path>
+
+  <!-- Highlight -->
+  <path d="M25 26c2-2 5-3 8-3" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".2"></path>
+
+</svg>

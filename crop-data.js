@@ -627,6 +627,86 @@ window.FARMCAST_CROPS = [
       'Department of Agriculture - Agricultural Training Institute'
   },
 
+  {
+    name: 'Cabbage',
+    localName: 'Repolyo',
+    category: 'vegetable',
+    icon: 'assets/crops/cabbage.svg',
+ 
+    minTemp: 15,
+    maxTemp: 20,
+    noRain: false,
+    windMax: null,
+
+    soilPH:
+      '6.0–6.8',
+
+    plantingDistance:
+      '50 cm between rows x 40 cm between hills',
+
+    plantingNote:
+      'Grows best in a cool and moist climate and in well-drained sandy loam soil. Water seedlings sufficiently during establishment, while avoiding excessive watering once heads begin to develop.',
+
+    harvestNote:
+     'Heads are generally ready for harvest about 55–60 days after transplanting when they become firm and compact.',
+
+    source:
+      'Department of Agriculture - Agricultural Training Institute'
+  },
+
+  {
+    name: 'Broccoli',
+    category: 'vegetable',
+    icon: 'assets/crops/broccoli.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Follow the official Agricultural Training Institute recommendations for nursery establishment, transplanting, crop care, and harvesting of broccoli.',
+
+    source:
+      'Department of Agriculture - Agricultural Training Institute'
+  },
+
+  {
+    name: 'Carrot',
+    localName: 'Karot',
+    category: 'vegetable',
+    icon: 'assets/crops/carrot.svg',
+
+    minTemp: 10,
+    maxTemp: 30,
+    noRain: false,
+    windMax: null,
+
+    idealTempRange:
+      '15–21°C',
+
+    soilPH:
+      '5.5–6.8',
+
+    elevationNote:
+      'Preferably around 1,000 meters above sea level; low and mid-elevation production is better during the coolest months.',
+
+    plantingSeason:
+      'Low elevations: late October to February; highlands: can be planted throughout the year',
+
+    plantingDistance:
+      'Thin seedlings to about 10 cm between plants',
+
+    plantingNote:
+      'Grows best in deep sandy loam soil rich in organic matter. Temperatures below 10°C or above 30°C may reduce crop quality and yield.',
+
+    harvestNote:
+      'Generally harvested 90–120 days after emergence, depending on variety and location.',
+
+    source:
+      'Department of Agriculture - Regional Field Office No. 02, High Value Crops Development Program'
+  },
+
   
 
 ];
