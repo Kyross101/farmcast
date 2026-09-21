@@ -550,6 +550,83 @@ window.FARMCAST_CROPS = [
       'Department of Agriculture'
   },
 
+  {
+    name: 'Onion',
+    localName: 'Sibuyas',
+    category: 'vegetable',
+    icon: 'assets/crops/onion.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    soilPH:
+      '5.8–6.0',
+
+    plantingSeason:
+      'Generally September to March in the Philippines',
+    plantingNote:
+      'Grows well in friable, well-drained loam soil with good water-holding capacity. Cooler weather favors early growth, while drier conditions and moderately higher temperatures support bulb development and maturation.',
+
+    harvestNote:
+      'Onion commonly reaches maturity about 70–120 days after transplanting, depending on the variety.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
+  },
+
+  {
+    name: 'Garlic',
+    localName: 'Bawang',
+    category: 'vegetable',
+    icon: 'assets/crops/garlic.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+   varieties:
+     'Ilocos White, Batangas White, Batanes White',
+
+   plantingSeason:
+     'Dry season; cooler months favor early growth and bulb formation',
+
+   plantingNote:
+     'Grows well in clay alluvial and sandy loam soils. Cooler weather is preferred during early growth, while relatively dry soil and atmosphere with moderately higher temperature are important during ripening.',
+
+   harvestNote:
+     'Ilocos White commonly matures about 90–110 days after planting.',
+
+   source:
+     'Department of Agriculture - Bureau of Plant Industry'
+  },
+
+  {
+    name: 'Lettuce',
+    localName: 'Letsugas',
+    category: 'vegetable',
+    icon: 'assets/crops/lettuce.svg',
+
+    minTemp: 18,
+    maxTemp: 22,
+    noRain: false,
+    windMax: null,
+
+    varieties:
+      'Loose Leaf, Romaine, Crisp Head',
+
+    plantingDistance:
+      '30–40 cm x 30–40 cm',
+
+    plantingNote:
+      'Grows best in regularly watered loamy soil with high organic matter content. Protect seedlings from excessive heat and direct heavy rain during establishment.',
+
+    source:
+      'Department of Agriculture - Agricultural Training Institute'
+  },
+
   
 
 ];
