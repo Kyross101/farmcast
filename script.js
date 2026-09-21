@@ -3360,7 +3360,6 @@ const CROP_INFO = {
 // ── MY CROPS DYNAMIC CROP OPTIONS ──
 function populateMyCropsCropSelect() {
 
-  populateMyCropsCropSelect();
 
   const select =
     document.getElementById('cropTypeSelect');
