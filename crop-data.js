@@ -707,6 +707,33 @@ window.FARMCAST_CROPS = [
       'Department of Agriculture - Regional Field Office No. 02, High Value Crops Development Program'
   },
 
+  {
+    name: 'Radish',
+    localName: 'Labanos',
+    category: 'root-crop',
+    icon: 'assets/crops/radish.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    soilPH:
+      '6.0–6.8',
+
+    varieties:
+      '60-days variety',
+
+    plantingNote:
+      'Prefers deep, friable, fertile sandy loam or silty loam soil rich in organic matter and with slightly acidic conditions.',
+
+    harvestNote:
+      'The locally popular 60-days variety can reach maximum marketable root size at about 60 days from emergence.',
+
+    source:
+      'Department of Agriculture - Bureau of Plant Industry'
+  },
+
   
 
 ];
