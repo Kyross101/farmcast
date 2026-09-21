@@ -219,8 +219,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Robusta can grow across a wider range of altitudes and temperatures than other major coffee types.',
 
-    source:
-      'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
+    source: {
+      agency:
+        'Department of Agriculture - Philippine Council for Agriculture and Fisheries (PCAF)',
+
+      title:
+        'Philippine Coffee Industry Roadmap 2021-2025',
+
+      url:
+        'https://www.pcaf.da.gov.ph/wp-content/uploads/2022/06/Philippine-Coffee-Industry-Roadmap-2021-2025.pdf'
+    }
   },
 
   {
@@ -240,8 +248,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Arabica is generally suited to high-elevation coffee-growing areas in the Philippines.',
 
-    source:
-      'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
+    source: {
+      agency:
+        'Department of Agriculture - Philippine Council for Agriculture and Fisheries (PCAF)',
+
+      title:
+        'Philippine Coffee Industry Roadmap 2021-2025',
+
+      url:
+        'https://www.pcaf.da.gov.ph/wp-content/uploads/2022/06/Philippine-Coffee-Industry-Roadmap-2021-2025.pdf'
+    }
   },
 
   {
@@ -259,8 +275,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Liberica is one of the major coffee types grown in the Philippines and is locally associated with Kapeng Barako.',
 
-    source:
-      'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
+    source: {
+      agency:
+        'Department of Agriculture - Philippine Council for Agriculture and Fisheries (PCAF)',
+
+      title:
+        'Philippine Coffee Industry Roadmap 2021-2025',
+
+      url:
+        'https://www.pcaf.da.gov.ph/wp-content/uploads/2022/06/Philippine-Coffee-Industry-Roadmap-2021-2025.pdf'
+    }
   },
 
   {
@@ -277,8 +301,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Excelsa is one of the coffee types included in Philippine coffee production and industry planning.',
 
-    source:
-      'Department of Agriculture - Philippine Coffee Industry Roadmap 2021-2025'
+    source: {
+    agency:
+      'Department of Agriculture - Philippine Council for Agriculture and Fisheries (PCAF)',
+
+    title:
+      'Philippine Coffee Industry Roadmap 2021-2025',
+
+    url:
+      'https://www.pcaf.da.gov.ph/wp-content/uploads/2022/06/Philippine-Coffee-Industry-Roadmap-2021-2025.pdf'
+    }
   },
 
   {
