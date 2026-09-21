@@ -284,6 +284,140 @@ function plantingDetailRow(label, value) {
   `;
 }
 
+function normalizeCropReferenceSource(sourceData) {
+  if (!sourceData) return null;
+
+  // Legacy crop-data.js format:
+  // source: 'Department of Agriculture...'
+  if (typeof sourceData === 'string') {
+    return {
+      agency: sourceData,
+      office: '',
+      title: '',
+      url: null
+    };
+  }
+
+  if (
+    typeof sourceData === 'object' &&
+    !Array.isArray(sourceData)
+  ) {
+    return {
+      agency: sourceData.agency || '',
+      office: sourceData.office || '',
+      title: sourceData.title || '',
+      url: getSafeCropReferenceUrl(
+        sourceData.url
+      )
+    };
+  }
+
+  return null;
+}
+
+
+function getSafeCropReferenceUrl(value) {
+  if (
+    !value ||
+    typeof value !== 'string'
+  ) {
+    return null;
+  }
+
+  try {
+    const url = new URL(value);
+
+    if (
+      url.protocol !== 'https:' &&
+      url.protocol !== 'http:'
+    ) {
+      return null;
+    }
+
+    return url.href;
+
+  } catch {
+    return null;
+  }
+}
+
+
+function renderCropReferenceSource(sourceData) {
+  const reference =
+    normalizeCropReferenceSource(
+      sourceData
+    );
+
+  if (!reference) return '';
+
+  const agencyText = [
+    reference.agency,
+    reference.office
+  ]
+    .filter(Boolean)
+    .join(' — ');
+
+  return `
+    <span class="material-symbols-outlined">
+      verified
+    </span>
+
+    <div>
+
+      <strong>
+        ${
+          reference.url
+            ? 'Official Reference'
+            : 'Reference Source'
+        }
+      </strong>
+
+      ${
+        agencyText
+          ? `
+            <div class="cmi-source-agency">
+              ${escapePlantingDetail(
+                agencyText
+              )}
+            </div>
+          `
+          : ''
+      }
+
+      ${
+        reference.title
+          ? `
+            <div class="cmi-source-title">
+              ${escapePlantingDetail(
+                reference.title
+              )}
+            </div>
+          `
+          : ''
+      }
+
+      ${
+        reference.url
+          ? `
+            <a
+              class="cmi-source-link"
+              href="${escapePlantingDetail(
+                reference.url
+              )}"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="event.stopPropagation()"
+            >
+              View official reference ↗
+            </a>
+          `
+          : ''
+      }
+
+    </div>
+  `;
+}
+
 
 function openPlantingCropDetails(
   cropName,
@@ -512,26 +646,25 @@ function openPlantingCropDetails(
 
 
   // Reference source
-  if (crop.source) {
+  const cropReferenceHtml =
+    renderCropReferenceSource(
+      crop.source
+    );
 
-    source.innerHTML = `
-      <span class="material-symbols-outlined">
-        verified
-      </span>
+  if (cropReferenceHtml) {
 
-      <div>
-        <strong>Reference Source</strong>
-        <span>
-          ${escapePlantingDetail(crop.source)}
-        </span>
-      </div>
-    `;
+    source.innerHTML =
+      cropReferenceHtml;
 
-    source.style.display = 'flex';
+    source.style.display =
+      'flex';
 
   } else {
 
-    source.style.display = 'none';
+    source.innerHTML = '';
+
+    source.style.display =
+      'none';
 
   }
 

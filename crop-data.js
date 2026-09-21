@@ -730,9 +730,16 @@ window.FARMCAST_CROPS = [
     harvestNote:
       'The locally popular 60-days variety can reach maximum marketable root size at about 60 days from emergence.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
-  },
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Radish Seed Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1641882970Radish%20Seed%20Production%20Guide.pdf'
+    }
 
   
 
