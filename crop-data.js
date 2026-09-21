@@ -532,6 +532,24 @@ window.FARMCAST_CROPS = [
       'Department of Agriculture - Agricultural Training Institute'
   },
 
+  {
+    name: 'Melon',
+    localName: 'Cantaloupe',
+    category: 'fruit',
+    icon: 'assets/crops/melon.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    plantingNote:
+      'Melon is grown as a high-value crop in the Philippines. Follow locally recommended production practices and suitable site conditions for the selected variety.',
+
+    source:
+      'Department of Agriculture'
+  },
+
   
 
 ];

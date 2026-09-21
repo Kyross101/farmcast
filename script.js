@@ -431,6 +431,25 @@ function openPlantingCropDetails(
     ),
 
     plantingDetailRow(
+      'Ideal Temperature',
+      Number.isFinite(crop.idealTemp)
+        ? `${crop.idealTemp}°C`
+        : null
+    ),
+
+    plantingDetailRow(
+      'Soil pH',
+      crop.soilPH
+    ),
+
+    plantingDetailRow(
+      'Cold Damage Below',
+      Number.isFinite(crop.coldDamageBelow)
+       ? `${crop.coldDamageBelow}°C`
+        : null
+    ),
+
+    plantingDetailRow(
       'Planting Season',
       crop.plantingSeason
     ),
