@@ -167,8 +167,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Grows well in porous, well-drained soil with pH 4.5–5.5. Avoid wet or waterlogged soil.',
 
-    source:
-      'Department of Agriculture - Philippine Fiber Industry Development Authority'
+    source: {
+      agency:
+        'Department of Agriculture - Philippine Fiber Industry Development Authority (PhilFIDA)',
+
+      title:
+        'Pineapple Technoguide 2024',
+
+      url:
+        'https://philfida.da.gov.ph/images/Publications/Technoguides/pineapple-technoguide-2024.pdf'
+    }
   },
 
   {
@@ -184,8 +192,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Thrives under warm tropical conditions and well-drained soil. Prolonged waterlogging can limit growth and reduce yield.',
 
-    source:
-      'Department of Agriculture - Philippine Coconut Authority'
+    source: {
+      agency:
+        'Department of Agriculture - Philippine Coconut Authority',
+
+      title:
+        'Coconut-Beverage Crop (Cacao) Cropping Model',
+
+      url:
+        'https://www.pca.gov.ph/pdf/techno/cococacao.pdf'
+    }
   },
 
   {
@@ -199,10 +215,18 @@ window.FARMCAST_CROPS = [
     windMax: null,
 
     plantingNote:
-      'Prefers soil rich in organic matter with pH 5.0–7.5 and well-distributed rainfall throughout the year.',
+      'Prefers deep, well-drained soil with a pH of about 5.0–6.5 and warm conditions with well-distributed rainfall.',
 
-    source:
-      'Department of Agriculture - Philippine Coconut Authority'
+    source: {
+      agency:
+        'Department of Agriculture - High Value Crops Development Program',
+
+      title:
+        'Cacao Production Guide',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Cacao-Production-Guide.pdf'
+    }
   },
 
   {
@@ -329,8 +353,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Use healthy planting materials and follow proper plantation establishment and crop management practices.',
 
-    source:
-      'Department of Agriculture - High Value Crops Development Program'
+    source: {
+      agency:
+        'Department of Agriculture - Regional Field Office VII',
+
+      title:
+        'Pagtanum og Nangka',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/PAGTANUM-OG-NANGKA.pdf'
+    }
   },
 
   {
@@ -349,8 +381,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Prefers deep, well-drained soil rich in organic matter with a soil pH of about 4.5–6.5.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+       'Rambutan Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1641946110RAMBUTAN.pdf'
+    }
   },
 
   {
