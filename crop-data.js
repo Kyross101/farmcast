@@ -137,8 +137,19 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Grows well in cool and elevated areas and in sandy soil rich in organic matter. Avoid waterlogged areas.',
 
-    source:
-      'Department of Agriculture - Agricultural Training Institute'
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI MIMAROPA',
+
+      title:
+        'Calamansi Production and Processing',
+
+      url:
+        'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/calamansi_final.pdf'
+    }
   },
 
   {
