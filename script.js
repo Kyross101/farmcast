@@ -124,6 +124,48 @@ function getFilteredPlantingCrops() {
   });
 }
 
+// ── STABLE CROP SELECTION ──
+function getPlantingCropSeed(text) {
+
+  let hash = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    hash =
+      ((hash << 5) - hash) +
+      text.charCodeAt(i);
+
+    hash |= 0;
+  }
+
+  return hash >>> 0;
+}
+
+
+function pickStablePlantingCrops(
+  crops,
+  seed,
+  count = 2
+) {
+
+  return [...crops]
+    .sort((a, b) => {
+
+      const scoreA =
+        getPlantingCropSeed(
+          `${seed}|${a.name}`
+        );
+
+      const scoreB =
+        getPlantingCropSeed(
+          `${seed}|${b.name}`
+        );
+
+      return scoreA - scoreB;
+
+    })
+    .slice(0, count);
+}
+
 
 function updatePlantingCropCount(count) {
 
@@ -6400,12 +6442,15 @@ renderForecastAndCalendar = function(forecastData, currentData) {
     const isRaining = val.icons.some(ic=>ic.startsWith('09')||ic.startsWith('10'));
     const weatherIcon = getWeatherEmoji(val.icons[Math.floor(val.icons.length/2)]);
     
-    const shuffled = [...filteredCrops]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 2);
+    const displayedCrops =
+      pickStablePlantingCrops(
+        filteredCrops,
+        key,
+        2
+      );
 
-    const cropsHtml = shuffled.length
-      ? shuffled.map(crop => {
+    const cropsHtml = displayedCrops.length
+      ? displayedCrops.map(crop => {
 
         const assess = 
           assessCrop(crop, avgC, avgWind, isRaining);
