@@ -807,11 +807,56 @@
           <div class="modal-body">
             <div class="form-row">
               <div class="form-group">
+
                 <label>Crop Type</label>
-                <select id="cropTypeSelect">
+
+                <!-- Keep the original select for existing FarmCast logic -->
+                <select
+                  id="cropTypeSelect"
+                  class="crop-type-native-select"
+                  aria-hidden="true"
+                  tabindex="-1"
+                >
                   <option value="">Select crop…</option>
                 </select>
+
+                <!-- Visible searchable crop picker -->
+                <button
+                  type="button"
+                  class="crop-picker-trigger"
+                  id="cropPickerTrigger"
+                  onclick="openMyCropPicker()"
+                >
+
+                  <span
+                    class="crop-picker-trigger-icon"
+                    id="cropPickerTriggerIcon"
+                  >
+                    <span class="material-symbols-outlined">
+                      grass
+                    </span>
+                  </span>
+
+                  <span class="crop-picker-trigger-text">
+
+                    <strong id="cropPickerTriggerName">
+                      Select crop...
+                    </strong>
+
+                    <small id="cropPickerTriggerSub">
+                      Search FarmCast crop references
+                    </small>
+
+                  </span>
+
+                  <span class="material-symbols-outlined crop-picker-chevron">
+                    expand_more
+                  </span>
+
+                </button>
+
               </div>
+
               <div class="form-group">
                 <label>Area (sq m)</label>
                 <input type="number" id="cropArea" placeholder="e.g. 500" min="1">
@@ -897,9 +942,89 @@
             </button>
           </div>
         </div>
+
+        <!-- ══ MY CROPS SEARCHABLE CROP PICKER ══ -->
+        <div
+          class="crop-picker-overlay"
+          id="myCropPicker"
+          onclick="if(event.target===this) closeMyCropPicker()"
+        >
+
+          <div class="crop-picker-sheet">
+
+            <div class="crop-picker-header">
+
+              <div>
+                <div class="crop-picker-title">
+                  Select Crop
+                </div>
+
+                <div class="crop-picker-subtitle">
+                  Search the FarmCast crop reference dataset
+                </div>
+              </div>
+
+              <button
+               type="button"
+                class="crop-picker-close"
+                onclick="closeMyCropPicker()"
+                aria-label="Close crop picker"
+              >
+                <span class="material-symbols-outlined">
+                  close
+                </span>
+              </button>
+
+            </div>
+
+
+            <div class="crop-picker-search">
+
+              <span class="material-symbols-outlined">
+                search
+              </span>
+
+              <input
+                type="text"
+                id="myCropPickerSearch"
+                placeholder="Search crop or local name..."
+                autocomplete="off"
+                oninput="renderMyCropPicker()"
+              >
+
+            </div>
+
+
+           <div
+             class="crop-picker-categories"
+             id="myCropPickerCategories"
+           ></div>
+
+
+           <div class="crop-picker-meta">
+
+             <span id="myCropPickerResultCount">
+               0 crops shown
+             </span>
+
+             <span id="myCropPickerDatasetCount">
+               0 / 100 references
+             </span>
+
+           </div>
+
+
+           <div
+             class="crop-picker-results"
+             id="myCropPickerResults"
+           ></div>
+
+        </div>
+
       </div>
- 
     </div>
+ 
+  </div>
 
    <!-- Update Crop Growth Stage Modal -->
    <div

@@ -3530,80 +3530,513 @@ function getMyCropWeatherAssessment(cropType) {
   };
 }
 
-// ── MY CROPS DYNAMIC CROP OPTIONS ──
+// ── MY CROPS SEARCHABLE CROP PICKER ──
+
+let myCropPickerCategory = 'all';
+
+
+function getMyCropPickerDataset() {
+
+  const crops =
+    CROPS.map(crop => ({
+      name: crop.name,
+      localName: crop.localName || '',
+      category: crop.category || '',
+      icon: crop.icon || null
+    }));
+
+
+  // Preserve Rice while its special
+  // variety intelligence remains separate.
+  if (
+    !crops.some(
+      crop => crop.name === 'Rice'
+    )
+  ) {
+    crops.push({
+      name: 'Rice',
+      localName: 'Palay',
+      category: 'grain',
+      icon: null
+    });
+  }
+
+
+  return crops.sort(
+    (a, b) =>
+      a.name.localeCompare(b.name)
+  );
+}
+
+
 function populateMyCropsCropSelect() {
 
-
   const select =
-    document.getElementById('cropTypeSelect');
+    document.getElementById(
+      'cropTypeSelect'
+    );
 
   if (!select) return;
 
   const previousValue =
     select.value;
 
-  const cropOptions =
-    CROPS.map(crop => ({
-      name: crop.name,
-      localName: crop.localName || '',
-      category: crop.category || ''
-    }));
-
-
-  // Preserve Rice while its special
-  // variety/harvest system remains separate.
-  if (
-    !cropOptions.some(
-      crop => crop.name === 'Rice'
-    )
-  ) {
-    cropOptions.push({
-      name: 'Rice',
-      localName: 'Palay',
-      category: 'grain'
-    });
-  }
-
-
-  cropOptions.sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
+  const crops =
+    getMyCropPickerDataset();
 
 
   select.innerHTML =
     '<option value="">Select crop…</option>' +
-    cropOptions.map(crop => {
+    crops.map(crop => `
+      <option value="${escapeHtml(crop.name)}">
+        ${escapeHtml(crop.name)}
+      </option>
+    `).join('');
+
+
+  const stillExists =
+    crops.some(
+      crop =>
+        crop.name === previousValue
+    );
+
+
+  if (stillExists) {
+    select.value =
+      previousValue;
+  }
+
+
+  updateMyCropPickerTrigger();
+}
+
+
+function updateMyCropPickerTrigger() {
+
+  const select =
+    document.getElementById(
+      'cropTypeSelect'
+    );
+
+  const nameEl =
+    document.getElementById(
+      'cropPickerTriggerName'
+    );
+
+  const subEl =
+    document.getElementById(
+      'cropPickerTriggerSub'
+    );
+
+  const iconEl =
+    document.getElementById(
+      'cropPickerTriggerIcon'
+    );
+
+
+  if (
+    !select ||
+    !nameEl ||
+    !subEl ||
+    !iconEl
+  ) {
+    return;
+  }
+
+
+  const cropName =
+    select.value;
+
+
+  if (!cropName) {
+
+    nameEl.textContent =
+      'Select crop...';
+
+    subEl.textContent =
+      'Search FarmCast crop references';
+
+    iconEl.innerHTML = `
+      <span class="material-symbols-outlined">
+        grass
+      </span>
+    `;
+
+    return;
+  }
+
+
+  const crop =
+    getMyCropPickerDataset()
+      .find(
+        item =>
+          item.name === cropName
+      );
+
+
+  if (!crop) return;
+
+
+  nameEl.textContent =
+    crop.localName
+      ? `${crop.name} (${crop.localName})`
+      : crop.name;
+
+
+  subEl.textContent =
+    crop.category
+      ? formatCropCategory(
+          crop.category
+        )
+      : 'Crop';
+
+
+  iconEl.innerHTML =
+    getCropIconHtml(
+      crop.name,
+      'crop-picker-selected-img'
+    );
+}
+
+
+function renderMyCropPickerCategories() {
+
+  const container =
+    document.getElementById(
+      'myCropPickerCategories'
+    );
+
+  if (!container) return;
+
+
+  const crops =
+    getMyCropPickerDataset();
+
+
+  const categories = [
+    ...new Set(
+      crops
+        .map(crop => crop.category)
+        .filter(Boolean)
+    )
+  ].sort();
+
+
+  container.innerHTML = `
+
+    <button
+      type="button"
+      class="crop-picker-category ${
+        myCropPickerCategory === 'all'
+          ? 'active'
+          : ''
+      }"
+      onclick="setMyCropPickerCategory('all')"
+    >
+      All
+    </button>
+
+    ${categories.map(category => `
+      <button
+        type="button"
+        class="crop-picker-category ${
+          myCropPickerCategory === category
+            ? 'active'
+            : ''
+        }"
+        onclick="setMyCropPickerCategory('${escapeHtml(category)}')"
+      >
+        ${escapeHtml(
+          formatCropCategory(category)
+        )}
+      </button>
+    `).join('')}
+
+  `;
+}
+
+
+function setMyCropPickerCategory(
+  category
+) {
+
+  myCropPickerCategory =
+    category;
+
+  renderMyCropPickerCategories();
+  renderMyCropPicker();
+}
+
+
+function renderMyCropPicker() {
+
+  const resultsEl =
+    document.getElementById(
+      'myCropPickerResults'
+    );
+
+  const searchEl =
+    document.getElementById(
+      'myCropPickerSearch'
+    );
+
+  const resultCountEl =
+    document.getElementById(
+      'myCropPickerResultCount'
+    );
+
+  const datasetCountEl =
+    document.getElementById(
+      'myCropPickerDatasetCount'
+    );
+
+
+  if (!resultsEl) return;
+
+
+  const search =
+    (
+      searchEl?.value || ''
+    )
+      .trim()
+      .toLowerCase();
+
+
+  const crops =
+    getMyCropPickerDataset();
+
+
+  const filtered =
+    crops.filter(crop => {
+
+      const matchesCategory =
+        myCropPickerCategory === 'all' ||
+        crop.category ===
+          myCropPickerCategory;
+
+
+      const searchableText = [
+        crop.name,
+        crop.localName,
+        crop.category
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+
+
+      const matchesSearch =
+        !search ||
+        searchableText.includes(
+          search
+        );
+
+
+      return (
+        matchesCategory &&
+        matchesSearch
+      );
+    });
+
+
+  if (resultCountEl) {
+    resultCountEl.textContent =
+      `${filtered.length} ${
+        filtered.length === 1
+          ? 'crop'
+          : 'crops'
+      } shown`;
+  }
+
+
+  if (datasetCountEl) {
+
+    datasetCountEl.textContent =
+      `${CROPS.length} / 100 references`;
+
+  }
+
+
+  if (!filtered.length) {
+
+    resultsEl.innerHTML = `
+      <div class="crop-picker-empty">
+
+        <span class="material-symbols-outlined">
+          search_off
+        </span>
+
+        <strong>
+          No crop found
+        </strong>
+
+        <span>
+          Try another crop name,
+          local name, or category.
+        </span>
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  resultsEl.innerHTML =
+    filtered.map(crop => {
+
+      const iconHtml =
+        getCropIconHtml(
+          crop.name,
+          'crop-picker-item-img'
+        );
+
 
       const localName =
         crop.localName
-          ? ` (${crop.localName})`
+          ? crop.localName
           : '';
+
 
       const category =
         crop.category
-          ? ` — ${formatCropCategory(crop.category)}`
-          : '';
+          ? formatCropCategory(
+              crop.category
+            )
+          : 'Crop';
+
 
       return `
-        <option value="${escapePlantingDetail(crop.name)}">
-          ${escapePlantingDetail(
-            crop.name + localName + category
-          )}
-        </option>
+        <button
+          type="button"
+          class="crop-picker-item"
+          onclick="selectMyCrop(
+            decodeURIComponent(
+              '${encodeURIComponent(crop.name)}'
+            )
+          )"
+        >
+
+          <span class="crop-picker-item-icon">
+            ${iconHtml}
+          </span>
+
+          <span class="crop-picker-item-info">
+
+            <strong>
+              ${escapeHtml(crop.name)}
+            </strong>
+
+            <small>
+              ${
+                localName
+                  ? `${escapeHtml(localName)} · `
+                  : ''
+              }
+
+              ${escapeHtml(category)}
+            </small>
+
+          </span>
+
+          <span class="material-symbols-outlined crop-picker-item-arrow">
+            chevron_right
+          </span>
+
+        </button>
       `;
 
     }).join('');
+}
 
 
-  // Keep selected crop if the list refreshes
-  const stillExists =
-    cropOptions.some(
-      crop => crop.name === previousValue
+function openMyCropPicker() {
+
+  populateMyCropsCropSelect();
+
+  myCropPickerCategory =
+    'all';
+
+
+  const search =
+    document.getElementById(
+      'myCropPickerSearch'
     );
 
-  if (stillExists) {
-    select.value = previousValue;
+
+  if (search) {
+    search.value = '';
   }
+
+
+  renderMyCropPickerCategories();
+  renderMyCropPicker();
+
+
+  const picker =
+    document.getElementById(
+      'myCropPicker'
+    );
+
+
+  if (picker) {
+    picker.style.display =
+      'flex';
+  }
+
+
+  setTimeout(() => {
+    search?.focus();
+  }, 50);
+}
+
+
+function closeMyCropPicker() {
+
+  const picker =
+    document.getElementById(
+      'myCropPicker'
+    );
+
+  if (picker) {
+    picker.style.display =
+      'none';
+  }
+}
+
+
+function selectMyCrop(
+  cropName
+) {
+
+  const select =
+    document.getElementById(
+      'cropTypeSelect'
+    );
+
+  if (!select) return;
+
+
+  select.value =
+    cropName;
+
+
+  // Trigger all existing FarmCast
+  // planting/variety/harvest logic.
+  select.dispatchEvent(
+    new Event(
+      'change',
+      {
+        bubbles: true
+      }
+    )
+  );
+
+
+  updateMyCropPickerTrigger();
+
+  closeMyCropPicker();
+
 }
  
 const CROP_HARVEST_WINDOWS = {
@@ -4121,9 +4554,15 @@ function updateCropVarietyHint() {
 document
   .getElementById('cropTypeSelect')
   ?.addEventListener('change', () => {
+
     updatePlantingMethodOptions();
+
     updateCropVarietySuggestions();
+
     updateCropVarietyHint();
+
+    updateMyCropPickerTrigger();
+
   });
 
 

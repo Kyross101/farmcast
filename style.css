@@ -1819,6 +1819,485 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 .form-group select option { background: var(--bg2); }
 .form-group textarea { resize: vertical; min-height: 60px; }
+
+/* ══════════════════════════════════════
+   MY CROPS — SEARCHABLE CROP PICKER
+══════════════════════════════════════ */
+
+.crop-type-native-select {
+  display: none !important;
+}
+
+
+.crop-picker-trigger {
+  width: 100%;
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 11px;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+
+  color: var(--text);
+
+  font-family: inherit;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+
+.crop-picker-trigger:hover {
+  border-color: var(--border2);
+}
+
+
+.crop-picker-trigger:focus {
+  outline: none;
+  border-color: var(--green);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(63,185,80,0.1);
+}
+
+
+.crop-picker-trigger-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: var(--green-dim);
+  color: var(--green);
+}
+
+
+.crop-picker-trigger-icon
+.material-symbols-outlined {
+  font-size: 20px;
+}
+
+
+.crop-picker-selected-img {
+  width: 28px;
+  height: 28px;
+
+  object-fit: contain;
+  display: block;
+}
+
+
+.crop-picker-trigger-text {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+
+.crop-picker-trigger-text strong {
+  font-size: 0.86rem;
+  font-weight: 600;
+
+  color: var(--text);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.crop-picker-trigger-text small {
+  margin-top: 2px;
+
+  font-size: 0.69rem;
+
+  color: var(--text-muted);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.crop-picker-chevron {
+  font-size: 19px;
+
+  color: var(--text-muted);
+}
+
+
+.crop-picker-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1200;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0,0,0,0.76);
+
+  backdrop-filter: blur(8px);
+}
+
+
+.crop-picker-sheet {
+  width: 100%;
+  max-width: 520px;
+
+  max-height: min(
+    720px,
+    calc(100vh - 40px)
+  );
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: var(--bg2);
+
+  border:
+    1px solid
+    var(--border2);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,0.5);
+}
+
+
+.crop-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 16px 18px;
+
+  border-bottom:
+    1px solid
+    var(--border);
+}
+
+
+.crop-picker-title {
+  font-family: 'Syne', sans-serif;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: var(--text);
+}
+
+
+.crop-picker-subtitle {
+  margin-top: 3px;
+
+  font-size: 0.72rem;
+
+  color: var(--text-muted);
+}
+
+
+.crop-picker-close {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--text-muted);
+
+  cursor: pointer;
+}
+
+
+.crop-picker-close:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+}
+
+
+.crop-picker-search {
+  margin: 14px 16px 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0 11px;
+
+  background: var(--bg3);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 10px;
+}
+
+
+.crop-picker-search:focus-within {
+  border-color: var(--green);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(63,185,80,0.1);
+}
+
+
+.crop-picker-search
+.material-symbols-outlined {
+  font-size: 19px;
+
+  color: var(--text-muted);
+}
+
+
+.crop-picker-search input {
+  width: 100%;
+
+  padding: 11px 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+  color: var(--text);
+
+  font-family: inherit;
+  font-size: 0.86rem;
+}
+
+
+.crop-picker-categories {
+  display: flex;
+  gap: 7px;
+
+  padding: 2px 16px 10px;
+
+  overflow-x: auto;
+
+  scrollbar-width: thin;
+}
+
+
+.crop-picker-category {
+  flex-shrink: 0;
+
+  padding: 6px 10px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 999px;
+
+  background: var(--bg3);
+
+  color: var(--text-muted);
+
+  font-family: inherit;
+  font-size: 0.7rem;
+
+  cursor: pointer;
+}
+
+
+.crop-picker-category.active {
+  background: var(--green-dim);
+
+  border-color:
+    rgba(63,185,80,0.4);
+
+  color: var(--green);
+}
+
+
+.crop-picker-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 7px 17px 10px;
+
+  font-size: 0.68rem;
+
+  color: var(--text-muted);
+
+  border-bottom:
+    1px solid
+    var(--border);
+}
+
+
+.crop-picker-results {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 8px;
+}
+
+
+.crop-picker-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 10px;
+
+  border: 1px solid transparent;
+
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: var(--text);
+
+  font-family: inherit;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+
+.crop-picker-item:hover {
+  background: var(--bg3);
+
+  border-color:
+    var(--border);
+}
+
+
+.crop-picker-item-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background: var(--bg3);
+
+  border-radius: 9px;
+
+  font-size: 25px;
+}
+
+
+.crop-picker-item-img {
+  width: 34px;
+  height: 34px;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+.crop-picker-item-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+
+.crop-picker-item-info strong {
+  font-size: 0.84rem;
+
+  color: var(--text);
+}
+
+
+.crop-picker-item-info small {
+  margin-top: 3px;
+
+  font-size: 0.69rem;
+
+  color: var(--text-muted);
+}
+
+
+.crop-picker-item-arrow {
+  font-size: 18px;
+
+  color: var(--text-muted);
+}
+
+
+.crop-picker-empty {
+  min-height: 180px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  color: var(--text-muted);
+}
+
+
+.crop-picker-empty
+.material-symbols-outlined {
+  font-size: 34px;
+}
+
+
+.crop-picker-empty strong {
+  color: var(--text);
+}
+
  
 .modal-footer {
   display: flex; gap: 10px; justify-content: flex-end;
@@ -7146,6 +7625,42 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
   .planting-details-name {
     font-size: 1.05rem;
+  }
+
+}
+
+@media(max-width:768px) {
+
+  .crop-picker-overlay {
+    align-items: flex-end;
+
+    padding: 0;
+  }
+
+
+  .crop-picker-sheet {
+    max-width: none;
+
+    max-height: 82vh;
+
+    border-radius:
+      18px 18px 0 0;
+
+    border-bottom: 0;
+  }
+
+
+  .crop-picker-search input {
+    font-size: 16px;
+  }
+
+
+  .crop-picker-results {
+    padding-bottom:
+      calc(
+        14px +
+        env(safe-area-inset-bottom)
+      );
   }
 
 }
