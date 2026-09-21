@@ -6119,10 +6119,25 @@ renderForecastAndCalendar = function(forecastData, currentData) {
       .sort(() => Math.random() - 0.5)
       .slice(0, 2);
 
-    const cropsHtml = shuffled.map(crop => {
-      const assess = assessCrop(crop, avgC, avgWind, isRaining);
-      return `<div class="crop-card ${assess.status}" onclick="toast('${crop.name}: ${assess.reason}','${assess.status==='ideal'?'ok':assess.status==='wait'?'warn':'err'}')">
-        <div class="crop-top">
+    const cropsHtml = shuffled.length
+      ? shuffled.map(crop => {
+
+        const assess = 
+          assessCrop(crop, avgC, avgWind, isRaining);
+
+        return `
+        <div 
+          class="crop-card ${assess.status}" 
+          onclick="toast(
+            '${crop.name}: ${assess.reason}',
+            '${assess.status==='ideal'
+              ?'ok'
+              : assess.status==='wait'
+                ?'warn'
+                :'err'}'
+          )"
+        >
+          <div class="crop-top">
           <div class="crop-icon">
             <img
               src="${crop.icon}"
