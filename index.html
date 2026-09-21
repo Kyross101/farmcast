@@ -246,17 +246,63 @@
  
           <!-- Smart Planting Calendar -->
           <div class="card fade-in fade-in-2">
+
             <div class="card-header" onclick="toggleCard(this)" style="cursor:pointer">
-              <div class="card-title"><span class="material-symbols-outlined">event</span>Smart Planting Calendar</div>
-              <div class="card-action"><span class="material-symbols-outlined card-collapse-icon">expand_less</span></div>
-            </div>
-            <div class="card-collapsible calendar-scroll" style="padding-top:14px;">
-              <div class="calendar-row" id="calendarRow">
-                <div style="color:var(--text-muted);padding:10px;font-size:.85rem">Loading calendar…</div>
+              <div class="card-title">
+                <span class="material-symbols-outlined">event</span>
+                Smart Planting Calendar
+              </div>
+
+              <div class="card-action">
+                <span class="material-symbols-outlined card-collapse-icon">
+                  expand_less
+                </span>
               </div>
             </div>
-          </div>
-        </div>
+
+            <div class="card-collapsible">
+
+              <!-- Crop Search + Filter -->
+              <div class="planting-filter-bar">
+
+                <div class="planting-search">
+                  <span class="material-symbols-outlined">search</span>
+
+                   <input
+                     type="text"
+                     id="plantingCropSearch"
+                     placeholder="Search crop..."
+                     oninput="applyPlantingCropFilters()"
+                   >
+                 </div>
+
+                 <select
+                   id="plantingCategoryFilter"
+                   class="planting-category-filter"
+                   onchange="applyPlantingCropFilters()"
+                 >
+                   <option value="all">All Categories</option>
+                 </select>
+
+                 <div class="planting-filter-count">
+                   <span id="plantingCropCount">30</span>
+                     crops
+                   </div>
+
+                 </div>
+
+                 <div class="calendar-scroll" style="padding-top:14px;">
+                   <div class="calendar-row" id="calendarRow">
+                     <div style="color:var(--text-muted);padding:10px;font-size:.85rem">
+                       Loading calendar…
+                     </div>
+                   </div>
+                 </div>
+
+               </div>
+
+             </div>
+           
  
         <!-- RIGHT COL -->
         <div class="col-side">

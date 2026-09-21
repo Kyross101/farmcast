@@ -75,6 +75,138 @@ if (!Array.isArray(window.FARMCAST_CROPS)) {
   console.error('FarmCast crop dataset failed to load.');
 }
 
+// ── PLANTING CALENDAR FILTER STATE ──
+let plantingCropSearch = '';
+let plantingCropCategory = 'all';
+
+let lastPlantingForecastData = null;
+let lastPlantingCurrentData = null;
+
+
+function formatCropCategory(category) {
+  return category
+    .split('-')
+    .map(word =>
+      word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join(' ');
+}
+
+
+function getFilteredPlantingCrops() {
+
+  const search =
+    plantingCropSearch
+      .trim()
+      .toLowerCase();
+
+  return CROPS.filter(crop => {
+
+    const matchesCategory =
+      plantingCropCategory === 'all' ||
+      crop.category === plantingCropCategory;
+
+    const searchableText = [
+      crop.name,
+      crop.localName,
+      crop.variety,
+      crop.category
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+
+    const matchesSearch =
+      !search ||
+      searchableText.includes(search);
+
+    return matchesCategory && matchesSearch;
+  });
+}
+
+
+function updatePlantingCropCount(count) {
+
+  const countEl =
+    document.getElementById('plantingCropCount');
+
+  if (countEl) {
+    countEl.textContent = count;
+  }
+}
+
+
+function applyPlantingCropFilters() {
+
+  const searchInput =
+    document.getElementById('plantingCropSearch');
+
+  const categorySelect =
+    document.getElementById('plantingCategoryFilter');
+
+  plantingCropSearch =
+    searchInput?.value || '';
+
+  plantingCropCategory =
+    categorySelect?.value || 'all';
+
+  const filtered =
+    getFilteredPlantingCrops();
+
+  updatePlantingCropCount(filtered.length);
+
+  if (
+    lastPlantingForecastData &&
+    lastPlantingCurrentData
+  ) {
+    renderForecastAndCalendar(
+      lastPlantingForecastData,
+      lastPlantingCurrentData
+    );
+  }
+}
+
+
+function initPlantingCropFilters() {
+
+  const select =
+    document.getElementById('plantingCategoryFilter');
+
+  if (!select) return;
+
+  const categories = [
+    ...new Set(
+      CROPS
+        .map(crop => crop.category)
+        .filter(Boolean)
+    )
+  ].sort();
+
+  select.innerHTML =
+    '<option value="all">All Categories</option>' +
+    categories.map(category => `
+      <option value="${category}">
+        ${formatCropCategory(category)}
+      </option>
+    `).join('');
+
+  updatePlantingCropCount(CROPS.length);
+}
+
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    initPlantingCropFilters
+  );
+
+} else {
+
+  initPlantingCropFilters();
+
+}
+
 
 // ── PEST DATA (weather-driven) ──
 const PESTS = [
@@ -5926,6 +6058,10 @@ displayWeatherData = function(data) {
 // ── PATCH renderForecastAndCalendar for unit conversion ──
 const _origRenderForecast = renderForecastAndCalendar;
 renderForecastAndCalendar = function(forecastData, currentData) {
+
+  lastPlantingForecastData = forecastData;
+  lastPlantingCurrentData = currentData;
+
   const timezone = currentData.timezone;
   const daily = {};
   forecastData.list.forEach(item => {
@@ -5956,8 +6092,20 @@ renderForecastAndCalendar = function(forecastData, currentData) {
     </div>`;
   }).join('');
 
-  const calRow = document.getElementById('calendarRow');
-  const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const calRow =
+  document.getElementById('calendarRow');
+
+  const monthNames =
+    ['Jan','Feb','Mar','Apr','May','Jun',
+     'Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  const filteredCrops =
+    getFilteredPlantingCrops();
+
+  updatePlantingCropCount(
+    filteredCrops.length
+  );
+
   calRow.innerHTML = days.map(([key,val],i) => {
     const date      = new Date(key + 'T00:00:00');
     const dayNum    = date.getDate();
@@ -5966,7 +6114,11 @@ renderForecastAndCalendar = function(forecastData, currentData) {
     const avgWind   = val.wind.reduce((a,b)=>a+b,0)/val.wind.length * 3.6;
     const isRaining = val.icons.some(ic=>ic.startsWith('09')||ic.startsWith('10'));
     const weatherIcon = getWeatherEmoji(val.icons[Math.floor(val.icons.length/2)]);
-    const shuffled  = [...CROPS].sort(()=>Math.random()-0.5).slice(0,2);
+    
+    const shuffled = [...filteredCrops]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 2);
+
     const cropsHtml = shuffled.map(crop => {
       const assess = assessCrop(crop, avgC, avgWind, isRaining);
       return `<div class="crop-card ${assess.status}" onclick="toast('${crop.name}: ${assess.reason}','${assess.status==='ideal'?'ok':assess.status==='wait'?'warn':'err'}')">
@@ -5987,7 +6139,14 @@ renderForecastAndCalendar = function(forecastData, currentData) {
         <div class="crop-badge badge-${assess.status}">${assess.status.toUpperCase()}</div>
         <div class="crop-reason">${assess.reason}</div>
       </div>`;
-    }).join('');
+      }).join('')
+      : `
+        <div class="crop-filter-empty">
+          No crops match your search.
+        </div>
+      `;
+
+
     return `<div class="cal-day">
       <div class="cal-date${i===0?' today':''}">
         <div class="cal-date-num">${dayNum}</div><div>${label}</div>

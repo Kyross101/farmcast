@@ -395,6 +395,102 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 /* ══════════════════════════════
    PLANTING CALENDAR
 ══════════════════════════════ */
+
+/* Crop search + category filter */
+.planting-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 20px 4px;
+}
+
+.planting-search {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+
+  padding: 0 12px;
+}
+
+.planting-search:focus-within {
+  border-color: var(--green);
+}
+
+.planting-search .material-symbols-outlined {
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.planting-search input {
+  width: 100%;
+
+  padding: 10px 0;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: var(--text);
+  font: inherit;
+  font-size: .82rem;
+}
+
+.planting-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.planting-category-filter {
+  min-width: 150px;
+
+  padding: 10px 12px;
+
+  background: var(--bg3);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+
+  outline: none;
+  cursor: pointer;
+}
+
+.planting-category-filter:focus {
+  border-color: var(--green);
+}
+
+.planting-filter-count {
+  flex-shrink: 0;
+
+  font-size: .72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.planting-filter-count span {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.crop-filter-empty {
+  padding: 14px 8px;
+
+  text-align: center;
+
+  font-size: .75rem;
+  color: var(--text-muted);
+
+  border: 1px dashed var(--border);
+  border-radius: var(--r-sm);
+}
+
 .calendar-scroll{
   overflow-x:auto;
   overflow-y:hidden;
@@ -6824,6 +6920,29 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     min-height: 34px;
 
     text-align: center;
+  }
+
+}
+
+/* mobile adaptation */
+@media (max-width: 768px) {
+
+  .planting-filter-bar {
+    flex-wrap: wrap;
+    padding: 12px 14px 4px;
+  }
+
+  .planting-search {
+    flex: 1 1 100%;
+  }
+
+  .planting-category-filter {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .planting-filter-count {
+    padding-right: 4px;
   }
 
 }
