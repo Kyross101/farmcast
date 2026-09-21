@@ -3356,6 +3356,83 @@ const CROP_INFO = {
   Onion:    { days: 100, minTemp: 13, maxTemp: 24, water: 'Moderate' },
   Cabbage:  { days: 75,  minTemp: 10, maxTemp: 24, water: 'High' }
 };
+
+// ── MY CROPS DYNAMIC CROP OPTIONS ──
+function populateMyCropsCropSelect() {
+
+  populateMyCropsCropSelect();
+
+  const select =
+    document.getElementById('cropTypeSelect');
+
+  if (!select) return;
+
+  const previousValue =
+    select.value;
+
+  const cropOptions =
+    CROPS.map(crop => ({
+      name: crop.name,
+      localName: crop.localName || '',
+      category: crop.category || ''
+    }));
+
+
+  // Preserve Rice while its special
+  // variety/harvest system remains separate.
+  if (
+    !cropOptions.some(
+      crop => crop.name === 'Rice'
+    )
+  ) {
+    cropOptions.push({
+      name: 'Rice',
+      localName: 'Palay',
+      category: 'grain'
+    });
+  }
+
+
+  cropOptions.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
+
+  select.innerHTML =
+    '<option value="">Select crop…</option>' +
+    cropOptions.map(crop => {
+
+      const localName =
+        crop.localName
+          ? ` (${crop.localName})`
+          : '';
+
+      const category =
+        crop.category
+          ? ` — ${formatCropCategory(crop.category)}`
+          : '';
+
+      return `
+        <option value="${escapePlantingDetail(crop.name)}">
+          ${escapePlantingDetail(
+            crop.name + localName + category
+          )}
+        </option>
+      `;
+
+    }).join('');
+
+
+  // Keep selected crop if the list refreshes
+  const stillExists =
+    cropOptions.some(
+      crop => crop.name === previousValue
+    );
+
+  if (stillExists) {
+    select.value = previousValue;
+  }
+}
  
 const CROP_HARVEST_WINDOWS = {
 
@@ -5386,7 +5463,13 @@ function updateAddCropHarvestEstimate() {
 }
 
 function openAddCropModal() {
-  document.getElementById('addCropModal').style.display = 'flex';
+
+  // Always sync My Crops with crop-data.js
+  populateMyCropsCropSelect();
+
+  document.getElementById(
+    'addCropModal'
+  ).style.display = 'flex';
 
   // Make planting-method options match the selected crop
   updatePlantingMethodOptions();
