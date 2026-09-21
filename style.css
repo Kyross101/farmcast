@@ -491,6 +491,169 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   border-radius: var(--r-sm);
 }
 
+/* ── Planting Crop Details Modal ── */
+
+.planting-details-modal {
+  max-width: 620px;
+}
+
+.planting-details-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.planting-details-icon {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.planting-details-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.planting-details-heading {
+  min-width: 0;
+}
+
+.planting-details-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.planting-details-sub {
+  margin-top: 4px;
+
+  font-size: .78rem;
+  color: var(--text-muted);
+}
+
+.planting-details-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+
+  font-size: .78rem;
+  color: var(--text-muted);
+}
+
+.planting-details-status .crop-badge {
+  margin-bottom: 0;
+}
+
+.planting-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.planting-detail-row {
+  padding: 12px;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+
+.planting-detail-label {
+  margin-bottom: 5px;
+
+  font-size: .65rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: .05em;
+
+  color: var(--text-muted);
+}
+
+.planting-detail-value {
+  font-size: .8rem;
+  line-height: 1.45;
+
+  color: var(--text);
+}
+
+.planting-details-note {
+  padding: 14px;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+
+  font-size: .8rem;
+  line-height: 1.55;
+
+  color: var(--text-muted);
+}
+
+.planting-detail-section-title {
+  margin-bottom: 6px;
+
+  font-size: .72rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: .05em;
+
+  color: var(--green);
+}
+
+.planting-details-source {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+
+  padding: 12px 14px;
+
+  border: 1px solid rgba(63,185,80,.25);
+  border-radius: var(--r-sm);
+
+  background: rgba(63,185,80,.06);
+}
+
+.planting-details-source
+.material-symbols-outlined {
+  font-size: 18px;
+  color: var(--green);
+}
+
+.planting-details-source strong {
+  display: block;
+
+  margin-bottom: 2px;
+
+  font-size: .7rem;
+  color: var(--green);
+}
+
+.planting-details-source span {
+  font-size: .75rem;
+  line-height: 1.4;
+
+  color: var(--text-muted);
+}
+
 .calendar-scroll{
   overflow-x:auto;
   overflow-y:hidden;
@@ -6943,6 +7106,32 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
   .planting-filter-count {
     padding-right: 4px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .planting-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .planting-details-hero {
+    align-items: flex-start;
+  }
+
+  .planting-details-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .planting-details-icon img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .planting-details-name {
+    font-size: 1.05rem;
   }
 
 }

@@ -207,6 +207,291 @@ if (document.readyState === 'loading') {
 
 }
 
+// ── PLANTING CROP DETAILS ──
+
+function escapePlantingDetail(value = '') {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+
+function plantingDetailRow(label, value) {
+
+  if (
+    value === null ||
+    value === undefined ||
+    value === ''
+  ) {
+    return '';
+  }
+
+  return `
+    <div class="planting-detail-row">
+      <div class="planting-detail-label">
+        ${escapePlantingDetail(label)}
+      </div>
+
+      <div class="planting-detail-value">
+        ${escapePlantingDetail(value)}
+      </div>
+    </div>
+  `;
+}
+
+
+function openPlantingCropDetails(
+  cropName,
+  status = '',
+  reason = ''
+) {
+
+  const crop =
+    CROPS.find(item => item.name === cropName);
+
+  if (!crop) {
+    toast('Crop information not found.', 'warn');
+    return;
+  }
+
+  const modal =
+    document.getElementById(
+      'plantingCropDetailsModal'
+    );
+
+  const icon =
+    document.getElementById(
+      'plantingDetailsIcon'
+    );
+
+  const name =
+    document.getElementById(
+      'plantingDetailsName'
+    );
+
+  const sub =
+    document.getElementById(
+      'plantingDetailsSub'
+    );
+
+  const statusEl =
+    document.getElementById(
+      'plantingDetailsStatus'
+    );
+
+  const grid =
+    document.getElementById(
+      'plantingDetailsGrid'
+    );
+
+  const note =
+    document.getElementById(
+      'plantingDetailsNote'
+    );
+
+  const source =
+    document.getElementById(
+      'plantingDetailsSource'
+    );
+
+
+  // Crop icon
+  icon.src = crop.icon;
+  icon.alt = crop.name;
+
+
+  // Crop name
+  name.textContent = crop.name;
+
+
+  // Local name / variety
+  const subtitleParts = [];
+
+  if (crop.localName) {
+    subtitleParts.push(crop.localName);
+  }
+
+  if (crop.variety) {
+    subtitleParts.push(crop.variety);
+  }
+
+  subtitleParts.push(
+    formatCropCategory(crop.category)
+  );
+
+  sub.textContent =
+    subtitleParts.join(' • ');
+
+
+  // Current weather assessment
+  if (status && reason) {
+
+    statusEl.innerHTML = `
+      <div class="crop-badge badge-${status}">
+        ${escapePlantingDetail(
+          status.toUpperCase()
+        )}
+      </div>
+
+      <span>
+        ${escapePlantingDetail(reason)}
+      </span>
+    `;
+
+    statusEl.style.display = 'flex';
+
+  } else {
+
+    statusEl.style.display = 'none';
+
+  }
+
+
+  // Temperature information
+  let temperatureGuide =
+    'No verified temperature range stored';
+
+  if (
+    Number.isFinite(crop.minTemp) &&
+    Number.isFinite(crop.maxTemp)
+  ) {
+
+    temperatureGuide =
+      `${crop.minTemp}°C – ${crop.maxTemp}°C`;
+
+  } else if (Number.isFinite(crop.minTemp)) {
+
+    temperatureGuide =
+      `Minimum ${crop.minTemp}°C`;
+
+  } else if (Number.isFinite(crop.maxTemp)) {
+
+    temperatureGuide =
+      `Maximum ${crop.maxTemp}°C`;
+
+  }
+
+
+  // Dynamic reference information
+  grid.innerHTML = [
+
+    plantingDetailRow(
+      'Category',
+      formatCropCategory(crop.category)
+    ),
+
+    plantingDetailRow(
+      'Temperature Guide',
+      temperatureGuide
+    ),
+
+    plantingDetailRow(
+      'Planting Season',
+      crop.plantingSeason
+    ),
+
+    plantingDetailRow(
+      'Planting Distance',
+      crop.plantingDistance
+    ),
+
+    plantingDetailRow(
+      'Elevation',
+      crop.elevationNote
+    ),
+
+    plantingDetailRow(
+      'Annual Rainfall',
+      crop.annualRainfall
+    ),
+
+    plantingDetailRow(
+      'Support',
+      crop.supportNote
+    ),
+
+    plantingDetailRow(
+      'Productive Life',
+      crop.lifespanNote
+    ),
+
+    plantingDetailRow(
+      'Harvest',
+      crop.harvestNote
+    )
+
+  ].join('');
+
+
+  // Planting note
+  if (crop.plantingNote) {
+
+    note.innerHTML = `
+      <div class="planting-detail-section-title">
+        Planting Guide
+      </div>
+
+      <div>
+        ${escapePlantingDetail(
+          crop.plantingNote
+        )}
+      </div>
+    `;
+
+    note.style.display = 'block';
+
+  } else {
+
+    note.style.display = 'none';
+
+  }
+
+
+  // Reference source
+  if (crop.source) {
+
+    source.innerHTML = `
+      <span class="material-symbols-outlined">
+        verified
+      </span>
+
+      <div>
+        <strong>Reference Source</strong>
+        <span>
+          ${escapePlantingDetail(crop.source)}
+        </span>
+      </div>
+    `;
+
+    source.style.display = 'flex';
+
+  } else {
+
+    source.style.display = 'none';
+
+  }
+
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+
+function closePlantingCropDetails() {
+
+  const modal =
+    document.getElementById(
+      'plantingCropDetailsModal'
+    );
+
+  if (!modal) return;
+
+  modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
 
 // ── PEST DATA (weather-driven) ──
 const PESTS = [
@@ -6126,17 +6411,15 @@ renderForecastAndCalendar = function(forecastData, currentData) {
           assessCrop(crop, avgC, avgWind, isRaining);
 
         return `
-        <div 
-          class="crop-card ${assess.status}" 
-          onclick="toast(
-            '${crop.name}: ${assess.reason}',
-            '${assess.status==='ideal'
-              ?'ok'
-              : assess.status==='wait'
-                ?'warn'
-                :'err'}'
+        <div
+          class="crop-card ${assess.status}"
+          onclick="openPlantingCropDetails(
+            decodeURIComponent('${encodeURIComponent(crop.name)}'),
+            '${assess.status}',
+            decodeURIComponent('${encodeURIComponent(assess.reason)}')
           )"
         >
+
           <div class="crop-top">
           <div class="crop-icon">
             <img

@@ -2191,6 +2191,83 @@
   </div>
 </div>
 
+<!-- ══ PLANTING CROP DETAILS MODAL ══ -->
+<div
+  class="modal-overlay"
+  id="plantingCropDetailsModal"
+  onclick="if(event.target===this) closePlantingCropDetails()"
+>
+  <div class="modal-box planting-details-modal">
+
+    <div class="modal-header">
+      <div class="modal-title">
+        <span class="material-symbols-outlined">eco</span>
+        Crop Details
+      </div>
+
+      <div
+        class="modal-close"
+        onclick="closePlantingCropDetails()"
+      >
+        <span class="material-symbols-outlined">close</span>
+      </div>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="planting-details-hero">
+
+        <div class="planting-details-icon">
+          <img
+            id="plantingDetailsIcon"
+            src=""
+            alt=""
+          >
+        </div>
+
+        <div class="planting-details-heading">
+          <div
+            class="planting-details-name"
+            id="plantingDetailsName"
+          >
+            Crop
+          </div>
+
+          <div
+            class="planting-details-sub"
+            id="plantingDetailsSub"
+          ></div>
+        </div>
+
+      </div>
+
+      <div
+        id="plantingDetailsStatus"
+        class="planting-details-status"
+      ></div>
+
+      <div
+        class="planting-details-grid"
+        id="plantingDetailsGrid"
+      ></div>
+
+      <div
+        class="planting-details-note"
+        id="plantingDetailsNote"
+        style="display:none"
+      ></div>
+
+      <div
+        class="planting-details-source"
+        id="plantingDetailsSource"
+        style="display:none"
+      ></div>
+
+    </div>
+
+  </div>
+</div>
+
 <script src="config.js"></script>
 <script src="api.js"></script>
 <script src="crop-data.js"></script>
