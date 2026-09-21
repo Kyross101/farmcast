@@ -500,6 +500,38 @@ window.FARMCAST_CROPS = [
       'Department of Agriculture - Bureau of Plant Industry'
   },
 
+  {
+    name: 'Watermelon',
+    localName: 'Pakwan',
+    category: 'fruit',
+    icon: 'assets/crops/watermelon.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    idealTemp: 25,
+
+    noRain: false,
+    windMax: null,
+
+    soilPH:
+      '5.0–6.8',
+
+    plantingSeason:
+      'October to January',
+
+    plantingDistance:
+      '1.5 m x 1.5 m to 2.5 m x 2.5 m, depending on variety',
+
+    plantingNote:
+      'Prefers well-drained sandy loam soil rich in organic matter. Warm, preferably dry weather supports good growth.',
+
+    harvestNote:
+      'Fruit generally matures about 35–40 days after pollination, depending on the variety.',
+
+    source:
+      'Department of Agriculture - Agricultural Training Institute'
+  },
+
   
 
 ];
