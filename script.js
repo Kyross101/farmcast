@@ -4973,11 +4973,11 @@ function renderCropsPage() {
       >
         <div class="cdc-header">
 
-  <div class="cdc-emoji">
-    ${cropIconHtml}
-  </div>
+          <div class="cdc-emoji">
+            ${cropIconHtml}
+          </div>
 
-  <div class="cdc-info">
+          <div class="cdc-info">
 
             <div class="cdc-name">${crop.type}</div>
 
