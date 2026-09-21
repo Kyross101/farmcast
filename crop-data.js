@@ -406,8 +406,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Refer to the official BPI production guide for site selection, establishment, and crop management practices.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Production Guide for Lanzones',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1641948327LANZONES.pdf'
+    }
   },
 
   {
@@ -423,8 +431,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Refer to the official BPI Durian Production Guide for site selection, plantation establishment, and crop management practices.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Durian Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1640919293Durian%20Production%20Guide.pdf'
+    }
   },
 
   {
@@ -449,8 +465,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Prefers a warm, humid environment and rich, porous, deep, moist but well-drained soil.',
  
-    source:
-      'Department of Agriculture - Mangosteen Production Guide'
+    source: {
+      agency:
+        'Department of Agriculture - High Value Crops Development Program',
+
+      title:
+        'Mangosteen Production Guide',
+
+      url:
+       'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Mangosteen-Production-Guide.pdf'
+    }
   },
 
   {
@@ -469,8 +493,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Grows best in deep, fertile, well-drained sandy or alluvial loam soil. Neutral to slightly acidic soil and alternating wet and dry seasons are suitable.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Production Guide - Guava, Guyabano, Avocado, Cashew, Atis',
+
+      url:
+        'https://library.buplant.da.gov.ph/books/509'
+    }
   },
 
   {
@@ -487,8 +519,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Follow the Bureau of Plant Industry production guide for proper site selection, propagation, planting, and orchard management practices.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Production Guide - Guava, Guyabano, Avocado, Cashew, Atis',
+
+      url:
+        'https://library.buplant.da.gov.ph/books/509'
+    }
   },
 
   {
