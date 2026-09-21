@@ -556,8 +556,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Adapted to relatively warm and humid conditions. Prefers fairly deep, friable soil with a pH of about 6.1–6.5.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Guyabano Production Guide',
+
+      url:
+       'https://library.buplant.da.gov.ph/images/1641946446Guayabano%20production%20guide.pdf'
+    }
   },
 
   {
@@ -580,8 +588,19 @@ window.FARMCAST_CROPS = [
     lifespanNote:
       'With proper care, plants may remain productive for around 20 years.',
 
-    source:
-      'Department of Agriculture - Agricultural Training Institute'
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Central Visayas',
+
+      title:
+        'Dragon Fruit Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/DRAGON%20FRUIT.PDF'
+    }
   },
 
   {
@@ -601,8 +620,16 @@ window.FARMCAST_CROPS = [
     harvestNote:
       'BPI maturity guidance indicates that harvest timing varies by variety and fruit development.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Maturity Indicators of Pummelo',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1641955962Pummelo%20Maturity%20Indicators.pdf'
+    }
   },
 
   {
@@ -619,8 +646,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Use healthy planting materials and follow recommended BPI practices for propagation, orchard establishment, and crop management.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Cashew Production',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1581572310CASHEW.pdf'
+    }
   },
 
   {
@@ -651,8 +686,19 @@ window.FARMCAST_CROPS = [
     harvestNote:
       'Fruit generally matures about 35–40 days after pollination, depending on the variety.',
 
-    source:
-      'Department of Agriculture - Agricultural Training Institute'
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Central Visayas',
+
+      title:
+        'Watermelon Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Watermelon%20Production%20Guide.pdf'
+    }
   },
 
   {
