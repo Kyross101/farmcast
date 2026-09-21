@@ -3391,6 +3391,145 @@ const CROP_INFO = {
   Cabbage:  { days: 75,  minTemp: 10, maxTemp: 24, water: 'High' }
 };
 
+// ── MY CROPS WEATHER REFERENCE ──
+function getMyCropWeatherAssessment(cropType) {
+
+  if (!currentWeather) {
+    return {
+      available: false,
+      atRisk: false,
+      reason: 'Weather data unavailable'
+    };
+  }
+
+  const reference =
+    getCropReference(cropType);
+
+  // Rice is still outside crop-data.js,
+  // so preserve its existing FarmCast weather logic.
+  const riceFallback =
+    cropType === 'Rice'
+      ? CROP_INFO.Rice
+      : null;
+
+  const minTemp =
+    Number.isFinite(reference?.minTemp)
+      ? reference.minTemp
+      : Number.isFinite(riceFallback?.minTemp)
+        ? riceFallback.minTemp
+        : null;
+
+  const maxTemp =
+    Number.isFinite(reference?.maxTemp)
+      ? reference.maxTemp
+      : Number.isFinite(riceFallback?.maxTemp)
+        ? riceFallback.maxTemp
+        : null;
+
+  const windMax =
+    Number.isFinite(reference?.windMax)
+      ? reference.windMax
+      : null;
+
+  const coldDamageBelow =
+    Number.isFinite(reference?.coldDamageBelow)
+      ? reference.coldDamageBelow
+      : null;
+
+  const hasVerifiedLimits =
+    Number.isFinite(minTemp) ||
+    Number.isFinite(maxTemp) ||
+    Number.isFinite(windMax) ||
+    Number.isFinite(coldDamageBelow);
+
+  if (!hasVerifiedLimits) {
+    return {
+      available: false,
+      atRisk: false,
+      reason: 'No verified weather limits stored'
+    };
+  }
+
+  const temp =
+    Number(currentWeather.main?.temp);
+
+  const windKph =
+    Number(currentWeather.wind?.speed) * 3.6;
+
+
+  // Severe cold threshold
+  if (
+    Number.isFinite(coldDamageBelow) &&
+    Number.isFinite(temp) &&
+    temp < coldDamageBelow
+  ) {
+    return {
+      available: true,
+      atRisk: true,
+      reason: 'Cold damage risk',
+      temp,
+      windKph
+    };
+  }
+
+
+  // Wind threshold
+  if (
+    Number.isFinite(windMax) &&
+    Number.isFinite(windKph) &&
+    windKph > windMax
+  ) {
+    return {
+      available: true,
+      atRisk: true,
+      reason: 'High wind risk',
+      temp,
+      windKph
+    };
+  }
+
+
+  // Minimum temperature
+  if (
+    Number.isFinite(minTemp) &&
+    Number.isFinite(temp) &&
+    temp < minTemp
+  ) {
+    return {
+      available: true,
+      atRisk: true,
+      reason: 'Temperature too low',
+      temp,
+      windKph
+    };
+  }
+
+
+  // Maximum temperature
+  if (
+    Number.isFinite(maxTemp) &&
+    Number.isFinite(temp) &&
+    temp > maxTemp
+  ) {
+    return {
+      available: true,
+      atRisk: true,
+      reason: 'Heat stress risk',
+      temp,
+      windKph
+    };
+  }
+
+
+  return {
+    available: true,
+    atRisk: false,
+    reason: 'Current weather is within stored crop limits',
+    temp,
+    windKph
+  };
+}
+
 // ── MY CROPS DYNAMIC CROP OPTIONS ──
 function populateMyCropsCropSelect() {
 
@@ -4380,15 +4519,16 @@ function getCropStatus(crop) {
     );
  
   // Weather risk check
-  let weatherRisk = null;
-  if (currentWeather) {
-    const temp = currentWeather.main.temp;
-    const info = CROP_INFO[crop.type];
-    if (info && (temp < info.minTemp || temp > info.maxTemp)) {
-      weatherRisk = temp < info.minTemp ? 'Temperature too low' : 'Heat stress risk';
-    }
-  }
- 
+  const weatherAssessment =
+    getMyCropWeatherAssessment(
+      crop.type
+    );
+
+  const weatherRisk =
+    weatherAssessment.atRisk
+      ? weatherAssessment.reason
+      : null;
+
   if (daysLeft <= 0) return { label: 'Overdue', color: 'red',   progress, daysLeft: 0, weatherRisk };
   if (daysLeft <= 7) return { label: 'Ready',   color: 'amber', progress, daysLeft, weatherRisk };
   if (weatherRisk)   return { label: 'At Risk', color: 'red',   progress, daysLeft, weatherRisk };
@@ -4889,8 +5029,10 @@ function renderCropsPage() {
       'cdc-crop-icon-img'
     );
 
-  const info =
-    CROP_INFO[crop.type] || {};
+  const weatherAssessment =
+    getMyCropWeatherAssessment(
+      crop.type
+    );
 
     const stageInfo = {
       seedling:   { emoji: '🌱', label: 'Seedling' },
@@ -4951,14 +5093,41 @@ function renderCropsPage() {
 
     // Weather compatibility
     let weatherCompatHtml = '';
-    if (currentWeather && info.minTemp !== undefined) {
-      const temp = currentWeather.main.temp;
-      const ok = temp >= info.minTemp && temp <= info.maxTemp;
+
+    if (weatherAssessment.available) {
+
+      const tempText =
+        Number.isFinite(weatherAssessment.temp)
+          ? `${Math.round(weatherAssessment.temp)}°C`
+          : 'Current weather';
+
       weatherCompatHtml = `
-        <div class="crop-weather-compat ${ok ? 'ok' : 'warn'}">
-          <span class="material-symbols-outlined">${ok ? 'check_circle' : 'warning'}</span>
-          ${ok ? `${Math.round(temp)}°C is ideal for ${crop.type}` : (st.weatherRisk || 'Weather risk detected')}
-        </div>`;
+        <div
+          class="crop-weather-compat ${
+            weatherAssessment.atRisk
+              ? 'warn'
+              : 'ok'
+          }"
+        >
+
+          <span class="material-symbols-outlined">
+            ${
+              weatherAssessment.atRisk
+                ? 'warning'
+                : 'check_circle'
+            }
+          </span>
+
+          ${
+            weatherAssessment.atRisk
+              ? escapeHtml(
+                  weatherAssessment.reason
+                )
+              : `${tempText} is within the stored weather limits for ${escapeHtml(crop.type)}`
+          }
+
+        </div>
+      `;
     }
 
     const isExpanded =
