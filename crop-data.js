@@ -740,7 +740,6 @@ window.FARMCAST_CROPS = [
       url:
         'https://library.buplant.da.gov.ph/images/1641882970Radish%20Seed%20Production%20Guide.pdf'
     }
-
-  
+  }
 
 ];
