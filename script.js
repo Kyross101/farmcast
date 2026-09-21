@@ -3341,6 +3341,40 @@ const CROP_EMOJIS = {
   Ampalaya:'🥒', Pechay:'🥬', Kamote:'🍠', Rice:'🌾',
   Garlic:'🧄', Onion:'🧅', Cabbage:'🥦'
 };
+
+// ── SHARED CROP REFERENCE HELPERS ──
+function getCropReference(cropName) {
+
+  return CROPS.find(
+    crop => crop.name === cropName
+  ) || null;
+}
+
+
+function getCropIconHtml(
+  cropName,
+  imageClass = 'crop-ui-icon'
+) {
+
+  const reference =
+    getCropReference(cropName);
+
+  if (reference?.icon) {
+
+    return `
+      <img
+        src="${escapeHtml(reference.icon)}"
+        alt="${escapeHtml(cropName)}"
+        class="${imageClass}"
+      >
+    `;
+  }
+
+  // Rice and legacy crops can still use emoji
+  return escapeHtml(
+    CROP_EMOJIS[cropName] || '🌿'
+  );
+}
  
 const CROP_INFO = {
   Tomato:   { days: 75,  minTemp: 18, maxTemp: 32, water: 'Moderate' },
@@ -4844,10 +4878,20 @@ function renderCropsPage() {
   }
  
   document.getElementById('cropsGrid').innerHTML = filtered.map(crop => {
-    const st = getCropStatus(crop);
-    const timelineCheck = getCropTimelineCheck(crop);
-    const emoji = CROP_EMOJIS[crop.type] || '🌿';
-    const info  = CROP_INFO[crop.type] || {};
+  const st = getCropStatus(crop);
+
+  const timelineCheck =
+    getCropTimelineCheck(crop);
+
+  const cropIconHtml =
+    getCropIconHtml(
+      crop.type,
+      'cdc-crop-icon-img'
+    );
+
+  const info =
+    CROP_INFO[crop.type] || {};
+
     const stageInfo = {
       seedling:   { emoji: '🌱', label: 'Seedling' },
       vegetative: { emoji: '🌿', label: 'Vegetative' },
@@ -4928,8 +4972,13 @@ function renderCropsPage() {
         data-id="${crop.id}"
       >
         <div class="cdc-header">
-          <div class="cdc-emoji">${emoji}</div>
-          <div class="cdc-info">
+
+  <div class="cdc-emoji">
+    ${cropIconHtml}
+  </div>
+
+  <div class="cdc-info">
+
             <div class="cdc-name">${crop.type}</div>
 
             ${crop.variety ? `

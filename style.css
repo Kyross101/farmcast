@@ -1431,7 +1431,28 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .crop-detail-card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
  
 .cdc-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-.cdc-emoji  { font-size: 36px; flex-shrink: 0; line-height: 1; }
+.cdc-emoji {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-size: 36px;
+  line-height: 1;
+}
+
+.cdc-crop-icon-img {
+  width: 38px;
+  height: 38px;
+
+  object-fit: contain;
+  display: block;
+}
+
 .cdc-info   { flex: 1; }
 .cdc-name   { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); }
 
