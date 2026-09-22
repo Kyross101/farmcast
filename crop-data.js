@@ -1142,4 +1142,45 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Sponge Gourd',
+      localName: 'Patola',
+      category: 'vegetable',
+      icon: 'assets/crops/patola.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilNote:
+        'Grows well in humid tropical conditions and performs best in well-drained soil with high organic matter.',
+
+      plantingDistance:
+        'About 2.5 meters between hills',
+
+      supportNote:
+        'Provide a strong trellis to support vine growth and improve fruit quality. Trellising is especially useful during the wet season to reduce fruit rotting and malformation.',
+
+      plantingNote:
+        'Soak seeds in water overnight before planting to help germination. Plant directly in the field and retain one healthy plant per hill after thinning.',
+
+      harvestNote:
+        'Young fruits may be harvested about five days after fruit setting. Harvest early in the morning or late in the afternoon and cut the fruit peduncle with a sharp knife.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas - Regional Training Center 7',
+
+        title:
+          'Patola Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Patola%20Production%20Guide.pdf'
+      }
+    },
+
 ];

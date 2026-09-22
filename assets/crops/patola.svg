@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Vine -->
+  <path d="M18 13c7 0 12 3 16 8" fill="none" stroke="#4f8544" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M14 15c3-7 10-10 17-6-2 7-8 12-17 11Z" fill="#64a653"></path>
+
+  <!-- Patola fruit -->
+  <path d="M30 17c7-1 12 3 13 10l5 23c1 6-3 10-9 11-6 1-11-3-12-9l-4-23c-1-6 1-11 7-12Z" fill="#69a94f"></path>
+
+  <!-- Ridges -->
+  <path d="M29 20l7 37" fill="none" stroke="#4e8a3f" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M35 19l7 37" fill="none" stroke="#4e8a3f" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M25 25l6 30" fill="none" stroke="#82bd67" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Highlight -->
+  <path d="M30 23c2-2 4-2 6-1" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".3"></path>
+
+</svg>
