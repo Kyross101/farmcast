@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Main stem -->
+  <path d="M32 57c0-14 0-27-1-40" fill="none" stroke="#54894a" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Side stems -->
+  <path d="M31 39c-5-4-9-9-12-15" fill="none" stroke="#54894a" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M32 33c5-4 9-9 12-15" fill="none" stroke="#54894a" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <path d="M18 24c-7 0-12-5-12-11 7-3 14 0 18 7-1 3-3 4-6 4Z" fill="#74ad52"></path>
+
+  <path d="M44 18c4-7 11-9 17-5-1 7-7 12-14 11-3-1-4-3-3-6Z" fill="#6ba34b"></path>
+
+  <path d="M27 39c-7 2-13-2-16-8 6-5 14-3 19 3 1 2 0 4-3 5Z" fill="#80b85c"></path>
+
+  <!-- Top leaf -->
+  <path d="M31 18c-5-4-6-10-2-15 6 2 10 8 7 14-1 3-3 3-5 1Z" fill="#78b255"></path>
+
+</svg>

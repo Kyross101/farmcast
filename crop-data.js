@@ -1297,4 +1297,118 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Mustard Greens',
+      localName: 'Mustasa',
+      category: 'vegetable',
+      icon: 'assets/crops/mustasa.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingDistance:
+        'About 15–20 cm between transplanted seedlings',
+
+      soilNote:
+        'Grows well in loose soil that is rich in organic matter and has adequate moisture.',
+
+      plantingNote:
+        'Can be direct-seeded or transplanted. For transplanting, seedlings may be moved about four weeks after sowing, preferably in the morning or late afternoon.',
+
+      harvestNote:
+        'Leaves may be harvested about two months after planting or around 2–4 weeks after transplanting, while the stems are still tender.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Regional Training Center 02',
+
+        title:
+          'Gabay sa Pagtatanim ng Mustasa',
+
+        url:
+          'https://ati2.da.gov.ph/ati-2/content/sites/default/files/2024-03/Gabay%20sa%20Pagtatanim%20ng%20Mustasa.pdf'
+      }
+    },
+
+    {
+      name: 'Winged Bean',
+      localName: 'Sigarilyas',
+      category: 'vegetable',
+      icon: 'assets/crops/sigarilyas.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      supportNote:
+        'Provide a sturdy trellis or climbing support as the vines develop.',
+
+      plantingNote:
+        'Establish plants in well-prepared soil with adequate drainage and provide support for the climbing vines.',
+
+      harvestNote:
+        'Young, tender pods are commonly harvested for vegetable use. Follow the official production guide and local crop maturity conditions when determining harvest readiness.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Regional Training Center III',
+
+        title:
+          'Mga Gabay sa Wastong Produksyon ng Sigarilyas',
+
+        url:
+          'https://ati2.da.gov.ph/elms/search.php?page=38'
+      }
+    },
+
+    {
+      name: 'Chayote',
+      localName: 'Sayote',
+      category: 'vegetable',
+      icon: 'assets/crops/sayote.svg',
+
+      minTemp: 10,
+      maxTemp: 25,
+      noRain: false,
+      windMax: null,
+
+      soilPH:
+        '5.5–6.5',
+
+      soilNote:
+        'Performs well in clay loam, silty clay loam, or loam soil with good drainage and adequate organic matter.',
+
+      plantingDistance:
+        'About 3 meters between hills and rows',
+
+      supportNote:
+        'Provide a sturdy trellis or wire support about 6 feet high to support the climbing vines.',
+
+      plantingNote:
+        'Use mature fruits from healthy vines as planting material. Sprouted fruits may be planted in shallow holes, leaving part of the fruit exposed above the soil.',
+
+      harvestNote:
+        'Harvest fruits when they have reached suitable marketable size and quality. In major Cordillera production areas, the guide reports greater harvest from November to June.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Chayote Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1641945410CHAYOTE.pdf'
+      }
+    },
+
 ];
