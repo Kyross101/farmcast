@@ -2615,6 +2615,43 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Pandan',
+      localName: 'Pandan Mabango',
+      scientificName: 'Pandanus amaryllifolius Roxb.',
+      category: 'herb',
+      icon: 'assets/crops/pandan.svg',
+
+      soilNote:
+        'Plant in moist soil or in a container with good drainage.',
+
+      propagationNote:
+       'Propagate by separating a rooted offshoot from the parent plant. Cuttings may also be kept in water until roots develop before planting.',
+
+      wateringNote:
+        'Maintain adequate moisture. The official ATI guide recommends daily watering during summer.',
+
+      plantingNote:
+        'Use a healthy rooted offshoot and establish it in moist, well-drained soil. Pandan may also be grown in containers with adequate drainage.',
+
+      useNote:
+        'The aromatic leaves are widely used as a natural flavoring for rice, desserts, drinks, and other foods.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'Weedibles and Weedicinals Plus Edible Flowers and More',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf?utm_source=chatgpt.com'
+      }
+    },
+
 
 ];
 
