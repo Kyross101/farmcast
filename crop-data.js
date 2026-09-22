@@ -238,20 +238,44 @@ window.FARMCAST_CROPS = [
     name: 'Papaya',
     category: 'fruit',
     icon: 'assets/crops/papaya.svg',
-    minTemp: 21,
-    maxTemp: 33,
+
+    minTemp: null,
+    maxTemp: null,
     noRain: false,
-    windMax: null
+    windMax: null,
+
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Production Guide - Mango, Apple and Pear, Papaya, Sababanana',
+
+      url:
+        'https://library.buplant.da.gov.ph/books/512'
+    }
   },
 
   {
     name: 'Mango',
     category: 'fruit',
     icon: 'assets/crops/mango.svg',
-    minTemp: 22,
-    maxTemp: 34,
+
+    minTemp: null,
+    maxTemp: null,
     noRain: false,
-    windMax: null
+    windMax: null,
+
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Production Guide - Mango, Apple and Pear, Papaya, Sababanana',
+
+      url:
+        'https://library.buplant.da.gov.ph/books/512'
+    }
   },
 
   {
