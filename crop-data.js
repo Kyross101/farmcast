@@ -974,37 +974,37 @@ window.FARMCAST_CROPS = [
   },
 
     {
-      name: 'Squash',
-      localName: 'Kalabasa',
-      category: 'vegetable',
-      icon: 'assets/crops/squash.svg',
+      name: 'Radish',
+      localName: 'Labanos',
+      category: 'root-crop',
+      icon: 'assets/crops/radish.svg',
 
       minTemp: null,
       maxTemp: null,
       noRain: false,
       windMax: null,
 
-      supportNote:
-        'Can be allowed to creep on the ground or grown with a trellis to maximize space and support fruit development.',
+      soilPH:
+        '6.0–6.8',
+
+      varieties:
+        '60-days variety',
 
       plantingNote:
-        'Can be directly seeded or started in seedling trays and transplanted. For transplanted squash, seedlings may be moved about two weeks after emergence.',
+        'Prefers deep, friable, fertile sandy loam or silty loam soil rich in organic matter and with slightly acidic conditions.',
 
       harvestNote:
-        'Immature green fruits can be harvested about 30–40 days from pollination. Mature fruits are ready when the rind hardens, a powder-like coating develops, or the peduncle begins to dry.',
+        'The locally popular 60-days variety can reach maximum marketable root size at about 60 days from emergence.',
 
       source: {
         agency:
-          'Department of Agriculture - Agricultural Training Institute',
-
-        office:
-          'ATI Cordillera Administrative Region',
+          'Department of Agriculture - Bureau of Plant Industry',
 
         title:
-          'Squash Production (For Urban and Home Gardening)',
+          'Radish Seed Production Guide',
 
         url:
-          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/squash_production_guide_leaflet.pdf'
+          'https://library.buplant.da.gov.ph/images/1641882970Radish%20Seed%20Production%20Guide.pdf'
       }
     },
 
