@@ -2250,6 +2250,86 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Pigeon Pea',
+      localName: 'Kadyos',
+      scientificName: 'Cajanus cajan',
+      category: 'legume',
+      icon: 'assets/crops/pigeon-pea.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingDistance:
+        'Rows about 35 cm apart',
+
+      plantingDepth:
+        'About 2.5–10 cm deep',
+
+      climateNote:
+        'A warm-season perennial crop that can tolerate limited water and is useful in dryland agricultural systems.',
+
+      soilNote:
+        'Can grow across a wide range of soil types, from lighter loams to clay soils.',
+
+      growthHabitNote:
+        'An erect perennial shrub with a deep, fast-growing taproot. Plants commonly reach about 3–6 feet tall, although taller growth is possible.',
+
+      plantingNote:
+        'Sow in a well-prepared seedbed by broadcasting and covering the seed or by drilling in rows. Pigeon pea may also be planted along contours as a hedgerow in intercropping systems.',
+
+      productiveLife:
+        'Perennial crop; ATI guidance notes that plants may last about 5 years.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'Cordillera Administrative Region',
+
+        title:
+          'Corn-Vegetable Farming System',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/corn-vegetable_integrated_farm_system.pdf'
+      }
+    },
+
+    {
+      name: 'Lima Bean',
+      localName: 'Patani',
+      scientificName: 'Phaseolus lunatus L.',
+      category: 'legume',
+      icon: 'assets/crops/lima-bean.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      climateNote:
+        'Patani is among the traditional Philippine crops identified by the Department of Agriculture as capable of tolerating prolonged dry conditions.',
+
+      plantingNote:
+        'Patani is cultivated in the Philippines as a vegetable legume. Use locally appropriate legume production practices until a current detailed Philippine government production guide is available.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development',
+
+        office:
+          'Indigenous Vegetables Project (iVeg)',
+
+        title:
+          'Patani / Lima Bean - Phaseolus lunatus L.',
+
+        url:
+          'https://iveg.pcaarrd.dost.gov.ph/crop/phaseolus-lunatus'
+      }
+    },
 
 
 ];
