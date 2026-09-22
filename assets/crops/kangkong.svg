@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Main stems -->
+  <path d="M31 57c0-15 0-30 1-45" fill="none" stroke="#4f8b4a" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M31 39c-6-5-10-10-13-16" fill="none" stroke="#4f8b4a" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M32 31c6-5 10-10 13-16" fill="none" stroke="#4f8b4a" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <path d="M18 24c-7-1-11-6-11-12 7-2 14 2 17 9-1 2-3 3-6 3Z" fill="#62a956"></path>
+
+  <path d="M44 17c3-7 10-10 16-7 0 7-5 12-12 13-3 0-4-2-4-6Z" fill="#62a956"></path>
+
+  <path d="M26 36c-7 1-13-3-15-9 6-4 14-2 18 4 1 2 0 4-3 5Z" fill="#72b865"></path>
+
+  <!-- Top leaf -->
+  <path d="M32 14c-5-4-6-10-3-15 6 2 10 8 8 14-1 3-3 3-5 1Z" fill="#69ad5b"></path>
+
+  <!-- Highlight -->
+  <path d="M11 14c4 0 7 2 10 5" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" opacity=".3"></path>
+
+</svg>

@@ -1183,4 +1183,77 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Bottle Gourd',
+      localName: 'Upo',
+      category: 'vegetable',
+      icon: 'assets/crops/upo.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      supportNote:
+        'Provide a trellis to support vine growth, improve fruit development, and help prevent deformed or rotting fruits.',
+
+      plantingNote:
+        'Follow proper field preparation and vine management practices. Train the vines onto a sturdy trellis as they develop.',
+
+      harvestNote:
+        'Fruits normally reach marketable size about 15 days after fruit set, or approximately 60–80 days from sowing. Harvest using a sharp knife while leaving a short portion of the peduncle attached.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas - Regional Training Center 7',
+
+        title:
+          'Upo (Bottle Gourd) Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Upo%20Production%20Guide.pdf'
+      }
+    },
+
+    {
+      name: 'Water Spinach',
+      localName: 'Kangkong',
+      category: 'vegetable',
+      icon: 'assets/crops/kangkong.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingDistance:
+        'About 30 cm between rows and 30 cm between plants',
+
+      propagationNote:
+        'Can be propagated using seeds or vine cuttings.',
+
+      soilNote:
+        'Grows well where water is readily available, including moist or swampy areas. Upland plantings require sufficient irrigation for good growth.',
+
+      plantingNote:
+        'For upland culture, plants may be established in two rows on a one-meter-wide bed, with about 30 cm spacing between rows and plants.',
+
+      harvestNote:
+        'Young tops or shoots may be ready for harvest about 3–4 weeks after planting.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'All About Kangkong',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1659333070Kangkong.pdf'
+      }
+    },
+
 ];

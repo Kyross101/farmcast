@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Vine -->
+  <path d="M26 13c2-6 7-9 13-9" fill="none" stroke="#4f8544" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M34 8c6-4 12-2 15 3-5 5-11 6-17 3Z" fill="#64a653"></path>
+
+  <!-- Upo fruit -->
+  <path d="M28 15c7 0 11 5 10 12-1 5 1 9 5 13 5 5 5 14 0 19-5 5-16 5-21 0-5-5-5-14 0-19 4-4 6-8 5-13-1-7 0-12 1-12Z" fill="#8fc97a"></path>
+
+  <!-- Fruit shading -->
+  <path d="M30 18c4 5 3 11 1 16-2 7-1 15 3 22" fill="none" stroke="#6eaa61" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Highlight -->
+  <path d="M27 22c2-3 4-4 7-4" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".3"></path>
+
+</svg>
