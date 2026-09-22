@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Bignay</title>
+  <desc id="desc">
+    A Bignay branch with green leaves
+    and hanging clusters of small red to dark-purple fruits.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M23 108
+       C37 88 49 69 62 51
+       C75 35 90 25 106 18" fill="none" stroke="#70533c" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M48 72
+       C39 61 32 50 29 39" fill="none" stroke="#75583f" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M71 45
+       C84 45 95 41 106 34" fill="none" stroke="#75583f" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <ellipse cx="29" cy="35" rx="15" ry="8" transform="rotate(48 29 35)" fill="#62974a" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="42" cy="54" rx="16" ry="8" transform="rotate(30 42 54)" fill="#72a555" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="84" cy="39" rx="16" ry="8" transform="rotate(-25 84 39)" fill="#699f4f" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="103" cy="30" rx="14" ry="8" transform="rotate(-28 103 30)" fill="#78aa5a" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="94" cy="16" rx="13" ry="7" transform="rotate(-8 94 16)" fill="#609248" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <!-- Hanging fruit stem -->
+  <path d="M61 54
+       C60 65 59 75 58 88" fill="none" stroke="#607942" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Side fruit stems -->
+  <path d="M59 64 L50 69" stroke="#607942" stroke-width="2"></path>
+
+  <path d="M59 71 L68 76" stroke="#607942" stroke-width="2"></path>
+
+  <path d="M58 79 L49 84" stroke="#607942" stroke-width="2"></path>
+
+  <path d="M58 85 L66 90" stroke="#607942" stroke-width="2"></path>
+
+  <!-- Red unripe / ripening fruits -->
+  <circle cx="49" cy="70" r="5" fill="#c75555" stroke="#923d42" stroke-width="1.5"></circle>
+
+  <circle cx="67" cy="76" r="5" fill="#b94851" stroke="#853942" stroke-width="1.5"></circle>
+
+  <circle cx="48" cy="84" r="5" fill="#923f55" stroke="#663044" stroke-width="1.5"></circle>
+
+  <!-- Dark ripe fruits -->
+  <circle cx="66" cy="90" r="5" fill="#583653" stroke="#39243a" stroke-width="1.5"></circle>
+
+  <circle cx="57" cy="94" r="5" fill="#453044" stroke="#2f2231" stroke-width="1.5"></circle>
+
+  <circle cx="52" cy="101" r="5" fill="#50334c" stroke="#342235" stroke-width="1.5"></circle>
+
+  <circle cx="63" cy="103" r="5" fill="#3f2e42" stroke="#2b202e" stroke-width="1.5"></circle>
+
+  <!-- Second smaller cluster -->
+  <path d="M85 43
+       C87 53 88 62 87 71" fill="none" stroke="#607942" stroke-width="2.5"></path>
+
+  <circle cx="87" cy="62" r="4.5" fill="#c95d59" stroke="#923f43" stroke-width="1.4"></circle>
+
+  <circle cx="87" cy="71" r="4.5" fill="#7c3d56" stroke="#563044" stroke-width="1.4"></circle>
+
+  <circle cx="86" cy="79" r="4.5" fill="#493249" stroke="#302232" stroke-width="1.4"></circle>
+
+  <!-- Fruit highlights -->
+  <circle cx="47" cy="68" r="1.3" fill="#ec9991"></circle>
+  <circle cx="65" cy="74" r="1.3" fill="#dd8585"></circle>
+  <circle cx="64" cy="88" r="1.2" fill="#947087"></circle>
+
+  <!-- Ground shadow -->
+  <ellipse cx="62" cy="117" rx="46" ry="5" fill="#80664a" opacity="0.35"></ellipse>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Star Apple</title>
+  <desc id="desc">
+    A Caimito branch with green leaves,
+    purple star apple fruits, and a cut fruit showing its star pattern.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M22 108
+       C37 88 50 69 64 51
+       C77 35 91 25 106 18" fill="none" stroke="#70523a" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M49 72
+       C39 61 33 50 29 39" fill="none" stroke="#75573e" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M72 45
+       C84 45 96 41 106 34" fill="none" stroke="#75573e" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <ellipse cx="29" cy="35" rx="15" ry="8" transform="rotate(48 29 35)" fill="#609348" stroke="#42723a" stroke-width="2"></ellipse>
+
+  <ellipse cx="43" cy="54" rx="16" ry="8" transform="rotate(30 43 54)" fill="#70a353" stroke="#42723a" stroke-width="2"></ellipse>
+
+  <ellipse cx="85" cy="39" rx="16" ry="8" transform="rotate(-25 85 39)" fill="#689b4c" stroke="#42723a" stroke-width="2"></ellipse>
+
+  <ellipse cx="103" cy="30" rx="14" ry="8" transform="rotate(-28 103 30)" fill="#76a657" stroke="#42723a" stroke-width="2"></ellipse>
+
+  <ellipse cx="95" cy="16" rx="13" ry="7" transform="rotate(-8 95 16)" fill="#5c8e45" stroke="#42723a" stroke-width="2"></ellipse>
+
+  <!-- Fruit stems -->
+  <path d="M62 54
+       C61 62 61 68 61 73" fill="none" stroke="#607741" stroke-width="3"></path>
+
+  <path d="M85 43
+       C87 50 88 56 87 62" fill="none" stroke="#607741" stroke-width="3"></path>
+
+  <!-- Main whole Caimito -->
+  <circle cx="61" cy="87" r="19" fill="#765273" stroke="#51384f" stroke-width="2.5"></circle>
+
+  <!-- Fruit highlight -->
+  <ellipse cx="54" cy="80" rx="5" ry="8" transform="rotate(30 54 80)" fill="#a37a9e" opacity="0.65"></ellipse>
+
+  <!-- Second fruit -->
+  <circle cx="88" cy="74" r="15" fill="#684866" stroke="#493347" stroke-width="2.5"></circle>
+
+  <ellipse cx="83" cy="69" rx="4" ry="6" transform="rotate(30 83 69)" fill="#977092" opacity="0.6"></ellipse>
+
+  <!-- Cut Star Apple -->
+  <circle cx="29" cy="100" r="18" fill="#755271" stroke="#50384e" stroke-width="2.5"></circle>
+
+  <!-- Inner flesh -->
+  <circle cx="29" cy="100" r="13" fill="#e7d5df"></circle>
+
+  <!-- Star-shaped center -->
+  <path d="M29 87
+       L32 96
+       L42 96
+       L34 102
+       L37 111
+       L29 105
+       L21 111
+       L24 102
+       L16 96
+       L26 96Z" fill="#f2e8ed" stroke="#c29bae" stroke-width="1.5" stroke-linejoin="round"></path>
+
+  <!-- Seeds inside star -->
+  <ellipse cx="29" cy="93" rx="2.3" ry="4" fill="#4e3b32"></ellipse>
+
+  <ellipse cx="36" cy="99" rx="2.3" ry="4" transform="rotate(70 36 99)" fill="#4e3b32"></ellipse>
+
+  <ellipse cx="33" cy="107" rx="2.3" ry="4" transform="rotate(145 33 107)" fill="#4e3b32"></ellipse>
+
+  <ellipse cx="24" cy="107" rx="2.3" ry="4" transform="rotate(-145 24 107)" fill="#4e3b32"></ellipse>
+
+  <ellipse cx="21" cy="99" rx="2.3" ry="4" transform="rotate(-70 21 99)" fill="#4e3b32"></ellipse>
+
+  <!-- Small fruit top details -->
+  <path d="M56 69
+       C59 67 63 67 66 69" fill="none" stroke="#637a43" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <path d="M84 60
+       C87 58 90 58 93 60" fill="none" stroke="#637a43" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Ground shadow -->
+  <ellipse cx="62" cy="118" rx="46" ry="5" fill="#80654a" opacity="0.35"></ellipse>
+</svg>

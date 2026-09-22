@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Grapes</title>
+  <desc id="desc">
+    A grapevine with green leaves, curling tendrils,
+    and a hanging cluster of ripe purple grapes.
+  </desc>
+
+  <!-- Main vine -->
+  <path d="M18 29
+       C38 21 56 28 67 42
+       C78 55 91 58 109 50" fill="none" stroke="#74563d" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side vine -->
+  <path d="M62 40
+       C55 54 52 67 53 78" fill="none" stroke="#6c513a" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Tendril -->
+  <path d="M83 50
+       C91 38 103 38 104 46
+       C105 53 96 56 93 50
+       C91 46 97 43 100 46" fill="none" stroke="#678448" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Left grape leaf -->
+  <path d="M43 29
+       C35 15 23 14 18 21
+       C23 25 24 30 21 36
+       C29 34 34 37 36 44
+       C41 39 47 38 54 41
+       C51 34 54 28 61 24
+       C53 22 47 24 43 29Z" fill="#69a04e" stroke="#44763c" stroke-width="2"></path>
+
+  <!-- Right grape leaf -->
+  <path d="M84 45
+       C77 31 68 31 63 37
+       C68 41 69 45 66 51
+       C73 49 78 52 80 58
+       C85 53 90 52 97 55
+       C94 48 97 43 103 39
+       C96 37 90 39 84 45Z" fill="#75a957" stroke="#44763c" stroke-width="2"></path>
+
+  <!-- Leaf veins -->
+  <path d="M43 29 L35 42
+       M43 29 L24 28
+       M43 29 L56 25" fill="none" stroke="#91bc73" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <path d="M84 45 L79 56
+       M84 45 L69 43
+       M84 45 L97 42" fill="none" stroke="#91bc73" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- Cluster stem -->
+  <path d="M54 50
+       C59 57 62 63 62 69" fill="none" stroke="#667b43" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Grapes top row -->
+  <circle cx="51" cy="72" r="8" fill="#68547b" stroke="#443852" stroke-width="2"></circle>
+
+  <circle cx="63" cy="70" r="8" fill="#755b88" stroke="#443852" stroke-width="2"></circle>
+
+  <circle cx="75" cy="73" r="8" fill="#604d74" stroke="#40354e" stroke-width="2"></circle>
+
+  <!-- Second row -->
+  <circle cx="46" cy="84" r="8" fill="#735987" stroke="#443852" stroke-width="2"></circle>
+
+  <circle cx="59" cy="83" r="8" fill="#5c496f" stroke="#3d324a" stroke-width="2"></circle>
+
+  <circle cx="72" cy="84" r="8" fill="#765d89" stroke="#443852" stroke-width="2"></circle>
+
+  <circle cx="82" cy="85" r="7" fill="#59486c" stroke="#3c3148" stroke-width="2"></circle>
+
+  <!-- Third row -->
+  <circle cx="52" cy="96" r="8" fill="#604c73" stroke="#3f334c" stroke-width="2"></circle>
+
+  <circle cx="65" cy="96" r="8" fill="#755b88" stroke="#443852" stroke-width="2"></circle>
+
+  <circle cx="77" cy="97" r="8" fill="#59466b" stroke="#3b3046" stroke-width="2"></circle>
+
+  <!-- Bottom grapes -->
+  <circle cx="59" cy="108" r="7.5" fill="#69517c" stroke="#42354f" stroke-width="2"></circle>
+
+  <circle cx="70" cy="108" r="7.5" fill="#5c486f" stroke="#3b3047" stroke-width="2"></circle>
+
+  <circle cx="65" cy="117" r="6.5" fill="#745987" stroke="#443650" stroke-width="2"></circle>
+
+  <!-- Fruit highlights -->
+  <circle cx="48" cy="69" r="2" fill="#9d8aae" opacity="0.75"></circle>
+  <circle cx="60" cy="67" r="2" fill="#a18db1" opacity="0.7"></circle>
+  <circle cx="43" cy="81" r="2" fill="#a18db1" opacity="0.65"></circle>
+  <circle cx="69" cy="81" r="2" fill="#a18db1" opacity="0.65"></circle>
+  <circle cx="56" cy="93" r="2" fill="#9c88ad" opacity="0.65"></circle>
+</svg>

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Strawberry</title>
+  <desc id="desc">
+    A strawberry plant with trifoliate green leaves,
+    a white flower, and ripe red strawberries.
+  </desc>
+
+  <!-- Main crown -->
+  <path d="M62 111
+       C62 94 62 79 63 66" fill="none" stroke="#587f42" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Leaf stems -->
+  <path d="M63 70
+       C50 59 41 47 37 35" fill="none" stroke="#608a47" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M64 67
+       C76 55 86 44 92 32" fill="none" stroke="#608a47" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M63 61
+       C63 47 63 35 64 24" fill="none" stroke="#608a47" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Trifoliate leaves -->
+  <path d="M37 36
+       C25 24 15 30 18 40
+       C23 50 34 49 42 41Z" fill="#6ba251" stroke="#47783d" stroke-width="2"></path>
+
+  <path d="M39 34
+       C35 21 43 14 51 20
+       C58 28 52 38 43 41Z" fill="#75aa58" stroke="#47783d" stroke-width="2"></path>
+
+  <path d="M35 37
+       C24 35 18 43 23 51
+       C31 57 40 50 42 42Z" fill="#62994b" stroke="#47783d" stroke-width="2"></path>
+
+  <path d="M91 33
+       C102 21 113 27 110 38
+       C106 48 95 47 87 40Z" fill="#70a656" stroke="#47783d" stroke-width="2"></path>
+
+  <path d="M90 31
+       C94 18 85 12 78 19
+       C72 27 78 37 87 40Z" fill="#78ad5b" stroke="#47783d" stroke-width="2"></path>
+
+  <path d="M94 35
+       C105 33 112 41 107 49
+       C99 55 90 48 87 40Z" fill="#659b4d" stroke="#47783d" stroke-width="2"></path>
+
+  <!-- Center leaves -->
+  <path d="M64 25
+       C54 14 46 19 48 28
+       C53 36 61 34 65 29Z" fill="#6fa553" stroke="#47783d" stroke-width="2"></path>
+
+  <path d="M65 24
+       C74 13 83 18 81 27
+       C77 35 69 34 64 29Z" fill="#79ad5d" stroke="#47783d" stroke-width="2"></path>
+
+  <!-- Flower stem -->
+  <path d="M62 74
+       C49 71 40 71 33 74" fill="none" stroke="#5f8745" stroke-width="3"></path>
+
+  <!-- White strawberry flower -->
+  <circle cx="29" cy="74" r="6" fill="#f7f4e9"></circle>
+  <circle cx="35" cy="74" r="6" fill="#f7f4e9"></circle>
+  <circle cx="32" cy="68" r="6" fill="#fffdf3"></circle>
+  <circle cx="32" cy="80" r="6" fill="#fffdf3"></circle>
+
+  <circle cx="32" cy="74" r="4" fill="#e1bc46"></circle>
+
+  <!-- Fruit stems -->
+  <path d="M63 69
+       C72 73 77 79 79 85" fill="none" stroke="#5c8544" stroke-width="3"></path>
+
+  <path d="M61 75
+       C53 80 50 86 49 92" fill="none" stroke="#5c8544" stroke-width="3"></path>
+
+  <!-- Main ripe strawberry -->
+  <path d="M79 81
+       C67 78 61 86 64 97
+       C67 108 75 114 79 117
+       C84 113 92 107 95 97
+       C98 86 91 78 79 81Z" fill="#d94f4d" stroke="#a83b3e" stroke-width="2.5"></path>
+
+  <!-- Strawberry calyx -->
+  <path d="M78 82
+       L72 76
+       L78 77
+       L80 71
+       L83 77
+       L90 76
+       L84 82Z" fill="#568b45"></path>
+
+  <!-- Seeds -->
+  <ellipse cx="72" cy="91" rx="1.5" ry="2" fill="#f4d16c"></ellipse>
+  <ellipse cx="82" cy="89" rx="1.5" ry="2" fill="#f4d16c"></ellipse>
+  <ellipse cx="89" cy="94" rx="1.5" ry="2" fill="#f4d16c"></ellipse>
+
+  <ellipse cx="69" cy="99" rx="1.5" ry="2" fill="#f4d16c"></ellipse>
+  <ellipse cx="79" cy="99" rx="1.5" ry="2" fill="#f4d16c"></ellipse>
+  <ellipse cx="88" cy="102" rx="1.5" ry="2" fill="#f4d16c"></ellipse>
+
+  <ellipse cx="76" cy="108" rx="1.5" ry="2" fill="#f4d16c"></ellipse>
+  <ellipse cx="84" cy="108" rx="1.5" ry="2" fill="#f4d16c"></ellipse>
+
+  <!-- Smaller strawberry -->
+  <path d="M49 89
+       C40 87 36 93 38 101
+       C40 109 46 113 49 115
+       C53 112 58 108 60 101
+       C62 93 58 87 49 89Z" fill="#e05a52" stroke="#ad4040" stroke-width="2"></path>
+
+  <path d="M49 90
+       L44 85
+       L49 86
+       L51 82
+       L53 87
+       L58 86
+       L54 91Z" fill="#5e9148"></path>
+
+  <ellipse cx="45" cy="98" rx="1.2" ry="1.7" fill="#f3d071"></ellipse>
+  <ellipse cx="52" cy="97" rx="1.2" ry="1.7" fill="#f3d071"></ellipse>
+  <ellipse cx="49" cy="105" rx="1.2" ry="1.7" fill="#f3d071"></ellipse>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="118" rx="45" ry="5" fill="#80664a" opacity="0.35"></ellipse>
+</svg>

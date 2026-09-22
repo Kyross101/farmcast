@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Marang</title>
+  <desc id="desc">
+    A Marang branch with broad green leaves,
+    a soft-spined fruit, and exposed white flesh.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M21 108
+       C36 87 49 68 63 50
+       C76 35 91 25 107 18" fill="none" stroke="#70523a" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M48 72
+       C38 60 32 49 29 38" fill="none" stroke="#75573e" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M71 45
+       C84 45 96 40 106 33" fill="none" stroke="#75573e" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Broad left leaf -->
+  <path d="M28 36
+       C17 24 8 28 10 39
+       C12 48 21 52 31 48
+       C37 45 42 39 45 33
+       C38 33 33 34 28 36Z" fill="#64994b" stroke="#42743a" stroke-width="2"></path>
+
+  <!-- Middle leaf -->
+  <path d="M46 58
+       C34 48 26 53 28 64
+       C31 74 41 76 50 71
+       C56 67 60 62 63 56
+       C56 56 51 56 46 58Z" fill="#74a756" stroke="#46773c" stroke-width="2"></path>
+
+  <!-- Right leaf -->
+  <path d="M91 31
+       C80 21 72 25 73 35
+       C76 45 86 47 95 42
+       C101 38 105 33 108 27
+       C101 27 96 28 91 31Z" fill="#6ba150" stroke="#44763b" stroke-width="2"></path>
+
+  <!-- Leaf midribs -->
+  <path d="M13 39 C24 39 34 37 43 34" fill="none" stroke="#91bb73" stroke-width="1.5"></path>
+
+  <path d="M31 64 C41 63 51 60 60 57" fill="none" stroke="#95be76" stroke-width="1.5"></path>
+
+  <path d="M76 35 C87 34 96 31 105 28" fill="none" stroke="#91bb73" stroke-width="1.5"></path>
+
+  <!-- Fruit stem -->
+  <path d="M68 51
+       C68 60 68 66 69 72" fill="none" stroke="#617941" stroke-width="3"></path>
+
+  <!-- Whole Marang fruit -->
+  <ellipse cx="70" cy="88" rx="21" ry="24" fill="#94a958" stroke="#62783d" stroke-width="2.5"></ellipse>
+
+  <!-- Soft spines -->
+  <path d="M55 75 L50 71
+       M64 69 L62 63
+       M75 68 L78 62
+       M84 74 L90 71
+
+       M52 85 L46 84
+       M62 81 L57 77
+       M75 80 L79 75
+       M87 84 L93 82
+
+       M52 96 L47 99
+       M63 94 L58 99
+       M76 94 L81 99
+       M87 96 L92 100
+
+       M58 105 L55 111
+       M70 107 L70 114
+       M81 104 L85 110" fill="none" stroke="#c0c77a" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Cut-open Marang -->
+  <circle cx="30" cy="99" r="17" fill="#91a555" stroke="#60763c" stroke-width="2.5"></circle>
+
+  <!-- White fleshy arils -->
+  <ellipse cx="26" cy="94" rx="5" ry="7" fill="#f2eee1"></ellipse>
+
+  <ellipse cx="35" cy="95" rx="5" ry="7" fill="#f6f1e4"></ellipse>
+
+  <ellipse cx="27" cy="104" rx="5" ry="7" fill="#f4efe2"></ellipse>
+
+  <ellipse cx="36" cy="104" rx="5" ry="7" fill="#eee9dc"></ellipse>
+
+  <!-- Seeds -->
+  <ellipse cx="26" cy="95" rx="2" ry="3" fill="#826344"></ellipse>
+  <ellipse cx="35" cy="96" rx="2" ry="3" fill="#826344"></ellipse>
+  <ellipse cx="28" cy="104" rx="2" ry="3" fill="#826344"></ellipse>
+  <ellipse cx="36" cy="104" rx="2" ry="3" fill="#826344"></ellipse>
+
+  <!-- Ground shadow -->
+  <ellipse cx="62" cy="117" rx="46" ry="5" fill="#80654a" opacity="0.35"></ellipse>
+</svg>

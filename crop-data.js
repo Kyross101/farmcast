@@ -3248,6 +3248,300 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Marang',
+      scientificName: 'Artocarpus odoratissimus',
+      category: 'fruit',
+      icon: 'assets/crops/marang.svg',
+
+      growthHabitNote:
+        'Marang is an evergreen tropical fruit tree that may grow up to about 25 meters tall when not pruned or otherwise managed.',
+
+      distributionNote:
+        'The official Philippine reference notes that Marang is commonly cultivated in areas including Mindoro, Negros, and Mindanao.',
+
+      fruitNote:
+        'The fruit is generally roundish to oblong and about 16–20 cm long, with soft greenish-to-yellow spines and sweet, juicy white flesh surrounding numerous seeds.',
+
+      plantingNote:
+        'Use healthy planting material and provide adequate space for development of the mature tree. Exact spacing, temperature, soil-pH, and irrigation thresholds are not stored because the selected official reference does not provide production-specific values.',
+
+      postHarvestNote:
+        'Freshly opened Marang has a short shelf life and should be consumed or processed promptly because the exposed fruit deteriorates quickly.',
+
+      useNote:
+        'Marang is commonly eaten fresh and may also be processed into products such as ice cream, syrup, puree, preserves, jam, dehydrated products, and powder.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'SaRiLing ATIn',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/SaRiLing%20ATIn.pdf'
+      }
+    },
+
+    {
+      name: 'Bignay',
+      localName: 'Bugnay',
+      scientificName: 'Antidesma bunius (L.) Spreng.',
+      category: 'fruit',
+      icon: 'assets/crops/bignay.svg',
+
+      growthHabitNote:
+        'Bignay is a native fruit-bearing tree found in the Philippines.',
+
+      fruitNote:
+        'Bignay produces small fruits in hanging clusters. The fruits are used in Philippine food research and processing applications.',
+
+      propagationNote:
+        'Philippine DOST-supported research on native fruit-bearing trees has included Bignay in studies on vegetative propagation and the development of quality planting stocks.',
+
+      useNote:
+        'Bignay fruits may be utilized in processed food products. DOST-supported studies have also investigated anthocyanin-rich extracts from the fruit for food and nutraceutical applications.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development',
+
+        office:
+          'DOST-PCAARRD',
+
+        title:
+          'Health-promoting Properties Found in Extracts of Duhat and Bignay',
+
+        url:
+         'https://www.pcaarrd.dost.gov.ph/index.php/quick-information-dispatch-qid-articles/health-promoting-properties-found-in-extracts-of-duhat-and-bignay'
+      }
+    },
+
+    {
+      name: 'Strawberry',
+      scientificName: 'Fragaria × ananassa',
+      category: 'fruit',
+      icon: 'assets/crops/strawberry.svg',
+
+      idealTempRange:
+        '14–23°C',
+
+      soilPH:
+        '5.5–6.5',
+
+      soilNote:
+        'Grows best in well-drained clay-loam and loamy soils with good air and water drainage. Waterlogged and sandy soils are less favorable for strawberry production.',
+
+      varieties: [
+        'Sweet Charlie',
+        'Strawberry Festival',
+        'Missionary',
+        'Whitney',
+        'Winter Dawn',
+        'Toyonoka'
+      ],
+
+      plantingSeason:
+        'June–July on rainfed hillsides; late August–September may be used in valley-floor areas prone to flooding.',
+
+      plantingDistance:
+        'For matted and spaced-matted row systems, mother plants may be spaced about 18–36 inches apart, with rows about 36–48 inches apart.',
+
+      propagationNote:
+        'Strawberries may be established using suckers or runners. The official guide notes that runners are preferred because they can provide higher yield.',
+
+      plantingNote:
+        'Set the crown at the correct soil level. Planting too high may expose roots, while planting too deeply can cause crown rot. A soil test should be used to guide nutrient management.',
+
+      irrigationNote:
+        'Maintain adequate soil moisture throughout the growing season. The guide recommends at least about 1 inch of water per week from rainfall or irrigation.',
+
+      harvestNote:
+        'Fruit may be harvested at full-ripe stage when the surface is red throughout for fresh consumption or processing. Three-fourths ripe fruits may be harvested for nearby or longer-distance markets.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          'Strawberry Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/strawberry_production.pdf'
+      }
+    },
+
+    {
+      name: 'Mandarin Orange',
+      localName: 'Dalanghita',
+      scientificName: 'Citrus reticulata Blanco',
+      category: 'fruit',
+      icon: 'assets/crops/mandarin-orange.svg',
+
+      soilPH:
+        '5.0–7.5',
+
+      varieties: [
+        'Satsuma',
+        'Ponkan'
+      ],
+
+      climateNote:
+        'Mandarin belongs to the citrus group that grows well under tropical and subtropical conditions in the Philippines.',
+
+      rainfallNote:
+        'Areas with adequate and well-distributed rainfall are favorable for citrus production. Where rainfall is insufficient or dry periods occur, regular and timely irrigation is important.',
+
+      soilNote:
+        'Citrus can grow in different soil types within an appropriate soil-pH range, provided the site supports good crop establishment and water management.',
+
+      irrigationNote:
+        'Provide regular and timely irrigation when rainfall is insufficient, especially in production areas that experience prolonged dry periods.',
+
+      plantingNote:
+        'Use healthy, properly identified planting material and select a site suited to citrus production. Match orchard management and irrigation practices to local rainfall and soil conditions.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development',
+
+        office:
+          'DOST-PCAARRD',
+
+        title:
+          'Citrus - Industry Strategic Science and Technology Program',
+
+        url:
+          'https://ispweb.pcaarrd.dost.gov.ph/citrus/'
+      }
+    },
+
+    {
+      name: 'Lemon',
+      scientificName: 'Citrus limon L.',
+      category: 'fruit',
+      icon: 'assets/crops/lemon.svg',
+
+      soilPH:
+        '5.0–7.5',
+
+      climateNote:
+        'Lemon belongs to the citrus group that grows well under tropical and subtropical conditions in the Philippines.',
+
+      rainfallNote:
+        'Well-distributed rainfall is favorable for citrus production. In locations with extended dry periods or insufficient rainfall, supplemental irrigation is important.',
+
+      irrigationNote:
+        'Provide regular and timely irrigation when natural rainfall is insufficient.',
+
+      soilNote:
+        'Citrus can be cultivated in different soil types within an appropriate soil-pH range, provided the site has suitable water management and growing conditions.',
+
+      propagationNote:
+        'Citrus may be propagated through seed or vegetatively. Philippine citrus production guidance recognizes budding, grafting, and cuttings as vegetative propagation methods.',
+
+      plantingNote:
+        'Use healthy and properly identified planting material and establish the tree in a site suitable for citrus production. Adjust irrigation and orchard management according to local rainfall and soil conditions.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development',
+
+        office:
+          'DOST-PCAARRD',
+
+        title:
+          'Citrus - Industry Strategic Science and Technology Program',
+
+        url:
+          'https://ispweb.pcaarrd.dost.gov.ph/citrus/'
+      }
+    },
+
+    {
+      name: 'Grapes',
+      localName: 'Ubas',
+      scientificName: 'Vitis vinifera',
+      category: 'fruit',
+      icon: 'assets/crops/grapes.svg',
+
+      growthHabitNote:
+        'Grapes are perennial woody vines that require appropriate support and training for productive cultivation.',
+
+      supportNote:
+        'Provide a suitable grapevine support and training system. The official Philippine grape-production reference includes vine supports, training techniques, and pruning as important parts of vineyard management.',
+
+      propagationNote:
+        'Use healthy and properly identified planting material and follow locally appropriate propagation and establishment practices for table-grape production.',
+
+      pruningNote:
+        'Regular pruning and vine training are important components of Philippine grape production and should be managed according to cultivar and local production conditions.',
+
+      plantingNote:
+        'Select a suitable site, healthy planting materials, and an appropriate cultivar. Vineyard establishment should consider local soil and climatic conditions as well as the required vine-support system.',
+
+      harvestNote:
+        'Harvest grapes according to appropriate fruit maturity and quality standards and handle harvested clusters carefully to preserve postharvest quality.',
+
+      useNote:
+        'Grapes may be consumed fresh as table grapes or processed into products such as juice, raisins, preserves, and other value-added products.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development',
+
+        office:
+          'DOST-PCAARRD / STAARRDEC Knowledge Resources',
+
+        title:
+          'The Philippines Recommends for Grapes',
+
+        url:
+         'https://km4aanr.pcaarrd.dost.gov.ph/search?page=5&query=The+Philippines+recommends+for+coconut&search=The+Philippines+recommends+for+coconut'
+      }
+    },
+
+    {
+      name: 'Star Apple',
+      localName: 'Caimito',
+      scientificName: 'Chrysophyllum cainito',
+      category: 'fruit',
+      icon: 'assets/crops/star-apple.svg',
+
+      bearingNote:
+        'The official ATI SALT-4 reference lists Caimito at about 5–6 years before harvesting when propagated from seed and about 3–4 years when established through asexual propagation.',
+
+      propagationNote:
+        'Both seed propagation and asexual propagation are recognized in the official Philippine fruit-tree reference, with asexually propagated Caimito generally reaching harvest earlier.',
+
+      plantingNote:
+        'Use healthy planting material and provide adequate space for development of the mature fruit tree. Asexually propagated planting materials may be selected when earlier fruit production is desired.',
+
+      fruitNote:
+        'Caimito is cultivated in the Philippines as an edible tropical fruit tree.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          '10 Steps to Small Agrofruit Livelihood Technology (SALT-4)',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/salt_4_brochure.pdf'
+      }
+    },
+   
 
 ];
 
