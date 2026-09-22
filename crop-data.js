@@ -165,10 +165,25 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     emoji: '🥬',
     icon: 'assets/crops/pechay.svg',
+
     minTemp: 15,
     maxTemp: 25,
     noRain: false,
-    windMax: 20
+    windMax: 20,
+
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Cordillera',
+
+      title:
+        'Pechay Production for Urban and Home Gardening',
+
+      url:
+        'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/pechay_production_for_urban_gardening_leaflet.pdf'
+    }
   },
 
   {
@@ -176,20 +191,47 @@ window.FARMCAST_CROPS = [
     category: 'root-crop',
     emoji: '🍠',
     icon: 'assets/crops/kamote.svg',
+
     minTemp: 20,
     maxTemp: 35,
     noRain: true,
-    windMax: 25
+    windMax: 25,
+
+    source: {
+      agency:
+        'Department of Agriculture',
+
+      office:
+        'High Value Crops Development Program',
+
+      title:
+        'Pag-aalaga ng Kamote',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Production-Guide.pdf'
+    }
   },
 
   {
     name: 'Banana',
     category: 'fruit',
     icon: 'assets/crops/banana.svg',
+
     minTemp: 15,
     maxTemp: 35,
     noRain: false,
-    windMax: null
+    windMax: null,
+
+    source: {
+      agency:
+        'Department of Agriculture - Philippine Council for Agriculture and Fisheries',
+
+      title:
+       'Philippine Banana Industry Roadmap 2021-2025',
+
+      url:
+        'https://pcaf.da.gov.ph/wp-content/uploads/2022/06/Philippine-Banana-Industry-Roadmap-2021-2025.pdf'
+    }  
   },
 
   {
