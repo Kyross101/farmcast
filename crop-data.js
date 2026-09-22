@@ -2488,7 +2488,7 @@ window.FARMCAST_CROPS = [
           'Celery Production Guide',
 
         url:
-          'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/celery.pdf?utm_source'
+          'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/celery.pdf'
       }
     },
 
@@ -2648,7 +2648,7 @@ window.FARMCAST_CROPS = [
           'Weedibles and Weedicinals Plus Edible Flowers and More',
 
         url:
-          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf?utm_source=chatgpt.com'
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf'
       }
     },
 
