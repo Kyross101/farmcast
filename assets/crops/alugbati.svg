@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Vine -->
+  <path d="M31 58c1-15 1-29 0-45" fill="none" stroke="#6b4778" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M31 38c-6-5-11-10-14-16" fill="none" stroke="#6b4778" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M32 29c6-4 10-9 13-15" fill="none" stroke="#6b4778" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <path d="M17 22c-7 0-11-5-11-11 7-3 14 1 18 7-1 3-3 4-7 4Z" fill="#5fa653"></path>
+
+  <path d="M44 15c4-6 11-8 16-4-1 7-7 11-14 10-3-1-4-3-2-6Z" fill="#65ad58"></path>
+
+  <path d="M26 39c-7 1-13-3-15-9 6-4 14-2 18 4 1 2 0 4-3 5Z" fill="#70b862"></path>
+
+  <!-- Purple fruit -->
+  <circle cx="36" cy="22" r="3" fill="#7d4d86"></circle>
+  <circle cx="40" cy="25" r="3" fill="#684071"></circle>
+  <circle cx="36" cy="28" r="3" fill="#80518b"></circle>
+
+</svg>

@@ -1256,4 +1256,45 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Malabar Spinach',
+      localName: 'Alugbati',
+      category: 'vegetable',
+      icon: 'assets/crops/alugbati.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilPH:
+        '5.5–8.0',
+
+      propagationNote:
+        'Can be propagated using mature stem cuttings or seeds.',
+
+      supportNote:
+        'For home gardens, a vertical, semi-vertical, or V-shaped trellis may be used to maximize growing space.',
+
+      plantingNote:
+        'Mature stem cuttings about 20–25 cm long may be planted directly. Seed-grown plants may be transplanted about three weeks after sowing at approximately 20 cm × 20 cm spacing.',
+
+      harvestNote:
+        'Plants may be ready for harvest about 30–45 days after transplanting. Shoots can also be harvested repeatedly at weekly intervals.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas - Regional Training Center 7',
+
+        title:
+          'Alugbati Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/alugbati_prod.pdf'
+      }
+    },
+
 ];
