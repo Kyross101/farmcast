@@ -1715,4 +1715,77 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Snap Bean',
+      localName: 'Baguio Bean',
+      category: 'legume',
+      icon: 'assets/crops/snap-bean.svg',
+
+      minTemp: 18,
+      maxTemp: 29,
+      noRain: false,
+      windMax: null,
+
+      soilPH:
+        '5.5–7.5',
+
+      soilNote:
+        'Grows best in well-drained clay loam soil that is rich in organic matter.',
+
+      plantingDistance:
+        'About 30 cm between hills and 30 cm between plants',
+
+      supportNote:
+        'Pole-type snap beans require an A-type or fence-type trellis before the vines begin active development.',
+
+      plantingNote:
+        'Directly sow about 2–3 seeds per hill and cover lightly with soil. Maintain adequate moisture throughout the growing period without allowing the soil to become waterlogged.',
+
+      harvestNote:
+        'Pole-type snap beans may be harvested about 60–70 days after planting. Bush types may begin harvest around 55–60 days after planting. Harvest pods while they are tender, firm, crisp, and bright in color.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Cagayan Valley Regional Field Office',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'Snap Beans Production Guide',
+
+        url:
+          'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Snap-Beans-Production-Guide.pdf'
+      }
+    },
+
+    {
+      name: 'Sugar Apple',
+      localName: 'Atis',
+      category: 'fruit',
+      icon: 'assets/crops/atis.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingNote:
+        'Follow the Bureau of Plant Industry production guide for recommended propagation, site preparation, planting, and orchard management practices.',
+
+      harvestNote:
+        'Determine harvest readiness using the fruit maturity guidance provided in the official Bureau of Plant Industry production guide.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Production Guide - Guava, Guyabano, Avocado, Cashew, Atis',
+
+        url:
+          'https://library.buplant.da.gov.ph/books/509'
+      }
+    },
+
 ];

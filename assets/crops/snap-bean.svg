@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Vine -->
+  <path d="M18 15c7 0 13 4 17 10" fill="none" stroke="#4d8546" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M16 16c-7-1-11-6-9-12 8-1 14 3 17 9-2 3-4 4-8 3Z" fill="#68aa58"></path>
+
+  <!-- Curved snap bean pod -->
+  <path d="M30 20c10-2 20 3 24 12 4 10 0 21-10 27-8 5-19 3-25-4 11 1 20-3 24-10 4-7 2-14-4-18-3-2-6-3-9-3Z" fill="#72b85b"></path>
+
+  <!-- Pod seam -->
+  <path d="M31 23c8 0 15 4 18 10 4 8 1 16-6 21" fill="none" stroke="#529645" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Bean bulges -->
+  <circle cx="39" cy="29" r="3" fill="#94ce76"></circle>
+  <circle cx="45" cy="35" r="3.2" fill="#94ce76"></circle>
+  <circle cx="46" cy="43" r="3.1" fill="#94ce76"></circle>
+
+  <!-- Highlight -->
+  <path d="M32 25c4 0 7 1 10 3" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".28"></path>
+
+</svg>
