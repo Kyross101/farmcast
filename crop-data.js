@@ -938,7 +938,42 @@ window.FARMCAST_CROPS = [
     }
   },
 
-   {
+  {
+    name: 'Squash',
+    localName: 'Kalabasa',
+    category: 'vegetable',
+    icon: 'assets/crops/squash.svg',
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    supportNote:
+      'Can be allowed to creep on the ground or grown with a trellis to maximize space and support fruit development.',
+
+    plantingNote:
+      'Can be directly seeded or started in seedling trays and transplanted. For transplanted squash, seedlings may be moved about two weeks after emergence.',
+
+    harvestNote:
+      'Immature green fruits can be harvested about 30–40 days from pollination. Mature fruits are ready when the rind hardens, a powder-like coating develops, or the peduncle begins to dry.',
+
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Cordillera Administrative Region',
+
+      title:
+        'Squash Production (For Urban and Home Gardening)',
+
+      url:
+        'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/squash_production_guide_leaflet.pdf'
+    }
+  },
+
+    {
       name: 'Squash',
       localName: 'Kalabasa',
       category: 'vegetable',
