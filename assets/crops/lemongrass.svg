@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Lemongrass</title>
+  <desc id="desc">
+    A dense clump of lemongrass with long narrow arching green leaves
+    and pale thickened bases.
+  </desc>
+
+  <!-- Pale basal clump -->
+  <path d="M45 111
+       C48 99 51 87 54 73
+       L61 72
+       C60 88 59 101 58 114Z" fill="#c7d38a" stroke="#809452" stroke-width="2"></path>
+
+  <path d="M58 114
+       C59 98 61 84 62 68
+       L68 68
+       C68 85 70 100 71 114Z" fill="#d2dc94" stroke="#809452" stroke-width="2"></path>
+
+  <path d="M70 114
+       C69 98 70 86 73 73
+       L79 74
+       C77 90 78 102 82 111Z" fill="#c3cf84" stroke="#809452" stroke-width="2"></path>
+
+  <!-- Long left leaves -->
+  <path d="M54 80
+       C43 60 31 40 17 19" fill="none" stroke="#679649" stroke-width="6" stroke-linecap="round"></path>
+
+  <path d="M57 76
+       C45 54 43 31 39 12" fill="none" stroke="#75a352" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M52 87
+       C35 75 23 60 11 45" fill="none" stroke="#5f9045" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Upright center leaves -->
+  <path d="M63 73
+       C61 52 60 31 62 8" fill="none" stroke="#78a653" stroke-width="6" stroke-linecap="round"></path>
+
+  <path d="M68 72
+       C70 49 73 29 79 9" fill="none" stroke="#6d9d4d" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Right arching leaves -->
+  <path d="M74 78
+       C88 57 98 38 110 20" fill="none" stroke="#609045" stroke-width="6" stroke-linecap="round"></path>
+
+  <path d="M76 83
+       C93 69 107 55 117 42" fill="none" stroke="#72a050" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M72 74
+       C82 51 87 30 89 14" fill="none" stroke="#7aa855" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Additional blades for dense clump -->
+  <path d="M59 84
+       C50 67 50 50 50 35" fill="none" stroke="#86ae5c" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M69 84
+       C79 67 82 52 82 38" fill="none" stroke="#659548" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M62 88
+       C51 77 40 70 29 64" fill="none" stroke="#77a452" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M71 87
+       C84 78 95 72 105 67" fill="none" stroke="#6b994a" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Basal sheath details -->
+  <path d="M50 100 L79 100" fill="none" stroke="#9dac66" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M48 107 L81 107" fill="none" stroke="#9dac66" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Ground -->
+  <ellipse cx="65" cy="115" rx="29" ry="5" fill="#80664a" opacity="0.4"></ellipse>
+</svg>

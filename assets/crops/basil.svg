@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Basil</title>
+  <desc id="desc">
+    A sweet basil plant with broad aromatic green leaves
+    arranged along an upright stem.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 114
+       C63 93 64 72 63 52
+       C63 37 64 24 64 14" fill="none" stroke="#567e41" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M63 44
+       C51 40 41 33 34 26" fill="none" stroke="#5b8745" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M65 43
+       C77 39 87 32 95 24" fill="none" stroke="#5b8745" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M63 67
+       C50 62 40 56 31 49" fill="none" stroke="#5b8745" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M65 65
+       C78 60 89 53 98 46" fill="none" stroke="#5b8745" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Upper left leaf -->
+  <path d="M34 26
+       C22 17 12 22 14 32
+       C18 44 31 44 43 32
+       C40 29 37 27 34 26Z" fill="#65a050" stroke="#477b3d" stroke-width="2"></path>
+
+  <!-- Upper right leaf -->
+  <path d="M95 24
+       C106 16 116 21 114 31
+       C110 42 97 42 86 31
+       C89 28 92 26 95 24Z" fill="#6ba653" stroke="#477b3d" stroke-width="2"></path>
+
+  <!-- Middle left leaf -->
+  <path d="M31 49
+       C18 41 9 48 13 59
+       C20 69 33 66 43 55
+       C39 52 35 50 31 49Z" fill="#74ad59" stroke="#4c803f" stroke-width="2"></path>
+
+  <!-- Middle right leaf -->
+  <path d="M98 46
+       C111 39 119 47 115 58
+       C108 67 95 64 85 54
+       C89 50 94 48 98 46Z" fill="#67a150" stroke="#4c803f" stroke-width="2"></path>
+
+  <!-- Lower leaves -->
+  <path d="M62 79
+       C50 71 39 75 38 84
+       C43 94 54 94 64 85Z" fill="#79b05c" stroke="#4c803f" stroke-width="2"></path>
+
+  <path d="M66 78
+       C79 70 89 75 90 84
+       C85 94 74 93 64 85Z" fill="#70aa56" stroke="#4c803f" stroke-width="2"></path>
+
+  <!-- Small top leaves -->
+  <path d="M64 13
+       C54 14 49 22 53 29
+       C58 35 64 31 66 25
+       C68 19 67 15 64 13Z" fill="#7bb25f" stroke="#4e8241" stroke-width="2"></path>
+
+  <path d="M65 14
+       C74 14 80 21 77 28
+       C73 34 67 31 64 25
+       C62 20 62 16 65 14Z" fill="#6da754" stroke="#4e8241" stroke-width="2"></path>
+
+  <!-- Leaf veins -->
+  <path d="M17 32 L39 30" fill="none" stroke="#8abe6f" stroke-width="1.5"></path>
+
+  <path d="M111 31 L89 29" fill="none" stroke="#8abe6f" stroke-width="1.5"></path>
+
+  <path d="M16 58 L39 53" fill="none" stroke="#92c377" stroke-width="1.5"></path>
+
+  <path d="M112 57 L89 51" fill="none" stroke="#92c377" stroke-width="1.5"></path>
+
+  <!-- Tiny flower spike -->
+  <circle cx="64" cy="9" r="3" fill="#e1d6eb"></circle>
+  <circle cx="59" cy="11" r="2.5" fill="#eee6f3"></circle>
+  <circle cx="69" cy="11" r="2.5" fill="#eee6f3"></circle>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="116" rx="31" ry="5" fill="#80664b" opacity="0.4"></ellipse>
+</svg>

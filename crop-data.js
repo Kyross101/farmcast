@@ -2524,6 +2524,97 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Kale',
+      category: 'vegetable',
+      icon: 'assets/crops/kale.svg',
+
+      noRain: false,
+
+      productionSystemNote:
+        'Kale is included in Philippine Department of Agriculture-supported indoor hydroponic vegetable production initiatives together with lettuce, basil, and tomato.',
+
+      plantingNote:
+        'Kale may be grown under controlled or soilless production systems. Follow locally validated crop-management practices appropriate to the selected kale cultivar and production setup.',
+
+      source: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Bureau of Agricultural Research / National Urban and Peri-Urban Agriculture Program',
+
+        title:
+          'New Urban Agriculture Project Starts in Makati City',
+
+        url:
+          'https://www.da.gov.ph/new-urban-agri-project-starts-in-makati-city/'
+      }
+    },
+
+    {
+      name: 'Lemongrass',
+      localName: 'Tanglad',
+      category: 'herb',
+      icon: 'assets/crops/lemongrass.svg',
+
+      noRain: false,
+
+      sunlightNote:
+        'Prefers direct sunlight.',
+
+      soilNote:
+        'Can grow in different soil conditions but prefers loose soil.',
+
+      propagationNote:
+        'Propagated by division of established clumps.',
+
+      plantingNote:
+        'Use healthy divisions from established lemongrass clumps and plant them in loose soil where the plants can receive direct sunlight.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'Weedibles and Weedicinals Plus Edible Flowers and More',
+
+        url:
+         'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf'
+      }
+    },
+
+    {
+      name: 'Basil',
+      variety: 'Sweet Basil',
+      scientificName: 'Ocimum basilicum',
+      category: 'herb',
+      icon: 'assets/crops/basil.svg',
+
+      productionNote:
+        'Sweet basil is cultivated in the Philippines as a culinary herb and is included among crop commodities produced under Philippine Good Agricultural Practices (PhilGAP)-certified herb production.',
+
+      plantingNote:
+        'Use healthy planting material and locally appropriate herb-production practices. Quantitative temperature, soil, spacing, and harvest thresholds are not stored here because the selected official reference does not provide crop-specific production limits for Sweet Basil.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        office:
+          'Plant Product Safety Services Division',
+
+        title:
+          'BPI-0294-26 PhilGAP Certificate - Solaire Herb and Greenhouse, Inc.',
+
+        url:
+          'https://buplant.da.gov.ph/2026/03/16/bpi-0294-26-philgap-certificate-solaire-herb-and-greenhouse-inc/'
+      }
+    },
+
 
 ];
 

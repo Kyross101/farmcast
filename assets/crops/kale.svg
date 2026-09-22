@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Kale</title>
+  <desc id="desc">
+    A leafy kale plant with dense dark-green curled leaves.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 113
+       C63 92 64 72 64 51
+       C64 38 64 27 64 18" fill="none" stroke="#587344" stroke-width="8" stroke-linecap="round"></path>
+
+  <!-- Lower left curled leaf -->
+  <path d="M60 83
+       C47 73 34 71 25 78
+       C18 84 20 95 29 99
+       C23 106 31 113 41 109
+       C48 115 58 108 57 99
+       C64 95 65 88 60 83Z" fill="#497a4a" stroke="#365f3a" stroke-width="2.5"></path>
+
+  <!-- Lower right curled leaf -->
+  <path d="M68 82
+       C82 72 96 72 104 79
+       C112 86 108 96 100 99
+       C106 107 97 114 88 109
+       C80 115 70 108 71 99
+       C64 95 63 87 68 82Z" fill="#4f824d" stroke="#365f3a" stroke-width="2.5"></path>
+
+  <!-- Middle left leaf -->
+  <path d="M61 64
+       C50 53 36 50 28 58
+       C21 64 25 73 33 76
+       C28 83 37 89 45 84
+       C52 89 61 82 58 74
+       C64 71 65 67 61 64Z" fill="#568c52" stroke="#3b693f" stroke-width="2.5"></path>
+
+  <!-- Middle right leaf -->
+  <path d="M67 63
+       C79 52 93 50 101 57
+       C108 63 104 73 96 76
+       C101 83 92 89 84 84
+       C77 90 68 82 70 74
+       C64 71 63 67 67 63Z" fill="#4e824c" stroke="#3b693f" stroke-width="2.5"></path>
+
+  <!-- Upper left leaf -->
+  <path d="M62 46
+       C53 35 42 32 35 39
+       C29 45 33 53 40 55
+       C36 62 44 67 51 62
+       C58 66 65 59 61 53Z" fill="#60965a" stroke="#406f43" stroke-width="2.3"></path>
+
+  <!-- Upper right leaf -->
+  <path d="M66 45
+       C75 34 87 32 94 39
+       C100 45 96 53 89 55
+       C93 62 85 67 78 62
+       C71 66 64 59 67 53Z" fill="#568c52" stroke="#406f43" stroke-width="2.3"></path>
+
+  <!-- Center top -->
+  <path d="M64 15
+       C54 20 52 29 58 35
+       C54 42 60 48 65 45
+       C71 49 77 42 73 35
+       C79 28 74 19 64 15Z" fill="#63985c" stroke="#416f43" stroke-width="2.5"></path>
+
+  <!-- Leaf veins -->
+  <path d="M63 89 C49 87 39 88 29 94" fill="none" stroke="#78a36d" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M66 89 C79 87 91 89 101 94" fill="none" stroke="#78a36d" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M63 69 C51 65 41 65 32 70" fill="none" stroke="#7eaa73" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M66 68 C78 65 88 66 97 70" fill="none" stroke="#7eaa73" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="115" rx="35" ry="5" fill="#82674c" opacity="0.4"></ellipse>
+</svg>
