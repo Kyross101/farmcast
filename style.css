@@ -1989,6 +1989,36 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   box-shadow:
     0 20px 60px
     rgba(0,0,0,0.5);
+}.crop-picker-sheet {
+  width: 100%;
+  max-width: 520px;
+
+  height: min(
+    720px,
+    calc(100vh - 40px)
+  );
+
+  max-height: min(
+    720px,
+    calc(100vh - 40px)
+  );
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: var(--bg2);
+
+  border:
+    1px solid
+    var(--border2);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0,0,0,0.5);
 }
 
 
@@ -7641,10 +7671,11 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   .crop-picker-sheet {
     max-width: none;
 
+    height: 82vh;
     max-height: 82vh;
 
     border-radius:
-      18px 18px 0 0;
+    18px 18px 0 0;
 
     border-bottom: 0;
   }
