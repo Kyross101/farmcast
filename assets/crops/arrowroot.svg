@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Arrowroot</title>
+  <desc id="desc">
+    An arrowroot plant with broad green leaves and elongated underground rhizomes.
+  </desc>
+
+  <!-- Main stems -->
+  <path d="M62 72 C60 54 57 38 53 22" fill="none" stroke="#4f7e3d" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M66 72 C68 54 72 38 78 23" fill="none" stroke="#568542" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M64 70 C64 52 64 35 64 17" fill="none" stroke="#5d8c45" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Broad arrowroot leaves -->
+  <path d="M51 29
+       C38 15 23 15 17 24
+       C23 38 38 44 56 37Z" fill="#71a653" stroke="#4f813e" stroke-width="2"></path>
+
+  <path d="M77 29
+       C90 15 105 16 111 25
+       C104 39 89 44 72 37Z" fill="#679d4b" stroke="#4f813e" stroke-width="2"></path>
+
+  <path d="M64 20
+       C56 7 44 7 39 14
+       C42 27 51 33 64 32
+       C77 32 86 26 89 14
+       C84 7 72 8 64 20Z" fill="#79ac58" stroke="#548541" stroke-width="2"></path>
+
+  <path d="M54 47
+       C40 37 27 40 22 49
+       C30 60 42 62 58 55Z" fill="#679c49"></path>
+
+  <path d="M74 47
+       C89 37 101 40 107 49
+       C99 60 86 62 70 55Z" fill="#72a651"></path>
+
+  <!-- Leaf veins -->
+  <path d="M21 25 C33 28 43 32 53 36" fill="none" stroke="#588b44" stroke-width="1.5"></path>
+
+  <path d="M107 26 C95 29 85 33 75 36" fill="none" stroke="#588b44" stroke-width="1.5"></path>
+
+  <!-- Soil -->
+  <path d="M14 74
+       C31 70 47 75 64 73
+       C82 71 98 75 114 72" fill="none" stroke="#896447" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Underground roots -->
+  <path d="M63 74 C54 80 48 87 44 94" fill="none" stroke="#a17a55" stroke-width="3"></path>
+
+  <path d="M65 74 C72 81 77 88 81 96" fill="none" stroke="#a17a55" stroke-width="3"></path>
+
+  <!-- Arrowroot rhizomes -->
+  <path d="M43 88
+       C32 91 26 101 31 108
+       C37 116 51 114 58 105
+       C63 99 58 91 50 88Z" fill="#d6bd91" stroke="#a8875b" stroke-width="3"></path>
+
+  <path d="M79 89
+       C90 91 99 99 97 108
+       C94 117 80 117 72 108
+       C66 102 70 93 79 89Z" fill="#dfc69a" stroke="#a8875b" stroke-width="3"></path>
+
+  <!-- Rhizome rings -->
+  <path d="M37 96 C43 98 49 102 53 107" fill="none" stroke="#b49770" stroke-width="2"></path>
+
+  <path d="M84 96 C79 100 76 104 75 109" fill="none" stroke="#b49770" stroke-width="2"></path>
+
+  <!-- Fine roots -->
+  <path d="M38 112 C35 117 32 120 28 123" fill="none" stroke="#a8875b" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M89 113 C92 118 96 121 100 123" fill="none" stroke="#a8875b" stroke-width="2" stroke-linecap="round"></path>
+</svg>

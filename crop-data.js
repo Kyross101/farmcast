@@ -2142,6 +2142,51 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Arrowroot',
+      localName: 'Uraro',
+      scientificName: 'Maranta arundinacea',
+      category: 'root-crop',
+      icon: 'assets/crops/arrowroot.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingDistance:
+        'About 1.0 m x 0.75 m; closer spacing of about 0.75 m x 0.30 m may be used under poor soil conditions',
+
+      soilNote:
+        'Requires friable, well-drained loamy soil. Clayey soil should be avoided because it can restrict rhizome development and cause malformed rhizomes.',
+
+      climateNote:
+        'Requires sufficient soil moisture for normal growth and performs best where rainfall is distributed throughout the year.',
+
+      propagationNote:
+        'Can be propagated using suckers or rootstock/rhizomes with two or more nodes.',
+
+      plantingNote:
+        'Plant in an open field where sufficient soil moisture can be maintained. Partial shade is possible, although the official guide notes that it may reduce yield.',
+
+      harvestNote:
+        'Arrowroot is generally ready for harvest about 8–10 months after planting. The official guide notes that harvesting at about 11–12 months may produce higher yield and starch content.',
+
+      source: {
+        agency:
+          'Department of Agriculture - MIMAROPA Region',
+
+        office:
+          'Regional Agriculture and Fisheries Information Section (RAFIS)',
+
+        title:
+          'Arrowroot Production',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Arrowroot-Production.pdf'
+      }
+    },
+
 
 
 ];
