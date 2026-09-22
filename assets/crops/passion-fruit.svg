@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Passion Fruit</title>
+  <desc id="desc">
+    A passion fruit vine with lobed leaves,
+    curling tendrils, a flower, and ripe fruit.
+  </desc>
+
+  <!-- Main vine -->
+  <path d="M25 108
+       C36 89 42 69 54 53
+       C66 37 82 30 103 24" fill="none" stroke="#557f43" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Side vine -->
+  <path d="M51 58
+       C39 49 31 40 27 29" fill="none" stroke="#5d8847" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Tendril -->
+  <path d="M76 38
+       C84 29 94 31 94 38
+       C94 44 87 46 84 41
+       C82 37 88 34 91 37" fill="none" stroke="#628c48" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Left lobed leaf -->
+  <path d="M43 64
+       C31 64 22 57 20 48
+       C28 51 34 50 38 43
+       C40 51 45 55 53 54
+       C50 60 47 63 43 64Z" fill="#70a552" stroke="#477a3e" stroke-width="2"></path>
+
+  <!-- Upper leaf -->
+  <path d="M68 40
+       C57 37 52 30 52 21
+       C59 26 65 25 69 18
+       C72 26 77 30 85 29
+       C80 36 75 39 68 40Z" fill="#78aa57" stroke="#477a3e" stroke-width="2"></path>
+
+  <!-- Right leaf -->
+  <path d="M91 33
+       C99 29 108 31 114 38
+       C106 38 101 42 100 49
+       C95 44 89 42 83 45
+       C85 39 87 36 91 33Z" fill="#679d4d" stroke="#477a3e" stroke-width="2"></path>
+
+  <!-- Flower stem -->
+  <path d="M57 53 C60 61 61 67 60 73" fill="none" stroke="#557f43" stroke-width="3"></path>
+
+  <!-- Passion flower petals -->
+  <circle cx="60" cy="78" r="14" fill="#eee9f0" stroke="#b8a7c0" stroke-width="2"></circle>
+
+  <!-- Corona filaments -->
+  <path d="M60 67 L60 89
+       M49 78 L71 78
+       M52 70 L68 86
+       M68 70 L52 86" stroke="#76558c" stroke-width="2" stroke-linecap="round"></path>
+
+  <circle cx="60" cy="78" r="5" fill="#7f9b4b" stroke="#576b36" stroke-width="1.5"></circle>
+
+  <!-- Fruit stem -->
+  <path d="M87 43
+       C90 52 91 60 91 67" fill="none" stroke="#557f43" stroke-width="3"></path>
+
+  <!-- Whole fruit -->
+  <ellipse cx="91" cy="80" rx="15" ry="18" fill="#7b526e" stroke="#573b51" stroke-width="2.5"></ellipse>
+
+  <ellipse cx="87" cy="74" rx="4" ry="6" fill="#9c718f" opacity="0.65"></ellipse>
+
+  <!-- Cut fruit -->
+  <circle cx="37" cy="98" r="17" fill="#76516b" stroke="#543a4e" stroke-width="2.5"></circle>
+
+  <circle cx="37" cy="98" r="12" fill="#e8b63e"></circle>
+
+  <!-- Seeds -->
+  <ellipse cx="32" cy="93" rx="2.4" ry="3" fill="#4b4035"></ellipse>
+  <ellipse cx="39" cy="92" rx="2.4" ry="3" fill="#4b4035"></ellipse>
+  <ellipse cx="44" cy="97" rx="2.4" ry="3" fill="#4b4035"></ellipse>
+  <ellipse cx="37" cy="101" rx="2.4" ry="3" fill="#4b4035"></ellipse>
+  <ellipse cx="31" cy="103" rx="2.4" ry="3" fill="#4b4035"></ellipse>
+  <ellipse cx="43" cy="105" rx="2.4" ry="3" fill="#4b4035"></ellipse>
+
+  <!-- Ground -->
+  <ellipse cx="65" cy="116" rx="43" ry="5" fill="#80664a" opacity="0.38"></ellipse>
+</svg>

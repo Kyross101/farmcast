@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Star Fruit</title>
+  <desc id="desc">
+    A leafy balimbing branch with yellow-green
+    ridged star fruits and a sliced star-shaped fruit.
+  </desc>
+
+  <!-- Branch -->
+  <path d="M25 105
+       C43 85 55 65 68 45
+       C77 31 90 21 105 15" fill="none" stroke="#6f5439" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Small branches -->
+  <path d="M54 68 C43 59 35 50 30 40" fill="none" stroke="#755940" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M72 43 C83 44 94 42 104 37" fill="none" stroke="#755940" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <ellipse cx="30" cy="36" rx="13" ry="7" transform="rotate(45 30 36)" fill="#69a150" stroke="#477a3e" stroke-width="2"></ellipse>
+
+  <ellipse cx="42" cy="52" rx="13" ry="7" transform="rotate(28 42 52)" fill="#75aa58" stroke="#477a3e" stroke-width="2"></ellipse>
+
+  <ellipse cx="84" cy="36" rx="13" ry="7" transform="rotate(-24 84 36)" fill="#6ca352" stroke="#477a3e" stroke-width="2"></ellipse>
+
+  <ellipse cx="102" cy="32" rx="12" ry="7" transform="rotate(-28 102 32)" fill="#78ad5b" stroke="#477a3e" stroke-width="2"></ellipse>
+
+  <ellipse cx="96" cy="17" rx="12" ry="7" transform="rotate(-10 96 17)" fill="#639b4c" stroke="#477a3e" stroke-width="2"></ellipse>
+
+  <!-- Fruit stem -->
+  <path d="M65 50 C64 58 64 63 65 68" fill="none" stroke="#607d40" stroke-width="3"></path>
+
+  <!-- Whole star fruit -->
+  <path d="M65 68
+       C56 70 52 78 53 89
+       C54 100 59 109 65 112
+       C72 108 77 99 77 88
+       C77 78 73 70 65 68Z" fill="#ddc943" stroke="#a9972d" stroke-width="2.5"></path>
+
+  <!-- Fruit ridges -->
+  <path d="M65 70
+       C61 82 61 99 65 110" fill="none" stroke="#f2df67" stroke-width="3"></path>
+
+  <path d="M65 70
+       C70 83 70 99 65 110" fill="none" stroke="#bca92f" stroke-width="2"></path>
+
+  <!-- Second fruit -->
+  <path d="M89 42 C88 49 88 54 89 59" fill="none" stroke="#607d40" stroke-width="3"></path>
+
+  <path d="M89 58
+       C82 60 79 67 80 76
+       C81 85 85 91 89 94
+       C94 90 97 83 97 75
+       C97 67 94 60 89 58Z" fill="#d9c63e" stroke="#a4922c" stroke-width="2"></path>
+
+  <!-- Cut star fruit -->
+  <path d="M26 83
+       L32 94
+       L44 95
+       L35 103
+       L38 115
+       L26 109
+       L15 115
+       L18 103
+       L9 95
+       L21 94Z" fill="#efd956" stroke="#b9a437" stroke-width="2.5" stroke-linejoin="round"></path>
+
+  <!-- Star-fruit center -->
+  <circle cx="26" cy="100" r="4" fill="#e4c742"></circle>
+
+  <!-- Ground shadow -->
+  <ellipse cx="61" cy="117" rx="45" ry="5" fill="#80664a" opacity="0.35"></ellipse>
+</svg>

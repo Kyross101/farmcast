@@ -2972,6 +2972,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Passion Fruit',
+      scientificName: 'Passiflora edulis',
+      category: 'fruit',
+      icon: 'assets/crops/passion-fruit.svg',
+
+      growthHabitNote:
+        'Passion fruit is a perennial vining fruit crop.',
+
+      bearingNote:
+        'In the Philippine production experience documented by the Agricultural Training Institute, passion fruit began producing at about six months after establishment.',
+
+      productiveLifeNote:
+        'The ATI-featured Philippine farm reported continuous harvesting for at least three years after production began.',
+
+      waterManagementNote:
+        'Adequate water should be available during dry periods. The ATI-featured farm stores rainwater for use when rainfall is insufficient.',
+
+      plantingNote:
+        'Use healthy planting materials and provide appropriate support for the developing vines. Adapt crop management, irrigation, nutrient management, and pest management to local growing conditions.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Office',
+
+        title:
+          'Retired Broadcast Journalist Shares Experience on Passion Fruit Production',
+
+        url:
+          'https://ati2.da.gov.ph/ati-main/content/article/jenny-rose-gabao/retired-broadcast-journalist-shares-experience-passion-fruit-production'
+      }
+    },
+
+    {
+      name: 'Star Fruit',
+      localName: 'Balimbing',
+      scientificName: 'Averrhoa carambola',
+      category: 'fruit',
+      icon: 'assets/crops/star-fruit.svg',
+
+      sunlightNote:
+        'Performs well under direct sunlight.',
+
+      soilNote:
+        'Balimbing can adapt to different soil conditions.',
+
+      propagationNote:
+        'May be propagated from seeds or through asexual methods such as grafting and marcotting.',
+
+      plantingNote:
+        'Use healthy planting material and establish the tree in a location receiving direct sunlight. Organic materials such as dried livestock manure or vermicast may be used to support plant growth and fruit production.',
+
+      useNote:
+        'The ripe fruit may be eaten fresh and is also used in beverages, cooking, and processed food products.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'Weedibles and Weedicinals Plus Edible Flowers and More',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf?utm_source'
+    
+      }
+    },
+
 
 ];
 
