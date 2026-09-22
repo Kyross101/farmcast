@@ -1528,4 +1528,74 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Moringa',
+      localName: 'Malunggay',
+      category: 'vegetable',
+      icon: 'assets/crops/malunggay.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      propagationNote:
+        'Can be established using branch cuttings.',
+
+      plantingNote:
+        'For branch cuttings, plant the cutting upright in a prepared pit with well-drained soil. Keep the soil moist while the cutting establishes, but avoid waterlogged conditions.',
+
+      harvestNote:
+        'Young leaves and flowers may be harvested for food. Green pods are best harvested while they are plump and firm but still tender.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Malunggay Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1640928442Malunggay%20Production%20Guide.pdf'
+      }
+    },
+
+    {
+      name: 'Cassava',
+      localName: 'Kamoteng Kahoy',
+      category: 'root-crop',
+      icon: 'assets/crops/cassava.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      propagationNote:
+        'Propagated using healthy stem cuttings about 20–25 cm long taken from mature, pest-free and disease-free plants.',
+
+      plantingDistance:
+        'About 1 meter between rows and 0.75 meter between planting holes',
+
+      plantingNote:
+        'Plant stem cuttings according to soil moisture conditions. Horizontal planting may be used in relatively dry soil, while more upright planting is recommended under wetter conditions.',
+
+      harvestNote:
+        'About eight months after planting, sample plants may be checked to determine root maturity. Some recommended varieties listed in the guide mature at around 10 months after planting.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas - Regional Training Center 7',
+
+        title:
+          'Produksiyon sa Kamoteng Kahoy (Cassava)',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/kamoteng%20kahoy%20production.pdf'
+      }
+    },
+
 ];

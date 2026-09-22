@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Stem -->
+  <path d="M32 34V10" fill="none" stroke="#6b7d45" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Cassava leaves -->
+  <path d="M32 13L22 4l7 12-14-4 12 8-14 3 15 1-10 10 14-8Z" fill="#62a653"></path>
+
+  <path d="M32 13L42 4l-7 12 14-4-12 8 14 3-15 1 10 10-14-8Z" fill="#6cad58"></path>
+
+  <!-- Roots -->
+  <path d="M29 33c-3 7-7 13-12 20" fill="none" stroke="#8d6848" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M35 33c3 7 7 13 12 20" fill="none" stroke="#8d6848" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Cassava tubers -->
+  <path d="M16 43c4-3 9-1 10 4 1 6-3 12-8 14-5-2-7-8-5-13 1-2 2-4 3-5Z" fill="#b98b63"></path>
+
+  <path d="M48 43c-4-3-9-1-10 4-1 6 3 12 8 14 5-2 7-8 5-13-1-2-2-4-3-5Z" fill="#b98b63"></path>
+
+  <path d="M27 42c4-3 9-1 10 4 1 6-1 12-5 16-5-3-8-8-7-13 0-3 1-5 2-7Z" fill="#c69a70"></path>
+
+  <!-- Root highlights -->
+  <path d="M17 48c2-2 4-2 6-1" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity=".25"></path>
+
+</svg>
