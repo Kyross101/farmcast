@@ -3211,6 +3211,43 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Breadfruit',
+      localName: 'Rimas',
+      scientificName: 'Artocarpus altilis',
+      category: 'fruit',
+      icon: 'assets/crops/breadfruit.svg',
+
+      growthHabitNote:
+        'Rimas is a tropical fruit tree cultivated in the Philippines and commonly grown as a backyard or agroforestry crop.',
+
+      propagationNote:
+        'Philippine research has evaluated propagation methods including tissue culture, grafting, and marcotting to increase the availability of Rimas planting materials.',
+
+      plantingNote:
+        'Use healthy planting material produced through an appropriate vegetative propagation method and provide adequate space for development of the mature tree.',
+
+      fruitNote:
+        'Breadfruit or Rimas produces starchy fruits that may be consumed as food or processed into value-added products such as flour, chips, pastries, and other products.',
+
+      useNote:
+        'Rimas has been promoted in Philippine agricultural research as a food and livelihood crop with potential for processing and enterprise development.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Agricultural Research',
+
+        office:
+          'DA-BAR',
+
+        title:
+          'Massive Opportunities with RIMAS',
+
+        url:
+          'https://www.bar.gov.ph/file?filename=digest%2Fpdf%2Fvol.+25+issue+no.+4+2023.pdf'
+      }
+    },
+
 
 ];
 

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Breadfruit</title>
+  <desc id="desc">
+    A Rimas branch with large deeply lobed green leaves
+    and a round textured breadfruit.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M22 108
+       C37 88 49 68 63 50
+       C76 35 91 25 107 18" fill="none" stroke="#70523a" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M49 72
+       C39 60 33 49 29 38" fill="none" stroke="#75573e" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M71 45
+       C84 45 95 41 106 34" fill="none" stroke="#75573e" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Large lobed left leaf -->
+  <path d="M29 36
+       C20 27 12 27 8 33
+       C15 36 18 40 16 46
+       C22 44 27 46 29 52
+       C33 47 38 46 44 49
+       C42 42 45 37 51 33
+       C43 31 37 33 34 38
+       C33 31 31 28 29 36Z" fill="#65994b" stroke="#42743a" stroke-width="2"></path>
+
+  <!-- Middle lobed leaf -->
+  <path d="M48 58
+       C39 49 31 49 27 55
+       C34 58 36 63 34 69
+       C41 66 46 69 48 75
+       C52 70 57 69 63 72
+       C61 65 64 60 70 56
+       C62 54 56 56 53 61
+       C52 55 50 52 48 58Z" fill="#73a756" stroke="#47783d" stroke-width="2"></path>
+
+  <!-- Right lobed leaf -->
+  <path d="M92 31
+       C83 22 75 22 71 28
+       C78 31 80 35 78 41
+       C84 39 89 41 92 47
+       C96 42 101 41 107 44
+       C105 37 108 32 114 28
+       C106 26 100 28 97 33
+       C96 27 94 24 92 31Z" fill="#6ca150" stroke="#44763b" stroke-width="2"></path>
+
+  <!-- Leaf midribs -->
+  <path d="M29 38 L31 50" stroke="#90ba71" stroke-width="1.5"></path>
+
+  <path d="M48 59 L49 73" stroke="#94bd75" stroke-width="1.5"></path>
+
+  <path d="M92 32 L93 45" stroke="#90ba71" stroke-width="1.5"></path>
+
+  <!-- Fruit stem -->
+  <path d="M69 51
+       C68 60 68 66 69 71" fill="none" stroke="#617941" stroke-width="3"></path>
+
+  <!-- Main breadfruit -->
+  <circle cx="69" cy="87" r="20" fill="#91a855" stroke="#64783d" stroke-width="2.5"></circle>
+
+  <!-- Breadfruit texture -->
+  <path d="M57 75 L62 80 L57 85 L62 90 L57 95" fill="none" stroke="#b5c47b" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M68 69 L73 75 L68 81 L73 87 L68 93 L73 100" fill="none" stroke="#bac981" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M79 74 L84 80 L79 86 L84 92 L79 98" fill="none" stroke="#adbe73" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M53 86
+       C62 83 76 83 86 86" fill="none" stroke="#768d48" stroke-width="1.5" opacity="0.65"></path>
+
+  <!-- Cut fruit -->
+  <circle cx="31" cy="99" r="16" fill="#8fa653" stroke="#61763c" stroke-width="2.5"></circle>
+
+  <circle cx="31" cy="99" r="11" fill="#eee4bd"></circle>
+
+  <!-- Core -->
+  <circle cx="31" cy="99" r="4" fill="#d8c991"></circle>
+
+  <!-- Flesh divisions -->
+  <path d="M31 88 L31 95
+       M21 99 L27 99
+       M35 99 L42 99
+       M31 103 L31 110" stroke="#d1bf87" stroke-width="1.5"></path>
+
+  <!-- Ground shadow -->
+  <ellipse cx="62" cy="117" rx="46" ry="5" fill="#80654a" opacity="0.35"></ellipse>
+</svg>
