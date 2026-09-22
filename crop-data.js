@@ -31,25 +31,55 @@ window.FARMCAST_CROPS = [
   },
 
  {
-    name: 'Eggplant',
-    category: 'vegetable',
-    emoji: '🍆',
-    icon: 'assets/crops/eggplant.svg',
-    minTemp: 22,
-    maxTemp: 35,
-    noRain: false,
-    windMax: 25
- },
+   name: 'Eggplant',
+   category: 'vegetable',
+   emoji: '🍆',
+   icon: 'assets/crops/eggplant.svg',
+
+   minTemp: 22,
+   maxTemp: 35,
+   noRain: false,
+   windMax: 25,
+
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI MIMAROPA',
+
+      title:
+        'Gabay sa Produksyon ng Talong',
+
+      url:
+        'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/gabay_sa_produksyon_ng_talong1.pdf'
+    }
+  },
 
  {
-    name: 'Corn',
-    category: 'grain',
-    emoji: '🌽',
-    icon: 'assets/crops/corn.svg',
-    minTemp: 18,
-    maxTemp: 33,
-    noRain: false,
-    windMax: 15
+   name: 'Corn',
+   category: 'grain',
+   emoji: '🌽',
+   icon: 'assets/crops/corn.svg',
+
+   minTemp: 18,
+   maxTemp: 33,
+   noRain: false,
+   windMax: 15,
+
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Central Visayas',
+
+      title:
+        'MAIS Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/MAIS%20Production%20Guide.pdf'
+    }
   },
 
   {
@@ -57,10 +87,25 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     emoji: '🥦',
     icon: 'assets/crops/okra.svg',
+
     minTemp: 25,
     maxTemp: 38,
     noRain: false,
-    windMax: 20
+    windMax: 20,
+
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Cordillera',
+
+      title:
+        'Okra Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/okra_production_flyer_.pdf'
+    }
   },
 
   {
