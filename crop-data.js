@@ -741,8 +741,16 @@ window.FARMCAST_CROPS = [
     harvestNote:
       'Onion commonly reaches maturity about 70–120 days after transplanting, depending on the variety.',
 
-    source:
-      'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Onion and Garlic Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/books/435'
+    }
   },
 
   {
@@ -768,8 +776,16 @@ window.FARMCAST_CROPS = [
    harvestNote:
      'Ilocos White commonly matures about 90–110 days after planting.',
 
-   source:
-     'Department of Agriculture - Bureau of Plant Industry'
+    source: {
+     agency:
+       'Department of Agriculture - Bureau of Plant Industry',
+
+     title:
+      'Garlic Production Guide',
+
+      url:
+      'https://library.buplant.da.gov.ph/images/1640921673Garlic%20Production%20Guide.pdf'
+    }
   },
 
   {
@@ -792,8 +808,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Grows best in regularly watered loamy soil with high organic matter content. Protect seedlings from excessive heat and direct heavy rain during establishment.',
 
-    source:
-      'Department of Agriculture - Agricultural Training Institute'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Lettuce Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1640931738Lettuce%20Production%20Guide.pdf'
+    }
   },
 
   {
@@ -819,8 +843,19 @@ window.FARMCAST_CROPS = [
     harvestNote:
      'Heads are generally ready for harvest about 55–60 days after transplanting when they become firm and compact.',
 
-    source:
-      'Department of Agriculture - Agricultural Training Institute'
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Central Visayas',
+
+      title:
+        'Cabbage Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Cabbage%20Production%20Guide.pdf'
+    }
   },
 
   {
