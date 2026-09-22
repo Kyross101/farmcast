@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Celery</title>
+  <desc id="desc">
+    A bunch of celery with thick pale-green stalks
+    and leafy green tops.
+  </desc>
+
+  <!-- Left stalk -->
+  <path d="M47 112
+       C47 91 48 70 45 51
+       C44 43 46 35 50 28" fill="none" stroke="#96bd62" stroke-width="11" stroke-linecap="round"></path>
+
+  <!-- Center stalk -->
+  <path d="M63 114
+       C62 91 63 69 63 47
+       C63 37 64 29 64 21" fill="none" stroke="#a6c96c" stroke-width="12" stroke-linecap="round"></path>
+
+  <!-- Right stalk -->
+  <path d="M79 112
+       C78 91 77 70 81 51
+       C83 42 80 34 76 28" fill="none" stroke="#91b95e" stroke-width="11" stroke-linecap="round"></path>
+
+  <!-- Stalk ribs -->
+  <path d="M48 108 C49 87 50 68 48 50" fill="none" stroke="#c3da8a" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M63 109 C63 84 64 62 64 42" fill="none" stroke="#c9df8f" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M78 108 C77 88 77 68 80 51" fill="none" stroke="#bdd580" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Left branches -->
+  <path d="M49 42 C40 35 34 28 30 21" fill="none" stroke="#5e9349" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M50 37 C40 38 31 37 23 32" fill="none" stroke="#5e9349" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Center branches -->
+  <path d="M64 35 C57 27 53 19 51 12" fill="none" stroke="#60964a" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M64 32 C71 25 75 18 77 11" fill="none" stroke="#60964a" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Right branches -->
+  <path d="M78 41 C87 34 94 27 98 20" fill="none" stroke="#588e45" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M77 37 C88 38 97 35 105 30" fill="none" stroke="#588e45" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaf clusters -->
+  <circle cx="28" cy="19" r="9" fill="#659c4b"></circle>
+  <circle cx="20" cy="30" r="8" fill="#70a652"></circle>
+  <circle cx="36" cy="29" r="8" fill="#5f9748"></circle>
+
+  <circle cx="49" cy="12" r="9" fill="#70a953"></circle>
+  <circle cx="59" cy="17" r="8" fill="#659d4b"></circle>
+
+  <circle cx="78" cy="11" r="9" fill="#70a953"></circle>
+  <circle cx="69" cy="18" r="8" fill="#629948"></circle>
+
+  <circle cx="100" cy="18" r="9" fill="#639a49"></circle>
+  <circle cx="108" cy="29" r="8" fill="#72a754"></circle>
+  <circle cx="92" cy="29" r="8" fill="#5d9446"></circle>
+
+  <!-- Small leaflet shapes -->
+  <ellipse cx="37" cy="16" rx="8" ry="5" transform="rotate(-25 37 16)" fill="#79ad58"></ellipse>
+
+  <ellipse cx="89" cy="15" rx="8" ry="5" transform="rotate(25 89 15)" fill="#76aa55"></ellipse>
+
+  <!-- Celery base -->
+  <path d="M42 108
+       C48 115 55 119 64 119
+       C73 119 81 115 85 108" fill="#a9c96d" stroke="#769d50" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="119" rx="28" ry="4" fill="#80664b" opacity="0.35"></ellipse>
+</svg>

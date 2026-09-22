@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Asparagus</title>
+  <desc id="desc">
+    A cluster of upright green asparagus spears
+    with tightly closed pointed tips.
+  </desc>
+
+  <!-- Back spear -->
+  <path d="M41 113
+       C40 88 41 62 43 36" fill="none" stroke="#66964d" stroke-width="13" stroke-linecap="round"></path>
+
+  <!-- Back spear tip -->
+  <path d="M43 36
+       C36 32 37 22 43 12
+       C50 22 50 31 43 36Z" fill="#557f43" stroke="#456c37" stroke-width="2"></path>
+
+  <!-- Right spear -->
+  <path d="M86 114
+       C87 88 86 63 84 41" fill="none" stroke="#70a054" stroke-width="13" stroke-linecap="round"></path>
+
+  <path d="M84 41
+       C77 35 78 25 84 15
+       C91 25 91 35 84 41Z" fill="#598746" stroke="#456c37" stroke-width="2"></path>
+
+  <!-- Center spear -->
+  <path d="M64 116
+       C63 85 64 55 64 29" fill="none" stroke="#77a958" stroke-width="15" stroke-linecap="round"></path>
+
+  <path d="M64 29
+       C56 23 57 12 64 4
+       C72 13 72 23 64 29Z" fill="#5a8846" stroke="#446d37" stroke-width="2.5"></path>
+
+  <!-- Spear scales - center -->
+  <path d="M58 19 L64 15 L70 20" fill="none" stroke="#91b574" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M58 25 L64 21 L70 25" fill="none" stroke="#91b574" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Spear scales - left -->
+  <path d="M39 27 L43 24 L47 28" fill="none" stroke="#87ad6d" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <path d="M39 32 L43 29 L47 33" fill="none" stroke="#87ad6d" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <!-- Spear scales - right -->
+  <path d="M80 31 L84 28 L88 32" fill="none" stroke="#8bb16f" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <path d="M80 36 L84 33 L88 37" fill="none" stroke="#8bb16f" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <!-- Stem segment details -->
+  <path d="M37 64 L47 64" stroke="#517e40" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M58 73 L70 73" stroke="#5a8845" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M80 69 L89 69" stroke="#588544" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M38 89 L46 89" stroke="#517e40" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M59 96 L69 96" stroke="#5a8845" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M81 93 L89 93" stroke="#588544" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Ground/base -->
+  <ellipse cx="64" cy="116" rx="38" ry="6" fill="#85674c" opacity="0.4"></ellipse>
+</svg>

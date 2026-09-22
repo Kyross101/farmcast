@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Lima Bean</title>
+  <desc id="desc">
+    A climbing lima bean plant with broad green leaves
+    and large flat pods containing pale beans.
+  </desc>
+
+  <!-- Main vine -->
+  <path d="M35 112
+       C48 98 40 84 54 72
+       C68 60 58 46 72 34
+       C82 25 86 16 82 9" fill="none" stroke="#4f7e3e" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M52 75 C40 69 31 61 25 52" fill="none" stroke="#578643" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M69 52 C82 48 92 40 99 31" fill="none" stroke="#578643" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <!-- Broad trifoliate leaves -->
+  <path d="M26 52
+       C14 48 10 38 16 31
+       C27 29 35 37 34 48Z" fill="#6fa451"></path>
+
+  <path d="M27 53
+       C18 62 21 72 31 76
+       C41 71 41 60 34 53Z" fill="#79ac58"></path>
+
+  <path d="M28 53
+       C39 44 49 47 52 56
+       C48 67 37 69 31 61Z" fill="#659b49"></path>
+
+  <path d="M99 31
+       C91 21 94 11 104 9
+       C114 15 114 26 105 34Z" fill="#70a653"></path>
+
+  <path d="M100 32
+       C111 31 118 39 115 49
+       C106 55 97 50 94 41Z" fill="#669b49"></path>
+
+  <path d="M99 32
+       C89 36 81 30 82 21
+       C89 13 99 17 103 25Z" fill="#7bad59"></path>
+
+  <!-- Small flowers -->
+  <circle cx="68" cy="48" r="4.5" fill="#d9d2ec"></circle>
+  <circle cx="74" cy="44" r="4.5" fill="#e5ddf4"></circle>
+  <circle cx="78" cy="50" r="4.5" fill="#cec4e5"></circle>
+
+  <circle cx="73" cy="47" r="1.8" fill="#8c6aa4"></circle>
+
+  <!-- Pod stems -->
+  <path d="M56 72 C62 76 67 80 71 84" fill="none" stroke="#4e7d3d" stroke-width="3"></path>
+
+  <path d="M62 66 C71 69 80 72 87 77" fill="none" stroke="#4e7d3d" stroke-width="3"></path>
+
+  <!-- Large flat lima bean pods -->
+  <path d="M70 82
+       C79 77 95 80 105 88
+       C98 96 81 97 71 91Z" fill="#76a755" stroke="#4f7d3d" stroke-width="2.5"></path>
+
+  <path d="M86 75
+       C95 70 108 74 115 81
+       C108 88 95 88 86 83Z" fill="#69a04d" stroke="#4f7d3d" stroke-width="2.5"></path>
+
+  <!-- Bean bulges -->
+  <ellipse cx="81" cy="87" rx="4" ry="3" fill="#5c8d43"></ellipse>
+  <ellipse cx="91" cy="87" rx="4" ry="3" fill="#5c8d43"></ellipse>
+  <ellipse cx="101" cy="88" rx="4" ry="3" fill="#5c8d43"></ellipse>
+
+  <ellipse cx="96" cy="80" rx="3.5" ry="2.7" fill="#588942"></ellipse>
+  <ellipse cx="106" cy="81" rx="3.5" ry="2.7" fill="#588942"></ellipse>
+
+  <!-- One exposed pale lima bean -->
+  <path d="M52 89
+       C43 87 38 94 41 101
+       C44 108 55 109 60 102
+       C64 96 60 90 52 89Z" fill="#e6dfbd" stroke="#a99f70" stroke-width="2.5"></path>
+
+  <path d="M51 93
+       C55 95 56 100 53 104" fill="none" stroke="#b6ac7c" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Tendril -->
+  <path d="M44 92
+       C32 90 30 82 36 78
+       C42 75 47 80 43 85" fill="none" stroke="#639749" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>

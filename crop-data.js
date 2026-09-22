@@ -2331,6 +2331,199 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Jute Mallow',
+      localName: 'Saluyot',
+      scientificName: 'Corchorus olitorius L.',
+      category: 'vegetable',
+      icon: 'assets/crops/jute-mallow.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilPH:
+        '4.5–8.0',
+
+      varieties: [
+        'Pula',
+        'Puti',
+        'Sagisag'
+      ],
+
+      plantingDistance:
+        'Rows about 20–30 cm apart',
+
+      climateNote:
+        'Responds well to warm and humid conditions and can grow from humid to semi-arid tropical environments. Extended drought and cold conditions can damage the crop.',
+
+      soilNote:
+        'Loam or silty-loam soil is preferred, although Saluyot can grow in several soil types.',
+
+      propagationNote:
+        'Can be established through direct seeding or by transplanting seedlings.',
+
+      plantingNote:
+        'For direct seeding, sow seeds uniformly in rows about 20–30 cm apart. Seeds may also be broadcast lightly and covered with fine soil. For transplanting, seedlings may first be raised in a seedbed.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Production Guide of Saluyot',
+
+        source: {
+          agency:
+            'Department of Science and Technology - Philippine Council for Agriculture, Forestry and Natural Resources Research and Development',
+
+          office:
+            'DOST Regional Office VI',
+
+          title:
+            'Saluyot Production Guide',
+
+          url:
+            'https://region6.dost.gov.ph/pcarrd-production-guide/'
+        }
+      }
+
+    },
+
+    {
+      name: 'Amaranth',
+      localName: 'Kulitis',
+      scientificName:
+        'Amaranthus spp. (including A. tricolor L. and A. viridis L.)',
+      category: 'vegetable',
+      icon: 'assets/crops/amaranth.svg',
+
+      minTemp: 15,
+      noRain: false,
+
+      idealTempRange:
+        'Above 25°C during daytime; nighttime temperature should not fall below about 15°C',
+
+      rainfallNote:
+        'Performs well where adequate water is available; the official guide notes good growth in areas receiving about 6 mm of rainfall per day.',
+
+      soilNote:
+        'Grows best in fertile, loose, well-drained soil. Good drainage is important because standing water should be avoided.',
+
+      plantingDistance:
+        'Rows about 10–20 cm apart, with seeds about 5 cm apart within the row',
+
+      plantingDepth:
+        'About 0.5–1.0 cm deep',
+ 
+      propagationNote:
+        'Propagated by seed. Kulitis may be established by direct seeding or by transplanting seedlings.',
+
+      plantingNote:
+        'Direct seeding is suitable when seed is plentiful and during drier conditions. Transplanting may be preferred during the rainy season when heavy rainfall could wash away newly sown seed.',
+
+      harvestNote:
+        'Kulitis may be harvested about 20–45 days after planting or sowing, depending on the type. Young leaves and shoots may also be harvested repeatedly at intervals of about 2–3 weeks.',
+
+      source: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Office of the Secretary - High Value Crops Development Program',
+
+        title:
+          'Mga Katutubong Gulay (Indigenous Vegetables)',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Indigenous-Vegetables-Guide.pdf'
+      }
+    },
+
+    {
+      name: 'Celery',
+      localName: 'Baguio Celery',
+      scientificName: 'Apium graveolens',
+      category: 'vegetable',
+      icon: 'assets/crops/celery.svg',
+
+      soilPH:
+        '6.0–6.8',
+
+      varieties: [
+        'Elne',
+        'Tall Utah'
+      ],
+
+      plantingSeason:
+        'Can be planted year-round; the official guide notes that quality crops are commonly planted from January through April.',
+
+      plantingDistance:
+        'Rows about 40 cm apart, with plants about 20 cm apart within the row',
+
+      elevationNote:
+        'Stalk celery production is suited to higher elevations, while soup celery may be grown closer to sea level.',
+
+      soilNote:
+        'Prefers muck or peat soil, or sandy loam soil supplied with organic matter. Acidic soils are generally avoided.',
+
+      propagationNote:
+        'Established from seed in a seedbed. Seedlings may require about 2–3 months to reach suitable transplanting size.',
+
+      plantingNote:
+        'Seeds may be soaked overnight before sowing. Maintain adequate seedbed moisture during germination. Transplant healthy seedlings when they reach about 15 cm in height.',
+
+      harvestNote:
+        'The Elne variety may be harvested about 2–3 months after transplanting. For celery in general, the guide does not prescribe one exact maturity stage; harvest before petioles become over-mature and pithy.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Regional Field Office No. 02',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'Celery Production Guide',
+
+        url:
+          'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/celery.pdf?utm_source'
+      }
+    },
+
+    {
+      name: 'Asparagus',
+      scientificName: 'Asparagus officinalis L.',
+      category: 'vegetable',
+      icon: 'assets/crops/asparagus.svg',
+
+      noRain: false,
+
+      growthHabitNote:
+        'Asparagus is a perennial vegetable grown for its young edible spears.',
+
+      plantingNote:
+        'Establish asparagus using healthy planting material and follow the official Philippine production guide for site preparation, crop establishment, field management, and harvesting practices.',
+
+      harvestNote:
+        'Harvest young spears according to crop maturity and the production practices recommended in the official Philippine asparagus guide.',
+
+      source: {
+        agency:
+          'Department of Agriculture - MIMAROPA Regional Field Office',
+
+        office:
+          'Regional Agricultural and Fisheries Information Section (RAFIS)',
+
+        title:
+          'Asparagus Production Guide',
+
+        url:
+         'https://mimaropa.da.gov.ph/media-resources/publication/high-value-crop'
+      }
+    },
+
 
 ];
 

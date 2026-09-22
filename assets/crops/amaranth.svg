@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Amaranth</title>
+  <desc id="desc">
+    An upright Kulitis plant with broad green leaves
+    and a dense flowering spike.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 116
+       C63 95 64 76 63 57
+       C62 40 63 25 64 13" fill="none" stroke="#5d7f40" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Upper stem -->
+  <path d="M64 71
+       C64 51 63 31 64 13" fill="none" stroke="#668d47" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Branches -->
+  <path d="M63 45
+       C51 41 40 34 31 27" fill="none" stroke="#628845" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M64 52
+       C77 47 88 40 97 32" fill="none" stroke="#628845" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M63 67
+       C50 63 40 57 31 50" fill="none" stroke="#628845" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M64 73
+       C77 69 88 62 97 55" fill="none" stroke="#628845" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Broad leaves -->
+  <path d="M31 27
+       C20 20 11 25 13 35
+       C20 44 31 41 41 32
+       C38 29 35 28 31 27Z" fill="#70a450" stroke="#527f40" stroke-width="1.5"></path>
+
+  <path d="M97 32
+       C108 25 117 30 114 40
+       C107 49 96 45 87 37
+       C90 34 94 33 97 32Z" fill="#659b49" stroke="#527f40" stroke-width="1.5"></path>
+
+  <path d="M31 50
+       C19 44 11 50 14 60
+       C22 68 33 64 42 56
+       C39 53 35 51 31 50Z" fill="#79aa56" stroke="#527f40" stroke-width="1.5"></path>
+
+  <path d="M97 55
+       C109 49 117 55 113 65
+       C105 73 95 68 86 61
+       C89 58 93 56 97 55Z" fill="#6ca14d" stroke="#527f40" stroke-width="1.5"></path>
+
+  <!-- Smaller upper leaves -->
+  <path d="M63 36
+       C53 29 46 32 46 40
+       C51 47 59 45 65 41Z" fill="#75a854"></path>
+
+  <path d="M65 43
+       C75 36 83 39 82 47
+       C77 54 69 52 63 48Z" fill="#6ca04d"></path>
+
+  <!-- Flowering spike -->
+  <path d="M64 11
+       C55 16 54 28 61 34
+       C64 37 68 35 71 31
+       C76 23 72 14 64 11Z" fill="#8d5d79" stroke="#68445c" stroke-width="2"></path>
+
+  <!-- Tiny flowers/seeds -->
+  <circle cx="62" cy="17" r="1.7" fill="#b9839d"></circle>
+  <circle cx="67" cy="18" r="1.7" fill="#c08da4"></circle>
+  <circle cx="60" cy="23" r="1.7" fill="#b9839d"></circle>
+  <circle cx="66" cy="24" r="1.7" fill="#c08da4"></circle>
+  <circle cx="63" cy="29" r="1.7" fill="#b9839d"></circle>
+  <circle cx="69" cy="28" r="1.7" fill="#c08da4"></circle>
+
+  <!-- Leaf veins -->
+  <path d="M16 35 L37 31" fill="none" stroke="#5c8c45" stroke-width="1.3"></path>
+
+  <path d="M111 40 L91 36" fill="none" stroke="#5c8c45" stroke-width="1.3"></path>
+
+  <path d="M17 59 L38 55" fill="none" stroke="#5c8c45" stroke-width="1.3"></path>
+
+  <path d="M110 64 L91 60" fill="none" stroke="#5c8c45" stroke-width="1.3"></path>
+
+  <!-- Ground -->
+  <path d="M29 117
+       C47 113 81 113 99 117" fill="none" stroke="#8b6849" stroke-width="4" stroke-linecap="round"></path>
+</svg>
