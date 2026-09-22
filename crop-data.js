@@ -1008,4 +1008,42 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Cucumber',
+      localName: 'Pipino',
+      category: 'vegetable',
+      icon: 'assets/crops/cucumber.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingDistance:
+        'About 0.5 meter between plants',
+
+      supportNote:
+        'Use a trellis to support the vines, especially during the rainy season, to help keep fruits off the ground and reduce rotting or poor fruit shape.',
+
+      plantingNote:
+        'Can be direct-seeded or transplanted from seedlings. Transplanted seedlings may be moved about 15 days after emergence or once they have two true leaves.',
+
+      harvestNote:
+        'Slicing types may be harvested about 38–45 days after planting, while pickling types may be harvested about 33–40 days after planting.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI MIMAROPA',
+
+        title:
+          'Gabay sa Produksyon ng Pipino',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2024-12/GABAY%20SA%20PRODUKSYON%20NG%20PIPINO.pdf'
+      }
+    },
+
 ];
