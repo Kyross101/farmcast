@@ -936,7 +936,8 @@ window.FARMCAST_CROPS = [
       url:
         'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Carrot-Prod-Guide.pdf'
     }
-
+  },
+  
   {
     name: 'Radish',
     localName: 'Labanos',
