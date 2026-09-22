@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Stem -->
+  <path d="M32 17c0-6 2-10 7-13" fill="none" stroke="#4f7f3d" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M35 11c5-5 11-5 15-2-3 6-8 9-15 8Z" fill="#65a653"></path>
+
+  <!-- Pepper body -->
+  <path d="M20 18c-7 5-9 14-7 24 2 11 8 17 19 17s17-6 19-17c2-10 0-19-7-24-4-3-8-3-12 0-4-3-8-3-12 0Z" fill="#d9534f"></path>
+
+  <!-- Center sections -->
+  <path d="M32 19v37" fill="none" stroke="#b83f3b" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M22 20c-3 9-3 25 2 34" fill="none" stroke="#c64743" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M42 20c3 9 3 25-2 34" fill="none" stroke="#c64743" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Highlight -->
+  <path d="M20 27c2-4 4-6 7-8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".3"></path>
+
+</svg>

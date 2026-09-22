@@ -1046,4 +1046,100 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Bell Pepper',
+      localName: 'Sweet Pepper',
+      category: 'vegetable',
+      icon: 'assets/crops/bell-pepper.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingNote:
+        'Follow the Bureau of Plant Industry production guide for proper crop establishment, field management, and pest management practices.',
+
+      harvestNote:
+        'Harvest fruits when they develop a deep green color that begins to turn dull or red. This maturity stage normally occurs about 80–90 days after planting.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Bell Pepper Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1641950133BELL%20PEPPER%20.pdf'
+      }
+    },
+
+    {
+      name: 'Hot Pepper',
+      localName: 'Sili',
+      category: 'vegetable',
+      icon: 'assets/crops/hot-pepper.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilNote:
+        'Performs best in sandy loam to clay loam soil rich in organic matter, with sufficient moisture and good drainage.',
+
+      plantingNote:
+        'Start seeds in trays or potlets and transplant seedlings about 30–40 days after sowing. Transplant during cloudy weather or late in the afternoon.',
+
+      harvestNote:
+        'Harvesting may begin about 60–75 days after transplanting. Fruits may be harvested at the mature green stage when they have reached full size and have a waxy, shiny appearance.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          'Hot Pepper (Sili) Production for Urban and Backyard Gardening',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/hot_pepper_flyer_for_urban_and_backyard_gardening.pdf'
+      }
+    },
+
+    {
+      name: 'Cauliflower',
+      localName: 'Cauliflower',
+      category: 'vegetable',
+      icon: 'assets/crops/cauliflower.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilNote:
+        'Grows well in clay loam to sandy loam soil and is commonly suited to cooler mid- and high-elevation areas.',
+
+      plantingNote:
+        'Prepare the soil thoroughly before planting. Seedlings are commonly established first before field transplanting, with proper spacing and good drainage.',
+
+      harvestNote:
+        'Harvest when the curd is well formed and compact. Include a portion of the stem and leaves, and harvest preferably during the cooler part of the day to help maintain quality.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Cauliflower Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1638348280Cauliflower%20Production%20Guide.pdf'
+      }
+    },
+
 ];

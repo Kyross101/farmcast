@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Stem -->
+  <path d="M27 18c1-6 5-10 11-12" fill="none" stroke="#4f7f3d" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M34 10c6-5 12-4 16 0-4 6-10 8-16 6Z" fill="#62a653"></path>
+
+  <!-- Chili body -->
+  <path d="M26 17c9 0 15 6 15 14 0 11-8 20-22 27 6-8 7-14 6-21-1-7-5-12 1-20Z" fill="#d94b45"></path>
+
+  <!-- Dark edge -->
+  <path d="M29 20c6 2 9 6 9 11" fill="none" stroke="#b93c38" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Highlight -->
+  <path d="M28 23c3 1 5 3 6 6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".3"></path>
+
+</svg>
