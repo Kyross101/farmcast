@@ -1598,4 +1598,121 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Taro',
+      localName: 'Gabi',
+      category: 'root-crop',
+      icon: 'assets/crops/taro.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilPH:
+        '5.6–6.5',
+
+      soilNote:
+        'For upland culture, gabi performs best in deep, well-drained loam soil. Lowland production performs well in alluvial soil with a continuous supply of fresh, cool water.',
+
+      climateNote:
+        'Gabi is well adapted to warm and moist conditions. The official guide identifies a daily average temperature of about 27–29°C as ideal.',
+
+      plantingNote:
+        'Upland gabi should be planted so that the first four to five months of growth receive adequate rainfall. Lowland production requires a continuous supply of fresh, cool water.',
+
+      harvestNote:
+        'Harvest readiness depends on the variety and production system. Follow visible crop maturity and the official production guide rather than using a single fixed harvest-day estimate.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Gabi Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1640920555Gabi%20Production%20Guide.pdf'
+      }
+    },
+
+    {
+      name: 'Purple Yam',
+      localName: 'Ube',
+      category: 'root-crop',
+      icon: 'assets/crops/ube.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilNote:
+        'Requires deep, loose soil to allow proper tuber development. Flat or ridged seedbeds may be used depending on field conditions.',
+
+      propagationNote:
+        'Can be propagated using healthy tuber setts or small whole tubers. Setts should come from healthy, disease-free planting material.',
+
+      supportNote:
+        'Provide a sturdy stake or trellis to support the climbing vines as they grow.',
+
+      plantingNote:
+        'Large tubers may be cut into healthy setts and allowed to dry before planting. Pre-sprouting may also be used before field establishment.',
+
+      harvestNote:
+        'Ube is generally ready for harvest when the foliage begins to yellow or dry. Harvest timing varies by variety, with some production guides indicating underground tubers may be harvested from about six months after planting.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Ube Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1641957628UBE.pdf'
+      }
+    },
+
+    {
+      name: 'Black Pepper',
+      localName: 'Paminta',
+      category: 'spice',
+      icon: 'assets/crops/black-pepper.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilNote:
+        'Grows well in loose, well-drained soil under humid conditions.',
+
+      propagationNote:
+        'Commonly propagated using stem cuttings with about 3–5 internodes taken from healthy, high-yielding mother plants.',
+
+      supportNote:
+        'Provide a sturdy post or climbing support for the vines as they develop.',
+
+      plantingNote:
+        'Root stem cuttings in a shaded sandy seedbed. Cuttings may be transplanted once they have developed about 4–7 new leaves.',
+
+      harvestNote:
+        'Peppercorns mature in about 5–6 months. Spikes may be harvested when berries begin turning cherry-red or from dark green to shiny yellowish-green.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+         'ATI MIMAROPA',
+
+        title:
+          'Black Pepper Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/black_pepper.pdf'
+      }
+    },
+
 ];

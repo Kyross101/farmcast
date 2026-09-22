@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Vine -->
+  <path d="M32 37c0-11 1-21 3-30" fill="none" stroke="#577d49" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Side vine -->
+  <path d="M34 20c7-3 12-7 16-13" fill="none" stroke="#577d49" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <path d="M34 17c-7-6-15-5-20 1 4 8 12 11 20 7Z" fill="#66a657"></path>
+
+  <path d="M48 8c5-4 11-3 14 2-3 6-9 8-15 6Z" fill="#72b262"></path>
+
+  <!-- Underground tuber -->
+  <path d="M24 36c5-5 14-6 20-1 7 5 8 15 3 23-5 7-16 8-23 2-6-5-7-16-2-23Z" fill="#7d5a43"></path>
+
+  <!-- Cut purple flesh -->
+  <path d="M29 39c5-3 11-2 15 2 4 5 3 12-1 16-5 4-12 4-16-1-4-5-3-12 2-17Z" fill="#8b58a7"></path>
+
+  <!-- Purple highlight -->
+  <path d="M31 43c3-2 7-2 10 1" fill="none" stroke="#b788d0" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Root tip -->
+  <path d="M29 59c-2 2-3 3-5 4" fill="none" stroke="#7d5a43" stroke-width="2" stroke-linecap="round"></path>
+
+</svg>

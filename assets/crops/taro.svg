@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Main stems -->
+  <path d="M31 56L27 24" fill="none" stroke="#64854d" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M35 56L41 25" fill="none" stroke="#64854d" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Large taro leaves -->
+  <path d="M27 27C12 29 5 19 8 9c11-6 23 0 26 11-1 4-3 6-7 7Z" fill="#5fa454"></path>
+
+  <path d="M40 28C54 29 61 19 58 9c-11-6-22 0-25 11 1 4 3 7 7 8Z" fill="#69ad5c"></path>
+
+  <!-- Leaf veins -->
+  <path d="M27 24L12 13M27 24L13 22" fill="none" stroke="#88bd79" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <path d="M40 24L54 13M40 24L54 22" fill="none" stroke="#91c482" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- Corm -->
+  <path d="M25 43c4-5 11-6 16-2 5 4 6 12 2 18-4 5-13 6-18 1-4-4-4-12 0-17Z" fill="#9b765b"></path>
+
+  <!-- Corm rings -->
+  <path d="M27 48c5-2 10-2 15 0" fill="none" stroke="#755641" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M27 55c5-2 10-2 14 0" fill="none" stroke="#755641" stroke-width="2" stroke-linecap="round"></path>
+
+</svg>
