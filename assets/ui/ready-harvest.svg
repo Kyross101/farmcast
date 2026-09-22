@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Ready to Harvest</title>
+
+  <path d="M30 56V12" fill="none" stroke="#e3a008" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M30 22
+       C22 21 18 17 17 11
+       C24 10 29 14 30 22Z" fill="none" stroke="#e3a008" stroke-width="3.5" stroke-linejoin="round"></path>
+
+  <path d="M30 31
+       C21 30 16 26 15 20
+       C23 18 29 23 30 31Z" fill="none" stroke="#e3a008" stroke-width="3.5" stroke-linejoin="round"></path>
+
+  <path d="M30 40
+       C21 39 16 35 15 29
+       C23 27 29 32 30 40Z" fill="none" stroke="#e3a008" stroke-width="3.5" stroke-linejoin="round"></path>
+
+  <path d="M31 27
+       C39 26 44 22 46 16
+       C39 14 33 19 31 27Z" fill="none" stroke="#e3a008" stroke-width="3.5" stroke-linejoin="round"></path>
+
+  <path d="M31 37
+       C40 36 46 32 48 26
+       C40 23 33 29 31 37Z" fill="none" stroke="#e3a008" stroke-width="3.5" stroke-linejoin="round"></path>
+
+  <path d="M21 56H40" fill="none" stroke="#e3a008" stroke-width="4" stroke-linecap="round"></path>
+</svg>

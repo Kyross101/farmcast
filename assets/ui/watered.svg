@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Watered Today</title>
+
+  <path d="M32 8
+       C32 8 17 27 17 38
+       C17 47 24 55 32 55
+       C41 55 48 47 48 38
+       C48 27 32 8 32 8Z" fill="none" stroke="#39c5cf" stroke-width="4" stroke-linejoin="round"></path>
+
+  <path d="M25 40
+       C26 45 29 48 34 49" fill="none" stroke="#39c5cf" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M38 27
+       C41 31 43 35 43 39" fill="none" stroke="#39c5cf" stroke-width="3" stroke-linecap="round" opacity="0.65"></path>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Growing</title>
+
+  <path d="M31 55V18" fill="none" stroke="#58a6ff" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M31 39
+       C23 39 17 35 15 28
+       C22 25 29 29 31 35Z" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linejoin="round"></path>
+
+  <path d="M31 29
+       C34 21 41 17 49 19
+       C48 27 41 32 31 33Z" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linejoin="round"></path>
+
+  <path d="M31 48
+       C23 48 18 45 16 39" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M31 44
+       C38 44 44 40 47 35" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M22 55H41" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round"></path>
+</svg>
