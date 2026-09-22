@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Ginger</title>
+  <desc id="desc">
+    A ginger plant with narrow green leaves and a branching underground rhizome.
+  </desc>
+
+  <!-- Main stems -->
+  <path d="M61 70 C60 55 58 40 59 20" fill="none" stroke="#4f7d3b" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M68 70 C69 54 70 40 69 25" fill="none" stroke="#588744" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Narrow ginger leaves -->
+  <path d="M59 29
+       C43 21 33 21 24 25
+       C35 31 46 34 59 35Z" fill="#6da44e"></path>
+
+  <path d="M60 41
+       C43 36 34 38 25 44
+       C37 48 48 48 61 46Z" fill="#79ab55"></path>
+
+  <path d="M68 33
+       C81 24 92 23 104 26
+       C95 33 84 37 68 39Z" fill="#659b49"></path>
+
+  <path d="M68 48
+       C82 40 94 41 104 46
+       C93 52 81 55 68 54Z" fill="#72a651"></path>
+
+  <path d="M59 53
+       C45 50 36 53 30 59
+       C42 62 50 61 61 58Z" fill="#659b49"></path>
+
+  <!-- Soil -->
+  <path d="M15 72
+       C33 68 48 73 64 71
+       C82 69 96 73 113 70" fill="none" stroke="#8c6545" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Underground connection -->
+  <path d="M64 72 C64 78 63 83 62 87" fill="none" stroke="#aa7b45" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Ginger rhizome -->
+  <path d="M61 85
+       C55 79 45 80 42 88
+       C34 85 26 90 27 98
+       C28 106 37 109 44 105
+       C47 113 57 116 64 110
+       C70 118 82 116 85 107
+       C94 111 103 106 102 98
+       C101 90 92 87 85 90
+       C81 82 70 80 64 87
+       C63 86 62 86 61 85Z" fill="#d4a25b" stroke="#9b7040" stroke-width="3" stroke-linejoin="round"></path>
+
+  <!-- Rhizome segments -->
+  <path d="M43 89 C48 92 51 98 49 105" fill="none" stroke="#b78649" stroke-width="2"></path>
+
+  <path d="M63 88 C68 93 69 101 65 109" fill="none" stroke="#b78649" stroke-width="2"></path>
+
+  <path d="M84 91 C80 96 80 102 84 107" fill="none" stroke="#b78649" stroke-width="2"></path>
+
+  <!-- Ginger nodes -->
+  <circle cx="37" cy="97" r="2" fill="#9e743f"></circle>
+  <circle cx="57" cy="101" r="2" fill="#9e743f"></circle>
+  <circle cx="76" cy="97" r="2" fill="#9e743f"></circle>
+  <circle cx="94" cy="98" r="2" fill="#9e743f"></circle>
+</svg>

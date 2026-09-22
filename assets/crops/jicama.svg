@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Jicama</title>
+  <desc id="desc">
+    A singkamas plant with green vine leaves and a round underground storage root.
+  </desc>
+
+  <!-- Main vine -->
+  <path d="M64 67 C64 52 60 40 65 24" fill="none" stroke="#4f7f3b" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Branches -->
+  <path d="M63 45 C51 42 42 35 34 27" fill="none" stroke="#4f7f3b" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M64 39 C76 36 85 29 93 23" fill="none" stroke="#4f7f3b" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <path d="M34 18
+       C23 19 18 27 22 35
+       C27 43 38 41 43 31
+       C41 24 39 20 34 18Z" fill="#6da44f"></path>
+
+  <path d="M94 15
+       C105 17 111 25 107 34
+       C102 42 91 40 86 31
+       C87 23 90 18 94 15Z" fill="#679b49"></path>
+
+  <path d="M63 16
+       C54 20 52 30 58 36
+       C64 41 73 36 75 28
+       C73 21 69 17 63 16Z" fill="#76aa55"></path>
+
+  <path d="M48 35
+       C39 35 34 42 37 49
+       C41 56 50 54 55 47
+       C55 41 53 37 48 35Z" fill="#75a953"></path>
+
+  <path d="M80 32
+       C90 32 95 39 92 47
+       C88 54 79 53 74 46
+       C74 40 76 35 80 32Z" fill="#6aa04c"></path>
+
+  <!-- Soil -->
+  <path d="M17 69
+       C34 66 48 70 64 68
+       C81 66 96 70 111 68" fill="none" stroke="#8b6547" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Root neck -->
+  <path d="M64 69 C63 75 63 80 63 84" fill="none" stroke="#a77b55" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Singkamas storage root -->
+  <path d="M63 80
+       C46 80 35 90 36 103
+       C37 116 49 121 64 120
+       C80 120 91 114 92 102
+       C93 89 81 81 63 80Z" fill="#d7b281" stroke="#a77b55" stroke-width="3"></path>
+
+  <!-- Root bottom -->
+  <path d="M64 119
+       C63 123 62 125 59 127" fill="none" stroke="#a77b55" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Root texture -->
+  <path d="M48 96 C53 93 57 93 61 94" fill="none" stroke="#ba9064" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M69 105 C74 103 79 104 82 107" fill="none" stroke="#ba9064" stroke-width="2" stroke-linecap="round"></path>
+
+  <circle cx="52" cy="108" r="1.7" fill="#ad825a"></circle>
+  <circle cx="76" cy="94" r="1.7" fill="#ad825a"></circle>
+</svg>

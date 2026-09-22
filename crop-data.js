@@ -1944,4 +1944,205 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Potato',
+      localName: 'Patatas',
+      category: 'root-crop',
+      icon: 'assets/crops/potato.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      idealTempRange:
+        '20–24°C for vegetative growth; tuber development is favored at around 20°C',
+
+      soilPH:
+        '5.2–6.4',
+
+      varieties: [
+        'Conchita',
+        'Frenze',
+        'Asterix',
+        'Atlantic',
+        'Diamant',
+        'Fina',
+        'Igorota (BSU P04)',
+        'Kennebec',
+        'Montanosa',
+        'Raja'
+      ],
+
+      plantingSeason:
+        'March–April and October–November in Benguet and Bukidnon; November to mid-December in lowland areas',
+
+      plantingDistance:
+        'Single-row: about 75 cm between furrows and 30 cm between planting holes',
+
+      soilNote:
+        'Loose loam or sandy loam soil that is high in organic matter, well drained, and well aerated is preferred for tuber development.',
+
+      plantingNote:
+        'Use healthy, disease-free, well-sprouted seed tubers. Potato is commonly established using tubers, although true potato seed may also be used for seed production systems.',
+
+      harvestNote:
+        'Most potatoes mature about 75–90 days after planting, or when around 80% of the leaves have turned yellow. Harvest at full maturity for better storability.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Regional Field Office No. 02',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'White Potato Production Guide',
+
+        url:
+          'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/potato.pdf'
+      }
+    },
+
+    {
+      name: 'Jicama',
+      localName: 'Singkamas',
+      category: 'root-crop',
+      icon: 'assets/crops/jicama.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      scientificName:
+        'Pachyrhizus erosus',
+
+      plantingNote:
+        'Singkamas is recognized by the Department of Agriculture - Bureau of Plant Industry as Yam Bean (Pachyrhizus erosus), a vegetable legume. Use locally appropriate production practices until a more detailed official Philippine production guide is available.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        office:
+          'National Seed Industry Council',
+
+        title:
+          'Department Circular No. 05 Series of 2018 - Guidelines for the Accreditation of Open Pollinated Variety (OPV) Vegetable Legume Seed Growers/Producers',
+
+        url:
+          'https://nsic.buplant.da.gov.ph/dc.php'
+      }
+    },
+
+    {
+      name: 'Ginger',
+      localName: 'Luya',
+      scientificName: 'Zingiber officinale Roscoe',
+      category: 'spice',
+      icon: 'assets/crops/ginger.svg',
+
+      minTemp: 25,
+      maxTemp: 35,
+      noRain: false,
+      windMax: null,
+
+      soilPH:
+        '6.8–7.0',
+
+      elevationNote:
+        'Can be grown up to about 1,500 meters above sea level.',
+
+      annualRainfall:
+        'About 200–300 cm, evenly distributed throughout the year',
+
+      shadeNote:
+        'Grows well with about 25–40% shading.',
+
+      varieties: [
+        'White Native',
+        'Yellow Native',
+        'Red Native',
+        'Imugan',
+        'Hawaiian',
+        'Jamaica Oya',
+        'Canton / Chinese'
+      ],
+
+      plantingSeason:
+        'Usually April to May at the onset of the rainy season; areas with year-round water supply may plant at other times.',
+
+      plantingDistance:
+        'Furrows about 1 m apart; planting hills about 25 cm apart',
+
+      soilNote:
+        'Prefers well-drained, light to medium-textured soil that is high in organic matter.',
+
+      propagationNote:
+        'Use mature, healthy, disease-free rhizomes with about 3–4 sprouts. Freshly cut seed pieces should be allowed to suberize before planting to reduce rotting.',
+
+      plantingNote:
+        'Plant healthy, pre-germinated or sprouting ginger rhizomes about 5 cm deep. Good drainage is important, especially during rainy periods.',
+
+      harvestNote:
+        'Harvest timing depends on intended use. Fresh consumption may be harvested at around 5 months, pickling at 5–7 months, dehydrated ginger at 6–8 months, export fresh ginger at 7–10 months, and ginger for the domestic market at about 8–11 months after planting.',
+
+      source: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Regional Field Office - Cordillera Administrative Region',
+
+        title:
+          'Technoguide in Production & Management of Ginger',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/DA-CAR-TECHNOGUIDE-IN-PRODUCTION-_-MANAGEMENT-OF-GINGER.pdf'
+      }
+    },
+
+    {
+      name: 'Turmeric',
+      localName: 'Luyang Dilaw',
+      scientificName: 'Curcuma longa',
+      category: 'spice',
+      icon: 'assets/crops/turmeric.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilNote:
+        'Grows well in loose and sandy soil with good drainage.',
+
+      shadeNote:
+        'Can grow under partial shade to full sun, although plants may be sensitive to intense summer sunlight.',
+
+      propagationNote:
+        'Propagate using divisions or sections of healthy rhizomes.',
+
+      plantingNote:
+        'Use healthy rhizome planting material and establish in loose, well-drained soil. Partial shade may help protect plants from intense summer heat.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'Weedibles and Weedicinals Plus Edible Flowers and More',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf'
+      }
+    },
+
+
+
 ];
+

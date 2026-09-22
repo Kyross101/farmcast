@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Turmeric</title>
+  <desc id="desc">
+    Turmeric plant with broad green leaves and orange-yellow underground rhizomes.
+  </desc>
+
+  <!-- Stems -->
+  <path d="M61 71 C59 55 57 38 59 20" fill="none" stroke="#4f7f3b" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M68 71 C70 54 71 39 69 23" fill="none" stroke="#598744" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Broad turmeric leaves -->
+  <path d="M58 31
+       C43 20 30 18 20 25
+       C31 36 43 40 59 38Z" fill="#70a650"></path>
+
+  <path d="M59 47
+       C42 38 30 40 21 48
+       C33 57 46 59 61 54Z" fill="#79ad56"></path>
+
+  <path d="M69 34
+       C83 22 97 20 108 27
+       C98 38 84 42 69 41Z" fill="#659b49"></path>
+
+  <path d="M69 51
+       C84 41 97 42 107 50
+       C96 59 83 61 68 57Z" fill="#72a652"></path>
+
+  <!-- Soil line -->
+  <path d="M15 73
+       C32 69 47 74 64 72
+       C82 70 98 74 113 71" fill="none" stroke="#8b6546" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Underground stem -->
+  <path d="M64 73 C64 79 63 84 62 88" fill="none" stroke="#a8763e" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Turmeric rhizomes -->
+  <path d="M61 86
+       C54 80 45 82 42 90
+       C34 87 27 92 29 100
+       C31 107 39 109 46 105
+       C49 114 59 116 65 109
+       C72 116 82 114 85 106
+       C93 110 101 105 100 97
+       C99 89 90 87 84 91
+       C80 82 70 81 64 87Z" fill="#e19a32" stroke="#a96e25" stroke-width="3" stroke-linejoin="round"></path>
+
+  <!-- Bright cut section -->
+  <ellipse cx="47" cy="98" rx="7" ry="6" fill="#f2b63f" stroke="#b97625" stroke-width="2"></ellipse>
+
+  <ellipse cx="79" cy="101" rx="7" ry="6" fill="#f4b83e" stroke="#b97625" stroke-width="2"></ellipse>
+
+  <!-- Rhizome markings -->
+  <path d="M59 90 C63 95 64 101 62 108" fill="none" stroke="#bd7926" stroke-width="2"></path>
+
+  <path d="M87 93 C84 97 84 102 86 106" fill="none" stroke="#bd7926" stroke-width="2"></path>
+</svg>
