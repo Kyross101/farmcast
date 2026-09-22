@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Hyacinth Bean</title>
+  <desc id="desc">
+    A climbing Bataw vine with trifoliate leaves, purple flowers, and flat bean pods.
+  </desc>
+
+  <!-- Climbing vine -->
+  <path d="M37 111
+       C48 98 42 85 54 73
+       C67 60 57 48 70 35
+       C79 26 83 18 80 10" fill="none" stroke="#4f7e3e" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M52 76 C40 70 31 63 25 54" fill="none" stroke="#578743" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M67 54 C81 51 91 44 98 35" fill="none" stroke="#578743" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <!-- Trifoliate leaf cluster left -->
+  <path d="M26 54
+       C14 49 11 39 18 33
+       C28 32 35 40 33 50Z" fill="#6ca24e"></path>
+
+  <path d="M27 53
+       C19 62 21 72 30 75
+       C39 70 40 60 34 53Z" fill="#76aa55"></path>
+
+  <path d="M27 53
+       C37 45 47 47 50 56
+       C46 66 36 68 30 61Z" fill="#659a49"></path>
+
+  <!-- Trifoliate leaf cluster right -->
+  <path d="M97 35
+       C91 24 95 15 104 13
+       C113 19 112 29 104 36Z" fill="#72a753"></path>
+
+  <path d="M98 36
+       C108 35 116 42 114 51
+       C106 57 97 52 94 44Z" fill="#659a49"></path>
+
+  <path d="M98 36
+       C88 39 81 34 81 25
+       C87 17 97 20 101 28Z" fill="#79ad58"></path>
+
+  <!-- Purple flower cluster -->
+  <circle cx="70" cy="34" r="5" fill="#8757a8"></circle>
+  <circle cx="77" cy="38" r="5" fill="#9864b6"></circle>
+  <circle cx="70" cy="42" r="5" fill="#a06bbd"></circle>
+
+  <circle cx="72" cy="37" r="2" fill="#e7c9ef"></circle>
+  <circle cx="76" cy="39" r="2" fill="#e7c9ef"></circle>
+
+  <!-- Pod stems -->
+  <path d="M56 72 C62 76 66 80 69 85" fill="none" stroke="#507f3f" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M61 68 C70 70 77 73 83 78" fill="none" stroke="#507f3f" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Flat Bataw pods -->
+  <path d="M69 83
+       C77 79 91 82 99 89
+       C91 94 79 94 70 89Z" fill="#72a954" stroke="#4e7e3e" stroke-width="2.5"></path>
+
+  <path d="M82 76
+       C90 72 103 75 110 82
+       C103 87 91 86 83 82Z" fill="#669c49" stroke="#4e7e3e" stroke-width="2.5"></path>
+
+  <!-- Seeds visible through pods -->
+  <circle cx="79" cy="87" r="2" fill="#4f823f"></circle>
+  <circle cx="87" cy="87" r="2" fill="#4f823f"></circle>
+  <circle cx="95" cy="88" r="2" fill="#4f823f"></circle>
+
+  <circle cx="92" cy="80" r="2" fill="#4f823f"></circle>
+  <circle cx="100" cy="81" r="2" fill="#4f823f"></circle>
+
+  <!-- Curling tendril -->
+  <path d="M48 91
+       C35 91 32 82 38 78
+       C44 75 48 80 45 84" fill="none" stroke="#639749" stroke-width="2.5" stroke-linecap="round"></path>
+</svg>

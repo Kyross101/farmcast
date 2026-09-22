@@ -2187,6 +2187,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Wax Gourd',
+      localName: 'Kundol',
+      scientificName: 'Benincasa hispida',
+      category: 'vegetable',
+      icon: 'assets/crops/wax-gourd.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingNote:
+        'Kundol is a climbing or trailing cucurbit grown for its edible fruit. Use locally appropriate vegetable production practices until a detailed official Philippine production guide is available.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Soils and Water Management',
+
+        title:
+          'Soil Survey of Isabela Province',
+
+        url:
+          'https://www.bswm.da.gov.ph/wp-content/uploads/Isabela.pdf'
+      }
+    },
+
+    {
+      name: 'Hyacinth Bean',
+      localName: 'Bataw',
+      scientificName: 'Lablab purpureus',
+      category: 'legume',
+      icon: 'assets/crops/hyacinth-bean.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      propagationNote:
+       'Established from seed. The official ATI guide describes sowing lablab in a well-prepared seedbed either by drilling or broadcasting.',
+ 
+      supportNote:
+        'As a climbing bean, Bataw may use nearby sturdy plants or another suitable support. ATI describes lablab beans using corn stalks as a natural trellis in an intercropping system.',
+
+      plantingNote:
+        'Prepare the seedbed well before sowing. ATI guidance indicates that lablab seed may be drilled about 3–10 cm deep or broadcast depending on the cropping system.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'Cordillera Administrative Region',
+
+        title:
+          'Corn-Vegetable Farming System',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/corn-vegetable_integrated_farm_system.pdf'
+      }
+    },
+
 
 
 ];
