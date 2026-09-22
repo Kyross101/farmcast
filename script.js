@@ -3483,6 +3483,76 @@ function getCropReference(cropName) {
   ) || null;
 }
 
+function renderMyCropGeneralReference(cropName) {
+
+  const cropReference =
+    getCropReference(cropName);
+
+  const reference =
+    normalizeCropReferenceSource(
+      cropReference?.source
+    );
+
+  if (!reference) return '';
+
+  const agencyText = [
+    reference.agency,
+    reference.office
+  ]
+    .filter(Boolean)
+    .join(' — ');
+
+  return `
+    <div class="cmi-source">
+
+      <div class="cmi-source-summary">
+        Official crop reference
+      </div>
+
+      <details class="cmi-source-details">
+        <summary>View crop reference details</summary>
+
+        ${
+          agencyText
+            ? `
+              <div class="cmi-source-agency">
+                ${escapeHtml(agencyText)}
+              </div>
+            `
+            : ''
+        }
+
+        ${
+          reference.title
+            ? `
+              <div class="cmi-source-title">
+                ${escapeHtml(reference.title)}
+              </div>
+            `
+            : ''
+        }
+
+      </details>
+
+      ${
+        reference.url
+          ? `
+            <a
+              class="cmi-source-link"
+              href="${escapeHtml(reference.url)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="event.stopPropagation()"
+            >
+              View official crop reference ↗
+            </a>
+          `
+          : ''
+      }
+
+    </div>
+  `;
+}
 
 function getCropIconHtml(
   cropName,
@@ -5605,6 +5675,11 @@ function renderCropsPage() {
     getMyCropWeatherAssessment(
       crop.type
     );
+  
+  const generalCropReferenceHtml =
+    renderMyCropGeneralReference(
+      crop.type
+    );
 
     const stageInfo = {
       seedling:   { emoji: '🌱', label: 'Seedling' },
@@ -6046,8 +6121,8 @@ function renderCropsPage() {
                            </a>
                          </div>
                        `
-                       : `
-                         <div class="cmi-source">
+                      : `
+                        <div class="cmi-source">
                           ${
                             crop.type === 'Rice' && crop.variety
                               ? getRiceVarietyStatus(crop).varietyVerified
@@ -6055,8 +6130,10 @@ function renderCropsPage() {
                                 : `Rice variety not yet verified in FarmCast — showing current FarmCast estimate`
                               : `Current FarmCast estimate`
                           }
-                          </div>
-                       `
+                        </div>
+
+                        ${generalCropReferenceHtml}
+                      `
                }
              `
   }
