@@ -715,8 +715,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Melon is grown as a high-value crop in the Philippines. Follow locally recommended production practices and suitable site conditions for the selected variety.',
 
-    source:
-      'Department of Agriculture'
+    source: {
+      agency:
+        'Department of Agriculture - MIMAROPA Regional Field Office',
+
+      title:
+        'Honeydew Melon Production',
+
+      url:
+        'https://mimaropa.da.gov.ph/media-resources/publication/high-value-crop'
+    }
   },
 
   {
@@ -871,8 +879,16 @@ window.FARMCAST_CROPS = [
     plantingNote:
       'Follow the official Agricultural Training Institute recommendations for nursery establishment, transplanting, crop care, and harvesting of broccoli.',
 
-    source:
-      'Department of Agriculture - Agricultural Training Institute'
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Broccoli Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1641969015BROCCOLI%20.pdf'
+    }
   },
 
   {
@@ -907,9 +923,19 @@ window.FARMCAST_CROPS = [
     harvestNote:
       'Generally harvested 90–120 days after emergence, depending on variety and location.',
 
-    source:
-      'Department of Agriculture - Regional Field Office No. 02, High Value Crops Development Program'
-  },
+    source: {
+      agency:
+        'Department of Agriculture - Regional Field Office No. 02',
+
+      office:
+        'High Value Crops Development Program',
+
+      title:
+        'Carrot Production Guide',
+
+      url:
+        'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Carrot-Prod-Guide.pdf'
+    }
 
   {
     name: 'Radish',
