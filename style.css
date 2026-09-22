@@ -1968,31 +1968,6 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   width: 100%;
   max-width: 520px;
 
-  max-height: min(
-    720px,
-    calc(100vh - 40px)
-  );
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: hidden;
-
-  background: var(--bg2);
-
-  border:
-    1px solid
-    var(--border2);
-
-  border-radius: 16px;
-
-  box-shadow:
-    0 20px 60px
-    rgba(0,0,0,0.5);
-}.crop-picker-sheet {
-  width: 100%;
-  max-width: 520px;
-
   height: min(
     720px,
     calc(100vh - 40px)
