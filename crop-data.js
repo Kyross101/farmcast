@@ -113,10 +113,25 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     emoji: '🫛',
     icon: 'assets/crops/sitaw.svg',
+
     minTemp: 20,
     maxTemp: 35,
     noRain: false,
-    windMax: 22
+    windMax: 22,
+
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Cordillera',
+
+      title:
+        'Pole Sitaw Production for Urban and Backyard Gardening',
+
+      url:
+        'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/pole_sitaw_flyer.pdf'
+    }
   },
 
   {
@@ -124,10 +139,25 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     emoji: '🥒',
     icon: 'assets/crops/ampalaya.svg',
+
     minTemp: 24,
     maxTemp: 36,
     noRain: false,
-    windMax: 20
+    windMax: 20,
+
+    source: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI MIMAROPA',
+
+      title:
+        'Gabay sa Produksyon ng Ampalaya',
+
+      url:
+        'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/gabay_sa_produksyon_ng_ampalaya_final_2.pdf'
+    }
   },
 
   {
