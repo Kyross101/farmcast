@@ -937,40 +937,40 @@ window.FARMCAST_CROPS = [
         'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Carrot-Prod-Guide.pdf'
     }
   },
-  
-  {
-    name: 'Radish',
-    localName: 'Labanos',
-    category: 'root-crop',
-    icon: 'assets/crops/radish.svg',
 
-    minTemp: null,
-    maxTemp: null,
-    noRain: false,
-    windMax: null,
+   {
+      name: 'Squash',
+      localName: 'Kalabasa',
+      category: 'vegetable',
+      icon: 'assets/crops/squash.svg',
 
-    soilPH:
-      '6.0–6.8',
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
 
-    varieties:
-      '60-days variety',
+      supportNote:
+        'Can be allowed to creep on the ground or grown with a trellis to maximize space and support fruit development.',
 
-    plantingNote:
-      'Prefers deep, friable, fertile sandy loam or silty loam soil rich in organic matter and with slightly acidic conditions.',
+      plantingNote:
+        'Can be directly seeded or started in seedling trays and transplanted. For transplanted squash, seedlings may be moved about two weeks after emergence.',
 
-    harvestNote:
-      'The locally popular 60-days variety can reach maximum marketable root size at about 60 days from emergence.',
+      harvestNote:
+        'Immature green fruits can be harvested about 30–40 days from pollination. Mature fruits are ready when the rind hardens, a powder-like coating develops, or the peduncle begins to dry.',
 
-    source: {
-      agency:
-        'Department of Agriculture - Bureau of Plant Industry',
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
 
-      title:
-        'Radish Seed Production Guide',
+        office:
+          'ATI Cordillera Administrative Region',
 
-      url:
-        'https://library.buplant.da.gov.ph/images/1641882970Radish%20Seed%20Production%20Guide.pdf'
-    }
-  }
+        title:
+          'Squash Production (For Urban and Home Gardening)',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/squash_production_guide_leaflet.pdf'
+      }
+    },
 
 ];

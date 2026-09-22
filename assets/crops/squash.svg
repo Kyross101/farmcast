@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Stem -->
+  <path d="M31 15c0-5 2-8 6-11" fill="none" stroke="#4f7f3d" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaf -->
+  <path d="M35 10c5-6 12-6 16-2-3 7-9 10-16 8Z" fill="#5e9c4c"></path>
+
+  <!-- Squash body -->
+  <path d="M13 34c0-11 8-18 19-18s19 7 19 18c0 13-8 23-19 23S13 47 13 34Z" fill="#e3a33a"></path>
+
+  <!-- Body sections -->
+  <path d="M25 18c-4 8-5 27 0 37" fill="none" stroke="#c98128" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M39 18c4 8 5 27 0 37" fill="none" stroke="#c98128" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M32 17v39" fill="none" stroke="#d08a2e" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Highlight -->
+  <path d="M19 29c2-5 5-8 9-10" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".3"></path>
+
+</svg>
