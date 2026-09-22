@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Rubber Tree</title>
+  <desc id="desc">
+    A rubber tree with a leafy canopy,
+    tapping cut, and latex collection cup.
+  </desc>
+
+  <!-- Trunk -->
+  <path d="M57 115
+       C59 91 59 69 60 46
+       L69 46
+       C69 69 70 92 73 115Z" fill="#8b6848" stroke="#684d38" stroke-width="2.5"></path>
+
+  <!-- Main branches -->
+  <path d="M64 49
+       C52 39 44 31 37 21" fill="none" stroke="#74563d" stroke-width="6" stroke-linecap="round"></path>
+
+  <path d="M65 49
+       C77 39 85 31 93 21" fill="none" stroke="#74563d" stroke-width="6" stroke-linecap="round"></path>
+
+  <path d="M63 43
+       C61 32 61 23 63 14" fill="none" stroke="#74563d" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Leaf canopy -->
+  <circle cx="35" cy="23" r="16" fill="#5f9349"></circle>
+  <circle cx="51" cy="17" r="17" fill="#6a9f50"></circle>
+  <circle cx="68" cy="16" r="18" fill="#72a456"></circle>
+  <circle cx="87" cy="21" r="17" fill="#619749"></circle>
+  <circle cx="98" cy="34" r="14" fill="#6a9c50"></circle>
+
+  <circle cx="27" cy="37" r="14" fill="#6da152"></circle>
+  <circle cx="44" cy="38" r="17" fill="#75a858"></circle>
+  <circle cx="63" cy="35" r="18" fill="#63984c"></circle>
+  <circle cx="82" cy="37" r="17" fill="#71a555"></circle>
+
+  <!-- Trifoliate-style leaf hints -->
+  <path d="M40 20
+       C34 13 27 14 26 20
+       C29 27 36 27 41 23Z" fill="#81b263"></path>
+
+  <path d="M45 21
+       C48 12 56 11 59 17
+       C58 24 51 27 45 24Z" fill="#7cad5e"></path>
+
+  <path d="M43 25
+       C38 30 39 37 45 38
+       C51 35 51 29 47 25Z" fill="#79aa5b"></path>
+
+  <!-- Tapping cut -->
+  <path d="M58 72
+       C62 69 66 67 70 66" fill="none" stroke="#d3b58b" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M59 77
+       C63 74 67 72 70 71" fill="none" stroke="#5f4332" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Latex drip -->
+  <path d="M66 74
+       C65 79 65 82 65 86" fill="none" stroke="#f4f0db" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <ellipse cx="65" cy="87" rx="2.5" ry="4" fill="#f5f2df"></ellipse>
+
+  <!-- Collection cup -->
+  <path d="M54 88
+       L76 88
+       L72 103
+       C68 107 61 107 57 103Z" fill="#44484b" stroke="#303336" stroke-width="2"></path>
+
+  <path d="M55 89
+       C61 92 69 92 75 89" fill="none" stroke="#777d80" stroke-width="2"></path>
+
+  <!-- Cup support -->
+  <path d="M53 86
+       C61 84 70 84 77 86" fill="none" stroke="#55585a" stroke-width="2"></path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="116" rx="35" ry="5" fill="#80654a" opacity="0.42"></ellipse>
+</svg>

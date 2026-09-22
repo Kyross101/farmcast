@@ -2891,6 +2891,87 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Rubber',
+      scientificName: 'Hevea brasiliensis',
+      category: 'industrial-crop',
+      icon: 'assets/crops/rubber.svg',
+
+      plantingDistance:
+        'Planting distance depends on terrain, clone, planting material, and desired tree density. Recommended layouts include 10 m × 2 m for hilly contour planting and several layouts for flat or undulating land such as 5 m × 4 m and 6 m × 3 m.',
+
+      plantingHole:
+        'A general planting-hole size of about 24 cm × 30 cm is recommended, although larger holes may be required for compact soil or larger planting materials.',
+
+      plantingSeason:
+        'Plant preferably when rainy weather is expected.',
+
+      plantingNote:
+        'Use healthy budded planting materials. For polybag seedlings, transplant when the leaves of the second top storey are fully expanded, dark green, and mature.',
+
+      establishmentNote:
+        'Rubber requires careful cultural management during its immature stage, which generally covers the first 1–6 years after planting.',
+
+      pruningNote:
+        'Young rubber trees may be pruned to develop a smooth trunk up to about 2.0–2.5 m. Maintain about 4–5 well-spaced branches to help develop a balanced canopy and reduce wind damage.',
+
+      intercroppingNote:
+        'During the immature stage, rubber may be intercropped with suitable crops. The official guide lists crops such as peanut, upland rice, corn, sorghum, mungbean, soybean, sweet potato, pineapple, and squash.',
+
+      useNote:
+        'Natural rubber latex is used in products such as tires, flexible pipes, footwear, gloves, mattresses, upholstery, and other industrial materials.',
+
+      source: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'Rubber Production Guide',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Rubber-Production-Guide.pdf'
+      }
+    },
+
+    {
+      name: 'Pili',
+      scientificName: 'Canarium ovatum',
+      category: 'tree-nut',
+      icon: 'assets/crops/pili.svg',
+  
+      propagationNote:
+        'Pili may be propagated sexually from nuts or asexually through methods such as inarching and cleft grafting. The Department of Agriculture promotes asexual propagation using selected high-quality mother trees for commercial production.',
+
+      pollinationNote:
+        'For fruit production, the official DA reference notes that approximately one male pili tree for every 20–25 female trees can serve as an adequate pollen source.',
+
+      bearingNote:
+        'Asexually propagated pili trees may begin bearing fruit within about 3 years, while trees grown through sexual propagation from nuts may require about 8–10 years before bearing.',
+
+      plantingNote:
+        'For commercial production, use healthy, high-quality grafted planting materials derived from selected mother trees whenever suitable planting materials are available.',
+
+      useNote:
+        'Pili is cultivated mainly for its edible kernel and pulp. The tree also produces resin known as Manila elemi, which has several industrial uses.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Regional Field Office 5',
+
+        office:
+          'Bicol Region',
+
+        title:
+          "Exploring the Potential of Bicol's Pili Nut as an Export Product",
+
+        url:
+          'https://bicol.da.gov.ph/exploring-the-potential-of-bicols-pili-nut-as-an-export-product/'
+      }
+    },
+
 
 ];
 
