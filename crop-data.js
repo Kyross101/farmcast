@@ -2652,6 +2652,83 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Sesame',
+      localName: 'Linga',
+      scientificName: 'Sesamum indicum',
+      category: 'oilseed',
+      icon: 'assets/crops/sesame.svg',
+
+      cropUseNote:
+        'Sesame is cultivated for its oil-rich edible seeds and is recognized in Philippine food and agricultural references as Linga.',
+
+      plantingNote:
+        'Use healthy sesame seed and follow the official Bureau of Plant Industry production guide for crop establishment, field management, harvesting, and post-harvest practices.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        office:
+          'BPI Library Inventory System',
+
+        title:
+          'Plant Industry Production Guide (39) - Sesame',
+
+        url:
+          'https://library.buplant.da.gov.ph/books/59'
+      }
+    },
+
+    {
+      name: 'Sorghum',
+      localName: 'Batad',
+      scientificName: 'Sorghum bicolor (L.) Moench',
+      category: 'grain',
+      icon: 'assets/crops/sorghum.svg',
+
+      soilPH:
+        '5.5–6.5',
+
+      soilNote:
+        'Prefers well-drained clay loam soil. The official DA guide also notes that sandy loam and clay loam soils can be suitable for sorghum production under hot-season conditions.',
+
+      plantingDistance:
+        'About 75 cm between rows and 10 cm between plants',
+
+      plantingDepth:
+        'About 2.5 cm deep when the soil is moist and about 5 cm deep when the soil is dry',
+
+      seedRate:
+        'About 8–10 kg of seed per hectare',
+
+      climateNote:
+        'Sorghum can be grown under different Philippine climatic and soil conditions and performs well under sunny conditions.',
+
+      irrigationNote:
+        'Irrigation is especially important during dry periods. The official guide describes weekly irrigation during the first 30–75 days after emergence when needed.',
+
+      plantingNote:
+        'Prepare a clean and well-plowed field. During the rainy season, furrows may be about 10 cm deep; during summer, about 15–20 cm deep. Sow the small seeds shallowly and thin the stand about 14 days after planting when necessary.',
+
+      useNote:
+        'Sorghum may be used for food, animal feed, forage, silage, ethanol, bioenergy, and other agricultural products.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Regional Field Office CALABARZON',
+
+        office:
+          'Regional Agriculture and Fisheries Information Section',
+
+        title:
+          'Gabay sa Produksyon ng Sorghum',
+
+        url:
+          'https://calabarzon.da.gov.ph/wp-content/uploads/2025/01/SORGHUM-Brochure-Template-1.pdf'
+      }
+    },
+
 
 ];
 

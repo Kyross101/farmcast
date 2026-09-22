@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Sorghum</title>
+  <desc id="desc">
+    A sorghum plant with a tall green stalk,
+    long leaves, and a dense reddish-brown grain head.
+  </desc>
+
+  <!-- Main stalk -->
+  <path d="M64 116
+       C63 93 64 71 63 50
+       C63 37 64 27 64 20" fill="none" stroke="#6c8b45" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Left leaf -->
+  <path d="M61 73
+       C48 62 34 56 18 55
+       C32 65 45 75 61 82Z" fill="#6fa04e" stroke="#4f7d3e" stroke-width="2"></path>
+
+  <!-- Right leaf -->
+  <path d="M66 61
+       C80 49 94 44 111 45
+       C96 55 83 66 66 70Z" fill="#78a856" stroke="#4f7d3e" stroke-width="2"></path>
+
+  <!-- Lower left leaf -->
+  <path d="M62 91
+       C48 82 35 80 23 83
+       C36 89 48 96 62 101Z" fill="#65964a" stroke="#4c793c" stroke-width="2"></path>
+
+  <!-- Upper narrow leaf -->
+  <path d="M63 47
+       C51 39 42 36 33 37
+       C42 44 52 50 63 54Z" fill="#7cab59" stroke="#527f40" stroke-width="2"></path>
+
+  <!-- Panicle branches -->
+  <path d="M64 22 C58 17 54 12 52 7" fill="none" stroke="#7b6945" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M64 22 C61 15 60 9 60 4" fill="none" stroke="#7b6945" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M64 22 C66 14 67 8 67 3" fill="none" stroke="#7b6945" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M64 22 C71 16 75 11 78 6" fill="none" stroke="#7b6945" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M64 23 C74 21 81 18 87 14" fill="none" stroke="#7b6945" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <path d="M64 23 C53 22 45 19 40 15" fill="none" stroke="#7b6945" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Sorghum grains -->
+  <circle cx="51" cy="8" r="4" fill="#a75d3c"></circle>
+  <circle cx="56" cy="13" r="4" fill="#b56a43"></circle>
+  <circle cx="59" cy="5" r="4" fill="#984e35"></circle>
+
+  <circle cx="66" cy="5" r="4" fill="#b7663e"></circle>
+  <circle cx="69" cy="10" r="4" fill="#a95538"></circle>
+  <circle cx="75" cy="7" r="4" fill="#b96d42"></circle>
+
+  <circle cx="80" cy="13" r="4" fill="#9d5135"></circle>
+  <circle cx="84" cy="17" r="4" fill="#aa5c39"></circle>
+
+  <circle cx="43" cy="15" r="4" fill="#a75b3b"></circle>
+  <circle cx="48" cy="19" r="4" fill="#b66943"></circle>
+
+  <circle cx="56" cy="20" r="4" fill="#9f5035"></circle>
+  <circle cx="63" cy="16" r="4" fill="#b66840"></circle>
+  <circle cx="70" cy="18" r="4" fill="#a95839"></circle>
+  <circle cx="77" cy="19" r="4" fill="#bb7046"></circle>
+
+  <circle cx="61" cy="25" r="4" fill="#9d5035"></circle>
+  <circle cx="68" cy="24" r="4" fill="#aa5b39"></circle>
+
+  <!-- Grain highlights -->
+  <circle cx="51" cy="7" r="1" fill="#d99a70"></circle>
+  <circle cx="66" cy="4" r="1" fill="#d99a70"></circle>
+  <circle cx="75" cy="6" r="1" fill="#d99a70"></circle>
+  <circle cx="56" cy="19" r="1" fill="#d99a70"></circle>
+  <circle cx="77" cy="18" r="1" fill="#d99a70"></circle>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#82664a" opacity="0.4"></ellipse>
+</svg>

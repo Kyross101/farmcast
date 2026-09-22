@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Sesame</title>
+  <desc id="desc">
+    An upright sesame plant with green leaves,
+    pale tubular flowers, and mature seed capsules.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 116
+       C63 94 64 72 63 51
+       C62 35 63 22 64 11" fill="none" stroke="#5b7b40" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Upper green stem -->
+  <path d="M64 81
+       C64 58 63 34 64 11" fill="none" stroke="#648b46" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Branches -->
+  <path d="M63 43
+       C51 39 42 33 34 26" fill="none" stroke="#638846" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M65 48
+       C77 44 87 37 95 30" fill="none" stroke="#638846" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M63 66
+       C51 62 42 56 34 49" fill="none" stroke="#638846" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M65 70
+       C77 66 87 59 96 52" fill="none" stroke="#638846" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <path d="M34 26
+       C24 20 16 24 16 32
+       C22 41 32 40 42 31Z" fill="#70a250" stroke="#4c7b3e" stroke-width="2"></path>
+
+  <path d="M95 30
+       C105 23 113 28 112 36
+       C106 44 96 42 87 35Z" fill="#669b49" stroke="#4c7b3e" stroke-width="2"></path>
+
+  <path d="M34 49
+       C23 43 15 48 17 57
+       C24 65 35 62 44 54Z" fill="#79aa56" stroke="#4c7b3e" stroke-width="2"></path>
+
+  <path d="M96 52
+       C107 46 115 51 112 60
+       C105 68 94 64 86 57Z" fill="#6da04d" stroke="#4c7b3e" stroke-width="2"></path>
+
+  <!-- Tubular sesame flowers -->
+  <path d="M54 35
+       C49 29 50 22 56 19
+       C62 21 64 28 61 35
+       C59 39 56 39 54 35Z" fill="#eee5ef" stroke="#b99db9" stroke-width="2"></path>
+
+  <path d="M76 39
+       C81 33 80 26 74 23
+       C68 25 67 32 69 39
+       C71 43 74 43 76 39Z" fill="#f1e7f0" stroke="#b99db9" stroke-width="2"></path>
+
+  <path d="M56 23
+       C54 26 54 30 56 33" fill="none" stroke="#d1b7cf" stroke-width="1.5"></path>
+
+  <!-- Seed capsule stems -->
+  <path d="M55 58 C53 63 53 68 53 73" fill="none" stroke="#597d40" stroke-width="2.5"></path>
+
+  <path d="M74 57 C76 62 76 68 76 73" fill="none" stroke="#597d40" stroke-width="2.5"></path>
+
+  <!-- Sesame capsules -->
+  <path d="M49 71
+       C47 64 50 59 54 59
+       C59 60 61 65 59 72
+       L57 84
+       C56 89 51 89 50 84Z" fill="#8ba55a" stroke="#607b42" stroke-width="2.5"></path>
+
+  <path d="M72 72
+       C70 65 73 60 77 60
+       C82 61 84 66 82 73
+       L80 85
+       C79 90 74 90 73 85Z" fill="#839d55" stroke="#607b42" stroke-width="2.5"></path>
+
+  <!-- Capsule ribs -->
+  <path d="M54 62 L54 85" fill="none" stroke="#aabd75" stroke-width="1.5"></path>
+
+  <path d="M77 63 L77 86" fill="none" stroke="#aabd75" stroke-width="1.5"></path>
+
+  <!-- A few sesame seeds -->
+  <ellipse cx="43" cy="103" rx="4" ry="2" transform="rotate(-20 43 103)" fill="#e6d7ae" stroke="#aa9870" stroke-width="1"></ellipse>
+
+  <ellipse cx="53" cy="108" rx="4" ry="2" transform="rotate(18 53 108)" fill="#e9dbb4" stroke="#aa9870" stroke-width="1"></ellipse>
+
+  <ellipse cx="83" cy="106" rx="4" ry="2" transform="rotate(-12 83 106)" fill="#e6d7ae" stroke="#aa9870" stroke-width="1"></ellipse>
+
+  <!-- Ground -->
+  <path d="M29 117
+       C47 113 81 113 99 117" fill="none" stroke="#89684b" stroke-width="4" stroke-linecap="round"></path>
+</svg>
