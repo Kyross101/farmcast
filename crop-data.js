@@ -1411,4 +1411,121 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Mung Bean',
+      localName: 'Monggo',
+      category: 'legume',
+      icon: 'assets/crops/monggo.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilPH:
+        '5.5–6.2',
+
+      soilNote:
+        'Grows well in well-drained loam or sandy loam soil.',
+
+      plantingDistance:
+        'About 50–60 cm between rows',
+
+      plantingNote:
+        'Prepare the field thoroughly and sow seeds in furrows about 4–6 cm deep. The crop may be planted during wet, dry, or late-dry season depending on local conditions.',
+
+      harvestNote:
+        'Harvesting may begin about 60–65 days after planting. Mature pods may be collected by priming or hand picking, usually in several harvest rounds.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'All About Mungbean (Balatong)',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1659331948Mungbean%20%28Balatong%29.pdf'
+      }
+    },
+
+    {
+      name: 'Peanut',
+      localName: 'Mani',
+      category: 'legume',
+      icon: 'assets/crops/peanut.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      soilPH:
+        '6.0–6.5',
+
+      soilNote:
+        'Performs well in level, well-drained sandy loam soil and fields that are free from major soil-borne diseases and insect pests.',
+
+      plantingDistance:
+        'About 10 cm between hills and 40 cm between rows',
+
+      plantingNote:
+        'Sow two seeds per hill. Good-quality seed should be used, and the official guide recommends rhizobium inoculation to support nitrogen fixation.',
+
+      harvestNote:
+        'Harvest when about 70–80% of the pods show prominent veins, the inner shell has darkened, and the seed coat has developed the normal color of the variety.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cagayan Valley',
+
+        title:
+          'Peanut Production and Processing Technologies',
+
+        url:
+          'https://ati2.da.gov.ph/ati-2/content/sites/default/files/2025-10/IEC%20Peanut.pdf'
+      }
+    },
+
+    {
+      name: 'Soybean',
+      localName: 'Soya',
+      category: 'legume',
+      icon: 'assets/crops/soybean.svg',
+
+      minTemp: null,
+      maxTemp: null,
+      noRain: false,
+      windMax: null,
+
+      plantingDistance:
+        'About 40–50 cm between furrows and about 10 cm between hills',
+
+      plantingDepth:
+        'About 4–6 cm deep',
+
+      plantingNote:
+        'For the hill method, sow two seeds per hill about 10 cm apart along furrows spaced 40–50 cm apart. Drill planting may also be used at about 15–20 seeds per linear meter.',
+
+      harvestNote:
+        'Maturity depends on the soybean variety. The official guide lists recommended Philippine varieties with maturity periods ranging from less than 90 days to about 90–100 days.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas',
+
+        title:
+          'Soybean Production - How to Grow Soybean',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/2026-02/SOYBEAN%20PRODUCTION-1_compressed.pdf'
+      }
+    },
+
 ];

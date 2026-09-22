@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Stem -->
+  <path d="M32 34c0-10 0-18 1-27" fill="none" stroke="#4f8a47" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Side stems -->
+  <path d="M31 21c-6-3-10-7-13-12" fill="none" stroke="#4f8a47" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M33 18c6-3 10-7 13-12" fill="none" stroke="#4f8a47" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <ellipse cx="16" cy="9" rx="7" ry="4" fill="#66aa57"></ellipse>
+  <ellipse cx="22" cy="15" rx="7" ry="4" fill="#70b360"></ellipse>
+  <ellipse cx="47" cy="7" rx="7" ry="4" fill="#66aa57"></ellipse>
+  <ellipse cx="42" cy="14" rx="7" ry="4" fill="#70b360"></ellipse>
+
+  <!-- Peanut shell -->
+  <path d="M25 33c5-5 12-4 15 1 2 3 1 7-1 10 3 3 4 7 2 11-3 5-10 6-15 3-4-3-5-8-3-12-3-4-2-9 2-13Z" fill="#d7ad69"></path>
+
+  <!-- Shell texture -->
+  <path d="M27 38c4 2 8 2 11 0" fill="none" stroke="#b98d50" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M26 48c4-2 9-2 13 0" fill="none" stroke="#b98d50" stroke-width="2" stroke-linecap="round"></path>
+
+  <circle cx="29" cy="42" r="1.2" fill="#b98d50"></circle>
+  <circle cx="36" cy="52" r="1.2" fill="#b98d50"></circle>
+
+</svg>

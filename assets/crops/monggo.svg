@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+
+  <!-- Stem -->
+  <path d="M31 57c0-13 0-26 1-39" fill="none" stroke="#4f8948" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Side stems -->
+  <path d="M31 36c-6-4-10-9-13-14" fill="none" stroke="#4f8948" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M32 29c6-4 10-8 13-14" fill="none" stroke="#4f8948" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <path d="M18 22c-7 0-11-5-11-11 7-3 14 1 17 7-1 3-3 4-6 4Z" fill="#65a755"></path>
+
+  <path d="M44 15c4-6 11-8 16-4-1 7-7 11-14 10-3-1-4-3-2-6Z" fill="#69ad59"></path>
+
+  <!-- Pods -->
+  <path d="M24 35c-5 5-5 14 1 20" fill="none" stroke="#77a94e" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M39 32c6 5 7 14 2 21" fill="none" stroke="#77a94e" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Beans -->
+  <circle cx="24" cy="40" r="1.5" fill="#d8d36c"></circle>
+  <circle cx="24" cy="46" r="1.5" fill="#d8d36c"></circle>
+  <circle cx="40" cy="38" r="1.5" fill="#d8d36c"></circle>
+  <circle cx="42" cy="45" r="1.5" fill="#d8d36c"></circle>
+
+</svg>
