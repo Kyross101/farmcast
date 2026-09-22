@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Sapodilla</title>
+  <desc id="desc">
+    A chico or sapodilla branch with green leaves,
+    brown oval fruits, and one sliced fruit.
+  </desc>
+
+  <!-- Branch -->
+  <path d="M24 108
+       C39 87 51 67 65 49
+       C77 34 90 24 105 17" fill="none" stroke="#70543d" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M49 72
+       C39 61 32 50 28 39" fill="none" stroke="#765940" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M73 43
+       C85 44 96 40 106 34" fill="none" stroke="#765940" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <ellipse cx="29" cy="35" rx="15" ry="7" transform="rotate(50 29 35)" fill="#629649" stroke="#45743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="42" cy="54" rx="16" ry="7" transform="rotate(30 42 54)" fill="#72a453" stroke="#45743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="85" cy="37" rx="16" ry="7" transform="rotate(-25 85 37)" fill="#69a04e" stroke="#45743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="103" cy="29" rx="14" ry="7" transform="rotate(-28 103 29)" fill="#77a957" stroke="#45743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="94" cy="15" rx="13" ry="7" transform="rotate(-8 94 15)" fill="#609248" stroke="#45743a" stroke-width="2"></ellipse>
+
+  <!-- Fruit stems -->
+  <path d="M61 54 C61 61 60 67 59 73" fill="none" stroke="#647b43" stroke-width="3"></path>
+
+  <path d="M83 42 C86 49 87 55 86 61" fill="none" stroke="#647b43" stroke-width="3"></path>
+
+  <!-- Main chico fruit -->
+  <ellipse cx="58" cy="86" rx="16" ry="19" fill="#9b7048" stroke="#6e4f36" stroke-width="2.5"></ellipse>
+
+  <!-- Rough skin texture -->
+  <circle cx="52" cy="80" r="1.4" fill="#79553a"></circle>
+  <circle cx="61" cy="76" r="1.2" fill="#79553a"></circle>
+  <circle cx="65" cy="87" r="1.3" fill="#79553a"></circle>
+  <circle cx="53" cy="94" r="1.2" fill="#79553a"></circle>
+  <circle cx="62" cy="99" r="1.3" fill="#79553a"></circle>
+
+  <!-- Second fruit -->
+  <ellipse cx="87" cy="73" rx="14" ry="17" fill="#a2784f" stroke="#725238" stroke-width="2.5"></ellipse>
+
+  <circle cx="82" cy="69" r="1.3" fill="#805a3d"></circle>
+  <circle cx="91" cy="77" r="1.2" fill="#805a3d"></circle>
+
+  <!-- Cut fruit -->
+  <circle cx="30" cy="99" r="17" fill="#9c7048" stroke="#6e4f36" stroke-width="2.5"></circle>
+
+  <!-- Flesh -->
+  <circle cx="30" cy="99" r="12" fill="#c99a67"></circle>
+
+  <!-- Seeds -->
+  <ellipse cx="27" cy="98" rx="3" ry="6" transform="rotate(-25 27 98)" fill="#392d28"></ellipse>
+
+  <ellipse cx="35" cy="101" rx="3" ry="6" transform="rotate(25 35 101)" fill="#302722"></ellipse>
+
+  <!-- Flesh highlight -->
+  <path d="M21 94
+       C24 89 30 87 35 89" fill="none" stroke="#e1b784" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Ground shadow -->
+  <ellipse cx="60" cy="117" rx="45" ry="5" fill="#80664a" opacity="0.35"></ellipse>
+</svg>

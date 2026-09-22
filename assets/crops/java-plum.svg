@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Java Plum</title>
+  <desc id="desc">
+    A Duhat branch with green leaves
+    and clusters of ripe dark-purple fruits.
+  </desc>
+
+  <!-- Branch -->
+  <path d="M22 108
+       C37 88 49 69 63 51
+       C76 35 90 25 106 18" fill="none" stroke="#70533c" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M48 73
+       C39 61 32 50 29 39" fill="none" stroke="#75583f" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M71 45
+       C84 45 95 41 106 34" fill="none" stroke="#75583f" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <ellipse cx="29" cy="35" rx="15" ry="8" transform="rotate(49 29 35)" fill="#609548" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="42" cy="54" rx="16" ry="8" transform="rotate(30 42 54)" fill="#70a454" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="84" cy="39" rx="16" ry="8" transform="rotate(-25 84 39)" fill="#679d4d" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="103" cy="30" rx="14" ry="8" transform="rotate(-28 103 30)" fill="#76a958" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <ellipse cx="94" cy="16" rx="13" ry="7" transform="rotate(-8 94 16)" fill="#5e9146" stroke="#43743a" stroke-width="2"></ellipse>
+
+  <!-- Fruit stems -->
+  <path d="M58 56 C57 64 56 69 55 75" fill="none" stroke="#607741" stroke-width="2.5"></path>
+
+  <path d="M65 53 C66 62 68 68 70 73" fill="none" stroke="#607741" stroke-width="2.5"></path>
+
+  <path d="M83 44 C85 51 87 57 89 62" fill="none" stroke="#607741" stroke-width="2.5"></path>
+
+  <!-- Duhat fruit cluster -->
+  <ellipse cx="52" cy="83" rx="8" ry="12" transform="rotate(-13 52 83)" fill="#49385e" stroke="#30273e" stroke-width="2"></ellipse>
+
+  <ellipse cx="66" cy="82" rx="8" ry="12" transform="rotate(11 66 82)" fill="#554068" stroke="#30273e" stroke-width="2"></ellipse>
+
+  <ellipse cx="59" cy="97" rx="8" ry="12" fill="#3e324f" stroke="#292234" stroke-width="2"></ellipse>
+
+  <!-- Second cluster -->
+  <ellipse cx="87" cy="72" rx="7" ry="11" transform="rotate(-10 87 72)" fill="#503c64" stroke="#30273e" stroke-width="2"></ellipse>
+
+  <ellipse cx="96" cy="82" rx="7" ry="11" transform="rotate(15 96 82)" fill="#443655" stroke="#2e2639" stroke-width="2"></ellipse>
+
+  <!-- Fruit highlights -->
+  <ellipse cx="49" cy="79" rx="2" ry="4" fill="#806b91" opacity="0.75"></ellipse>
+
+  <ellipse cx="63" cy="78" rx="2" ry="4" fill="#887399" opacity="0.7"></ellipse>
+
+  <ellipse cx="85" cy="68" rx="1.8" ry="3.5" fill="#836e93" opacity="0.7"></ellipse>
+
+  <!-- Small cut fruit -->
+  <ellipse cx="30" cy="99" rx="13" ry="16" fill="#49385e" stroke="#30273e" stroke-width="2.5"></ellipse>
+
+  <ellipse cx="30" cy="99" rx="8" ry="11" fill="#b694b4"></ellipse>
+
+  <ellipse cx="30" cy="99" rx="3" ry="7" fill="#805d46"></ellipse>
+
+  <!-- Ground shadow -->
+  <ellipse cx="62" cy="117" rx="46" ry="5" fill="#80664a" opacity="0.35"></ellipse>
+</svg>

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Tamarind</title>
+  <desc id="desc">
+    A Sampalok branch with compound green leaves
+    and hanging curved brown tamarind pods.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M21 108
+       C36 88 49 70 62 52
+       C75 35 90 25 107 18" fill="none" stroke="#70523a" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M48 72
+       C39 61 33 50 30 39" fill="none" stroke="#76573d" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M69 47
+       C82 46 94 41 105 34" fill="none" stroke="#76573d" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Compound leaf stems -->
+  <path d="M30 39
+       C25 31 22 24 20 18" fill="none" stroke="#597d42" stroke-width="2.5"></path>
+
+  <path d="M49 61
+       C41 55 35 49 31 43" fill="none" stroke="#597d42" stroke-width="2.5"></path>
+
+  <path d="M82 43
+       C91 36 99 30 106 24" fill="none" stroke="#597d42" stroke-width="2.5"></path>
+
+  <!-- Small paired leaflets left -->
+  <ellipse cx="20" cy="20" rx="7" ry="3.5" transform="rotate(25 20 20)" fill="#71a451"></ellipse>
+
+  <ellipse cx="27" cy="24" rx="7" ry="3.5" transform="rotate(-18 27 24)" fill="#65994a"></ellipse>
+
+  <ellipse cx="23" cy="29" rx="7" ry="3.5" transform="rotate(22 23 29)" fill="#78aa56"></ellipse>
+
+  <ellipse cx="31" cy="33" rx="7" ry="3.5" transform="rotate(-18 31 33)" fill="#6ba04e"></ellipse>
+
+  <!-- Middle leaflets -->
+  <ellipse cx="34" cy="46" rx="7" ry="3.5" transform="rotate(24 34 46)" fill="#70a351"></ellipse>
+
+  <ellipse cx="41" cy="50" rx="7" ry="3.5" transform="rotate(-17 41 50)" fill="#7bab59"></ellipse>
+
+  <ellipse cx="39" cy="56" rx="7" ry="3.5" transform="rotate(23 39 56)" fill="#65994a"></ellipse>
+
+  <ellipse cx="47" cy="59" rx="7" ry="3.5" transform="rotate(-16 47 59)" fill="#73a653"></ellipse>
+
+  <!-- Right compound leaflets -->
+  <ellipse cx="88" cy="37" rx="7" ry="3.5" transform="rotate(-22 88 37)" fill="#6da14f"></ellipse>
+
+  <ellipse cx="95" cy="31" rx="7" ry="3.5" transform="rotate(18 95 31)" fill="#79aa57"></ellipse>
+
+  <ellipse cx="101" cy="27" rx="7" ry="3.5" transform="rotate(-20 101 27)" fill="#649749"></ellipse>
+
+  <ellipse cx="107" cy="22" rx="7" ry="3.5" transform="rotate(17 107 22)" fill="#72a553"></ellipse>
+
+  <!-- Pod stems -->
+  <path d="M59 56
+       C59 63 58 69 57 74" fill="none" stroke="#617442" stroke-width="3"></path>
+
+  <path d="M78 46
+       C81 53 82 59 82 65" fill="none" stroke="#617442" stroke-width="3"></path>
+
+  <!-- Main curved tamarind pod -->
+  <path d="M56 73
+       C45 74 41 83 44 91
+       C47 100 56 105 68 103
+       C74 102 78 98 80 93
+       C71 96 64 95 59 91
+       C54 87 53 80 56 73Z" fill="#9b7046" stroke="#684b34" stroke-width="2.5"></path>
+
+  <!-- Pod bulges -->
+  <circle cx="51" cy="84" r="5" fill="#a77b4f"></circle>
+  <circle cx="58" cy="91" r="5" fill="#a77b4f"></circle>
+  <circle cx="67" cy="97" r="5" fill="#a77b4f"></circle>
+
+  <!-- Second hanging pod -->
+  <path d="M82 64
+       C73 66 71 74 74 81
+       C77 87 83 91 91 89
+       C96 88 99 85 100 81
+       C94 83 88 82 84 78
+       C81 74 80 69 82 64Z" fill="#8e6541" stroke="#61462f" stroke-width="2.5"></path>
+
+  <circle cx="79" cy="74" r="4" fill="#9d744b"></circle>
+  <circle cx="85" cy="81" r="4" fill="#9d744b"></circle>
+  <circle cx="92" cy="85" r="4" fill="#9d744b"></circle>
+
+  <!-- Open pod / pulp hint -->
+  <path d="M26 91
+       C19 95 18 104 24 109
+       C30 114 39 111 43 104
+       C37 105 32 102 30 98
+       C29 95 28 93 26 91Z" fill="#a77a4e" stroke="#694c34" stroke-width="2"></path>
+
+  <ellipse cx="29" cy="102" rx="4" ry="6" fill="#58402f"></ellipse>
+
+  <ellipse cx="37" cy="105" rx="4" ry="6" fill="#58402f"></ellipse>
+
+  <!-- Ground shadow -->
+  <ellipse cx="62" cy="117" rx="46" ry="5" fill="#80654a" opacity="0.35"></ellipse>
+</svg>

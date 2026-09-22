@@ -3042,7 +3042,172 @@ window.FARMCAST_CROPS = [
 
         url:
           'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf?utm_source'
-    
+      }
+    },
+
+    {
+      name: 'Santol',
+      scientificName: 'Sandoricum koetjape (Burm.f.) Merr.',
+      category: 'fruit',
+      icon: 'assets/crops/santol.svg',
+
+      bearingNote:
+        'The official ATI SALT-4 reference lists seed-propagated Santol at about 5–7 years before harvesting. The same reference does not provide a corresponding value for asexually propagated Santol.',
+
+      establishmentNote:
+        'For fruit-tree establishment under the SALT-4 system, healthy seedlings are planted at the start of the rainy season and provided with adequate spacing to reduce competition as the trees mature.',
+
+      plantingNote:
+        'Use healthy, disease-free planting material and select a suitable site with enough space for development of the mature fruit tree.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          '10 Steps to Small Agrofruit Livelihood Technology (SALT-4)',
+
+        url:
+         'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/salt_4_brochure.pdf'
+      }
+    },
+
+    {
+      name: 'Sapodilla',
+      localName: 'Chico',
+      scientificName: 'Manilkara zapota (L.) P. van Royen',
+      category: 'fruit',
+      icon: 'assets/crops/sapodilla.svg',
+
+      bearingNote:
+        'The official ATI SALT-4 reference lists Chico at about 6–10 years before harvesting when propagated from seed and about 3–5 years when established through asexual propagation.',
+
+      plantingNote:
+        'Use healthy planting material and provide enough space for development of the mature fruit tree. Asexually propagated planting materials may be used when earlier fruit production is desired.',
+
+      harvestNote:
+        'Harvest fruits only after they have reached an appropriate degree of maturity and while they remain fresh, firm, and suitable for handling and transport.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          '10 Steps to Small Agrofruit Livelihood Technology (SALT-4)',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/salt_4_brochure.pdf'
+      }
+    },
+
+    {
+      name: 'Wax Apple',
+      localName: 'Makopa',
+      scientificName: 'Syzygium samarangense',
+      category: 'fruit',
+      icon: 'assets/crops/wax-apple.svg',
+
+      growthHabitNote:
+        'Makopa is a tropical fruit tree cultivated in the Philippines.',
+
+      fruitNote:
+        'The fruit is broadly pear-shaped and may range from light red to white, with white, juicy, aromatic flesh.',
+
+      useNote:
+        'The fruit is edible and is known in Philippine references as Makopa, Wax Apple, Wax Jambu, or Java Apple.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Java Apple - Syzygium samarangense',
+
+        url:
+          'https://i.fnri.dost.gov.ph/fct/library/report/3608'
+      }
+    },
+
+    {
+      name: 'Java Plum',
+      localName: 'Duhat',
+      scientificName: 'Syzygium cumini (L.) Skeels',
+      category: 'fruit',
+      icon: 'assets/crops/java-plum.svg',
+
+      growthHabitNote:
+        'Duhat is a fruit-bearing tree found in the Philippines.',
+
+      fruitNote:
+        'Fully ripe Duhat fruits develop a dark purple color.',
+
+      useNote:
+        'The fruit may be eaten and processed into products such as juice and other value-added food products.',
+
+      plantingNote:
+        'Use healthy planting material and locally appropriate fruit-tree management practices. Quantitative growing thresholds are not stored because the selected official reference does not provide crop-specific production limits.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development',
+
+        office:
+          'DOST-PCAARRD',
+
+        title:
+          'Health-promoting Properties Found in Extracts of Duhat and Bignay',
+
+        url:
+          'https://www.pcaarrd.dost.gov.ph/index.php/quick-information-dispatch-qid-articles/health-promoting-properties-found-in-extracts-of-duhat-and-bignay'
+      }
+    },
+
+    {
+      name: 'Tamarind',
+      localName: 'Sampalok',
+      scientificName: 'Tamarindus indica L.',
+      category: 'fruit',
+      icon: 'assets/crops/tamarind.svg',
+
+      propagationNote:
+        'Tamarind may be propagated through grafting. Philippine DOST-supported research has evaluated grafting as part of improved production management for the crop.',
+
+      bearingNote:
+        'In DOST-PCAARRD-supported Philippine trials, grafted tamarind trees produced fruit within about 2 years, earlier than the ungrafted trees evaluated in the project.',
+
+      managementNote:
+        'Philippine research has evaluated practices such as grafting, pruning, girdling, biological control agents, and plant-growth management to improve tamarind production and fruit quality.',
+
+      pruningNote:
+        'Post-harvest pruning has been evaluated by the Tamarind R&D Center as a production-management practice for Sampalok.',
+
+      varietyNote:
+        'Philippine tamarind research includes both sour and sweet types. PSAU Sour 2 has been registered through the National Seed Industry Council as a sour tamarind variety.',
+
+      useNote:
+        'Tamarind fruits may be consumed or processed into products such as candy, juice, concentrate, jam, powder, wine, and vinegar.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development',
+
+        office:
+          'DOST-PCAARRD',
+
+        title:
+          'Mas Mataas na Produksyon at Kalidad ng Sampalok, Hatid ng Agham at Teknolohiya',
+
+        url:
+          'https://www.pcaarrd.dost.gov.ph/index.php/quick-information-dispatch-qid-articles/mas-mataas-na-produkyson-at-kalidad-ng-sampalok-hatid-ng-agham-at-teknolohiya'
       }
     },
 

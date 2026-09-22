@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Wax Apple</title>
+  <desc id="desc">
+    A makopa branch with green leaves and glossy
+    bell-shaped red wax apple fruits.
+  </desc>
+
+  <!-- Branch -->
+  <path d="M24 108
+       C38 88 51 68 65 50
+       C76 36 90 25 105 18" fill="none" stroke="#70543d" stroke-width="7" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M50 71
+       C40 60 33 50 29 39" fill="none" stroke="#765940" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M73 44
+       C85 44 96 41 106 35" fill="none" stroke="#765940" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <ellipse cx="29" cy="35" rx="15" ry="8" transform="rotate(48 29 35)" fill="#63984b" stroke="#45763c" stroke-width="2"></ellipse>
+
+  <ellipse cx="43" cy="53" rx="16" ry="8" transform="rotate(30 43 53)" fill="#73a657" stroke="#45763c" stroke-width="2"></ellipse>
+
+  <ellipse cx="85" cy="38" rx="16" ry="8" transform="rotate(-25 85 38)" fill="#69a04e" stroke="#45763c" stroke-width="2"></ellipse>
+
+  <ellipse cx="103" cy="30" rx="14" ry="8" transform="rotate(-28 103 30)" fill="#78aa5a" stroke="#45763c" stroke-width="2"></ellipse>
+
+  <!-- Fruit stems -->
+  <path d="M61 54 C61 61 61 66 60 72" fill="none" stroke="#607a41" stroke-width="3"></path>
+
+  <path d="M84 43 C87 50 88 55 87 61" fill="none" stroke="#607a41" stroke-width="3"></path>
+
+  <!-- Main wax apple -->
+  <path d="M60 70
+       C49 69 43 77 45 88
+       C47 99 54 107 60 111
+       C67 107 75 99 76 88
+       C78 77 71 69 60 70Z" fill="#d95757" stroke="#a63e43" stroke-width="2.5"></path>
+
+  <!-- Bell-shaped lower rim -->
+  <path d="M49 99
+       C55 104 66 104 72 99" fill="none" stroke="#f08078" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Fruit highlight -->
+  <path d="M51 78
+       C48 84 49 91 52 95" fill="none" stroke="#ef8b82" stroke-width="4" stroke-linecap="round" opacity="0.8"></path>
+
+  <!-- Second fruit -->
+  <path d="M87 59
+       C78 59 74 66 75 75
+       C77 84 82 90 87 93
+       C93 90 98 84 99 75
+       C100 66 96 59 87 59Z" fill="#cf4d53" stroke="#9e3b40" stroke-width="2.5"></path>
+
+  <path d="M79 83
+       C84 87 91 87 95 83" fill="none" stroke="#ee7e78" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Small flower -->
+  <circle cx="35" cy="74" r="6" fill="#f3eee2"></circle>
+
+  <path d="M35 65 L35 83
+       M26 74 L44 74
+       M29 68 L41 80
+       M41 68 L29 80" stroke="#e5dfd0" stroke-width="1.5"></path>
+
+  <circle cx="35" cy="74" r="2.5" fill="#d8bf70"></circle>
+
+  <!-- Ground shadow -->
+  <ellipse cx="62" cy="117" rx="45" ry="5" fill="#80664a" opacity="0.35"></ellipse>
+</svg>
