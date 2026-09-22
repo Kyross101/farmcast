@@ -2729,6 +2729,168 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Adlai',
+      localName: "Job's Tears",
+      scientificName: 'Coix lacryma-jobi',
+      category: 'grain',
+      icon: 'assets/crops/adlai.svg',
+
+      varieties: [
+        'Gulian',
+        'Tapol',
+        'Ginampay',
+        'Pulot'
+      ],
+
+      plantingDistance:
+        'Furrows about 90 cm apart, with planting hills about 60 cm apart',
+
+      seedRate:
+        'About 10 kg of seed per hectare',
+
+      plantingNote:
+        'Plant about 2–3 seeds per hill and cover them with soil. The official guide recommends applying organic fertilizer along the furrows before planting.',
+
+      irrigationNote:
+       'The soil should be moist during planting. Irrigate when necessary, especially during dry periods.',
+
+      droughtNote:
+        'Adlai is described in the official guide as tolerant of both dry and rainy conditions and capable of growing even in relatively poor soil.',
+
+      harvestNote:
+        'Harvest about 5–6 months after planting, or when approximately 80% of the grains on the plants are mature.',
+
+      postHarvestNote:
+        'Dry harvested grain to about 13% moisture for storage. Milling is recommended when grain moisture is around 12–13%.',
+
+      ratoonNote:
+        'Adlai can produce another crop through ratooning after harvest when the remaining plants are properly managed.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI MIMAROPA',
+
+        title:
+          'Gabay sa Produksyon ng Adlay',
+
+        url:
+         'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-11/Gabay%20sa%20Produksyon%20ng%20Adlay.pdf'
+      }
+    },
+
+    {
+      name: 'Sugarcane',
+      localName: 'Tubo',
+      scientificName: 'Saccharum officinarum L.',
+      category: 'industrial-crop',
+      icon: 'assets/crops/sugarcane.svg',
+
+      plantingDistance:
+        'SRA recommends about 1.0 m furrow spacing for conventional early-season planting.',
+
+      plantingDensity:
+        'About 40,000 canepoints per hectare for early-season planting and about 50,000 canepoints per hectare for late-season planting under the cited SRA recommendation.',
+
+      propagationNote:
+        'Sugarcane is established using vegetative planting material or canepoints rather than seed for commercial field production.',
+
+      plantingNote:
+        'Use healthy planting material and select an SRA-recommended variety suited to the production area. Planting density and furrow spacing should be adjusted according to variety, planting season, and production system.',
+
+      varietyNote:
+        'The Sugar Regulatory Administration maintains and evaluates Philippine sugarcane varieties under the Phil series.',
+
+      useNote:
+        'Sugarcane is cultivated primarily for sugar and is also used as a raw material for several agricultural and industrial products.',
+
+      source: {
+        agency:
+          'Sugar Regulatory Administration',
+
+        office:
+          'Research, Development and Extension',
+
+        title:
+          'Yield Performance of Phil 2009-0919 at Different Furrow Distance and Planting Density',
+
+        url:
+          'https://www.sra.gov.ph/view_file/researches/gy3yaTT7QnXQjhq'
+      }
+    },
+
+    {
+      name: 'Abaca',
+      scientificName: 'Musa textilis Nee',
+      category: 'fiber-crop',
+      icon: 'assets/crops/abaca.svg',
+
+      soilPH:
+        '6.0–7.0',
+
+      elevation:
+        'Below 1,000 meters above sea level',
+
+      idealTempRange:
+        'Commonly grows in areas with about 20°C during cool months and around 25°C during warm months',
+
+      humidity:
+        'About 78–85% relative humidity is conducive to good growth',
+
+      rainfallNote:
+        'Performs well where rainfall is evenly distributed throughout the year.',
+
+      soilNote:
+        'Prefers loose, friable, well-drained clay loam or sandy clay loam soil rich in organic matter.',
+
+      varieties: [
+        'Musa Tex 51',
+        'Abuab',
+        'Tinawagan Puti',
+        'Linawaan',
+        'Inosa',
+        'Laylay',
+        'Maguindanao',
+        'Bongolanon',
+        'Tangongon'
+      ],
+
+      plantingSeason:
+        'Planting at the start of the rainy season is preferred.',
+
+      plantingDistance:
+        'About 2 m × 2 m for ordinary-size varieties and about 3 m × 3 m for large-size varieties',
+
+      propagationNote:
+        'May be propagated using seedpieces or corms, suckers, tissue-cultured planting materials, or seeds.',
+
+      plantingNote:
+        'Use healthy, disease-free planting materials. Select spacing appropriate to the size of the chosen variety and establish the crop preferably at the beginning of the rainy season.',
+
+      harvestNote:
+        'Abaca normally reaches maturity about 18–24 months after planting or when the flag leaf appears. Subsequent harvesting may be done at approximately 3–4 month intervals.',
+
+      useNote:
+        'Abaca fiber is used for pulp and paper, cordage and twine, fiber crafts, textiles, furniture, composites, and construction materials.',
+
+      source: {
+        agency:
+          'Department of Agriculture - Philippine Fiber Industry Development Authority',
+
+        office:
+          'PhilFIDA',
+
+        title:
+          'Abaca Technoguide - 2024 Edition',
+
+        url:
+          'https://philfida.da.gov.ph/images/Publications/Technoguides/abaca-technoguide-2024.pdf'
+      }
+    },
+
 
 ];
 

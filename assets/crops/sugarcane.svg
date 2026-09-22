@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Sugarcane</title>
+  <desc id="desc">
+    A cluster of tall sugarcane stalks with segmented stems
+    and long arching green leaves.
+  </desc>
+
+  <!-- Left cane stalk -->
+  <path d="M43 116
+       C43 91 44 65 44 37" fill="none" stroke="#86a84f" stroke-width="12" stroke-linecap="round"></path>
+
+  <!-- Center cane stalk -->
+  <path d="M64 117
+       C64 86 64 56 64 25" fill="none" stroke="#95b65a" stroke-width="13" stroke-linecap="round"></path>
+
+  <!-- Right cane stalk -->
+  <path d="M85 116
+       C84 91 84 67 84 40" fill="none" stroke="#7fa34c" stroke-width="12" stroke-linecap="round"></path>
+
+  <!-- Cane nodes -->
+  <path d="M38 94 L49 94" stroke="#607f3f" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M38 72 L49 72" stroke="#607f3f" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M38 50 L49 50" stroke="#607f3f" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M58 99 L70 99" stroke="#668743" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M58 75 L70 75" stroke="#668743" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M58 51 L70 51" stroke="#668743" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M58 33 L70 33" stroke="#668743" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M79 96 L90 96" stroke="#5f7e3e" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M79 74 L90 74" stroke="#5f7e3e" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M79 53 L90 53" stroke="#5f7e3e" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Long left leaves -->
+  <path d="M44 43
+       C31 31 19 24 9 23
+       C21 32 31 44 43 55Z" fill="#659746" stroke="#46753a" stroke-width="2"></path>
+
+  <path d="M45 58
+       C28 54 18 57 8 65
+       C23 64 34 66 45 71Z" fill="#72a14e" stroke="#46753a" stroke-width="2"></path>
+
+  <!-- Center leaves -->
+  <path d="M64 30
+       C48 20 38 14 25 13
+       C39 22 51 31 64 43Z" fill="#78a751" stroke="#4a793c" stroke-width="2"></path>
+
+  <path d="M65 34
+       C79 21 93 15 108 15
+       C92 25 78 36 65 47Z" fill="#6b9d49" stroke="#46753a" stroke-width="2"></path>
+
+  <!-- Right leaves -->
+  <path d="M84 47
+       C98 35 108 30 119 31
+       C108 40 97 51 84 59Z" fill="#73a250" stroke="#46753a" stroke-width="2"></path>
+
+  <path d="M84 63
+       C100 58 111 61 121 68
+       C106 67 95 70 84 76Z" fill="#649444" stroke="#46753a" stroke-width="2"></path>
+
+  <!-- Small emerging leaves -->
+  <path d="M63 26
+       C59 17 59 10 63 4
+       C68 12 68 20 64 27Z" fill="#83ad58" stroke="#527e40" stroke-width="2"></path>
+
+  <!-- Base leaves -->
+  <path d="M44 103
+       C33 96 24 95 16 99
+       C27 103 35 108 45 113Z" fill="#5f9144"></path>
+
+  <path d="M84 103
+       C95 96 105 95 113 100
+       C102 103 93 109 83 113Z" fill="#639547"></path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="42" ry="6" fill="#80654a" opacity="0.42"></ellipse>
+</svg>

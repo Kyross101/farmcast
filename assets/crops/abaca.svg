@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Abaca</title>
+  <desc id="desc">
+    An abaca plant with a slender layered pseudostem
+    and long narrow pointed green leaves.
+  </desc>
+
+  <!-- Fiber-like pseudostem -->
+  <path d="M53 116
+       C55 94 56 73 57 51
+       L69 51
+       C70 73 72 95 75 116Z" fill="#8da15d" stroke="#607844" stroke-width="2.5"></path>
+
+  <!-- Layered leaf sheaths -->
+  <path d="M56 104
+       C61 101 68 101 73 104" fill="none" stroke="#c2c98a" stroke-width="2"></path>
+
+  <path d="M57 91
+       C62 88 68 88 71 91" fill="none" stroke="#c2c98a" stroke-width="2"></path>
+
+  <path d="M57 77
+       C62 74 67 74 70 77" fill="none" stroke="#c2c98a" stroke-width="2"></path>
+
+  <path d="M58 64
+       C62 61 67 61 69 64" fill="none" stroke="#c2c98a" stroke-width="2"></path>
+
+  <!-- Central leaf -->
+  <path d="M63 54
+       C59 36 60 19 65 6
+       C71 22 71 39 67 55Z" fill="#6b9e4f" stroke="#43763d" stroke-width="2"></path>
+
+  <!-- Upper left narrow leaf -->
+  <path d="M60 53
+       C47 40 33 29 17 24
+       C31 36 43 49 59 60Z" fill="#72a755" stroke="#43763d" stroke-width="2"></path>
+
+  <!-- Upper right narrow leaf -->
+  <path d="M68 53
+       C82 39 96 28 112 24
+       C98 36 85 49 69 60Z" fill="#679a4c" stroke="#43763d" stroke-width="2"></path>
+
+  <!-- Middle left leaf -->
+  <path d="M58 62
+       C42 54 27 51 11 54
+       C27 60 43 68 59 72Z" fill="#7aaa58" stroke="#477a3f" stroke-width="2"></path>
+
+  <!-- Middle right leaf -->
+  <path d="M70 62
+       C86 53 101 51 117 54
+       C100 61 85 68 69 72Z" fill="#6fa251" stroke="#477a3f" stroke-width="2"></path>
+
+  <!-- Lower left leaf -->
+  <path d="M57 75
+       C42 71 31 72 20 78
+       C34 80 46 85 58 91Z" fill="#659848" stroke="#43753b" stroke-width="2"></path>
+
+  <!-- Lower right leaf -->
+  <path d="M71 75
+       C86 71 98 72 109 78
+       C95 81 83 86 70 91Z" fill="#72a354" stroke="#43753b" stroke-width="2"></path>
+
+  <!-- Leaf midribs -->
+  <path d="M19 25 C34 37 46 48 59 57" fill="none" stroke="#91bb74" stroke-width="1.4"></path>
+
+  <path d="M110 25 C95 37 83 48 69 57" fill="none" stroke="#91bb74" stroke-width="1.4"></path>
+
+  <path d="M13 55 C31 60 45 65 59 68" fill="none" stroke="#91bb74" stroke-width="1.4"></path>
+
+  <path d="M115 55 C98 60 84 65 69 68" fill="none" stroke="#91bb74" stroke-width="1.4"></path>
+
+  <!-- Exposed fiber strips -->
+  <path d="M54 108
+       C49 112 46 116 44 121" fill="none" stroke="#c1a775" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M58 109
+       C54 114 52 118 51 122" fill="none" stroke="#d0b984" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="33" ry="5" fill="#80664a" opacity="0.4"></ellipse>
+</svg>
