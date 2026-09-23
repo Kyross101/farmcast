@@ -947,12 +947,6 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   font-size: 14px;
 }
 
-
-.pest-source-link
-.material-symbols-outlined {
-  font-size: 14px;
-}
-
 .pest-level{
   padding:3px 9px;border-radius:99px;
   font-size:0.65rem;font-weight:700;text-transform:uppercase;
