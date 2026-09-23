@@ -443,6 +443,21 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/pineapple.svg',
 
+    plantingMethods: [
+      {
+        value: 'crowns',
+        label: 'Crowns'
+      },
+      {
+        value: 'slips',
+        label: 'Slips'
+      },
+      {
+        value: 'suckers',
+        label: 'Suckers'
+      }
+    ],
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -470,6 +485,24 @@ window.FARMCAST_CROPS = [
     category: 'tree-crop',
     icon: 'assets/crops/coconut.svg',
 
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Philippine Coconut Authority',
+
+      title:
+        'Guidelines in Coconut Seed Farm and Nursery Accreditation',
+
+      url:
+        'https://www.pca.gov.ph/images/newsfeed/Guidelines_in_Coconut_Seed_Farm_and_Nursery_Accreditation.pdf'
+    },
+
     minTemp: 24,
     maxTemp: 29,
     noRain: false,
@@ -494,6 +527,17 @@ window.FARMCAST_CROPS = [
     name: 'Cacao',
     category: 'tree-crop',
     icon: 'assets/crops/cacao.svg',
+
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      },
+      {
+        value: 'budded-grafted-seedlings',
+        label: 'Budded / Grafted Seedlings'
+      }
+    ],
 
     minTemp: 18,
     maxTemp: 32,
