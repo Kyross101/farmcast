@@ -1052,6 +1052,25 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/guyabano.svg',
 
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      },
+      {
+        value: 'marcotted-plants',
+        label: 'Marcotted Plants'
+      },
+      {
+        value: 'grafted-budded-plants',
+        label: 'Grafted / Budded Plants'
+      },
+      {
+        value: 'inarched-plants',
+        label: 'Inarched Plants'
+      }
+    ],
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -1088,6 +1107,13 @@ window.FARMCAST_CROPS = [
     localName: 'Pitaya',
     category: 'fruit',
     icon: 'assets/crops/dragon-fruit.svg',
+
+    plantingMethods: [
+      {
+        value: 'rooted-cuttings',
+        label: 'Nursery-rooted Cuttings'
+      }
+    ],
 
     minTemp: null,
     maxTemp: null,
