@@ -6259,7 +6259,10 @@ function updateCropPlantingDateLabel() {
 
   if (!label) return;
 
-  if (plantingMethod === 'transplanted') {
+  if (
+    plantingMethod === 'transplanted' ||
+    plantingMethod === 'transplanted-seedlings'
+  ) {
     label.textContent = 'Date Transplanted';
     return;
   }
