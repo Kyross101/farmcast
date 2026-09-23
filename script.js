@@ -2632,6 +2632,12 @@ async function loadPagasaStormWatch() {
         ?.tropicalCycloneBulletins ===
       true;
 
+    const outsideParCyclone =
+      data?.outsideParCyclone &&
+      typeof data.outsideParCyclone === 'object'
+        ? data.outsideParCyclone
+        : null;
+
     const stormAdvisories =
       advisories
         .filter(
@@ -2690,33 +2696,232 @@ async function loadPagasaStormWatch() {
     }
 
     if (!stormAdvisories.length) {
-      content.innerHTML = `
-        <div class="pagasa-storm-empty">
-          <span class="material-symbols-outlined">
-            verified
-          </span>
 
-          <div>
+  if (outsideParCyclone) {
+
+    const classificationText =
+      escapeAdvisoryHtml(
+        outsideParCyclone.classification ||
+        'Tropical Cyclone'
+      );
+
+    const stormNameText =
+      outsideParCyclone.stormName
+        ? escapeAdvisoryHtml(
+            outsideParCyclone.stormName
+          )
+        : '';
+
+    const asOfText =
+      outsideParCyclone.asOf
+        ? escapeAdvisoryHtml(
+            outsideParCyclone.asOf
+          )
+        : 'Latest PAGASA update';
+
+    const issuedText =
+      outsideParCyclone.issuedText
+        ? escapeAdvisoryHtml(
+            outsideParCyclone.issuedText
+          )
+        : '';
+
+    const detailRows = [
+      {
+        icon: 'location_on',
+        label: 'Location',
+        value: outsideParCyclone.location
+      },
+      {
+        icon: 'air',
+        label: 'Maximum sustained winds',
+        value:
+          outsideParCyclone.maximumSustainedWinds
+      },
+      {
+        icon: 'air',
+        label: 'Gustiness',
+        value:
+          outsideParCyclone.gustiness
+      },
+      {
+        icon: 'navigation',
+        label: 'Movement',
+        value:
+          outsideParCyclone.movement
+      }
+    ]
+      .filter(
+        item =>
+          String(
+            item.value || ''
+          ).trim()
+      )
+      .map(
+        item => `
+          <div class="pagasa-storm-area">
+            <span class="material-symbols-outlined">
+              ${item.icon}
+            </span>
+
+            <span>
+              ${item.label}:
+              <strong>
+                ${escapeAdvisoryHtml(
+                  item.value
+                )}
+              </strong>
+            </span>
+          </div>
+        `
+      )
+      .join('');
+
+    const synopsisHtml =
+      outsideParCyclone.synopsis
+        ? `
+          <div class="pagasa-storm-window-note">
             <strong>
-               No recent cyclone bulletin found
+              PAGASA Synopsis
             </strong>
 
-            <p>
-              FarmCast did not find a recent
-              DOST-PAGASA tropical cyclone bulletin
-              within its 24-hour recent-feed window.
-            </p>
-
-            <small>
-              This does not confirm that no cyclone
-              is currently active.
-            </small>
+            <div>
+              ${escapeAdvisoryHtml(
+                outsideParCyclone.synopsis
+              )}
+            </div>
           </div>
-        </div>
-      `;
+        `
+        : '';
 
-      return;
+    let officialOutsideParUrl = '';
+
+    if (outsideParCyclone.sourceUrl) {
+      try {
+        const parsedUrl =
+          new URL(
+            outsideParCyclone.sourceUrl
+          );
+
+        const hostname =
+          parsedUrl.hostname
+            .toLowerCase();
+
+        const isPagasaDomain =
+          hostname ===
+            'pagasa.dost.gov.ph' ||
+          hostname.endsWith(
+            '.pagasa.dost.gov.ph'
+          );
+
+        if (
+          parsedUrl.protocol === 'https:' &&
+          isPagasaDomain
+        ) {
+          officialOutsideParUrl =
+            parsedUrl.href;
+        }
+
+      } catch {
+        officialOutsideParUrl = '';
+      }
     }
+
+    const officialLinkHtml =
+      officialOutsideParUrl
+        ? `
+          <a
+            class="pagasa-storm-link"
+            href="${escapeAdvisoryHtml(
+              officialOutsideParUrl
+            )}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open official PAGASA weather page
+          </a>
+        `
+        : '';
+
+    content.innerHTML = `
+      <div class="pagasa-storm-active">
+
+        <div class="pagasa-storm-alert-badge">
+          <span class="material-symbols-outlined">
+            cyclone
+          </span>
+
+          Tropical Cyclone Outside PAR
+        </div>
+
+        <div class="pagasa-storm-name">
+          ${classificationText}
+          ${
+            stormNameText
+              ? ` — ${stormNameText}`
+              : ''
+          }
+        </div>
+
+        <div class="pagasa-storm-bulletin">
+          DOST-PAGASA monitoring · ${asOfText}
+        </div>
+
+        ${
+          issuedText
+            ? `
+              <div class="pagasa-storm-issued">
+                Issued: ${issuedText}
+              </div>
+            `
+            : ''
+        }
+
+        ${detailRows}
+
+        ${synopsisHtml}
+
+        <div class="pagasa-storm-source">
+          Source: DOST-PAGASA Daily Weather
+        </div>
+
+        ${officialLinkHtml}
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  content.innerHTML = `
+    <div class="pagasa-storm-empty">
+      <span class="material-symbols-outlined">
+        verified
+      </span>
+
+      <div>
+        <strong>
+          No recent cyclone bulletin found
+        </strong>
+
+        <p>
+          FarmCast did not find a recent
+          DOST-PAGASA tropical cyclone bulletin
+          within its 24-hour recent-feed window.
+        </p>
+
+        <small>
+          No Outside-PAR tropical cyclone was
+          detected from the available PAGASA
+          Daily Weather data.
+        </small>
+      </div>
+    </div>
+  `;
+
+  return;
+}
 
     const latest =
       stormAdvisories[0];
