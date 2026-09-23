@@ -5700,7 +5700,14 @@ function renderCropsPage() {
   if (filtered.length === 0) {
     document.getElementById('cropsGrid').innerHTML = `
       <div class="crops-empty">
-        <div style="font-size:3rem">🌱</div>
+        <div class="crops-empty-icon">
+          <img
+            src="assets/ui/stage-seedling.svg"
+            alt=""
+            class="crops-empty-icon-img"
+          >
+        </div>
+
         <p>No crops found. Add your first crop!</p>
         <button class="btn-add-crop" onclick="openAddCropModal()"><span class="material-symbols-outlined">add</span> Add Crop</button>
       </div>`;
@@ -6286,7 +6293,7 @@ function markHarvested(id) {
   renderCropsPage();
 
   toast(
-    `${crop.type} marked as harvested! Great job! 🎉`,
+    `${crop.type} marked as harvested! Great job!`,
     'ok'
   );
 }
@@ -6641,8 +6648,8 @@ async function saveGrowthStage() {
 
     toast(
       wasEditing
-        ? 'Growth observation updated! ✅'
-        : 'Growth observation saved to FarmCast! 🌱',
+        ? 'Growth observation updated!'
+        : 'Growth observation saved to FarmCast!',
       'ok'
     );
 
@@ -6727,7 +6734,10 @@ function saveNewCrop() {
   closeAddCropModal();
   renderCropsPage();
 
-  toast(`${type} added to your crops! 🌱`, 'ok');
+  toast(
+    `${type} added to your crops!`,
+    'ok'
+  );
 }
 
 // ═══════════════════════════════════════════════════════
