@@ -716,11 +716,73 @@ function closePlantingCropDetails() {
 }
 
 // ── PEST DATA (weather-driven) ──
+
+const PEST_WEATHER_SOURCE = {
+  name: 'OpenWeather',
+  url: 'https://openweathermap.org/'
+};
+
 const PESTS = [
-  { name:'Aphids',       icon:'🦗', condition:'humid', detail:'High humidity favors rapid colony growth',  level:'high'   },
-  { name:'Stem Borer',   icon:'🐛', condition:'hot',   detail:'High temp increases larval activity',       level:'medium' },
-  { name:'Whitefly',     icon:'🦋', condition:'dry',   detail:'Low humidity common during dry spells',     level:'low'    },
-  { name:'Root Rot',     icon:'🍄', condition:'rainy', detail:'Excessive moisture encourages fungal spread',level:'high'   },
+  {
+    name: 'Aphids',
+    icon: '🦗',
+    condition: 'humid',
+    detail:
+      'High humidity favors rapid colony growth',
+    level: 'high',
+
+    reference: {
+      name: 'UC IPM — Aphids',
+      url:
+        'https://ipm.ucanr.edu/home-and-landscape/aphids/'
+    }
+  },
+
+  {
+    name: 'Stem Borer',
+    icon: '🐛',
+    condition: 'hot',
+    detail:
+      'High temp increases larval activity',
+    level: 'medium',
+
+    reference: {
+      name: 'IRRI Rice Knowledge Bank — Stem Borer',
+      url:
+        'https://www.knowledgebank.irri.org/training/fact-sheets/pest-management/insects/item/stem-borer'
+    }
+  },
+
+  {
+    name: 'Whitefly',
+    icon: '🦋',
+    condition: 'dry',
+    detail:
+      'Low humidity common during dry spells',
+    level: 'low',
+
+    reference: {
+      name: 'UC IPM — Whiteflies',
+      url:
+        'https://ipm.ucanr.edu/home-and-landscape/whiteflies/'
+    }
+  },
+
+  {
+    name: 'Root Rot',
+    icon: '🍄',
+    condition: 'rainy',
+    detail:
+      'Excessive moisture encourages fungal spread',
+    level: 'high',
+
+    reference: {
+      name:
+        'UC IPM — Phytophthora Root and Crown Rot',
+      url:
+        'https://ipm.ucanr.edu/home-and-landscape/phytophthora-root-and-crown-rot/'
+    }
+  }
 ];
 
 // ── TASKS ──
