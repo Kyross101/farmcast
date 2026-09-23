@@ -968,9 +968,28 @@
               </div>
 
               <div class="form-group">
-                <label>Estimated Harvest</label>
-                <input type="date" id="cropDateHarvest">
+                <label for="cropDateHarvest">
+                  Estimated Harvest
+                </label>
+
+                <input
+                  type="date"
+                  id="cropDateHarvest"
+                >
+
+                <div
+                  id="cropHarvestEstimateHint"
+                  style="
+                    margin-top:6px;
+                    font-size:.72rem;
+                    line-height:1.4;
+                    color:var(--text-muted);
+                  "
+                >
+                  Select a crop to check harvest guidance.
+                </div>
               </div>
+
             </div>
             <div class="form-row">
               <div class="form-group">

@@ -6281,7 +6281,7 @@ function updateAddCropHarvestEstimate() {
     document.getElementById('cropVariety')?.value.trim() || '';
 
   const plantingMethod =
-    document.getElementById('cropPlantingMethod')?.value || 'direct-seeded';
+    document.getElementById('cropPlantingMethod')?.value || '';
 
   const planted =
     document.getElementById('cropDatePlanted')?.value;
@@ -6289,7 +6289,47 @@ function updateAddCropHarvestEstimate() {
   const harvestInput =
     document.getElementById('cropDateHarvest');
 
-  if (!cropType || !planted || !harvestInput) return;
+  const hint =
+    document.getElementById('cropHarvestEstimateHint');
+
+  if (!harvestInput) return;
+
+
+  // Clear a date that belonged to a previously selected crop.
+  const previousCropType =
+    harvestInput.dataset.cropType || '';
+
+  const cropChanged =
+    previousCropType !== cropType;
+
+  if (cropChanged) {
+    harvestInput.value = '';
+    harvestInput.dataset.estimateSource = '';
+  }
+
+  harvestInput.dataset.cropType =
+    cropType || '';
+
+
+  if (!cropType) {
+    if (hint) {
+      hint.textContent =
+        'Select a crop to check harvest guidance.';
+    }
+
+    return;
+  }
+
+
+  if (!planted) {
+    if (hint) {
+      hint.textContent =
+        'Enter the planting date to calculate harvest guidance.';
+    }
+
+    return;
+  }
+
 
   const tempCrop = {
     type: cropType,
@@ -6298,10 +6338,12 @@ function updateAddCropHarvestEstimate() {
     planted
   };
 
+
   const harvestWindow =
     getEstimatedHarvestWindow(tempCrop);
 
-  // 1. Use source-backed crop/variety rule when available
+
+  // 1. Verified source-backed harvest guidance
   if (harvestWindow?.available) {
     const harvestDate =
       harvestWindow.startDate ||
@@ -6309,24 +6351,97 @@ function updateAddCropHarvestEstimate() {
 
     if (harvestDate) {
       harvestInput.value =
-        formatDateInputLocal(new Date(harvestDate));
+        formatDateInputLocal(
+          new Date(harvestDate)
+        );
+
+      harvestInput.dataset.estimateSource =
+        'source-backed';
+
+      if (hint) {
+        hint.textContent =
+          '✓ Source-backed harvest estimate auto-filled from verified FarmCast guidance.';
+      }
 
       return;
     }
   }
 
-  // 2. Otherwise use current FarmCast fallback
+
+  // 2. Existing FarmCast fallback
   const fallbackDays =
     CROP_INFO[cropType]?.days;
 
-  if (!fallbackDays) return;
+  if (fallbackDays) {
+    const fallbackDate =
+      addDaysToDate(
+        planted,
+        fallbackDays
+      );
 
-  const fallbackDate =
-    addDaysToDate(planted, fallbackDays);
+    harvestInput.value =
+      formatDateInputLocal(
+        fallbackDate
+      );
 
-  harvestInput.value =
-    formatDateInputLocal(fallbackDate);
+    harvestInput.dataset.estimateSource =
+      'fallback';
+
+    if (hint) {
+      hint.textContent =
+        'FarmCast fallback estimate auto-filled. Review and adjust the date if needed.';
+    }
+
+    return;
+  }
+
+
+  // 3. No verified automatic estimate
+  harvestInput.dataset.estimateSource =
+    harvestInput.value
+      ? 'manual'
+      : 'manual-required';
+
+  if (hint) {
+    hint.textContent =
+      harvestInput.value
+        ? 'Manual farmer estimate.'
+        : 'No verified automatic harvest estimate is stored for this crop. Enter your own estimated harvest date.';
+  }
 }
+
+document
+  .getElementById('cropDateHarvest')
+  ?.addEventListener('input', () => {
+
+    const harvestInput =
+      document.getElementById('cropDateHarvest');
+
+    const hint =
+      document.getElementById('cropHarvestEstimateHint');
+
+    if (!harvestInput) return;
+
+    if (harvestInput.value) {
+      harvestInput.dataset.estimateSource =
+        'manual';
+
+      if (hint) {
+        hint.textContent =
+          'Manual farmer estimate.';
+      }
+
+      return;
+    }
+
+    harvestInput.dataset.estimateSource =
+      'manual-required';
+
+    if (hint) {
+      hint.textContent =
+        'Enter an estimated harvest date.';
+    }
+  });
 
 function openAddCropModal() {
 
