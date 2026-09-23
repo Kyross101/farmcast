@@ -342,7 +342,11 @@ function getSafeCropReferenceUrl(value) {
 }
 
 
-function renderCropReferenceSource(sourceData) {
+function renderCropReferenceSource(
+  sourceData,
+  heading = 'Official Crop Reference'
+) {
+
   const reference =
     normalizeCropReferenceSource(
       sourceData
@@ -358,18 +362,16 @@ function renderCropReferenceSource(sourceData) {
     .join(' — ');
 
   return `
-    <span class="material-symbols-outlined">
-      verified
-    </span>
+    <div class="planting-reference-item">
 
-    <div>
+      <span class="material-symbols-outlined">
+        verified
+      </span>
+
+      <div>
 
       <strong>
-        ${
-          reference.url
-            ? 'Official Reference'
-            : 'Reference Source'
-        }
+        ${escapePlantingDetail(heading)}
       </strong>
 
       ${
@@ -413,6 +415,8 @@ function renderCropReferenceSource(sourceData) {
           `
           : ''
       }
+
+      </div>
 
     </div>
   `;
@@ -655,16 +659,30 @@ function openPlantingCropDetails(
   }
 
 
-  // Reference source
-  const cropReferenceHtml =
+  // Reference sources
+  const plantingMethodReferenceHtml =
     renderCropReferenceSource(
-      crop.source
+      crop.plantingMethodSource,
+      'Planting Method Reference'
     );
 
-  if (cropReferenceHtml) {
+  const cropReferenceHtml =
+    renderCropReferenceSource(
+      crop.source,
+      'Official Crop Reference'
+    );
+
+  const referenceHtml = [
+    plantingMethodReferenceHtml,
+    cropReferenceHtml
+  ]
+    .filter(Boolean)
+    .join('');
+
+  if (referenceHtml) {
 
     source.innerHTML =
-      cropReferenceHtml;
+      referenceHtml;
 
     source.style.display =
       'flex';

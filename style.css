@@ -623,8 +623,9 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 
 .planting-details-source {
   display: flex;
-  align-items: flex-start;
-  gap: 9px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
 
   padding: 12px 14px;
 
@@ -632,6 +633,17 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   border-radius: var(--r-sm);
 
   background: rgba(63,185,80,.06);
+}
+
+.planting-reference-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.planting-reference-item + .planting-reference-item {
+  padding-top: 12px;
+  border-top: 1px solid rgba(63,185,80,.18);
 }
 
 .planting-details-source
