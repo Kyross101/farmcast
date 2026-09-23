@@ -10376,11 +10376,26 @@ async function runRealTimeFrame() {
     // ── No crop detected ──
     if (detections.length === 0) {
       const labelEl =
-        document.getElementById('rtLiveLabels');
+        document.getElementById(
+          'rtLiveLabels'
+        );
 
       if (labelEl) {
-        labelEl.innerHTML =
-          '<span class="rt-label-empty">🔍 No supported crop detected</span>';
+        labelEl.innerHTML = `
+          <span class="rt-label-empty rt-label-empty-state">
+
+            <img
+              src="assets/ui/scanner-detect.svg"
+              alt=""
+              class="rt-label-empty-icon"
+            >
+
+            <span>
+              No supported crop detected
+            </span>
+
+          </span>
+        `;
       }
 
       return;
@@ -10430,8 +10445,21 @@ async function runRealTimeFrame() {
       document.getElementById('rtLiveLabels');
 
     if (labelEl) {
-      labelEl.innerHTML =
-        '<span class="rt-label-empty" style="color:var(--red)">⚠️ Detection unavailable</span>';
+      labelEl.innerHTML = `
+        <span class="rt-label-empty rt-label-empty-state error">
+
+          <img
+            src="assets/ui/at-risk.svg"
+            alt=""
+            class="rt-label-empty-icon"
+          >
+
+          <span>
+            Detection unavailable
+          </span>
+
+        </span>
+      `;
     }
 
   } finally {

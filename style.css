@@ -4759,11 +4759,33 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   gap: 6px;
   flex: 1;
 }
+
 .rt-label-empty {
   font-size: 0.72rem;
   color: var(--text-dim);
   font-style: italic;
 }
+
+.rt-label-empty-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rt-label-empty-state.error {
+  color: var(--red);
+}
+
+.rt-label-empty-icon {
+  width: 14px;
+  height: 14px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
 .rt-label-tag {
   padding: 3px 10px;
   border-radius: 99px;
