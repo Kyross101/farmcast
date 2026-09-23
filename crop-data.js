@@ -10,6 +10,13 @@ window.FARMCAST_CROPS = [
    emoji: '🍅',
    icon: 'assets/crops/tomato.svg',
 
+    plantingMethods: [
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
+
    minTemp: 18,
    maxTemp: 32,
    noRain: false,

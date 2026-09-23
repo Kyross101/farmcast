@@ -4647,13 +4647,28 @@ function updatePlantingMethodOptions() {
     ]
   };
 
+  const cropReference =
+    CROPS.find(
+      crop => crop.name === cropType
+    );
+
+  const datasetPlantingMethods =
+    Array.isArray(
+      cropReference?.plantingMethods
+    )
+      ? cropReference.plantingMethods
+      : [];
+
+
   const options =
-    plantingMethodOptions[cropType] || [
-      {
-        value: 'unspecified',
-        label: 'Method not yet specified'
-      }
-    ];
+    datasetPlantingMethods.length
+      ? datasetPlantingMethods
+      : plantingMethodOptions[cropType] || [
+          {
+            value: 'unspecified',
+            label: 'Method not yet specified'
+          }
+        ];
 
   const previousValue =
     plantingMethodSelect.value;
