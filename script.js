@@ -7661,13 +7661,40 @@ let irrFields = lsLoad(LS_IRR_FIELDS, [
 let nextFieldId = lsLoad(LS_IRR_FID, 6);
 
 const WATER_TIPS = [
-  { icon:'🌅', tip:'Water early morning (5–7 AM) to reduce evaporation and leaf disease.' },
-  { icon:'💧', tip:'Drip irrigation uses 30–50% less water than flood irrigation.' },
-  { icon:'🌧️', tip:'Skip irrigation if 10mm+ rain is forecast in the next 24 hours.' },
-  { icon:'🌡️', tip:'Water more frequently during hot weather (above 32°C).' },
-  { icon:'🌱', tip:'Mulching around crops reduces soil moisture loss by up to 70%.' },
-  { icon:'📏', tip:'Check soil moisture at 5–10cm depth before irrigating.' },
-  { icon:'🕐', tip:'Avoid watering at midday — most water is lost to evaporation.' },
+  {
+    icon: 'assets/ui/irrigation-morning.svg',
+    tip: 'Water early morning (5–7 AM) to reduce evaporation and leaf disease.'
+  },
+
+  {
+    icon: 'assets/ui/quick-water.svg',
+    tip: 'Drip irrigation uses 30–50% less water than flood irrigation.'
+  },
+
+  {
+    icon: 'assets/ui/irrigation-rain.svg',
+    tip: 'Skip irrigation if 10mm+ rain is forecast in the next 24 hours.'
+  },
+
+  {
+    icon: 'assets/ui/quick-soil-temp.svg',
+    tip: 'Water more frequently during hot weather (above 32°C).'
+  },
+
+  {
+    icon: 'assets/ui/stage-seedling.svg',
+    tip: 'Mulching around crops reduces soil moisture loss by up to 70%.'
+  },
+
+  {
+    icon: 'assets/ui/irrigation-soil-depth.svg',
+    tip: 'Check soil moisture at 5–10cm depth before irrigating.'
+  },
+
+  {
+    icon: 'assets/ui/irrigation-due.svg',
+    tip: 'Avoid watering at midday — most water is lost to evaporation.'
+  },
 ];
 
 function renderIrrigationPage() {
@@ -7965,12 +7992,26 @@ function renderIrrigationPage() {
   `;
 
   // Tips
-  document.getElementById('waterTipsList').innerHTML = WATER_TIPS.map(t => `
-    <div class="water-tip-item">
-      <div class="wti-icon">${t.icon}</div>
-      <div class="wti-text">${t.tip}</div>
-    </div>
-  `).join('');
+  document.getElementById(
+    'waterTipsList'
+  ).innerHTML =
+    WATER_TIPS.map(t => `
+      <div class="water-tip-item">
+
+        <div class="wti-icon">
+          <img
+            src="${t.icon}"
+            alt=""
+            class="wti-icon-img"
+          >
+        </div>
+
+        <div class="wti-text">
+          ${t.tip}
+        </div>
+
+      </div>
+    `).join('');
 }
 
 function toggleFieldWater(id) {

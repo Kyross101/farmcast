@@ -3085,7 +3085,26 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 /* Water Tips */
 .water-tips-list { padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
 .water-tip-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px; background: var(--bg3); border-radius: var(--r-sm); border: 1px solid var(--border); }
-.wti-icon { font-size: 18px; flex-shrink: 0; }
+
+.wti-icon {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.wti-icon-img {
+  width: 21px;
+  height: 21px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .wti-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
 
 /* ── RESPONSIVE UPDATES ── */
