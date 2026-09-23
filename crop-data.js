@@ -4136,16 +4136,12 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
   // #47
   'Water Spinach': [
     {
-      value: 'direct-seeded',
-      label: 'Direct Seeded'
+      value: 'seed-propagated',
+      label: 'Planted from Seed'
     },
     {
-      value: 'transplanted-seedlings',
-      label: 'Transplanted Seedlings'
-    },
-    {
-      value: 'stem-cuttings',
-      label: 'Stem Cuttings'
+      value: 'vine-cuttings',
+      label: 'Vine Cuttings'
     }
   ],
 
@@ -4532,12 +4528,8 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
       label: 'Nursery-raised Seedlings'
     },
     {
-      value: 'grafted-plants',
-      label: 'Grafted Plants'
-    },
-    {
-      value: 'marcotted-plants',
-      label: 'Marcotted Plants'
+      value: 'grafted-seedlings',
+      label: 'Grafted Seedlings'
     }
   ],
 
@@ -4546,10 +4538,6 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
     {
       value: 'nursery-raised-seedlings',
       label: 'Nursery-raised Seedlings'
-    },
-    {
-      value: 'marcotted-plants',
-      label: 'Marcotted Plants'
     }
   ],
 
@@ -4590,10 +4578,6 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
     {
       value: 'nursery-raised-seedlings',
       label: 'Nursery-raised Seedlings'
-    },
-    {
-      value: 'inarched-plants',
-      label: 'Inarched Plants'
     }
   ],
 
@@ -4633,8 +4617,8 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
     }
   ],
 
-  // #99
-  'Grapes': [
+ // #99
+ 'Grapes': [
     {
       value: 'stem-cuttings',
       label: 'Stem Cuttings'
