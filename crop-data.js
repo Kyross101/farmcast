@@ -175,6 +175,18 @@ window.FARMCAST_CROPS = [
     emoji: '🥒',
     icon: 'assets/crops/ampalaya.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
+
     minTemp: 24,
     maxTemp: 36,
     noRain: false,
@@ -200,6 +212,17 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     emoji: '🥬',
     icon: 'assets/crops/pechay.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
 
     minTemp: 15,
     maxTemp: 25,
