@@ -1242,6 +1242,13 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/watermelon.svg',
 
+    plantingMethods: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      }
+    ],
+
     minTemp: null,
     maxTemp: null,
     idealTemp: 25,
@@ -1285,6 +1292,13 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/melon.svg',
 
+    plantingMethods: [
+      {
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
+      }
+    ],
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -1311,12 +1325,23 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     icon: 'assets/crops/onion.svg',
 
-      plantingMethods: [
-        {
-          value: 'direct-seeded',
-          label: 'Direct Seeded'
-        }
-      ],
+    plantingMethods: [
+      {
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Regional Field Office II',
+
+      title:
+        'Onion Production Guide',
+
+      url:
+        'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/onion_production_guide.pdf'
+  },
 
     minTemp: null,
     maxTemp: null,
@@ -1352,12 +1377,12 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     icon: 'assets/crops/garlic.svg',
 
-      plantingMethods: [
-        {
-          value: 'cloves',
-          label: 'Planted from Cloves'
-        }
-      ],
+    plantingMethods: [
+      {
+        value: 'cloves',
+        label: 'Planted from Cloves'
+      }
+    ],
 
     minTemp: null,
     maxTemp: null,
@@ -1393,6 +1418,24 @@ window.FARMCAST_CROPS = [
     localName: 'Letsugas',
     category: 'vegetable',
     icon: 'assets/crops/lettuce.svg',
+
+    plantingMethods: [
+      {
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - High Value Crops Development Program',
+
+      title:
+        'DA-CAR Technoguide in Production and Management of Organic Highland Vegetables',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/DA-CAR-TECHNOGUIDE-IN-PRODUCTION-_-MANAGEMENT-OF-ORGANIC-HIGHLAND-VEGETABLES.pdf'
+  },
 
     minTemp: 18,
     maxTemp: 22,
