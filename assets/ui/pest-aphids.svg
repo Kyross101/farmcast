@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Aphids</title>
+
+  <ellipse cx="32" cy="32" rx="12" ry="15" fill="none" stroke="#58a6ff" stroke-width="4"></ellipse>
+  <circle cx="32" cy="18" r="6" fill="none" stroke="#58a6ff" stroke-width="4"></circle>
+
+  <path d="M24 25L18 20 M40 25L46 20 M24 39L17 44 M40 39L47 44" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round"></path>
+  <path d="M28 17L24 11 M36 17L40 11" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round"></path>
+</svg>

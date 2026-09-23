@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Stem Borer</title>
+
+  <path d="M18 34C18 25 24 19 32 19C40 19 46 25 46 34C46 43 40 49 32 49C24 49 18 43 18 34Z" fill="none" stroke="#e3a008" stroke-width="4"></path>
+  <circle cx="22" cy="34" r="3" fill="#e3a008"></circle>
+  <circle cx="32" cy="34" r="3" fill="#e3a008"></circle>
+  <circle cx="42" cy="34" r="3" fill="#e3a008"></circle>
+
+  <path d="M18 29L12 25 M18 39L12 43 M46 29L52 25 M46 39L52 43" fill="none" stroke="#e3a008" stroke-width="4" stroke-linecap="round"></path>
+</svg>

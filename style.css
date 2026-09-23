@@ -886,11 +886,66 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .pest-item.high{border-left:3px solid var(--red);}
 .pest-item.medium{border-left:3px solid var(--amber);}
 .pest-item.low{border-left:3px solid var(--green);}
-.pest-icon{font-size:22px;flex-shrink:0;}
+
+.pest-icon {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.pest-icon-img {
+  width: 22px;
+  height: 22px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .pest-info{flex:1;}
+
 .pest-name{font-size:0.85rem;font-weight:600;}
 
-.pest-detail{font-size:0.72rem;color:var(--text-muted);margin-top:2px;}
+.pest-detail {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.pest-source-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 6px 10px;
+
+  margin-top: 7px;
+}
+
+.pest-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  color: var(--blue);
+
+  font-size: 0.65rem;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.pest-source-link:hover {
+  text-decoration: underline;
+}
+
+.pest-source-link .material-symbols-outlined {
+  font-size: 14px;
+}
 
 .pest-source-row {
   display: flex;

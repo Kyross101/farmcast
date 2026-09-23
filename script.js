@@ -725,7 +725,7 @@ const PEST_WEATHER_SOURCE = {
 const PESTS = [
   {
     name: 'Aphids',
-    icon: '🦗',
+    icon: 'assets/ui/pest-aphids.svg',
     condition: 'humid',
     detail:
       'High humidity favors rapid colony growth',
@@ -740,7 +740,7 @@ const PESTS = [
 
   {
     name: 'Stem Borer',
-    icon: '🐛',
+    icon: 'assets/ui/pest-stem-borer.svg',
     condition: 'hot',
     detail:
       'High temp increases larval activity',
@@ -755,7 +755,7 @@ const PESTS = [
 
   {
     name: 'Whitefly',
-    icon: '🦋',
+    icon: 'assets/ui/pest-whitefly.svg',
     condition: 'dry',
     detail:
       'Low humidity common during dry spells',
@@ -770,7 +770,7 @@ const PESTS = [
 
   {
     name: 'Root Rot',
-    icon: '🍄',
+    icon: 'assets/ui/pest-root-rot.svg',
     condition: 'rainy',
     detail:
       'Excessive moisture encourages fungal spread',
@@ -1038,7 +1038,11 @@ function renderPestAlerts(data){
       )"
     >
       <div class="pest-icon">
-        ${p.icon}
+        <img
+          src="${p.icon}"
+          alt=""
+          class="pest-icon-img"
+        >
       </div>
 
       <div class="pest-info">
@@ -1051,6 +1055,46 @@ function renderPestAlerts(data){
           ${p.detail}. Weather conditions may favor this risk.
           Inspect crops for visible signs before taking action.
         </div>
+
+        <div class="pest-source-row">
+
+          <a
+            class="pest-source-link"
+            href="${PEST_WEATHER_SOURCE.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="event.stopPropagation()"
+          >
+            <span class="material-symbols-outlined">
+              cloud
+            </span>
+
+            <span>
+              Weather:
+              ${PEST_WEATHER_SOURCE.name}
+            </span>
+          </a>
+
+          <a
+            class="pest-source-link"
+            href="${p.reference.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="event.stopPropagation()"
+          >
+            <span class="material-symbols-outlined">
+              menu_book
+            </span>
+
+            <span>
+              Reference:
+              ${p.reference.name}
+            </span>
+          </a>
+
+        </div>
+
+      </div>
 
         <div class="pest-source-row">
 
