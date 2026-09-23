@@ -375,7 +375,7 @@ async function fetchPagasaOutsideParCyclone() {
 
   const cycloneMatch =
     normalizedText.match(
-      /TROPICAL CYCLONE OUTSIDE PAR AS OF\s+(.+?)\s+(SUPER TYPHOON|SEVERE TROPICAL STORM|TROPICAL STORM|TROPICAL DEPRESSION|TYPHOON)\b\s*(.*?)\s+LOCATION:\s*(.+?)\s+MAXIMUM SUSTAINED WINDS:\s*(.+?)\s+GUSTINESS:\s*(.+?)\s+MOVEMENT:\s*(.+?)(?=\s+(?:Forecast Weather Conditions|Forecast Wind and Coastal Water Conditions|Temperature and Relative Humidity|Tides and Astronomical Information)|$)/i
+      /TROPICAL CYCLONE OUTSIDE PAR AS OF\s+(.+?)\s+(SUPER TYPHOON|SEVERE TROPICAL STORM|TROPICAL STORM|TROPICAL DEPRESSION|TYPHOON)\b\s*(.*?)\s+LOCATION:\s*(.+?)\s+MAXIMUM SUSTAINED WINDS:\s*(.+?)\s+GUSTINESS:\s*(.+?)\s+MOVEMENT:\s*(.+?)(?=\s+(?:Name\s+Location\s+Max\s+Wind|Forecast Weather Conditions|Forecast Wind and Coastal Water Conditions|Temperature and Relative Humidity|Tides and Astronomical Information)|$)/i
     );
 
   // No Outside-PAR cyclone found
