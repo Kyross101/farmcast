@@ -565,6 +565,28 @@ window.FARMCAST_CROPS = [
     variety: 'Robusta',
     icon: 'assets/crops/coffee-robusta.svg',
 
+    plantingMethods: [
+      {
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
+      },
+      {
+        value: 'rooted-nodal-cuttings',
+        label: 'Rooted Nodal Cuttings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - High Value Crops Development Program',
+
+      title:
+        'Coffee Production Guide',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Coffee-Production-guide.pdf'
+    },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -590,6 +612,24 @@ window.FARMCAST_CROPS = [
     category: 'tree-crop',
     variety: 'Arabica',
     icon: 'assets/crops/coffee-arabica.svg',
+
+    plantingMethods: [
+      {
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - High Value Crops Development Program',
+
+      title:
+        'Coffee Production Guide',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Production-Guide.pdf'
+  },
 
     minTemp: null,
     maxTemp: null,
@@ -621,6 +661,24 @@ window.FARMCAST_CROPS = [
     localName: 'Kapeng Barako',
     icon: 'assets/crops/coffee-liberica.svg',
 
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture',
+
+      title:
+        'Guidelines on Sourcing of Quality Planting Materials for Coffee',
+
+      url:
+        'https://www.da.gov.ph/wp-content/uploads/2025/08/ac10_s2022.pdf'
+  },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -647,6 +705,24 @@ window.FARMCAST_CROPS = [
     variety: 'Excelsa',
     icon: 'assets/crops/coffee-excelsa.svg',
 
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture',
+
+      title:
+        'Guidelines on Sourcing of Quality Planting Materials for Coffee',
+
+      url:
+        'https://www.da.gov.ph/wp-content/uploads/2025/08/ac10_s2022.pdf'
+  },
+    
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -672,6 +748,17 @@ window.FARMCAST_CROPS = [
     localName: 'Nangka',
     category: 'fruit',
     icon: 'assets/crops/jackfruit.svg',
+
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      },
+      {
+        value: 'grafted-seedlings',
+        label: 'Grafted Seedlings'
+      }
+  ],
 
     minTemp: null,
     maxTemp: null,
