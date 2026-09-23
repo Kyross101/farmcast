@@ -4108,7 +4108,7 @@ window.FARMCAST_CROPS = [
 
 // ═══════════════════════════════════════════
 // FARMCAST — Planting / Establishment Methods
-// Crops #43–#100
+// Crops #45–#100
 // ═══════════════════════════════════════════
 
 const FARMCAST_PLANTING_METHODS_43_100 = {
@@ -4340,8 +4340,8 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
   // #70
   'Lima Bean': [
     {
-      value: 'seed-propagated',
-      label: 'Planted from Seed'
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
     }
   ],
 
@@ -4492,8 +4492,8 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
   // #86
   'Passion Fruit': [
     {
-      value: 'nursery-raised-seedlings',
-      label: 'Nursery-raised Seedlings'
+      value: 'seedlings',
+      label: 'Seedlings'
     }
   ],
 
@@ -4584,8 +4584,20 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
   // #95
   'Bignay': [
     {
-      value: 'nursery-raised-seedlings',
-      label: 'Nursery-raised Seedlings'
+      value: 'seed-propagated',
+      label: 'Planted from Seed'
+    },
+    {
+      value: 'grafted-budded-plants',
+      label: 'Grafted / Budded Plants'
+    },
+    {
+      value: 'stem-cuttings',
+      label: 'Stem Cuttings'
+    },
+    {
+      value: 'marcotted-plants',
+      label: 'Marcotted Plants'
     }
   ],
 
@@ -4635,14 +4647,124 @@ const FARMCAST_PLANTING_METHODS_43_100 = {
 
 };
 
+const FARMCAST_PLANTING_METHOD_SOURCES_43_100 = {
 
-// Apply the verified planting methods to the shared crop dataset.
+  Jicama: {
+    agency:
+      'Department of Agriculture - Bureau of Plant Industry / National Seed Industry Council',
+
+    title:
+      'Department Circular No. 05 Series of 2018 - Guidelines for the Accreditation of OPV Vegetable Legume Seed Growers/Producers',
+
+    url:
+      'https://nsic.buplant.da.gov.ph/dc.php'
+  },
+
+  'Lima Bean': {
+    agency:
+      'Department of Agriculture - Bureau of Plant Industry',
+
+    title:
+      'Lima Bean Production Guide',
+
+    url:
+      'https://library.buplant.da.gov.ph/images/1640927871Lima%20Bean%20Production%20Guide.pdf'
+  },
+
+  Kale: {
+    agency:
+      'Department of Agriculture - Agricultural Training Institute',
+
+    office:
+      'ATI Central Visayas',
+
+    title:
+      'ATI Central Visayas 2019 Annual Report',
+
+    url:
+      'https://ati2.da.gov.ph/ati-7/content/sites/default/files/2023-03/ATI_7_Annual%20Report%202019.pdf'
+  },
+
+  Basil: {
+    agency:
+      'Department of Agriculture - Agricultural Training Institute',
+
+    title:
+      'Agricultural Grow Kits',
+
+    url:
+      'https://ati2.da.gov.ph/ati-main/content/sites/default/files/2024-06/PAD-RFQ-62_Agricultural%20Grow%20Kits.PDF'
+  },
+
+  'Passion Fruit': {
+    agency:
+      'Department of Agriculture - Agricultural Training Institute',
+
+    office:
+      'ATI Bicol',
+
+    title:
+      'ATI Director Recoter Nakipag-Ugnayan sa mga Ka-Agri sa Bikol',
+
+    url:
+      'https://ati2.da.gov.ph/ati-5/content/article/primalou-b-imperial/ati-director-recoter-nakipag-ugnayan-sa-mga-ka-agri-sa-bikol'
+  },
+
+  Bignay: {
+    agency:
+      'Department of Environment and Natural Resources - Ecosystems Research and Development Bureau',
+
+    title:
+      'DENR Recommends 12',
+
+    url:
+      'https://erdb.denr.gov.ph/wp-content/uploads/2023/06/denr_v12.pdf'
+  },
+
+  'Java Plum': {
+    agency:
+      'Department of Environment and Natural Resources',
+
+    office:
+      'DENR National Capital Region',
+
+    title:
+      'Seedling Inventory Update',
+
+    url:
+      'https://ncr.denr.gov.ph/priority-program/seedling-inventory-update/'
+  },
+
+  Grapes: {
+    agency:
+      'Department of Agriculture - Agricultural Training Institute',
+
+    office:
+      'ATI Northern Mindanao',
+
+    title:
+      'Is the Weather for Fine Wine Today?',
+
+    url:
+      'https://ati2.da.gov.ph/ati-10/content/features/weather-fine-wine-today'
+  }
+
+};
+
+
 window.FARMCAST_CROPS.forEach(crop => {
   const methods =
     FARMCAST_PLANTING_METHODS_43_100[crop.name];
 
-  if (!methods) return;
+  const plantingMethodSource =
+    FARMCAST_PLANTING_METHOD_SOURCES_43_100[crop.name];
 
-  crop.plantingMethods = methods;
+  if (methods) {
+    crop.plantingMethods = methods;
+  }
+
+  if (plantingMethodSource) {
+    crop.plantingMethodSource =
+      plantingMethodSource;
+  }
 });
-
