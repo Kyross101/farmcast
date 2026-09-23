@@ -315,11 +315,6 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/papaya.svg',
 
-    minTemp: null,
-    maxTemp: null,
-    noRain: false,
-    windMax: null,
-
     plantingMethods: [
       {
         value: 'transplanted-seedlings',
@@ -336,6 +331,22 @@ window.FARMCAST_CROPS = [
 
       url:
         'https://library.buplant.da.gov.ph/images/1641884692Papaya%20%20Production%20Guide.pdf'
+    },
+
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Production Guide - Mango, Apple and Pear, Papaya, Sababanana',
+
+      url:
+        'https://library.buplant.da.gov.ph/books/512'
     }
   },
 
@@ -343,11 +354,6 @@ window.FARMCAST_CROPS = [
     name: 'Mango',
     category: 'fruit',
     icon: 'assets/crops/mango.svg',
-
-    minTemp: null,
-    maxTemp: null,
-    noRain: false,
-    windMax: null,
 
     plantingMethods: [
       {
@@ -362,9 +368,25 @@ window.FARMCAST_CROPS = [
 
       title:
         'Mango Production Manual',
-
+  
       url:
         'https://library.buplant.da.gov.ph/images/1641949136Mango.pdf'
+    },
+  
+    minTemp: null,
+    maxTemp: null,
+    noRain: false,
+    windMax: null,
+  
+    source: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+  
+      title:
+        'Production Guide - Mango, Apple and Pear, Papaya, Sababanana',
+  
+      url:
+        'https://library.buplant.da.gov.ph/books/512'
     }
   },
 
