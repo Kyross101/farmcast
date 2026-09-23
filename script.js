@@ -7796,27 +7796,130 @@ function renderIrrigationPage() {
     const daysAgo = Math.floor((new Date() - last) / 86400000);
     const totalL = f.waterAmt;
 
-    return `<div class="irr-field-item${f.wateredToday?' watered':''}${isDue?' due':''}">
-      <div class="ifi-left">
-        <div class="ifi-name">${f.name}</div>
-        <div class="ifi-meta">🌱 ${f.crop} · ${f.area} m² · ${f.type}</div>
-        <div class="ifi-status">
-          ${f.wateredToday
-            ? '<span class="ifi-badge ok">✅ Watered Today</span>'
-            : isDue
-              ? '<span class="ifi-badge warn">⏰ Due for Watering</span>'
-              : `<span class="ifi-badge">${daysAgo === 0 ? 'Watered today' : `${daysAgo}d ago`}</span>`}
-          <span class="ifi-freq">Every ${f.freq} day${f.freq>1?'s':''}</span>
+    const cropIconHtml =
+      getCropIconHtml(
+        f.crop,
+        'ifi-crop-icon-img'
+      );
+
+    return `
+      <div class="irr-field-item${f.wateredToday ? ' watered' : ''}${isDue ? ' due' : ''}">
+
+        <div class="ifi-left">
+
+          <div class="ifi-name">
+            ${f.name}
+          </div>
+
+          <div class="ifi-meta">
+
+            <span class="ifi-crop-icon">
+              ${cropIconHtml}
+            </span>
+
+            <span>
+              ${f.crop} · ${f.area} m² · ${f.type}
+            </span>
+
+          </div>
+
+          <div class="ifi-status">
+
+            ${
+              f.wateredToday
+                ? `
+                  <span class="ifi-badge ok">
+                    <img
+                      src="assets/ui/watered.svg"
+                      alt=""
+                      class="ifi-badge-icon"
+                    >
+                    Watered Today
+                  </span>
+                `
+                : isDue
+                  ? `
+                    <span class="ifi-badge warn">
+                      <img
+                        src="assets/ui/irrigation-due.svg"
+                        alt=""
+                        class="ifi-badge-icon"
+                      >
+                      Due for Watering
+                    </span>
+                  `
+                  : `
+                    <span class="ifi-badge">
+                      ${
+                        daysAgo === 0
+                          ? 'Watered today'
+                          : `${daysAgo}d ago`
+                      }
+                    </span>
+                  `
+            }
+
+            <span class="ifi-freq">
+              Every ${f.freq} day${f.freq > 1 ? 's' : ''}
+            </span>
+
+          </div>
+
         </div>
+
+
+        <div class="ifi-right">
+
+          ${
+            f.type !== 'Rain-fed'
+              ? `
+                <div class="ifi-amount">
+                  ${totalL}L
+                </div>
+
+                <div class="ifi-amt-lbl">
+                  per session
+                </div>
+              `
+              : `
+                <div class="ifi-amount ifi-rain-fed-icon">
+                  <img
+                    src="assets/ui/irrigation-rain.svg"
+                    alt=""
+                    class="ifi-rain-fed-img"
+                  >
+                </div>
+
+                <div class="ifi-amt-lbl">
+                  rain-fed
+                </div>
+              `
+          }
+
+          <button
+            class="ifi-btn${f.wateredToday ? ' done' : ''}"
+            onclick="toggleFieldWater('${f.id}')"
+          >
+            ${f.wateredToday ? '✓ Done' : 'Water Now'}
+          </button>
+
+          <button
+            class="ifi-del-btn"
+            onclick="deleteField('${f.id}')"
+          >
+            <span
+              class="material-symbols-outlined"
+              style="font-size:15px"
+            >
+              delete
+            </span>
+          </button>
+
+        </div>
+
       </div>
-      <div class="ifi-right">
-        ${f.type !== 'Rain-fed' ? `<div class="ifi-amount">${totalL}L</div><div class="ifi-amt-lbl">per session</div>` : '<div class="ifi-amount">🌧️</div><div class="ifi-amt-lbl">rain-fed</div>'}
-        <button class="ifi-btn${f.wateredToday?' done':''}" onclick="toggleFieldWater('${f.id}')">
-          ${f.wateredToday ? '✓ Done' : 'Water Now'}
-        </button>
-        <button class="ifi-del-btn" onclick="deleteField('${f.id}')"><span class="material-symbols-outlined" style="font-size:15px">delete</span></button>
-      </div>
-    </div>`;
+    `;
+
   }).join('');
 
   // Today's schedule

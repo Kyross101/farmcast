@@ -2966,14 +2966,85 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .irr-field-item.watered { border-left: 3px solid var(--green); }
 .ifi-left   { flex: 1; }
 .ifi-name   { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-.ifi-meta   { font-size: 0.73rem; color: var(--text-muted); margin-bottom: 5px; }
+
+.ifi-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.73rem;
+  color: var(--text-muted);
+
+  margin-bottom: 5px;
+}
+
+.ifi-crop-icon {
+  width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.ifi-crop-icon-img {
+  width: 17px;
+  height: 17px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .ifi-status { display: flex; align-items: center; gap: 8px; }
-.ifi-badge  { padding: 2px 9px; border-radius: 99px; font-size: 0.65rem; font-weight: 700; background: var(--bg2); color: var(--text-muted); border: 1px solid var(--border); }
+
+.ifi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 2px 9px;
+
+  border-radius: 99px;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+
+  background: var(--bg2);
+  color: var(--text-muted);
+
+  border: 1px solid var(--border);
+}
+
+.ifi-badge-icon {
+  width: 13px;
+  height: 13px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .ifi-badge.ok   { background: var(--green-dim); color: var(--green); border-color: rgba(63,185,80,0.3); }
 .ifi-badge.warn { background: var(--amber-dim); color: var(--amber); border-color: rgba(227,160,8,0.3); }
 .ifi-freq   { font-size: 0.7rem; color: var(--text-muted); }
 .ifi-right  { display: flex; flex-direction: column; align-items: center; gap: 5px; flex-shrink: 0; }
 .ifi-amount { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--blue); }
+
+.ifi-rain-fed-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ifi-rain-fed-img {
+  width: 24px;
+  height: 24px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .ifi-amt-lbl{ font-size: 0.65rem; color: var(--text-muted); }
 .ifi-btn {
   padding: 6px 14px; border-radius: var(--r-sm); font-size: 0.78rem; font-weight: 600;
