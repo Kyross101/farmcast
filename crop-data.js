@@ -787,6 +787,13 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/rambutan.svg',
 
+    plantingMethods: [
+      {
+        value: 'grafted-seedlings',
+        label: 'Grafted Seedlings'
+      }
+    ],
+
     minTemp: 22,
     maxTemp: 30,
     noRain: false,
@@ -815,6 +822,31 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/lanzones.svg',
 
+    plantingMethods: [
+      {
+        value: 'grafted-seedlings',
+        label: 'Grafted Seedlings'
+      },
+      {
+        value: 'marcotted-plants',
+        label: 'Marcotted Plants'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Cordillera Administrative Region',
+
+      title:
+        '10 Steps to Small Agrofruit Livelihood Technology (SALT-4)',
+
+      url:
+        'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/salt_4_brochure.pdf'
+  },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -840,6 +872,17 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/durian.svg',
 
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      },
+      {
+        value: 'grafted-seedlings',
+        label: 'Grafted Seedlings'
+      }
+    ],
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -864,6 +907,17 @@ window.FARMCAST_CROPS = [
     name: 'Mangosteen',
     category: 'fruit',
     icon: 'assets/crops/mangosteen.svg',
+
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      },
+      {
+        value: 'grafted-seedlings',
+        label: 'Grafted Seedlings'
+      }
+    ],
 
     minTemp: 20,
     maxTemp: 30,
@@ -899,6 +953,28 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/avocado.svg',
 
+    plantingMethods: [
+      {
+        value: 'grafted-seedlings',
+        label: 'Grafted Seedlings'
+      },
+      {
+        value: 'budded-seedlings',
+        label: 'Budded Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Avocado Production',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1581571589AVOCADO.pdf'
+  },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -927,6 +1003,28 @@ window.FARMCAST_CROPS = [
     localName: 'Bayabas',
     category: 'fruit',
     icon: 'assets/crops/guava.svg',
+
+    plantingMethods: [
+      {
+        value: 'marcotted-plants',
+        label: 'Marcotted Plants'
+      },
+      {
+        value: 'budded-grafted-plants',
+        label: 'Budded / Grafted Plants'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Regional Field Office Caraga',
+
+      title:
+        'Tips on Guava Production',
+
+      url:
+        'https://caraga.da.gov.ph/wp-content/uploads/Publication/tips_guapple.pdf'
+  },
 
     minTemp: null,
     maxTemp: null,
