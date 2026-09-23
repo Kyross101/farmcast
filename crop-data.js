@@ -1646,6 +1646,24 @@ window.FARMCAST_CROPS = [
       category: 'root-crop',
       icon: 'assets/crops/radish.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - High Value Crops Development Program',
+
+        title:
+          'DA-CAR Technoguide in Production and Management of Organic Highland Vegetables',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/DA-CAR-TECHNOGUIDE-IN-PRODUCTION-_-MANAGEMENT-OF-ORGANIC-HIGHLAND-VEGETABLES.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -1680,6 +1698,17 @@ window.FARMCAST_CROPS = [
       localName: 'Pipino',
       category: 'vegetable',
       icon: 'assets/crops/cucumber.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
 
       minTemp: null,
       maxTemp: null,
