@@ -1576,23 +1576,69 @@
 
     <!-- ══ PAGE: IRRIGATION ══ -->
     <div class="page" id="page-irrigation" style="display:none">
+
       <div class="irr-stats-row fade-in">
+
         <div class="irr-stat-box">
-          <div class="isb-icon" style="background:rgba(88,166,255,0.15);color:var(--blue)">💧</div>
-          <div><div class="isb-val" id="irrTotalFields">0</div><div class="isb-lbl">Active Fields</div></div>
+          <div class="isb-icon" style="background:rgba(63,185,80,0.15)">
+            <img
+              src="assets/ui/total-crops.svg"
+              alt=""
+              class="isb-icon-img"
+            >
+          </div>
+
+          <div>
+            <div class="isb-val" id="irrTotalFields">0</div>
+            <div class="isb-lbl">Active Fields</div>
+          </div>
         </div>
+
         <div class="irr-stat-box">
-          <div class="isb-icon" style="background:rgba(63,185,80,0.15);color:var(--green)">✅</div>
-          <div><div class="isb-val" id="irrWateredToday">0</div><div class="isb-lbl">Watered Today</div></div>
+          <div class="isb-icon" style="background:rgba(63,185,80,0.15)">
+            <img
+              src="assets/ui/watered.svg"
+              alt=""
+              class="isb-icon-img"
+            >
+          </div>
+
+          <div>
+            <div class="isb-val" id="irrWateredToday">0</div>
+            <div class="isb-lbl">Watered Today</div>
+          </div>
         </div>
+
         <div class="irr-stat-box">
-          <div class="isb-icon" style="background:rgba(227,160,8,0.15);color:var(--amber)">⏰</div>
-          <div><div class="isb-val" id="irrDueToday">0</div><div class="isb-lbl">Due for Watering</div></div>
+          <div class="isb-icon" style="background:rgba(227,160,8,0.15)">
+            <img
+              src="assets/ui/irrigation-due.svg"
+              alt=""
+              class="isb-icon-img"
+            >
+          </div>
+
+          <div>
+            <div class="isb-val" id="irrDueToday">0</div>
+            <div class="isb-lbl">Due for Watering</div>
+          </div>
         </div>
+
         <div class="irr-stat-box">
-          <div class="isb-icon" style="background:rgba(248,81,73,0.15);color:var(--red)">🌧️</div>
-          <div><div class="isb-val" id="irrRainChance">--%</div><div class="isb-lbl">Rain Chance</div></div>
+          <div class="isb-icon" style="background:rgba(88,166,255,0.15)">
+            <img
+              src="assets/ui/irrigation-rain.svg"
+              alt=""
+              class="isb-icon-img"
+            >
+          </div>
+
+          <div>
+            <div class="isb-val" id="irrRainChance">--%</div>
+            <div class="isb-lbl">Rain Chance</div>
+          </div>
         </div>
+
       </div>
       <div class="irr-recommendation fade-in fade-in-1" id="irrRecommendation">
         <div class="irr-rec-icon">💡</div>

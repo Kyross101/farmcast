@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Rain Chance</title>
+
+  <path d="M18 38
+       C12 38 9 34 9 29
+       C9 24 13 20 18 20
+       C21 13 27 10 34 10
+       C43 10 50 17 50 26
+       C55 27 58 31 58 36
+       C58 41 54 44 49 44
+       H19" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <path d="M22 49L19 56
+       M34 49L31 56
+       M46 49L43 56" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linecap="round"></path>
+</svg>
