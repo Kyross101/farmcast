@@ -7174,13 +7174,19 @@ function renderCalGrid() {
     const hd = new Date(crop.harvest);
     if (hd.getFullYear() === calYear && hd.getMonth() === calMonth) {
       const key = hd.getDate();
-      if (!cropEvents[key]) cropEvents[key] = [];
+
+      if (!cropEvents[key]) {
+        cropEvents[key] = [];
+      }
+
       cropEvents[key].push({
         type: 'harvest',
         crop: crop.type,
         color: 'amber'
       });
     }
+
+  }); // ← closes myCrops.forEach(crop => { ... })
   
 
   let html = '';
