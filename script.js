@@ -7130,16 +7130,56 @@ const MONTH_NAMES = ['January','February','March','April','May','June','July','A
 
 // Best planting months per crop (Philippine context)
 const PLANTING_GUIDE = [
-  { crop:'🍅 Tomato',    months:[10,11,0,1],  note:'Oct–Feb (cool dry season ideal)' },
-  { crop:'🌽 Corn',      months:[0,1,2,6,7],  note:'Jan–Mar & Jul–Aug' },
-  { crop:'🌾 Rice',      months:[5,6,10,11],  note:'Jun–Jul (wet season) & Nov–Dec (dry)' },
-  { crop:'🥬 Pechay',    months:[10,11,0,1,2],note:'Oct–Mar (cool season)' },
-  { crop:'🍆 Eggplant',  months:[0,1,2,3],    note:'Jan–Apr' },
-  { crop:'🥒 Ampalaya',  months:[1,2,3,4],    note:'Feb–May' },
-  { crop:'🫛 Sitaw',     months:[2,3,4,5],    note:'Mar–Jun' },
-  { crop:'🍠 Kamote',    months:[5,6,7,8],    note:'Jun–Sep (rainy season)' },
-  { crop:'🧄 Garlic',    months:[9,10,11],    note:'Oct–Dec' },
-  { crop:'🧅 Onion',     months:[9,10,11,0],  note:'Oct–Jan' },
+  {
+    crop: 'Tomato',
+    months: [10,11,0,1],
+    note: 'Oct–Feb (cool dry season ideal)'
+  },
+  {
+    crop: 'Corn',
+    months: [0,1,2,6,7],
+    note: 'Jan–Mar & Jul–Aug'
+  },
+  {
+    crop: 'Rice',
+    months: [5,6,10,11],
+    note: 'Jun–Jul (wet season) & Nov–Dec (dry)'
+  },
+  {
+    crop: 'Pechay',
+    months: [10,11,0,1,2],
+    note: 'Oct–Mar (cool season)'
+  },
+  {
+    crop: 'Eggplant',
+    months: [0,1,2,3],
+    note: 'Jan–Apr'
+  },
+  {
+    crop: 'Ampalaya',
+    months: [1,2,3,4],
+    note: 'Feb–May'
+  },
+  {
+    crop: 'Sitaw',
+    months: [2,3,4,5],
+    note: 'Mar–Jun'
+  },
+  {
+    crop: 'Kamote',
+    months: [5,6,7,8],
+    note: 'Jun–Sep (rainy season)'
+  },
+  {
+    crop: 'Garlic',
+    months: [9,10,11],
+    note: 'Oct–Dec'
+  },
+  {
+    crop: 'Onion',
+    months: [9,10,11,0],
+    note: 'Oct–Jan'
+  }
 ];
 
 function renderCalPage() {
@@ -7278,13 +7318,63 @@ function goToToday() {
 }
 
 function renderBestPlanting() {
-  document.getElementById('bestPlantingList').innerHTML = PLANTING_GUIDE.map(p => {
-    const active = p.months.includes(calMonth);
-    return `<div class="bpl-item${active?' active':''}">
-      <div class="bpl-crop">${p.crop}</div>
-      <div class="bpl-note ${active?'active':''}">${active ? '✅ Good time to plant!' : p.note}</div>
-    </div>`;
-  }).join('');
+
+  const list =
+    document.getElementById(
+      'bestPlantingList'
+    );
+
+  if (!list) return;
+
+  list.innerHTML =
+    PLANTING_GUIDE.map(p => {
+
+      const active =
+        p.months.includes(calMonth);
+
+      const cropIconHtml =
+        getCropIconHtml(
+          p.crop,
+          'bpl-crop-icon-img'
+        );
+
+      return `
+        <div class="bpl-item${active ? ' active' : ''}">
+
+          <div class="bpl-crop">
+
+            <span class="bpl-crop-icon">
+              ${cropIconHtml}
+            </span>
+
+            <span>
+              ${escapeHtml(p.crop)}
+            </span>
+
+          </div>
+
+          <div class="bpl-note${active ? ' active' : ''}">
+
+            ${
+              active
+                ? `
+                  <span class="material-symbols-outlined">
+                    check_circle
+                  </span>
+
+                  <span>
+                    Good time to plant!
+                  </span>
+                `
+                : escapeHtml(p.note)
+            }
+
+          </div>
+
+        </div>
+      `;
+
+    }).join('');
 }
 
 // ═══════════════════════════════════════════════════════
