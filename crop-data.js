@@ -395,6 +395,24 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/calamansi.svg',
 
+    plantingMethods: [
+      {
+        value: 'budded-grafted-seedlings',
+        label: 'Budded / Grafted Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Regional Field Office MIMAROPA',
+
+      title:
+        'Budded Calamansi Seedlings Distribution for Calamansi Production',
+
+      url:
+        'https://www.mimaropa.da.gov.ph/media-resources/news-and-events/php-3-9m-halaga-ng-budded-calamansi-seedlings-ipinamahagi-sa-12-asosasyon-sa-oriental-mindoro'
+  },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
