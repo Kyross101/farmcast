@@ -282,6 +282,17 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/banana.svg',
 
+    plantingMethods: [
+      {
+        value: 'suckers',
+        label: 'Suckers'
+      },
+      {
+        value: 'tissue-cultured-plantlets',
+        label: 'Tissue-cultured Plantlets'
+      }
+    ],
+
     minTemp: 15,
     maxTemp: 35,
     noRain: false,
@@ -309,15 +320,22 @@ window.FARMCAST_CROPS = [
     noRain: false,
     windMax: null,
 
-    source: {
+    plantingMethods: [
+      {
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
       agency:
         'Department of Agriculture - Bureau of Plant Industry',
 
       title:
-        'Production Guide - Mango, Apple and Pear, Papaya, Sababanana',
+        'Papaya Production Guide',
 
       url:
-        'https://library.buplant.da.gov.ph/books/512'
+        'https://library.buplant.da.gov.ph/images/1641884692Papaya%20%20Production%20Guide.pdf'
     }
   },
 
