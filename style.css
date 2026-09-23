@@ -4729,12 +4729,30 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   z-index: 10;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
+
 .rt-labels-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
   font-size: 0.72rem;
   font-weight: 700;
+
   color: var(--text-muted);
+
   flex-shrink: 0;
 }
+
+.rt-labels-title-icon {
+  width: 15px;
+  height: 15px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
 .rt-live-labels {
   display: flex;
   flex-wrap: wrap;
@@ -4763,13 +4781,32 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   color: var(--red);
   border-color: rgba(248,81,73,0.3);
 }
+
 .rt-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
   flex-shrink: 0;
+
   font-size: 0.68rem;
   font-weight: 700;
+
   padding: 3px 10px;
+
   border-radius: 99px;
 }
+
+.rt-status-icon {
+  width: 12px;
+  height: 12px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
 .rt-status-badge.detecting {
   background: rgba(248,81,73,0.15);
   color: var(--red);

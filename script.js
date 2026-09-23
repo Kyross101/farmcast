@@ -10208,10 +10208,24 @@ function startRealTimeDetection() {
     rtCtx = rtCanvas.getContext('2d');
   }
 
-  const statusBadge = document.getElementById('rtStatusBadge');
+  const statusBadge =
+    document.getElementById(
+      'rtStatusBadge'
+    );
+
+  const statusText =
+    document.getElementById(
+      'rtStatusText'
+    );
+
   if (statusBadge) {
-    statusBadge.textContent = '🔴 Detecting…';
-    statusBadge.className   = 'rt-status-badge detecting';
+    statusBadge.className =
+      'rt-status-badge detecting';
+  }
+
+  if (statusText) {
+    statusText.textContent =
+      'Detecting…';
   }
 
   // Poll local AI server every 200ms for active bounding boxes

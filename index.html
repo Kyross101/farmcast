@@ -1348,12 +1348,39 @@
             <video id="scannerVideo" autoplay playsinline muted></video>
             <canvas id="scannerCanvas" style="display:none"></canvas>
             <div class="rt-labels-bar">
-              <div class="rt-labels-title">🔍 Detecting:</div>
-              <div class="rt-live-labels" id="rtLiveLabels">
-                <span class="rt-label-empty">Point camera at a plant…</span>
+
+              <div class="rt-labels-title">
+                <img
+                  src="assets/ui/scanner-detect.svg"
+                  alt=""
+                  class="rt-labels-title-icon"
+                >
+                <span>Detecting:</span>
               </div>
-              <div class="rt-status-badge detecting" id="rtStatusBadge">🔴 Live</div>
+
+              <div class="rt-live-labels" id="rtLiveLabels">
+                <span class="rt-label-empty">
+                  Point camera at a plant…
+                </span>
+              </div>
+
+              <div
+                class="rt-status-badge detecting"
+                id="rtStatusBadge"
+              >
+                <img
+                  src="assets/ui/scanner-live.svg"
+                  alt=""
+                  class="rt-status-icon"
+                >
+
+                <span id="rtStatusText">
+                  Live
+                </span>
+              </div>
+
             </div>
+            
             <div class="scanner-cam-btns">
               <button class="sdz-btn green" onclick="captureScannerPhoto()">
                 <span class="material-symbols-outlined">camera</span> Capture & Analyze
