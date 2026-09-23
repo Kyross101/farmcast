@@ -7,6 +7,9 @@ const PAGASA_ADVISORY_INDEX =
 const PAGASA_TROPICAL_CYCLONE_INDEX =
   'https://pubfiles.pagasa.dost.gov.ph/tamss/weather/bulletin/';
 
+const PAGASA_DAILY_WEATHER_URL =
+  'https://origin.pagasa.dost.gov.ph/weather';
+
 // How recent an advisory document must be before FarmCast displays it.
 // This is a FarmCast recency window, not PAGASA's official validity period.
 const FARMCAST_RECENT_WINDOW_MS =
@@ -286,6 +289,263 @@ async function fetchPagasaTropicalCycloneBulletins() {
 }
 
 // ------------------------------------------------------------
+// Read PAGASA Daily Weather for tropical cyclones
+// that are still OUTSIDE PAR.
+//
+// This is used as a fallback when PAGASA has not yet
+// published a Tropical Cyclone Bulletin in the PAR
+// bulletin directory.
+// ------------------------------------------------------------
+async function fetchPagasaOutsideParCyclone() {
+  const response =
+    await fetch(
+      PAGASA_DAILY_WEATHER_URL,
+      {
+        headers: {
+          'User-Agent':
+            'FarmCast/1.0'
+        }
+      }
+    );
+
+  if (!response.ok) {
+    throw new Error(
+      `PAGASA daily weather source returned HTTP ${response.status}`
+    );
+  }
+
+  const html =
+    await response.text();
+
+  // Convert PAGASA HTML into readable lines
+  // without adding another dependency.
+  const plainText =
+    html
+      .replace(
+        /<script[\s\S]*?<\/script>/gi,
+        ' '
+      )
+      .replace(
+        /<style[\s\S]*?<\/style>/gi,
+        ' '
+      )
+      .replace(
+        /<br\s*\/?>/gi,
+        '\n'
+      )
+      .replace(
+        /<\/(?:p|div|h[1-6]|li|tr|td|th|section|article)>/gi,
+        '\n'
+      )
+      .replace(
+        /<[^>]+>/g,
+        ' '
+      )
+      .replace(
+        /&nbsp;|&#160;/gi,
+        ' '
+      )
+      .replace(
+        /&deg;|&#176;/gi,
+        '°'
+      )
+      .replace(
+        /&amp;/gi,
+        '&'
+      )
+      .replace(
+        /&quot;/gi,
+        '"'
+      )
+      .replace(
+        /&#39;|&apos;/gi,
+        "'"
+      );
+
+  const lines =
+    plainText
+      .split(/\r?\n/)
+      .map(
+        line =>
+          line
+            .replace(
+              /\s+/g,
+              ' '
+            )
+            .trim()
+      )
+      .filter(Boolean);
+
+  const markerIndex =
+    lines.findIndex(
+      line =>
+        /^TROPICAL CYCLONE OUTSIDE PAR AS OF\b/i
+          .test(line)
+    );
+
+  // No Outside-PAR cyclone currently shown
+  // on PAGASA Daily Weather.
+  if (markerIndex === -1) {
+    return null;
+  }
+
+  const markerLine =
+    lines[markerIndex];
+
+  const asOf =
+    markerLine
+      .replace(
+        /^TROPICAL CYCLONE OUTSIDE PAR AS OF\s*/i,
+        ''
+      )
+      .trim();
+
+  const nearbyLines =
+    lines.slice(
+      markerIndex,
+      markerIndex + 12
+    );
+
+  const stormLine =
+    lines[
+      markerIndex + 1
+    ] || '';
+
+  const classificationMatch =
+    stormLine.match(
+      /^(SUPER TYPHOON|SEVERE TROPICAL STORM|TROPICAL STORM|TROPICAL DEPRESSION|TYPHOON)\b/i
+    );
+
+  const classification =
+    classificationMatch
+      ? classificationMatch[1]
+          .toUpperCase()
+      : 'TROPICAL CYCLONE';
+
+  const stormName =
+    classificationMatch
+      ? stormLine
+          .slice(
+            classificationMatch[0]
+              .length
+          )
+          .trim() || null
+      : null;
+
+  function readField(
+    label
+  ) {
+    const line =
+      nearbyLines.find(
+        item =>
+          item
+            .toUpperCase()
+            .startsWith(
+              `${label.toUpperCase()}:`
+            )
+      );
+
+    if (!line) {
+      return '';
+    }
+
+    return line
+      .slice(
+        line.indexOf(':') + 1
+      )
+      .trim();
+  }
+
+  const location =
+    readField(
+      'LOCATION'
+    );
+
+  const maximumSustainedWinds =
+    readField(
+      'MAXIMUM SUSTAINED WINDS'
+    );
+
+  const gustiness =
+    readField(
+      'GUSTINESS'
+    );
+
+  const movement =
+    readField(
+      'MOVEMENT'
+    );
+
+  const synopsisIndex =
+    lines
+      .slice(
+        0,
+        markerIndex
+      )
+      .findLastIndex(
+        line =>
+          /^Synopsis$/i
+            .test(line)
+      );
+
+  const synopsis =
+    synopsisIndex >= 0
+      ? lines[
+          synopsisIndex + 1
+        ] || ''
+      : '';
+
+  const issuedLine =
+    lines.find(
+      line =>
+        /^Issued at:/i
+          .test(line)
+    );
+
+  const issuedText =
+    issuedLine
+      ? issuedLine
+          .replace(
+            /^Issued at:\s*/i,
+            ''
+          )
+          .trim()
+      : '';
+
+  return {
+    source:
+      'DOST-PAGASA',
+
+    type:
+      'tropical-cyclone-outside-par',
+
+    classification,
+
+    stormName,
+
+    status:
+      'Outside PAR',
+
+    asOf,
+
+    issuedText,
+
+    location,
+
+    maximumSustainedWinds,
+
+    gustiness,
+
+    movement,
+
+    synopsis,
+
+    sourceUrl:
+      PAGASA_DAILY_WEATHER_URL
+  };
+}
+
+// ------------------------------------------------------------
 // Keep only recent bulletins and the latest bulletin
 // for each tropical cyclone.
 // ------------------------------------------------------------
@@ -374,10 +634,31 @@ router.get('/', async (req, res) => {
 
       cycloneSourceAvailable =
         true;
+
     } catch (cycloneError) {
       console.error(
         'PAGASA tropical cyclone source error:',
         cycloneError.message
+      );
+    }
+
+        let outsideParCyclone =
+      null;
+
+    let dailyWeatherSourceAvailable =
+      false;
+
+    try {
+      outsideParCyclone =
+        await fetchPagasaOutsideParCyclone();
+
+      dailyWeatherSourceAvailable =
+        true;
+
+    } catch (dailyWeatherError) {
+      console.error(
+        'PAGASA daily weather source error:',
+        dailyWeatherError.message
       );
     }
 
@@ -488,17 +769,22 @@ router.get('/', async (req, res) => {
 
       sourceType: 'official-public-files',
 
-      sources: {
-        weatherAdvisories:
-          weatherAdvisorySourceAvailable,
+            sources: {
+              weatherAdvisories:
+                weatherAdvisorySourceAvailable,
 
-        tropicalCycloneBulletins:
-          cycloneSourceAvailable
-      },
+              tropicalCycloneBulletins:
+                cycloneSourceAvailable,
 
-      count: combinedAdvisories.length,
+              dailyWeather:
+                dailyWeatherSourceAvailable
+            },
 
-      advisories: combinedAdvisories
+            outsideParCyclone,
+
+            count: combinedAdvisories.length,
+
+            advisories: combinedAdvisories
     });
 
   } catch (error) {
