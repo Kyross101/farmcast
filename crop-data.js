@@ -1748,6 +1748,13 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/bell-pepper.svg',
 
+      plantingMethods: [
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
