@@ -1471,8 +1471,8 @@ window.FARMCAST_CROPS = [
 
     plantingMethods: [
       {
-        value: 'transplanted',
-        label: 'Transplanted'
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
       }
     ],
  
@@ -1513,6 +1513,13 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     icon: 'assets/crops/broccoli.svg',
 
+    plantingMethods: [
+      {
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
+      }
+    ],
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -1538,6 +1545,13 @@ window.FARMCAST_CROPS = [
     localName: 'Karot',
     category: 'vegetable',
     icon: 'assets/crops/carrot.svg',
+
+    plantingMethods: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      }
+    ],
 
     minTemp: 10,
     maxTemp: 30,
@@ -1585,6 +1599,17 @@ window.FARMCAST_CROPS = [
     localName: 'Kalabasa',
     category: 'vegetable',
     icon: 'assets/crops/squash.svg',
+
+    plantingMethods: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      },
+      {
+        value: 'transplanted-seedlings',
+        label: 'Transplanted Seedlings'
+      }
+    ],
 
     minTemp: null,
     maxTemp: null,
