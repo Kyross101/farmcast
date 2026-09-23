@@ -841,13 +841,37 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   border-radius:var(--r-sm);padding:14px;
   display:flex;flex-direction:column;gap:4px;
 }
-.qs-icon{font-size:22px;margin-bottom:4px;}
+.qs-icon {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 4px;
+}
+
+.qs-icon-img {
+  width: 26px;
+  height: 26px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .qs-label{font-size:0.67rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-weight:600;}
+
 .qs-value{font-size:1.3rem;font-weight:700;font-family:'Syne',sans-serif;}
+
 .qs-sub{font-size:0.7rem;color:var(--text-muted);}
+
 .qs-green{color:var(--green);}
+
 .qs-amber{color:var(--amber);}
+
 .qs-red{color:var(--red);}
+
 .qs-blue{color:var(--blue);}
  
 /* PEST ALERTS */
