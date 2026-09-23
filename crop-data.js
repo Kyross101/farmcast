@@ -1784,6 +1784,13 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/hot-pepper.svg',
 
+      plantingMethods: [
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -1818,6 +1825,13 @@ window.FARMCAST_CROPS = [
       localName: 'Cauliflower',
       category: 'vegetable',
       icon: 'assets/crops/cauliflower.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
 
       minTemp: null,
       maxTemp: null,
