@@ -4650,12 +4650,8 @@ function updatePlantingMethodOptions() {
   const options =
     plantingMethodOptions[cropType] || [
       {
-        value: 'direct-seeded',
-        label: 'Direct Seeded'
-      },
-      {
-        value: 'transplanted',
-        label: 'Transplanted'
+        value: 'unspecified',
+        label: 'Method not yet specified'
       }
     ];
 
