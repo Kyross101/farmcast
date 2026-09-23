@@ -4435,7 +4435,26 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   padding: 32px 20px;
   text-align: center;
 }
-.sdz-icon  { font-size: 3.5rem; animation: float 3s ease-in-out infinite; }
+
+.sdz-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: float 3s ease-in-out infinite;
+}
+
+.sdz-icon-img {
+  width: 54px;
+  height: 54px;
+
+  display: block;
+  object-fit: contain;
+}
+
 @keyframes float {
   0%,100% { transform: translateY(0); }
   50%      { transform: translateY(-8px); }

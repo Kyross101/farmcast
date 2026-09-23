@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Plant Scanner Leaf</title>
+
+  <path d="M52 11
+       C34 11 18 20 13 34
+       C9 45 16 54 27 54
+       C42 54 52 38 52 11Z" fill="#4f9b45"></path>
+
+  <path d="M18 47
+       C28 37 37 29 48 18" fill="none" stroke="#d8f5d0" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M28 36
+       L23 27
+       M36 29
+       L34 20
+       M31 34
+       L41 36" fill="none" stroke="#d8f5d0" stroke-width="3" stroke-linecap="round"></path>
+</svg>
