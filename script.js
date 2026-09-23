@@ -2666,7 +2666,7 @@ async function loadPagasaStormWatch() {
             );
           });
 
-    if (!cycloneSourceAvailable) {
+    if (!cycloneSourceAvailable && !outsideParCyclone) {
       content.innerHTML = `
         <div class="pagasa-storm-error">
           <span class="material-symbols-outlined">
