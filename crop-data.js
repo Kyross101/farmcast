@@ -43,6 +43,13 @@ window.FARMCAST_CROPS = [
    emoji: '🍆',
    icon: 'assets/crops/eggplant.svg',
 
+    plantingMethods: [
+     {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
+
    minTemp: 22,
    maxTemp: 35,
    noRain: false,
@@ -68,6 +75,13 @@ window.FARMCAST_CROPS = [
    category: 'grain',
    emoji: '🌽',
    icon: 'assets/crops/corn.svg',
+
+    plantingMethods: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      }
+    ],
 
    minTemp: 18,
    maxTemp: 33,
