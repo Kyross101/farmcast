@@ -8021,7 +8021,16 @@ function toggleFieldWater(id) {
   if (f.wateredToday) f.lastWatered = new Date().toISOString().split('T')[0];
   lsSave(LS_IRR_FIELDS, irrFields);
   renderIrrigationPage();
-  toast(`${f.name} marked as ${f.wateredToday ? 'watered ✅' : 'not watered'}`, f.wateredToday ? 'ok' : 'warn');
+    toast(
+      `${f.name} marked as ${
+        f.wateredToday
+          ? 'watered'
+          : 'not watered'
+      }`,
+      f.wateredToday
+        ? 'ok'
+        : 'warn'
+    );
 }
 
 function deleteField(id) {
@@ -8048,7 +8057,10 @@ function saveNewField() {
   lsSave(LS_IRR_FIELDS, irrFields); lsSave(LS_IRR_FID, nextFieldId);
   closeAddFieldModal();
   renderIrrigationPage();
-  toast(`${name} added to irrigation! 💧`, 'ok');
+    toast(
+      `${name} added to irrigation!`,
+      'ok'
+    );
 }
 
 // ═══════════════════════════════════════════════════════
