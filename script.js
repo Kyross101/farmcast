@@ -10533,17 +10533,34 @@ function updateRTLabels(plantPreds, diseasePreds) {
     const color =
       p.type === 'disease' ? 'red' : 'green';
 
-    const icon =
-      p.type === 'disease' ? '🦠' : '🌿';
+    const iconSrc =
+      p.type === 'disease'
+        ? 'assets/ui/scanner-disease.svg'
+        : 'assets/ui/scanner-leaf.svg';
 
     const label =
       p.class || p.label || 'Unknown';
 
     return `
       <span class="rt-label-tag ${color}">
-        ${icon} ${label} <strong>${conf}%</strong>
+
+        <img
+          src="${iconSrc}"
+          alt=""
+          class="rt-label-tag-icon"
+        >
+
+        <span>
+          ${label}
+        </span>
+
+        <strong>
+          ${conf}%
+        </strong>
+
       </span>
     `;
+
   }).join('');
 }
 

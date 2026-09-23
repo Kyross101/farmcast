@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Plant Disease</title>
+
+  <circle cx="32" cy="32" r="15" fill="none" stroke="#f85149" stroke-width="4"></circle>
+
+  <circle cx="27" cy="28" r="3" fill="#f85149"></circle>
+  <circle cx="38" cy="34" r="3" fill="#f85149"></circle>
+  <circle cx="27" cy="39" r="2.5" fill="#f85149"></circle>
+
+  <path d="M32 11V17
+       M32 47V53
+       M11 32H17
+       M47 32H53
+       M17 17L21 21
+       M43 43L47 47
+       M47 17L43 21
+       M21 43L17 47" fill="none" stroke="#f85149" stroke-width="4" stroke-linecap="round"></path>
+</svg>
