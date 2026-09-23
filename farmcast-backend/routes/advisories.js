@@ -502,14 +502,97 @@ async function fetchPagasaOutsideParCyclone() {
           .test(line)
     );
 
+    const normalizedText =
+    plainText
+      .replace(
+        /\s+/g,
+        ' '
+      )
+      .trim();
+
+  const cycloneMatch =
+    normalizedText.match(
+      /TROPICAL CYCLONE OUTSIDE PAR AS OF\s+(.+?)\s+(SUPER TYPHOON|SEVERE TROPICAL STORM|TROPICAL STORM|TROPICAL DEPRESSION|TYPHOON)\b\s*(.*?)\s+LOCATION:\s*(.+?)\s+MAXIMUM SUSTAINED WINDS:\s*(.+?)\s+GUSTINESS:\s*(.+?)\s+MOVEMENT:\s*(.+?)(?=\s+(?:Forecast Weather Conditions|Forecast Wind and Coastal Water Conditions|Temperature and Relative Humidity|Tides and Astronomical Information)|$)/i
+    );
+
+  // No Outside-PAR cyclone found
+  // in the PAGASA Daily Weather content.
+  if (!cycloneMatch) {
+    return null;
+  }
+
+  const [
+    ,
+    rawAsOf,
+    rawClassification,
+    rawStormName,
+    rawLocation,
+    rawMaximumSustainedWinds,
+    rawGustiness,
+    rawMovement
+  ] =
+    cycloneMatch;
+
+  const asOf =
+    String(
+      rawAsOf || ''
+    ).trim();
+
+  const classification =
+    String(
+      rawClassification ||
+      'TROPICAL CYCLONE'
+    )
+      .trim()
+      .toUpperCase();
+
+  const stormName =
+    String(
+      rawStormName || ''
+    ).trim() || null;
+
+  const location =
+    String(
+      rawLocation || ''
+    ).trim();
+
+  const maximumSustainedWinds =
+    String(
+      rawMaximumSustainedWinds || ''
+    ).trim();
+
+  const gustiness =
+    String(
+      rawGustiness || ''
+    ).trim();
+
+  const movement =
+    String(
+      rawMovement || ''
+    ).trim();
+
+  const issuedMatch =
+    normalizedText.match(
+      /Issued at:\s*(.+?)(?=\s+Synopsis\b)/i
+    );
+
   const issuedText =
-    issuedLine
-      ? issuedLine
-          .replace(
-            /^Issued at:\s*/i,
-            ''
-          )
-          .trim()
+    issuedMatch
+      ? String(
+          issuedMatch[1] || ''
+        ).trim()
+      : '';
+
+  const synopsisMatch =
+    normalizedText.match(
+      /\bSynopsis\s+(.+?)(?=\s+(?:TC Information|TROPICAL CYCLONE OUTSIDE PAR AS OF)\b)/i
+    );
+
+  const synopsis =
+    synopsisMatch
+      ? String(
+          synopsisMatch[1] || ''
+        ).trim()
       : '';
 
   return {
