@@ -7691,19 +7691,102 @@ function renderIrrigationPage() {
   document.getElementById('irrRainChance').textContent = rainChance;
 
   // Recommendation banner
-  let recClass = 'ok', recTitle = '✅ Go ahead with watering', recSub = 'Current conditions are good for irrigation.';
+  let recClass = 'ok';
+
+  let recTitle =
+    'Go ahead with watering';
+
+  let recSub =
+    'Current conditions are good for irrigation.';
+
+  let recIcon =
+    'assets/ui/watered.svg';
+
+
   if (currentWeather) {
-    const h = currentWeather.main.humidity;
-    const desc = currentWeather.weather[0].description.toLowerCase();
-    const isRain = desc.includes('rain');
-    if (isRain)  { recClass = 'warn'; recTitle = '🌧️ Skip irrigation today'; recSub = 'It is currently raining. Natural rainfall should be sufficient.'; }
-    else if (h > 85) { recClass = 'warn'; recTitle = '⚠️ Reduce watering'; recSub = `High humidity (${h}%) — over-watering risk. Water only crops that are visibly dry.`; }
-    else if (currentWeather.main.temp > 33) { recTitle = '🔥 Increase watering frequency'; recSub = 'High temperature detected. Water crops in early morning and late afternoon.'; }
+
+    const h =
+      currentWeather.main.humidity;
+
+    const desc =
+      currentWeather.weather[0]
+        .description
+        .toLowerCase();
+
+    const isRain =
+      desc.includes('rain');
+
+
+    if (isRain) {
+
+      recClass = 'warn';
+
+      recTitle =
+        'Skip irrigation today';
+
+      recSub =
+        'It is currently raining. Natural rainfall should be sufficient.';
+
+      recIcon =
+        'assets/ui/irrigation-rain.svg';
+
+    } else if (h > 85) {
+
+      recClass = 'warn';
+
+      recTitle =
+        'Reduce watering';
+
+      recSub =
+        `High humidity (${h}%) — over-watering risk. Water only crops that are visibly dry.`;
+
+      recIcon =
+        'assets/ui/at-risk.svg';
+
+    } else if (
+      currentWeather.main.temp > 33
+    ) {
+
+      recTitle =
+        'Increase watering frequency';
+
+      recSub =
+        'High temperature detected. Water crops in early morning and late afternoon.';
+
+      recIcon =
+        'assets/ui/quick-soil-temp.svg';
+    }
   }
-  const recEl = document.getElementById('irrRecommendation');
-  recEl.className = `irr-recommendation fade-in fade-in-1 ${recClass}`;
-  document.getElementById('irrRecTitle').textContent = recTitle;
-  document.getElementById('irrRecSub').textContent   = recSub;
+
+
+  const recEl =
+    document.getElementById(
+      'irrRecommendation'
+    );
+
+  recEl.className =
+    `irr-recommendation fade-in fade-in-1 ${recClass}`;
+
+  document.getElementById(
+    'irrRecTitle'
+  ).textContent =
+    recTitle;
+
+  document.getElementById(
+    'irrRecSub'
+  ).textContent =
+    recSub;
+
+
+  const recIconEl =
+    document.getElementById(
+      'irrRecIcon'
+    );
+
+  if (recIconEl) {
+    recIconEl.src =
+      recIcon;
+  }
 
   // Field list
   document.getElementById('irrFieldList').innerHTML = irrFields.map(f => {
