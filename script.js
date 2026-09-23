@@ -6490,8 +6490,31 @@ function saveNewCrop() {
   const notes =
     document.getElementById('cropNotes').value.trim();
 
-  if (!type || !area || !planted || !harvest || !location) {
-    toast('Please fill in all required fields.', 'warn');
+  if (!type) {
+    toast('Please select a crop.', 'warn');
+    return;
+  }
+
+  if (!area) {
+    toast('Please enter the crop area.', 'warn');
+    return;
+  }
+
+  if (!planted) {
+    toast('Please enter the planting date.', 'warn');
+    return;
+  }
+
+  if (!harvest) {
+    toast(
+      'No verified automatic harvest estimate is available for this crop. Please enter your own estimated harvest date.',
+      'warn'
+    );
+    return;
+  }
+
+  if (!location) {
+    toast('Please enter the field location.', 'warn');
     return;
   }
 
