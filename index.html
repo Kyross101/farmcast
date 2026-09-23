@@ -1125,14 +1125,45 @@
         <input type="hidden" id="growthStageCropId">
 
         <div class="form-group">
-          <label for="growthStageSelect">Observed Growth Stage</label>
-          <select id="growthStageSelect" name="growthStageSelect">
-            <option value="seedling">🌱 Seedling</option>
-            <option value="vegetative">🌿 Vegetative</option>
-            <option value="flowering">🌼 Flowering</option>
-            <option value="fruiting">🍅 Fruiting</option>
-            <option value="ready">🌾 Ready for Harvest</option>
-          </select>
+          <label for="growthStageSelect">
+            Observed Growth Stage
+          </label>
+
+          <div class="growth-stage-select-wrap">
+
+            <div
+              class="growth-stage-select-icon"
+              id="growthStageSelectIcon">
+            </div>
+
+            <select
+              id="growthStageSelect"
+              name="growthStageSelect"
+              onchange="updateGrowthStageSelectPreview()">
+
+              <option value="seedling">
+                Seedling
+              </option>
+
+              <option value="vegetative">
+                Vegetative
+              </option>
+
+              <option value="flowering">
+                Flowering
+              </option>
+
+              <option value="fruiting">
+                Fruiting
+              </option>
+
+              <option value="ready">
+                Ready for Harvest
+              </option>
+
+            </select>
+
+          </div>
         </div>
 
         <div class="form-group">

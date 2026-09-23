@@ -5539,6 +5539,8 @@ function openEditGrowthObservation(cropId, observationId) {
   document.getElementById('growthStageSelect').value =
     observation.stage;
 
+  updateGrowthStageSelectPreview();
+
   document.getElementById('growthStageDate').value =
     observation.date;
 
@@ -6557,6 +6559,57 @@ function closeAddCropModal() {
  
 let editingGrowthObservationId = null;
 
+function updateGrowthStageSelectPreview() {
+
+  const select =
+    document.getElementById(
+      'growthStageSelect'
+    );
+
+  const iconContainer =
+    document.getElementById(
+      'growthStageSelectIcon'
+    );
+
+  if (!select || !iconContainer) {
+    return;
+  }
+
+  const stageIcons = {
+    seedling:
+      'assets/ui/stage-seedling.svg',
+
+    vegetative:
+      'assets/ui/stage-vegetative.svg',
+
+    flowering:
+      'assets/ui/stage-flowering.svg',
+
+    fruiting:
+      'assets/ui/stage-fruiting.svg',
+
+    ready:
+      'assets/ui/stage-ready.svg'
+  };
+
+  const icon =
+    stageIcons[select.value];
+
+  if (!icon) {
+    iconContainer.innerHTML = '';
+    return;
+  }
+
+  iconContainer.innerHTML = `
+    <img
+      src="${escapeHtml(icon)}"
+      alt=""
+      class="growth-stage-select-icon-img"
+    >
+  `;
+}
+
+
 function openGrowthStageModal(id) {
   const crop = myCrops.find(
     c => String(c.id) === String(id)
@@ -6572,6 +6625,8 @@ function openGrowthStageModal(id) {
 
   document.getElementById('growthStageSelect').value =
     crop.currentStage || 'seedling';
+  
+  updateGrowthStageSelectPreview();
 
   const today = new Date();
 

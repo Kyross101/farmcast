@@ -7890,3 +7890,40 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   }
 
 }
+
+.growth-stage-select-wrap {
+  position: relative;
+}
+
+.growth-stage-select-wrap select {
+  width: 100%;
+
+  padding-left: 48px;
+}
+
+.growth-stage-select-icon {
+  position: absolute;
+
+  left: 14px;
+  top: 50%;
+
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+.growth-stage-select-icon-img {
+  width: 23px;
+  height: 23px;
+
+  display: block;
+  object-fit: contain;
+}
