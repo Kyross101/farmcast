@@ -109,6 +109,13 @@ window.FARMCAST_CROPS = [
     emoji: '🥦',
     icon: 'assets/crops/okra.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
     minTemp: 25,
     maxTemp: 38,
     noRain: false,
@@ -134,6 +141,13 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     emoji: '🫛',
     icon: 'assets/crops/sitaw.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
 
     minTemp: 20,
     maxTemp: 35,
