@@ -1037,6 +1037,7 @@ function renderPestAlerts(data){
         'warn'
       )"
     >
+
       <div class="pest-icon">
         <img
           src="${p.icon}"
@@ -1085,47 +1086,7 @@ function renderPestAlerts(data){
             <span class="material-symbols-outlined">
               menu_book
             </span>
-
-            <span>
-              Reference:
-              ${p.reference.name}
-            </span>
-          </a>
-
-        </div>
-
-      </div>
-
-        <div class="pest-source-row">
-
-          <a
-            class="pest-source-link"
-            href="${PEST_WEATHER_SOURCE.url}"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="event.stopPropagation()"
-          >
-            <span class="material-symbols-outlined">
-              cloud
-            </span>
-
-            <span>
-              Weather:
-              ${PEST_WEATHER_SOURCE.name}
-            </span>
-          </a>
-
-          <a
-            class="pest-source-link"
-            href="${p.reference.url}"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="event.stopPropagation()"
-          >
-            <span class="material-symbols-outlined">
-              menu_book
-            </span>
-
+  
             <span>
               Reference:
               ${p.reference.name}
@@ -1138,10 +1099,16 @@ function renderPestAlerts(data){
 
       <div class="pest-level level-${p.level}">
         <div class="pest-pulse"></div>
-        ${p.level.charAt(0).toUpperCase() + p.level.slice(1)} Risk
+
+        ${
+          p.level.charAt(0).toUpperCase() +
+          p.level.slice(1)
+        } Risk
       </div>
+
     </div>
   `).join('');
+
 }
 
 // ── RENDER TASKS ──

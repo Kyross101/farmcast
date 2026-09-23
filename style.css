@@ -947,33 +947,6 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   font-size: 14px;
 }
 
-.pest-source-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  gap: 6px 10px;
-
-  margin-top: 7px;
-}
-
-.pest-source-link {
-  display: inline-flex;
-  align-items: center;
-
-  gap: 4px;
-
-  color: var(--blue);
-
-  font-size: 0.65rem;
-  font-weight: 600;
-
-  text-decoration: none;
-}
-
-.pest-source-link:hover {
-  text-decoration: underline;
-}
 
 .pest-source-link
 .material-symbols-outlined {
