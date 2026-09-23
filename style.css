@@ -557,8 +557,10 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   color: var(--text-muted);
 }
 
-.planting-details-status .crop-badge {
+.planting-details-status 
+.crop-badge {
   margin-bottom: 0;
+  align-self: flex-start;
 }
 
 .planting-details-grid {
@@ -695,10 +697,23 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .cal-date.today .cal-date-num{background:var(--green);color:white;}
 .cal-weather-icon{text-align:center;font-size:24px;padding:6px 0;}
 .cal-crops{display:flex;flex-direction:column;gap:8px;}
-.crop-card{
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:var(--r-sm);padding:12px;
-  transition:all 0.2s;cursor:pointer;
+
+.crop-card {
+  min-height: 118px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+
+  padding: 12px;
+
+  transition: all 0.2s;
+  cursor: pointer;
 }
 .crop-card:hover{border-color:var(--border2);transform:translateY(-1px);}
 .crop-card.ideal{border-left:3px solid var(--green);}
@@ -707,7 +722,16 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .crop-card.info {
   border-left: 3px solid var(--blue);
 }
-.crop-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+
+.crop-top {
+  min-height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+  margin-bottom: 8px;
+}
 
 .crop-icon {
   width: 28px;
@@ -725,7 +749,22 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   display: block;
 }
 
-.crop-name{font-size:0.85rem;font-weight:600;color:var(--text);}
+.crop-name {
+  min-width: 0;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.25;
+
+  color: var(--text);
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+}
+
 .crop-badge{
   display:inline-flex;align-items:center;gap:4px;
   padding:3px 9px;border-radius:99px;
@@ -740,7 +779,21 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   color: var(--blue);
   border: 1px solid rgba(88, 166, 255, 0.3);
 }
-.crop-reason{font-size:0.72rem;color:var(--text-muted);line-height:1.4;}
+
+.crop-reason {
+  min-height: 2.8em;
+
+  font-size: 0.72rem;
+  line-height: 1.4;
+
+  color: var(--text-muted);
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+}
  
 /* ══════════════════════════════
    SIDE COLUMN
