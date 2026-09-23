@@ -349,15 +349,22 @@ window.FARMCAST_CROPS = [
     noRain: false,
     windMax: null,
 
-    source: {
+    plantingMethods: [
+      {
+        value: 'grafted-seedlings',
+        label: 'Grafted Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
       agency:
         'Department of Agriculture - Bureau of Plant Industry',
 
       title:
-        'Production Guide - Mango, Apple and Pear, Papaya, Sababanana',
+        'Mango Production Manual',
 
       url:
-        'https://library.buplant.da.gov.ph/books/512'
+        'https://library.buplant.da.gov.ph/images/1641949136Mango.pdf'
     }
   },
 
