@@ -1042,6 +1042,7 @@ function renderPestAlerts(data){
       </div>
 
       <div class="pest-info">
+
         <div class="pest-name">
           ${p.name} Risk
         </div>
@@ -1050,6 +1051,45 @@ function renderPestAlerts(data){
           ${p.detail}. Weather conditions may favor this risk.
           Inspect crops for visible signs before taking action.
         </div>
+
+        <div class="pest-source-row">
+
+          <a
+            class="pest-source-link"
+            href="${PEST_WEATHER_SOURCE.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="event.stopPropagation()"
+          >
+            <span class="material-symbols-outlined">
+              cloud
+            </span>
+
+            <span>
+              Weather:
+              ${PEST_WEATHER_SOURCE.name}
+            </span>
+          </a>
+
+          <a
+            class="pest-source-link"
+            href="${p.reference.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="event.stopPropagation()"
+          >
+            <span class="material-symbols-outlined">
+              menu_book
+            </span>
+
+            <span>
+              Reference:
+              ${p.reference.name}
+            </span>
+          </a>
+
+        </div>
+
       </div>
 
       <div class="pest-level level-${p.level}">
