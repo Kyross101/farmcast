@@ -3590,18 +3590,27 @@ function getCropIconHtml(
   const reference =
     getCropReference(cropName);
 
-  if (reference?.icon) {
+  const specialCropIcons = {
+    Rice: 'assets/crops/rice.svg'
+  };
+
+  const iconPath =
+    reference?.icon ||
+    specialCropIcons[cropName] ||
+    null;
+
+  if (iconPath) {
 
     return `
       <img
-        src="${escapeHtml(reference.icon)}"
+        src="${escapeHtml(iconPath)}"
         alt="${escapeHtml(cropName)}"
         class="${imageClass}"
       >
     `;
   }
 
-  // Rice and legacy crops can still use emoji
+  // Temporary legacy fallback outside the shared dataset.
   return escapeHtml(
     CROP_EMOJIS[cropName] || '🌿'
   );
@@ -3788,7 +3797,7 @@ function getMyCropPickerDataset() {
       name: 'Rice',
       localName: 'Palay',
       category: 'grain',
-      icon: null
+      icon: 'assets/crops/rice.svg'
     });
   }
 
@@ -5721,12 +5730,31 @@ function renderCropsPage() {
     );
 
     const stageInfo = {
-      seedling:   { emoji: '🌱', label: 'Seedling' },
-      vegetative: { emoji: '🌿', label: 'Vegetative' },
-      flowering:  { emoji: '🌼', label: 'Flowering' },
-      fruiting:   { emoji: '🍅', label: 'Fruiting' },
-      ready:      { emoji: '🌾', label: 'Ready for Harvest' }
-    };
+      seedling: {
+        icon: 'assets/ui/stage-seedling.svg',
+        label: 'Seedling'
+      },
+
+      vegetative: {
+        icon: 'assets/ui/stage-vegetative.svg',
+        label: 'Vegetative'
+      },
+
+      flowering: {
+        icon: 'assets/ui/stage-flowering.svg',
+        label: 'Flowering'
+      },
+
+      fruiting: {
+        icon: 'assets/ui/stage-fruiting.svg',
+        label: 'Fruiting'
+      },
+
+      ready: {
+        icon: 'assets/ui/stage-ready.svg',
+        label: 'Ready for Harvest'
+      }
+};
 
     const currentStage = crop.currentStage || 'seedling';
     const stage = stageInfo[currentStage] || stageInfo.seedling;
@@ -5940,7 +5968,13 @@ function renderCropsPage() {
 
 
           <div class="crop-stage-current">
-            <div class="crop-stage-emoji">${stage.emoji}</div>
+            <div class="crop-stage-emoji">
+              <img
+                src="${escapeHtml(stage.icon)}"
+                alt="${escapeHtml(stage.label)}"
+                class="crop-stage-icon-img"
+              >
+            </div>
 
             <div>
               <div class="crop-stage-name">${stage.label}</div>

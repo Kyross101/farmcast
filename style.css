@@ -1624,7 +1624,22 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 
 .crop-stage-emoji {
-  font-size: 1.7rem;
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.crop-stage-icon-img {
+  width: 32px;
+  height: 32px;
+
+  display: block;
+  object-fit: contain;
 }
 
 .crop-stage-name {
