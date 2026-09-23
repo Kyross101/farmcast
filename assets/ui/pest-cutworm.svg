@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Cutworm</title>
+
+  <path d="M12 40
+       C17 26 26 21 34 25
+       C41 28 40 36 46 38
+       C51 40 55 36 55 31" fill="none" stroke="#8b6b4a" stroke-width="7" stroke-linecap="round"></path>
+
+  <circle cx="54" cy="29" r="3" fill="#8b6b4a"></circle>
+</svg>

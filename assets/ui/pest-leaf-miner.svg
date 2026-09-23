@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Leaf Miner</title>
+
+  <path d="M51 13C32 13 17 22 13 37C10 48 18 55 29 53C43 51 52 36 51 13Z" fill="none" stroke="#3fb950" stroke-width="4"></path>
+
+  <path d="M20 45
+       C25 36 31 40 34 32
+       C37 25 43 29 47 20" fill="none" stroke="#e3a008" stroke-width="4" stroke-linecap="round"></path>
+</svg>

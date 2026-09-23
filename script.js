@@ -7278,35 +7278,74 @@ function setNav(el, pageId) {
 // ═══════════════════════════════════════════════════════
 
 const PEST_FULL_DB = [
-  { name:'Aphids',      icon:'🦗', condition:'humid', level:'high',   crops:['Tomato','Eggplant','Sitaw','Pechay'],
+  { name:'Aphids',      
+    icon:'assets/ui/pest-aphids.svg', 
+    condition:'humid', 
+    level:'high',   
+    crops:['Tomato','Eggplant','Sitaw','Pechay'],
     signs:'Tiny green/black insects clustered on young leaves. Leaves curl and yellow.',
     treatment:'Spray neem oil or insecticidal soap. Remove heavily infested leaves.',
     prevention:'Avoid over-fertilizing with nitrogen. Introduce ladybugs (natural predator).' },
-  { name:'Stem Borer',  icon:'🐛', condition:'hot',   level:'medium', crops:['Rice','Corn'],
+
+  { name:'Stem Borer',  
+    icon:'assets/ui/pest-stem-borer.svg', 
+    condition:'hot',   
+    level:'medium', 
+    crops:['Rice','Corn'],
     signs:'Dead hearts in young plants, whiteheads at maturity, frass near boreholes.',
     treatment:'Apply Bacillus thuringiensis (Bt). Remove and destroy infested stems.',
     prevention:'Use resistant varieties. Early planting to avoid peak pest season.' },
-  { name:'Whitefly',    icon:'🦋', condition:'dry',   level:'low',    crops:['Tomato','Eggplant','Okra'],
+ 
+  { name:'Whitefly',    
+    icon:'assets/ui/pest-whitefly.svg',
+    condition:'dry',   
+    level:'low',    
+    crops:['Tomato','Eggplant','Okra'],
     signs:'Tiny white insects fly when plants are disturbed. Sticky honeydew on leaves.',
     treatment:'Yellow sticky traps, neem oil spray. Reflective mulch repels adults.',
     prevention:'Avoid planting near infested areas. Maintain crop diversity.' },
-  { name:'Root Rot',    icon:'🍄', condition:'rainy', level:'high',   crops:['Kamote','Tomato','Corn'],
+    
+  { name:'Root Rot',    
+    icon:'assets/ui/pest-root-rot.svg',
+    condition:'rainy', 
+    level:'high',   
+    crops:['Kamote','Tomato','Corn'],
     signs:'Yellowing lower leaves, wilting despite watering, brown/black roots.',
     treatment:'Improve drainage immediately. Remove affected plants. Apply fungicide.',
     prevention:'Raised beds, proper spacing, avoid overwatering, good soil drainage.' },
-  { name:'Leaf Miner',  icon:'🪲', condition:'humid', level:'medium', crops:['Sitaw','Ampalaya','Pechay'],
+
+  { name:'Leaf Miner',  
+    icon:'assets/ui/pest-leaf-miner.svg', 
+    condition:'humid', 
+    level:'medium', 
+    crops:['Sitaw','Ampalaya','Pechay'],
     signs:'Winding white trails on leaf surfaces. Leaves look pale and papery.',
     treatment:'Remove affected leaves. Systemic insecticide for severe infestations.',
     prevention:'Regular scouting. Yellow sticky traps to catch adult flies.' },
-  { name:'Thrips',      icon:'🦟', condition:'dry',   level:'medium', crops:['Onion','Garlic','Corn'],
+
+  { name:'Thrips',      
+    icon:'assets/ui/pest-thrips.svg',
+    condition:'dry',   
+    level:'medium', 
+    crops:['Onion','Garlic','Corn'],
     signs:'Silver streaks on leaves, distorted growth, bronze discoloration.',
     treatment:'Spinosad spray. Blue sticky traps. Remove weeds nearby.',
     prevention:'Avoid planting near alliums. Reflective mulch. Water regularly.' },
-  { name:'Spider Mites', icon:'🕷️', condition:'hot',  level:'medium', crops:['Tomato','Eggplant','Corn'],
+
+  { name:'Spider Mites', 
+    icon:'assets/ui/pest-spider-mites.svg',
+    condition:'hot',  
+    level:'medium', 
+    crops:['Tomato','Eggplant','Corn'],
     signs:'Fine webbing on undersides of leaves, stippled yellow leaves.',
     treatment:'Strong water spray to dislodge mites. Miticides if severe. Neem oil.',
     prevention:'Avoid water stress. Increase humidity. Remove dusty conditions.' },
-  { name:'Cutworm',     icon:'🐌', condition:'rainy', level:'low',    crops:['Corn','Tomato','Rice'],
+
+  { name:'Cutworm',     
+    icon:'assets/ui/pest-cutworm.svg',
+    condition:'rainy', 
+    level:'low',    
+    crops:['Corn','Tomato','Rice'],
     signs:'Seedlings cut off at soil level. Caterpillars found in soil during day.',
     treatment:'Apply Bt granules to soil. Collar seedlings with cardboard.',
     prevention:'Tilling before planting exposes pupae. Avoid planting after fallow land.' },
@@ -7374,7 +7413,13 @@ function renderPestPage() {
     pestFullList.innerHTML = active.map(p => `
       <div class="pest-full-item ${p.level}">
         <div class="pfi-top">
-          <div class="pfi-icon">${p.icon}</div>
+          <div class="pfi-icon">
+            <img
+              src="${p.icon}"
+              alt=""
+              class="pfi-icon-img"
+            >
+          </div>
 
           <div class="pfi-info">
             <div class="pfi-name">
@@ -7435,8 +7480,18 @@ function renderPestPage() {
   document.getElementById('pestGuideList').innerHTML = PEST_FULL_DB.map(p => `
     <div class="pest-guide-item" onclick="this.classList.toggle('open')">
       <div class="pgi-header">
-        <span>${p.icon}</span>
-        <span class="pgi-name">${p.name}</span>
+        <span class="pgi-icon">
+          <img
+            src="${p.icon}"
+            alt=""
+            class="pgi-icon-img"
+          >
+        </span>
+
+        <span class="pgi-name">
+          ${p.name}
+        </span>
+        
         <span class="pest-level level-${p.level}" style="margin-left:auto">${p.level}</span>
         <span class="material-symbols-outlined pgi-arrow">expand_more</span>
       </div>
