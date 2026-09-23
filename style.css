@@ -4383,16 +4383,43 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   font-weight: 700;
   color: var(--text);
 }
+
 .scanner-ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
   font-size: 0.68rem;
   font-weight: 700;
+
   padding: 3px 9px;
+
   border-radius: 99px;
-  background: linear-gradient(135deg, rgba(63,185,80,0.2), rgba(88,166,255,0.2));
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(63,185,80,0.2),
+      rgba(88,166,255,0.2)
+    );
+
   border: 1px solid rgba(63,185,80,0.3);
+
   color: var(--green);
+
   font-family: 'DM Sans', sans-serif;
 }
+
+.scanner-ai-badge-icon {
+  width: 15px;
+  height: 15px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
 .scanner-model-status {
   display: flex;
   align-items: center;

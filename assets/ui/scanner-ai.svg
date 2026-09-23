@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>AI Models</title>
+
+  <path d="M32 9V17" fill="none" stroke="#3fb950" stroke-width="4" stroke-linecap="round"></path>
+
+  <circle cx="32" cy="8" r="3" fill="#3fb950"></circle>
+
+  <rect x="13" y="17" width="38" height="31" rx="9" fill="none" stroke="#3fb950" stroke-width="4"></rect>
+
+  <circle cx="24" cy="31" r="4" fill="#58a6ff"></circle>
+
+  <circle cx="40" cy="31" r="4" fill="#58a6ff"></circle>
+
+  <path d="M24 40H40" fill="none" stroke="#3fb950" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M13 28H8V38H13
+       M51 28H56V38H51" fill="none" stroke="#3fb950" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
