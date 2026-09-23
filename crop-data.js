@@ -1150,6 +1150,24 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/pummelo.svg',
 
+    plantingMethods: [
+      {
+        value: 'budded-seedlings',
+        label: 'Budded Seedlings'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Regional Field Office II',
+
+      title:
+        'Pummelo Production Guide',
+
+      url:
+        'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/pummelofinal.pdf'
+  },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
