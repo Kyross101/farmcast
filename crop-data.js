@@ -250,6 +250,13 @@ window.FARMCAST_CROPS = [
     emoji: '🍠',
     icon: 'assets/crops/kamote.svg',
 
+      plantingMethods: [
+        {
+          value: 'cuttings',
+          label: 'Vine Cuttings / Slips'
+        }
+      ],
+
     minTemp: 20,
     maxTemp: 35,
     noRain: true,
