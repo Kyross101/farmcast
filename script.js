@@ -560,6 +560,16 @@ function openPlantingCropDetails(
     ),
 
     plantingDetailRow(
+      'Planting / Establishment Method',
+      Array.isArray(crop.plantingMethods)
+        ? crop.plantingMethods
+            .map(method => method.label)
+            .filter(Boolean)
+            .join(' / ')
+        : null
+    ),
+
+    plantingDetailRow(
       'Temperature Guide',
       temperatureGuide
     ),
