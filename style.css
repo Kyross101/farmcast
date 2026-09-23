@@ -627,6 +627,10 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   align-items: stretch;
   gap: 12px;
 
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
   padding: 12px 14px;
 
   border: 1px solid rgba(63,185,80,.25);
@@ -639,6 +643,13 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   display: flex;
   align-items: flex-start;
   gap: 9px;
+
+  min-width: 0;
+}
+
+.planting-reference-item > div {
+  flex: 1;
+  min-width: 0;
 }
 
 .planting-reference-item + .planting-reference-item {
@@ -1732,16 +1743,27 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 /* NEW — ATI source details */
 .cmi-source-agency {
   margin-top: 5px;
+
   font-size: .68rem;
   font-weight: 600;
+  line-height: 1.4;
+
   color: var(--text-secondary);
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .cmi-source-title {
   margin-top: 2px;
+
   font-size: .66rem;
   line-height: 1.35;
+
   color: var(--text-muted);
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .cmi-source-derived {
@@ -1754,7 +1776,13 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 
 .cmi-source-link {
   display: inline-flex;
+
   max-width: 100%;
+  box-sizing: border-box;
+
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
   align-items: center;
   justify-content: center;
   gap: 5px;
