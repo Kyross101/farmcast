@@ -4106,3 +4106,559 @@ window.FARMCAST_CROPS = [
 
 ];
 
+// ═══════════════════════════════════════════
+// FARMCAST — Planting / Establishment Methods
+// Crops #43–#100
+// ═══════════════════════════════════════════
+
+const FARMCAST_PLANTING_METHODS_43_100 = {
+
+  // #45
+  'Sponge Gourd': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #46
+  'Bottle Gourd': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    },
+    {
+      value: 'transplanted-seedlings',
+      label: 'Transplanted Seedlings'
+    }
+  ],
+
+  // #47
+  'Water Spinach': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    },
+    {
+      value: 'transplanted-seedlings',
+      label: 'Transplanted Seedlings'
+    },
+    {
+      value: 'stem-cuttings',
+      label: 'Stem Cuttings'
+    }
+  ],
+
+  // #48
+  'Malabar Spinach': [
+    {
+      value: 'stem-cuttings',
+      label: 'Stem Cuttings'
+    },
+    {
+      value: 'transplanted-seedlings',
+      label: 'Transplanted Seedlings'
+    }
+  ],
+
+  // #49
+  'Mustard Greens': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    },
+    {
+      value: 'transplanted-seedlings',
+      label: 'Transplanted Seedlings'
+    }
+  ],
+
+  // #50
+  'Winged Bean': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #51
+  'Chayote': [
+    {
+      value: 'sprouted-fruits',
+      label: 'Sprouted Mature Fruits'
+    }
+  ],
+
+  // #52
+  'Mung Bean': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #53
+  'Peanut': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #54
+  'Soybean': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #55
+  'Moringa': [
+    {
+      value: 'branch-cuttings',
+      label: 'Branch Cuttings'
+    }
+  ],
+
+  // #56
+  'Cassava': [
+    {
+      value: 'stem-cuttings',
+      label: 'Stem Cuttings'
+    }
+  ],
+
+  // #57
+  'Taro': [
+    {
+      value: 'setts-cormels',
+      label: 'Setts / Cormels'
+    }
+  ],
+
+  // #58
+  'Purple Yam': [
+    {
+      value: 'tuber-setts',
+      label: 'Tuber Setts'
+    },
+    {
+      value: 'whole-tubers',
+      label: 'Whole Tubers'
+    }
+  ],
+
+  // #59
+  'Black Pepper': [
+    {
+      value: 'rooted-stem-cuttings',
+      label: 'Rooted Stem Cuttings'
+    }
+  ],
+
+  // #60
+  'Snap Bean': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #61
+  'Sugar Apple': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    }
+  ],
+
+  // #62
+  'Potato': [
+    {
+      value: 'seed-tubers',
+      label: 'Seed Tubers'
+    }
+  ],
+
+  // #63
+  'Jicama': [
+    {
+      value: 'seed-propagated',
+      label: 'Planted from Seed'
+    }
+  ],
+
+  // #64
+  'Ginger': [
+    {
+      value: 'rhizomes',
+      label: 'Rhizomes'
+    }
+  ],
+
+  // #65
+  'Turmeric': [
+    {
+      value: 'rhizome-divisions',
+      label: 'Rhizome Divisions'
+    }
+  ],
+
+  // #66
+  'Arrowroot': [
+    {
+      value: 'suckers',
+      label: 'Suckers'
+    },
+    {
+      value: 'rhizome-rootstock-pieces',
+      label: 'Rhizome / Rootstock Pieces'
+    }
+  ],
+
+  // #67
+  'Wax Gourd': [
+    {
+      value: 'seed-propagated',
+      label: 'Planted from Seed'
+    }
+  ],
+
+  // #68
+  'Hyacinth Bean': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #69
+  'Pigeon Pea': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #70
+  'Lima Bean': [
+    {
+      value: 'seed-propagated',
+      label: 'Planted from Seed'
+    }
+  ],
+
+  // #71
+  'Jute Mallow': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    },
+    {
+      value: 'transplanted-seedlings',
+      label: 'Transplanted Seedlings'
+    }
+  ],
+
+  // #72
+  'Amaranth': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    },
+    {
+      value: 'transplanted-seedlings',
+      label: 'Transplanted Seedlings'
+    }
+  ],
+
+  // #73
+  'Celery': [
+    {
+      value: 'transplanted-seedlings',
+      label: 'Transplanted Seedlings'
+    }
+  ],
+
+  // #74
+  'Asparagus': [
+    {
+      value: 'transplanted-seedlings',
+      label: 'Transplanted Seedlings'
+    }
+  ],
+
+  // #75
+  'Kale': [
+    {
+      value: 'seed-propagated',
+      label: 'Planted from Seed'
+    }
+  ],
+
+  // #76
+  'Lemongrass': [
+    {
+      value: 'clump-divisions',
+      label: 'Clump Divisions'
+    }
+  ],
+
+  // #77
+  'Basil': [
+    {
+      value: 'seed-propagated',
+      label: 'Planted from Seed'
+    }
+  ],
+
+  // #78
+  'Pandan': [
+    {
+      value: 'rooted-offshoots',
+      label: 'Rooted Offshoots'
+    },
+    {
+      value: 'rooted-cuttings',
+      label: 'Rooted Cuttings'
+    }
+  ],
+
+  // #79
+  'Sesame': [
+    {
+      value: 'seed-propagated',
+      label: 'Planted from Seed'
+    }
+  ],
+
+  // #80
+  'Sorghum': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #81
+  'Adlai': [
+    {
+      value: 'direct-seeded',
+      label: 'Direct Seeded'
+    }
+  ],
+
+  // #82
+  'Sugarcane': [
+    {
+      value: 'canepoints-setts',
+      label: 'Canepoints / Setts'
+    }
+  ],
+
+  // #83
+  'Abaca': [
+    {
+      value: 'corms-seedpieces',
+      label: 'Corms / Seedpieces'
+    },
+    {
+      value: 'suckers',
+      label: 'Suckers'
+    },
+    {
+      value: 'tissue-cultured-plantlets',
+      label: 'Tissue-cultured Plantlets'
+    },
+    {
+      value: 'seed-propagated',
+      label: 'Seeds'
+    }
+  ],
+
+  // #84
+  'Rubber': [
+    {
+      value: 'budded-polybag-seedlings',
+      label: 'Budded Polybag Seedlings'
+    }
+  ],
+
+  // #85
+  'Pili': [
+    {
+      value: 'grafted-seedlings',
+      label: 'Grafted Seedlings'
+    }
+  ],
+
+  // #86
+  'Passion Fruit': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    }
+  ],
+
+  // #87
+  'Star Fruit': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    },
+    {
+      value: 'grafted-plants',
+      label: 'Grafted Plants'
+    },
+    {
+      value: 'marcotted-plants',
+      label: 'Marcotted Plants'
+    }
+  ],
+
+  // #88
+  'Santol': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    }
+  ],
+
+  // #89
+  'Sapodilla': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    },
+    {
+      value: 'grafted-plants',
+      label: 'Grafted Plants'
+    },
+    {
+      value: 'marcotted-plants',
+      label: 'Marcotted Plants'
+    }
+  ],
+
+  // #90
+  'Wax Apple': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    },
+    {
+      value: 'marcotted-plants',
+      label: 'Marcotted Plants'
+    }
+  ],
+
+  // #91
+  'Java Plum': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    }
+  ],
+
+  // #92
+  'Tamarind': [
+    {
+      value: 'grafted-seedlings',
+      label: 'Grafted Seedlings'
+    }
+  ],
+
+  // #93
+  'Breadfruit': [
+    {
+      value: 'tissue-cultured-plantlets',
+      label: 'Tissue-cultured Plantlets'
+    },
+    {
+      value: 'grafted-plants',
+      label: 'Grafted Plants'
+    },
+    {
+      value: 'marcotted-plants',
+      label: 'Marcotted Plants'
+    }
+  ],
+
+  // #94
+  'Marang': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    },
+    {
+      value: 'inarched-plants',
+      label: 'Inarched Plants'
+    }
+  ],
+
+  // #95
+  'Bignay': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    }
+  ],
+
+  // #96
+  'Strawberry': [
+    {
+      value: 'runners',
+      label: 'Runners'
+    },
+    {
+      value: 'suckers',
+      label: 'Suckers'
+    }
+  ],
+
+  // #97
+  'Mandarin Orange': [
+    {
+      value: 'budded-grafted-seedlings',
+      label: 'Budded / Grafted Seedlings'
+    }
+  ],
+
+  // #98
+  'Lemon': [
+    {
+      value: 'budded-grafted-seedlings',
+      label: 'Budded / Grafted Seedlings'
+    }
+  ],
+
+  // #99
+  'Grapes': [
+    {
+      value: 'stem-cuttings',
+      label: 'Stem Cuttings'
+    }
+  ],
+
+  // #100
+  'Star Apple': [
+    {
+      value: 'nursery-raised-seedlings',
+      label: 'Nursery-raised Seedlings'
+    }
+  ]
+
+};
+
+
+// Apply the verified planting methods to the shared crop dataset.
+window.FARMCAST_CROPS.forEach(crop => {
+  const methods =
+    FARMCAST_PLANTING_METHODS_43_100[crop.name];
+
+  if (!methods) return;
+
+  crop.plantingMethods = methods;
+});
+
