@@ -1068,6 +1068,13 @@ window.FARMCAST_CROPS = [
     localName: 'Repolyo',
     category: 'vegetable',
     icon: 'assets/crops/cabbage.svg',
+
+    plantingMethods: [
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
  
     minTemp: 15,
     maxTemp: 20,
