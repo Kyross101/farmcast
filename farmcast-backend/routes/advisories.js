@@ -10,6 +10,9 @@ const PAGASA_TROPICAL_CYCLONE_INDEX =
 const PAGASA_DAILY_WEATHER_URL =
   'https://origin.pagasa.dost.gov.ph/weather';
 
+const PAGASA_TROPICAL_CYCLONE_ADVISORY_URL =
+  'https://pubfiles.pagasa.dost.gov.ph/tamss/weather/tcadvisory.pdf';
+
 // How recent an advisory document must be before FarmCast displays it.
 // This is a FarmCast recency window, not PAGASA's official validity period.
 const FARMCAST_RECENT_WINDOW_MS =
@@ -484,7 +487,7 @@ async function fetchPagasaOutsideParCyclone() {
     synopsis,
 
     sourceUrl:
-      PAGASA_DAILY_WEATHER_URL
+      PAGASA_TROPICAL_CYCLONE_ADVISORY_URL
   };
 }
 
