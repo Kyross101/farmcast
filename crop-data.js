@@ -954,6 +954,13 @@ window.FARMCAST_CROPS = [
     category: 'vegetable',
     icon: 'assets/crops/onion.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -987,6 +994,13 @@ window.FARMCAST_CROPS = [
     localName: 'Bawang',
     category: 'vegetable',
     icon: 'assets/crops/garlic.svg',
+
+      plantingMethods: [
+        {
+          value: 'cloves',
+          label: 'Planted from Cloves'
+        }
+      ],
 
     minTemp: null,
     maxTemp: null,
