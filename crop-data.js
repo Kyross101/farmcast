@@ -1197,6 +1197,25 @@ window.FARMCAST_CROPS = [
     category: 'fruit',
     icon: 'assets/crops/cashew.svg',
 
+    plantingMethods: [
+      {
+        value: 'nursery-raised-seedlings',
+        label: 'Nursery-raised Seedlings'
+      },
+      {
+        value: 'grafted-seedlings',
+        label: 'Grafted Seedlings'
+      },
+      {
+        value: 'marcotted-air-layered-plants',
+        label: 'Marcotted / Air-layered Plants'
+      },
+      {
+        value: 'inarched-plants',
+        label: 'Inarched Plants'
+      }
+  ],
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
