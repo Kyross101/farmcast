@@ -7164,16 +7164,24 @@ function renderCalGrid() {
     if (pd.getFullYear() === calYear && pd.getMonth() === calMonth) {
       const key = pd.getDate();
       if (!cropEvents[key]) cropEvents[key] = [];
-      cropEvents[key].push({ type:'planted', crop: crop.type, emoji: CROP_EMOJIS[crop.type] || '🌿', color:'green' });
+      cropEvents[key].push({
+        type: 'planted',
+        crop: crop.type,
+        color: 'green'
+      });
     }
     // Harvest date
     const hd = new Date(crop.harvest);
     if (hd.getFullYear() === calYear && hd.getMonth() === calMonth) {
       const key = hd.getDate();
       if (!cropEvents[key]) cropEvents[key] = [];
-      cropEvents[key].push({ type:'harvest', crop: crop.type, emoji: CROP_EMOJIS[crop.type] || '🌿', color:'amber' });
+      cropEvents[key].push({
+        type: 'harvest',
+        crop: crop.type,
+        color: 'amber'
+      });
     }
-  });
+  
 
   let html = '';
   // Empty cells for first week
@@ -7206,10 +7214,32 @@ function selectCalDate(dateKey, day) {
 
   // Find events on this date
   const events = [];
+
   myCrops.forEach(crop => {
-    if (crop.planted === dateKey) events.push({ icon: CROP_EMOJIS[crop.type]||'🌿', text:`${crop.type} planted at ${crop.location}`, color:'green' });
-    if (crop.harvest === dateKey) events.push({ icon: CROP_EMOJIS[crop.type]||'🌿', text:`${crop.type} expected harvest at ${crop.location}`, color:'amber' });
-  });
+
+    const iconHtml =
+      getCropIconHtml(
+        crop.type,
+        'cei-crop-icon-img'
+      );
+
+    if (crop.planted === dateKey) {
+      events.push({
+        icon: iconHtml,
+        text: `${crop.type} planted at ${crop.location}`,
+        color: 'green'
+      });
+    }
+ 
+    if (crop.harvest === dateKey) {
+      events.push({
+        icon: iconHtml,
+        text: `${crop.type} expected harvest at ${crop.location}`,
+        color: 'amber'
+      });
+    }
+
+});
 
   const eventsEl = document.getElementById('calDayEvents');
   if (events.length === 0) {
