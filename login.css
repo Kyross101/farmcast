@@ -6600,3 +6600,38 @@ body::after {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — DIAGONAL ACCENT FIX
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px) {
+
+  /*
+     Keep the decorative line strictly
+     inside the FarmCast visual side.
+  */
+  .toggle-panel.toggle-left {
+    overflow:
+      hidden !important;
+  }
+
+
+  .toggle-panel.toggle-left::after {
+    top:
+      -5% !important;
+
+    right:
+      5% !important;
+
+    height:
+      110% !important;
+
+    transform:
+      rotate(8deg) !important;
+
+    transform-origin:
+      center !important;
+  }
+
+}
