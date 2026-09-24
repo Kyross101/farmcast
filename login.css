@@ -6648,3 +6648,26 @@ body::after {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — REMOVE INNER DESKTOP SCROLL
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px) {
+
+  .form-box,
+  .container.active .form-box {
+    overflow:
+      visible !important;
+
+    scrollbar-width:
+      none;
+  }
+
+
+  .form-box::-webkit-scrollbar {
+    display:
+      none;
+  }
+
+}
