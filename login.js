@@ -140,9 +140,23 @@ function showtoast(
 }
 
 // ── LOADING STATE ──
-function setLoading(btn, loading) {
-  btn.disabled    = loading;
-  btn.textContent = loading ? 'Loading…' : btn.dataset.label;
+function setLoading(
+  btn,
+  loading
+) {
+
+  btn.disabled =
+    loading;
+
+  btn.classList.toggle(
+    'is-loading',
+    loading
+  );
+
+  btn.textContent =
+    loading
+      ? 'Please wait'
+      : btn.dataset.label;
 }
 
 // ── LOGIN ──

@@ -2658,3 +2658,77 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — BUTTON LOADING STATE
+═══════════════════════════════════════════════ */
+
+.form-box form > .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+}
+
+
+/* Spinner */
+.form-box form > .btn.is-loading::before {
+  content: "";
+
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  border:
+    2px solid rgba(255,255,255,.38);
+
+  border-top-color:
+    #ffffff;
+
+  border-radius: 50%;
+
+  animation:
+    farmcastButtonSpin
+    .7s linear
+    infinite;
+}
+
+
+/* Loading button */
+.form-box form > .btn.is-loading {
+  cursor: wait;
+
+  opacity: .88;
+
+  transform: none;
+
+  box-shadow:
+    0 7px 20px
+    rgba(46,160,67,.22);
+}
+
+
+@keyframes farmcastButtonSpin {
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  .form-box
+  form >
+  .btn.is-loading::before {
+
+    animation-duration:
+      1.4s;
+  }
+
+}
