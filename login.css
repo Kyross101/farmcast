@@ -1653,3 +1653,73 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — FIELD LABELS
+═══════════════════════════════════════════════ */
+
+.auth-field {
+  width: 100%;
+
+  margin-bottom: 15px;
+}
+
+.auth-field label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #314239;
+
+  font-size: .77rem;
+  font-weight: 700;
+
+  letter-spacing: .15px;
+}
+
+.auth-field .input-box {
+  margin: 0;
+}
+
+.auth-secure-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  margin-top: 18px;
+
+  color: #78877e;
+
+  font-size: .72rem;
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+.auth-secure-note i {
+  flex-shrink: 0;
+
+  color: #2ea043;
+
+  font-size: 17px;
+}
+
+
+/* Better mobile spacing */
+@media screen and (max-width: 650px) {
+
+  .auth-field {
+    margin-bottom: 13px;
+  }
+
+  .auth-field label {
+    font-size: .75rem;
+  }
+
+  .auth-secure-note {
+    margin-top: 15px;
+  }
+
+}
