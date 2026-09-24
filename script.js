@@ -1010,9 +1010,17 @@ function renderPestAlerts(data){
   if (active.length === 0) {
     pestList.innerHTML = `
       <div class="pest-item">
-        <div class="pest-icon">✅</div>
+
+        <div class="pest-icon">
+          <img
+            src="assets/ui/pest-status-low.svg"
+            alt=""
+            class="pest-icon-img"
+          >
+        </div>
 
         <div class="pest-info">
+
           <div class="pest-name">
             No Elevated Pest Risk
           </div>
@@ -1021,7 +1029,9 @@ function renderPestAlerts(data){
             Current weather conditions do not indicate an elevated
             weather-related pest risk. Continue regular crop inspection.
           </div>
+
         </div>
+
       </div>
     `;
 
