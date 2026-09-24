@@ -4148,3 +4148,950 @@ and (max-width: 900px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — STATIC MOBILE EXPERIENCE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  body {
+    display: block;
+
+    min-height: 100dvh;
+
+    padding: 10px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background:
+      #08150d;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     MAIN MOBILE CARD
+  ═══════════════════════════════════════════ */
+
+  .container {
+    position: relative;
+
+    width: 100%;
+    max-width: 470px;
+
+    height: auto;
+    min-height: 760px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3,24,13,.14),
+        rgba(3,24,13,.04)
+      ),
+      url("assets/ui/farmcast-login-bg.webp");
+
+    background-size:
+      cover;
+
+    background-position:
+      center;
+
+    background-repeat:
+      no-repeat;
+
+    box-shadow:
+      0 24px 60px
+      rgba(0,0,0,.38);
+  }
+
+
+  /* ═══════════════════════════════════════════
+     STATIC FARM HEADER
+  ═══════════════════════════════════════════ */
+
+  .toggle-box {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 2;
+  }
+
+
+  /*
+     No giant sliding shape anymore.
+     This becomes only the dark green
+     readability overlay for the top.
+  */
+  .toggle-box::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0 !important;
+    top: 0 !important;
+
+    width: 100% !important;
+    height: 30% !important;
+
+    transform: none !important;
+
+    border-radius:
+      0
+      0
+      30px
+      30px !important;
+
+    background:
+      radial-gradient(
+        circle at 76% 16%,
+        rgba(255,205,82,.18),
+        transparent 28%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(3,25,13,.83),
+        rgba(4,43,20,.64),
+        rgba(5,53,24,.38)
+      ) !important;
+
+    transition:
+      none !important;
+
+    backdrop-filter:
+      saturate(1.08);
+
+    -webkit-backdrop-filter:
+      saturate(1.08);
+
+    pointer-events: none;
+  }
+
+
+  .container.active
+  .toggle-box::before {
+    left: 0 !important;
+    top: 0 !important;
+
+    transform:
+      none !important;
+  }
+
+
+  /* Left branding never leaves */
+  .toggle-panel.toggle-left,
+  .container.active
+  .toggle-panel.toggle-left {
+    position: absolute;
+
+    left: 0 !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+
+    width: 100% !important;
+    height: 30% !important;
+
+    padding:
+      22px
+      22px
+      24px !important;
+
+    display: flex;
+
+    justify-content:
+      flex-start !important;
+
+    align-items:
+      stretch !important;
+
+    transform:
+      none !important;
+
+    opacity:
+      1 !important;
+
+    visibility:
+      visible !important;
+
+    pointer-events:
+      none;
+
+    transition:
+      none !important;
+
+    text-align:
+      left !important;
+  }
+
+
+  /* Old alternate brand panel is gone */
+  .toggle-panel.toggle-right,
+  .container.active
+  .toggle-panel.toggle-right {
+    display:
+      none !important;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     MOBILE BRAND
+  ═══════════════════════════════════════════ */
+
+  .farm-visual-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    justify-content:
+      center;
+  }
+
+
+  .farm-brand-lockup {
+    display: flex;
+
+    flex-direction:
+      row;
+
+    align-items:
+      center;
+
+    gap: 10px;
+
+    margin:
+      0
+      0
+      13px;
+  }
+
+
+  .farm-brand-logo-wrap {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    flex-shrink: 0;
+
+    border:
+      1px solid
+      rgba(255,255,255,.16);
+
+    border-radius:
+      16px;
+
+    background:
+      rgba(255,255,255,.10);
+
+    backdrop-filter:
+      blur(8px);
+
+    -webkit-backdrop-filter:
+      blur(8px);
+  }
+
+
+  .farm-brand-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+
+  .farm-brand-copy {
+    align-items:
+      flex-start;
+  }
+
+
+  .farm-brand-name {
+    font-size:
+      1.24rem;
+
+    letter-spacing:
+      1px;
+  }
+
+
+  .farm-brand-kicker {
+    margin-top:
+      4px;
+
+    font-size:
+      .46rem;
+
+    letter-spacing:
+      1.7px;
+  }
+
+
+  .farm-visual-heading {
+    width: 100%;
+
+    text-align:
+      left;
+  }
+
+
+  .farm-visual-heading h1 {
+    max-width:
+      300px;
+
+    margin:
+      0 !important;
+
+    color:
+      #ffffff !important;
+
+    font-size:
+      1.28rem !important;
+
+    line-height:
+      1.18;
+
+    text-align:
+      left;
+  }
+
+
+  .farm-visual-heading p {
+    display:
+      block;
+
+    max-width:
+      300px;
+
+    margin:
+      6px
+      0
+      0 !important;
+
+    color:
+      rgba(255,255,255,.68) !important;
+
+    font-size:
+      .68rem;
+
+    line-height:
+      1.45;
+
+    text-align:
+      left;
+  }
+
+
+  /* Keep mobile visually clean */
+  .farm-feature-grid,
+  .farm-promise-card,
+  .farm-legacy-register-btn {
+    display:
+      none !important;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     AUTH FORM AREA
+  ═══════════════════════════════════════════ */
+
+  .form-box,
+  .container.active
+  .form-box {
+    position: absolute;
+
+    left: 0 !important;
+    right: auto !important;
+
+    top: 27% !important;
+    bottom: auto !important;
+
+    width: 100% !important;
+    height: 73% !important;
+
+    padding:
+      18px
+      14px
+      16px !important;
+
+    display: flex;
+
+    align-items:
+      flex-start;
+
+    justify-content:
+      center;
+
+    overflow-x:
+      hidden;
+
+    overflow-y:
+      auto;
+
+    background:
+      transparent !important;
+
+    z-index:
+      5;
+  }
+
+
+  .form-box form {
+    width: 100%;
+
+    max-width:
+      420px;
+
+    margin:
+      auto;
+
+    padding:
+      26px
+      22px;
+
+    background:
+      rgba(250,252,250,.985);
+
+    border:
+      1px solid
+      rgba(255,255,255,.80);
+
+    border-radius:
+      21px;
+
+    color:
+      #14291c;
+
+    box-shadow:
+      0 18px 46px
+      rgba(0,0,0,.24);
+
+    backdrop-filter:
+      blur(12px);
+
+    -webkit-backdrop-filter:
+      blur(12px);
+  }
+
+
+  /* ═══════════════════════════════════════════
+     LOGIN / REGISTER FORM SWITCH
+  ═══════════════════════════════════════════ */
+
+  .form-box.login {
+    transform:
+      translateY(0) !important;
+
+    opacity: 1;
+
+    visibility:
+      visible;
+
+    pointer-events:
+      auto;
+
+    transition:
+      opacity .25s ease,
+      transform .32s ease,
+      visibility 0s;
+  }
+
+
+  .container.active
+  .form-box.login {
+    transform:
+      translateY(-12px) !important;
+
+    opacity: 0;
+
+    visibility:
+      hidden;
+
+    pointer-events:
+      none;
+
+    transition:
+      opacity .2s ease,
+      transform .28s ease,
+      visibility 0s linear .2s;
+  }
+
+
+  .form-box.register {
+    transform:
+      translateY(12px) !important;
+
+    opacity: 0;
+
+    visibility:
+      hidden;
+
+    pointer-events:
+      none;
+  }
+
+
+  .container.active
+  .form-box.register {
+    transform:
+      translateY(0) !important;
+
+    opacity: 1;
+
+    visibility:
+      visible;
+
+    pointer-events:
+      auto;
+
+    transition:
+      opacity .25s ease .06s,
+      transform .32s ease,
+      visibility 0s;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     AUTH TYPOGRAPHY
+  ═══════════════════════════════════════════ */
+
+  .form-box form h1 {
+    margin: 0;
+
+    color:
+      #14291c;
+
+    font-size:
+      1.7rem;
+
+    line-height:
+      1.14;
+
+    font-weight:
+      800;
+  }
+
+
+  .auth-subtitle {
+    margin:
+      7px
+      0
+      20px !important;
+
+    color:
+      #77847c !important;
+
+    font-size:
+      .8rem !important;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FIELDS
+  ═══════════════════════════════════════════ */
+
+  .auth-field {
+    margin-bottom:
+      13px;
+  }
+
+
+  .auth-field label {
+    margin-bottom:
+      6px;
+
+    color:
+      #35453b;
+
+    font-size:
+      .73rem;
+
+    font-weight:
+      700;
+  }
+
+
+  .input-box {
+    position:
+      relative;
+
+    margin:
+      0;
+  }
+
+
+  .input-box input {
+    width: 100%;
+
+    min-height:
+      50px;
+
+    padding:
+      0
+      46px
+      0
+      44px;
+
+    background:
+      #ffffff;
+
+    border:
+      1px solid
+      #dce5df;
+
+    border-radius:
+      12px;
+
+    color:
+      #17291e;
+
+    font-size:
+      16px;
+
+    box-shadow:
+      none;
+  }
+
+
+  /* Username / email / lock icon LEFT */
+  .form-box
+  .input-box > i {
+    position:
+      absolute;
+
+    left:
+      15px !important;
+
+    right:
+      auto !important;
+
+    top:
+      50%;
+
+    transform:
+      translateY(-50%);
+
+    color:
+      #718078;
+
+    font-size:
+      18px;
+
+    pointer-events:
+      none;
+  }
+
+
+  /* Eye stays RIGHT */
+  .password-toggle {
+    left:
+      auto !important;
+
+    right:
+      15px !important;
+
+    top:
+      50% !important;
+
+    transform:
+      translateY(-50%) !important;
+  }
+
+
+  .password-toggle i {
+    font-size:
+      20px;
+
+    color:
+      #6c7d72 !important;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FORGOT / BUTTON
+  ═══════════════════════════════════════════ */
+
+  .forgot-link {
+    margin:
+      -3px
+      0
+      16px;
+
+    text-align:
+      right;
+  }
+
+
+  .forgot-link a {
+    color:
+      #258944;
+
+    font-size:
+      .72rem;
+
+    font-weight:
+      700;
+  }
+
+
+  .form-box
+  form >
+  .btn {
+    min-height:
+      50px;
+
+    border-radius:
+      12px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #238d43,
+        #3eb45c
+      );
+
+    font-size:
+      .86rem;
+
+    box-shadow:
+      0 9px 22px
+      rgba(35,141,67,.22);
+  }
+
+
+  /* Arrow like desktop */
+  .form-box
+  form >
+  .btn:not(.is-loading)::after {
+    content: "→";
+
+    margin-left:
+      8px;
+
+    font-size:
+      1rem;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FOOTER / SWITCH
+  ═══════════════════════════════════════════ */
+
+  .auth-secure-note {
+    display:
+      none;
+  }
+
+
+  .auth-divider {
+    width:
+      100%;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      11px;
+
+    margin:
+      18px
+      0
+      13px;
+
+    color:
+      #9aa79f;
+
+    font-size:
+      .63rem;
+
+    text-transform:
+      uppercase;
+
+    letter-spacing:
+      .7px;
+  }
+
+
+  .auth-divider::before,
+  .auth-divider::after {
+    content: "";
+
+    flex: 1;
+
+    height:
+      1px;
+
+    background:
+      #e0e7e2;
+  }
+
+
+  .auth-switch-row {
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    flex-wrap:
+      wrap;
+
+    gap:
+      5px;
+
+    margin-top:
+      0;
+
+    color:
+      #7b887f;
+
+    font-size:
+      .73rem;
+  }
+
+
+  .auth-switch-btn {
+    color:
+      #258944;
+
+    font-weight:
+      800;
+  }
+
+
+  .password-hint {
+    margin-top:
+      6px;
+
+    font-size:
+      .65rem;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   SMALL MOBILE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 380px) {
+
+  body {
+    padding:
+      6px;
+  }
+
+
+  .container {
+    min-height:
+      740px;
+
+    border-radius:
+      18px;
+  }
+
+
+  .toggle-panel.toggle-left,
+  .container.active
+  .toggle-panel.toggle-left {
+    padding:
+      18px
+      17px
+      20px !important;
+  }
+
+
+  .farm-brand-logo-wrap {
+    width:
+      46px;
+
+    height:
+      46px;
+
+    border-radius:
+      14px;
+  }
+
+
+  .farm-brand-logo {
+    width:
+      40px;
+
+    height:
+      40px;
+  }
+
+
+  .farm-brand-name {
+    font-size:
+      1.12rem;
+  }
+
+
+  .farm-visual-heading h1 {
+    font-size:
+      1.12rem !important;
+  }
+
+
+  .farm-visual-heading p {
+    font-size:
+      .63rem;
+  }
+
+
+  .form-box,
+  .container.active
+  .form-box {
+    padding:
+      15px
+      9px
+      12px !important;
+  }
+
+
+  .form-box form {
+    padding:
+      23px
+      17px;
+
+    border-radius:
+      18px;
+  }
+
+
+  .form-box form h1 {
+    font-size:
+      1.5rem;
+  }
+
+}
