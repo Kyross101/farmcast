@@ -2732,3 +2732,99 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — ACCESSIBLE FOCUS STATES
+═══════════════════════════════════════════════ */
+
+/* Form fields */
+.input-box input:focus-visible,
+.forgot-input-box input:focus-visible {
+  outline: none;
+
+  border-color: #2ea043;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(46,160,67,.14);
+}
+
+
+/* Main buttons */
+.btn:focus-visible {
+  outline:
+    3px solid
+    rgba(255,255,255,.92);
+
+  outline-offset: 3px;
+
+  box-shadow:
+    0 0 0 6px
+    rgba(46,160,67,.35);
+}
+
+
+/* Forgot password link */
+.forgot-link a:focus-visible {
+  outline:
+    3px solid
+    rgba(46,160,67,.22);
+
+  outline-offset: 4px;
+
+  border-radius: 4px;
+}
+
+
+/* Mobile Login / Register switch */
+.auth-switch-btn:focus-visible {
+  outline:
+    3px solid
+    rgba(46,160,67,.24);
+
+  outline-offset: 4px;
+
+  border-radius: 4px;
+}
+
+
+/* Password eye button
+   Override old outline-removal rule */
+.password-toggle:focus-visible {
+  outline:
+    3px solid
+    rgba(46,160,67,.30)
+    !important;
+
+  outline-offset: 5px !important;
+
+  border-radius:
+    4px !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+/* Forgot modal controls */
+.forgot-close:focus-visible,
+.forgot-back:focus-visible {
+  outline:
+    3px solid
+    rgba(46,160,67,.28);
+
+  outline-offset: 4px;
+}
+
+
+/* FarmCast panel switch buttons */
+.toggle-panel .btn:focus-visible {
+  outline:
+    3px solid #ffffff;
+
+  outline-offset: 4px;
+
+  box-shadow:
+    0 0 0 6px
+    rgba(46,160,67,.28);
+}
