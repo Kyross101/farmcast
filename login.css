@@ -5192,3 +5192,677 @@ input:focus-visible {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — REFERENCE COMPOSITION POLISH
+═══════════════════════════════════════════════ */
+
+
+/* Background outside the main login card */
+body {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(3, 18, 10, .78),
+      rgba(7, 42, 21, .60)
+    ),
+    url("assets/ui/farmcast-login-bg.webp");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+/* Soft cinematic glows */
+body::before {
+  inset: 0;
+
+  width: auto;
+  height: auto;
+
+  background:
+    radial-gradient(
+      circle at 18% 16%,
+      rgba(255,255,255,.10),
+      transparent 30%
+    );
+
+  border-radius: 0;
+
+  z-index: 0;
+}
+
+
+body::after {
+  inset: 0;
+
+  width: auto;
+  height: auto;
+
+  background:
+    radial-gradient(
+      circle at 73% 30%,
+      rgba(255,190,67,.12),
+      transparent 28%
+    );
+
+  border-radius: 0;
+
+  z-index: 0;
+}
+
+
+.container {
+  z-index: 1;
+}
+
+
+/* ═══════════════════════════════════════════════
+   DESKTOP / LAPTOP
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px) {
+
+  /*
+     Let the farm image cover the whole container.
+     White login form becomes a floating card.
+  */
+  .container {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(3, 24, 13, .13),
+        rgba(3, 24, 13, .04)
+      ),
+      url("assets/ui/farmcast-login-bg.webp");
+
+    background-size: cover;
+
+    background-position:
+      50% center;
+
+    background-repeat: no-repeat;
+
+    border:
+      1px solid
+      rgba(255,255,255,.24);
+
+    border-radius:
+      26px;
+
+    box-shadow:
+      0 32px 85px
+      rgba(0,0,0,.46);
+  }
+
+
+  /* ═══════════════════════════════════════════
+     DARK FARM SIDE
+  ═══════════════════════════════════════════ */
+
+  .toggle-box::before {
+    background:
+      radial-gradient(
+        circle at 86% 52%,
+        rgba(255,194,73,.13),
+        transparent 29%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(2,25,14,.90) 0%,
+        rgba(2,34,17,.78) 38%,
+        rgba(3,42,20,.61) 73%,
+        rgba(4,48,23,.35) 100%
+      ) !important;
+
+    border-radius:
+      0
+      30px
+      30px
+      0 !important;
+
+    backdrop-filter: none;
+
+    -webkit-backdrop-filter: none;
+  }
+
+
+  /* Subtle diagonal accent from the reference */
+  .toggle-panel.toggle-left::after {
+    content: "";
+
+    position: absolute;
+
+    top: -12%;
+    right: 9%;
+
+    width: 1px;
+    height: 125%;
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent,
+        rgba(91,231,125,.78),
+        rgba(91,231,125,.18),
+        transparent
+      );
+
+    transform:
+      rotate(13deg);
+
+    transform-origin:
+      center;
+
+    box-shadow:
+      0 0 12px
+      rgba(82,223,116,.25);
+
+    pointer-events: none;
+
+    z-index: 1;
+  }
+
+
+  .farm-visual-content {
+    position: relative;
+
+    z-index: 2;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FARMCAST LOGO / BRAND
+  ═══════════════════════════════════════════ */
+
+  .farm-brand-lockup {
+    flex-direction: column;
+
+    align-items:
+      flex-start;
+
+    gap: 5px;
+
+    margin:
+      0
+      0
+      28px;
+  }
+
+
+  /*
+     Remove the glass square around the logo.
+     Reference logo floats directly over the farm.
+  */
+  .farm-brand-logo-wrap {
+    width: 92px;
+    height: 84px;
+
+    justify-content:
+      flex-start;
+
+    border: 0;
+
+    border-radius: 0;
+
+    background:
+      transparent;
+
+    box-shadow:
+      none;
+
+    backdrop-filter:
+      none;
+
+    -webkit-backdrop-filter:
+      none;
+  }
+
+
+  .farm-brand-logo {
+    width: 88px;
+    height: 88px;
+
+    filter:
+      drop-shadow(
+        0 10px 20px
+        rgba(0,0,0,.28)
+      );
+  }
+
+
+  .farm-brand-copy {
+    align-items:
+      flex-start;
+  }
+
+
+  .farm-brand-name {
+    font-size:
+      clamp(
+        2.15rem,
+        3.4vw,
+        2.8rem
+      );
+
+    line-height: .95;
+
+    font-weight: 800;
+
+    letter-spacing:
+      1.4px;
+
+    color: #ffffff;
+
+    text-shadow:
+      0 5px 20px
+      rgba(0,0,0,.25);
+  }
+
+
+  .farm-brand-name span {
+    color: #68df78;
+  }
+
+
+  .farm-brand-kicker {
+    margin-top: 8px;
+
+    font-size: .64rem;
+
+    font-weight: 600;
+
+    letter-spacing:
+      3.4px;
+
+    color:
+      rgba(255,255,255,.78);
+  }
+
+
+  /* ═══════════════════════════════════════════
+     MAIN SLOGAN
+  ═══════════════════════════════════════════ */
+
+  .farm-visual-heading {
+    max-width: 350px;
+  }
+
+
+  .farm-visual-heading h1 {
+    max-width: 350px;
+
+    margin:
+      0
+      0
+      28px !important;
+
+    font-size:
+      clamp(
+        1.35rem,
+        2.1vw,
+        1.72rem
+      ) !important;
+
+    font-weight: 500 !important;
+
+    line-height: 1.4;
+
+    letter-spacing: 0;
+
+    color:
+      rgba(255,255,255,.94) !important;
+
+    text-shadow:
+      0 4px 18px
+      rgba(0,0,0,.25);
+  }
+
+
+  /*
+     Reference only has the main slogan here.
+  */
+  .farm-visual-heading p {
+    display: none;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FEATURE CARDS
+  ═══════════════════════════════════════════ */
+
+  .farm-feature-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 13px;
+
+    margin-top: 0;
+  }
+
+
+  .farm-feature-card {
+    min-height: 116px;
+
+    padding:
+      16px
+      13px;
+
+    justify-content:
+      center;
+
+    gap: 11px;
+
+    border:
+      1px solid
+      rgba(113,228,136,.30);
+
+    border-radius:
+      15px;
+
+    background:
+      rgba(3,30,16,.27);
+
+    box-shadow:
+      inset
+      0 1px 0
+      rgba(255,255,255,.07),
+      0 11px 24px
+      rgba(0,0,0,.12);
+  }
+
+
+  .farm-feature-icon {
+    width: 37px;
+    height: 37px;
+
+    border:
+      1px solid
+      rgba(105,223,120,.22);
+
+    border-radius:
+      11px;
+
+    background:
+      rgba(75,192,94,.12);
+
+    color: #76e688;
+
+    font-size: 21px;
+  }
+
+
+  .farm-feature-card strong {
+    font-size: .76rem;
+
+    line-height: 1.35;
+  }
+
+
+  /*
+     Reference feature tiles use short labels,
+     so hide secondary description.
+  */
+  .farm-feature-card span {
+    display: none;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     HEALTHIER CROPS CARD
+  ═══════════════════════════════════════════ */
+
+  .farm-promise-card {
+    width: 290px;
+
+    margin-top: auto;
+
+    padding:
+      14px
+      18px;
+
+    gap: 13px;
+
+    border:
+      1px solid
+      rgba(93,217,117,.30);
+
+    border-radius:
+      15px;
+
+    background:
+      rgba(2,28,14,.60);
+
+    box-shadow:
+      0 12px 28px
+      rgba(0,0,0,.18);
+  }
+
+
+  .farm-promise-mark {
+    width: 38px;
+    height: 38px;
+
+    background:
+      rgba(74,201,96,.12);
+
+    color:
+      #75e487;
+
+    font-size: 22px;
+  }
+
+
+  .farm-promise-card strong,
+  .farm-promise-card span {
+    font-size: .76rem;
+
+    line-height: 1.45;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FLOATING WHITE AUTH CARD
+  ═══════════════════════════════════════════ */
+
+  .form-box {
+    padding:
+      30px
+      28px !important;
+  }
+
+
+  .form-box form {
+    width: 100%;
+
+    max-width: 420px;
+
+    padding:
+      40px
+      35px !important;
+
+    background:
+      rgba(250,252,250,.985) !important;
+
+    border:
+      1px solid
+      rgba(255,255,255,.82) !important;
+
+    border-radius:
+      24px !important;
+
+    box-shadow:
+      0 24px 52px
+      rgba(0,0,0,.27),
+      inset
+      0 1px 0
+      rgba(255,255,255,.92) !important;
+
+    backdrop-filter:
+      blur(10px) !important;
+
+    -webkit-backdrop-filter:
+      blur(10px) !important;
+  }
+
+
+  /*
+     Registration has one extra field,
+     so keep it slightly more compact.
+  */
+  .form-box.register form {
+    padding:
+      31px
+      34px !important;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   MOBILE BRAND COMPOSITION
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  body {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3,20,11,.62),
+        rgba(3,25,13,.82)
+      ),
+      url("assets/ui/farmcast-login-bg.webp");
+
+    background-size:
+      cover;
+
+    background-position:
+      center;
+
+    background-attachment:
+      scroll;
+  }
+
+
+  .container {
+    background-position:
+      48% center;
+  }
+
+
+  /*
+     Reference mobile branding is centered:
+     logo → FARMCAST → slogan.
+  */
+  .farm-visual-content {
+    align-items:
+      center;
+  }
+
+
+  .farm-brand-lockup {
+    flex-direction:
+      column;
+
+    align-items:
+      center;
+
+    gap: 3px;
+
+    margin:
+      0
+      0
+      10px;
+  }
+
+
+  .farm-brand-logo-wrap {
+    width: 68px;
+    height: 62px;
+
+    border: 0;
+
+    border-radius: 0;
+
+    background:
+      transparent;
+
+    backdrop-filter:
+      none;
+
+    -webkit-backdrop-filter:
+      none;
+  }
+
+
+  .farm-brand-logo {
+    width: 66px;
+    height: 66px;
+
+    filter:
+      drop-shadow(
+        0 8px 18px
+        rgba(0,0,0,.26)
+      );
+  }
+
+
+  .farm-brand-copy {
+    align-items:
+      center;
+  }
+
+
+  .farm-brand-name {
+    font-size:
+      1.75rem;
+
+    letter-spacing:
+      1.2px;
+
+    text-align:
+      center;
+  }
+
+
+  .farm-brand-kicker {
+    font-size: .48rem;
+
+    letter-spacing:
+      2.4px;
+
+    text-align:
+      center;
+  }
+
+
+  .farm-visual-heading {
+    text-align:
+      center;
+  }
+
+
+  .farm-visual-heading h1 {
+    max-width: 285px;
+
+    font-size:
+      1.08rem !important;
+
+    font-weight:
+      500 !important;
+
+    line-height: 1.35;
+
+    text-align:
+      center;
+  }
+
+
+  .farm-visual-heading p {
+    display: none;
+  }
+
+}
