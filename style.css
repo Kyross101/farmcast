@@ -2887,7 +2887,26 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 /* Prevention Tips */
 .prevention-tips { padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
 .prev-tip { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; background: var(--bg3); border-radius: var(--r-sm); border: 1px solid var(--border); }
-.pt-icon  { font-size: 18px; flex-shrink: 0; }
+
+.pt-icon {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.pt-icon-img {
+  width: 20px;
+  height: 20px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .pt-text  { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
 
 /* Pest Guide (accordion) */

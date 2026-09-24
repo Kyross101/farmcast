@@ -7702,14 +7702,71 @@ function renderPestPage() {
   }
 
   // Prevention tips
-  document.getElementById('preventionTips').innerHTML = [
-    { icon:'🌿', tip:'Maintain proper plant spacing to allow air circulation.' },
-    { icon:'💧', tip:'Avoid overhead watering — wet leaves encourage fungal growth.' },
-    { icon:'🔍', tip:'Scout fields every 2-3 days for early pest detection.' },
-    { icon:'🌱', tip:'Rotate crops each season to break pest life cycles.' },
-    { icon:'🧹', tip:'Remove crop debris and weeds that harbor pests.' },
-    { icon:'🐞', tip:'Encourage beneficial insects like ladybugs and spiders.' },
-  ].map(t => `<div class="prev-tip"><div class="pt-icon">${t.icon}</div><div class="pt-text">${t.tip}</div></div>`).join('');
+  document.getElementById(
+    'preventionTips'
+  ).innerHTML = [
+
+    {
+      icon:
+        'assets/ui/stage-vegetative.svg',
+      tip:
+        'Maintain proper plant spacing to allow air circulation.'
+    },
+
+    {
+      icon:
+        'assets/ui/quick-water.svg',
+      tip:
+        'Avoid overhead watering — wet leaves encourage fungal growth.'
+    },
+
+    {
+      icon:
+        'assets/ui/scanner-detect.svg',
+      tip:
+        'Scout fields every 2-3 days for early pest detection.'
+    },
+
+    {
+      icon:
+        'assets/ui/stage-seedling.svg',
+      tip:
+        'Rotate crops each season to break pest life cycles.'
+    },
+
+    {
+      icon:
+        'assets/ui/pest-cleanup.svg',
+      tip:
+        'Remove crop debris and weeds that harbor pests.'
+    },
+
+    {
+      icon:
+        'assets/ui/pest-beneficial-insect.svg',
+      tip:
+        'Encourage beneficial insects like ladybugs and spiders.'
+    }
+
+  ].map(t => `
+
+    <div class="prev-tip">
+
+      <div class="pt-icon">
+        <img
+          src="${t.icon}"
+          alt=""
+          class="pt-icon-img"
+        >
+      </div>
+
+      <div class="pt-text">
+        ${t.tip}
+      </div>
+
+    </div>
+
+  `).join('');
 
   // Pest guide (encyclopedia)
   document.getElementById(
