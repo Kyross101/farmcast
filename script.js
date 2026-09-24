@@ -7568,18 +7568,29 @@ function renderPestPage() {
   if (active.length === 0) {
     pestFullList.innerHTML = `
       <div class="pest-full-empty">
-        <div class="pest-full-empty-icon">✅</div>
+
+        <div class="pest-full-empty-icon">
+          <img
+            src="assets/ui/pest-status-low.svg"
+            alt=""
+            class="pest-full-empty-icon-img"
+          >
+       </div>
 
         <div>
-          <strong>No Elevated Pest Risk</strong>
-
+          <strong>
+            No Elevated Pest Risk
+          </strong>
+  
           <p>
             Current weather conditions do not indicate an elevated
             weather-related pest risk. Continue regular crop inspection.
           </p>
         </div>
+
       </div>
     `;
+
 }   else {
     pestFullList.innerHTML = active.map(p => `
       <div class="pest-full-item ${p.level}">
