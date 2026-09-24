@@ -3711,3 +3711,440 @@ and (max-width: 900px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — PREMIUM WHITE AUTH PANEL
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px) {
+
+  /*
+     Keep farm image on the left,
+     create a clean white surface on the right.
+  */
+  .container {
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 55%,
+        rgba(249,252,249,.99) 55%,
+        rgba(249,252,249,.99) 100%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(4,22,12,.25),
+        rgba(7,45,23,.10)
+      ),
+      url("assets/ui/farmcast-login-bg.webp");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  /* Right auth area */
+  .form-box {
+    padding:
+      48px
+      46px !important;
+
+    background:
+      transparent !important;
+  }
+
+
+  /*
+     Remove old floating-card appearance.
+     The entire right side is now the card.
+  */
+  .form-box form {
+    width: 100%;
+    max-width: 390px;
+
+    padding: 0 !important;
+
+    background:
+      transparent !important;
+
+    border:
+      0 !important;
+
+    border-radius:
+      0 !important;
+
+    box-shadow:
+      none !important;
+
+    backdrop-filter:
+      none !important;
+
+    -webkit-backdrop-filter:
+      none !important;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     HEADINGS
+  ═══════════════════════════════════════════ */
+
+  .form-box form h1 {
+    margin: 0;
+
+    color: #14291c;
+
+    font-size:
+      clamp(
+        1.9rem,
+        2.7vw,
+        2.35rem
+      );
+
+    font-weight: 800;
+
+    line-height: 1.12;
+
+    letter-spacing:
+      -.6px;
+  }
+
+
+  .auth-subtitle {
+    margin:
+      9px
+      0
+      28px !important;
+
+    color:
+      #77847c !important;
+
+    font-size:
+      .84rem !important;
+
+    line-height: 1.55;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FIELD LABELS
+  ═══════════════════════════════════════════ */
+
+  .auth-field {
+    margin-bottom: 17px;
+  }
+
+
+  .auth-field label {
+    margin-bottom: 8px;
+
+    color: #35453b;
+
+    font-size: .76rem;
+
+    font-weight: 700;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     INPUTS
+  ═══════════════════════════════════════════ */
+
+  .input-box {
+    position: relative;
+
+    margin: 0;
+  }
+
+
+  .input-box input {
+    min-height: 54px;
+
+    padding:
+      0
+      48px
+      0
+      46px;
+
+    background:
+      #ffffff;
+
+    border:
+      1px solid #dce5df;
+
+    border-radius:
+      13px;
+
+    color:
+      #17291e;
+
+    font-size:
+      .86rem;
+
+    box-shadow:
+      0 1px 2px
+      rgba(20,41,28,.025);
+
+    transition:
+      border-color .2s ease,
+      box-shadow .2s ease,
+      background .2s ease;
+  }
+
+
+  .input-box input::placeholder {
+    color: #a0aba4;
+  }
+
+
+  .input-box input:hover {
+    border-color:
+      #c8d5cd;
+  }
+
+
+  .input-box input:focus {
+    background:
+      #ffffff;
+
+    border-color:
+      #35a853;
+
+    box-shadow:
+      0 0 0 4px
+      rgba(53,168,83,.10);
+  }
+
+
+  /*
+     Username / email / lock icons
+     move to the LEFT like our reference.
+  */
+  .form-box
+  .input-box > i {
+    left: 16px;
+    right: auto;
+
+    top: 50%;
+
+    transform:
+      translateY(-50%);
+
+    color: #718078;
+
+    font-size: 18px;
+
+    pointer-events: none;
+  }
+
+
+  /* Password eye remains on the right */
+  .password-toggle {
+    left: auto !important;
+    right: 16px !important;
+  }
+
+
+  .password-toggle i {
+    color:
+      #6b7d71 !important;
+
+    font-size:
+      20px;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FORGOT PASSWORD
+  ═══════════════════════════════════════════ */
+
+  .forgot-link {
+    margin:
+      -5px
+      0
+      19px;
+
+    text-align: right;
+  }
+
+
+  .forgot-link a {
+    color: #258944;
+
+    font-size: .74rem;
+
+    font-weight: 700;
+
+    text-decoration: none;
+  }
+
+
+  .forgot-link a:hover {
+    color: #176e34;
+
+    opacity: 1;
+
+    text-decoration:
+      underline;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     MAIN BUTTON
+  ═══════════════════════════════════════════ */
+
+  .form-box
+  form >
+  .btn {
+    min-height: 54px;
+
+    margin-top: 2px;
+
+    border-radius: 12px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #238d43,
+        #3eb45c
+      );
+
+    color: #ffffff;
+
+    font-size: .88rem;
+    font-weight: 700;
+
+    box-shadow:
+      0 10px 25px
+      rgba(35,141,67,.23);
+  }
+
+
+  .form-box
+  form >
+  .btn:not(.is-loading)::after {
+    content: "→";
+
+    margin-left: 9px;
+
+    font-size: 1.05rem;
+
+    line-height: 1;
+
+    transition:
+      transform .2s ease;
+  }
+
+
+  .form-box
+  form >
+  .btn:not(.is-loading):hover::after {
+    transform:
+      translateX(3px);
+  }
+
+
+  /* Hide old security line on desktop.
+     Keep it available for mobile. */
+  .auth-secure-note {
+    display: none;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     DIVIDER
+  ═══════════════════════════════════════════ */
+
+  .auth-divider {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin:
+      22px
+      0
+      15px;
+
+    color: #9aa79f;
+
+    font-size: .66rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: .8px;
+  }
+
+
+  .auth-divider::before,
+  .auth-divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+      #e1e8e3;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     LOGIN / REGISTER SWITCH
+  ═══════════════════════════════════════════ */
+
+  .auth-switch-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 0;
+
+    color: #78857d;
+
+    font-size: .76rem;
+  }
+
+
+  .auth-switch-btn {
+    color: #258944;
+
+    font-weight: 800;
+  }
+
+
+  .auth-switch-btn:hover {
+    color: #176e34;
+  }
+
+
+  /* Register hint */
+  .password-hint {
+    margin-top: 7px;
+
+    color: #7f8c84;
+
+    font-size: .67rem;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   AUTH DIVIDER — MOBILE DEFAULT
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  .auth-divider {
+    display: none;
+  }
+
+}
