@@ -1896,68 +1896,6 @@ and (max-height: 620px) {
 }
 
 
-
-/* ═══════════════════════════════════════════════
-   VERY SMALL PHONES
-═══════════════════════════════════════════════ */
-
-@media screen and (max-width: 380px) {
-
-  body {
-    padding: 8px;
-  }
-
-
-  .container {
-    height: max(
-      710px,
-      calc(100dvh - 16px)
-    );
-
-    min-height: 710px;
-
-    border-radius: 16px;
-  }
-
-
-  .form-box {
-    padding:
-      14px
-      9px;
-  }
-
-
-  .form-box form {
-    padding:
-      22px
-      16px;
-
-    border-radius: 17px;
-  }
-
-
-  .form-box form h1 {
-    font-size: 1.45rem;
-  }
-
-
-  .auth-subtitle {
-    font-size: .8rem !important;
-  }
-
-
-  .auth-field {
-    margin-bottom: 10px;
-  }
-
-
-  .auth-secure-note,
-  .auth-switch-row {
-    font-size: .7rem;
-  }
-
-}
-
 /* ═══════════════════════════════════════════════
    FARMCAST LOGIN — TOAST NOTIFICATIONS
 ═══════════════════════════════════════════════ */
