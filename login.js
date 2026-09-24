@@ -164,6 +164,36 @@ const loginForm = document.querySelector('.login form');
 const loginSubmitBtn = loginForm.querySelector('button[type="submit"]');
 loginSubmitBtn.dataset.label = 'Login';
 
+const loginUsernameInput =
+  document.getElementById(
+    'loginUsername'
+  );
+
+const rememberMe =
+  document.getElementById(
+    'rememberMe'
+  );
+
+
+const rememberedUsername =
+  localStorage.getItem(
+    'fc_remembered_username'
+  );
+
+
+if (
+  rememberedUsername &&
+  loginUsernameInput &&
+  rememberMe
+) {
+
+  loginUsernameInput.value =
+    rememberedUsername;
+
+  rememberMe.checked =
+    true;
+}
+
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const username = loginForm.querySelector('input[placeholder="Username"]').value.trim();
@@ -246,6 +276,25 @@ registerForm.addEventListener('submit', async (e) => {
     // Save token and user info
     localStorage.setItem('fc_token', data.token);
     localStorage.setItem('fc_authUser', JSON.stringify(data.user));
+
+    // Remember username only.
+    // Never store the user's password.
+    if (
+      rememberMe &&
+      rememberMe.checked
+    ) {
+
+      localStorage.setItem(
+        'fc_remembered_username',
+         username
+       );
+
+    } else {
+
+      localStorage.removeItem(
+        'fc_remembered_username'
+      );
+    }
 
     showtoast(
       `Registered successfully! Welcome, ${data.user.username}!`,
