@@ -1001,7 +1001,25 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .fc-day:hover,.fc-day.active{background:var(--green-dim);border-color:rgba(63,185,80,0.3);}
 .fc-day-name{font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:6px;}
 .fc-day.active .fc-day-name{color:var(--green);}
-.fc-icon{font-size:20px;margin:4px 0;}
+
+.fc-icon {
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 4px 0;
+}
+
+.mini-weather-icon-img {
+  width: 28px;
+  height: 28px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .fc-temp-high{font-size:0.88rem;font-weight:700;color:var(--text);}
 .fc-temp-low{font-size:0.75rem;color:var(--text-muted);}
  
