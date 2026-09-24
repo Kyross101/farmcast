@@ -6678,3 +6678,26 @@ and (max-height: 680px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — MOBILE CARD SEPARATION FIX
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  /*
+     Dark farm header ends at 33%.
+     Start the white card lower so it no longer
+     covers the dark header.
+  */
+  .form-box,
+  .container.active
+  .form-box {
+    top:
+      35% !important;
+
+    height:
+      65% !important;
+  }
+
+}
