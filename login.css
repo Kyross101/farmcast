@@ -7029,3 +7029,85 @@ and (max-height: 680px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — MOBILE CARD STABILITY
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  /*
+     Login and Register always begin
+     from exactly the same position.
+  */
+  .form-box,
+  .container.active
+  .form-box {
+    top:
+      29% !important;
+
+    height:
+      71% !important;
+
+    padding:
+      0
+      11px
+      12px !important;
+
+    align-items:
+      flex-start !important;
+
+    justify-content:
+      center !important;
+  }
+
+
+  /*
+     Do not vertically center the card.
+     This prevents jumping when switching
+     between Login and Register.
+  */
+  .form-box form,
+  .form-box.login form,
+  .form-box.register form {
+    margin:
+      0 auto !important;
+
+    width:
+      100% !important;
+  }
+
+
+  /*
+     Keep equal spacing on both sides.
+  */
+  .form-box form {
+    max-width:
+      410px !important;
+  }
+
+
+  /*
+     Login and Register should share
+     the same top curve and alignment.
+  */
+  .form-box.login form,
+  .form-box.register form {
+    border-radius:
+      19px !important;
+  }
+
+}
+
+
+/* Small phones */
+@media screen and (max-width: 380px) {
+
+  .form-box,
+  .container.active
+  .form-box {
+    padding-inline:
+      9px !important;
+  }
+
+}
