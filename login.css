@@ -2904,3 +2904,282 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — STATIC SPLIT LAYOUT
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px) {
+
+  /* Main desktop proportions */
+  .container {
+    width: min(
+      1080px,
+      calc(100vw - 64px)
+    );
+
+    height: min(
+      650px,
+      calc(100dvh - 64px)
+    );
+
+    min-height: 580px;
+  }
+
+
+  /* ═══════════════════════════════════════════════
+     STATIC FARM VISUAL — LEFT
+  ═══════════════════════════════════════════════ */
+
+  .toggle-box {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 2;
+  }
+
+
+  /* Stop the old moving green panel */
+  .toggle-box::before {
+    left: 0 !important;
+    top: 0 !important;
+
+    width: 55% !important;
+    height: 100% !important;
+
+    transform: none !important;
+
+    border-radius:
+      0
+      34px
+      34px
+      0 !important;
+
+    transition: none !important;
+
+    pointer-events: none;
+  }
+
+
+  .container.active
+  .toggle-box::before {
+    left: 0 !important;
+
+    transform: none !important;
+
+    border-radius:
+      0
+      34px
+      34px
+      0 !important;
+  }
+
+
+  /* Left FarmCast branding stays forever */
+  .toggle-panel.toggle-left {
+    left: 0 !important;
+    top: 0 !important;
+    right: auto !important;
+
+    width: 55% !important;
+    height: 100% !important;
+
+    transform: none !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    pointer-events: none;
+
+    transition: none !important;
+  }
+
+
+  .container.active
+  .toggle-panel.toggle-left {
+    left: 0 !important;
+
+    transform: none !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+
+  /*
+     Old right-side branding panel is no longer
+     needed in the new static layout.
+  */
+  .toggle-panel.toggle-right {
+    display: none !important;
+  }
+
+
+  /* Hide old big Create Account button on left */
+  .toggle-panel.toggle-left > .btn {
+    display: none;
+  }
+
+
+  /* ═══════════════════════════════════════════════
+     AUTH AREA — RIGHT
+  ═══════════════════════════════════════════════ */
+
+  .form-box {
+    position: absolute;
+
+    left: auto !important;
+    right: 0 !important;
+
+    bottom: auto !important;
+
+    width: 45% !important;
+    height: 100% !important;
+
+    padding:
+      28px
+      30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    overflow: visible;
+
+    z-index: 5;
+  }
+
+
+  .container.active
+  .form-box {
+    left: auto !important;
+    right: 0 !important;
+
+    bottom: auto !important;
+  }
+
+
+  .form-box form {
+    width: 100%;
+    max-width: 410px;
+
+    margin: auto;
+  }
+
+
+  /* ═══════════════════════════════════════════════
+     LOGIN FORM
+  ═══════════════════════════════════════════════ */
+
+  .form-box.login {
+    left: auto !important;
+    right: 0 !important;
+
+    transform:
+      translateY(0) !important;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transition:
+      opacity .28s ease,
+      transform .36s
+      cubic-bezier(.22,.61,.36,1),
+      visibility 0s;
+  }
+
+
+  .container.active
+  .form-box.login {
+    left: auto !important;
+    right: 0 !important;
+
+    transform:
+      translateY(-14px) !important;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+      opacity .22s ease,
+      transform .3s ease,
+      visibility 0s linear .22s;
+  }
+
+
+  /* ═══════════════════════════════════════════════
+     REGISTER FORM
+  ═══════════════════════════════════════════════ */
+
+  .form-box.register {
+    left: auto !important;
+    right: 0 !important;
+
+    transform:
+      translateY(14px) !important;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+      opacity .22s ease,
+      transform .3s ease,
+      visibility 0s linear .22s;
+  }
+
+
+  .container.active
+  .form-box.register {
+    left: auto !important;
+    right: 0 !important;
+
+    transform:
+      translateY(0) !important;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transition:
+      opacity .28s ease .08s,
+      transform .36s
+      cubic-bezier(.22,.61,.36,1),
+      visibility 0s;
+  }
+
+
+  /* ═══════════════════════════════════════════════
+     CREATE ACCOUNT / SIGN IN LINKS
+  ═══════════════════════════════════════════════ */
+
+  .auth-switch-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+  }
+
+}
