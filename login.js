@@ -9,8 +9,40 @@ const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
 const loginBtn    = document.querySelector('.login-btn');
 
+const mobileRegisterBtn =
+  document.getElementById(
+    'mobileRegisterBtn'
+  );
+
+const mobileLoginBtn =
+  document.getElementById(
+    'mobileLoginBtn'
+  );
+
 registerBtn.addEventListener('click', () => container.classList.add('active'));
 loginBtn.addEventListener('click',    () => container.classList.remove('active'));
+
+if (mobileRegisterBtn) {
+  mobileRegisterBtn.addEventListener(
+    'click',
+    () => {
+      container.classList.add(
+        'active'
+      );
+    }
+  );
+}
+
+if (mobileLoginBtn) {
+  mobileLoginBtn.addEventListener(
+    'click',
+    () => {
+      container.classList.remove(
+        'active'
+      );
+    }
+  );
+}
 
 // ── TOAST ──
 function showtoast(message, type = 'success') {
