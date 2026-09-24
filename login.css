@@ -6635,3 +6635,16 @@ body::after {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — REMOVE DIAGONAL ACCENT
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px) {
+
+  .toggle-panel.toggle-left::after {
+    content: none !important;
+    display: none !important;
+  }
+
+}
