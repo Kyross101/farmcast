@@ -1084,3 +1084,170 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — BRAND PANEL
+═══════════════════════════════════════════════ */
+
+.farm-brand-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 24px;
+}
+
+.farm-brand-logo {
+  width: 76px;
+  height: 76px;
+
+  display: block;
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 10px 22px rgba(0, 0, 0, .28)
+    );
+}
+
+.farm-brand-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.farm-brand-name {
+  font-size: 1.65rem;
+  line-height: 1;
+
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  color: #ffffff;
+}
+
+.farm-brand-name span {
+  color: #58d26b;
+}
+
+.farm-brand-kicker {
+  margin-top: 7px;
+
+  font-size: .61rem;
+  font-weight: 600;
+
+  letter-spacing: 2.2px;
+
+  color: rgba(255,255,255,.7);
+}
+
+.farm-brand-heading {
+  max-width: 320px;
+
+  margin: 0 auto 8px !important;
+
+  font-size: 1.55rem !important;
+  line-height: 1.25;
+
+  color: #ffffff !important;
+}
+
+.farm-brand-description {
+  max-width: 300px;
+
+  margin:
+    0 auto 22px !important;
+
+  line-height: 1.55;
+
+  color:
+    rgba(255,255,255,.7) !important;
+}
+
+
+/* Hide old emoji-logo styling */
+
+.toggle-panel .farm-logo {
+  display: none;
+}
+
+
+/* ── MOBILE BRANDING ── */
+
+@media screen and (max-width: 650px) {
+
+  .farm-brand-lockup {
+    flex-direction: row;
+
+    gap: 9px;
+
+    margin-bottom: 9px;
+  }
+
+  .farm-brand-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .farm-brand-copy {
+    align-items: flex-start;
+  }
+
+  .farm-brand-name {
+    font-size: 1.1rem;
+  }
+
+  .farm-brand-kicker {
+    margin-top: 4px;
+
+    font-size: .46rem;
+    letter-spacing: 1.4px;
+  }
+
+  .farm-brand-heading {
+    max-width: 300px;
+
+    margin-bottom: 3px !important;
+
+    font-size: 1rem !important;
+    line-height: 1.25;
+  }
+
+  .farm-brand-description {
+    display: none;
+  }
+
+  .toggle-panel .btn {
+    width: 145px;
+
+    min-height: 40px;
+    height: 40px;
+
+    margin-top: 5px;
+
+    font-size: .78rem;
+  }
+
+}
+
+
+/* Extra-small phones */
+
+@media screen and (max-width: 380px) {
+
+  .farm-brand-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .farm-brand-name {
+    font-size: 1rem;
+  }
+
+  .farm-brand-heading {
+    font-size: .9rem !important;
+  }
+
+}

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img">
+  <title>FarmCast</title>
+
+  <!-- Sun -->
+  <circle cx="62" cy="29" r="13" fill="#f4c542"></circle>
+
+  <path d="M62 8V14
+       M62 44V50
+       M41 29H47
+       M77 29H83
+       M47 14L51 18
+       M73 40L77 44
+       M77 14L73 18" fill="none" stroke="#f4c542" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Left leaf -->
+  <path d="M46 73
+       C25 69 14 54 17 34
+       C35 35 49 47 46 73Z" fill="#2ea043"></path>
+
+  <!-- Right leaf -->
+  <path d="M49 73
+       C50 50 63 38 82 38
+       C81 57 68 70 49 73Z" fill="#49cc5d"></path>
+
+  <!-- Center leaf -->
+  <path d="M48 65
+       C34 53 34 34 47 20
+       C61 33 62 51 48 65Z" fill="#3fb950"></path>
+
+  <!-- Leaf lines -->
+  <path d="M48 73V34
+       M48 60L30 44
+       M48 58L67 45" fill="none" stroke="#d7f8dc" stroke-width="3" stroke-linecap="round"></path>
+</svg>
