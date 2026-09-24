@@ -7871,7 +7871,43 @@ function renderPestLog() {
         <div class="pli-date">${l.date}</div>
         <button class="pli-del" onclick="deletePestLog('${l.id}')"><span class="material-symbols-outlined" style="font-size:15px">delete</span></button>
       </div>
-      <div class="pli-info">🌱 ${l.crop} · 📍 ${l.location}</div>
+
+      <div class="pli-info">
+
+        <span class="pli-info-item">
+
+          <img
+            src="assets/ui/stage-seedling.svg"
+            alt=""
+            class="pli-info-icon"
+          >
+
+          <span>
+            ${l.crop}
+          </span>
+
+        </span>
+
+        <span class="pli-info-separator">
+          ·
+        </span>
+
+        <span class="pli-info-item">
+
+          <img
+            src="assets/ui/pest-location.svg"
+            alt=""
+            class="pli-info-icon"
+          >
+
+          <span>
+            ${l.location}
+          </span>
+
+        </span>
+
+      </div>
+
       ${l.notes ? `<div class="pli-notes">${l.notes}</div>` : ''}
     </div>
   `).join('');

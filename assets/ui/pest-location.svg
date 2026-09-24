@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Field Location</title>
+
+  <path d="M32 8
+       C21 8 13 16 13 27
+       C13 41 32 56 32 56
+       C32 56 51 41 51 27
+       C51 16 43 8 32 8Z" fill="none" stroke="#58a6ff" stroke-width="4" stroke-linejoin="round"></path>
+
+  <circle cx="32" cy="27" r="7" fill="none" stroke="#58a6ff" stroke-width="4"></circle>
+</svg>
