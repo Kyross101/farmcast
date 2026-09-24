@@ -5866,3 +5866,242 @@ body::after {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — FAST AUTH SWITCH + FIT FIX
+═══════════════════════════════════════════════ */
+
+/*
+   Fast Login <-> Register switching.
+   No large slide movement anymore.
+*/
+.form-box.login,
+.form-box.register,
+.container.active .form-box.login,
+.container.active .form-box.register {
+  transform: none !important;
+}
+
+
+/* Login visible */
+.form-box.login {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transition:
+    opacity .12s ease,
+    visibility 0s !important;
+}
+
+
+/* Login hidden */
+.container.active
+.form-box.login {
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .10s ease,
+    visibility 0s linear .10s !important;
+}
+
+
+/* Register hidden */
+.form-box.register {
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .10s ease,
+    visibility 0s linear .10s !important;
+}
+
+
+/* Register visible */
+.container.active
+.form-box.register {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transition:
+    opacity .12s ease,
+    visibility 0s !important;
+}
+
+
+/* ═══════════════════════════════════════════════
+   DESKTOP REGISTER FIT
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px) {
+
+  /*
+     Prevent the taller Register form
+     from overflowing the container.
+  */
+  .form-box {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    padding:
+      20px
+      26px !important;
+  }
+
+
+  .form-box.register {
+    align-items:
+      center !important;
+  }
+
+
+  .form-box.register form {
+    width: 100%;
+
+    max-width:
+      390px !important;
+
+    margin:
+      auto !important;
+
+    padding:
+      25px
+      29px !important;
+  }
+
+
+  .form-box.register
+  h1 {
+    font-size:
+      1.85rem !important;
+  }
+
+
+  .form-box.register
+  .auth-subtitle {
+    margin:
+      6px
+      0
+      16px !important;
+  }
+
+
+  .form-box.register
+  .auth-field {
+    margin-bottom:
+      11px !important;
+  }
+
+
+  .form-box.register
+  .input-box input {
+    min-height:
+      48px !important;
+  }
+
+
+  .form-box.register
+  .password-hint {
+    margin-top:
+      5px !important;
+  }
+
+
+  .form-box.register
+  form >
+  .btn {
+    min-height:
+      49px !important;
+  }
+
+
+  .form-box.register
+  .auth-divider {
+    margin:
+      13px
+      0
+      9px !important;
+  }
+
+
+  /*
+     Make sure Sign in is always usable
+     when Register is shown.
+  */
+  .form-box.register
+  .auth-switch-row {
+    display:
+      flex !important;
+
+    margin-top:
+      0 !important;
+
+    position:
+      relative;
+
+    z-index:
+      10;
+  }
+
+
+  .form-box.register
+  .auth-switch-btn {
+    position:
+      relative;
+
+    z-index:
+      11;
+
+    pointer-events:
+      auto !important;
+
+    cursor:
+      pointer;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   MOBILE PERFORMANCE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  /*
+     Card is already almost solid white,
+     so removing blur saves GPU work.
+  */
+  .form-box form {
+    backdrop-filter:
+      none !important;
+
+    -webkit-backdrop-filter:
+      none !important;
+  }
+
+
+  .auth-switch-btn {
+    touch-action:
+      manipulation;
+
+    -webkit-tap-highlight-color:
+      transparent;
+
+    cursor:
+      pointer;
+  }
+
+}
