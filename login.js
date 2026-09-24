@@ -161,8 +161,14 @@ function setLoading(
 
 // ── LOGIN ──
 const loginForm = document.querySelector('.login form');
-const loginSubmitBtn = loginForm.querySelector('button[type="submit"]');
-loginSubmitBtn.dataset.label = 'Login';
+
+const loginSubmitBtn =
+  loginForm.querySelector(
+    'button[type="submit"]'
+  );
+
+  loginSubmitBtn.dataset.label =
+    'Sign In';
 
 const loginUsernameInput =
   document.getElementById(
@@ -196,8 +202,21 @@ if (
 
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const username = loginForm.querySelector('input[placeholder="Username"]').value.trim();
-  const password = loginForm.querySelector('input[placeholder="Password"]').value.trim();
+  const username =
+    document
+      .getElementById(
+        'loginUsername'
+      )
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById(
+        'loginPassword'
+      )
+      .value
+      .trim();
 
   if (!username || !password) {
     showtoast('Please fill in all fields.', 'error'); return;
@@ -260,14 +279,41 @@ loginForm.addEventListener('submit', async (e) => {
 
 // ── REGISTER ──
 const registerForm    = document.querySelector('.register form');
-const registerSubmitBtn = registerForm.querySelector('button[type="submit"]');
-registerSubmitBtn.dataset.label = 'Register';
+
+const registerSubmitBtn =
+  registerForm.querySelector(
+    'button[type="submit"]'
+  );
+
+registerSubmitBtn.dataset.label =
+  'Create Account';
 
 registerForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const username = registerForm.querySelector('input[placeholder="Username"]').value.trim();
-  const email    = registerForm.querySelector('input[placeholder="Email"]').value.trim();
-  const password = registerForm.querySelector('input[placeholder="Password"]').value.trim();
+
+  const username =
+    document
+      .getElementById(
+        'registerUsername'
+      )
+      .value
+      .trim();
+
+  const email =
+    document
+      .getElementById(
+        'registerEmail'
+      )
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById(
+        'registerPassword'
+      )
+      .value
+      .trim();
 
   if (!username || !email || !password) {
     showtoast('Please fill in all fields.', 'error'); return;
