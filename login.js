@@ -45,41 +45,98 @@ if (mobileLoginBtn) {
 }
 
 // ── TOAST ──
-function showtoast(message, type = 'success') {
-  let toastContainer = document.getElementById('toast-container');
+function showtoast(
+  message,
+  type = 'success'
+) {
+
+  let toastContainer =
+    document.getElementById(
+      'toast-container'
+    );
+
   if (!toastContainer) {
-    toastContainer = document.createElement('div');
-    toastContainer.id = 'toast-container';
-    document.body.appendChild(toastContainer);
+
+    toastContainer =
+      document.createElement(
+        'div'
+      );
+
+    toastContainer.id =
+      'toast-container';
+
+    document.body.appendChild(
+      toastContainer
+    );
   }
-  const toast = document.createElement('div');
-  toast.textContent = message;
-  Object.assign(toast.style, {
-    background   : type === 'success' ? '#3fb950' : type === 'warn' ? '#e3a008' : '#f85149',
-    color        : '#fff',
-    padding      : '12px 20px',
-    marginTop    : '10px',
-    borderRadius : '8px',
-    boxShadow    : '0 4px 12px rgba(0,0,0,0.3)',
-    fontFamily   : 'Poppins, sans-serif',
-    fontSize     : '0.9rem',
-    fontWeight   : '600',
-    opacity      : '0',
-    transform    : 'translateX(40px)',
-    transition   : 'all 0.4s ease',
-    minWidth     : '220px',
-    borderLeft   : `4px solid ${type==='success'?'#2ea043':type==='warn'?'#b07800':'#a52525'}`,
-  });
-  toastContainer.appendChild(toast);
-  requestAnimationFrame(() => {
-    toast.style.opacity   = '1';
-    toast.style.transform = 'translateX(0)';
-  });
-  setTimeout(() => {
-    toast.style.opacity   = '0';
-    toast.style.transform = 'translateX(40px)';
-    setTimeout(() => toast.remove(), 400);
-  }, 3000);
+
+
+  const toast =
+    document.createElement(
+      'div'
+    );
+
+  toast.className =
+    `fc-toast fc-toast-${type}`;
+
+
+  const icon =
+    document.createElement(
+      'i'
+    );
+
+  icon.className =
+    type === 'success'
+      ? 'bx bx-check-circle'
+      : type === 'warn'
+        ? 'bx bx-error'
+        : 'bx bx-error-circle';
+
+
+  const text =
+    document.createElement(
+      'span'
+    );
+
+  text.className =
+    'fc-toast-message';
+
+  text.textContent =
+    message;
+
+
+  toast.appendChild(icon);
+  toast.appendChild(text);
+
+  toastContainer.appendChild(
+    toast
+  );
+
+
+  requestAnimationFrame(
+    () => {
+      toast.classList.add(
+        'show'
+      );
+    }
+  );
+
+
+  setTimeout(
+    () => {
+
+      toast.classList.remove(
+        'show'
+      );
+
+      setTimeout(
+        () => toast.remove(),
+        300
+      );
+
+    },
+    3000
+  );
 }
 
 // ── LOADING STATE ──
@@ -122,7 +179,14 @@ loginForm.addEventListener('submit', async (e) => {
     localStorage.setItem('fc_token', data.token);
     localStorage.setItem('fc_authUser', JSON.stringify(data.user));
 
-    showtoast(`Welcome back, ${data.user.name || data.user.username}! 🌾`, 'success');
+    showtoast(
+      `Welcome back, ${
+        data.user.name ||
+        data.user.username
+      }!`,
+      'success'
+    );
+
     setTimeout(() => window.location.href = 'index.html', 1200);
 
   } catch (err) {
@@ -169,7 +233,10 @@ registerForm.addEventListener('submit', async (e) => {
     localStorage.setItem('fc_token', data.token);
     localStorage.setItem('fc_authUser', JSON.stringify(data.user));
 
-    showtoast(`Registered successfully! Welcome, ${data.user.username}! 🌱`, 'success');
+    showtoast(
+      `Registered successfully! Welcome, ${data.user.username}!`,
+      'success'
+    );
     setTimeout(() => window.location.href = 'index.html', 1200);
 
   } catch (err) {

@@ -2474,3 +2474,187 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — TOAST NOTIFICATIONS
+═══════════════════════════════════════════════ */
+
+#toast-container {
+  position: fixed;
+
+  top: 18px;
+  right: 18px;
+
+  z-index: 10000;
+
+  width: min(
+    360px,
+    calc(100vw - 36px)
+  );
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  pointer-events: none;
+}
+
+
+/* Main toast */
+.fc-toast {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding:
+    13px
+    15px;
+
+  background:
+    rgba(255,255,255,.97);
+
+  border:
+    1px solid
+    rgba(16,34,23,.09);
+
+  border-radius: 14px;
+
+  color: #26352c;
+
+  box-shadow:
+    0 14px 34px
+    rgba(0,0,0,.20);
+
+  opacity: 0;
+
+  transform:
+    translateY(-8px)
+    translateX(18px);
+
+  transition:
+    opacity .28s ease,
+    transform .28s ease;
+
+  pointer-events: auto;
+}
+
+
+/* Visible state */
+.fc-toast.show {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    translateX(0);
+}
+
+
+/* Icon */
+.fc-toast > i {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 20px;
+}
+
+
+/* Message */
+.fc-toast-message {
+  min-width: 0;
+
+  color: #405047;
+
+  font-size: .8rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+
+/* Success */
+.fc-toast-success {
+  border-left:
+    4px solid #2ea043;
+}
+
+.fc-toast-success > i {
+  color: #16883b;
+
+  background:
+    rgba(46,160,67,.11);
+}
+
+
+/* Error */
+.fc-toast-error {
+  border-left:
+    4px solid #d93f3f;
+}
+
+.fc-toast-error > i {
+  color: #d93f3f;
+
+  background:
+    rgba(217,63,63,.10);
+}
+
+
+/* Warning */
+.fc-toast-warn {
+  border-left:
+    4px solid #d39b19;
+}
+
+.fc-toast-warn > i {
+  color: #b47d00;
+
+  background:
+    rgba(211,155,25,.12);
+}
+
+
+/* ── Mobile ── */
+
+@media screen and (max-width: 650px) {
+
+  #toast-container {
+    top: 10px;
+
+    left: 50%;
+    right: auto;
+
+    width:
+      calc(100vw - 24px);
+
+    max-width: 430px;
+
+    transform:
+      translateX(-50%);
+  }
+
+
+  .fc-toast {
+    padding:
+      12px
+      13px;
+
+    border-radius: 12px;
+  }
+
+
+  .fc-toast-message {
+    font-size: .76rem;
+  }
+
+}
