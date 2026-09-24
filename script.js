@@ -11930,64 +11930,121 @@ function renderAnimatedWeather(iconCode, desc = '') {
   }
 }
 
-function getMiniWeatherScene(iconCode) {
+function getMiniWeatherScene(iconCode = '') {
 
-  let iconPath =
-    'assets/ui/weather-partly-cloudy.svg';
-
-  if (!iconCode) {
+  /* ☀️ CLEAR */
+  if (iconCode.startsWith('01')) {
     return `
-      <img
-        src="${iconPath}"
-        alt=""
-        class="mini-weather-icon-img"
-      >
+      <div class="mini-scene">
+        <div class="mini-sun">
+          <div class="mini-sun-rays"></div>
+          <div class="mini-sun-core"></div>
+        </div>
+      </div>
     `;
   }
 
 
-  if (iconCode.startsWith('01')) {
-    iconPath =
-      'assets/ui/weather-clear.svg';
-
-  } else if (iconCode.startsWith('02')) {
-    iconPath =
-      'assets/ui/weather-partly-cloudy.svg';
-
-  } else if (
-    iconCode.startsWith('03') ||
-    iconCode.startsWith('04')
-  ) {
-    iconPath =
-      'assets/ui/weather-cloudy.svg';
-
-  } else if (
-    iconCode.startsWith('09') ||
-    iconCode.startsWith('10')
-  ) {
-    iconPath =
-      'assets/ui/weather-rain.svg';
-
-  } else if (iconCode.startsWith('11')) {
-    iconPath =
-      'assets/ui/weather-thunder.svg';
-
-  } else if (iconCode.startsWith('13')) {
-    iconPath =
-      'assets/ui/weather-snow.svg';
-
-  } else if (iconCode.startsWith('50')) {
-    iconPath =
-      'assets/ui/weather-fog.svg';
+  /* 🌤️ PARTLY CLOUDY */
+  if (iconCode.startsWith('02')) {
+    return `
+      <div class="mini-scene">
+        <div class="mini-sun-sm"></div>
+        <div class="mini-cloud"></div>
+      </div>
+    `;
   }
 
 
+  /* ☁️ CLOUDY */
+  if (
+    iconCode.startsWith('03') ||
+    iconCode.startsWith('04')
+  ) {
+    return `
+      <div class="mini-scene">
+        <div class="mini-cloud mini-cloud-2"></div>
+        <div class="mini-cloud"></div>
+      </div>
+    `;
+  }
+
+
+  /* 🌧️ RAIN */
+  if (
+    iconCode.startsWith('09') ||
+    iconCode.startsWith('10')
+  ) {
+    return `
+      <div class="mini-scene">
+
+        <div class="mini-cloud mini-dark"></div>
+
+        <div class="mini-rain">
+          <div class="mini-drop"></div>
+          <div class="mini-drop"></div>
+          <div class="mini-drop"></div>
+        </div>
+
+      </div>
+    `;
+  }
+
+
+  /* ⛈️ THUNDERSTORM */
+  if (iconCode.startsWith('11')) {
+    return `
+      <div class="mini-scene">
+
+        <div class="mini-cloud mini-dark"></div>
+
+        <div class="mini-rain">
+          <div class="mini-drop"></div>
+          <div class="mini-drop"></div>
+          <div class="mini-drop"></div>
+        </div>
+
+        <div class="mini-lightning">⚡</div>
+
+      </div>
+    `;
+  }
+
+
+  /* ❄️ SNOW */
+  if (iconCode.startsWith('13')) {
+    return `
+      <div class="mini-scene">
+
+        <div class="mini-cloud"></div>
+
+        <div class="mini-snow">
+          ❄
+        </div>
+
+      </div>
+    `;
+  }
+
+
+  /* 🌫️ FOG */
+  if (iconCode.startsWith('50')) {
+    return `
+      <div class="mini-scene">
+        <div class="mini-fog"></div>
+      </div>
+    `;
+  }
+
+
+  /* FALLBACK */
   return `
-    <img
-      src="${iconPath}"
-      alt=""
-      class="mini-weather-icon-img"
-    >
+    <div class="mini-scene">
+      <div class="mini-sun">
+        <div class="mini-sun-rays"></div>
+        <div class="mini-sun-core"></div>
+      </div>
+    </div>
   `;
 }
 
