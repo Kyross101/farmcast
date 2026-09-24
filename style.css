@@ -2754,7 +2754,26 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 .pest-alert-banner.warn   { background: rgba(227,160,8,0.1);  border-color: rgba(227,160,8,0.3); }
 .pest-alert-banner.danger { background: rgba(248,81,73,0.1);  border-color: rgba(248,81,73,0.3); }
-.pab-icon { font-size: 2rem; flex-shrink: 0; }
+
+.pab-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.pab-icon-img {
+  width: 34px;
+  height: 34px;
+
+  display: block;
+  object-fit: contain;
+}
+
 .pab-text { display: flex; flex-direction: column; gap: 3px; }
 .pab-text strong { font-size: 0.95rem; color: var(--text); }
 .pab-text span   { font-size: 0.8rem;  color: var(--text-muted); }

@@ -7460,14 +7460,90 @@ function renderPestPage() {
     const t = currentWeather.main.temp;
     const desc = currentWeather.weather[0].description.toLowerCase();
     const isRain = desc.includes('rain');
-    let bannerClass = 'ok', title = '✅ Low Pest Risk', sub = 'Current weather conditions are not particularly favorable for pests.';
-    if (h > 80 && t > 28) { bannerClass = 'danger'; title = '🚨 High Pest Risk!'; sub = `High humidity (${h}%) + heat (${Math.round(t)}°C) = perfect conditions for aphids and fungal diseases.`; }
-    else if (isRain)       { bannerClass = 'warn';   title = '⚠️ Moderate Pest Risk'; sub = 'Rainy conditions increase risk of root rot and fungal infections.'; }
-    else if (t > 32)       { bannerClass = 'warn';   title = '⚠️ Watch for Heat Pests'; sub = `High temp (${Math.round(t)}°C) increases stem borer and spider mite activity.`; }
-    const banner = document.getElementById('pestAlertBanner');
-    banner.className = `pest-alert-banner ${bannerClass}`;
-    document.getElementById('pabTitle').textContent = title;
-    document.getElementById('pabSub').textContent = sub;
+
+    let bannerClass = 'ok';
+
+    let title =
+      'Low Pest Risk';
+
+    let sub =
+      'Current weather conditions are not particularly favorable for pests.';
+
+    let bannerIcon =
+      'assets/ui/pest-status-low.svg';
+
+
+    if (h > 80 && t > 28) {
+
+      bannerClass =
+        'danger';
+
+      title =
+        'High Pest Risk';
+
+      sub =
+        `High humidity (${h}%) + heat (${Math.round(t)}°C) may favor aphids and fungal disease risk.`;
+
+      bannerIcon =
+        'assets/ui/pest-status-danger.svg';
+
+    } else if (isRain) {
+
+      bannerClass =
+        'warn';
+
+      title =
+        'Moderate Pest Risk';
+
+      sub =
+        'Rainy conditions may increase the risk of root rot and fungal infections.';
+
+      bannerIcon =
+        'assets/ui/pest-status-warning.svg';
+
+    } else if (t > 32) {
+
+      bannerClass =
+        'warn';
+
+      title =
+        'Watch for Heat Pests';
+
+      sub =
+        `High temperature (${Math.round(t)}°C) may favor some heat-associated pest activity.`;
+
+      bannerIcon =
+        'assets/ui/pest-status-warning.svg';
+
+    }
+    
+    const banner =
+      document.getElementById(
+        'pestAlertBanner'
+      );
+
+    const icon =
+      document.getElementById(
+        'pabIcon'
+      );
+
+
+    banner.className =
+      `pest-alert-banner ${bannerClass}`;
+
+    document.getElementById(
+      'pabTitle'
+    ).textContent = title;
+
+    document.getElementById(
+      'pabSub'
+    ).textContent = sub;
+
+
+    if (icon) {
+      icon.src = bannerIcon;
+    }
+
   }
 
   // Active pest risks based on weather
