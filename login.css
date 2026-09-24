@@ -6105,3 +6105,498 @@ body::after {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — FINAL PROPORTION POLISH
+═══════════════════════════════════════════════ */
+
+
+/* ═══════════════════════════════════════════════
+   LARGE DESKTOP / LAPTOP
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 901px) {
+
+  /*
+     Balanced size so the whole login stays
+     inside normal laptop screens.
+  */
+  .container {
+    width:
+      min(
+        1080px,
+        calc(100vw - 72px)
+      );
+
+    height:
+      min(
+        640px,
+        calc(100dvh - 56px)
+      );
+
+    min-height:
+      560px;
+
+    /*
+       New sunset background:
+       move scenery slightly so the sun sits
+       closer to the center/right split.
+    */
+    background-position:
+      62% center !important;
+  }
+
+
+  /* Slightly more room for auth card */
+  .toggle-box::before,
+  .toggle-panel.toggle-left {
+    width:
+      54% !important;
+  }
+
+
+  .form-box {
+    width:
+      46% !important;
+
+    padding:
+      22px
+      30px !important;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     LEFT FARM CONTENT
+  ═══════════════════════════════════════════ */
+
+  .toggle-panel.toggle-left {
+    padding:
+      40px
+      44px
+      36px !important;
+  }
+
+
+  .farm-brand-lockup {
+    margin-bottom:
+      23px;
+  }
+
+
+  .farm-brand-logo-wrap {
+    width:
+      84px;
+
+    height:
+      78px;
+  }
+
+
+  .farm-brand-logo {
+    width:
+      82px;
+
+    height:
+      82px;
+  }
+
+
+  .farm-brand-name {
+    font-size:
+      clamp(
+        2rem,
+        3vw,
+        2.55rem
+      );
+  }
+
+
+  .farm-brand-kicker {
+    font-size:
+      .60rem;
+
+    letter-spacing:
+      3px;
+  }
+
+
+  .farm-visual-heading h1 {
+    margin-bottom:
+      23px !important;
+
+    font-size:
+      clamp(
+        1.28rem,
+        2vw,
+        1.62rem
+      ) !important;
+
+    line-height:
+      1.38;
+  }
+
+
+  /* Feature tiles closer to reference */
+  .farm-feature-grid {
+    gap:
+      11px;
+  }
+
+
+  .farm-feature-card {
+    min-height:
+      106px;
+
+    padding:
+      14px
+      12px;
+  }
+
+
+  .farm-promise-card {
+    width:
+      275px;
+
+    padding:
+      12px
+      16px;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     LOGIN WHITE CARD
+  ═══════════════════════════════════════════ */
+
+  .form-box.login form {
+    max-width:
+      400px;
+
+    padding:
+      34px
+      32px !important;
+  }
+
+
+  .form-box.login
+  h1 {
+    font-size:
+      2rem !important;
+  }
+
+
+  .form-box.login
+  .auth-subtitle {
+    margin:
+      7px
+      0
+      23px !important;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     REGISTER WHITE CARD
+  ═══════════════════════════════════════════ */
+
+  .form-box.register form {
+    max-width:
+      390px !important;
+
+    padding:
+      23px
+      28px !important;
+  }
+
+
+  .form-box.register
+  h1 {
+    font-size:
+      1.78rem !important;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  body {
+    padding:
+      8px;
+  }
+
+
+  .container {
+    width:
+      100%;
+
+    max-width:
+      460px;
+
+    min-height:
+      760px;
+
+    border-radius:
+      22px;
+
+    /*
+       Keep the mountain + sunset visible
+       when the landscape photo is cropped
+       into portrait orientation.
+    */
+    background-position:
+      58% center !important;
+  }
+
+
+  /*
+     Give the farm branding a little more
+     breathing room than before.
+  */
+  .toggle-box::before {
+    height:
+      34% !important;
+
+    border-radius:
+      0
+      0
+      28px
+      28px !important;
+  }
+
+
+  .toggle-panel.toggle-left,
+  .container.active
+  .toggle-panel.toggle-left {
+    height:
+      34% !important;
+
+    padding:
+      18px
+      18px
+      22px !important;
+  }
+
+
+  /* White card overlaps farm header slightly */
+  .form-box,
+  .container.active
+  .form-box {
+    top:
+      31% !important;
+
+    height:
+      69% !important;
+
+    padding:
+      12px
+      10px
+      14px !important;
+  }
+
+
+  .form-box form {
+    max-width:
+      420px;
+
+    padding:
+      24px
+      20px;
+
+    border-radius:
+      20px;
+
+    box-shadow:
+      0
+      14px
+      34px
+      rgba(0,0,0,.20);
+  }
+
+
+  /* Mobile logo */
+  .farm-brand-logo-wrap {
+    width:
+      62px;
+
+    height:
+      58px;
+  }
+
+
+  .farm-brand-logo {
+    width:
+      61px;
+
+    height:
+      61px;
+  }
+
+
+  .farm-brand-name {
+    font-size:
+      1.62rem;
+  }
+
+
+  .farm-brand-kicker {
+    font-size:
+      .45rem;
+
+    letter-spacing:
+      2.1px;
+  }
+
+
+  .farm-brand-lockup {
+    margin-bottom:
+      8px;
+  }
+
+
+  .farm-visual-heading h1 {
+    max-width:
+      270px;
+
+    font-size:
+      1rem !important;
+
+    line-height:
+      1.35;
+  }
+
+
+  /* Compact login form */
+  .form-box form h1 {
+    font-size:
+      1.62rem;
+  }
+
+
+  .auth-subtitle {
+    margin:
+      6px
+      0
+      18px !important;
+  }
+
+
+  .auth-field {
+    margin-bottom:
+      12px;
+  }
+
+
+  .input-box input {
+    min-height:
+      49px;
+  }
+
+
+  .auth-options-row {
+    margin-bottom:
+      15px;
+  }
+
+
+  .auth-divider {
+    margin:
+      16px
+      0
+      11px;
+  }
+
+
+  /*
+     Register has one extra field.
+     Keep it compact enough to avoid
+     unnecessary scrolling.
+  */
+  .form-box.register form {
+    padding:
+      19px
+      18px;
+  }
+
+
+  .form-box.register
+  h1 {
+    font-size:
+      1.5rem !important;
+  }
+
+
+  .form-box.register
+  .auth-subtitle {
+    margin-bottom:
+      13px !important;
+  }
+
+
+  .form-box.register
+  .auth-field {
+    margin-bottom:
+      9px !important;
+  }
+
+
+  .form-box.register
+  .input-box input {
+    min-height:
+      47px !important;
+  }
+
+
+  .form-box.register
+  .auth-divider {
+    margin:
+      11px
+      0
+      8px;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   SMALL MOBILE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 380px) {
+
+  .container {
+    min-height:
+      735px;
+  }
+
+
+  .farm-brand-logo {
+    width:
+      54px;
+
+    height:
+      54px;
+  }
+
+
+  .farm-brand-name {
+    font-size:
+      1.45rem;
+  }
+
+
+  .farm-visual-heading h1 {
+    font-size:
+      .92rem !important;
+  }
+
+
+  .form-box form {
+    padding:
+      20px
+      16px;
+  }
+
+}
