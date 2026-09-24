@@ -169,6 +169,8 @@
                         id="registerPassword"
                         placeholder="Password"
                         autocomplete="new-password"
+                        minlength="6"
+                        aria-describedby="registerPasswordHint"
                         required
                     >
 
@@ -181,6 +183,17 @@
                         <i class='bx bx-show'></i>
                     </button>
 
+                </div>
+
+                <div
+                    class="password-hint"
+                    id="registerPasswordHint"
+                >
+                    <i class='bx bx-info-circle'></i>
+
+                    <span>
+                        Use at least 6 characters.
+                    </span>
                 </div>
 
             </div>
