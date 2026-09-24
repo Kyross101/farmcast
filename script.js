@@ -7277,6 +7277,90 @@ function setNav(el, pageId) {
 // PEST ALERTS PAGE
 // ═══════════════════════════════════════════════════════
 
+const PEST_FULL_REFERENCE_META = {
+
+  'Leaf Miner': {
+    name:
+      'UC IPM — Vegetable Leafminers',
+    relative:
+      '../vegetable-leafminers/'
+  },
+
+  'Thrips': {
+    name:
+      'UC IPM — Thrips',
+    relative:
+      '../thrips/'
+  },
+
+  'Spider Mites': {
+    name:
+      'UC IPM — Spider Mites',
+    relative:
+      '../spider-mites/'
+  },
+
+  'Cutworm': {
+    name:
+      'UC IPM — Cutworms',
+    relative:
+      '../cutworms/'
+  }
+
+};
+
+
+function getPestFullReference(
+  pestName
+) {
+
+  // Reuse references already used
+  // by Dashboard Pest Alerts.
+  const dashboardPest =
+    PESTS.find(
+      p =>
+        p.name === pestName &&
+        p.reference?.url
+    );
+
+  if (dashboardPest) {
+    return dashboardPest.reference;
+  }
+
+
+  const meta =
+    PEST_FULL_REFERENCE_META[
+      pestName
+    ];
+
+  if (!meta) {
+    return null;
+  }
+
+
+  const ucIpmBase =
+    PESTS.find(
+      p => p.name === 'Aphids'
+    )?.reference?.url;
+
+  if (!ucIpmBase) {
+    return null;
+  }
+
+
+  return {
+    name: meta.name,
+
+    url:
+      new URL(
+        meta.relative,
+        ucIpmBase
+      ).href
+  };
+
+}
+
+
 const PEST_FULL_DB = [
   { name:'Aphids',      
     icon:'assets/ui/pest-aphids.svg', 
@@ -7359,6 +7443,17 @@ let pestLogs = lsLoad(LS_PEST_LOGS, [
 let nextPestLogId = lsLoad('fc_nextPestLogId', 4);
 
 function renderPestPage() {
+
+    const pestPageData =
+    PEST_FULL_DB.map(p => ({
+      ...p,
+
+      reference:
+        getPestFullReference(
+          p.name
+        )
+    }));
+
   // Weather-based alert banner
   if (currentWeather) {
     const h = currentWeather.main.humidity;
@@ -7376,7 +7471,7 @@ function renderPestPage() {
   }
 
   // Active pest risks based on weather
-  const active = PEST_FULL_DB.filter(p => {
+  const active = pestPageData.filter(p => {
     if (!currentWeather) return false;
 
     const h = currentWeather.main.humidity; 
@@ -7437,17 +7532,70 @@ function renderPestPage() {
           </div>
         </div>
 
-        <div class="pfi-detail">
-          <div class="pfi-section">
-            <span class="pfi-label">Signs to inspect:</span>
-            ${p.signs}
-          </div>
+       <div class="pfi-detail">
 
-          <div class="pfi-section">
-            <span class="pfi-label">If confirmed:</span>
-            ${p.treatment}
-          </div>
-        </div>
+         <div class="pfi-section">
+           <span class="pfi-label">
+             Signs to inspect:
+           </span>
+
+           ${p.signs}
+         </div>
+
+         <div class="pfi-section">
+           <span class="pfi-label">
+             If confirmed:
+           </span>
+
+           ${p.treatment}
+         </div>
+
+      </div>
+
+
+      <div class="pest-source-row">
+
+        <a
+          class="pest-source-link"
+          href="${PEST_WEATHER_SOURCE.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="material-symbols-outlined">
+            cloud
+          </span>
+
+          <span>
+            Weather:
+            ${PEST_WEATHER_SOURCE.name}
+          </span>
+        </a>
+
+
+        ${
+          p.reference
+            ? `
+              <a
+                class="pest-source-link"
+                href="${p.reference.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="material-symbols-outlined">
+                  menu_book
+                </span>
+
+                <span>
+                  Reference:
+                  ${p.reference.name}
+                </span>
+              </a>
+            `
+            : ''
+        }
+
+      </div>
+
 
         <button
           class="pfi-log-btn"
@@ -7477,7 +7625,11 @@ function renderPestPage() {
   ].map(t => `<div class="prev-tip"><div class="pt-icon">${t.icon}</div><div class="pt-text">${t.tip}</div></div>`).join('');
 
   // Pest guide (encyclopedia)
-  document.getElementById('pestGuideList').innerHTML = PEST_FULL_DB.map(p => `
+  document.getElementById(
+    'pestGuideList'
+  ).innerHTML =
+    pestPageData.map(p => `
+
     <div class="pest-guide-item" onclick="this.classList.toggle('open')">
       <div class="pgi-header">
         <span class="pgi-icon">
@@ -7495,11 +7647,64 @@ function renderPestPage() {
         <span class="pest-level level-${p.level}" style="margin-left:auto">${p.level}</span>
         <span class="material-symbols-outlined pgi-arrow">expand_more</span>
       </div>
+
       <div class="pgi-body">
-        <div class="pfi-section"><span class="pfi-label">Signs:</span> ${p.signs}</div>
-        <div class="pfi-section"><span class="pfi-label">Treatment:</span> ${p.treatment}</div>
-        <div class="pfi-section"><span class="pfi-label">Prevention:</span> ${p.prevention}</div>
+
+        <div class="pfi-section">
+          <span class="pfi-label">
+            Signs:
+          </span>
+
+          ${p.signs}
+        </div>
+
+        <div class="pfi-section">
+          <span class="pfi-label">
+            Treatment:
+          </span>
+
+          ${p.treatment}
+        </div>
+
+        <div class="pfi-section">
+          <span class="pfi-label">
+            Prevention:
+          </span>
+
+          ${p.prevention}
+        </div>
+
+
+        ${
+          p.reference
+            ? `
+              <div class="pest-source-row">
+
+                <a
+                  class="pest-source-link"
+                  href="${p.reference.url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onclick="event.stopPropagation()"
+                >
+                  <span class="material-symbols-outlined">
+                    menu_book
+                  </span>
+
+                  <span>
+                    Reference:
+                    ${p.reference.name}
+                  </span>
+
+                </a>
+
+              </div>
+            `
+            : ''
+        }
+
       </div>
+
     </div>
   `).join('');
 
