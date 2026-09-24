@@ -1551,7 +1551,7 @@ and (max-height: 620px) {
       rgba(4, 22, 12, .38),
       rgba(7, 45, 23, .18)
     ),
-    url("assets/ui/farmcast-login-bg.jpg");
+    url("assets/ui/farmcast-login-bg.webp");
 
   background-size: cover;
   background-position: center;
