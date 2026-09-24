@@ -2236,3 +2236,241 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — MOBILE FIT FINAL POLISH
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  body {
+    padding: 12px;
+
+    min-height: 100dvh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+
+  /*
+     Give the registration card enough room.
+     Short phones can scroll the page safely.
+  */
+  .container {
+    width: 100%;
+    max-width: 480px;
+
+    height: max(
+      720px,
+      calc(100dvh - 24px)
+    );
+
+    min-height: 720px;
+
+    margin: 0 auto;
+
+    border-radius: 20px;
+  }
+
+
+  /* Form area */
+  .form-box {
+    width: 100%;
+    height: 74%;
+
+    bottom: 0;
+
+    padding:
+      18px
+      16px
+      16px;
+
+    align-items: center;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+  }
+
+
+  .form-box form {
+    width: 100%;
+    max-width: 420px;
+
+    margin: auto;
+
+    padding:
+      25px
+      21px;
+  }
+
+
+  /* Register form moves upward */
+  .container.active
+  .form-box {
+    right: 0;
+    bottom: 26%;
+  }
+
+
+  /* Branding area */
+  .toggle-panel {
+    width: 100%;
+    height: 26%;
+
+    padding:
+      15px
+      18px;
+  }
+
+
+  .toggle-panel.toggle-left {
+    top: 0;
+  }
+
+
+  .container.active
+  .toggle-panel.toggle-left {
+    left: 0;
+    top: -26%;
+  }
+
+
+  .toggle-panel.toggle-right {
+    right: 0;
+    bottom: -26%;
+  }
+
+
+  .container.active
+  .toggle-panel.toggle-right {
+    bottom: 0;
+  }
+
+
+  /* Adjust old mobile green panel geometry */
+  .toggle-box::before {
+    left: 0;
+    top: -274%;
+
+    width: 100%;
+    height: 300%;
+  }
+
+
+  .container.active
+  .toggle-box::before {
+    left: 0;
+    top: 74%;
+  }
+
+
+  /* Compact headings */
+  .form-box form h1 {
+    font-size: 1.6rem;
+  }
+
+
+  .auth-subtitle {
+    margin:
+      7px 0
+      18px !important;
+  }
+
+
+  /* Fields */
+  .auth-field {
+    margin-bottom: 12px;
+  }
+
+
+  .auth-field label {
+    margin-bottom: 6px;
+  }
+
+
+  .input-box input {
+    min-height: 50px;
+  }
+
+
+  .form-box form > .btn {
+    min-height: 50px;
+  }
+
+
+  /* Footer information */
+  .auth-secure-note {
+    margin-top: 13px;
+  }
+
+
+  .auth-switch-row {
+    margin-top: 12px;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   VERY SMALL PHONES
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 380px) {
+
+  body {
+    padding: 8px;
+  }
+
+
+  .container {
+    height: max(
+      710px,
+      calc(100dvh - 16px)
+    );
+
+    min-height: 710px;
+
+    border-radius: 16px;
+  }
+
+
+  .form-box {
+    padding:
+      14px
+      9px;
+  }
+
+
+  .form-box form {
+    padding:
+      22px
+      16px;
+
+    border-radius: 17px;
+  }
+
+
+  .form-box form h1 {
+    font-size: 1.45rem;
+  }
+
+
+  .auth-subtitle {
+    font-size: .8rem !important;
+  }
+
+
+  .auth-field {
+    margin-bottom: 10px;
+  }
+
+
+  .auth-secure-note,
+  .auth-switch-row {
+    font-size: .7rem;
+  }
+
+}
