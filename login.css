@@ -1539,3 +1539,117 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — FARM LANDSCAPE BACKGROUND
+═══════════════════════════════════════════════ */
+
+.container {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(4, 22, 12, .38),
+      rgba(7, 45, 23, .18)
+    ),
+    url("assets/ui/farmcast-login-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border:
+    1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.58),
+    0 0 0 1px rgba(63,185,80,.12);
+}
+
+
+/* Green glass overlay over the branding side */
+.toggle-box::before {
+  background:
+    radial-gradient(
+      circle at 28% 20%,
+      rgba(255,255,255,.10),
+      transparent 27%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(3, 30, 16, .92),
+      rgba(9, 72, 35, .76),
+      rgba(25, 133, 59, .58)
+    );
+
+  backdrop-filter:
+    saturate(1.12);
+
+  -webkit-backdrop-filter:
+    saturate(1.12);
+}
+
+
+/* Make brand content stand out from photo */
+.toggle-panel {
+  text-shadow:
+    0 2px 12px rgba(0,0,0,.28);
+}
+
+
+.farm-brand-logo {
+  filter:
+    drop-shadow(
+      0 10px 22px rgba(0,0,0,.38)
+    );
+}
+
+
+/* Slight translucent feel for auth card */
+.form-box form {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.97),
+      rgba(244,248,245,.94)
+    );
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+}
+
+
+/* ═══════════════════════════════════════════════
+   MOBILE BACKGROUND
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  .container {
+    background-position:
+      58% center;
+  }
+
+
+  /* Stronger top contrast for mobile branding */
+  .toggle-box::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 30, 16, .92),
+        rgba(8, 84, 39, .72)
+      );
+  }
+
+
+  .form-box form {
+    backdrop-filter:
+      blur(14px);
+
+    -webkit-backdrop-filter:
+      blur(14px);
+  }
+
+}
