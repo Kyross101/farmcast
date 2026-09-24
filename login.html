@@ -57,11 +57,13 @@
 
                    <input
                        type="password"
-                       id="loginPassword"
+                       id="registerPassword"
                        placeholder="Password"
-                       autocomplete="current-password"
+                       autocomplete="new-password"
+                       minlength="6"
+                       aria-describedby="registerPasswordHint"
                        required
-                   >
+                    >
 
                    <button
                        type="button"
@@ -195,6 +197,19 @@
                         Use at least 6 characters.
                     </span>
                 </div>
+
+            </div>
+
+            <div
+                class="password-hint"
+                id="registerPasswordHint"
+            >
+                <i class='bx bx-info-circle'></i>
+
+                <span>
+                    Use at least 6 characters.
+                </span>
+            </div>
 
             </div>
 

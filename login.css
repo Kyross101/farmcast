@@ -2866,3 +2866,41 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — PASSWORD GUIDANCE
+═══════════════════════════════════════════════ */
+
+.password-hint {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 7px;
+
+  color: #78877e;
+
+  font-size: .7rem;
+  line-height: 1.35;
+}
+
+.password-hint i {
+  flex-shrink: 0;
+
+  color: #2ea043;
+
+  font-size: 14px;
+}
+
+
+/* Mobile */
+@media screen and (max-width: 650px) {
+
+  .password-hint {
+    margin-top: 6px;
+
+    font-size: .68rem;
+  }
+
+}
