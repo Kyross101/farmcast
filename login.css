@@ -6494,3 +6494,187 @@ and (max-height: 680px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — MOBILE VISUAL BALANCE FIX
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  /* ───────────────────────────────────────────
+     TOP FARM HEADER
+  ─────────────────────────────────────────── */
+
+  .toggle-box::before {
+    height:
+      33% !important;
+  }
+
+
+  .toggle-panel.toggle-left,
+  .container.active
+  .toggle-panel.toggle-left {
+    height:
+      33% !important;
+
+    padding:
+      18px
+      18px
+      22px !important;
+  }
+
+
+  /*
+     Keep all branding perfectly centered.
+  */
+  .farm-visual-content {
+    width:
+      100% !important;
+
+    align-items:
+      center !important;
+
+    justify-content:
+      center !important;
+
+    text-align:
+      center !important;
+  }
+
+
+  .farm-brand-lockup {
+    width:
+      100% !important;
+
+    align-items:
+      center !important;
+
+    justify-content:
+      center !important;
+  }
+
+
+  .farm-brand-copy {
+    width:
+      100%;
+
+    align-items:
+      center !important;
+
+    text-align:
+      center !important;
+  }
+
+
+  /* ───────────────────────────────────────────
+     MOBILE SLOGAN
+  ─────────────────────────────────────────── */
+
+  .farm-visual-heading {
+    width:
+      100% !important;
+
+    display:
+      flex;
+
+    justify-content:
+      center;
+
+    text-align:
+      center !important;
+  }
+
+
+  .farm-visual-heading h1 {
+    width:
+      100% !important;
+
+    max-width:
+      335px !important;
+
+    margin:
+      0 auto !important;
+
+    font-size:
+      .90rem !important;
+
+    line-height:
+      1.35 !important;
+
+    text-align:
+      center !important;
+  }
+
+
+  /* ───────────────────────────────────────────
+     WHITE LOGIN / REGISTER CARD
+  ─────────────────────────────────────────── */
+
+  .form-box,
+  .container.active
+  .form-box {
+    top:
+      32% !important;
+
+    height:
+      68% !important;
+
+    padding:
+      0
+      11px
+      12px !important;
+  }
+
+
+  /*
+     Login already fits the screen.
+     Don't create an unnecessary inner scrollbar.
+  */
+  .form-box.login {
+    overflow-y:
+      hidden !important;
+  }
+
+
+  /*
+     Register is taller, so keep scrolling
+     available only when really needed.
+  */
+  .form-box.register {
+    overflow-y:
+      auto !important;
+
+    scrollbar-width:
+      none;
+  }
+
+
+  .form-box.register::-webkit-scrollbar {
+    display:
+      none;
+  }
+
+
+  .form-box form {
+    margin:
+      0 auto !important;
+
+    max-width:
+      410px !important;
+  }
+
+}
+
+
+/* Slightly narrower phones */
+@media screen and (max-width: 360px) {
+
+  .farm-visual-heading h1 {
+    max-width:
+      290px !important;
+
+    font-size:
+      .86rem !important;
+  }
+
+}
