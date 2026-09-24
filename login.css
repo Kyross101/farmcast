@@ -766,3 +766,321 @@ form {
         border-radius: 18px;
     }
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — RESPONSIVE FOUNDATION
+   KEEP AT THE VERY BOTTOM
+═══════════════════════════════════════════════ */
+
+html {
+  min-height: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  padding: 24px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+/* ── Desktop / Laptop ── */
+
+.container {
+  width: min(
+    920px,
+    calc(100vw - 48px)
+  );
+
+  height: min(
+    590px,
+    calc(100dvh - 48px)
+  );
+
+  min-height: 540px;
+
+  margin: auto;
+}
+
+
+/* Keep forms safely inside their side */
+
+.form-box {
+  min-width: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+}
+
+
+/* Prevent form contents becoming too wide */
+
+.form-box form {
+  width: 100%;
+  max-width: 360px;
+
+  margin-inline: auto;
+}
+
+
+/* ═══════════════════════════════════════════════
+   TABLET
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 800px) {
+
+  body {
+    padding: 18px;
+  }
+
+  .container {
+    width: min(
+      760px,
+      calc(100vw - 36px)
+    );
+
+    height: min(
+      580px,
+      calc(100dvh - 36px)
+    );
+
+    min-height: 540px;
+  }
+
+  .form-box {
+    padding-inline: 30px;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  body {
+    display: block;
+
+    padding: 12px;
+
+    min-height: 100dvh;
+
+    overflow-y: auto;
+  }
+
+
+  .container {
+    width: 100%;
+
+    max-width: 480px;
+
+    height: max(
+      680px,
+      calc(100dvh - 24px)
+    );
+
+    min-height: 680px;
+
+    margin: 0 auto;
+
+    border-radius: 18px;
+  }
+
+
+  /* Form uses most of mobile screen */
+
+  .form-box {
+    width: 100%;
+    height: 72%;
+
+    bottom: 0;
+
+    padding:
+      28px
+      24px
+      24px;
+
+    align-items: flex-start;
+
+    overflow-y: auto;
+  }
+
+
+  .form-box form {
+    max-width: 390px;
+
+    margin-inline: auto;
+  }
+
+
+  /* Registration state */
+
+  .container.active .form-box {
+    right: 0;
+    bottom: 28%;
+  }
+
+
+  /* Top branding panel */
+
+  .toggle-panel {
+    width: 100%;
+    height: 28%;
+
+    padding: 22px 20px;
+  }
+
+
+  .toggle-panel.toggle-left {
+    top: 0;
+  }
+
+
+  .toggle-panel.toggle-right {
+    right: 0;
+    bottom: -28%;
+  }
+
+
+  .container.active
+  .toggle-panel.toggle-left {
+    left: 0;
+    top: -28%;
+  }
+
+
+  .container.active
+  .toggle-panel.toggle-right {
+    bottom: 0;
+  }
+
+
+  /* Green animated background */
+
+  .toggle-box::before {
+    left: 0;
+    top: -272%;
+
+    width: 100%;
+    height: 300%;
+
+    border-radius: 18vw;
+  }
+
+
+  .container.active
+  .toggle-box::before {
+    left: 0;
+    top: 72%;
+  }
+
+
+  /* Inputs */
+
+  .input-box {
+    margin: 16px 0;
+  }
+
+
+  .input-box input {
+    min-height: 50px;
+
+    font-size: 16px;
+  }
+
+
+  /* Prevent tiny tap targets */
+
+  .btn {
+    min-height: 50px;
+  }
+
+
+  .social-icons a {
+    width: 44px;
+    height: 44px;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   SMALL PHONE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 400px) {
+
+  body {
+    padding: 8px;
+  }
+
+
+  .container {
+    width: 100%;
+
+    height: max(
+      680px,
+      calc(100dvh - 16px)
+    );
+
+    border-radius: 15px;
+  }
+
+
+  .form-box {
+    padding:
+      24px
+      18px
+      20px;
+  }
+
+
+  .container h1 {
+    font-size: 1.65rem;
+  }
+
+
+  .toggle-panel {
+    padding-inline: 16px;
+  }
+
+
+  .toggle-panel h1 {
+    font-size: 1.25rem;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   SHORT LAPTOP / LANDSCAPE PHONE
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px)
+and (max-height: 620px) {
+
+  body {
+    align-items: flex-start;
+  }
+
+
+  .container {
+    height: 540px;
+
+    margin-block: 16px;
+  }
+
+
+  .form-box {
+    padding-block: 28px;
+  }
+
+}
