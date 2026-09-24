@@ -223,6 +223,25 @@ loginForm.addEventListener('submit', async (e) => {
     localStorage.setItem('fc_token', data.token);
     localStorage.setItem('fc_authUser', JSON.stringify(data.user));
 
+    // Remember username only.
+    // Never store the user's password.
+    if (
+      rememberMe &&
+      rememberMe.checked
+    ) {
+
+      localStorage.setItem(
+        'fc_remembered_username',
+        username
+      );
+
+    } else {
+
+      localStorage.removeItem(
+        'fc_remembered_username'
+      );
+    }
+
     showtoast(
       `Welcome back, ${
         data.user.name ||
@@ -277,24 +296,6 @@ registerForm.addEventListener('submit', async (e) => {
     localStorage.setItem('fc_token', data.token);
     localStorage.setItem('fc_authUser', JSON.stringify(data.user));
 
-    // Remember username only.
-    // Never store the user's password.
-    if (
-      rememberMe &&
-      rememberMe.checked
-    ) {
-
-      localStorage.setItem(
-        'fc_remembered_username',
-         username
-       );
-
-    } else {
-
-      localStorage.removeItem(
-        'fc_remembered_username'
-      );
-    }
 
     showtoast(
       `Registered successfully! Welcome, ${data.user.username}!`,
