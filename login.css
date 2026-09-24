@@ -3183,3 +3183,531 @@ and (max-height: 620px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   FARMCAST LOGIN — CINEMATIC FARM VISUAL
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px) {
+
+  /* Make the farm photo visible */
+  .toggle-box::before {
+    background:
+      radial-gradient(
+        circle at 70% 18%,
+        rgba(255, 211, 91, .20),
+        transparent 25%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(3, 24, 13, .84) 0%,
+        rgba(4, 36, 18, .69) 42%,
+        rgba(6, 51, 25, .42) 75%,
+        rgba(9, 64, 30, .24) 100%
+      ) !important;
+
+    backdrop-filter:
+      saturate(1.08)
+      contrast(1.04);
+
+    -webkit-backdrop-filter:
+      saturate(1.08)
+      contrast(1.04);
+  }
+
+
+  /* Left panel */
+  .toggle-panel.toggle-left {
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+
+    padding:
+      48px
+      48px
+      42px !important;
+
+    text-align: left !important;
+  }
+
+
+  .farm-visual-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    z-index: 3;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     BRAND
+  ═══════════════════════════════════════════ */
+
+  .farm-brand-lockup {
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin:
+      0
+      0
+      42px;
+
+    align-self: flex-start;
+  }
+
+
+  .farm-brand-logo-wrap {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+      1px solid
+      rgba(255,255,255,.17);
+
+    border-radius: 22px;
+
+    background:
+      rgba(255,255,255,.10);
+
+    box-shadow:
+      inset
+      0 1px 0
+      rgba(255,255,255,.14),
+      0 14px 34px
+      rgba(0,0,0,.20);
+
+    backdrop-filter:
+      blur(10px);
+
+    -webkit-backdrop-filter:
+      blur(10px);
+  }
+
+
+  .farm-brand-logo {
+    width: 60px;
+    height: 60px;
+
+    filter:
+      drop-shadow(
+        0 8px 15px
+        rgba(0,0,0,.25)
+      );
+  }
+
+
+  .farm-brand-copy {
+    align-items: flex-start;
+  }
+
+
+  .farm-brand-name {
+    font-size: 1.9rem;
+
+    letter-spacing: 1.4px;
+  }
+
+
+  .farm-brand-name span {
+    color: #69df78;
+  }
+
+
+  .farm-brand-kicker {
+    margin-top: 7px;
+
+    font-size: .62rem;
+
+    letter-spacing: 2.7px;
+
+    color:
+      rgba(255,255,255,.70);
+  }
+
+
+  /* ═══════════════════════════════════════════
+     MAIN MESSAGE
+  ═══════════════════════════════════════════ */
+
+  .farm-visual-heading {
+    max-width: 450px;
+  }
+
+
+  .farm-visual-heading h1 {
+    max-width: 430px;
+
+    margin:
+      0
+      0
+      12px !important;
+
+    font-size:
+      clamp(
+        2rem,
+        3vw,
+        2.75rem
+      ) !important;
+
+    line-height: 1.08;
+
+    letter-spacing:
+      -.8px;
+
+    text-align: left;
+
+    color: #ffffff !important;
+
+    text-shadow:
+      0 5px 25px
+      rgba(0,0,0,.26);
+  }
+
+
+  .farm-visual-heading p {
+    max-width: 390px;
+
+    margin: 0 !important;
+
+    color:
+      rgba(255,255,255,.76) !important;
+
+    font-size: .88rem;
+
+    line-height: 1.7;
+
+    text-align: left;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     FEATURE CARDS
+  ═══════════════════════════════════════════ */
+
+  .farm-feature-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 34px;
+  }
+
+
+  .farm-feature-card {
+    min-width: 0;
+
+    min-height: 100px;
+
+    padding:
+      15px
+      12px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    border:
+      1px solid
+      rgba(255,255,255,.14);
+
+    border-radius: 16px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,.12),
+        rgba(255,255,255,.055)
+      );
+
+    box-shadow:
+      inset
+      0 1px 0
+      rgba(255,255,255,.10),
+      0 10px 24px
+      rgba(0,0,0,.12);
+
+    backdrop-filter:
+      blur(10px);
+
+    -webkit-backdrop-filter:
+      blur(10px);
+  }
+
+
+  .farm-feature-icon {
+    width: 33px;
+    height: 33px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+      rgba(103, 218, 119, .16);
+
+    color: #76e287;
+
+    font-size: 19px;
+  }
+
+
+  .farm-feature-card strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: .72rem;
+    font-weight: 700;
+
+    line-height: 1.35;
+  }
+
+
+  .farm-feature-card span {
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+      rgba(255,255,255,.60);
+
+    font-size: .60rem;
+
+    line-height: 1.4;
+  }
+
+
+  /* ═══════════════════════════════════════════
+     BOTTOM PROMISE CARD
+  ═══════════════════════════════════════════ */
+
+  .farm-promise-card {
+    margin-top: auto;
+
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding:
+      11px
+      16px;
+
+    border:
+      1px solid
+      rgba(255,255,255,.14);
+
+    border-radius: 14px;
+
+    background:
+      rgba(4, 25, 13, .38);
+
+    box-shadow:
+      inset
+      0 1px 0
+      rgba(255,255,255,.08);
+
+    backdrop-filter:
+      blur(10px);
+
+    -webkit-backdrop-filter:
+      blur(10px);
+  }
+
+
+  .farm-promise-mark {
+    width: 31px;
+    height: 31px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    color: #7be48b;
+
+    background:
+      rgba(83, 195, 100, .15);
+
+    font-size: 18px;
+  }
+
+
+  .farm-promise-card strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: .72rem;
+  }
+
+
+  .farm-promise-card span {
+    display: block;
+
+    margin-top: 1px;
+
+    color:
+      rgba(255,255,255,.62);
+
+    font-size: .62rem;
+  }
+
+
+  .farm-legacy-register-btn {
+    display: none !important;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   TABLET / NARROW DESKTOP
+═══════════════════════════════════════════════ */
+
+@media screen and (min-width: 651px)
+and (max-width: 900px) {
+
+  .toggle-panel.toggle-left {
+    padding:
+      38px
+      30px
+      34px !important;
+  }
+
+
+  .farm-brand-lockup {
+    margin-bottom: 30px;
+  }
+
+
+  .farm-brand-logo-wrap {
+    width: 62px;
+    height: 62px;
+
+    border-radius: 18px;
+  }
+
+
+  .farm-brand-logo {
+    width: 52px;
+    height: 52px;
+  }
+
+
+  .farm-brand-name {
+    font-size: 1.55rem;
+  }
+
+
+  .farm-feature-grid {
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+
+    margin-top: 22px;
+  }
+
+
+  .farm-feature-card {
+    min-height: 0;
+
+    flex-direction: row;
+    align-items: center;
+
+    padding:
+      9px
+      11px;
+  }
+
+
+  .farm-feature-card span {
+    display: none;
+  }
+
+
+  .farm-promise-card {
+    padding:
+      9px
+      12px;
+  }
+
+}
+
+
+/* ═══════════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════════ */
+
+@media screen and (max-width: 650px) {
+
+  .farm-visual-content {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  /*
+     Keep mobile header compact.
+     Feature cards will be added later
+     in the dedicated mobile redesign.
+  */
+  .farm-feature-grid,
+  .farm-promise-card {
+    display: none;
+  }
+
+
+  .farm-brand-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .farm-visual-heading {
+    text-align: center;
+  }
+
+
+  .farm-visual-heading h1 {
+    margin-bottom:
+      3px !important;
+  }
+
+
+  .farm-visual-heading p {
+    display: none;
+  }
+
+
+  .farm-legacy-register-btn {
+    display: none !important;
+  }
+
+}
