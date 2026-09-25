@@ -10023,7 +10023,22 @@ function renderHHTable() {
 
   document.getElementById('hhTableBody').innerHTML = filtered.map(h => `
     <tr class="hh-row">
-      <td><div class="hh-crop-cell"><span>${CROP_EMOJIS[h.crop]||'🌿'}</span>${h.crop}</div></td>
+
+      <td>
+        <div class="hh-crop-cell">
+
+          ${getCropIconHtml(
+            h.crop,
+            'hh-crop-icon-img'
+          )}
+
+          <span>
+            ${escapeHtml(h.crop)}
+          </span>
+
+        </div>
+      </td>
+      
       <td>${new Date(h.date).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'})}</td>
       <td><span class="hh-location">${h.location}</span></td>
       <td>${h.area} m²</td>
@@ -10050,7 +10065,20 @@ function renderHHYieldChart() {
           <div class="hyc-bar-outer">
             <div class="hyc-bar-fill" style="height:${Math.round((kg/maxY)*100)}%;background:${colors[i%colors.length]}"></div>
           </div>
-          <div class="hyc-label">${CROP_EMOJIS[crop]||'🌿'} ${crop}</div>
+
+          <div class="hyc-label">
+
+            ${getCropIconHtml(
+              crop,
+              'hyc-crop-icon-img'
+            )}
+
+            <span>
+              ${escapeHtml(crop)}
+            </span>
+
+          </div>
+        
         </div>`).join('')}
     </div>
     <div class="hyc-total">Combined yield: <strong>${harvestHistory.reduce((s,h)=>s+Number(h.yield),0).toFixed(1)} kg</strong> from ${harvestHistory.length} harvests</div>`;
