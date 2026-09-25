@@ -9998,7 +9998,39 @@ function updateHHStats() {
   document.getElementById('hhTotalHarvests').textContent = harvestHistory.length;
   document.getElementById('hhTotalKg').textContent       = totalKg.toFixed(1) + ' kg';
   document.getElementById('hhThisMonth').textContent     = thisMonth;
-  document.getElementById('hhBestCrop').textContent      = bestCrop ? (CROP_EMOJIS[bestCrop[0]]||'') + ' ' + bestCrop[0] : '—';
+
+  const bestCropEl =
+    document.getElementById(
+      'hhBestCrop'
+    );
+
+  if (bestCropEl) {
+ 
+    if (bestCrop) {
+
+      const bestCropName =
+        bestCrop[0];
+
+      bestCropEl.innerHTML = `
+        ${getCropIconHtml(
+          bestCropName,
+          'hh-best-crop-icon-img'
+        )}
+
+        <span>
+          ${escapeHtml(bestCropName)}
+        </span>
+      `;
+
+    } else {
+
+      bestCropEl.textContent =
+        '—';
+
+    }
+
+  }
+
 }
 
 function renderHHTable() {

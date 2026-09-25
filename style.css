@@ -4278,6 +4278,35 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 }
 
 .hhs-val  { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--text); }
+
+.hh-best-crop-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-width: 0;
+}
+
+.hh-best-crop-icon-img {
+  width: 25px;
+  height: 25px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.hh-best-crop-value span {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .hhs-lbl  { font-size: 0.7rem; color: var(--text-muted); }
 
 .hh-toolbar {
