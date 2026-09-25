@@ -4350,7 +4350,31 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .an-monthly-row  { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; background: var(--bg3); border-radius: var(--r-sm); border: 1px solid var(--border); }
 .an-month-label  { font-size: 0.78rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
 .an-month-stats  { display: flex; flex-wrap: wrap; gap: 8px; }
-.an-ms-item      { font-size: 0.72rem; padding: 2px 8px; border-radius: 99px; }
+
+.an-ms-item {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 3px 8px;
+
+  border-radius: 99px;
+
+  font-size: 0.72rem;
+  line-height: 1.2;
+}
+
+.an-ms-icon-img {
+  width: 15px;
+  height: 15px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
 .an-ms-item.green { background: var(--green-dim); color: var(--green); }
 .an-ms-item.blue  { background: var(--blue-dim);  color: var(--blue);  }
 .an-ms-item.red   { background: var(--red-dim);   color: var(--red);   }

@@ -10528,11 +10528,61 @@ function renderAnMonthlySummary() {
       ${months.map(m=>`
         <div class="an-monthly-row">
           <div class="an-month-label">${m.label}</div>
+
           <div class="an-month-stats">
-            <span class="an-ms-item green">🌾 ${m.harvests} harvests</span>
-            <span class="an-ms-item blue">⚖️ ${m.totalKg.toFixed(0)} kg</span>
-            <span class="an-ms-item ${m.pests>3?'red':'muted'}">🐛 ${m.pests} pests</span>
+
+            <span class="an-ms-item green">
+
+              <img
+                src="assets/ui/analytics-harvest.svg"
+                alt=""
+                class="an-ms-icon-img"
+              >
+
+              <span>
+                ${m.harvests} harvests
+              </span>
+
+            </span>
+
+
+            <span class="an-ms-item blue">
+
+              <img
+                src="assets/ui/analytics-yield.svg"
+                alt=""
+                class="an-ms-icon-img"
+              >
+
+              <span>
+                ${m.totalKg.toFixed(0)} kg
+              </span>
+
+            </span>
+
+
+            <span
+              class="an-ms-item ${
+                m.pests > 3
+                  ? 'red'
+                  : 'muted'
+              }"
+            >
+
+              <img
+                src="assets/ui/analytics-pest.svg"
+                alt=""
+                class="an-ms-icon-img"
+              >
+
+              <span>
+                ${m.pests} pests
+              </span>
+
+            </span>
+
           </div>
+
         </div>`).join('')}
     </div>`;
 }
