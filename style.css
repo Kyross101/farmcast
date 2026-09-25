@@ -4048,7 +4048,25 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
 .an-kpi-val  { font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--text); }
 .an-kpi-lbl  { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+
 .an-kpi-sub  { font-size: 0.68rem; color: var(--text-dim); margin-top: 2px; }
+
+#anPestSub {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.an-pest-status-img {
+  width: 15px;
+  height: 15px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
 
 .an-grid     { display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
 

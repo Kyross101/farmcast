@@ -10240,11 +10240,60 @@ function updateAnKPIs() {
   document.getElementById('anWaterSub').textContent     = `across ${typeof irrFields!=='undefined'?irrFields.length:0} fields`;
   document.getElementById('anYieldRate').textContent    = yieldRate+'%';
   document.getElementById('anYieldSub').textContent     = `${excellent} excellent of ${harvestHistory.length}`;
-  document.getElementById('anPestCount').textContent    = pestCount;
-  document.getElementById('anPestSub').textContent      = pestCount>3?'⚠️ Above average':'✅ Under control';
-  document.getElementById('anActiveCrops').textContent  = active;
-  document.getElementById('anActiveSub').textContent    = `${typeof myCrops!=='undefined'?myCrops.filter(c=>c.watered).length:0} watered today`;
+  
+  document.getElementById(
+    'anPestCount'
+  ).textContent =
+    pestCount;
+
+
+  const anPestSub =
+    document.getElementById(
+      'anPestSub'
+    );
+
+
+  if (anPestSub) {
+
+    const isHighPestCount =
+      pestCount > 3;
+
+    const pestStatusIcon =
+      isHighPestCount
+        ? 'assets/ui/pest-status-warning.svg'
+        : 'assets/ui/pest-status-low.svg';
+
+    const pestStatusText =
+      isHighPestCount
+        ? 'Above average'
+        : 'Under control';
+
+
+    anPestSub.innerHTML = `
+
+      <img
+        src="${pestStatusIcon}"
+        alt=""
+        class="an-pest-status-img"
+      >
+
+      <span>
+        ${pestStatusText}
+      </span>
+
+    `;
+
+  }
+
+
+  document.getElementById(
+    'anActiveCrops'
+  ).textContent =
+    active;
+
+    document.getElementById('anActiveSub').textContent    = `${typeof myCrops!=='undefined'?myCrops.filter(c=>c.watered).length:0} watered today`;
 }
+
 
 function renderAnBarChart() {
   const crops = (typeof myCrops!=='undefined') ? myCrops.filter(c=>{
