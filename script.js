@@ -10335,15 +10335,57 @@ function renderAnLandChart() {
       ${crops.map((crop,i)=>{
         const pct = totalArea>0 ? Math.round((Number(crop.area)/totalArea)*100) : 0;
         const col = colors[i%colors.length];
-        return `<div class="an-land-item">
-          <div class="an-land-label">
-            <span class="an-land-dot" style="background:${col}"></span>
-            <span>${CROP_EMOJIS[crop.type]||'🌿'} ${crop.type}</span>
-            <span style="margin-left:auto;font-size:0.72rem;color:var(--text-muted)">${crop.area} m²</span>
+
+        return `
+          <div class="an-land-item">
+
+            <div class="an-land-label">
+
+              <span
+                class="an-land-dot"
+                style="background:${col}"
+              ></span>
+
+              <span class="an-land-crop">
+
+                ${getCropIconHtml(
+                  crop.type,
+                  'an-land-crop-img'
+                )}
+
+                <span>
+                  ${escapeHtml(crop.type)}
+                </span>
+
+              </span>
+
+              <span class="an-land-area">
+                ${Number(crop.area).toLocaleString()} m²
+              </span>
+
+            </div>
+
+
+            <div class="an-land-bar-track">
+
+              <div
+                class="an-land-bar-fill"
+                style="
+                  width:${pct}%;
+                  background:${col}
+                "
+              ></div>
+
+            </div>
+
+
+            <div class="an-land-pct">
+              ${pct}%
+            </div>
+
           </div>
-          <div class="an-land-bar-track"><div class="an-land-bar-fill" style="width:${pct}%;background:${col}"></div></div>
-          <div class="an-land-pct">${pct}%</div>
-        </div>`;
+        `;
+
       }).join('')}
       <div class="an-land-total">Total farm area: <strong>${totalArea.toLocaleString()} m²</strong> (${(totalArea/10000).toFixed(2)} ha)</div>
     </div>`;

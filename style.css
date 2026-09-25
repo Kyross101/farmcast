@@ -4210,8 +4210,69 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
 .an-land-list  { padding: 14px 20px; display: flex; flex-direction: column; gap: 10px; }
 .an-land-item  { display: flex; flex-direction: column; gap: 4px; }
-.an-land-label { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--text); }
-.an-land-dot   { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+.an-land-label {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+
+.an-land-dot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+
+.an-land-crop {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  font-weight: 600;
+}
+
+
+.an-land-crop-img {
+  width: 23px;
+  height: 23px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+
+.an-land-crop > span {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.an-land-area {
+  margin-left: auto;
+
+  flex-shrink: 0;
+
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
 .an-land-bar-track { height: 8px; background: var(--bg3); border-radius: 99px; overflow: hidden; }
 .an-land-bar-fill  { height: 100%; border-radius: 99px; transition: width 0.8s ease; }
 .an-land-pct   { font-size: 0.7rem; color: var(--text-muted); text-align: right; }
