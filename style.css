@@ -4192,7 +4192,39 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .an-chart-bars { padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; }
 .an-bar-item   { display: flex; flex-direction: column; gap: 5px; }
 .an-bar-header { display: flex; justify-content: space-between; align-items: center; }
-.an-bar-crop   { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+
+.an-bar-crop {
+  min-width: 0;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.an-bar-crop-img {
+  width: 25px;
+  height: 25px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.an-bar-crop > span {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .an-bar-pct    { font-size: 0.85rem; font-weight: 700; font-family: 'Syne', sans-serif; }
 .an-bar-track  { height: 10px; background: var(--bg3); border-radius: 99px; overflow: hidden; }
 .an-bar-fill   { height: 100%; border-radius: 99px; transition: width 0.8s ease; }

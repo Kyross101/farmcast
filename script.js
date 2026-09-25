@@ -10267,11 +10267,34 @@ function renderAnBarChart() {
       ${crops.map(crop => {
         const st = getCropStatus(crop);
         const col = colors[st.color]||'#3fb950';
-        return `<div class="an-bar-item">
-          <div class="an-bar-header">
-            <span class="an-bar-crop">${CROP_EMOJIS[crop.type]||'🌿'} ${crop.type}</span>
-            <span class="an-bar-pct" style="color:${col}">${st.progress}%</span>
-          </div>
+
+        return `
+          <div class="an-bar-item">
+
+            <div class="an-bar-header">
+
+              <span class="an-bar-crop">
+
+                ${getCropIconHtml(
+                  crop.type,
+                  'an-bar-crop-img'
+                )}
+
+                <span>
+                  ${escapeHtml(crop.type)}
+                </span>
+
+              </span>
+
+              <span
+                class="an-bar-pct"
+                style="color:${col}"
+              >
+                ${st.progress}%
+              </span>
+
+            </div>
+          
           <div class="an-bar-track"><div class="an-bar-fill" style="width:${st.progress}%;background:${col}"></div></div>
           <div class="an-bar-meta">
             <span class="cdc-status status-${st.color}" style="font-size:0.65rem;padding:2px 7px">${st.label}</span>
