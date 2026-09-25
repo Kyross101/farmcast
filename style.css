@@ -4219,8 +4219,58 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
 .an-perf-items { padding: 14px 16px; display: flex; flex-direction: column; gap: 9px; }
 .an-perf-item  { display: flex; align-items: center; gap: 8px; }
-.an-perf-medal { font-size: 1.1rem; flex-shrink: 0; width: 24px; }
-.an-perf-crop  { font-size: 0.82rem; font-weight: 600; min-width: 80px; color: var(--text); }
+
+.an-perf-medal {
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.an-perf-rank-img {
+  width: 24px;
+  height: 24px;
+
+  display: block;
+  object-fit: contain;
+}
+
+.an-perf-crop {
+  min-width: 95px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.an-perf-crop-img {
+  width: 23px;
+  height: 23px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.an-perf-crop span {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .an-perf-bar-track { flex: 1; height: 7px; background: var(--bg3); border-radius: 99px; overflow: hidden; }
 .an-perf-bar   { height: 100%; background: linear-gradient(90deg,#2ea043,#3fb950); border-radius: 99px; transition: width 0.8s ease; }
 .an-perf-kg    { font-size: 0.75rem; font-weight: 700; color: var(--green); min-width: 50px; text-align: right; }

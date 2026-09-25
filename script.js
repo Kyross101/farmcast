@@ -10350,27 +10350,100 @@ function renderAnLandChart() {
 }
 
 function renderAnPerfList() {
-  const byYield = {};
-  harvestHistory.forEach(h=>{ byYield[h.crop]=(byYield[h.crop]||0)+Number(h.yield); });
-  const sorted = Object.entries(byYield).sort((a,b)=>b[1]-a[1]).slice(0,6);
-  const medals = ['🥇','🥈','🥉','4️⃣','5️⃣','6️⃣'];
 
-  if (sorted.length===0) {
-    document.getElementById('anPerfList').innerHTML =
+  const byYield = {};
+
+  harvestHistory.forEach(h => {
+    byYield[h.crop] =
+      (byYield[h.crop] || 0) +
+      Number(h.yield);
+  });
+
+
+  const sorted =
+    Object.entries(byYield)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 6);
+
+
+  const rankIcons = [
+    'assets/ui/analytics-rank-1.svg',
+    'assets/ui/analytics-rank-2.svg',
+    'assets/ui/analytics-rank-3.svg',
+    'assets/ui/analytics-rank-4.svg',
+    'assets/ui/analytics-rank-5.svg',
+    'assets/ui/analytics-rank-6.svg'
+  ];
+
+
+  if (sorted.length === 0) {
+
+    document.getElementById(
+      'anPerfList'
+    ).innerHTML =
       '<div style="color:var(--text-muted);text-align:center;padding:20px;font-size:.85rem">No harvest data yet. Log your first harvest!</div>';
+
     return;
   }
-  const maxY = sorted[0][1];
-  document.getElementById('anPerfList').innerHTML = `
+
+
+  const maxY =
+    sorted[0][1];
+
+
+  document.getElementById(
+    'anPerfList'
+  ).innerHTML = `
+
     <div class="an-perf-items">
-      ${sorted.map(([crop,kg],i)=>`
+
+      ${sorted.map(([crop, kg], i) => `
+
         <div class="an-perf-item">
-          <span class="an-perf-medal">${medals[i]||'—'}</span>
-          <span class="an-perf-crop">${CROP_EMOJIS[crop]||'🌿'} ${crop}</span>
-          <div class="an-perf-bar-track"><div class="an-perf-bar" style="width:${Math.round((kg/maxY)*100)}%"></div></div>
-          <span class="an-perf-kg">${kg.toFixed(0)} kg</span>
-        </div>`).join('')}
-    </div>`;
+
+          <span class="an-perf-medal">
+            <img
+              src="${rankIcons[i]}"
+              alt="Rank ${i + 1}"
+              class="an-perf-rank-img"
+            >
+          </span>
+
+
+          <span class="an-perf-crop">
+
+            ${getCropIconHtml(
+              crop,
+              'an-perf-crop-img'
+            )}
+
+            <span>
+              ${escapeHtml(crop)}
+            </span>
+
+          </span>
+
+
+          <div class="an-perf-bar-track">
+            <div
+              class="an-perf-bar"
+              style="width:${Math.round(
+                (kg / maxY) * 100
+              )}%"
+            ></div>
+          </div>
+
+
+          <span class="an-perf-kg">
+            ${kg.toFixed(0)} kg
+          </span>
+
+        </div>
+
+      `).join('')}
+
+    </div>
+  `;
 }
 
 function renderAnIrrEff() {
