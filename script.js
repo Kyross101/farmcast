@@ -10313,34 +10313,170 @@ function setAnFilter(el, filter) {
 }
 
 function renderAnWeatherImpact() {
-  const crops = (typeof myCrops!=='undefined') ? myCrops : [];
-  const w = currentWeather;
 
-  if (!w || crops.length===0) {
-    document.getElementById('anWeatherImpact').innerHTML =
+  const crops =
+    (typeof myCrops !== 'undefined')
+      ? myCrops
+      : [];
+
+  const w =
+    currentWeather;
+
+
+  if (
+    !w ||
+    crops.length === 0
+  ) {
+
+    document.getElementById(
+      'anWeatherImpact'
+    ).innerHTML =
       '<div style="color:var(--text-muted);text-align:center;padding:20px;font-size:.85rem">Search for a city to see weather impact analysis.</div>';
+
     return;
   }
 
-  const temp=w.main.temp, hum=w.main.humidity;
-  const isRain = w.weather[0].description.toLowerCase().includes('rain');
 
-  document.getElementById('anWeatherImpact').innerHTML = `
+  const temp =
+    w.main.temp;
+
+  const hum =
+    w.main.humidity;
+
+  const isRain =
+    w.weather[0].description
+      .toLowerCase()
+      .includes('rain');
+
+
+  document.getElementById(
+    'anWeatherImpact'
+  ).innerHTML = `
+
     <div class="an-wi-list">
+
       ${crops.map(crop => {
-        const info = CROP_INFO[crop.type]||{};
-        let impact='neutral', icon='😐', reason='Conditions are acceptable.';
-        if (info.minTemp && temp<info.minTemp)      { impact='negative'; icon='🥶'; reason=`Too cold (${Math.round(temp)}°C < ${info.minTemp}°C min).`; }
-        else if (info.maxTemp && temp>info.maxTemp) { impact='negative'; icon='🔥'; reason=`Heat stress (${Math.round(temp)}°C > ${info.maxTemp}°C max).`; }
-        else if (hum>85 && isRain)                 { impact='warn';     icon='🌧️'; reason='High humidity + rain. Monitor for fungal disease.'; }
-        else if (temp>=(info.minTemp||18)&&temp<=(info.maxTemp||35)) { impact='positive'; icon='✅'; reason=`Ideal temp range (${info.minTemp}–${info.maxTemp}°C).`; }
-        return `<div class="an-wi-item ${impact}">
-          <div class="an-wi-crop">${CROP_EMOJIS[crop.type]||'🌿'} ${crop.type}</div>
-          <div class="an-wi-icon">${icon}</div>
-          <div class="an-wi-reason">${reason}</div>
-        </div>`;
+
+        const info =
+          CROP_INFO[crop.type] || {};
+
+
+        let impact =
+          'neutral';
+
+        let iconPath =
+          'assets/ui/weather-cloudy.svg';
+
+        let reason =
+          'Conditions are acceptable.';
+
+
+        if (
+          info.minTemp &&
+          temp < info.minTemp
+        ) {
+
+          impact =
+            'negative';
+
+          iconPath =
+            'assets/ui/weather-snow.svg';
+
+          reason =
+            `Too cold (${Math.round(temp)}°C < ${info.minTemp}°C min).`;
+
+        }
+
+        else if (
+          info.maxTemp &&
+          temp > info.maxTemp
+        ) {
+
+          impact =
+            'negative';
+
+          iconPath =
+            'assets/ui/weather-clear.svg';
+
+          reason =
+            `Heat stress (${Math.round(temp)}°C > ${info.maxTemp}°C max).`;
+
+        }
+
+        else if (
+          hum > 85 &&
+          isRain
+        ) {
+
+          impact =
+            'warn';
+
+          iconPath =
+            'assets/ui/weather-rain.svg';
+
+          reason =
+            'High humidity + rain. Monitor for fungal disease.';
+
+        }
+
+        else if (
+          temp >= (info.minTemp || 18) &&
+          temp <= (info.maxTemp || 35)
+        ) {
+
+          impact =
+            'positive';
+
+          iconPath =
+            'assets/ui/pest-status-low.svg';
+
+          reason =
+            `Ideal temp range (${info.minTemp}–${info.maxTemp}°C).`;
+
+        }
+
+
+        return `
+
+          <div class="an-wi-item ${impact}">
+
+            <div class="an-wi-crop">
+
+              ${getCropIconHtml(
+                crop.type,
+                'an-wi-crop-img'
+              )}
+
+              <span>
+                ${escapeHtml(crop.type)}
+              </span>
+
+            </div>
+
+
+            <div class="an-wi-icon">
+
+              <img
+                src="${iconPath}"
+                alt=""
+                class="an-wi-status-img"
+              >
+
+            </div>
+
+
+            <div class="an-wi-reason">
+              ${escapeHtml(reason)}
+            </div>
+
+          </div>
+
+        `;
+
       }).join('')}
-    </div>`;
+
+    </div>
+  `;
 }
 
 function renderAnLandChart() {
