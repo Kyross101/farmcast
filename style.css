@@ -4052,6 +4052,124 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
 .an-grid     { display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
 
+/* ═══════════════════════════════════════════════
+   FARM ANALYTICS — SECTION CONTROLS
+═══════════════════════════════════════════════ */
+
+.an-section-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  margin:
+    -4px
+    0
+    14px;
+}
+
+
+.an-section-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  min-height: 36px;
+
+  padding:
+    8px
+    12px;
+
+  background:
+    var(--bg2);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    10px;
+
+  color:
+    var(--text-muted);
+
+  font-family:
+    inherit;
+
+  font-size:
+    .76rem;
+
+  font-weight:
+    650;
+
+  cursor:
+    pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+
+.an-section-btn
+.material-symbols-outlined {
+  font-size:
+    17px;
+}
+
+
+.an-section-btn:hover {
+  background:
+    var(--green-dim);
+
+  border-color:
+    rgba(63,185,80,.38);
+
+  color:
+    var(--green);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* Mobile */
+@media (max-width: 640px) {
+
+  .an-section-actions {
+    width:
+      100%;
+
+    justify-content:
+      stretch;
+
+    gap:
+      7px;
+  }
+
+
+  .an-section-btn {
+    flex:
+      1;
+
+    min-width:
+      0;
+
+    padding-inline:
+      8px;
+
+    font-size:
+      .72rem;
+  }
+
+}
+
+
 /* Analytics collapsible cards */
 #page-farm-analytics .card-header {
   user-select: none;

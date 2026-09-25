@@ -11872,6 +11872,77 @@ function toggleCard(headerEl) {
 
 }
 
+// ═══════════════════════════════════════════════════════
+// FARM ANALYTICS — COLLAPSE / EXPAND ALL
+// ═══════════════════════════════════════════════════════
+
+function setAnalyticsCardsCollapsed(
+  shouldCollapse
+) {
+
+  const analyticsPage =
+    document.getElementById(
+      'page-farm-analytics'
+    );
+
+  if (!analyticsPage) return;
+
+
+  const cards =
+    analyticsPage.querySelectorAll(
+      '.an-grid .card'
+    );
+
+
+  cards.forEach(card => {
+
+    const header =
+      card.querySelector(
+        '.card-header'
+      );
+
+    const collapsible =
+      card.querySelector(
+        '.card-collapsible'
+      );
+
+    if (
+      !header ||
+      !collapsible
+    ) {
+      return;
+    }
+
+
+    const isCollapsed =
+      collapsible.classList.contains(
+        'collapsed'
+      );
+
+
+    /*
+       Reuse the existing tested
+       FarmCast card animation.
+    */
+    if (
+      shouldCollapse &&
+      !isCollapsed
+    ) {
+      toggleCard(header);
+    }
+
+
+    if (
+      !shouldCollapse &&
+      isCollapsed
+    ) {
+      toggleCard(header);
+    }
+
+  });
+
+}
+
 // Apply language on init
 window.addEventListener('load', () => {
   setTimeout(() => {
