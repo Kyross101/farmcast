@@ -4359,7 +4359,34 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .hh-location  { font-size: 0.78rem; color: var(--text-muted); }
 .hh-yield     { color: var(--green); font-family: 'Syne', sans-serif; }
 .hh-notes-text { font-size: 0.75rem; color: var(--text-muted); max-width: 160px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.hh-quality   { padding: 3px 9px; border-radius: 99px; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
+
+.hh-quality {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 3px 9px;
+
+  border-radius: 99px;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.hh-quality-icon-img {
+  width: auto;
+  height: 14px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
 .hh-q-excellent { background: var(--green-dim); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
 .hh-q-good      { background: var(--blue-dim);  color: var(--blue);  border: 1px solid rgba(88,166,255,0.3); }
 .hh-q-poor      { background: var(--red-dim);   color: var(--red);   border: 1px solid rgba(248,81,73,0.3); }

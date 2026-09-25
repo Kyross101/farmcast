@@ -10044,8 +10044,28 @@ function renderHHTable() {
     return 0;
   });
 
-  const qLabel = { excellent:'⭐⭐⭐ Excellent', good:'⭐⭐ Good', poor:'⭐ Poor' };
-  const qClass  = { excellent:'hh-q-excellent', good:'hh-q-good', poor:'hh-q-poor' };
+  const qMeta = {
+    excellent: {
+      label: 'Excellent',
+      icon: 'assets/ui/harvest-quality-excellent.svg'
+    },
+
+    good: {
+      label: 'Good',
+      icon: 'assets/ui/harvest-quality-good.svg'
+    },
+
+    poor: {
+      label: 'Poor',
+      icon: 'assets/ui/harvest-quality-poor.svg'
+    }
+  };
+
+  const qClass = {
+    excellent: 'hh-q-excellent',
+    good: 'hh-q-good',
+    poor: 'hh-q-poor'
+  };
 
   if (filtered.length === 0) {
     document.getElementById('hhTableBody').innerHTML =
@@ -10074,8 +10094,41 @@ function renderHHTable() {
       <td>${new Date(h.date).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'})}</td>
       <td><span class="hh-location">${h.location}</span></td>
       <td>${h.area} m²</td>
+      
       <td><strong class="hh-yield">${Number(h.yield).toFixed(1)} kg</strong></td>
-      <td><span class="hh-quality ${qClass[h.quality]}">${qLabel[h.quality]}</span></td>
+      
+      <td>
+        <span
+          class="hh-quality ${
+            qClass[h.quality] || ''
+          }"
+        >
+
+          ${
+            qMeta[h.quality]
+              ? `
+                <img
+                  src="${qMeta[h.quality].icon}"
+                  alt=""
+                  class="hh-quality-icon-img"
+                >
+
+                <span>
+                  ${qMeta[h.quality].label}
+                </span>
+              `
+              : `
+                <span>
+                  ${escapeHtml(
+                    h.quality || 'Unknown'
+                  )}
+                </span>
+              `
+          }
+
+        </span>
+      </td>
+
       <td><span class="hh-notes-text">${h.notes||'—'}</span></td>
       <td><button class="hh-del-btn" onclick="deleteHarvest('${h.id}')" title="Delete">
         <span class="material-symbols-outlined" style="font-size:16px">delete</span></button></td>
