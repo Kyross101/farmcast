@@ -4051,6 +4051,16 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .an-kpi-sub  { font-size: 0.68rem; color: var(--text-dim); margin-top: 2px; }
 
 .an-grid     { display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+
+/* Analytics collapsible cards */
+#page-farm-analytics .card-header {
+  user-select: none;
+}
+
+#page-farm-analytics .card-header:hover {
+  opacity: 0.96;
+}
+
 .an-main-col { display: flex; flex-direction: column; }
 .an-side-col { display: flex; flex-direction: column; }
 

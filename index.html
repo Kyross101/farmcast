@@ -2527,15 +2527,52 @@
               <div class="an-perf-list" id="anPerfList"></div>
             </div>
           </div>
+           <div class="card" style="margin-top:16px">
+             <div
+               class="card-header"
+               onclick="toggleCard(this)"
+               style="cursor:pointer"
+              >
+               <div class="card-title">
+                 <span class="material-symbols-outlined">water_drop</span>
+                 Irrigation Efficiency
+               </div>
+
+               <div class="card-action">
+                 <span class="material-symbols-outlined card-collapse-icon">
+                   expand_less
+                 </span>
+               </div>
+             </div>
+
+            <div class="card-collapsible">
+              <div class="an-irr-eff" id="anIrrEff"></div>
+            </div>
+          </div>
 
           <div class="card" style="margin-top:16px">
-            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">water_drop</span>Irrigation Efficiency</div></div>
-            <div class="an-irr-eff" id="anIrrEff"></div>
+            <div
+              class="card-header"
+              onclick="toggleCard(this)"
+              style="cursor:pointer"
+            >
+              <div class="card-title">
+                <span class="material-symbols-outlined">calendar_month</span>
+                  Monthly Summary
+              </div>
+
+              <div class="card-action">
+                <span class="material-symbols-outlined card-collapse-icon">
+                  expand_less
+                </span>
+              </div>
+            </div>
+
+            <div class="card-collapsible">
+              <div class="an-monthly-summary" id="anMonthlySummary"></div>
+            </div>
           </div>
-          <div class="card" style="margin-top:16px">
-            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">calendar_month</span>Monthly Summary</div></div>
-            <div class="an-monthly-summary" id="anMonthlySummary"></div>
-          </div>
+
         </div>
       </div>
     </div>
