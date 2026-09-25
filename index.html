@@ -2419,34 +2419,115 @@
 
       <div class="an-grid fade-in fade-in-1">
         <div class="an-main-col">
+
           <div class="card">
-            <div class="card-header">
-              <div class="card-title"><span class="material-symbols-outlined">bar_chart</span>Crop Growth Progress</div>
-              <div class="card-action" id="anChartFilter">
-                <span class="an-filter-tab active" onclick="setAnFilter(this,'all')">All</span>
-                <span class="an-filter-tab" onclick="setAnFilter(this,'growing')">Growing</span>
-                <span class="an-filter-tab" onclick="setAnFilter(this,'ready')">Ready</span>
+            <div
+              class="card-header"
+              onclick="toggleCard(this)"
+              style="cursor:pointer"
+            >
+              <div class="card-title">
+                <span class="material-symbols-outlined">bar_chart</span>
+                  Crop Growth Progress
+              </div>
+
+              <div
+                class="card-action"
+                style="display:flex;align-items:center;gap:10px"
+              >
+                <div
+                  id="anChartFilter"
+                  onclick="event.stopPropagation()"
+                >
+                  <span class="an-filter-tab active" onclick="setAnFilter(this,'all')">All</span>
+                  <span class="an-filter-tab" onclick="setAnFilter(this,'growing')">Growing</span>
+                  <span class="an-filter-tab" onclick="setAnFilter(this,'ready')">Ready</span>
+                </div>
+
+                <span class="material-symbols-outlined card-collapse-icon">
+                  expand_less
+                </span>
               </div>
             </div>
-            <div class="an-bar-chart" id="anBarChart"></div>
+
+            <div class="card-collapsible">
+              <div class="an-bar-chart" id="anBarChart"></div>
+            </div>
           </div>
 
           <div class="card" style="margin-top:16px">
-            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">device_thermostat</span>Weather Impact on Crops</div></div>
-            <div class="an-weather-impact" id="anWeatherImpact"></div>
+            <div
+              class="card-header"
+              onclick="toggleCard(this)"
+              style="cursor:pointer"
+            >
+              <div class="card-title">
+                <span class="material-symbols-outlined">device_thermostat</span>
+                Weather Impact on Crops
+              </div>
+
+              <div class="card-action">
+                <span class="material-symbols-outlined card-collapse-icon">
+                  expand_less
+                </span>
+              </div>
+            </div>
+
+            <div class="card-collapsible">
+              <div class="an-weather-impact" id="anWeatherImpact"></div>
+            </div>
           </div>
 
           <div class="card" style="margin-top:16px">
-            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">pie_chart</span>Land Use by Crop</div></div>
-            <div class="an-land-chart" id="anLandChart"></div>
+            <div
+              class="card-header"
+              onclick="toggleCard(this)"
+              style="cursor:pointer"
+            >
+              <div class="card-title">
+                <span class="material-symbols-outlined">pie_chart</span>
+                Land Use by Crop
+              </div>
+
+              <div class="card-action">
+                <span class="material-symbols-outlined card-collapse-icon">
+                expand_less
+                </span>
+              </div>
+            </div>
+
+            <div class="card-collapsible">
+              <div class="an-land-chart" id="anLandChart"></div>
+            </div>
           </div>
+
         </div>
 
         <div class="an-side-col">
+
           <div class="card">
-            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">emoji_events</span>Crop Performance</div></div>
-            <div class="an-perf-list" id="anPerfList"></div>
+            <div
+              class="card-header"
+              onclick="toggleCard(this)"
+              style="cursor:pointer"
+            >
+              <div class="card-title">
+                <span class="material-symbols-outlined">emoji_events</span>
+                Crop Performance
+              </div>
+
+              <div class="card-action">
+                <span class="material-symbols-outlined card-collapse-icon">
+                  expand_less
+                </span>
+              </div>
+            </div>
+
+            <div class="card-collapsible">
+              <div class="an-perf-list" id="anPerfList"></div>
+            </div>
           </div>
+
           <div class="card" style="margin-top:16px">
             <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">water_drop</span>Irrigation Efficiency</div></div>
             <div class="an-irr-eff" id="anIrrEff"></div>
