@@ -1865,6 +1865,27 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/patola.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas - Regional Training Center 7',
+
+        title:
+          'Patola Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Patola%20Production%20Guide.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -1906,6 +1927,31 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/upo.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI MIMAROPA',
+
+        title:
+          'Gabay sa Produksyon ng Upo',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2024-06/Upo%20IEC.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -1940,6 +1986,35 @@ window.FARMCAST_CROPS = [
       localName: 'Kangkong',
       category: 'vegetable',
       icon: 'assets/crops/kangkong.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        },
+        {
+          value: 'vine-cuttings',
+          label: 'Vine Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          'Upland Kangkong Production for Urban and Home Gardening',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/urban_agriculture_for_upland.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -1978,6 +2053,31 @@ window.FARMCAST_CROPS = [
       localName: 'Alugbati',
       category: 'vegetable',
       icon: 'assets/crops/alugbati.svg',
+
+      plantingMethods: [
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas - Regional Training Center 7',
+
+        title:
+          'Alugbati Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/alugbati_prod.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -2019,6 +2119,31 @@ window.FARMCAST_CROPS = [
       localName: 'Mustasa',
       category: 'vegetable',
       icon: 'assets/crops/mustasa.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Regional Training Center 02',
+
+        title:
+          'Gabay sa Pagtatanim ng Mustasa',
+
+        url:
+          'https://ati2.da.gov.ph/ati-2/content/sites/default/files/2024-03/Gabay%20sa%20Pagtatanim%20ng%20Mustasa.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
