@@ -7443,6 +7443,42 @@ const PEST_FULL_DB = [
     signs:'Seedlings cut off at soil level. Caterpillars found in soil during day.',
     treatment:'Apply Bt granules to soil. Collar seedlings with cardboard.',
     prevention:'Tilling before planting exposes pupae. Avoid planting after fallow land.' },
+
+  {
+    name:'Diamondback Moth',
+
+    icon:
+      'assets/ui/pest-diamondback-moth.svg',
+
+    condition:'hot',
+
+    level:'medium',
+
+    crops:[
+      'Pechay',
+      'Cabbage',
+      'Broccoli',
+      'Cauliflower'
+    ],
+
+    signs:
+      'Small green larvae may be found on leaf undersides. Look for windowpane-like feeding patches, small holes, and damage around growing points.',
+
+    treatment:
+      'Inspect plants closely and hand-pick larvae where practical. Remove badly damaged leaves and continue regular crop monitoring.',
+
+    prevention:
+      'Rotate away from Brassica crops between plantings and conserve natural enemies through regular field scouting.',
+
+    reference: {
+      name:
+        'UC IPM — Diamondback Moth',
+
+      url:
+       'https://ipm.ucanr.edu/agriculture/cole-crops/diamondback-moth/'
+    }  
+  },
+
 ];
 
 let pestLogs = lsLoad(LS_PEST_LOGS, [
@@ -7721,14 +7757,15 @@ function getPestCropRelevanceHtml(
 function renderPestPage() {
 
     const pestPageData =
-    PEST_FULL_DB.map(p => ({
-      ...p,
+      PEST_FULL_DB.map(p => ({
+        ...p,
 
-      reference:
-        getPestFullReference(
-          p.name
-        )
-    }));
+        reference:
+          p.reference ||
+          getPestFullReference(
+            p.name
+          )
+      }));
 
   // Weather-based alert banner
   if (currentWeather) {

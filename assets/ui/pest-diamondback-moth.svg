@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Diamondback Moth</title>
+
+  <path d="M31 25
+       C24 16 15 15 10 21
+       C7 25 10 31 18 34
+       L29 37" fill="none" stroke="#9b835f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <path d="M33 25
+       C40 16 49 15 54 21
+       C57 25 54 31 46 34
+       L35 37" fill="none" stroke="#9b835f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <path d="M32 22
+       L32 46" fill="none" stroke="#e3a008" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M27 29
+       L32 33
+       L37 29
+
+       M27 36
+       L32 40
+       L37 36" fill="none" stroke="#e3a008" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <path d="M29 20
+       L25 15
+
+       M35 20
+       L39 15" fill="none" stroke="#9b835f" stroke-width="3" stroke-linecap="round"></path>
+</svg>
