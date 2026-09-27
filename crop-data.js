@@ -3745,6 +3745,25 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/kale.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Kale in Your Garden'
+      },
+
       noRain: false,
 
       productionSystemNote:
@@ -3773,6 +3792,27 @@ window.FARMCAST_CROPS = [
       localName: 'Tanglad',
       category: 'herb',
       icon: 'assets/crops/lemongrass.svg',
+
+      plantingMethods: [
+        {
+          value: 'clump-divisions',
+          label: 'Clump Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'Weedibles and Weedicinals Plus Edible Flowers and More',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf'
+      },
 
       noRain: false,
 
@@ -3810,6 +3850,25 @@ window.FARMCAST_CROPS = [
       category: 'herb',
       icon: 'assets/crops/basil.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Basil in Home Gardens'
+      },
+
       productionNote:
         'Sweet basil is cultivated in the Philippines as a culinary herb and is included among crop commodities produced under Philippine Good Agricultural Practices (PhilGAP)-certified herb production.',
 
@@ -3837,6 +3896,31 @@ window.FARMCAST_CROPS = [
       scientificName: 'Pandanus amaryllifolius Roxb.',
       category: 'herb',
       icon: 'assets/crops/pandan.svg',
+
+      plantingMethods: [
+        {
+          value: 'rooted-offshoots',
+          label: 'Rooted Offshoots'
+        },
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'Weedibles and Weedicinals Plus Edible Flowers and More',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf'
+      },
 
       soilNote:
         'Plant in moist soil or in a container with good drainage.',
@@ -3874,6 +3958,21 @@ window.FARMCAST_CROPS = [
       scientificName: 'Sesamum indicum',
       category: 'oilseed',
       icon: 'assets/crops/sesame.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Georgia Cooperative Extension',
+
+        title:
+          'Herbs in Southern Gardens'
+      },
 
       cropUseNote:
         'Sesame is cultivated for its oil-rich edible seeds and is recognized in Philippine food and agricultural references as Linga.',
