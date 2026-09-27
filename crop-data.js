@@ -4373,7 +4373,36 @@ window.FARMCAST_CROPS = [
       scientificName: 'Canarium ovatum',
       category: 'tree-nut',
       icon: 'assets/crops/pili.svg',
-  
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'inarched-plants',
+          label: 'Inarched Plants'
+        },
+        {
+          value: 'cleft-grafted-plants',
+          label: 'Cleft-Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Regional Field Office 5',
+
+        office:
+          'Bicol Region',
+
+        title:
+          "Exploring the Potential of Bicol's Pili Nut as an Export Product",
+
+        url:
+          'https://bicol.da.gov.ph/exploring-the-potential-of-bicols-pili-nut-as-an-export-product/'
+      },
+
       propagationNote:
         'Pili may be propagated sexually from nuts or asexually through methods such as inarching and cleft grafting. The Department of Agriculture promotes asexual propagation using selected high-quality mother trees for commercial production.',
 
@@ -4409,6 +4438,32 @@ window.FARMCAST_CROPS = [
       scientificName: 'Passiflora edulis',
       category: 'fruit',
       icon: 'assets/crops/passion-fruit.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Cuttings'
+        },
+        {
+          value: 'cleft-grafted-plants',
+          label: 'Cleft-Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida - IFAS Extension',
+
+        title:
+          'Passion Fruit Propagation: A Comprehensive Guide',
+
+        url:
+          'https://ask.ifas.ufl.edu/publication/HS1491'
+      },
 
       growthHabitNote:
         'Passion fruit is a perennial vining fruit crop.',
@@ -4447,6 +4502,35 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/star-fruit.svg',
 
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'marcotted-plants',
+          label: 'Marcotted Plants'
+        }
+        ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'Weedibles and Weedicinals Plus Edible Flowers and More',
+
+        url:
+         'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf'
+      },
+
       sunlightNote:
         'Performs well under direct sunlight.',
 
@@ -4483,6 +4567,27 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/santol.svg',
 
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          '10 Steps to Small Agrofruit Livelihood Technology (SALT-4)',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/salt_4_brochure.pdf'
+      },
+
       bearingNote:
         'The official ATI SALT-4 reference lists seed-propagated Santol at about 5–7 years before harvesting. The same reference does not provide a corresponding value for asexually propagated Santol.',
 
@@ -4513,6 +4618,31 @@ window.FARMCAST_CROPS = [
       scientificName: 'Manilkara zapota (L.) P. van Royen',
       category: 'fruit',
       icon: 'assets/crops/sapodilla.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'asexually-propagated-plants',
+          label: 'Asexually Propagated Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          '10 Steps to Small Agrofruit Livelihood Technology (SALT-4)',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/salt_4_brochure.pdf'
+      },
 
       bearingNote:
         'The official ATI SALT-4 reference lists Chico at about 6–10 years before harvesting when propagated from seed and about 3–5 years when established through asexual propagation.',
