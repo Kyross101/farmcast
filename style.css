@@ -3787,9 +3787,60 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 
 @media(max-width:768px) {
+
   .irr-stats-row {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns:
+      repeat(2, 1fr);
   }
+
+
+  /* Pest Alerts mobile information order */
+  .pest-page-grid {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+
+  .pest-col-main,
+  .pest-col-side {
+    display: contents;
+  }
+
+
+  .pest-alert-banner {
+    order: 1;
+  }
+
+
+  .pest-active-card {
+    order: 2;
+  }
+
+
+  .pest-guide-card {
+    order: 3;
+  }
+
+
+  .pest-prevention-card {
+    order: 4;
+  }
+
+
+  .pest-log-card {
+    order: 5;
+  }
+
+
+  .pest-active-card,
+  .pest-guide-card,
+  .pest-prevention-card,
+  .pest-log-card {
+    margin-top: 0 !important;
+  }
+
 }
 
 /* ═══════════════════════════════════════════════════════
