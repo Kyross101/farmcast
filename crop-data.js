@@ -4002,6 +4002,27 @@ window.FARMCAST_CROPS = [
       category: 'grain',
       icon: 'assets/crops/sorghum.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Regional Field Office CALABARZON',
+
+        office:
+          'Regional Agriculture and Fisheries Information Section',
+
+        title:
+          'Gabay sa Produksyon ng Sorghum',
+
+        url:
+          'https://calabarzon.da.gov.ph/wp-content/uploads/2025/01/SORGHUM-Brochure-Template-1.pdf'
+      },
+
       soilPH:
         '5.5–6.5',
 
@@ -4050,6 +4071,27 @@ window.FARMCAST_CROPS = [
       scientificName: 'Coix lacryma-jobi',
       category: 'grain',
       icon: 'assets/crops/adlai.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded (Per Hill)'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI MIMAROPA',
+
+        title:
+          'Gabay sa Produksyon ng Adlay',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-11/Gabay%20sa%20Produksyon%20ng%20Adlay.pdf'
+      },
 
       varieties: [
         'Gulian',
@@ -4104,6 +4146,27 @@ window.FARMCAST_CROPS = [
       category: 'industrial-crop',
       icon: 'assets/crops/sugarcane.svg',
 
+      plantingMethods: [
+        {
+          value: 'canepoints',
+          label: 'Canepoints (Vegetative Planting Material)'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Sugar Regulatory Administration',
+
+        office:
+          'Research, Development and Extension',
+
+        title:
+          'Yield Performance of Phil 2009-0919 at Different Furrow Distance and Planting Density',
+
+        url:
+          'https://www.sra.gov.ph/view_file/researches/gy3yaTT7QnXQjhq'
+      },
+
       plantingDistance:
         'SRA recommends about 1.0 m furrow spacing for conventional early-season planting.',
 
@@ -4142,6 +4205,39 @@ window.FARMCAST_CROPS = [
       scientificName: 'Musa textilis Nee',
       category: 'fiber-crop',
       icon: 'assets/crops/abaca.svg',
+
+      plantingMethods: [
+        {
+          value: 'seedpieces-corms',
+          label: 'Seedpieces / Corms'
+        },
+        {
+          value: 'suckers',
+          label: 'Suckers'
+        },
+        {
+          value: 'tissue-cultured-plantlets',
+          label: 'Tissue-Cultured Plantlets'
+        },
+        {
+          value: 'seed-propagated',
+          label: 'Seed-Propagated'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Philippine Fiber Industry Development Authority',
+
+        office:
+          'PhilFIDA',
+
+        title:
+          'Abaca Technoguide - 2024 Edition',
+
+        url:
+          'https://philfida.da.gov.ph/images/Publications/Technoguides/abaca-technoguide-2024.pdf'
+      },
 
       soilPH:
         '6.0–7.0',
@@ -4211,6 +4307,27 @@ window.FARMCAST_CROPS = [
       scientificName: 'Hevea brasiliensis',
       category: 'industrial-crop',
       icon: 'assets/crops/rubber.svg',
+
+      plantingMethods: [
+        {
+          value: 'budded-polybag-seedlings',
+          label: 'Budded Polybag Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'Rubber Production Guide',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Rubber-Production-Guide.pdf'
+      },
 
       plantingDistance:
         'Planting distance depends on terrain, clone, planting material, and desired tree density. Recommended layouts include 10 m × 2 m for hilly contour planting and several layouts for flat or undulating land such as 5 m × 4 m and 6 m × 3 m.',
