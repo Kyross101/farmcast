@@ -7576,6 +7576,148 @@ function getPestWeatherTriggerHtml(
 
 }
 
+function getPestCropRelevanceHtml(
+  pest
+) {
+
+  if (!pest) {
+    return '';
+  }
+
+
+  const affectedCrops =
+    Array.isArray(pest.crops)
+      ? pest.crops
+      : [];
+
+
+  const plantedCrops =
+    Array.isArray(myCrops)
+      ? myCrops
+      : [];
+
+
+  const plantedCropNames =
+    plantedCrops
+      .map(crop =>
+        String(
+          crop?.type || ''
+        ).trim()
+      )
+      .filter(Boolean);
+
+
+  const matchingCrops =
+    affectedCrops.filter(
+      affectedCrop =>
+
+        plantedCropNames.some(
+          plantedCrop =>
+
+            plantedCrop.toLowerCase() ===
+            String(
+              affectedCrop
+            )
+              .trim()
+              .toLowerCase()
+
+        )
+
+    );
+
+
+  const uniqueMatchingCrops =
+    [...new Set(matchingCrops)];
+
+
+  if (plantedCropNames.length === 0) {
+
+    return `
+      <div class="pfi-crop-relevance no-crop">
+
+        <img
+          src="assets/ui/stage-seedling.svg"
+          alt=""
+          class="pfi-crop-relevance-icon"
+        >
+
+        <div>
+
+          <span class="pfi-crop-relevance-label">
+            Farm relevance
+          </span>
+
+          <span class="pfi-crop-relevance-text">
+            No crops added in My Crops yet.
+          </span>
+
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+  if (uniqueMatchingCrops.length === 0) {
+
+    return `
+      <div class="pfi-crop-relevance no-match">
+
+        <img
+          src="assets/ui/stage-seedling.svg"
+          alt=""
+          class="pfi-crop-relevance-icon"
+        >
+
+        <div>
+
+          <span class="pfi-crop-relevance-label">
+            Farm relevance
+          </span>
+
+          <span class="pfi-crop-relevance-text">
+            No matching crop currently planted.
+          </span>
+
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+  return `
+    <div class="pfi-crop-relevance has-match">
+
+      <img
+        src="assets/ui/stage-seedling.svg"
+        alt=""
+        class="pfi-crop-relevance-icon"
+      >
+
+      <div>
+
+        <span class="pfi-crop-relevance-label">
+          Relevant to your crops
+        </span>
+
+        <span class="pfi-crop-relevance-text">
+          ${uniqueMatchingCrops
+            .map(crop =>
+              escapeHtml(crop)
+            )
+            .join(', ')}
+        </span>
+
+      </div>
+
+    </div>
+  `;
+
+}
+
 function renderPestPage() {
 
     const pestPageData =
@@ -7922,6 +8064,11 @@ function renderPestPage() {
         ${getPestWeatherTriggerHtml(
           p,
           currentWeather
+        )}
+
+
+        ${getPestCropRelevanceHtml(
+          p
         )}
 
 
