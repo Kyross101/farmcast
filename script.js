@@ -5489,41 +5489,141 @@ function getPlantingDateLabel(crop) {
 let myCrops = [];
 let nextCropId = 1;
 let currentCropFilter = 'all';
- 
-// Get crop status based on dates and weather conditions
-function getCropStatus(crop) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+
+
+// Check whether the farmer record
+// has a usable harvest date.
+function hasValidCropHarvestDate(crop) {
+
+  const harvest =
+    String(
+      crop?.harvest || ''
+    ).trim();
+
+  if (!harvest) {
+    return false;
+  }
 
   const harvestDate =
-    new Date(`${crop.harvest}T00:00:00`);
+    new Date(
+      `${harvest}T00:00:00`
+    );
+
+  return !Number.isNaN(
+    harvestDate.getTime()
+  );
+}
+
+
+// Get crop status based on dates and weather conditions
+function getCropStatus(crop) {
+
+  const today =
+    new Date();
+
+  today.setHours(
+    0,
+    0,
+    0,
+    0
+  );
+
+
+  const weatherAssessment =
+    getMyCropWeatherAssessment(
+      crop.type
+    );
+
+
+  const weatherRisk =
+    weatherAssessment.atRisk
+      ? weatherAssessment.reason
+      : null;
+
+
+  /*
+     Some FarmCast crops do not yet
+     have a verified harvest window.
+
+     Do not invent a harvest date.
+     They can still remain active
+     crops and use field observations.
+  */
+  if (
+    !hasValidCropHarvestDate(
+      crop
+    )
+  ) {
+
+    if (weatherRisk) {
+      return {
+        label: 'At Risk',
+        color: 'red',
+        progress: 0,
+        daysLeft: null,
+        weatherRisk,
+        harvestDateAvailable: false
+      };
+    }
+
+    return {
+      label: 'Growing',
+      color: 'green',
+      progress: 0,
+      daysLeft: null,
+      weatherRisk: null,
+      harvestDateAvailable: false
+    };
+  }
+
+
+  const harvestDate =
+    new Date(
+      `${crop.harvest}T00:00:00`
+    );
+
 
   const plantDate =
-    new Date(`${crop.planted}T00:00:00`);
+    new Date(
+      `${crop.planted}T00:00:00`
+    );
+
 
   const daysLeft =
     Math.ceil(
-      (harvestDate - today) /
+      (
+        harvestDate -
+        today
+      ) /
       86400000
     );
+
 
   const totalPlannedDays =
     Math.max(
       1,
       Math.ceil(
-        (harvestDate - plantDate) /
+        (
+          harvestDate -
+          plantDate
+        ) /
         86400000
       )
     );
+
 
   const daysGrown =
     Math.max(
       0,
       Math.floor(
-        (today - plantDate) /
+        (
+          today -
+          plantDate
+        ) /
         86400000
       )
     );
+
 
   const progress =
     Math.max(
@@ -5531,26 +5631,61 @@ function getCropStatus(crop) {
       Math.min(
         100,
         Math.round(
-          (daysGrown / totalPlannedDays) * 100
+          (
+            daysGrown /
+            totalPlannedDays
+          ) *
+          100
         )
       )
     );
- 
-  // Weather risk check
-  const weatherAssessment =
-    getMyCropWeatherAssessment(
-      crop.type
-    );
 
-  const weatherRisk =
-    weatherAssessment.atRisk
-      ? weatherAssessment.reason
-      : null;
 
-  if (daysLeft <= 0) return { label: 'Overdue', color: 'red',   progress, daysLeft: 0, weatherRisk };
-  if (daysLeft <= 7) return { label: 'Ready',   color: 'amber', progress, daysLeft, weatherRisk };
-  if (weatherRisk)   return { label: 'At Risk', color: 'red',   progress, daysLeft, weatherRisk };
-  return               { label: 'Growing', color: 'green',  progress, daysLeft, weatherRisk };
+  if (daysLeft <= 0) {
+    return {
+      label: 'Overdue',
+      color: 'red',
+      progress,
+      daysLeft: 0,
+      weatherRisk,
+      harvestDateAvailable: true
+    };
+  }
+
+
+  if (daysLeft <= 7) {
+    return {
+      label: 'Ready',
+      color: 'amber',
+      progress,
+      daysLeft,
+      weatherRisk,
+      harvestDateAvailable: true
+    };
+  }
+
+
+  if (weatherRisk) {
+    return {
+      label: 'At Risk',
+      color: 'red',
+      progress,
+      daysLeft,
+      weatherRisk,
+      harvestDateAvailable: true
+    };
+  }
+
+
+  return {
+    label: 'Growing',
+    color: 'green',
+    progress,
+    daysLeft,
+    weatherRisk,
+    harvestDateAvailable: true
+  };
+
 }
 
 function getCropTimelineCheck(crop) {
@@ -5583,6 +5718,31 @@ function getCropTimelineCheck(crop) {
   const hasSourceBackedHarvestWindow =
     stageHarvestWindow.available ||
     estimatedHarvestWindow.available;
+
+  /*
+    No verified or farmer-supplied
+    harvest date yet.
+
+    Keep the crop usable without
+    fabricating a calendar estimate.
+  */
+  if (
+    latest?.stage !== 'ready' &&
+    !hasSourceBackedHarvestWindow &&
+    !hasValidCropHarvestDate(crop)
+  ) {
+
+    return {
+      type: 'normal',
+      icon: 'event_busy',
+      title:
+        'Harvest date not set',
+
+      message:
+        'No verified automatic harvest estimate is stored for this crop. Continue recording actual growth observations or enter a farmer estimate when available.'
+    };
+
+  }
 
   const harvestDate = stageHarvestWindow.available
     ? new Date(stageHarvestWindow.startDate)
@@ -6113,8 +6273,33 @@ function renderCropsPage() {
           })
       : 'Not recorded yet';
 
-    const plantedFmt  = new Date(crop.planted).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
-    const harvestFmt  = new Date(crop.harvest).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'});
+    const plantedFmt =
+      new Date(
+        `${crop.planted}T00:00:00`
+      ).toLocaleDateString(
+        'en-PH',
+        {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        }
+      );
+
+
+    const harvestFmt =
+      hasValidCropHarvestDate(crop)
+        ? new Date(
+            `${crop.harvest}T00:00:00`
+          ).toLocaleDateString(
+            'en-PH',
+            {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric'
+            }
+          )
+        : 'Not set';
+
     const plantingDateLabel =
       getPlantingDateLabel(crop);
 
@@ -6819,7 +7004,7 @@ function updateAddCropHarvestEstimate() {
     hint.textContent =
       harvestInput.value
         ? 'Manual farmer estimate.'
-        : 'No verified automatic harvest estimate is stored for this crop. Enter your own estimated harvest date.';
+        : 'No verified automatic harvest estimate is stored for this crop. You may enter your own farmer estimate or leave this field blank.';
   }
 }
 
@@ -6852,7 +7037,7 @@ document
 
     if (hint) {
       hint.textContent =
-        'Enter an estimated harvest date.';
+        'Optional: enter your own estimated harvest date.';
     }
   });
 
@@ -7086,13 +7271,6 @@ function saveNewCrop() {
     return;
   }
 
-  if (!harvest) {
-    toast(
-      'No verified automatic harvest estimate is available for this crop. Please enter your own estimated harvest date.',
-      'warn'
-    );
-    return;
-  }
 
   if (!location) {
     toast('Please enter the field location.', 'warn');
@@ -8708,9 +8886,23 @@ function renderCalGrid() {
       });
     }
     // Harvest date
-    const hd = new Date(crop.harvest);
-    if (hd.getFullYear() === calYear && hd.getMonth() === calMonth) {
-      const key = hd.getDate();
+    if (
+      hasValidCropHarvestDate(
+        crop
+      )
+    ) {
+
+    const hd =
+      new Date(
+        `${crop.harvest}T00:00:00`
+      );
+
+    if (
+      hd.getFullYear() === calYear &&
+      hd.getMonth() === calMonth
+    ) {
+
+    const key = hd.getDate();
 
       if (!cropEvents[key]) {
         cropEvents[key] = [];
@@ -8721,6 +8913,9 @@ function renderCalGrid() {
         crop: crop.type,
         color: 'amber'
       });
+
+        }
+
     }
 
   }); // ← closes myCrops.forEach(crop => { ... })
@@ -10430,20 +10625,44 @@ function checkHarvestReminders() {
   if (typeof myCrops === 'undefined') return;
   const days = appSettings.harvestReminderDays;
   const today = new Date();
+
   myCrops.forEach(crop => {
-    const harvestDate = new Date(crop.harvest);
-    const daysLeft = Math.ceil((harvestDate - today) / 86400000);
-    if (daysLeft >= 0 && daysLeft <= days) {
-      // Only add if not already notified today (check by title match)
-      const alreadyNotified = notifications.some(n =>
-        n.title.includes(crop.type) && n.type === 'harvest' &&
-        new Date(n.time).toDateString() === today.toDateString()
-      );
-      if (!alreadyNotified) {
-        addNotification('harvest', `🌾 Harvest Reminder: ${crop.type}`,
-          `${crop.type} at ${crop.location} is due for harvest in ${daysLeft} day${daysLeft!==1?'s':''}. Plan your harvest activities.`);
-      }
+
+    if (
+      !hasValidCropHarvestDate(
+       crop
+      )
+    ) {
+      return;
     }
+
+
+    const harvestDate =
+      new Date(
+        `${crop.harvest}T00:00:00`
+      );
+
+
+    const daysLeft =
+      Math.ceil(
+        (
+          harvestDate -
+          today
+        ) /
+        86400000
+      );
+  
+      if (daysLeft >= 0 && daysLeft <= days) {
+        // Only add if not already notified today (check by title match)
+        const alreadyNotified = notifications.some(n =>
+          n.title.includes(crop.type) && n.type === 'harvest' &&
+          new Date(n.time).toDateString() === today.toDateString()
+        );
+        if (!alreadyNotified) {
+          addNotification('harvest', `🌾 Harvest Reminder: ${crop.type}`,
+            `${crop.type} at ${crop.location} is due for harvest in ${daysLeft} day${daysLeft!==1?'s':''}. Plan your harvest activities.`);
+        }
+      }
   });
 }
 
