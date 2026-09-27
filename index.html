@@ -1538,13 +1538,77 @@
               <span id="pabSub">Based on current humidity, temperature, and rainfall</span>
             </div>
           </div>
+
           <div class="card fade-in" style="margin-top:16px">
+
             <div class="card-header">
-              <div class="card-title"><span class="material-symbols-outlined">bug_report</span>Active Pest Risks</div>
-              <div class="card-action" onclick="refreshPestPage()"><span class="material-symbols-outlined" style="font-size:16px">refresh</span> Refresh</div>
+              <div class="card-title">
+                <span class="material-symbols-outlined">
+                  bug_report
+                </span>
+
+                Active Pest Risks
+              </div>
+
+              <div
+                class="card-action"
+                onclick="refreshPestPage()"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size:16px"
+                >
+                  refresh
+                </span>
+
+                Refresh
+              </div>
             </div>
-            <div class="pest-full-list" id="pestFullList"></div>
+
+
+            <div
+              class="pest-risk-summary"
+              aria-label="Pest risk summary"
+            >
+
+              <div class="pest-risk-summary-item pest-risk-summary-active">
+
+                <span class="pest-risk-summary-dot"></span>
+
+                <span id="pestActiveSummary">
+                  0 Active Risks
+                </span>
+
+              </div>
+
+
+              <span class="pest-risk-summary-divider">
+                ·
+              </span>
+
+
+              <div class="pest-risk-summary-item">
+
+                <span class="material-symbols-outlined pest-risk-summary-icon">
+                  monitoring
+                </span>
+
+                <span id="pestMonitoredSummary">
+                  — Pests Monitored
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="pest-full-list"
+              id="pestFullList"
+            ></div>
+
           </div>
+
           <div class="card fade-in fade-in-1" style="margin-top:16px">
             <div class="card-header">
               <div class="card-title"><span class="material-symbols-outlined">history</span>Pest Sighting Log</div>

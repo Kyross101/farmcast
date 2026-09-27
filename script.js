@@ -7558,20 +7558,102 @@ function renderPestPage() {
 
   // Active pest risks based on weather
   const active = pestPageData.filter(p => {
-    if (!currentWeather) return false;
 
-    const h = currentWeather.main.humidity; 
-    const t = currentWeather.main.temp;
+    if (!currentWeather) {
+      return false;
+    }
 
-    const isRain = currentWeather.weather[0].description.toLowerCase().includes('rain');
-    if (p.condition==='humid' && h > 70) return true;
-    if (p.condition==='hot'   && t > 30) return true;
-    if (p.condition==='dry'   && h < 50) return true;
-    if (p.condition==='rainy' && isRain) return true;
+
+    const h =
+      currentWeather.main.humidity;
+
+    const t =
+      currentWeather.main.temp;
+
+    const isRain =
+      currentWeather.weather[0]
+        .description
+        .toLowerCase()
+        .includes('rain');
+
+
+    if (
+      p.condition === 'humid' &&
+      h > 70
+    ) {
+      return true;
+    }
+
+
+    if (
+      p.condition === 'hot' &&
+      t > 30
+    ) {
+      return true;
+    }
+
+
+    if (
+      p.condition === 'dry' &&
+      h < 50
+    ) {
+      return true;
+    }
+
+
+    if (
+      p.condition === 'rainy' &&
+      isRain
+    ) {
+      return true;
+    }
+
 
     return false;
+
   });
-  const pestFullList = document.getElementById('pestFullList');
+
+
+  // Pest risk summary
+  const pestActiveSummary =
+    document.getElementById(
+      'pestActiveSummary'
+    );
+
+  const pestMonitoredSummary =
+    document.getElementById(
+      'pestMonitoredSummary'
+    );
+
+
+  if (pestActiveSummary) {
+
+    pestActiveSummary.textContent =
+      `${active.length} Active ${
+        active.length === 1
+          ? 'Risk'
+          : 'Risks'
+      }`;
+
+  }
+
+
+  if (pestMonitoredSummary) {
+
+    pestMonitoredSummary.textContent =
+      `${pestPageData.length} ${
+        pestPageData.length === 1
+          ? 'Pest'
+          : 'Pests'
+      } Monitored`;
+
+  }
+
+
+  const pestFullList =
+    document.getElementById(
+      'pestFullList'
+    );
 
   if (!pestFullList) return;
 
