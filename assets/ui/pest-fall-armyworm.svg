@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Fall Armyworm</title>
+
+  <path d="M11 38
+       C17 27 25 24 33 27
+       C40 30 43 39 52 38" fill="none" stroke="#7c6a4d" stroke-width="7" stroke-linecap="round"></path>
+
+  <circle cx="52" cy="38" r="4" fill="#7c6a4d"></circle>
+
+  <path d="M49 35
+       L52 38
+       L49 41
+
+       M55 35
+       L52 38
+       L55 41" fill="none" stroke="#e3a008" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M20 31
+       L22 37
+
+       M29 29
+       L31 36
+
+       M38 31
+       L40 37" fill="none" stroke="#d4b483" stroke-width="2" stroke-linecap="round"></path>
+</svg>

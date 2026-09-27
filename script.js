@@ -7512,6 +7512,40 @@ const PEST_FULL_DB = [
       'Remove nearby mustard-family weeds and crop residue after harvest. Inspect young plants regularly because populations can build up quickly.'
   },
 
+  {
+    name:'Fall Armyworm',
+
+    icon:
+      'assets/ui/pest-fall-armyworm.svg',
+
+    condition:'hot',
+
+    level:'medium',
+
+    crops:[
+      'Corn',
+      'Rice',
+      'Sorghum'
+    ],
+
+    signs:
+      'Look for ragged or heavily chewed leaves, feeding damage on young growth, and caterpillars or egg masses on the plant.',
+
+    treatment:
+      'Scout affected plants closely and remove egg masses and young larvae by hand where practical.',
+
+    prevention:
+      'Inspect fields regularly, conserve natural enemies, and maintain good field sanitation to help detect infestations early.',
+
+    reference: {
+      name:
+        'FAO — Fall Armyworm',
+
+      url:
+        'https://www.fao.org/pest-and-pesticide-management/ipm/fall-armyworm/en/'
+    }
+  },
+
 ];
 
 let pestLogs = lsLoad(LS_PEST_LOGS, [
