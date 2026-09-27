@@ -7913,9 +7913,10 @@ function renderPestPage() {
             <div class="pest-pulse"></div>
             ${p.level.charAt(0).toUpperCase() + p.level.slice(1)} Risk
           </div>
+           
         </div>
 
-        </div>
+        
 
 
         ${getPestWeatherTriggerHtml(
