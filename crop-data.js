@@ -4675,6 +4675,36 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/wax-apple.svg',
 
+      plantingMethods: [
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        },
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Cuttings'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Hawaiʻi at Mānoa - CTAHR',
+
+        title:
+          'Fruit, Nut, and Beverage Crops',
+
+        url:
+          'https://www.ctahr.hawaii.edu/oc/freepubs/pdf/F_N-49.pdf'
+      },
+
       growthHabitNote:
         'Makopa is a tropical fruit tree cultivated in the Philippines.',
 
@@ -4705,6 +4735,36 @@ window.FARMCAST_CROPS = [
       scientificName: 'Syzygium cumini (L.) Skeels',
       category: 'fruit',
       icon: 'assets/crops/java-plum.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'cleft-grafted-plants',
+          label: 'Cleft-Grafted Plants'
+        },
+        {
+          value: 'marcotted-plants',
+          label: 'Marcotted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Syzygium cumini - Jambolan / Java Plum',
+
+        url:
+          'https://plantuse.plantnet.org/en/Syzygium_cumini_%28PROSEA%29'
+      },
 
       growthHabitNote:
         'Duhat is a fruit-bearing tree found in the Philippines.',
@@ -4739,6 +4799,27 @@ window.FARMCAST_CROPS = [
       scientificName: 'Tamarindus indica L.',
       category: 'fruit',
       icon: 'assets/crops/tamarind.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Science and Technology - Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development',
+
+        office:
+          'DOST-PCAARRD',
+
+        title:
+          'Tamarind Production and Fruit Quality Improved through S&T-Based Strategies',
+
+        url:
+          'https://www.pcaarrd.dost.gov.ph/index.php/quick-information-dispatch-qid-articles/tamarind-production-and-fruit-quality-improved-through-s-t-based-strategies'
+       },
 
       propagationNote:
         'Tamarind may be propagated through grafting. Philippine DOST-supported research has evaluated grafting as part of improved production management for the crop.',
@@ -4780,6 +4861,35 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/breadfruit.svg',
 
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'marcotted-plants',
+          label: 'Marcotted Plants'
+        },
+        {
+          value: 'tissue-cultured-plantlets',
+          label: 'Tissue-Cultured Plantlets'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Agricultural Research',
+
+        office:
+          'DA-BAR',
+
+        title:
+          'Massive Opportunities with RIMAS',
+
+        url:
+          'https://www.bar.gov.ph/file?filename=digest%2Fpdf%2Fvol.+25+issue+no.+4+2023.pdf'
+      },
+
       growthHabitNote:
         'Rimas is a tropical fruit tree cultivated in the Philippines and commonly grown as a backyard or agroforestry crop.',
 
@@ -4815,6 +4925,24 @@ window.FARMCAST_CROPS = [
       scientificName: 'Artocarpus odoratissimus',
       category: 'fruit',
       icon: 'assets/crops/marang.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Artocarpus odoratissimus - Marang',
+
+        url:
+          'https://prosea.prota4u.org/view.aspx?id=1478'
+      },
 
       growthHabitNote:
         'Marang is an evergreen tropical fruit tree that may grow up to about 25 meters tall when not pruned or otherwise managed.',
