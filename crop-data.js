@@ -3115,6 +3115,27 @@ window.FARMCAST_CROPS = [
       category: 'spice',
       icon: 'assets/crops/turmeric.svg',
 
+      plantingMethods: [
+        {
+          value: 'rhizome-divisions',
+          label: 'Rhizome Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'Weedibles and Weedicinals Plus Edible Flowers and More',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -3153,6 +3174,31 @@ window.FARMCAST_CROPS = [
       scientificName: 'Maranta arundinacea',
       category: 'root-crop',
       icon: 'assets/crops/arrowroot.svg',
+
+      plantingMethods: [
+        {
+          value: 'suckers',
+          label: 'Suckers'
+        },
+        {
+          value: 'rhizome-rootstock',
+          label: 'Rhizome / Rootstock'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - MIMAROPA Region',
+
+        office:
+          'Regional Agriculture and Fisheries Information Section (RAFIS)',
+
+        title:
+          'Arrowroot Production',
+
+        url:
+         'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Arrowroot-Production.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -3199,6 +3245,24 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/wax-gourd.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }   
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Benincasa hispida - Wax Gourd',
+
+        url:
+          'https://edepot.wur.nl/326103'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -3225,6 +3289,27 @@ window.FARMCAST_CROPS = [
       scientificName: 'Lablab purpureus',
       category: 'legume',
       icon: 'assets/crops/hyacinth-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded (Drill / Broadcast)'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+         'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'Cordillera Administrative Region',
+
+        title:
+          'Corn-Vegetable Farming System',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/corn-vegetable_integrated_farm_system.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -3261,6 +3346,27 @@ window.FARMCAST_CROPS = [
       scientificName: 'Cajanus cajan',
       category: 'legume',
       icon: 'assets/crops/pigeon-pea.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded (Drill / Broadcast)'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'Cordillera Administrative Region',
+
+        title:
+          'Corn-Vegetable Farming System',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/corn-vegetable_integrated_farm_system.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
