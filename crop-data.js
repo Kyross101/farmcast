@@ -4984,6 +4984,35 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/bignay.svg',
 
+      plantingMethods: [
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Cuttings'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI CALABARZON',
+
+        title:
+          'SaRiLing ATIn',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/SaRiLing%20ATIn.pdf'
+      },
+
       growthHabitNote:
         'Bignay is a native fruit-bearing tree found in the Philippines.',
 
@@ -5016,6 +5045,31 @@ window.FARMCAST_CROPS = [
       scientificName: 'Fragaria × ananassa',
       category: 'fruit',
       icon: 'assets/crops/strawberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'runner-plants',
+          label: 'Runner Plants'
+        },
+        {
+          value: 'suckers',
+          label: 'Suckers'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          'Strawberry Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/strawberry_production.pdf'
+      },
 
       idealTempRange:
         '14–23°C',
@@ -5075,6 +5129,31 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/mandarin-orange.svg',
 
+      plantingMethods: [
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Regional Field Office - Cordillera Administrative Region',
+
+        title:
+          'Technoguide in Citrus Production',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/DA-CAR-TECHNOGUIDE-IN-CITRUS-PRODUCTION.pdf'
+      },
+
       soilPH:
         '5.0–7.5',
 
@@ -5119,6 +5198,31 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/lemon.svg',
 
+      plantingMethods: [
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Regional Field Office - Cordillera Administrative Region',
+
+        title:
+          'Technoguide in Citrus Production',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/DA-CAR-TECHNOGUIDE-IN-CITRUS-PRODUCTION.pdf'
+      },
+
       soilPH:
         '5.0–7.5',
 
@@ -5161,6 +5265,28 @@ window.FARMCAST_CROPS = [
       scientificName: 'Vitis vinifera',
       category: 'fruit',
       icon: 'assets/crops/grapes.svg',
+
+      plantingMethods: [
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Cuttings'
+        },
+        {
+          value: 'grafted-vines',
+          label: 'Grafted Vines'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Wine Grape Production',
+
+        url:
+          'https://extension.psu.edu/wine-grape-production'
+       },
 
       growthHabitNote:
         'Grapes are perennial woody vines that require appropriate support and training for productive cultivation.',
