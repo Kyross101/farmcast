@@ -2775,6 +2775,27 @@ window.FARMCAST_CROPS = [
       category: 'legume',
       icon: 'assets/crops/snap-bean.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Cagayan Valley Regional Field Office',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'Snap Beans Production Guide',
+
+        url:
+          'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Snap-Beans-Production-Guide.pdf'
+      },
+
       minTemp: 18,
       maxTemp: 29,
       noRain: false,
@@ -2819,6 +2840,32 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/atis.svg',
 
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'cleft-grafted-plants',
+          label: 'Cleft-Grafted Plants'
+        },
+        {
+          value: 'veneer-grafted-plants',
+          label: 'Veneer-Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida - IFAS Extension',
+
+        title:
+          'Tropical and Subtropical Fruit Propagation',
+
+        url:
+          'https://ask.ifas.ufl.edu/publication/HS1349'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2847,6 +2894,27 @@ window.FARMCAST_CROPS = [
       localName: 'Patatas',
       category: 'root-crop',
       icon: 'assets/crops/potato.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-tubers',
+          label: 'Seed Tubers'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Regional Field Office No. 02',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'White Potato Production Guide',
+
+        url:
+          'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/potato.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -2908,6 +2976,24 @@ window.FARMCAST_CROPS = [
       category: 'root-crop',
       icon: 'assets/crops/jicama.svg',
 
+      plantingMethods: [
+        { 
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Cooperative Extension',
+
+        title:
+          'Jicama',
+
+        url:
+          'https://ucanr.edu/node/130932/printable/print'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2940,6 +3026,27 @@ window.FARMCAST_CROPS = [
       scientificName: 'Zingiber officinale Roscoe',
       category: 'spice',
       icon: 'assets/crops/ginger.svg',
+
+      plantingMethods: [
+        {
+          value: 'rhizome-pieces',
+          label: 'Rhizome Pieces'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Regional Field Office - Cordillera Administrative Region',
+
+        title:
+          'Technoguide in Production & Management of Ginger',
+
+        url:
+          'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/DA-CAR-TECHNOGUIDE-IN-PRODUCTION-_-MANAGEMENT-OF-GINGER.pdf'
+      },
 
       minTemp: 25,
       maxTemp: 35,
