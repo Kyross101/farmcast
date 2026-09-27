@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Powdery Mildew</title>
+
+  <path d="M50 14
+       C32 14 18 22 14 37
+       C11 48 19 55 30 52
+       C43 49 51 35 50 14Z" fill="none" stroke="#3fb950" stroke-width="4" stroke-linejoin="round"></path>
+
+  <path d="M20 45
+       C28 37 35 29 45 20" fill="none" stroke="#3fb950" stroke-width="3" stroke-linecap="round"></path>
+
+  <circle cx="28" cy="29" r="3" fill="#e5e7eb"></circle>
+  <circle cx="36" cy="27" r="2.5" fill="#e5e7eb"></circle>
+  <circle cx="31" cy="37" r="2.5" fill="#e5e7eb"></circle>
+  <circle cx="40" cy="34" r="3" fill="#e5e7eb"></circle>
+  <circle cx="23" cy="38" r="2" fill="#e5e7eb"></circle>
+</svg>

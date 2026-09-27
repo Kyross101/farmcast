@@ -7322,10 +7322,17 @@ const PEST_FULL_REFERENCE_META = {
       'UC IPM — Bagrada Bug',
     relative:
       '../bagrada-bug/'
-  }
+  },
 
-};
+  'Powdery Mildew': {
+    name:
+      'UC IPM — Powdery Mildew',
+    relative:
+      '../powdery-mildew/'
 
+  },
+
+}
 
 function getPestFullReference(
   pestName
@@ -7576,6 +7583,34 @@ const PEST_FULL_DB = [
       url:
         'https://www.knowledgebank.irri.org/ericeproduction/PDF_%26_Docs/Control_of_rice_insect_pests.pdf'
     }
+  },
+
+  {
+    name:'Powdery Mildew',
+
+    icon:
+      'assets/ui/pest-powdery-mildew.svg',
+
+    condition:'dry',
+
+    level:'medium',
+
+    crops:[
+      'Okra',
+      'Cucumber',
+      'Squash',
+      'Melon',
+      'Watermelon'
+    ],
+
+    signs:
+      'Look for white powdery patches on leaves and stems. Infected leaves may yellow, curl, dry out, or turn brown.',
+
+    treatment:
+      'Remove heavily affected plant material where practical and improve airflow around plants. Continue monitoring nearby leaves for new powdery growth.',
+
+    prevention:
+      'Use proper plant spacing, avoid excessive nitrogen fertilizer, maintain adequate watering, and keep plants in well-ventilated growing areas.'
   },
 
 ];
