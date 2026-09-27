@@ -5331,6 +5331,31 @@ window.FARMCAST_CROPS = [
       category: 'fruit',
       icon: 'assets/crops/star-apple.svg',
 
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'asexually-propagated-plants',
+          label: 'Asexually Propagated Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          '10 Steps to Small Agrofruit Livelihood Technology (SALT-4)',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/salt_4_brochure.pdf'
+      },
+
       bearingNote:
         'The official ATI SALT-4 reference lists Caimito at about 5–6 years before harvesting when propagated from seed and about 3–4 years when established through asexual propagation.',
 
