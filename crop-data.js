@@ -2472,6 +2472,28 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/malunggay.svg',
 
+      plantingMethods: [
+        {
+          value: 'branch-cuttings',
+          label: 'Branch Cuttings'
+        },
+        {
+          value: 'seed-grown',
+          label: 'Seed-Grown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Malunggay Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1640928442Malunggay%20Production%20Guide.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2503,6 +2525,27 @@ window.FARMCAST_CROPS = [
       localName: 'Kamoteng Kahoy',
       category: 'root-crop',
       icon: 'assets/crops/cassava.svg',
+
+      plantingMethods: [
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas - Regional Training Center 7',
+
+        title:
+          'Produksiyon sa Kamoteng Kahoy (Cassava)',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/kamoteng%20kahoy%20production.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -2542,6 +2585,28 @@ window.FARMCAST_CROPS = [
       category: 'root-crop',
       icon: 'assets/crops/taro.svg',
 
+      plantingMethods: [
+        {
+          value: 'setts',
+          label: 'Setts (Sucker / Rhizome)'
+        },
+        {
+          value: 'cormels',
+          label: 'Cormels'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Gabi Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1640920555Gabi%20Production%20Guide.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2580,6 +2645,28 @@ window.FARMCAST_CROPS = [
       category: 'root-crop',
       icon: 'assets/crops/ube.svg',
 
+      plantingMethods: [
+        {
+          value: 'tuber-setts',
+          label: 'Tuber Setts'
+        },
+        {
+          value: 'whole-small-tubers',
+          label: 'Whole Small Tubers'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Ube Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1641957628UBE.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2617,6 +2704,35 @@ window.FARMCAST_CROPS = [
       localName: 'Paminta',
       category: 'spice',
       icon: 'assets/crops/black-pepper.svg',
+
+      plantingMethods: [
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'marcotting',
+          label: 'Marcotting'
+        },
+        {
+          value: 'seed-propagated',
+          label: 'Seed-Propagated'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI MIMAROPA',
+
+        title:
+          'Black Pepper Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/black_pepper.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
