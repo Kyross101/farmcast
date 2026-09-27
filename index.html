@@ -1607,6 +1607,53 @@
               id="pestFullList"
             ></div>
 
+            <div
+              class="pest-monitored-section"
+              id="pestMonitoredSection"
+            >
+
+              <button
+                type="button"
+                class="pest-monitored-toggle"
+                id="pestMonitoredToggle"
+                onclick="toggleOtherMonitoredPests()"
+                aria-expanded="false"
+                aria-controls="pestMonitoredList"
+              >
+
+                <span class="pest-monitored-toggle-main">
+
+                  <span
+                    class="material-symbols-outlined pest-monitored-toggle-icon"
+                  >
+                    monitoring
+                  </span>
+
+                  <span id="pestMonitoredToggleText">
+                    Other Monitored Pests (0)
+                  </span>
+
+                </span>
+
+
+                <span
+                  class="material-symbols-outlined pest-monitored-chevron"
+                  id="pestMonitoredChevron"
+                >
+                  expand_more
+                </span>
+
+              </button>
+
+
+              <div
+                class="pest-monitored-list"
+                id="pestMonitoredList"
+                hidden
+              ></div>
+
+            </div>
+
           </div>
 
           <div class="card fade-in fade-in-1" style="margin-top:16px">

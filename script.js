@@ -7655,6 +7655,86 @@ function renderPestPage() {
       'pestFullList'
     );
 
+
+  const otherMonitoredPests =
+    pestPageData.filter(
+      pest =>
+        !active.includes(pest)
+    );
+
+
+  const pestMonitoredSection =
+    document.getElementById(
+      'pestMonitoredSection'
+    );
+
+  const pestMonitoredList =
+    document.getElementById(
+      'pestMonitoredList'
+    );
+
+  const pestMonitoredToggleText =
+    document.getElementById(
+      'pestMonitoredToggleText'
+    );
+
+
+  if (
+    pestMonitoredSection &&
+    pestMonitoredList &&
+    pestMonitoredToggleText
+  ) {
+
+    pestMonitoredSection.hidden =
+      otherMonitoredPests.length === 0;
+
+
+    pestMonitoredToggleText.textContent =
+      `Other Monitored Pests (${otherMonitoredPests.length})`;
+
+
+    pestMonitoredList.innerHTML =
+      otherMonitoredPests
+        .map(p => `
+
+          <div class="pest-monitored-item">
+
+            <div class="pest-monitored-icon">
+
+              <img
+                src="${p.icon}"
+                alt=""
+                class="pest-monitored-icon-img"
+              >
+  
+            </div>
+  
+  
+            <div class="pest-monitored-info">
+  
+              <div class="pest-monitored-name">
+                ${escapeHtml(p.name)}
+              </div>
+  
+              <div class="pest-monitored-note">
+                Monitored — not currently triggered by weather
+              </div>
+  
+            </div>
+  
+  
+            <span class="pest-monitored-status">
+              Monitored
+            </span>
+  
+          </div>
+  
+        `)
+        .join('');
+
+  }
+
+
   if (!pestFullList) return;
 
   if (active.length === 0) {
@@ -7946,6 +8026,56 @@ function renderPestPage() {
 
   // Pest log
   renderPestLog();
+}
+
+function toggleOtherMonitoredPests() {
+
+  const list =
+    document.getElementById(
+      'pestMonitoredList'
+    );
+
+  const toggle =
+    document.getElementById(
+      'pestMonitoredToggle'
+    );
+
+  const chevron =
+    document.getElementById(
+      'pestMonitoredChevron'
+    );
+
+
+  if (!list) return;
+
+
+  const willOpen =
+    list.hidden;
+
+
+  list.hidden =
+    !list.hidden;
+
+
+  if (toggle) {
+
+    toggle.setAttribute(
+      'aria-expanded',
+      String(willOpen)
+    );
+
+  }
+
+
+  if (chevron) {
+
+    chevron.textContent =
+      willOpen
+        ? 'expand_less'
+        : 'expand_more';
+
+  }
+
 }
 
 function renderPestLog() {
