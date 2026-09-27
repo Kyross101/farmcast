@@ -7315,6 +7315,13 @@ const PEST_FULL_REFERENCE_META = {
       'UC IPM — Cutworms',
     relative:
       '../cutworms/'
+  },
+
+  'Bagrada Bug': {
+    name:
+      'UC IPM — Bagrada Bug',
+    relative:
+      '../bagrada-bug/'
   }
 
 };
@@ -7477,6 +7484,32 @@ const PEST_FULL_DB = [
       url:
        'https://ipm.ucanr.edu/agriculture/cole-crops/diamondback-moth/'
     }  
+  },
+
+  {
+    name:'Bagrada Bug',
+
+    icon:
+      'assets/ui/pest-bagrada-bug.svg',
+
+    condition:'hot',
+
+    level:'medium',
+
+    crops:[
+      'Cabbage',
+      'Broccoli',
+      'Cauliflower'
+    ],
+
+    signs:
+      'Look for small black bugs with orange and white markings, light starburst-shaped feeding spots, stippled leaves, wilting, or scorched-looking foliage.',
+
+    treatment:
+      'Inspect affected plants closely and remove bugs by hand when populations are still low. Remove badly damaged plant material and continue regular scouting.',
+
+    prevention:
+      'Remove nearby mustard-family weeds and crop residue after harvest. Inspect young plants regularly because populations can build up quickly.'
   },
 
 ];

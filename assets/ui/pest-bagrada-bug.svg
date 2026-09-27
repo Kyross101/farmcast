@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Bagrada Bug</title>
+
+  <path d="M32 14
+       L43 20
+       L48 32
+       L43 44
+       L32 50
+       L21 44
+       L16 32
+       L21 20
+       Z" fill="none" stroke="#3f3f46" stroke-width="4" stroke-linejoin="round"></path>
+
+  <path d="M32 14
+       L32 50" fill="none" stroke="#e3a008" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M23 24
+       L29 28
+
+       M41 24
+       L35 28
+
+       M22 36
+       L29 34
+
+       M42 36
+       L35 34" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round"></path>
+
+  <path d="M24 19
+       L19 14
+
+       M40 19
+       L45 14" fill="none" stroke="#3f3f46" stroke-width="3" stroke-linecap="round"></path>
+
+  <circle cx="27" cy="31" r="2" fill="#ffffff"></circle>
+
+  <circle cx="37" cy="31" r="2" fill="#ffffff"></circle>
+</svg>
