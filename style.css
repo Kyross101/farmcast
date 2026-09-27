@@ -3324,6 +3324,71 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 }
 .pfi-log-btn:hover { background: var(--amber-dim); color: var(--amber); border-color: rgba(227,160,8,0.3); }
 
+/* Pest Alerts collapsible card headers */
+.pest-collapsible-header {
+  cursor: pointer;
+
+  user-select: none;
+}
+
+
+.pest-card-header-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.pest-header-action-btn {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    var(--green);
+
+  font-family:
+    inherit;
+
+  font-size:
+    0.78rem;
+
+  cursor:
+    pointer;
+}
+
+
+.pest-header-action-btn:hover {
+  opacity: 0.8;
+}
+
+
+.pest-collapsible-header
+.card-collapse-icon {
+  cursor: pointer;
+}
+
+
+.pest-log-card.card-collapsed
+.card-header,
+
+.pest-prevention-card.card-collapsed
+.card-header,
+
+.pest-guide-card.card-collapsed
+.card-header {
+  border-bottom-color:
+    transparent;
+}
+
 /* Pest Log */
 .pest-log-list { padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
 .pest-log-item {

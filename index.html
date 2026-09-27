@@ -1663,32 +1663,149 @@
             class="card fade-in fade-in-1 pest-log-card"
             style="margin-top:16px"
           >
-            <div class="card-header">
-              <div class="card-title"><span class="material-symbols-outlined">history</span>Pest Sighting Log</div>
-              
-    <div class="card-action" onclick="openLogPestModal()"><span class="material-symbols-outlined" style="font-size:14px">add</span> Log Sighting</div>
+
+            <div
+              class="card-header pest-collapsible-header"
+              onclick="toggleCard(this)"
+            >
+
+              <div class="card-title">
+                <span class="material-symbols-outlined">
+                  history
+                </span>
+
+                Pest Sighting Log
+              </div>
+
+
+              <div class="pest-card-header-actions">
+
+              <button
+                type="button"
+                class="pest-header-action-btn"
+                onclick="event.stopPropagation(); openLogPestModal()"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size:14px"
+                >
+                  add
+                </span>
+
+                Log Sighting
+              </button>
+
+
+              <span
+                class="material-symbols-outlined card-collapse-icon"
+              >
+                expand_less
+              </span>
+
             </div>
-            <div class="pest-log-list" id="pestLogList"></div>
+
           </div>
+
+
+          <div class="card-collapsible">
+
+            <div
+              class="pest-log-list"
+              id="pestLogList"
+            ></div>
+
+          </div>
+
         </div>
+          
 
         <div class="pest-col-side">
+
           <div class="card fade-in pest-prevention-card">
-            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">shield</span>Prevention Tips</div></div>
- 
-        <div class="prevention-tips" id="preventionTips"></div>
+
+            <div
+              class="card-header pest-collapsible-header"
+              onclick="toggleCard(this)"
+            >
+
+              <div class="card-title">
+                <span class="material-symbols-outlined">
+                  shield
+                </span>
+
+                Prevention Tips
+              </div>
+
+
+              <div class="card-action">
+
+              <span
+                class="material-symbols-outlined card-collapse-icon"
+              >
+                expand_less
+              </span>
+
+            </div>
+
           </div>
+
+
+          <div class="card-collapsible">
+
+            <div
+              class="prevention-tips"
+              id="preventionTips"
+           ></div>
+
+          </div>
+
+        </div>
 
           <div
             class="card fade-in fade-in-1 pest-guide-card"
             style="margin-top:16px"
           >
-            <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">menu_book</span>Pest Guide</div></div>
 
-            <div class="pest-guide-list" id="pestGuideList"></div>
+            <div
+              class="card-header pest-collapsible-header"
+              onclick="toggleCard(this)"
+            >
+
+              <div class="card-title">
+                <span class="material-symbols-outlined">
+                  menu_book
+                </span>
+
+                Pest Guide
+              </div>
+
+
+              <div class="card-action">
+
+                <span
+                  class="material-symbols-outlined card-collapse-icon"
+                >
+                  expand_less
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="card-collapsible">
+
+              <div
+                class="pest-guide-list"
+                id="pestGuideList"
+              ></div>
+
+            </div>
+
           </div>
         </div>
       </div>
+
       <div class="modal-overlay" id="logPestModal" onclick="if(event.target===this)closeLogPestModal()">
         <div class="modal-box" style="max-width:460px">
           <div class="modal-header">
