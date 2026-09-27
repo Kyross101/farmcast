@@ -3416,6 +3416,24 @@ window.FARMCAST_CROPS = [
       category: 'legume',
       icon: 'assets/crops/lima-bean.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Georgia Cooperative Extension',
+
+        title:
+          'Starting Plants From Seed for the Home Gardener',
+
+        url:
+          'https://extension.uga.edu/publications/detail.html?number=B1432'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -3448,6 +3466,28 @@ window.FARMCAST_CROPS = [
       scientificName: 'Corchorus olitorius L.',
       category: 'vegetable',
       icon: 'assets/crops/jute-mallow.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+ 
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Production Guide of Saluyot',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1641949446Saluyot%20Production%20Guide.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -3510,6 +3550,28 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/amaranth.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'The Kulitis Plant',
+
+        url:
+          'https://iveg.pcaarrd.dost.gov.ph/resource/journal/BPIKulitis'
+      },
+
       minTemp: 15,
       noRain: false,
 
@@ -3558,6 +3620,27 @@ window.FARMCAST_CROPS = [
       scientificName: 'Apium graveolens',
       category: 'vegetable',
       icon: 'assets/crops/celery.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Regional Field Office No. 02',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'Celery Production Guide',
+
+        url:
+          'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/celery.pdf'
+      },
 
       soilPH:
         '6.0–6.8',
@@ -3608,6 +3691,28 @@ window.FARMCAST_CROPS = [
       scientificName: 'Asparagus officinalis L.',
       category: 'vegetable',
       icon: 'assets/crops/asparagus.svg',
+
+      plantingMethods: [
+        {
+          value: 'bare-root-crowns',
+          label: 'Bare-Root Crowns'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Maryland Extension',
+
+        title:
+          'When to Plant Vegetables',
+
+        url:
+          'https://www.extension.umd.edu/resource/when-plant-vegetables'
+      },
 
       noRain: false,
 
