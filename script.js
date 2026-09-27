@@ -7452,6 +7452,130 @@ let pestLogs = lsLoad(LS_PEST_LOGS, [
 ]);
 let nextPestLogId = lsLoad('fc_nextPestLogId', 4);
 
+function getPestWeatherTriggerHtml(
+  pest,
+  weather
+) {
+
+  if (!pest || !weather) {
+    return '';
+  }
+
+
+  const humidity =
+    Number(
+      weather.main?.humidity
+    );
+
+  const temperature =
+    Number(
+      weather.main?.temp
+    );
+
+  const description =
+    String(
+      weather.weather?.[0]?.description || ''
+    ).toLowerCase();
+
+
+  let icon =
+    'assets/ui/pest-status-analyzing.svg';
+
+  let text = '';
+
+
+  if (
+    pest.condition === 'humid' &&
+    Number.isFinite(humidity)
+  ) {
+
+    icon =
+      'assets/ui/quick-water.svg';
+
+    text =
+      `Humidity ${Math.round(humidity)}% is above the 70% FarmCast trigger.`;
+
+  }
+
+
+  else if (
+    pest.condition === 'hot' &&
+    Number.isFinite(temperature)
+  ) {
+
+    icon =
+      'assets/ui/quick-soil-temp.svg';
+
+    text =
+      `Temperature ${Math.round(temperature)}°C is above the 30°C FarmCast trigger.`;
+
+  }
+
+
+  else if (
+    pest.condition === 'dry' &&
+    Number.isFinite(humidity)
+  ) {
+
+    icon =
+      'assets/ui/weather-clear.svg';
+
+    text =
+      `Humidity ${Math.round(humidity)}% is below the 50% FarmCast dry-condition trigger.`;
+
+  }
+
+
+  else if (
+    pest.condition === 'rainy' &&
+    description.includes('rain')
+  ) {
+
+    icon =
+      'assets/ui/weather-rain.svg';
+
+    text =
+      'Rain is detected in the current weather conditions.';
+
+  }
+
+
+  if (!text) {
+    return '';
+  }
+
+
+  return `
+    <div class="pfi-weather-trigger">
+
+      <div class="pfi-weather-trigger-icon">
+
+        <img
+          src="${icon}"
+          alt=""
+          class="pfi-weather-trigger-icon-img"
+        >
+
+      </div>
+
+
+      <div class="pfi-weather-trigger-text">
+
+        <span class="pfi-weather-trigger-label">
+          Why this alert?
+        </span>
+
+        <span>
+          ${escapeHtml(text)}
+        </span>
+
+      </div>
+
+    </div>
+  `;
+
+}
+
 function renderPestPage() {
 
     const pestPageData =
@@ -7791,7 +7915,16 @@ function renderPestPage() {
           </div>
         </div>
 
-       <div class="pfi-detail">
+        </div>
+
+
+        ${getPestWeatherTriggerHtml(
+          p,
+          currentWeather
+        )}
+
+
+        <div class="pfi-detail">
 
          <div class="pfi-section">
            <span class="pfi-label">
