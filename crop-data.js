@@ -2183,6 +2183,24 @@ window.FARMCAST_CROPS = [
       category: 'vegetable',
       icon: 'assets/crops/sigarilyas.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida - IFAS Extension',
+
+        title:
+          'Winged Bean',
+
+        url:
+          'https://gardeningsolutions.ifas.ufl.edu/plants/edibles/vegetables/winged-bean/'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2217,6 +2235,24 @@ window.FARMCAST_CROPS = [
       localName: 'Sayote',
       category: 'vegetable',
       icon: 'assets/crops/sayote.svg',
+
+      plantingMethods: [
+        {
+          value: 'mature-sprouted-fruit',
+          label: 'Mature / Sprouted Fruit'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Chayote Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1641945410CHAYOTE.pdf'
+      },
 
       minTemp: 10,
       maxTemp: 25,
@@ -2259,6 +2295,24 @@ window.FARMCAST_CROPS = [
       category: 'legume',
       icon: 'assets/crops/monggo.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'All About Mungbean (Balatong)',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1659331948Mungbean%20%28Balatong%29.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2296,6 +2350,27 @@ window.FARMCAST_CROPS = [
       localName: 'Mani',
       category: 'legume',
       icon: 'assets/crops/peanut.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Regional Training Center 02',
+
+        title:
+          'Peanut Production and Processing Technologies',
+
+        url:
+          'https://ati2.da.gov.ph/ati-2/content/sites/default/files/2025-10/IEC%20Peanut.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -2337,6 +2412,27 @@ window.FARMCAST_CROPS = [
       localName: 'Soya',
       category: 'legume',
       icon: 'assets/crops/soybean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded (Hill / Drill)'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Central Visayas',
+
+        title:
+          'Soybean Production - How to Grow Soybean',
+
+        url:
+          'https://ati2.da.gov.ph/ati-7/content/sites/default/files/2026-02/SOYBEAN%20PRODUCTION-1_compressed.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
