@@ -7546,6 +7546,38 @@ const PEST_FULL_DB = [
     }
   },
 
+  {
+    name:'Brown Planthopper',
+
+    icon:
+      'assets/ui/pest-brown-planthopper.svg',
+
+    condition:'humid',
+
+    level:'medium',
+
+    crops:[
+      'Rice'
+    ],
+
+    signs:
+      'Look for planthoppers on rice plants and patches of yellowing or browning. Severe infestations may develop into hopperburn.',
+
+    treatment:
+      'Inspect affected areas closely. When infestation is heavy, temporary field drainage can help reduce planthopper populations.',
+
+    prevention:
+      'Avoid excessive nitrogen fertilizer and overly dense planting. Maintain proper spacing and inspect rice fields regularly.',
+
+    reference: {
+      name:
+        'IRRI Rice Knowledge Bank — Control of Rice Insect Pests',
+
+      url:
+        'https://www.knowledgebank.irri.org/ericeproduction/PDF_%26_Docs/Control_of_rice_insect_pests.pdf'
+    }
+  },
+
 ];
 
 let pestLogs = lsLoad(LS_PEST_LOGS, [
