@@ -4148,7 +4148,7 @@ let myCropPickerCategory = 'all';
 
 function getMyCropPickerDataset() {
 
-  const crops =
+  const datasetCrops =
     CROPS.map(crop => ({
       name: crop.name,
       localName: crop.localName || '',
@@ -4157,23 +4157,33 @@ function getMyCropPickerDataset() {
     }));
 
 
-  // Preserve Rice while its special
-  // variety intelligence remains separate.
-  if (
-    !crops.some(
-      crop => crop.name === 'Rice'
+  const specialCrops =
+    Object.values(
+      SPECIAL_CROP_REFERENCES
     )
-  ) {
-    crops.push({
-      name: 'Rice',
-      localName: 'Palay',
-      category: 'grain',
-      icon: 'assets/crops/rice.svg'
-    });
-  }
+      .filter(
+        specialCrop =>
+          !CROPS.some(
+            crop =>
+              crop.name ===
+              specialCrop.name
+          )
+      )
+      .map(crop => ({
+        name: crop.name,
+        localName:
+          crop.localName || '',
+        category:
+          crop.category || '',
+        icon:
+          crop.icon || null
+      }));
 
 
-  return crops.sort(
+  return [
+    ...datasetCrops,
+    ...specialCrops
+  ].sort(
     (a, b) =>
       a.name.localeCompare(b.name)
   );
