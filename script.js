@@ -3961,14 +3961,8 @@ function getCropIconHtml(
   const reference =
     getCropReference(cropName);
 
-  const specialCropIcons = {
-    Rice: 'assets/crops/rice.svg'
-  };
-
   const iconPath =
-    reference?.icon ||
-    specialCropIcons[cropName] ||
-    null;
+    reference?.icon || null;
 
   if (iconPath) {
 
@@ -3981,7 +3975,8 @@ function getCropIconHtml(
     `;
   }
 
-  // Temporary legacy fallback outside the shared dataset.
+  // Temporary legacy fallback outside
+  // the shared/special crop references.
   return escapeHtml(
     CROP_EMOJIS[cropName] || '🌿'
   );
