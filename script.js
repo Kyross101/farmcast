@@ -6975,39 +6975,11 @@ function updateAddCropHarvestEstimate() {
   }
 
 
-  // 2. Existing FarmCast fallback
-  const fallbackDays =
-    CROP_INFO[cropType]?.days;
-
-  if (fallbackDays) {
-    const fallbackDate =
-      addDaysToDate(
-        planted,
-        fallbackDays
-      );
-
-    harvestInput.value =
-      formatDateInputLocal(
-        fallbackDate
-      );
-
-    harvestInput.dataset.estimateSource =
-      'fallback';
-
-    if (hint) {
-      hint.textContent =
-        'FarmCast fallback estimate auto-filled. Review and adjust the date if needed.';
-    }
-
-    return;
-  }
-
-
-  // 3. No verified automatic estimate
+  // 2. No verified automatic estimate
   harvestInput.dataset.estimateSource =
     harvestInput.value
       ? 'manual'
-      : 'manual-required';
+      : 'unavailable';
 
   if (hint) {
     hint.textContent =
@@ -7015,7 +6987,6 @@ function updateAddCropHarvestEstimate() {
         ? 'Manual farmer estimate.'
         : 'No verified automatic harvest estimate is stored for this crop. You may enter your own farmer estimate or leave this field blank.';
   }
-}
 
 document
   .getElementById('cropDateHarvest')
@@ -7042,7 +7013,7 @@ document
     }
 
     harvestInput.dataset.estimateSource =
-      'manual-required';
+    'unavailable';
 
     if (hint) {
       hint.textContent =
