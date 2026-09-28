@@ -245,17 +245,30 @@ window.FARMCAST_CROPS = [
     emoji: '🥒',
     icon: 'assets/crops/ampalaya.svg',
 
-      plantingMethods: [
-        {
-          value: 'direct-seeded',
-          label: 'Direct Seeded'
-        },
+    plantingMethods: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      },
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
 
-        {
-          value: 'transplanted',
-          label: 'Transplanted'
-        }
-      ],
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI MIMAROPA',
+
+      title:
+        'Gabay sa Produksyon ng Ampalaya',
+
+      url:
+        'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/gabay_sa_produksyon_ng_ampalaya_final_2.pdf'
+    },
 
     minTemp: 24,
     maxTemp: 36,
@@ -283,16 +296,30 @@ window.FARMCAST_CROPS = [
     emoji: '🥬',
     icon: 'assets/crops/pechay.svg',
 
-      plantingMethods: [
-        {
-          value: 'direct-seeded',
-          label: 'Direct Seeded'
-        },
-        {
-          value: 'transplanted',
-          label: 'Transplanted'
-        }
-      ],
+    plantingMethods: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      },
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+       'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Cordillera',
+
+      title:
+        'Pechay Production for Urban and Home Gardening',
+
+      url:
+        'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/pechay_production_for_urban_gardening_leaflet.pdf'
+    },
 
     minTemp: 15,
     maxTemp: 25,
@@ -320,12 +347,26 @@ window.FARMCAST_CROPS = [
     emoji: '🍠',
     icon: 'assets/crops/kamote.svg',
 
-      plantingMethods: [
-        {
-          value: 'cuttings',
-          label: 'Vine Cuttings / Slips'
-        }
-      ],
+    plantingMethods: [
+      {
+        value: 'cuttings',
+        label: 'Vine Cuttings / Slips'
+      }
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture',
+
+      office:
+        'High Value Crops Development Program',
+
+      title:
+        'Pag-aalaga ng Kamote',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Production-Guide.pdf'
+    },
 
     minTemp: 20,
     maxTemp: 35,
@@ -362,6 +403,17 @@ window.FARMCAST_CROPS = [
         label: 'Tissue-cultured Plantlets'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Philippine Council for Agriculture and Fisheries',
+
+      title:
+        'Philippine Banana Industry Roadmap 2021-2025',
+
+      url:
+        'https://pcaf.da.gov.ph/wp-content/uploads/2022/06/Philippine-Banana-Industry-Roadmap-2021-2025.pdf'
+    },
 
     minTemp: 15,
     maxTemp: 35,
@@ -527,6 +579,20 @@ window.FARMCAST_CROPS = [
         label: 'Suckers'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Philippine Fiber Industry Development Authority',
+
+      office:
+        'PhilFIDA',
+
+      title:
+        'Pineapple Technoguide 2024',
+
+      url:
+        'https://philfida.da.gov.ph/images/Publications/Technoguides/pineapple-technoguide-2024.pdf'
+    },
 
     minTemp: null,
     maxTemp: null,
