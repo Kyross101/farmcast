@@ -5371,6 +5371,42 @@ function addDaysToDate(dateString, days) {
   return date;
 }
 
+function addMonthsToDate(dateString, months) {
+  const date =
+    new Date(`${dateString}T00:00:00`);
+
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
+
+  const originalDay =
+    date.getDate();
+
+  // Move to day 1 first so dates such as
+  // January 31 do not overflow incorrectly.
+  date.setDate(1);
+
+  date.setMonth(
+    date.getMonth() + months
+  );
+
+  const lastDayOfTargetMonth =
+    new Date(
+      date.getFullYear(),
+      date.getMonth() + 1,
+      0
+    ).getDate();
+
+  date.setDate(
+    Math.min(
+      originalDay,
+      lastDayOfTargetMonth
+    )
+  );
+
+  return date;
+}
+
 function normalizeRiceVarietyName(value = '') {
   return value
     .trim()
@@ -5546,24 +5582,89 @@ function getEstimatedHarvestWindow(crop) {
     };
   }
 
-  const start =
-    addDaysToDate(
-      crop.planted,
-      rule.minDays
-    );
+  const hasDayRange =
+    Number.isFinite(rule.minDays) &&
+    Number.isFinite(rule.maxDays);
 
+  const hasMonthRange =
+    Number.isFinite(rule.minMonths) &&
+    Number.isFinite(rule.maxMonths);
+
+  if (!hasDayRange && !hasMonthRange) {
+    return {
+      available: false,
+      start: null,
+      end: null,
+      source: rule.source,
+      basis: rule.basis
+    };
+  }
+
+  const start =
+    hasMonthRange
+      ? addMonthsToDate(
+          crop.planted,
+          rule.minMonths
+        )
+      : addDaysToDate(
+          crop.planted,
+          rule.minDays
+        );
+  
   const end =
-    addDaysToDate(
-      crop.planted,
-      rule.maxDays
-    );
+    hasMonthRange
+      ? addMonthsToDate(
+          crop.planted,
+          rule.maxMonths
+        )
+      : addDaysToDate(
+          crop.planted,
+          rule.maxDays
+        );
+  
+  if (!start || !end) {
+    return {
+      available: false,
+      start: null,
+      end: null,
+      source: rule.source,
+      basis: rule.basis
+    };
+  }
+
+  const plantedDate =
+    new Date(`${crop.planted}T00:00:00`);
+
+  const minDays =
+    hasMonthRange
+      ? Math.round(
+          (start - plantedDate) /
+          86400000
+        )
+      : rule.minDays;
+
+  const maxDays =
+    hasMonthRange
+      ? Math.round(
+          (end - plantedDate) /
+          86400000
+        )
+      : rule.maxDays;
 
   return {
     available: true,
     start,
     end,
-    minDays: rule.minDays,
-    maxDays: rule.maxDays,
+    minDays,
+    maxDays,
+    minMonths:
+      hasMonthRange
+        ? rule.minMonths
+        : null,
+    maxMonths:
+      hasMonthRange
+        ? rule.maxMonths
+        : null,
     source: rule.source,
     basis: rule.basis,
     note: rule.note || '',
