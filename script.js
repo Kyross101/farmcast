@@ -4927,6 +4927,40 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Amaranth: {
+    'direct-seeded': {
+      minDays: 20,
+      maxDays: 45,
+      basis: 'after sowing',
+      derived: false,
+      note:
+        'Harvest timing varies by amaranth type. The official Philippine indigenous vegetables guide gives about 20–45 days after planting or sowing.',
+      source: {
+        agency: 'Department of Agriculture',
+        office: 'High Value Crops Development Program',
+        title: 'Mga Katutubong Gulay (Indigenous Vegetables)',
+        url: 'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Indigenous-Vegetables-Guide.pdf'
+      }
+    }
+  },
+
+  'Jute Mallow': {
+    'direct-seeded': {
+      minDays: 20,
+      maxDays: 60,
+      basis: 'after planting',
+      derived: true,
+      note:
+        'Broad source-backed range: Saluyot is generally harvested about 30–60 days after planting, while some earlier types may be harvested around 20–40 days.',
+      source: {
+        agency: 'Department of Agriculture',
+        office: 'High Value Crops Development Program',
+        title: 'Mga Katutubong Gulay (Indigenous Vegetables)',
+        url: 'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Indigenous-Vegetables-Guide.pdf'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
