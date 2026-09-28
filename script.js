@@ -5010,6 +5010,68 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Abaca: {
+    'seedpieces-corms': {
+      minMonths: 18,
+      maxMonths: 24,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'Under normal conditions, Abaca generally reaches maturity 18–24 months after planting or when the flag leaf appears. Field maturity should take priority over the calendar estimate.',
+      source: {
+        agency: 'Department of Agriculture - Philippine Fiber Industry Development Authority',
+        office: 'PhilFIDA',
+        title: 'Abaca Technoguide - 2024 Edition',
+        url: 'https://philfida.da.gov.ph/images/Publications/Technoguides/abaca-technoguide-2024.pdf'
+      }
+    },
+
+    suckers: {
+      minMonths: 18,
+      maxMonths: 24,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'Under normal conditions, Abaca generally reaches maturity 18–24 months after planting or when the flag leaf appears. Field maturity should take priority over the calendar estimate.',
+      source: {
+        agency: 'Department of Agriculture - Philippine Fiber Industry Development Authority',
+        office: 'PhilFIDA',
+        title: 'Abaca Technoguide - 2024 Edition',
+        url: 'https://philfida.da.gov.ph/images/Publications/Technoguides/abaca-technoguide-2024.pdf'
+      }
+    },
+  
+    'tissue-cultured-plantlets': {
+      minMonths: 18,
+      maxMonths: 24,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'Under normal conditions, Abaca generally reaches maturity 18–24 months after planting or when the flag leaf appears. Field maturity should take priority over the calendar estimate.',
+      source: {
+        agency: 'Department of Agriculture - Philippine Fiber Industry Development Authority',
+        office: 'PhilFIDA',
+        title: 'Abaca Technoguide - 2024 Edition',
+        url: 'https://philfida.da.gov.ph/images/Publications/Technoguides/abaca-technoguide-2024.pdf'
+      }
+    },
+  
+    'seed-propagated': {
+      minMonths: 18,
+      maxMonths: 24,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'Under normal conditions, Abaca generally reaches maturity 18–24 months after planting or when the flag leaf appears. Field maturity should take priority over the calendar estimate.',
+      source: {
+        agency: 'Department of Agriculture - Philippine Fiber Industry Development Authority',
+        office: 'PhilFIDA',
+        title: 'Abaca Technoguide - 2024 Edition',
+        url: 'https://philfida.da.gov.ph/images/Publications/Technoguides/abaca-technoguide-2024.pdf'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
