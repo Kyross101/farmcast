@@ -7557,7 +7557,14 @@ document
       document.getElementById('cropDateHarvest');
 
     const hint =
-      document.getElementById('cropHarvestEstimateHint');
+      document.getElementById(
+        'cropHarvestEstimateHint'
+      );
+
+    const cropType =
+      document.getElementById(
+        'cropTypeSelect'
+      )?.value || '';
 
     if (!harvestInput) return;
 
@@ -7573,12 +7580,33 @@ document
       return;
     }
 
+    const cropReference =
+      getCropReference(cropType);
+
+    const harvestNote =
+      typeof cropReference?.harvestNote ===
+      'string'
+        ? cropReference.harvestNote.trim()
+        : '';
+
     harvestInput.dataset.estimateSource =
-    'unavailable';
+      harvestNote
+        ? 'guidance-only'
+        : 'unavailable';
 
     if (hint) {
-      hint.textContent =
-        'Optional: enter your own estimated harvest date.';
+
+      if (harvestNote) {
+        hint.textContent =
+          `Verified harvest guidance: ${harvestNote} ` +
+          'No automatic date has been applied.';
+      }
+
+      else {
+        hint.textContent =
+          'Optional: enter your own estimated harvest date.';
+      }
+
     }
   });
 
