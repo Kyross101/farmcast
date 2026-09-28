@@ -11794,18 +11794,6 @@ function renderAnWeatherImpact() {
   }
 
 
-  const temp =
-    w.main.temp;
-
-  const hum =
-    w.main.humidity;
-
-  const isRain =
-    w.weather[0].description
-      .toLowerCase()
-      .includes('rain');
-
-
   document.getElementById(
     'anWeatherImpact'
   ).innerHTML = `
@@ -11814,8 +11802,10 @@ function renderAnWeatherImpact() {
 
       ${crops.map(crop => {
 
-        const info =
-          CROP_INFO[crop.type] || {};
+        const assessment =
+          getMyCropWeatherAssessment(
+            crop.type
+          );
 
 
         let impact =
@@ -11825,60 +11815,92 @@ function renderAnWeatherImpact() {
           'assets/ui/weather-cloudy.svg';
 
         let reason =
-          'Conditions are acceptable.';
+          'No verified weather limits are stored for this crop.';
 
 
         if (
-          info.minTemp &&
-          temp < info.minTemp
+          assessment.available &&
+          assessment.atRisk
         ) {
 
           impact =
             'negative';
 
-          iconPath =
-            'assets/ui/weather-snow.svg';
 
-          reason =
-            `Too cold (${Math.round(temp)}°C < ${info.minTemp}°C min).`;
+          if (
+            assessment.reason ===
+              'Temperature too low' ||
+            assessment.reason ===
+              'Cold damage risk'
+          ) {
+
+            iconPath =
+              'assets/ui/weather-snow.svg';
+
+            reason =
+              Number.isFinite(
+                assessment.temp
+              )
+                ? `${assessment.reason} (${Math.round(
+                    assessment.temp
+                  )}°C).`
+                : assessment.reason;
+
+          }
+
+          else if (
+            assessment.reason ===
+            'Heat stress risk'
+          ) {
+
+            iconPath =
+              'assets/ui/weather-clear.svg';
+
+            reason =
+              Number.isFinite(
+                assessment.temp
+              )
+                ? `Heat stress risk (${Math.round(
+                    assessment.temp
+                  )}°C).`
+                : assessment.reason;
+
+          }
+
+          else if (
+            assessment.reason ===
+            'High wind risk'
+          ) {
+
+            iconPath =
+              'assets/ui/at-risk.svg';
+
+            reason =
+              Number.isFinite(
+                assessment.windKph
+              )
+                ? `High wind risk (${Math.round(
+                    assessment.windKph
+                  )} km/h).`
+                : assessment.reason;
+
+          }
+
+          else {
+
+            iconPath =
+              'assets/ui/at-risk.svg';
+
+            reason =
+              assessment.reason ||
+              'Current weather may be outside the stored crop limits.';
+
+          }
 
         }
 
         else if (
-          info.maxTemp &&
-          temp > info.maxTemp
-        ) {
-
-          impact =
-            'negative';
-
-          iconPath =
-            'assets/ui/weather-clear.svg';
-
-          reason =
-            `Heat stress (${Math.round(temp)}°C > ${info.maxTemp}°C max).`;
-
-        }
-
-        else if (
-          hum > 85 &&
-          isRain
-        ) {
-
-          impact =
-            'warn';
-
-          iconPath =
-            'assets/ui/weather-rain.svg';
-
-          reason =
-            'High humidity + rain. Monitor for fungal disease.';
-
-        }
-
-        else if (
-          temp >= (info.minTemp || 18) &&
-          temp <= (info.maxTemp || 35)
+          assessment.available
         ) {
 
           impact =
@@ -11888,7 +11910,23 @@ function renderAnWeatherImpact() {
             'assets/ui/pest-status-low.svg';
 
           reason =
-            `Ideal temp range (${info.minTemp}–${info.maxTemp}°C).`;
+            'Current weather is within the stored crop limits.';
+
+        }
+
+        else {
+
+          impact =
+            'neutral';
+
+          iconPath =
+            'assets/ui/weather-cloudy.svg';
+
+          reason =
+            assessment.reason ===
+            'Weather data unavailable'
+              ? 'Weather data is currently unavailable.'
+              : 'No verified weather limits are stored for this crop.';
 
         }
 
@@ -11914,7 +11952,9 @@ function renderAnWeatherImpact() {
             <div class="an-wi-icon">
 
               <img
-                src="${iconPath}"
+                src="${escapeHtml(
+                  iconPath
+                )}"
                 alt=""
                 class="an-wi-status-img"
               >
