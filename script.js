@@ -4961,6 +4961,55 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Adlai: {
+    'direct-seeded': {
+      minMonths: 5,
+      maxMonths: 6,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'Harvest when the crop is about 5–6 months old or when approximately 80% of the grains are mature.',
+      source: {
+        agency: 'Department of Agriculture - Agricultural Training Institute',
+        office: 'ATI MIMAROPA',
+        title: 'Gabay sa Produksyon ng Adlay',
+        url: 'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-11/Gabay%20sa%20Produksyon%20ng%20Adlay.pdf'
+      }
+    }
+  },
+
+  Arrowroot: {
+    suckers: {
+      minMonths: 8,
+      maxMonths: 10,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'The crop is generally ready at 8–10 months. The source also notes that harvesting at 11–12 months may provide higher yield and starch content.',
+      source: {
+        agency: 'Department of Agriculture - MIMAROPA Region',
+        office: 'Regional Agriculture and Fisheries Information Section (RAFIS)',
+        title: 'Arrowroot Production',
+        url: 'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Arrowroot-Production.pdf'
+      }
+    },
+  
+    'rhizome-rootstock': {
+      minMonths: 8,
+      maxMonths: 10,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'The crop is generally ready at 8–10 months. The source also notes that harvesting at 11–12 months may provide higher yield and starch content.',
+      source: {
+        agency: 'Department of Agriculture - MIMAROPA Region',
+        office: 'Regional Agriculture and Fisheries Information Section (RAFIS)',
+        title: 'Arrowroot Production',
+        url: 'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Arrowroot-Production.pdf'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
