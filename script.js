@@ -5739,6 +5739,79 @@ function formatFarmDate(date) {
   );
 }
 
+function formatHarvestTimingRange(
+  harvestWindow
+) {
+  if (!harvestWindow) return '';
+
+  const basis =
+    harvestWindow.basis || '';
+
+  const hasMonthRange =
+    Number.isFinite(
+      harvestWindow.minMonths
+    ) &&
+    Number.isFinite(
+      harvestWindow.maxMonths
+    );
+
+  if (hasMonthRange) {
+    if (
+      harvestWindow.minMonths ===
+      harvestWindow.maxMonths
+    ) {
+      const unit =
+        harvestWindow.minMonths === 1
+          ? 'month'
+          : 'months';
+
+      return (
+        `${harvestWindow.minMonths} ` +
+        `${unit} ${basis}`
+      );
+    }
+
+    return (
+      `${harvestWindow.minMonths}–` +
+      `${harvestWindow.maxMonths} ` +
+      `months ${basis}`
+    );
+  }
+
+  const hasDayRange =
+    Number.isFinite(
+      harvestWindow.minDays
+    ) &&
+    Number.isFinite(
+      harvestWindow.maxDays
+    );
+
+  if (!hasDayRange) {
+    return '';
+  }
+
+  if (
+    harvestWindow.minDays ===
+    harvestWindow.maxDays
+  ) {
+    const unit =
+      harvestWindow.minDays === 1
+        ? 'day'
+        : 'days';
+
+    return (
+      `${harvestWindow.minDays} ` +
+      `${unit} ${basis}`
+    );
+  }
+
+  return (
+    `${harvestWindow.minDays}–` +
+    `${harvestWindow.maxDays} ` +
+    `days ${basis}`
+  );
+}
+
 function getElapsedPlantingTime(crop) {
   if (!crop?.planted) return null;
 
@@ -6071,11 +6144,12 @@ function getCropTimelineCheck(crop) {
         ? estimatedHarvestWindow
         : null;
 
-  const harvestTimingLabel = activeHarvestWindow
-    ? activeHarvestWindow.minDays === activeHarvestWindow.maxDays
-      ? `${activeHarvestWindow.minDays} days ${activeHarvestWindow.basis}`
-      : `${activeHarvestWindow.minDays}–${activeHarvestWindow.maxDays} days ${activeHarvestWindow.basis}`
-    : null;
+  const harvestTimingLabel =
+    activeHarvestWindow
+      ? formatHarvestTimingRange(
+          activeHarvestWindow
+        )
+      : null;
 
   // Farmer observation takes priority
   if (latest?.stage === 'ready') {
@@ -6969,9 +7043,9 @@ function renderCropsPage() {
                        ? `
                          <div class="cmi-source">
                            <div>
-                             ${harvestWindow.minDays === harvestWindow.maxDays
-                               ? `${harvestWindow.minDays} days ${harvestWindow.basis}`
-                               : `${harvestWindow.minDays}–${harvestWindow.maxDays} days ${harvestWindow.basis}`}
+                              ${formatHarvestTimingRange(
+                                harvestWindow
+                              )}
                            </div>
 
                            ${harvestWindow.note ? `
