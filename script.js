@@ -5195,6 +5195,16 @@ function resolveCropPlantingMethod(crop) {
   if (!crop) return null;
 
   if (crop.plantingMethod) {
+
+    // Normalize the shared crop-data.js value
+    // to FarmCast's existing harvest-rule key.
+    if (
+      crop.plantingMethod ===
+      'transplanted-seedlings'
+    ) {
+      return 'transplanted';
+    }
+
     return crop.plantingMethod;
   }
 
