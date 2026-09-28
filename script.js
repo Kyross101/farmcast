@@ -5213,97 +5213,12 @@ function updatePlantingMethodOptions() {
 
   const cropType = cropSelect.value;
 
-  const plantingMethodOptions = {
-    Tomato: [
-      {
-        value: 'transplanted',
-        label: 'Transplanted'
-      }
-    ],
-
-    Eggplant: [
-      {
-        value: 'transplanted',
-        label: 'Transplanted'
-      }
-    ],
-
-    Corn: [
-      {
-        value: 'direct-seeded',
-        label: 'Direct Seeded'
-      }
-    ],
-
-    Okra: [
-      {
-        value: 'direct-seeded',
-        label: 'Direct Seeded'
-      }
-    ],
-
-    Sitaw: [
-      {
-        value: 'direct-seeded',
-        label: 'Direct Seeded'
-      }
-    ],
-
-    Ampalaya: [
-      {
-        value: 'direct-seeded',
-        label: 'Direct Seeded'
-      },
-      {
-        value: 'transplanted',
-        label: 'Transplanted'
-      }
-    ],
-
-    Pechay: [
-      {
-        value: 'direct-seeded',
-        label: 'Direct Seeded'
-      },
-      {
-        value: 'transplanted',
-        label: 'Transplanted'
-      }
-    ],
-
-    Kamote: [
-      {
-        value: 'cuttings',
-        label: 'Vine Cuttings / Slips'
-      }
-    ],
-
+  const specialPlantingMethodOptions = {
     Rice: [
       {
         value: 'direct-seeded',
         label: 'Direct Seeded'
       },
-      {
-        value: 'transplanted',
-        label: 'Transplanted'
-      }
-    ],
-
-    Garlic: [
-      {
-        value: 'cloves',
-        label: 'Planted from Cloves'
-      }
-    ],
-
-    Onion: [
-      {
-        value: 'direct-seeded',
-        label: 'Direct Seeded'
-      }
-    ],
-
-    Cabbage: [
       {
         value: 'transplanted',
         label: 'Transplanted'
@@ -5327,12 +5242,20 @@ function updatePlantingMethodOptions() {
   const options =
     datasetPlantingMethods.length
       ? datasetPlantingMethods
-      : plantingMethodOptions[cropType] || [
-          {
-            value: 'unspecified',
-            label: 'Method not yet specified'
-          }
-        ];
+      : specialPlantingMethodOptions[cropType] || [];
+
+  if (!options.length) {
+    plantingMethodSelect.innerHTML =
+      '<option value="">Select a crop first</option>';
+
+    plantingMethodSelect.value = '';
+
+    updateCropVarietyHint();
+    updateCropPlantingDateLabel();
+    updateAddCropHarvestEstimate();
+
+    return;
+  }
 
   const previousValue =
     plantingMethodSelect.value;
