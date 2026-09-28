@@ -186,6 +186,9 @@ window.FARMCAST_CROPS = [
     noRain: false,
     windMax: 20,
 
+    harvestNote:
+      'Okra generally begins flowering about 40–75 days after planting. Young and tender fruits may be harvested about 4–6 days after flowering.',
+
     source: {
       agency:
         'Department of Agriculture - Agricultural Training Institute',
@@ -232,6 +235,9 @@ window.FARMCAST_CROPS = [
     maxTemp: 35,
     noRain: false,
     windMax: 22,
+
+    harvestNote:
+      'Pole sitaw may be harvested about 60–70 days after planting, depending on pod diameter and toughness.',
 
     source: {
       agency:
@@ -384,6 +390,9 @@ window.FARMCAST_CROPS = [
     maxTemp: 35,
     noRain: true,
     windMax: 25,
+
+    harvestNote:
+      'Kamote is commonly harvested about 110–130 days after planting, depending on the variety.',
 
     source: {
       agency:
@@ -3898,6 +3907,9 @@ window.FARMCAST_CROPS = [
 
       plantingNote:
         'For direct seeding, sow seeds uniformly in rows about 20–30 cm apart. Seeds may also be broadcast lightly and covered with fine soil. For transplanting, seedlings may first be raised in a seedbed.',
+
+      harvestNote:
+        'For transplanted Saluyot, first harvest may begin about 30 days after transplanting. Subsequent harvests may be done at intervals of about 1–2 weeks.',
 
       source: {
         agency:
