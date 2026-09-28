@@ -4772,6 +4772,84 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Hot Pepper': {
+    transplanted: {
+      minDays: 60,
+      maxDays: 75,
+      basis: 'after transplanting',
+      derived: false,
+      source: {
+        agency: 'Department of Agriculture - Agricultural Training Institute',
+        office: 'ATI Cordillera Administrative Region',
+        title: 'Hot Pepper (Sili) Production for Urban and Backyard Gardening',
+        url: 'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/hot_pepper_flyer_for_urban_and_backyard_gardening.pdf'
+      }
+    }
+  },
+
+  'Mung Bean': {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 65,
+      basis: 'after planting',
+      derived: false,
+      source: {
+        agency: 'Department of Agriculture - Bureau of Plant Industry',
+        title: 'All About Mungbean (Balatong)',
+        url: 'https://library.buplant.da.gov.ph/images/1659331948Mungbean%20%28Balatong%29.pdf'
+      }
+    }
+  },
+
+  Potato: {
+    'seed-tubers': {
+      minDays: 75,
+      maxDays: 90,
+      basis: 'after planting',
+      derived: false,
+      source: {
+        agency: 'Department of Agriculture - Regional Field Office No. 02',
+        office: 'High Value Crops Development Program',
+        title: 'White Potato Production Guide',
+        url: 'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/potato.pdf'
+      }
+    }
+  },
+
+  'Bottle Gourd': {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 80,
+      basis: 'after sowing',
+      derived: false,
+      note:
+        'This automatic range applies to direct-seeded Bottle Gourd because the source states the harvest timing from sowing.',
+      source: {
+        agency: 'Department of Agriculture - Agricultural Training Institute',
+        office: 'ATI Central Visayas - Regional Training Center 7',
+        title: 'Upo (Bottle Gourd) Production Guide',
+        url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Upo%20Production%20Guide.pdf'
+      }
+    }
+  },
+
+  'Snap Bean': {
+    'direct-seeded': {
+      minDays: 55,
+      maxDays: 70,
+      basis: 'after planting',
+      derived: true,
+      note:
+        'Broad FarmCast range covering the source-backed bush type (about 55–60 days) and pole type (about 60–70 days).',
+      source: {
+        agency: 'Department of Agriculture - Regional Field Office No. 02',
+        office: 'High Value Crops Development Program',
+        title: 'Snap Beans Production Guide',
+        url: 'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Snap-Beans-Production-Guide.pdf'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
