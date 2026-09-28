@@ -3832,11 +3832,54 @@ const CROP_EMOJIS = {
 };
 
 // ── SHARED CROP REFERENCE HELPERS ──
+
+const SPECIAL_CROP_REFERENCES = {
+  Rice: {
+    name: 'Rice',
+    localName: 'Palay',
+    category: 'grain',
+    icon: 'assets/crops/rice.svg',
+
+    plantingMethods: [
+      {
+        value: 'direct-seeded',
+        label: 'Direct Seeded'
+      },
+      {
+        value: 'transplanted',
+        label: 'Transplanted'
+      }
+    ],
+
+    source: {
+      agency:
+        'Philippine Rice Research Institute (PhilRice)',
+
+      title:
+        'Varieties for More',
+
+      url:
+        'https://www.philrice.gov.ph/varieties-for-more/'
+    }
+  }
+};
+
+
 function getCropReference(cropName) {
 
-  return CROPS.find(
-    crop => crop.name === cropName
-  ) || null;
+  const datasetReference =
+    CROPS.find(
+      crop => crop.name === cropName
+    );
+
+  if (datasetReference) {
+    return datasetReference;
+  }
+
+  return (
+    SPECIAL_CROP_REFERENCES[cropName] ||
+    null
+  );
 }
 
 function renderMyCropGeneralReference(cropName) {
