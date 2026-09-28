@@ -5259,27 +5259,15 @@ function updatePlantingMethodOptions() {
 
   if (!cropSelect || !plantingMethodSelect) return;
 
-  const cropType = cropSelect.value;
-
-  const specialPlantingMethodOptions = {
-    Rice: [
-      {
-        value: 'direct-seeded',
-        label: 'Direct Seeded'
-      },
-      {
-        value: 'transplanted',
-        label: 'Transplanted'
-      }
-    ]
-  };
+  const cropType =
+    cropSelect.value;
 
   const cropReference =
-    CROPS.find(
-      crop => crop.name === cropType
+    getCropReference(
+      cropType
     );
 
-  const datasetPlantingMethods =
+  const referencePlantingMethods =
     Array.isArray(
       cropReference?.plantingMethods
     )
@@ -5288,10 +5276,7 @@ function updatePlantingMethodOptions() {
 
 
   const options =
-    datasetPlantingMethods.length
-      ? datasetPlantingMethods
-      : specialPlantingMethodOptions[cropType] || [];
-
+    referencePlantingMethods;
   if (!options.length) {
     plantingMethodSelect.innerHTML =
       '<option value="">Select a crop first</option>';
