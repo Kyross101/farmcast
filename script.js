@@ -11723,7 +11723,18 @@ function renderAnBarChart() {
     <div class="an-chart-bars">
       ${crops.map(crop => {
         const st = getCropStatus(crop);
-        const col = colors[st.color]||'#3fb950';
+
+        const col =
+          colors[st.color] ||
+          '#3fb950';
+
+        const hasProgressEstimate =
+          st.harvestDateAvailable !== false;
+
+        const progressLabel =
+          hasProgressEstimate
+            ? `${st.progress}%`
+            : 'No estimate';
 
         return `
           <div class="an-bar-item">
@@ -11745,14 +11756,31 @@ function renderAnBarChart() {
 
               <span
                 class="an-bar-pct"
-                style="color:${col}"
+                style="color:${
+                  hasProgressEstimate
+                    ? col
+                    : 'var(--text-muted)'
+                }"
               >
-                ${st.progress}%
+                ${progressLabel}
               </span>
 
             </div>
           
-          <div class="an-bar-track"><div class="an-bar-fill" style="width:${st.progress}%;background:${col}"></div></div>
+          <div class="an-bar-track">
+            <div
+              class="an-bar-fill"
+              style="
+                width:${
+                  hasProgressEstimate
+                    ? st.progress
+                    : 0
+                }%;
+                background:${col}
+              "
+            ></div>
+          </div>
+
           <div class="an-bar-meta">
             <span class="cdc-status status-${st.color}" style="font-size:0.65rem;padding:2px 7px">${st.label}</span>
             <span style="font-size:0.7rem;color:var(--text-muted)">${crop.location} · ${crop.area} m²</span>
