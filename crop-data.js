@@ -3894,19 +3894,8 @@ window.FARMCAST_CROPS = [
         title:
           'Production Guide of Saluyot',
 
-        source: {
-          agency:
-            'Department of Science and Technology - Philippine Council for Agriculture, Forestry and Natural Resources Research and Development',
-
-          office:
-            'DOST Regional Office VI',
-
-          title:
-            'Saluyot Production Guide',
-
-          url:
-            'https://region6.dost.gov.ph/pcarrd-production-guide/'
-        }
+        url:
+          'https://library.buplant.da.gov.ph/images/1641949446Saluyot%20Production%20Guide.pdf'
       }
 
     },
