@@ -6710,6 +6710,17 @@ function renderCropsPage() {
       crop.type
     );
 
+  const cropReference =
+    getCropReference(
+      crop.type
+    );
+
+  const harvestGuidance =
+    typeof cropReference?.harvestNote ===
+    'string'
+      ? cropReference.harvestNote.trim()
+      : '';
+
     const stageInfo = {
       seedling: {
         icon: 'assets/ui/stage-seedling.svg',
@@ -6804,12 +6815,26 @@ function renderCropsPage() {
       harvestWindow.endDate ||
       harvestWindow.end;
 
+    const guidanceOnlyHarvest =
+      !harvestWindow.available &&
+      Boolean(harvestGuidance) &&
+      !hasValidCropHarvestDate(crop);
+
     const harvestWindowText =
       harvestWindow.available
-        ? harvestWindow.minDays === harvestWindow.maxDays
-          ? formatFarmDate(harvestWindowStart)
-          : `${formatFarmDate(harvestWindowStart)} – ${formatFarmDate(harvestWindowEnd)}`
-        : harvestFmt;
+        ? harvestWindow.minDays ===
+          harvestWindow.maxDays
+          ? formatFarmDate(
+              harvestWindowStart
+            )
+          : `${formatFarmDate(
+              harvestWindowStart
+            )} – ${formatFarmDate(
+              harvestWindowEnd
+            )}`
+        : guidanceOnlyHarvest
+          ? 'Guidance available'
+          : harvestFmt;
 
     // Weather compatibility
     let weatherCompatHtml = '';
@@ -7141,13 +7166,15 @@ function renderCropsPage() {
                      ${escapeHtml(harvestWindowText)}
                    </div>
 
-                   <div class="cmi-lbl">
-                     ${
-                       harvestWindow.available
-                         ? 'Estimated Harvest Window'
-                         : 'Estimated Harvest'
-                     }
-                   </div>
+                    <div class="cmi-lbl">
+                      ${
+                        harvestWindow.available
+                          ? 'Estimated Harvest Window'
+                          : guidanceOnlyHarvest
+                            ? 'Harvest Guidance'
+                            : 'Estimated Harvest'
+                      }
+                    </div>
 
                    ${
                      harvestWindow.available
@@ -7201,15 +7228,48 @@ function renderCropsPage() {
                          </div>
                        `
                       : `
-                        <div class="cmi-source">
-                          ${
-                            crop.type === 'Rice' && crop.variety
-                              ? getRiceVarietyStatus(crop).varietyVerified
-                                ? `Verified Rice variety, but no source-backed timing is available for the selected planting method — showing current FarmCast estimate`
-                                : `Rice variety not yet verified in FarmCast — showing current FarmCast estimate`
-                              : `Current FarmCast estimate`
-                          }
-                        </div>
+                        ${
+                          harvestGuidance
+                            ? `
+                              <div class="cmi-source">
+
+                                <div class="cmi-source-summary">
+                                  Verified harvest guidance
+                                </div>
+
+                                <div class="cmi-source-derived">
+                                  ${escapeHtml(
+                                    harvestGuidance
+                                  )}
+                                </div>
+
+                                ${
+                                  guidanceOnlyHarvest
+                                    ? `
+                                      <div class="cmi-source-derived">
+                                        No automatic harvest date was applied because the verified guidance does not support a safe fixed calendar estimate for this crop.
+                                      </div>
+                                    `
+                                    : ''
+                                }
+
+                              </div>
+                            `
+                            : `
+                              <div class="cmi-source">
+                                ${
+                                  crop.type === 'Rice' &&
+                                  crop.variety
+                                    ? getRiceVarietyStatus(
+                                        crop
+                                      ).varietyVerified
+                                      ? `Verified Rice variety, but no source-backed timing is available for the selected planting method.`
+                                      : `Rice variety not yet verified in FarmCast.`
+                                    : `No verified automatic harvest timing is stored for this crop yet.`
+                                }
+                              </div>
+                            `
+                        }
 
                         ${generalCropReferenceHtml}
                       `
