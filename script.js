@@ -4420,7 +4420,7 @@ function renderMyCropPicker() {
   if (datasetCountEl) {
 
     datasetCountEl.textContent =
-      `${CROPS.length} / 100 references`;
+      `${crops.length} crops available`;
 
   }
 
