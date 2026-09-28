@@ -5938,9 +5938,39 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   display: flex; align-items: center;
   justify-content: space-between; gap: 14px;
 }
-.src-plant-info { display: flex; align-items: center; gap: 12px; }
-.src-plant-emoji { font-size: 2.5rem; flex-shrink: 0; }
-.src-plant-name  { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); }
+
+.src-plant-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.src-plant-emoji {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.src-plant-icon-img {
+  width: 40px;
+  height: 40px;
+
+  display: block;
+  object-fit: contain;
+}
+
+.src-plant-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
 .src-plant-type  { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
 .src-health-badge {
   display: flex; align-items: center; gap: 6px;

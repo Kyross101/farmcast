@@ -13392,13 +13392,59 @@ function showScannerResult(plant, disease, rawPredictions) {
   }
 
   // ── Plant info ──
-  const plantEmojiEl = document.getElementById('srcPlantEmoji');
+  const plantEmojiEl =
+    document.getElementById(
+     'srcPlantEmoji'
+    );
 
-  plantEmojiEl.innerHTML =
-    '<span class="material-symbols-outlined" style="font-size:2rem;color:var(--green)">yard</span>';
+  const plantName =
+    String(
+      plant.name ||
+      'Unknown'
+    ).trim();
 
-  document.getElementById('srcPlantName').textContent =
-    plant.name || 'Unknown';
+
+  const matchedFarmCastCrop =
+    getMyCropPickerDataset()
+      .find(crop =>
+        crop.name.toLowerCase() ===
+        plantName.toLowerCase()
+      );
+
+
+  if (plantEmojiEl) {
+
+    if (matchedFarmCastCrop) {
+
+      plantEmojiEl.innerHTML =
+        getCropIconHtml(
+          matchedFarmCastCrop.name,
+          'src-plant-icon-img'
+        );
+
+    } else {
+
+      plantEmojiEl.innerHTML = `
+        <span
+          class="material-symbols-outlined"
+          style="
+            font-size:2rem;
+            color:var(--green)
+          "
+        >
+          yard
+        </span>
+      `;
+
+    }
+
+  }
+
+
+  document.getElementById(
+    'srcPlantName'
+  ).textContent =
+    plantName;
 
   document.getElementById('srcPlantType').textContent =
     `${plant.type || 'Crop'} • ${Number(plant.confidence ?? 0)}% AI confidence`;
