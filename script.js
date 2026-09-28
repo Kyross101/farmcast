@@ -12549,14 +12549,9 @@ async function runAIDetection() {
       throw new Error('AI server returned no reliable analysis.');
     }
 
-    const identified = {
-      name:       analysis.plant_name || 'Unknown',
-      emoji:      CROP_EMOJIS[analysis.plant_name] || '🌿',
-      type:       analysis.plant_type || 'Crop',
-      confidence: Number(analysis.confidence ?? 0),
-    };
-
-    const healthStatus = analysis.health_status || 'Unable to determine';
+    const healthStatus =
+  analysis.health_status ||
+  'Unable to determine';
     const severity     = analysis.severity || 'unknown';
     const confidence   = Number(analysis.confidence ?? 0);
 
