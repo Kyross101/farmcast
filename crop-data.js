@@ -1916,6 +1916,20 @@ window.FARMCAST_CROPS = [
       }
     ],
 
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Cordillera Administrative Region',
+
+      title:
+        'Squash Production (For Urban and Home Gardening)',
+
+      url:
+        'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/squash_production_guide_leaflet.pdf'
+    },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -2015,6 +2029,20 @@ window.FARMCAST_CROPS = [
         }
       ],
 
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI MIMAROPA',
+
+        title:
+          'Gabay sa Produksyon ng Pipino',
+
+        url:
+          'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2024-12/GABAY%20SA%20PRODUKSYON%20NG%20PIPINO.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2060,6 +2088,17 @@ window.FARMCAST_CROPS = [
         }
       ],
 
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Bell Pepper Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1641950133BELL%20PEPPER%20.pdf'
+      },
+
       minTemp: null,
       maxTemp: null,
       noRain: false,
@@ -2095,6 +2134,20 @@ window.FARMCAST_CROPS = [
           label: 'Transplanted Seedlings'
         }
       ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera Administrative Region',
+
+        title:
+          'Hot Pepper (Sili) Production for Urban and Backyard Gardening',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/hot_pepper_flyer_for_urban_and_backyard_gardening.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
@@ -2137,6 +2190,17 @@ window.FARMCAST_CROPS = [
           label: 'Transplanted Seedlings'
         }
       ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Bureau of Plant Industry',
+
+        title:
+          'Cauliflower Production Guide',
+
+        url:
+          'https://library.buplant.da.gov.ph/images/1638348280Cauliflower%20Production%20Guide.pdf'
+      },
 
       minTemp: null,
       maxTemp: null,
