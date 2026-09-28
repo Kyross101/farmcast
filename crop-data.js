@@ -1252,7 +1252,7 @@ window.FARMCAST_CROPS = [
         value: 'marcotted-plants',
         label: 'Marcotted Plants'
       },
-      {
+      {   
         value: 'grafted-budded-plants',
         label: 'Grafted / Budded Plants'
       },
@@ -1261,6 +1261,17 @@ window.FARMCAST_CROPS = [
         label: 'Inarched Plants'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Guyabano Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1641946446Guayabano%20production%20guide.pdf'
+    },
 
     minTemp: null,
     maxTemp: null,
@@ -1305,6 +1316,20 @@ window.FARMCAST_CROPS = [
         label: 'Nursery-rooted Cuttings'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Central Visayas',
+
+      title:
+        'Dragon Fruit Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/DRAGON%20FRUIT.PDF'
+    },
 
     minTemp: null,
     maxTemp: null,
@@ -1405,7 +1430,18 @@ window.FARMCAST_CROPS = [
         value: 'inarched-plants',
         label: 'Inarched Plants'
       }
-  ],
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Cashew Production',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1581572310CASHEW.pdf'
+    },
 
     minTemp: null,
     maxTemp: null,
@@ -1489,6 +1525,20 @@ window.FARMCAST_CROPS = [
         label: 'Transplanted Seedlings'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - MIMAROPA Regional Field Office',
+
+      office:
+        'Regional Agricultural and Fisheries Information Section',
+
+      title:
+        'Honeydew Melon Production',
+
+      url:
+        'https://mimaropa.da.gov.ph/media-resources/publication/high-value-crop'
+    },
 
     minTemp: null,
     maxTemp: null,
