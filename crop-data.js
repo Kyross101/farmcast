@@ -4119,7 +4119,10 @@ window.FARMCAST_CROPS = [
           'Utah State University Extension',
 
         title:
-          'How to Grow Kale in Your Garden'
+          'How to Grow Kale in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/kale-in-the-garden'
       },
 
       noRain: false,
@@ -4224,7 +4227,10 @@ window.FARMCAST_CROPS = [
           'University of Minnesota Extension',
 
         title:
-          'Growing Basil in Home Gardens'
+          'Growing Basil in Home Gardens',
+
+        url:
+          'https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/yard-and-garden-problems/growing-basil'
       },
 
       productionNote:
@@ -4326,10 +4332,13 @@ window.FARMCAST_CROPS = [
 
       plantingMethodSource: {
         agency:
-          'University of Georgia Cooperative Extension',
+          'University of Florida - IFAS Extension',
 
         title:
-          'Herbs in Southern Gardens'
+          'Normal Agricultural Practices in Florida for Dove Hunting',
+
+        url:
+          'https://edis.ifas.ufl.edu/publication/AG493'
       },
 
       cropUseNote:
@@ -4915,7 +4924,7 @@ window.FARMCAST_CROPS = [
           'Weedibles and Weedicinals Plus Edible Flowers and More',
 
         url:
-          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf?utm_source'
+          'https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/WEEDIBLES%20AND%20WEEDICINALS%20Plus%20Edible%20Flowers%20and%20More.pdf'
       }
     },
 
@@ -5678,7 +5687,7 @@ window.FARMCAST_CROPS = [
           'The Philippines Recommends for Grapes',
 
         url:
-         'https://km4aanr.pcaarrd.dost.gov.ph/search?page=5&query=The+Philippines+recommends+for+coconut&search=The+Philippines+recommends+for+coconut'
+         'https://km4aanr.pcaarrd.dost.gov.ph/search?query=The+Philippines+recommends+for+grapes&search=The+Philippines+recommends+for+grapes'
       }
     },
 
