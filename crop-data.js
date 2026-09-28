@@ -1476,6 +1476,20 @@ window.FARMCAST_CROPS = [
       }
     ],
 
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Central Visayas',
+
+      title:
+        'Watermelon Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Watermelon%20Production%20Guide.pdf'
+    },
+
     minTemp: null,
     maxTemp: null,
     idealTemp: 25,
@@ -1625,6 +1639,17 @@ window.FARMCAST_CROPS = [
       }
     ],
 
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Garlic Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1640921673Garlic%20Production%20Guide.pdf'
+    },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -1716,7 +1741,21 @@ window.FARMCAST_CROPS = [
         label: 'Transplanted Seedlings'
       }
     ],
- 
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Central Visayas',
+
+      title:
+        'Cabbage Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/Cabbage%20Production%20Guide.pdf'
+    },
+
     minTemp: 15,
     maxTemp: 20,
     noRain: false,
@@ -1761,6 +1800,17 @@ window.FARMCAST_CROPS = [
       }
     ],
 
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Broccoli Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1641969015BROCCOLI%20.pdf'
+    },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -1793,6 +1843,20 @@ window.FARMCAST_CROPS = [
         label: 'Direct Seeded'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Regional Field Office No. 02',
+
+      office:
+        'High Value Crops Development Program',
+
+      title:
+        'Carrot Production Guide',
+
+      url:
+        'https://cagayanvalley.da.gov.ph/wp-content/uploads/2018/02/Carrot-Prod-Guide.pdf'
+    },
 
     minTemp: 10,
     maxTemp: 30,
