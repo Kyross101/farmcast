@@ -4850,6 +4850,83 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Cucumber: {
+    'direct-seeded': {
+      minDays: 33,
+      maxDays: 45,
+      basis: 'after planting',
+      derived: true,
+      note:
+        'Broad source-backed range covering pickling types (33–40 days) and slicing types (38–45 days). Automatic guidance is limited to direct-seeded cucumber so the planting-date basis remains clear.',
+      source: {
+        agency: 'Department of Agriculture - Agricultural Training Institute',
+        office: 'ATI MIMAROPA',
+        title: 'Gabay sa Produksyon ng Pipino',
+        url: 'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2024-12/GABAY%20SA%20PRODUKSYON%20NG%20PIPINO.pdf'
+      }
+    }
+  },
+
+  'Water Spinach': {
+    'direct-seeded': {
+      minDays: 21,
+      maxDays: 28,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'BPI states that young tops or shoots are ready about 3–4 weeks after planting.',
+      source: {
+        agency: 'Department of Agriculture - Bureau of Plant Industry',
+        title: 'All About Kangkong',
+        url: 'https://library.buplant.da.gov.ph/images/1659333070Kangkong.pdf'
+      }
+    },
+
+    'vine-cuttings': {
+      minDays: 21,
+      maxDays: 28,
+      basis: 'after planting',
+      derived: false,
+      note:
+        'BPI identifies vine cuttings as a propagation method and gives a general harvest window of 3–4 weeks after planting.',
+      source: {
+        agency: 'Department of Agriculture - Bureau of Plant Industry',
+        title: 'All About Kangkong',
+        url: 'https://library.buplant.da.gov.ph/images/1659333070Kangkong.pdf'
+      }
+    }
+  },
+
+  'Malabar Spinach': {
+    transplanted: {
+      minDays: 30,
+      maxDays: 45,
+      basis: 'after transplanting',
+      derived: false,
+      source: {
+        agency: 'Department of Agriculture - Agricultural Training Institute',
+        office: 'ATI Central Visayas - Regional Training Center 7',
+        title: 'Alugbati Production Guide',
+        url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/alugbati_prod.pdf'
+      }
+    }
+  },
+
+  'Mustard Greens': {
+    transplanted: {
+      minDays: 14,
+      maxDays: 28,
+      basis: 'after transplanting',
+      derived: false,
+      source: {
+        agency: 'Department of Agriculture - Agricultural Training Institute',
+        office: 'ATI Regional Training Center 02',
+        title: 'Gabay sa Pagtatanim ng Mustasa',
+        url: 'https://ati2.da.gov.ph/ati-2/content/sites/default/files/2024-03/Gabay%20sa%20Pagtatanim%20ng%20Mustasa.pdf'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
