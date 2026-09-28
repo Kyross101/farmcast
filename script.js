@@ -5407,7 +5407,7 @@ function updateCropVarietyHint() {
 
   if (!varietyRules) {
     hint.textContent =
-      'Rice variety not yet verified in FarmCast. Current FarmCast estimate will be used.';
+      'Rice variety not yet verified in FarmCast. No automatic harvest estimate will be applied unless source-backed timing is available.';
     return;
   }
 
