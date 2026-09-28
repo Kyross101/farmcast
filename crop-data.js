@@ -17,6 +17,20 @@ window.FARMCAST_CROPS = [
       }
     ],
 
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI MIMAROPA',
+
+      title:
+        'Gabay sa Produksyon ng Kamatis',
+
+      url:
+        'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2024-06/Gabay%20sa%20Produksyon%20ng%20Kamatis.pdf'
+    },
+
    minTemp: 18,
    maxTemp: 32,
    noRain: false,
@@ -44,11 +58,25 @@ window.FARMCAST_CROPS = [
    icon: 'assets/crops/eggplant.svg',
 
     plantingMethods: [
-     {
+      {
         value: 'transplanted',
         label: 'Transplanted'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI MIMAROPA',
+
+      title:
+        'Gabay sa Produksyon ng Talong',
+
+      url:
+        'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/gabay_sa_produksyon_ng_talong1.pdf'
+    },
 
    minTemp: 22,
    maxTemp: 35,
@@ -83,6 +111,20 @@ window.FARMCAST_CROPS = [
       }
     ],
 
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Agricultural Training Institute',
+
+      office:
+        'ATI Central Visayas',
+
+      title:
+        'MAIS Production Guide',
+
+      url:
+        'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/MAIS%20Production%20Guide.pdf'
+    },
+
    minTemp: 18,
    maxTemp: 33,
    noRain: false,
@@ -116,6 +158,20 @@ window.FARMCAST_CROPS = [
         }
       ],
 
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera',
+
+        title:
+          'Okra Production Guide',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/okra_production_flyer_.pdf'
+      },
+
     minTemp: 25,
     maxTemp: 38,
     noRain: false,
@@ -148,6 +204,20 @@ window.FARMCAST_CROPS = [
           label: 'Direct Seeded'
         }
       ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture - Agricultural Training Institute',
+
+        office:
+          'ATI Cordillera',
+
+        title:
+          'Pole Sitaw Production for Urban and Backyard Gardening',
+
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/pole_sitaw_flyer.pdf'
+      },
 
     minTemp: 20,
     maxTemp: 35,
