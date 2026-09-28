@@ -6988,6 +6988,8 @@ function updateAddCropHarvestEstimate() {
         : 'No verified automatic harvest estimate is stored for this crop. You may enter your own farmer estimate or leave this field blank.';
   }
 
+}
+
 document
   .getElementById('cropDateHarvest')
   ?.addEventListener('input', () => {
