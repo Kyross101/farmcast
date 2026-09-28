@@ -36,7 +36,10 @@ window.FARMCAST_CROPS = [
    noRain: false,
    windMax: 20,
 
-   source: {
+   harvestNote:
+    'Harvesting generally begins about 55–65 days after planting, depending on the variety and crop condition.',
+
+    source: {
      agency:
        'Department of Agriculture - Agricultural Training Institute',
 
@@ -78,10 +81,13 @@ window.FARMCAST_CROPS = [
         'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2022-12/gabay_sa_produksyon_ng_talong1.pdf'
     },
 
-   minTemp: 22,
-   maxTemp: 35,
-   noRain: false,
-   windMax: 25,
+    minTemp: 22,
+    maxTemp: 35,
+    noRain: false,
+    windMax: 25,
+
+    harvestNote:
+     'Harvesting generally begins about 46–50 days after transplanting, depending on the variety used.',
 
     source: {
       agency:
@@ -125,10 +131,13 @@ window.FARMCAST_CROPS = [
         'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/MAIS%20Production%20Guide.pdf'
     },
 
-   minTemp: 18,
-   maxTemp: 33,
-   noRain: false,
-   windMax: 15,
+    minTemp: 18,
+    maxTemp: 33,
+    noRain: false,
+    windMax: 15,
+
+    harvestNote:
+      'Corn is generally ready for harvest about 90–120 days after planting, depending on the maturity of the variety.',
 
     source: {
       agency:
@@ -325,6 +334,9 @@ window.FARMCAST_CROPS = [
     maxTemp: 25,
     noRain: false,
     windMax: 20,
+
+    harvestNote:
+      'Direct-seeded pechay may be harvested about 30–40 days after sowing, while transplanted pechay may be harvested about 3–4 weeks after transplanting.',
 
     source: {
       agency:
