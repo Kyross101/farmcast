@@ -675,6 +675,17 @@ window.FARMCAST_CROPS = [
       }
     ],
 
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - High Value Crops Development Program',
+
+      title:
+        'Cacao Production Guide',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/Cacao-Production-Guide.pdf'
+    },
+
     minTemp: 18,
     maxTemp: 32,
     noRain: false,
@@ -894,7 +905,18 @@ window.FARMCAST_CROPS = [
         value: 'grafted-seedlings',
         label: 'Grafted Seedlings'
       }
-  ],
+    ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Regional Field Office VII',
+
+      title:
+        'Pagtanum og Nangka',
+
+      url:
+        'https://hvcdp.da.gov.ph/wp-content/uploads/2022/05/PAGTANUM-OG-NANGKA.pdf'
+    },
 
     minTemp: null,
     maxTemp: null,
@@ -929,6 +951,17 @@ window.FARMCAST_CROPS = [
         label: 'Grafted Seedlings'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Rambutan Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1641946110RAMBUTAN.pdf'
+    },
 
     minTemp: 22,
     maxTemp: 30,
@@ -1019,6 +1052,17 @@ window.FARMCAST_CROPS = [
       }
     ],
 
+    plantingMethodSource: {
+      agency:
+        'Department of Agriculture - Bureau of Plant Industry',
+
+      title:
+        'Durian Production Guide',
+
+      url:
+        'https://library.buplant.da.gov.ph/images/1640919293Durian%20Production%20Guide.pdf'
+    },
+
     minTemp: null,
     maxTemp: null,
     noRain: false,
@@ -1054,6 +1098,17 @@ window.FARMCAST_CROPS = [
         label: 'Grafted Seedlings'
       }
     ],
+
+    plantingMethodSource: {
+      agency:
+        'University of the Philippines Los Baños',
+
+      title:
+        "Characteristics and Propagation of 'UPLB Sweet' Mangosteen",
+
+      url:
+        'https://www.ukdr.uplb.edu.ph/journal-articles/4419/'
+    },
 
     minTemp: 20,
     maxTemp: 30,
