@@ -7424,6 +7424,15 @@ function updateAddCropHarvestEstimate() {
   const harvestWindow =
     getEstimatedHarvestWindow(tempCrop);
 
+  const cropReference =
+    getCropReference(cropType);
+
+  const harvestNote =
+    typeof cropReference?.harvestNote ===
+    'string'
+      ? cropReference.harvestNote.trim()
+      : '';
+
 
   // 1. Verified source-backed harvest guidance
   if (harvestWindow?.available) {
@@ -7454,13 +7463,28 @@ function updateAddCropHarvestEstimate() {
   harvestInput.dataset.estimateSource =
     harvestInput.value
       ? 'manual'
-      : 'unavailable';
+      : harvestNote
+        ? 'guidance-only'
+        : 'unavailable';
 
   if (hint) {
-    hint.textContent =
-      harvestInput.value
-        ? 'Manual farmer estimate.'
-        : 'No verified automatic harvest estimate is stored for this crop. You may enter your own farmer estimate or leave this field blank.';
+
+    if (harvestInput.value) {
+      hint.textContent =
+        'Manual farmer estimate.';
+    }
+
+    else if (harvestNote) {
+      hint.textContent =
+        `Verified harvest guidance: ${harvestNote} ` +
+        'No automatic date has been applied.';
+    }
+
+    else {
+      hint.textContent =
+        'No verified automatic harvest estimate or harvest timing guidance is stored for this crop yet. You may enter your own farmer estimate or leave this field blank.';
+    }
+
   }
 
 }
