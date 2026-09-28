@@ -6045,9 +6045,51 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .scanner-history-item:hover { border-color: var(--border2); background: var(--bg2); }
 .shi-thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
 .shi-no-img { background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-.shi-info { flex: 1; min-width: 0; }
-.shi-plant   { font-size: 0.82rem; font-weight: 700; color: var(--text); }
-.shi-disease { font-size: 0.72rem; font-weight: 600; margin-top: 2px; }
+
+.shi-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.shi-plant {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.shi-plant-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.shi-crop-icon-img {
+  width: 18px;
+  height: 18px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.shi-no-img .shi-crop-icon-img {
+  width: 30px;
+  height: 30px;
+}
+
+.shi-disease {
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
 .shi-date    { font-size: 0.65rem; color: var(--text-dim); margin-top: 2px; }
 .shi-badge   { padding: 3px 8px; border-radius: 99px; font-size: 0.65rem; font-weight: 700; border: 1px solid; flex-shrink: 0; }
 

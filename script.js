@@ -13734,6 +13734,34 @@ function renderScannerHistory() {
       item.confidence ?? 0
     );
 
+
+    const plantName =
+      String(
+        item.plant ||
+       'Unknown'
+      ).trim();
+
+
+    const matchedFarmCastCrop =
+      getMyCropPickerDataset()
+        .find(crop =>
+          crop.name.toLowerCase() ===
+          plantName.toLowerCase()
+        );
+
+
+    const plantIconHtml =
+      matchedFarmCastCrop
+        ? getCropIconHtml(
+            matchedFarmCastCrop.name,
+            'shi-crop-icon-img'
+          )
+        : escapeHtml(
+            item.emoji ||
+            '🌿'
+          );
+
+
     const isHealthy =
       diseaseName === 'Healthy';
 
@@ -13764,8 +13792,18 @@ function renderScannerHistory() {
     return `<div class="scanner-history-item">
       ${
         item.imageData
-          ? `<img src="${item.imageData}" class="shi-thumb" alt="">`
-          : `<div class="shi-thumb shi-no-img">${item.emoji || '🌿'}</div>`
+          ? `
+              <img
+                src="${item.imageData}"
+                class="shi-thumb"
+                alt=""
+              >
+            `
+          : `
+              <div class="shi-thumb shi-no-img">
+                ${plantIconHtml}
+              </div>
+            `
       }
 
       <div
@@ -13774,7 +13812,15 @@ function renderScannerHistory() {
         style="cursor:pointer;flex:1"
       >
         <div class="shi-plant">
-          ${item.emoji || '🌿'} ${item.plant || 'Unknown'}
+
+          <span class="shi-plant-icon">
+            ${plantIconHtml}
+          </span>
+
+          <span>
+            ${escapeHtml(plantName)}
+          </span>
+
         </div>
 
         <div class="shi-disease" style="color:${col}">
