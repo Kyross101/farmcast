@@ -4729,16 +4729,15 @@ const CROP_HARVEST_WINDOWS = {
   },
 
   Onion: {
-    'direct-seeded': {
-      minDays: 110,
-      maxDays: 130,
-      basis: 'after planting',
+    transplanted: {
+      minDays: 70,
+      maxDays: 120,
+      basis: 'after transplanting',
       derived: false,
       source: {
-        agency: 'Agricultural Training Institute (ATI)',
-        office: 'ATI Central Visayas',
-        title: 'Techno Guide on Organic Bulb Onion Production',
-        url: 'https://ati2.da.gov.ph/ati-7/content/sites/default/files/users/user16/ONION%20PROD_final.pdf'
+        agency: 'Department of Agriculture - Bureau of Agriculture and Fisheries Standards',
+        title: 'Code of Good Agricultural Practices for Onion Production',
+        url: 'https://ppssd.buplant.da.gov.ph/storage/app/public/LegalReference/PNS_BAFS%20108_2014%20Code%20of%20GAP%20for%20Onion%20Production.pdf'
       }
     }
   },
@@ -5217,7 +5216,7 @@ function resolveCropPlantingMethod(crop) {
     'Corn',
     'Okra',
     'Sitaw',
-    'Onion'
+    
   ];
 
   if (legacyDirectSeededCrops.includes(crop.type)) {
