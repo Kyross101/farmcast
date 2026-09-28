@@ -10395,17 +10395,52 @@ function saveThresholdSettings() {
 }
 
 // ═══ CROP PREFERENCES ═══
-const ALL_CROP_TYPES = ['Tomato','Eggplant','Corn','Okra','Sitaw','Ampalaya','Pechay','Kamote','Rice','Garlic','Onion','Cabbage'];
 
 function renderFavCropsGrid() {
-  const el = document.getElementById('favCropsGrid');
+
+  const el =
+    document.getElementById(
+      'favCropsGrid'
+    );
+
   if (!el) return;
-  el.innerHTML = ALL_CROP_TYPES.map(c => `
-    <div class="fav-crop-item${appSettings.favCrops.includes(c)?' selected':''}" onclick="toggleFavCrop(this,'${c}')">
-      <span>${CROP_EMOJIS[c]||'🌿'}</span>
-      <span>${c}</span>
-    </div>
-  `).join('');
+
+
+  const crops =
+    getMyCropPickerDataset();
+
+
+  el.innerHTML =
+    crops.map(crop => `
+
+      <div
+        class="fav-crop-item${
+          appSettings.favCrops.includes(
+            crop.name
+          )
+            ? ' selected'
+            : ''
+        }"
+        onclick="toggleFavCrop(
+          this,
+          decodeURIComponent(
+            '${encodeURIComponent(crop.name)}'
+          )
+        )"
+      >
+
+        ${getCropIconHtml(
+          crop.name,
+          'fav-crop-icon-img'
+        )}
+
+        <span>
+          ${escapeHtml(crop.name)}
+        </span>
+
+      </div>
+
+    `).join('');
 }
 
 function toggleFavCrop(el, crop) {

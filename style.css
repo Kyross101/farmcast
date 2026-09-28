@@ -4325,6 +4325,7 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 
 /* Favorite Crops Grid */
 .fav-crops-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+
 .fav-crop-item {
   display: flex; align-items: center; gap: 7px;
   padding: 7px 14px; border-radius: 99px;
@@ -4332,6 +4333,17 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
   cursor: pointer; transition: all 0.2s; -webkit-user-select: none;
 }
+
+.fav-crop-icon-img {
+  width: 22px;
+  height: 22px;
+
+  display: block;
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
 .fav-crop-item:hover   { border-color: var(--border2); color: var(--text); }
 .fav-crop-item.selected { background: var(--green-dim); color: var(--green); border-color: rgba(63,185,80,0.3); }
 
