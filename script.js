@@ -12386,8 +12386,34 @@ async function openAIDetect(cropId, cropType) {
   aiImageData       = null;
 
   // Set crop info
-  document.getElementById('aiCropEmoji').textContent = CROP_EMOJIS[cropType] || '🌿';
-  document.getElementById('aiCropName').textContent  = cropType;
+  const aiCropIcon =
+    document.getElementById(
+      'aiCropEmoji'
+    );
+
+  const aiCropName =
+    document.getElementById(
+      'aiCropName'
+    );
+
+
+  if (aiCropIcon) {
+
+    aiCropIcon.innerHTML =
+      getCropIconHtml(
+        cropType,
+        'ai-crop-icon-img'
+      );
+
+  }
+
+
+  if (aiCropName) {
+
+    aiCropName.textContent =
+      cropType;
+
+  }
 
   // Reset modal state
   showAISection('upload');
