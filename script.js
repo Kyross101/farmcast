@@ -12550,8 +12550,8 @@ async function runAIDetection() {
     }
 
     const healthStatus =
-  analysis.health_status ||
-  'Unable to determine';
+      analysis.health_status ||
+      'Unable to determine';
     const severity     = analysis.severity || 'unknown';
     const confidence   = Number(analysis.confidence ?? 0);
 
