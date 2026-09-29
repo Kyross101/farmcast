@@ -10193,14 +10193,36 @@ const PEST_FULL_DB = [
       )
   },
 
-  { name:'Cutworm',     
-    icon:'assets/ui/pest-cutworm.svg',
-    condition:'rainy', 
-    level:'low',    
-    crops:['Corn','Tomato','Rice'],
-    signs:'Seedlings cut off at soil level. Caterpillars found in soil during day.',
-    treatment:'Apply Bt granules to soil. Collar seedlings with cardboard.',
-    prevention:'Tilling before planting exposes pupae. Avoid planting after fallow land.' },
+  {
+    name:'Cutworm',
+
+    icon:
+      'assets/ui/pest-cutworm.svg',
+
+    // Cutworm risk depends on field history,
+    // weeds and alternate hosts, young crop
+    // stage, and actual feeding damage.
+    // Rain alone does not confirm elevated
+    // cutworm risk.
+    condition:null,
+  
+    level:'monitor',
+  
+    crops:[
+      'Corn',
+      'Tomato',
+      'Rice'
+    ],
+  
+    signs:
+      'Seedlings cut off at soil level. Caterpillars found in soil during day.',
+  
+    treatment:
+      'Apply Bt granules to soil. Collar seedlings with cardboard.',
+  
+    prevention:
+      'Tilling before planting exposes pupae. Avoid planting after fallow land.'
+  },
 
   {
     name:'Diamondback Moth',
