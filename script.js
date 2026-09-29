@@ -1015,7 +1015,7 @@ function closePlantingCropDetails() {
   document.body.style.overflow = '';
 }
 
-// ── PEST DATA (weather-driven) ──
+// ── PEST REFERENCE DATA ──
 
 
 const PESTS = [
@@ -1026,7 +1026,7 @@ const PESTS = [
     // No generic FarmCast weather trigger.
     // Aphid activity varies by species,
     // host crop, temperature, and field conditions.
-    condition: null,
+    
   
     detail:
       'Monitor young leaves and tender growth for visible aphid colonies.',
@@ -1050,7 +1050,7 @@ const PESTS = [
     // Rice stem-borer risk depends on
     // pest species, crop stage, field
     // conditions, and local pest pressure.
-    condition: null,
+    
 
     detail:
       'Monitor rice plants for stem-borer symptoms and confirm pest presence through field inspection.',
@@ -1076,7 +1076,7 @@ const PESTS = [
     // Separate corn pest.
     // No generic FarmCast weather
     // threshold is applied.
-    condition: null,
+    
 
     detail:
       'Monitor corn plants for feeding and stalk-boring damage and confirm infestation through field inspection.',
@@ -1103,7 +1103,7 @@ const PESTS = [
     // plants, dust, natural enemies,
     // and other field conditions.
     // No generic humidity threshold.
-    condition: null,
+    
 
     detail:
       'Monitor leaf undersides for whitefly adults and nymphs, especially on susceptible crops.',
@@ -1130,7 +1130,7 @@ const PESTS = [
     // Prolonged saturated soil, standing
     // water, and poor drainage can favor
     // Phytophthora root and crown rot.
-    condition: null,
+    
   
     detail:
       'Monitor susceptible crops when soil remains saturated or waterlogged, especially in poorly drained areas.',
@@ -10643,15 +10643,7 @@ function getPestCropRelevanceHtml(
 function renderPestPage() {
 
     const pestPageData =
-      PEST_FULL_DB.map(p => ({
-        ...p,
-
-        reference:
-          p.reference ||
-          getPestFullReference(
-            p.name
-          )
-      }));
+      PEST_FULL_DB;
 
    
     // Weather is context only.
@@ -10739,7 +10731,7 @@ function renderPestPage() {
       });
  
 
-  // Pest risk summary
+  // Pest monitoring summary
   const pestActiveSummary =
     document.getElementById(
       'pestActiveSummary'
@@ -11003,7 +10995,7 @@ function renderPestPage() {
       icon:
         'assets/ui/scanner-detect.svg',
       tip:
-        'Scout fields every 2-3 days for early pest detection.'
+        'Scout fields regularly and inspect crops for visible pest or disease signs.'
     },
 
     {
@@ -11099,28 +11091,10 @@ function renderPestPage() {
 
 
         ${
-          p.reference
+          getPestFullReferences(p).length
             ? `
               <div class="pest-source-row">
-
-                <a
-                  class="pest-source-link"
-                  href="${p.reference.url}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onclick="event.stopPropagation()"
-                >
-                  <span class="material-symbols-outlined">
-                    menu_book
-                  </span>
-
-                  <span>
-                    Reference:
-                    ${p.reference.name}
-                  </span>
-
-                </a>
-
+                ${renderPestReferenceLinks(p)}
               </div>
             `
             : ''
@@ -11387,7 +11361,8 @@ function deletePestLog(id) {
   renderPestLog();
   toast('Log entry deleted.', 'warn');
 }
-function refreshPestPage() { renderPestPage(); toast('Pest risks refreshed!', 'ok'); }
+
+function refreshPestPage() { renderPestPage(); toast('Pest monitoring refreshed!', 'ok'); }
 
 // ═══════════════════════════════════════════════════════
 // PLANTING CALENDAR PAGE
