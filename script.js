@@ -9658,7 +9658,7 @@ const PEST_FULL_DB = [
     // Monitored through crop relevance
     // and field inspection.
     // No generic humidity trigger.
-    condition:null,
+    
   
     level:'monitor',
   
@@ -9712,7 +9712,7 @@ const PEST_FULL_DB = [
     // Monitored through Rice relevance
     // and field inspection.
     // No generic temperature trigger.
-    condition:null,
+    
 
     level:'monitor',
 
@@ -9764,7 +9764,7 @@ const PEST_FULL_DB = [
     // Monitored through crop relevance
     // and field inspection.
     // No generic weather threshold.
-    condition:null,
+    
 
     level:'monitor',
 
@@ -9815,7 +9815,7 @@ const PEST_FULL_DB = [
     // Monitored through crop relevance
     // and field inspection.
     // No generic humidity threshold.
-    condition:null,
+    
 
     level:'monitor',
 
@@ -9878,7 +9878,7 @@ const PEST_FULL_DB = [
     // drainage conditions, and field
     // inspection.
     // Rain alone is not a disease trigger.
-    condition:null,
+    
 
     level:'monitor',
 
@@ -9929,7 +9929,7 @@ const PEST_FULL_DB = [
     // temperature, host availability,
     // natural enemies, and field conditions.
     // No generic humidity threshold.
-    condition:null,
+    
 
     level:'monitor',
 
@@ -9967,7 +9967,7 @@ const PEST_FULL_DB = [
     // Onion and garlic thrips must be
     // confirmed through crop inspection.
     // No generic humidity threshold.
-    condition:null,
+    
   
     level:'monitor',
   
@@ -10020,7 +10020,7 @@ const PEST_FULL_DB = [
     // species from those commonly
     // emphasized in onion production.
     // No generic weather threshold.
-    condition:null,
+
   
     level:'monitor',
 
@@ -10061,7 +10061,7 @@ const PEST_FULL_DB = [
     // and on water-stressed plants.
     // Weather alone does not confirm
     // an active infestation.
-    condition:null,
+    
   
     level:'monitor',
   
@@ -10101,7 +10101,7 @@ const PEST_FULL_DB = [
     // stage, and actual feeding damage.
     // Rain alone does not confirm elevated
     // cutworm risk.
-    condition:null,
+    
   
     level:'monitor',
   
@@ -10164,7 +10164,7 @@ const PEST_FULL_DB = [
     // but temperature alone does not
     // confirm an elevated infestation risk.
     // Field scouting remains necessary.
-    condition:null,
+    
   
     level:'monitor',
   
@@ -10220,7 +10220,7 @@ const PEST_FULL_DB = [
     // but temperature alone does not confirm
     // an elevated field infestation.
     // Crop relevance and scouting are required.
-    condition:null,
+    
   
     level:'monitor',
   
@@ -10275,7 +10275,7 @@ const PEST_FULL_DB = [
     // does not confirm pest presence or an
     // elevated field infestation.
     // Field scouting remains necessary.
-    condition:null,
+    
   
     level:'monitor',
   
@@ -10339,7 +10339,7 @@ const PEST_FULL_DB = [
     // nitrogen level, and field management.
     // Weather alone does not confirm
     // an active infestation.
-    condition:null,
+    
   
     level:'monitor',
   
@@ -10400,7 +10400,7 @@ const PEST_FULL_DB = [
     // Humidity, temperature, shade, host crop,
     // and field conditions all influence disease.
     // No generic low-humidity threshold.
-    condition:null,
+    
  
     level:'monitor',
   
