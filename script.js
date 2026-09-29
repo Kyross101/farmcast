@@ -9619,20 +9619,29 @@ const PEST_FULL_DB = [
     // and field inspection.
     // No generic humidity trigger.
     condition:null,
-
+  
     level:'monitor',
-
+  
     crops:[
       'Tomato',
       'Eggplant',
       'Sitaw',
       'Pechay'
     ],
-    
-    signs:'Tiny green/black insects clustered on young leaves. Leaves curl and yellow.',
-    treatment:'Spray neem oil or insecticidal soap. Remove heavily infested leaves.',
-    prevention:'Avoid over-fertilizing with nitrogen. Introduce ladybugs (natural predator).' },
 
+
+    signs:
+      'Small soft-bodied aphids may cluster on tender shoots, stems, or leaf undersides. Check for curled or yellowing leaves, sticky honeydew, ants, or sooty mold.',
+
+
+    treatment:
+      'Inspect affected growth first. On sturdy plants, aphids may be dislodged with water, while localized heavily infested shoots or leaves may be removed. Use nonchemical controls first.',
+
+
+    prevention:
+      'Avoid excessive nitrogen fertilizer. Check transplants and nearby weeds for aphids, and conserve natural enemies such as lady beetles, lacewings, syrphid fly larvae, and parasitoid wasps.'
+  },
+  
   { name:'Stem Borer',  
     icon:'assets/ui/pest-stem-borer.svg', 
     condition:'hot',   
