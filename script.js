@@ -9607,6 +9607,95 @@ function getPestFullReference(
 
 }
 
+function getPestFullReferences(
+  pest
+) {
+
+  if (!pest) {
+    return [];
+  }
+
+
+  const explicitReferences =
+    Array.isArray(
+      pest.references
+    )
+      ? pest.references
+          .filter(reference =>
+            reference?.name &&
+            reference?.url
+          )
+      : [];
+
+
+  if (
+    explicitReferences.length
+  ) {
+
+    return explicitReferences;
+
+  }
+
+
+  const fallbackReference =
+    pest.reference ||
+    getPestFullReference(
+      pest.name
+    );
+
+
+  return fallbackReference
+    ? [fallbackReference]
+    : [];
+
+}
+
+
+function renderPestReferenceLinks(
+  pest
+) {
+
+  const references =
+    getPestFullReferences(
+      pest
+    );
+
+
+  return references
+    .map(
+      (
+        reference,
+        index
+      ) => `
+
+        <a
+          class="pest-source-link"
+          href="${escapeHtml(reference.url)}"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick="event.stopPropagation()"
+        >
+
+          <span class="material-symbols-outlined">
+            menu_book
+          </span>
+
+          <span>
+            ${
+              index === 0
+                ? 'Reference'
+                : 'Supporting source'
+            }:
+            ${escapeHtml(reference.name)}
+          </span>
+
+        </a>
+
+      `
+    )
+    .join('');
+
+}
 
 const PEST_FULL_DB = [
 
@@ -9639,9 +9728,30 @@ const PEST_FULL_DB = [
 
 
     prevention:
-      'Avoid excessive nitrogen fertilizer. Check transplants and nearby weeds for aphids, and conserve natural enemies such as lady beetles, lacewings, syrphid fly larvae, and parasitoid wasps.'
+      'Avoid excessive nitrogen fertilizer. Check transplants and nearby weeds for aphids, and conserve natural enemies such as lady beetles, lacewings, syrphid fly larvae, and parasitoid wasps.',
+
+
+    references: [
+
+      {
+        name:
+          'UC IPM — Aphids',
+
+        url:
+          'https://ipm.ucanr.edu/home-and-landscape/aphids/'
+      },
+
+      {
+        name:
+          'Philippine Vegetable Industry Roadmap 2021–2025',
+
+        url:
+          'https://www.pcaf.da.gov.ph/wp-content/uploads/2022/06/Philippine-Vegetable-Industry-Roadmap-2021-2025.pdf'
+      }
+
+    ]
   },
-  
+
   { name:'Stem Borer',  
     icon:'assets/ui/pest-stem-borer.svg', 
     condition:'hot',   
@@ -10402,6 +10512,12 @@ function renderPestPage() {
               <div class="pest-monitored-note">
                 Monitored — not currently triggered by weather
               </div>
+
+              <div class="pest-source-row">
+                ${renderPestReferenceLinks(
+                  p
+                )}
+              </div>
   
             </div>
   
@@ -10529,27 +10645,9 @@ function renderPestPage() {
         </a>
 
 
-        ${
-          p.reference
-            ? `
-              <a
-                class="pest-source-link"
-                href="${p.reference.url}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span class="material-symbols-outlined">
-                  menu_book
-                </span>
-
-                <span>
-                  Reference:
-                  ${p.reference.name}
-                </span>
-              </a>
-            `
-            : ''
-        }
+        ${renderPestReferenceLinks(
+          p
+        )}
 
       </div>
 
