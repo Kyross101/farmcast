@@ -11629,9 +11629,50 @@ function deleteHarvest(id) {
 }
 
 function openLogHarvestModal() {
-  document.getElementById('logHarvestModal').style.display = 'flex';
-  document.getElementById('hhDate').value = new Date().toISOString().split('T')[0];
+
+  const cropSelect =
+    document.getElementById(
+      'hhCropType'
+    );
+
+
+  if (cropSelect) {
+
+    const crops =
+      getMyCropPickerDataset();
+
+
+    cropSelect.innerHTML =
+      '<option value="">Select crop…</option>' +
+      crops.map(crop => `
+
+        <option value="${escapeHtml(crop.name)}">
+          ${escapeHtml(crop.name)}
+        </option>
+
+      `).join('');
+
+
+    cropSelect.value = '';
+
+  }
+
+
+  document.getElementById(
+    'logHarvestModal'
+  ).style.display =
+    'flex';
+
+
+  document.getElementById(
+    'hhDate'
+  ).value =
+    new Date()
+      .toISOString()
+      .split('T')[0];
+
 }
+
 function closeLogHarvestModal() { document.getElementById('logHarvestModal').style.display = 'none'; }
 
 function saveHarvestLog() {
