@@ -10372,7 +10372,7 @@ const PEST_FULL_DB = [
 
     icon:
       'assets/ui/pest-fall-armyworm.svg',
-  
+
     // Temperature influences Fall Armyworm
     // development, but temperature alone
     // does not confirm pest presence or an
@@ -10388,22 +10388,46 @@ const PEST_FULL_DB = [
       'Sorghum'
     ],
   
+  
     signs:
-      'Look for ragged or heavily chewed leaves, feeding damage on young growth, and caterpillars or egg masses on the plant.',
+      'Inspect leaves and growing points for fresh chewing damage, ragged holes, egg masses, and young larvae. In corn, check the whorl for fresh leaf damage and frass. In rice and sorghum, inspect young foliage for active feeding damage.',
+  
   
     treatment:
-      'Scout affected plants closely and remove egg masses and young larvae by hand where practical.',
+      'Confirm current Fall Armyworm activity through field scouting before taking action. Remove egg masses or young larvae by hand where practical, continue monitoring affected plants, and prioritize locally appropriate integrated pest-management practices while conserving natural enemies.',
+  
   
     prevention:
-      'Inspect fields regularly, conserve natural enemies, and maintain good field sanitation to help detect infestations early.',
+      'Scout fields regularly from crop emergence, especially while plants are young. Record fresh feeding damage and pest observations, maintain good field sanitation, and conserve beneficial organisms that naturally help suppress Fall Armyworm.',
   
-    reference: {
-      name:
-        'FAO — Fall Armyworm',
   
-      url:
-        'https://www.fao.org/pest-and-pesticide-management/ipm/fall-armyworm/en/'
-    }
+    references:[
+  
+      {
+        name:
+          'FAO — Fall Armyworm',
+  
+        url:
+          'https://www.fao.org/pest-and-pesticide-management/ipm/fall-armyworm/en/'
+      },
+  
+      {
+        name:
+          'FAO — Fall Armyworm Scouting Guidance',
+  
+        url:
+          'https://www.fao.org/fileadmin/templates/fcc/Fall_Armyworm/web_FINAL-guidance-note-2.pdf'
+      },
+  
+      {
+        name:
+          'DA — Fall Armyworm Management Project',
+  
+        url:
+          'https://www.da.gov.ph/wp-content/uploads/2021/04/mo26_s2021.pdf'
+      }
+  
+    ]
   },
 
   {
