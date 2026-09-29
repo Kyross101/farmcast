@@ -10262,33 +10262,38 @@ const PEST_FULL_DB = [
     icon:
       'assets/ui/pest-diamondback-moth.svg',
 
-    condition:'hot',
-
-    level:'medium',
-
+    // Temperature can influence
+    // diamondback moth development,
+    // but temperature alone does not
+    // confirm an elevated infestation risk.
+    // Field scouting remains necessary.
+    condition:null,
+  
+    level:'monitor',
+  
     crops:[
       'Pechay',
       'Cabbage',
       'Broccoli',
       'Cauliflower'
     ],
-
+  
     signs:
       'Small green larvae may be found on leaf undersides. Look for windowpane-like feeding patches, small holes, and damage around growing points.',
-
+  
     treatment:
       'Inspect plants closely and hand-pick larvae where practical. Remove badly damaged leaves and continue regular crop monitoring.',
-
+  
     prevention:
       'Rotate away from Brassica crops between plantings and conserve natural enemies through regular field scouting.',
-
+  
     reference: {
       name:
         'UC IPM — Diamondback Moth',
-
+  
       url:
-       'https://ipm.ucanr.edu/agriculture/cole-crops/diamondback-moth/'
-    }  
+        'https://ipm.ucanr.edu/agriculture/cole-crops/diamondback-moth/'
+    }
   },
 
   {
