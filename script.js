@@ -1017,10 +1017,6 @@ function closePlantingCropDetails() {
 
 // ── PEST DATA (weather-driven) ──
 
-const PEST_WEATHER_SOURCE = {
-  name: 'OpenWeather',
-  url: 'https://openweathermap.org/'
-};
 
 const PESTS = [
   {
@@ -1344,146 +1340,54 @@ function displayWeatherData(data){
   document.getElementById('uvIndex').textContent = uv;
   document.getElementById('uvLabel').textContent = uv <= 2 ? 'Low' : uv <= 5 ? 'Moderate' : uv <= 7 ? 'High' : 'Very High';
 
-  // Pest alerts based on conditions
-  renderPestAlerts(data);
+  // Pest monitoring advisory
+  renderPestAlerts(); 
 
   toast(`Weather updated for ${data.name}`, 'ok');
 }
 
 // ── RENDER PEST ALERTS ──
-function renderPestAlerts(data){
-  const humidity = data.main.humidity;
-  const temp = data.main.temp;
-  const desc = data.weather[0].description.toLowerCase();
-  const isRaining = desc.includes('rain');
+function renderPestAlerts() {
 
-  // Weather-based pest RISK only.
-  // These conditions do NOT confirm that a pest is actually present.
-  const active = PESTS.filter(p => {
-    if (p.condition === 'humid' && humidity > 70) return true;
-    if (p.condition === 'hot'   && temp > 30)     return true;
-    if (p.condition === 'dry'   && humidity < 50) return true;
-    if (p.condition === 'rainy' && isRaining)     return true;
-
-    return false;
-  });
-
-  const pestList = document.getElementById('pestList');
+  const pestList =
+    document.getElementById(
+      'pestList'
+    );
 
   if (!pestList) return;
 
-  // No elevated weather-related pest risk
-  if (active.length === 0) {
-    pestList.innerHTML = `
-      <div class="pest-item">
 
-        <div class="pest-icon">
-          <img
-            src="assets/ui/pest-status-low.svg"
-            alt=""
-            class="pest-icon-img"
-          >
-        </div>
-
-        <div class="pest-info">
-
-          <div class="pest-name">
-            No Elevated Pest Risk
-          </div>
-
-          <div class="pest-detail">
-            Current weather conditions do not indicate an elevated
-            weather-related pest risk. Continue regular crop inspection.
-          </div>
-
-        </div>
-
-      </div>
-    `;
-
-    return;
-  }
-
-  // Show only pest risks supported by current weather conditions
-  pestList.innerHTML = active.map(p => `
-    <div
-      class="pest-item ${p.level}"
-      onclick="toast(
-        'Pest risk: ${p.name} — ${p.detail}',
-        'warn'
-      )"
-    >
+  pestList.innerHTML = `
+    <div class="pest-item">
 
       <div class="pest-icon">
+
         <img
-          src="${p.icon}"
+          src="assets/ui/pest-status-analyzing.svg"
           alt=""
           class="pest-icon-img"
         >
+
       </div>
+
 
       <div class="pest-info">
 
         <div class="pest-name">
-          ${p.name} Risk
+          Pest Monitoring Advisory
         </div>
 
         <div class="pest-detail">
-          ${p.detail}. Weather conditions may favor this risk.
-          Inspect crops for visible signs before taking action.
+          Weather is used as farm context only
+          and does not confirm pest presence.
+          Review Pest Alerts for crop-specific
+          guidance and inspect crops for visible signs.
         </div>
 
-        <div class="pest-source-row">
-
-          <a
-            class="pest-source-link"
-            href="${PEST_WEATHER_SOURCE.url}"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="event.stopPropagation()"
-          >
-            <span class="material-symbols-outlined">
-              cloud
-            </span>
-
-            <span>
-              Weather:
-              ${PEST_WEATHER_SOURCE.name}
-            </span>
-          </a>
-
-          <a
-            class="pest-source-link"
-            href="${p.reference.url}"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="event.stopPropagation()"
-          >
-            <span class="material-symbols-outlined">
-              menu_book
-            </span>
-  
-            <span>
-              Reference:
-              ${p.reference.name}
-            </span>
-          </a>
-
-        </div>
-
-      </div>
-
-      <div class="pest-level level-${p.level}">
-        <div class="pest-pulse"></div>
-
-        ${
-          p.level.charAt(0).toUpperCase() +
-          p.level.slice(1)
-        } Risk
       </div>
 
     </div>
-  `).join('');
+  `;
 
 }
 
@@ -10559,130 +10463,6 @@ let pestLogs = lsLoad(LS_PEST_LOGS, [
 ]);
 let nextPestLogId = lsLoad('fc_nextPestLogId', 4);
 
-function getPestWeatherTriggerHtml(
-  pest,
-  weather
-) {
-
-  if (!pest || !weather) {
-    return '';
-  }
-
-
-  const humidity =
-    Number(
-      weather.main?.humidity
-    );
-
-  const temperature =
-    Number(
-      weather.main?.temp
-    );
-
-  const description =
-    String(
-      weather.weather?.[0]?.description || ''
-    ).toLowerCase();
-
-
-  let icon =
-    'assets/ui/pest-status-analyzing.svg';
-
-  let text = '';
-
-
-  if (
-    pest.condition === 'humid' &&
-    Number.isFinite(humidity)
-  ) {
-
-    icon =
-      'assets/ui/quick-water.svg';
-
-    text =
-      `Humidity ${Math.round(humidity)}% is above the 70% FarmCast trigger.`;
-
-  }
-
-
-  else if (
-    pest.condition === 'hot' &&
-    Number.isFinite(temperature)
-  ) {
-
-    icon =
-      'assets/ui/quick-soil-temp.svg';
-
-    text =
-      `Temperature ${Math.round(temperature)}°C is above the 30°C FarmCast trigger.`;
-
-  }
-
-
-  else if (
-    pest.condition === 'dry' &&
-    Number.isFinite(humidity)
-  ) {
-
-    icon =
-      'assets/ui/weather-clear.svg';
-
-    text =
-      `Humidity ${Math.round(humidity)}% is below the 50% FarmCast dry-condition trigger.`;
-
-  }
-
-
-  else if (
-    pest.condition === 'rainy' &&
-    description.includes('rain')
-  ) {
-
-    icon =
-      'assets/ui/weather-rain.svg';
-
-    text =
-      'Rain is detected in the current weather conditions.';
-
-  }
-
-
-  if (!text) {
-    return '';
-  }
-
-
-  return `
-    <div class="pfi-weather-trigger">
-
-      <div class="pfi-weather-trigger-icon">
-
-        <img
-          src="${icon}"
-          alt=""
-          class="pfi-weather-trigger-icon-img"
-        >
-
-      </div>
-
-
-      <div class="pfi-weather-trigger-text">
-
-        <span class="pfi-weather-trigger-label">
-          Why this alert?
-        </span>
-
-        <span>
-          ${escapeHtml(text)}
-        </span>
-
-      </div>
-
-    </div>
-  `;
-
-}
-
 function getPestCropRelevanceHtml(
   pest
 ) {
@@ -10929,63 +10709,91 @@ function renderPestPage() {
 
   }
 
-  // Active pest risks based on weather
-  const active = pestPageData.filter(p => {
+   
+    // Weather is context only.
+    // Pest monitoring priority is based
+    // on crop relevance and field inspection.
 
-    if (!currentWeather) {
-      return false;
+    const banner =
+      document.getElementById(
+        'pestAlertBanner'
+      );
+
+    const bannerIcon =
+      document.getElementById(
+        'pabIcon'
+      );
+  
+    const bannerTitle =
+      document.getElementById(
+        'pabTitle'
+      );
+  
+    const bannerSub =
+      document.getElementById(
+        'pabSub'
+      );
+  
+  
+    if (banner) {
+      banner.className =
+        'pest-alert-banner ok';
+    }
+  
+  
+    if (bannerIcon) {
+      bannerIcon.src =
+        'assets/ui/pest-status-analyzing.svg';
+    }
+  
+  
+    if (bannerTitle) {
+      bannerTitle.textContent =
+        'Pest Monitoring Advisory';
+    }
+  
+ 
+    if (bannerSub) {
+      bannerSub.textContent =
+        'Weather provides farm context only and does not confirm pest presence. Crop relevance and field inspection are used to guide monitoring.';
     }
 
 
-    const h =
-      currentWeather.main.humidity;
-
-    const t =
-      currentWeather.main.temp;
-
-    const isRain =
-      currentWeather.weather[0]
-        .description
-        .toLowerCase()
-        .includes('rain');
-
-
-    if (
-      p.condition === 'humid' &&
-      h > 70
-    ) {
-      return true;
-    }
-
-
-    if (
-      p.condition === 'hot' &&
-      t > 30
-    ) {
-      return true;
-    }
+    const plantedCropNames =
+      Array.isArray(myCrops)
+        ? myCrops
+            .map(crop =>
+              String(
+                crop?.type || ''
+              )
+                .trim()
+                .toLowerCase()
+            )
+            .filter(Boolean)
+        : [];
+   
+  
+    // Crop-relevant pests and diseases
+    const active =
+      pestPageData.filter(pest => {
+  
+        const affectedCrops =
+          Array.isArray(pest.crops)
+            ? pest.crops
+            : [];
 
 
-    if (
-      p.condition === 'dry' &&
-      h < 50
-    ) {
-      return true;
-    }
-
-
-    if (
-      p.condition === 'rainy' &&
-      isRain
-    ) {
-      return true;
-    }
-
-
-    return false;
-
-  });
-
+        return affectedCrops.some(
+          affectedCrop =>
+            plantedCropNames.includes(
+              String(affectedCrop)
+                .trim()
+                .toLowerCase()
+            )
+        );
+  
+      });
+ 
 
   // Pest risk summary
   const pestActiveSummary =
@@ -11002,10 +10810,10 @@ function renderPestPage() {
   if (pestActiveSummary) {
 
     pestActiveSummary.textContent =
-      `${active.length} Active ${
+      `${active.length} Crop ${
         active.length === 1
-          ? 'Risk'
-          : 'Risks'
+          ? 'Match'
+          : 'Matches'
       }`;
 
   }
@@ -11090,7 +10898,7 @@ function renderPestPage() {
               </div>
   
               <div class="pest-monitored-note">
-                Monitored — not currently triggered by weather
+                Monitored — no matching crop currently in My Crops
               </div>
 
               <div class="pest-source-row">
@@ -11129,14 +10937,16 @@ function renderPestPage() {
        </div>
 
         <div>
+
           <strong>
-            No Elevated Pest Risk
+            No Crop-Specific Matches
           </strong>
-  
+
           <p>
-            Current weather conditions do not indicate an elevated
-            weather-related pest risk. Continue regular crop inspection.
+            None of the monitored pests or diseases currently match
+            the crops saved in My Crops. Continue regular field inspection.
           </p>
+
         </div>
 
       </div>
@@ -11155,8 +10965,9 @@ function renderPestPage() {
           </div>
 
           <div class="pfi-info">
+
             <div class="pfi-name">
-              ${p.name} Risk
+              ${p.name}
             </div>
 
             <div class="pfi-crops">
@@ -11166,18 +10977,10 @@ function renderPestPage() {
 
           <div class="pest-level level-${p.level}">
             <div class="pest-pulse"></div>
-            ${p.level.charAt(0).toUpperCase() + p.level.slice(1)} Risk
+            ${p.level.charAt(0).toUpperCase() + p.level.slice(1)}
           </div>
            
         </div>
-
-        
-
-
-        ${getPestWeatherTriggerHtml(
-          p,
-          currentWeather
-        )}
 
 
         ${getPestCropRelevanceHtml(
@@ -11208,22 +11011,6 @@ function renderPestPage() {
 
       <div class="pest-source-row">
 
-        <a
-          class="pest-source-link"
-          href="${PEST_WEATHER_SOURCE.url}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span class="material-symbols-outlined">
-            cloud
-          </span>
-
-          <span>
-            Weather:
-            ${PEST_WEATHER_SOURCE.name}
-          </span>
-        </a>
-
 
         ${renderPestReferenceLinks(
           p
@@ -11246,9 +11033,9 @@ function renderPestPage() {
   const badge = document.getElementById('pestBadge');
 
   if (badge) {
-    badge.textContent = active.filter(p => p.level === 'high').length;
+    badge.textContent =
+      active.length;
   }
-
   // Prevention tips
   document.getElementById(
     'preventionTips'
