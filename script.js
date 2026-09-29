@@ -10372,30 +10372,35 @@ const PEST_FULL_DB = [
 
     icon:
       'assets/ui/pest-fall-armyworm.svg',
-
-    condition:'hot',
-
-    level:'medium',
-
+  
+    // Temperature influences Fall Armyworm
+    // development, but temperature alone
+    // does not confirm pest presence or an
+    // elevated field infestation.
+    // Field scouting remains necessary.
+    condition:null,
+  
+    level:'monitor',
+  
     crops:[
       'Corn',
       'Rice',
       'Sorghum'
     ],
-
+  
     signs:
       'Look for ragged or heavily chewed leaves, feeding damage on young growth, and caterpillars or egg masses on the plant.',
-
+  
     treatment:
       'Scout affected plants closely and remove egg masses and young larvae by hand where practical.',
-
+  
     prevention:
       'Inspect fields regularly, conserve natural enemies, and maintain good field sanitation to help detect infestations early.',
-
+  
     reference: {
       name:
         'FAO — Fall Armyworm',
-
+  
       url:
         'https://www.fao.org/pest-and-pesticide-management/ipm/fall-armyworm/en/'
     }
