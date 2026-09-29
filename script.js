@@ -10162,26 +10162,35 @@ const PEST_FULL_DB = [
     // Spider mite populations can increase
     // under warm, dry, dusty conditions
     // and on water-stressed plants.
-    // Temperature alone does not confirm
-    // elevated mite risk.
+    // Weather alone does not confirm
+    // an active infestation.
     condition:null,
-
+  
     level:'monitor',
-
+  
     crops:[
       'Tomato',
       'Eggplant',
       'Corn'
     ],
-
+  
+  
     signs:
-      'Fine webbing on undersides of leaves, stippled yellow leaves.',
-
+      'Inspect leaf undersides for tiny moving mites, eggs, and fine webbing. Feeding may cause white or yellow stippling, bronzing, yellowing, or drying of affected leaves.',
+  
+  
     treatment:
-      'Strong water spray to dislodge mites. Miticides if severe. Neem oil.',
-
+       'Confirm spider mites are present before taking action. On sturdy plants, water may be used to dislodge mites from leaf undersides where practical. Continue monitoring and preserve natural enemies before considering crop-specific control measures.',
+  
+  
     prevention:
-      'Avoid water stress. Increase humidity. Remove dusty conditions.'
+      'Avoid plant water stress, reduce dusty field conditions, manage nearby weed hosts where appropriate, and conserve predatory mites and beneficial insects. Avoid unnecessary broad-spectrum insecticide use because it can disrupt natural enemies.',
+   
+  
+    reference:
+      getPestFullReference(
+        'Spider Mites'
+      )
   },
 
   { name:'Cutworm',     
