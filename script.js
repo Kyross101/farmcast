@@ -6620,6 +6620,241 @@ if (
 
 }
 
+// ── HARVEST GUIDANCE COVERAGE REPORT ──
+function getFarmCastHarvestCoverageReport() {
+
+  const automaticHarvestCrops =
+    new Set(
+      Object.keys(
+        CROP_HARVEST_WINDOWS
+      )
+    );
+
+
+  const stageBasedHarvestCrops =
+    new Set(
+      Object.keys(
+        CROP_STAGE_HARVEST_WINDOWS
+      )
+    );
+
+
+  const automatic = [];
+
+  const stageBasedOnly = [];
+
+  const guidanceOnly = [];
+
+  const noStoredGuidance = [];
+
+
+  CROPS.forEach(crop => {
+
+    const cropName =
+      String(
+        crop?.name ||
+        ''
+      ).trim();
+
+
+    const hasAutomaticRule =
+      automaticHarvestCrops.has(
+        cropName
+      );
+
+
+    const hasStageRule =
+      stageBasedHarvestCrops.has(
+        cropName
+      );
+
+
+    const hasHarvestNote =
+      Boolean(
+        String(
+          crop?.harvestNote ||
+          ''
+        ).trim()
+      );
+
+
+    if (hasAutomaticRule) {
+
+      automatic.push(
+        cropName
+      );
+
+      return;
+
+    }
+
+
+    if (hasStageRule) {
+
+      stageBasedOnly.push(
+        cropName
+      );
+
+      return;
+
+    }
+
+
+    if (hasHarvestNote) {
+
+      guidanceOnly.push(
+        cropName
+      );
+
+      return;
+
+    }
+
+
+    noStoredGuidance.push(
+      cropName
+    );
+
+  });
+
+
+  const harvestNoteCount =
+    CROPS.filter(crop =>
+      Boolean(
+        String(
+          crop?.harvestNote ||
+          ''
+        ).trim()
+      )
+    ).length;
+
+
+  const classifiedCount =
+    automatic.length +
+    stageBasedOnly.length +
+    guidanceOnly.length +
+    noStoredGuidance.length;
+
+
+  const riceVarietyCount =
+    Object.keys(
+      RICE_VARIETY_HARVEST_RULES
+    ).length;
+
+
+  return {
+
+    sharedCropCount:
+      CROPS.length,
+
+    classifiedCount,
+
+    classificationComplete:
+      classifiedCount ===
+      CROPS.length,
+
+
+    harvestNoteCount,
+
+
+    automatic: {
+      count:
+        automatic.length,
+
+      crops:
+        automatic
+    },
+
+
+    stageBasedOnly: {
+      count:
+        stageBasedOnly.length,
+
+      crops:
+        stageBasedOnly
+    },
+
+
+    guidanceOnly: {
+      count:
+        guidanceOnly.length,
+
+      crops:
+        guidanceOnly
+    },
+
+
+    noStoredGuidance: {
+      count:
+        noStoredGuidance.length,
+
+      crops:
+        noStoredGuidance
+    },
+
+
+    rice: {
+      specialReference:
+        Boolean(
+          SPECIAL_CROP_REFERENCES
+            ?.Rice
+        ),
+
+      verifiedVarietyCount:
+        riceVarietyCount
+    }
+
+  };
+
+}
+
+
+const farmCastHarvestCoverageReport =
+  getFarmCastHarvestCoverageReport();
+
+
+window.FARMCAST_HARVEST_COVERAGE_REPORT =
+  farmCastHarvestCoverageReport;
+
+
+if (
+  farmCastHarvestCoverageReport
+    .classificationComplete
+) {
+
+  console.info(
+    '✅ FarmCast harvest guidance coverage classified all shared crops:',
+    {
+      automatic:
+        farmCastHarvestCoverageReport
+          .automatic
+          .count,
+
+      stageBasedOnly:
+        farmCastHarvestCoverageReport
+          .stageBasedOnly
+          .count,
+
+      guidanceOnly:
+        farmCastHarvestCoverageReport
+          .guidanceOnly
+          .count,
+
+      noStoredGuidance:
+        farmCastHarvestCoverageReport
+          .noStoredGuidance
+          .count
+    }
+  );
+
+} else {
+
+  console.error(
+    '❌ FarmCast harvest coverage classification is incomplete.',
+    farmCastHarvestCoverageReport
+  );
+
+}
 
 function getRiceVarietyHarvestRule(crop) {
   if (crop.type !== 'Rice' || !crop.variety) {
