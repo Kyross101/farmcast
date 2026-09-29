@@ -9923,14 +9923,46 @@ const PEST_FULL_DB = [
       'Okra'
     ],
 
+
     signs:
-      'Tiny white insects may fly from plants when disturbed. Inspect leaf undersides for adults and nymphs, and check for sticky honeydew or sooty mold.',
+      'Tiny white adults may fly from the plant when disturbed. Inspect leaf undersides for adults and nymphs, and check for yellowing leaves, sticky honeydew, or black sooty mold.',
+
 
     treatment:
-      'Yellow sticky traps, neem oil spray. Reflective mulch repels adults.',
+      'Confirm whitefly presence before taking action. Remove isolated heavily infested leaves where practical, monitor adults with yellow sticky traps, and use nonchemical or biological management practices first.',
+
 
     prevention:
-      'Avoid planting near infested areas. Maintain crop diversity.'
+      'Inspect new plants before adding them to the field, remove nearby host weeds and crop residues, conserve natural enemies, maintain good field sanitation, and consider reflective mulch for young susceptible crops where appropriate.',
+
+
+    references:[
+
+      {
+        name:
+          'UC IPM — Whiteflies',
+
+        url:
+          'https://ipm.ucanr.edu/home-and-landscape/whiteflies/'
+      },
+
+      {
+        name:
+          'World Vegetable Center — Whitefly IPM Guide',
+
+        url:
+          'https://avrdc.org/download/publications/from_the_field/technol/cooperators-guide_whitefly_rev2.pdf'
+      },
+
+      {
+        name:
+          'UF/IFAS — Insect Management for Okra',
+
+        url:
+          'https://ask.ifas.ufl.edu/publication/IG152'
+      }
+
+    ]
   },
 
   { name:'Root Rot',    
