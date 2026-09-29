@@ -10067,14 +10067,36 @@ const PEST_FULL_DB = [
       )
   },  
 
-  { name:'Thrips',      
-    icon:'assets/ui/pest-thrips.svg',
-    condition:'dry',   
-    level:'medium', 
-    crops:['Onion','Garlic','Corn'],
-    signs:'Silver streaks on leaves, distorted growth, bronze discoloration.',
-    treatment:'Spinosad spray. Blue sticky traps. Remove weeds nearby.',
-    prevention:'Avoid planting near alliums. Reflective mulch. Water regularly.' },
+  {
+    name:'Thrips',
+
+    icon:
+      'assets/ui/pest-thrips.svg',
+
+    // Thrips populations can be influenced
+    // by temperature, dry conditions,
+    // host crops, rainfall, irrigation,
+    // and natural enemies.
+    // No generic humidity threshold.
+    condition:null,
+
+    level:'monitor',
+
+    crops:[
+      'Onion',
+      'Garlic',
+      'Corn'
+    ],
+
+    signs:
+      'Silver streaks on leaves, distorted growth, bronze discoloration.',
+
+    treatment:
+      'Spinosad spray. Blue sticky traps. Remove weeds nearby.',
+
+    prevention:
+      'Avoid planting near alliums. Reflective mulch. Water regularly.'
+  },
 
   { name:'Spider Mites', 
     icon:'assets/ui/pest-spider-mites.svg',
