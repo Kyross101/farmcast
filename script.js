@@ -13921,11 +13921,23 @@ function viewHistoryItem(id) {
     toastType = 'ok';
   }
 
-  const message = isUnknown
-    ? `${item.emoji || '🌿'} ${item.plant || 'Unknown'} — Unable to determine (${confidence}% AI confidence)`
-    : `${item.emoji || '🌿'} ${item.plant || 'Unknown'} — ${diseaseName} (${confidence}% AI confidence)`;
+  const plantName =
+    String(
+      item.plant ||
+      'Unknown'
+    ).trim();
 
-  toast(message, toastType);
+
+  const message =
+    isUnknown
+      ? `${plantName} — Unable to determine (${confidence}% AI confidence)`
+      : `${plantName} — ${diseaseName} (${confidence}% AI confidence)`;
+
+
+  toast(
+    message,
+    toastType
+  );
 }
 
 async function deleteHistoryItem(id) {
