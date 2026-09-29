@@ -1026,11 +1026,17 @@ const PESTS = [
   {
     name: 'Aphids',
     icon: 'assets/ui/pest-aphids.svg',
-    condition: 'humid',
-    detail:
-      'High humidity favors rapid colony growth',
-    level: 'high',
 
+    // No generic FarmCast weather trigger.
+    // Aphid activity varies by species,
+    // host crop, temperature, and field conditions.
+    condition: null,
+  
+    detail:
+      'Monitor young leaves and tender growth for visible aphid colonies.',
+  
+    level: 'monitor',
+  
     reference: {
       name: 'UC IPM — Aphids',
       url:
@@ -9603,11 +9609,26 @@ function getPestFullReference(
 
 
 const PEST_FULL_DB = [
-  { name:'Aphids',      
-    icon:'assets/ui/pest-aphids.svg', 
-    condition:'humid', 
-    level:'high',   
-    crops:['Tomato','Eggplant','Sitaw','Pechay'],
+
+  {
+    name:'Aphids',
+
+    icon:'assets/ui/pest-aphids.svg',
+
+    // Monitored through crop relevance
+    // and field inspection.
+    // No generic humidity trigger.
+    condition:null,
+
+    level:'monitor',
+
+    crops:[
+      'Tomato',
+      'Eggplant',
+      'Sitaw',
+      'Pechay'
+    ],
+    
     signs:'Tiny green/black insects clustered on young leaves. Leaves curl and yellow.',
     treatment:'Spray neem oil or insecticidal soap. Remove heavily infested leaves.',
     prevention:'Avoid over-fertilizing with nitrogen. Introduce ladybugs (natural predator).' },
@@ -10143,11 +10164,10 @@ function renderPestPage() {
         'danger';
 
       title =
-        'High Pest Risk';
+        'Warm & Humid Weather';
 
       sub =
-        `High humidity (${h}%) + heat (${Math.round(t)}°C) may favor aphids and fungal disease risk.`;
-
+        `Warm and humid conditions are present. Weather alone does not confirm pest presence. Review crop-specific advisories and inspect crops for visible signs.`;
       bannerIcon =
         'assets/ui/pest-status-danger.svg';
 
