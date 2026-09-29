@@ -11938,6 +11938,7 @@ const LS_OFFICIAL_SEEN = 'fc_official_advisories_seen';
 
 // ── DEFAULT SETTINGS ──
 const DEFAULT_SETTINGS = {
+
   // Profile
   name: 'Juan Dela Cruz',
   email: '',
@@ -11946,14 +11947,14 @@ const DEFAULT_SETTINGS = {
   role: 'owner',
   phone: '',
   avatar: '👨‍🌾',
+
   // Location
   city: 'San Miguel, Bulacan',
   lat: '14.99',
   lon: '120.93',
   defaultPage: 'dashboard',
+
   // Notifications
-  pestNotif: true,
-  pestSensitivity: 'medium',
   rainAlert: true,
   windAlert: true,
   dailyBriefing: true,
@@ -11963,22 +11964,43 @@ const DEFAULT_SETTINGS = {
   quietUntil: '06:00',
   harvestReminderDays: 7,
   thresholdTemp: 35,
+
   // Crops
   favCrops: ['Rice','Corn','Tomato'],
   calView: 'calendar',
+
   // Display
   theme: 'dark',
   tempUnit: 'C',
   windUnit: 'kph',
   fontSize: 'medium',
+
   // System
   language: 'en',
   lastExport: null,
+
 };
 
 let appSettings = lsLoad(LS_SETTINGS, DEFAULT_SETTINGS);
 // Merge defaults for any missing keys (for upgrades)
 appSettings = Object.assign({}, DEFAULT_SETTINGS, appSettings);
+
+// Remove deprecated weather-driven pest settings.
+if (
+  'pestNotif' in appSettings ||
+  'pestSensitivity' in appSettings
+) {
+
+  delete appSettings.pestNotif;
+  delete appSettings.pestSensitivity;
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+}
+
 
 // ── TEMPERATURE & WIND CONVERSION UTILITIES ──
 function displayTemp(celsius) {
@@ -12294,14 +12316,6 @@ function saveLocationSettings() {
   toast('Location settings saved!', 'ok');
 }
 
-// ═══ NOTIFICATION / ALERT SETTINGS ═══
-function setSensitivity(el, level) {
-  document.querySelectorAll('#pestSensitivity .sens-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  appSettings.pestSensitivity = level;
-  lsSave(LS_SETTINGS, appSettings);
-  toast(`Pest sensitivity set to ${level}`, 'ok');
-}
 
 function saveThresholdSettings() {
   appSettings.thresholdTemp        = parseFloat(document.getElementById('thresholdTemp').value) || 35;
@@ -12531,7 +12545,7 @@ function updateSettingsFormValues() {
   set('quietFrom', s.quietFrom);
   set('quietUntil', s.quietUntil);
   set('settingLanguage', s.language);
-  setChk('togglePestNotif', s.pestNotif);
+
   setChk('toggleRainAlert', s.rainAlert);
   setChk('toggleWindAlert', s.windAlert);
   setChk('toggleDailyBriefing', s.dailyBriefing);
@@ -12549,10 +12563,6 @@ function updateSettingsFormValues() {
   const la = document.getElementById('settingLastActive');
   if (la) la.textContent = new Date().toLocaleString('en-PH');
 
-  // Sensitivity selector
-  document.querySelectorAll('#pestSensitivity .sens-btn').forEach(b => {
-    b.classList.toggle('active', b.textContent.toLowerCase() === s.pestSensitivity);
-  });
   // Temp unit selector
   document.querySelectorAll('#tempUnitSelector .unit-btn').forEach(b => {
     b.classList.toggle('active', b.textContent.includes(s.tempUnit));
