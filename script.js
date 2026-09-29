@@ -10027,15 +10027,36 @@ const PEST_FULL_DB = [
     ]
   },
 
-  { name:'Leaf Miner',  
-    icon:'assets/ui/pest-leaf-miner.svg', 
-    condition:'humid', 
-    level:'medium', 
-    crops:['Sitaw','Ampalaya','Pechay'],
-    signs:'Winding white trails on leaf surfaces. Leaves look pale and papery.',
-    treatment:'Remove affected leaves. Systemic insecticide for severe infestations.',
-    prevention:'Regular scouting. Yellow sticky traps to catch adult flies.' },
+  {
+    name:'Leaf Miner',
 
+    icon:
+      'assets/ui/pest-leaf-miner.svg',
+
+    // Vegetable leafminer activity and
+    // development can be influenced by
+    // temperature and host conditions.
+    // No generic humidity threshold.
+    condition:null,
+
+    level:'monitor',
+
+    crops:[
+      'Sitaw',
+      'Ampalaya',
+      'Pechay'
+    ],
+
+    signs:
+      'Winding white trails on leaf surfaces. Leaves look pale and papery.',
+
+    treatment:
+      'Remove affected leaves. Systemic insecticide for severe infestations.',
+
+    prevention:
+      'Regular scouting. Yellow sticky traps to catch adult flies.'
+  },
+  
   { name:'Thrips',      
     icon:'assets/ui/pest-thrips.svg',
     condition:'dry',   
@@ -10551,7 +10572,7 @@ function renderPestPage() {
 
     bannerIcon =
       'assets/ui/pest-status-warning.svg';
-      
+
     } else if (t > 32) {
 
       bannerClass =
