@@ -10214,14 +10214,46 @@ const PEST_FULL_DB = [
       'Rice'
     ],
   
+  
     signs:
-      'Seedlings cut off at soil level. Caterpillars found in soil during day.',
+      'In corn and tomato, inspect young plants for stems clipped at or near the soil surface. Cutworm larvae often hide in the soil, under clods, or near plant debris during the day. In rice, cutworms are less common but may cut or feed on leaves.',
+  
   
     treatment:
-      'Apply Bt granules to soil. Collar seedlings with cardboard.',
+      'Confirm cutworm activity before taking action. Inspect the soil around recently damaged plants and affected field areas, and prioritize field sanitation and other locally appropriate integrated pest-management practices.',
+  
   
     prevention:
-      'Tilling before planting exposes pupae. Avoid planting after fallow land.'
+      'Remove weeds and crop residues that may shelter cutworms, prepare fields before planting where appropriate, and inspect seedlings and field edges regularly for early feeding damage.',
+  
+  
+    references:[
+  
+      {
+        name:
+          'UC IPM — Cutworms in Corn',
+  
+        url:
+          'https://ipm.ucanr.edu/agriculture/corn/cutworms/'
+      },
+  
+      {
+        name:
+          'UC IPM — Cutworms in Tomato',
+  
+        url:
+          'https://ipm.ucanr.edu/agriculture/tomato/cutworms/'
+      },
+  
+      {
+        name:
+          'DA-PhilRice — Rice Pest FAQs',
+  
+        url:
+          'https://dbmp.philrice.gov.ph/FAQs/src/search.php'
+      }
+  
+    ]
   },
 
   {
