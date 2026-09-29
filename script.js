@@ -10153,14 +10153,36 @@ const PEST_FULL_DB = [
     ]
   },
 
-  { name:'Spider Mites', 
-    icon:'assets/ui/pest-spider-mites.svg',
-    condition:'hot',  
-    level:'medium', 
-    crops:['Tomato','Eggplant','Corn'],
-    signs:'Fine webbing on undersides of leaves, stippled yellow leaves.',
-    treatment:'Strong water spray to dislodge mites. Miticides if severe. Neem oil.',
-    prevention:'Avoid water stress. Increase humidity. Remove dusty conditions.' },
+  {
+    name:'Spider Mites',
+
+    icon:
+      'assets/ui/pest-spider-mites.svg',
+
+    // Spider mite populations can increase
+    // under warm, dry, dusty conditions
+    // and on water-stressed plants.
+    // Temperature alone does not confirm
+    // elevated mite risk.
+    condition:null,
+
+    level:'monitor',
+
+    crops:[
+      'Tomato',
+      'Eggplant',
+      'Corn'
+    ],
+
+    signs:
+      'Fine webbing on undersides of leaves, stippled yellow leaves.',
+
+    treatment:
+      'Strong water spray to dislodge mites. Miticides if severe. Neem oil.',
+
+    prevention:
+      'Avoid water stress. Increase humidity. Remove dusty conditions.'
+  },
 
   { name:'Cutworm',     
     icon:'assets/ui/pest-cutworm.svg',
