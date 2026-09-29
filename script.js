@@ -1063,10 +1063,10 @@ const PESTS = [
 
     reference: {
       name:
-        'IRRI — Rice Stem Borers',
+        'DA-PhilRice — Rice Stemborer Advisory',
 
       url:
-        'https://www.knowledgebank.irri.org/images/docs/managing-rice-stem-borers-in-rice-wheat-systems.pdf'
+        'https://www.philrice.gov.ph/philrice-warns-of-major-rice-pest-threats-in-early-2026/'
     }
   },
 
@@ -9807,22 +9807,35 @@ const PEST_FULL_DB = [
     ],
 
     signs:
-      'Inspect rice for dead hearts during vegetative growth or whiteheads during reproductive growth. Confirm by checking affected stems for boring damage or larvae.',
+      'Inspect rice for deadheart symptoms during vegetative growth and whiteheads during reproductive growth. Check affected tillers for stem-boring damage and confirm pest presence through field inspection.',
+
 
     treatment:
-      'Confirm stem-borer infestation and crop stage before selecting a control measure. Use locally appropriate integrated pest management guidance.',
+      'Confirm an active infestation before taking action. Use integrated pest-management practices such as field sanitation, thorough land preparation, removal of visible egg masses where practical, and locally recommended biological control measures.',
+
 
     prevention:
-      'Use regular field scouting, balanced crop management, and locally recommended cultural or biological pest-management practices.',
+      'Monitor fields regularly, avoid excessive nitrogen fertilizer, conserve beneficial organisms, and coordinate locally appropriate synchronized planting and other preventive practices.',
+
 
     references:[
+
       {
         name:
-          'IRRI — Rice Stem Borers',
+          'DA-PhilRice — Rice Stemborer Advisory',
 
         url:
-          'https://www.knowledgebank.irri.org/images/docs/managing-rice-stem-borers-in-rice-wheat-systems.pdf'
+          'https://www.philrice.gov.ph/philrice-warns-of-major-rice-pest-threats-in-early-2026/'
+      },
+
+      {
+        name:
+          'DA-PhilRice — Pest Infestation Advisory',
+
+        url:
+          'https://www.philrice.gov.ph/philrice-urges-farmers-to-watch-out-for-pest-infestations/'
       }
+
     ]
   },
 
@@ -9862,7 +9875,7 @@ const PEST_FULL_DB = [
       }
     ]
   },
-  
+
   { name:'Whitefly',    
     icon:'assets/ui/pest-whitefly.svg',
     condition:'dry',   
