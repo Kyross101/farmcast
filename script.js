@@ -9846,8 +9846,10 @@ const PEST_FULL_DB = [
     icon:
       'assets/ui/pest-stem-borer.svg',
 
-   // Corn-specific pest.
-    // No generic temperature trigger.
+    // Corn-specific pest.
+    // Monitored through crop relevance
+    // and field inspection.
+    // No generic weather threshold.
     condition:null,
 
     level:'monitor',
@@ -9856,23 +9858,37 @@ const PEST_FULL_DB = [
       'Corn'
     ],
 
+
     signs:
-      'Inspect corn leaves for feeding holes and check stalks or tassels for boring damage. Severe stalk damage may weaken or break the plant.',
+      'Inspect corn leaves for small feeding holes and check the tassel and stalk for boring damage. Egg masses may also be found on leaves. Advanced stalk damage can weaken the plant and may lead to stalk breakage.',
+
 
     treatment:
-      'Confirm Asian corn borer infestation before selecting a control measure. Follow locally appropriate integrated pest management guidance.',
+      'Confirm Asian corn borer infestation before taking action. Prioritize integrated pest-management practices and follow locally appropriate guidance from agricultural authorities or crop-protection specialists.',
+
 
     prevention:
-      'Scout corn regularly and use locally recommended integrated pest-management practices, including conservation of beneficial organisms where appropriate.',
+      'Scout corn regularly, maintain field sanitation, practice crop rotation where appropriate, and coordinate locally recommended planting and biological pest-management practices. Conserve beneficial organisms that naturally attack Asian corn borer.',
+
 
     references:[
+
       {
         name:
-          'Department of Agriculture — Asian Corn Borer',
- 
+          'DA RFO 5 — Asian Corn Borer Biological Control Guide',
+
         url:
           'https://bicol.da.gov.ph/wp-content/uploads/2019/03/Earwigs-Trichogramma-Biological-Control-against-Asian-Corn-Borer.pdf'
+      },
+
+      {
+        name:
+          'DA-CAR — Insect Pests and Diseases of Corn',
+
+        url:
+          'https://car.da.gov.ph/wp-content/uploads/2023/06/CORN-Pests-and-Diseases.pdf'
       }
+
     ]
   },
 
