@@ -1045,17 +1045,54 @@ const PESTS = [
   },
 
   {
-    name: 'Stem Borer',
-    icon: 'assets/ui/pest-stem-borer.svg',
-    condition: 'hot',
+    name: 'Rice Stem Borer',
+
+    icon:
+      'assets/ui/pest-stem-borer.svg',
+
+    // No generic temperature trigger.
+    // Rice stem-borer risk depends on
+    // pest species, crop stage, field
+    // conditions, and local pest pressure.
+    condition: null,
+
     detail:
-      'High temp increases larval activity',
-    level: 'medium',
+      'Monitor rice plants for stem-borer symptoms and confirm pest presence through field inspection.',
+
+    level: 'monitor',
 
     reference: {
-      name: 'IRRI Rice Knowledge Bank — Stem Borer',
+      name:
+        'IRRI — Rice Stem Borers',
+
       url:
-        'https://www.knowledgebank.irri.org/training/fact-sheets/pest-management/insects/item/stem-borer'
+        'https://www.knowledgebank.irri.org/images/docs/managing-rice-stem-borers-in-rice-wheat-systems.pdf'
+    }
+  },
+
+
+  {
+    name: 'Asian Corn Borer',
+
+    icon:
+      'assets/ui/pest-stem-borer.svg',
+
+    // Separate corn pest.
+    // No generic FarmCast weather
+    // threshold is applied.
+    condition: null,
+
+    detail:
+      'Monitor corn plants for feeding and stalk-boring damage and confirm infestation through field inspection.',
+
+    level: 'monitor',
+
+    reference: {
+      name:
+        'Department of Agriculture — Asian Corn Borer',
+
+      url:
+        'https://bicol.da.gov.ph/wp-content/uploads/2019/03/Earwigs-Trichogramma-Biological-Control-against-Asian-Corn-Borer.pdf'
     }
   },
 
@@ -9752,15 +9789,80 @@ const PEST_FULL_DB = [
     ]
   },
 
-  { name:'Stem Borer',  
-    icon:'assets/ui/pest-stem-borer.svg', 
-    condition:'hot',   
-    level:'medium', 
-    crops:['Rice','Corn'],
-    signs:'Dead hearts in young plants, whiteheads at maturity, frass near boreholes.',
-    treatment:'Apply Bacillus thuringiensis (Bt). Remove and destroy infested stems.',
-    prevention:'Use resistant varieties. Early planting to avoid peak pest season.' },
+  {
+    name:'Rice Stem Borer',
+
+    icon:
+      'assets/ui/pest-stem-borer.svg',
+
+    // Monitored through Rice relevance
+    // and field inspection.
+    // No generic temperature trigger.
+    condition:null,
+
+    level:'monitor',
+
+    crops:[
+      'Rice'
+    ],
+
+    signs:
+      'Inspect rice for dead hearts during vegetative growth or whiteheads during reproductive growth. Confirm by checking affected stems for boring damage or larvae.',
+
+    treatment:
+      'Confirm stem-borer infestation and crop stage before selecting a control measure. Use locally appropriate integrated pest management guidance.',
+
+    prevention:
+      'Use regular field scouting, balanced crop management, and locally recommended cultural or biological pest-management practices.',
+
+    references:[
+      {
+        name:
+          'IRRI — Rice Stem Borers',
+
+        url:
+          'https://www.knowledgebank.irri.org/images/docs/managing-rice-stem-borers-in-rice-wheat-systems.pdf'
+      }
+    ]
+  },
+
+
+  {
+    name:'Asian Corn Borer',
+
+    icon:
+      'assets/ui/pest-stem-borer.svg',
+
+   // Corn-specific pest.
+    // No generic temperature trigger.
+    condition:null,
+
+    level:'monitor',
+
+    crops:[
+      'Corn'
+    ],
+
+    signs:
+      'Inspect corn leaves for feeding holes and check stalks or tassels for boring damage. Severe stalk damage may weaken or break the plant.',
+
+    treatment:
+      'Confirm Asian corn borer infestation before selecting a control measure. Follow locally appropriate integrated pest management guidance.',
+
+    prevention:
+      'Scout corn regularly and use locally recommended integrated pest-management practices, including conservation of beneficial organisms where appropriate.',
+
+    references:[
+      {
+        name:
+          'Department of Agriculture — Asian Corn Borer',
  
+        url:
+          'https://bicol.da.gov.ph/wp-content/uploads/2019/03/Earwigs-Trichogramma-Biological-Control-against-Asian-Corn-Borer.pdf'
+      }
+    ]
+  },
+  
   { name:'Whitefly',    
     icon:'assets/ui/pest-whitefly.svg',
     condition:'dry',   
