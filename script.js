@@ -6856,6 +6856,182 @@ if (
 
 }
 
+// ── FARMCAST MASTER CROP INTEGRITY REPORT ──
+function getFarmCastIntegrityReport() {
+
+  const checks = {
+
+    cropDataset: {
+      passed:
+        Boolean(
+          farmCastCropDatasetReport
+            ?.valid
+        ),
+
+      actual:
+        farmCastCropDatasetReport
+          ?.actualCount || 0,
+
+      expected:
+        farmCastCropDatasetReport
+          ?.expectedCount || 100
+    },
+
+
+    selectableDataset: {
+      passed:
+        Boolean(
+          farmCastSelectableCropReport
+            ?.valid
+        ),
+
+      actual:
+        farmCastSelectableCropReport
+          ?.actualSelectableCount || 0,
+
+      expected:
+        farmCastSelectableCropReport
+          ?.expectedSelectableCount || 101
+    },
+
+
+    harvestRules: {
+      passed:
+        Boolean(
+          farmCastHarvestRuleReport
+            ?.valid
+        ),
+
+      validatedRules:
+        farmCastHarvestRuleReport
+          ?.totalValidatedRules || 0
+    },
+
+
+    harvestCoverage: {
+      passed:
+        Boolean(
+          farmCastHarvestCoverageReport
+            ?.classificationComplete
+        ),
+
+      classified:
+        farmCastHarvestCoverageReport
+          ?.classifiedCount || 0,
+
+      expected:
+        farmCastHarvestCoverageReport
+          ?.sharedCropCount || 100
+    }
+
+  };
+
+
+  const failedChecks =
+    Object.entries(
+      checks
+    )
+      .filter(
+        ([, check]) =>
+          !check.passed
+      )
+      .map(
+        ([checkName]) =>
+          checkName
+      );
+
+
+  const valid =
+    failedChecks.length === 0;
+
+
+  return {
+
+    valid,
+
+    failedChecks,
+
+
+    summary: {
+
+      sharedCrops:
+        farmCastCropDatasetReport
+          ?.actualCount || 0,
+
+      selectableCrops:
+        farmCastSelectableCropReport
+          ?.actualSelectableCount || 0,
+
+      harvestRules:
+        farmCastHarvestRuleReport
+          ?.totalValidatedRules || 0,
+
+      automaticHarvestCrops:
+        farmCastHarvestCoverageReport
+          ?.automatic
+          ?.count || 0,
+
+      stageBasedOnly:
+        farmCastHarvestCoverageReport
+          ?.stageBasedOnly
+          ?.count || 0,
+
+      guidanceOnly:
+        farmCastHarvestCoverageReport
+          ?.guidanceOnly
+          ?.count || 0,
+
+      noStoredGuidance:
+        farmCastHarvestCoverageReport
+          ?.noStoredGuidance
+          ?.count || 0,
+
+      harvestNotes:
+        farmCastHarvestCoverageReport
+          ?.harvestNoteCount || 0,
+
+      riceVerifiedVarieties:
+        farmCastHarvestCoverageReport
+          ?.rice
+          ?.verifiedVarietyCount || 0
+
+    },
+
+
+    checks
+
+  };
+
+}
+
+
+const farmCastIntegrityReport =
+  getFarmCastIntegrityReport();
+
+
+window.FARMCAST_INTEGRITY_REPORT =
+  farmCastIntegrityReport;
+
+
+if (
+  farmCastIntegrityReport.valid
+) {
+
+  console.info(
+    '✅ FarmCast full crop integrity check PASSED.',
+    farmCastIntegrityReport
+  );
+
+} else {
+
+  console.error(
+    '❌ FarmCast full crop integrity check FAILED:',
+    farmCastIntegrityReport
+  );
+
+}
+
+
 function getRiceVarietyHarvestRule(crop) {
   if (crop.type !== 'Rice' || !crop.variety) {
     return null;
