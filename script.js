@@ -12206,7 +12206,7 @@ displayWeatherData = function(data) {
   document.getElementById('uvIndex').textContent = uv;
   document.getElementById('uvLabel').textContent = uv<=2?'Low':uv<=5?'Moderate':uv<=7?'High':'Very High';
 
-  renderPestAlerts(data);
+  renderPestAlerts();
 
   // ── REAL-TIME NOTIFICATION CHECKS ──
   checkWeatherAlerts(data);
