@@ -9853,7 +9853,7 @@ const PEST_FULL_DB = [
           'World Vegetable Center — Whitefly IPM Guide',
 
         url:
-          'https://avrdc.org/download/publications/from_the_field/technol/cooperators-guide_whitefly_rev2.pdf'
+          'https://avrdc.org/download/v4pp/training-farmers/1-4-ipm/Whitefly_factsheet.pdf'
       },
 
       {
@@ -10189,23 +10189,15 @@ const PEST_FULL_DB = [
   
   
     references:[
-  
+
       {
         name:
           'UC IPM — Diamondback Moth',
-  
+
         url:
           'https://ipm.ucanr.edu/agriculture/cole-crops/diamondback-moth/'
-      },
-  
-      {
-        name:
-          'BPI — Chinese Cabbage Production Guide',
-  
-        url:
-          'https://library.buplant.da.gov.ph/images/1641944299Chinese%20Cabbage%20production%20Guide.pdf'
       }
-  
+
     ]
   },
 
