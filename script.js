@@ -69,10 +69,310 @@ const WIND_FLOW_CACHE_TTL =
 
 
 // ── CROPS DATA ──
-const CROPS = window.FARMCAST_CROPS || [];
+const CROPS =
+  window.FARMCAST_CROPS ||
+  [];
 
-if (!Array.isArray(window.FARMCAST_CROPS)) {
-  console.error('FarmCast crop dataset failed to load.');
+
+if (
+  !Array.isArray(
+    window.FARMCAST_CROPS
+  )
+) {
+
+  console.error(
+    'FarmCast crop dataset failed to load.'
+  );
+
+}
+
+
+// ── CROP DATASET INTEGRITY CHECK ──
+function validateFarmCastCropDataset(
+  crops = []
+) {
+
+  const EXPECTED_CROP_COUNT =
+    100;
+
+  const issues = [];
+
+  const seenNames =
+    new Set();
+
+
+  if (!Array.isArray(crops)) {
+
+    return {
+      valid: false,
+      expectedCount:
+        EXPECTED_CROP_COUNT,
+      actualCount: 0,
+      issues: [
+        'Crop dataset is not an array.'
+      ]
+    };
+
+  }
+
+
+  if (
+    crops.length !==
+    EXPECTED_CROP_COUNT
+  ) {
+
+    issues.push(
+      `Expected ${EXPECTED_CROP_COUNT} crops, found ${crops.length}.`
+    );
+
+  }
+
+
+  crops.forEach(
+    (crop, index) => {
+
+      const cropNumber =
+        index + 1;
+
+      const cropName =
+        String(
+          crop?.name ||
+          ''
+        ).trim();
+
+      const cropLabel =
+        cropName
+          ? `#${cropNumber} ${cropName}`
+          : `#${cropNumber}`;
+
+
+      const normalizedName =
+        cropName.toLowerCase();
+
+
+      // Crop name
+      if (!cropName) {
+
+        issues.push(
+          `${cropLabel}: missing crop name.`
+        );
+
+      } else if (
+        seenNames.has(
+          normalizedName
+        )
+      ) {
+
+        issues.push(
+          `${cropLabel}: duplicate crop name.`
+        );
+
+      } else {
+
+        seenNames.add(
+          normalizedName
+        );
+
+      }
+
+
+      // Category
+      if (
+        !String(
+          crop?.category ||
+          ''
+        ).trim()
+      ) {
+
+        issues.push(
+          `${cropLabel}: missing category.`
+        );
+
+      }
+
+
+      // Local SVG icon path
+      const iconPath =
+        String(
+          crop?.icon ||
+          ''
+        ).trim();
+
+
+      if (
+        !/^assets\/crops\/.+\.svg$/i
+          .test(iconPath)
+      ) {
+
+        issues.push(
+          `${cropLabel}: invalid or missing crop SVG path.`
+        );
+
+      }
+
+
+      // General crop reference
+      const cropSourceUrl =
+        String(
+          crop?.source?.url ||
+          ''
+        ).trim();
+
+
+      if (!cropSourceUrl) {
+
+        issues.push(
+          `${cropLabel}: missing crop source URL.`
+        );
+
+      }
+
+
+      // Planting method source
+      const methodSourceUrl =
+        String(
+          crop
+            ?.plantingMethodSource
+            ?.url ||
+          ''
+        ).trim();
+
+
+      if (!methodSourceUrl) {
+
+        issues.push(
+          `${cropLabel}: missing planting-method source URL.`
+        );
+
+      }
+
+
+      // Planting methods
+      const plantingMethods =
+        crop?.plantingMethods;
+
+
+      if (
+        !Array.isArray(
+          plantingMethods
+        ) ||
+        plantingMethods.length === 0
+      ) {
+
+        issues.push(
+          `${cropLabel}: no planting methods defined.`
+        );
+
+      } else {
+
+        const methodValues =
+          new Set();
+
+
+        plantingMethods.forEach(
+          (method, methodIndex) => {
+
+            const value =
+              String(
+                method?.value ||
+                ''
+              ).trim();
+
+            const label =
+              String(
+                method?.label ||
+                ''
+              ).trim();
+
+
+            if (!value) {
+
+              issues.push(
+                `${cropLabel}: planting method #${methodIndex + 1} is missing a value.`
+              );
+
+            }
+
+
+            if (!label) {
+
+              issues.push(
+                `${cropLabel}: planting method #${methodIndex + 1} is missing a label.`
+              );
+
+            }
+
+
+            if (
+              value &&
+              methodValues.has(value)
+            ) {
+
+              issues.push(
+                `${cropLabel}: duplicate planting method "${value}".`
+              );
+
+            }
+
+
+            if (value) {
+
+              methodValues.add(
+                value
+              );
+
+            }
+
+          }
+        );
+
+      }
+
+    }
+  );
+
+
+  return {
+    valid:
+      issues.length === 0,
+
+    expectedCount:
+      EXPECTED_CROP_COUNT,
+
+    actualCount:
+      crops.length,
+
+    issues
+  };
+
+}
+
+
+const farmCastCropDatasetReport =
+  validateFarmCastCropDataset(
+    CROPS
+  );
+
+
+window.FARMCAST_CROP_DATASET_REPORT =
+  farmCastCropDatasetReport;
+
+
+if (
+  farmCastCropDatasetReport.valid
+) {
+
+  console.info(
+    `✅ FarmCast crop dataset passed integrity check (${farmCastCropDatasetReport.actualCount}/${farmCastCropDatasetReport.expectedCount}).`
+  );
+
+} else {
+
+  console.error(
+    '❌ FarmCast crop dataset integrity check failed:',
+    farmCastCropDatasetReport.issues
+  );
+
 }
 
 // ── PLANTING CALENDAR FILTER STATE ──
