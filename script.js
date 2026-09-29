@@ -10435,13 +10435,13 @@ const PEST_FULL_DB = [
 
     icon:
       'assets/ui/pest-brown-planthopper.svg',
-  
-    // Higher relative humidity can favor
-    // Brown Planthopper populations,
-    // especially together with dense planting,
-    // high nitrogen, crop stage, and other
-    // field conditions.
-    // No generic humidity threshold.
+
+    // Higher humidity can contribute to
+    // favorable Brown Planthopper conditions,
+    // together with crop stage, dense planting,
+    // nitrogen level, and field management.
+    // Weather alone does not confirm
+    // an active infestation.
     condition:null,
   
     level:'monitor',
@@ -10450,22 +10450,46 @@ const PEST_FULL_DB = [
       'Rice'
     ],
   
+  
     signs:
-      'Look for planthoppers on rice plants and patches of yellowing or browning. Severe infestations may develop into hopperburn.',
+      'Inspect the lower portions and base of rice tillers for brown planthopper adults and nymphs. Feeding may cause lower leaves to yellow and progressively dry. Heavy infestations can produce irregular brown patches of dried plants known as hopperburn.',
+  
   
     treatment:
-      'Inspect affected areas closely. When infestation is heavy, temporary field drainage can help reduce planthopper populations.',
+      'Confirm Brown Planthopper presence and population level through field inspection before taking action. If populations are high, follow locally appropriate integrated pest-management guidance and manage field water conditions appropriately while conserving beneficial organisms.',
+   
   
     prevention:
-      'Avoid excessive nitrogen fertilizer and overly dense planting. Maintain proper spacing and inspect rice fields regularly.',
+      'Inspect rice fields regularly, avoid excessive nitrogen fertilizer and overly dense planting, use appropriate water management, and consider locally recommended resistant varieties and synchronized planting practices.',
   
-    reference: {
-      name:
-        'IRRI Rice Knowledge Bank — Control of Rice Insect Pests',
   
-      url:
-        'https://www.knowledgebank.irri.org/ericeproduction/PDF_%26_Docs/Control_of_rice_insect_pests.pdf'
-    }
+    references:[
+  
+      {
+        name:
+          'DA-PhilRice — Brown Planthopper Population Guidance',
+  
+        url:
+          'https://www.philrice.gov.ph/check-population-to-determine-counter-action-against-bph-rice-pest-expert/'
+      },
+  
+      {
+        name:
+          'DA-PhilRice — 2026 Rice Pest Advisory',
+  
+        url:
+          'https://www.philrice.gov.ph/philrice-warns-of-major-rice-pest-threats-in-early-2026/'
+      },
+  
+      {
+        name:
+          'DA-PhilRice — Rice Field Pest Monitoring Advisory',
+  
+        url:
+          'https://www.philrice.gov.ph/philrice-issues-warning-vs-rice-field-pest-threats/'
+      }
+  
+    ]
   },
 
   {
