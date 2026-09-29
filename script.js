@@ -9579,12 +9579,6 @@ const PEST_FULL_REFERENCE_META = {
       '../vegetable-leafminers/'
   },
 
-  'Thrips': {
-    name:
-      'UC IPM — Thrips',
-    relative:
-      '../thrips/'
-  },
 
   'Spider Mites': {
     name:
@@ -10068,34 +10062,95 @@ const PEST_FULL_DB = [
   },  
 
   {
-    name:'Thrips',
+    name:'Onion Thrips',
 
     icon:
       'assets/ui/pest-thrips.svg',
 
-    // Thrips populations can be influenced
-    // by temperature, dry conditions,
-    // host crops, rainfall, irrigation,
-    // and natural enemies.
+    // Onion and garlic thrips must be
+    // confirmed through crop inspection.
     // No generic humidity threshold.
     condition:null,
+  
+    level:'monitor',
+  
+    crops:[
+      'Onion',
+      'Garlic'
+    ],
+  
+  
+    signs:
+      'Inspect inner leaves and leaf folds for small slender thrips and silvery or scarred feeding damage. Heavy feeding may give onion foliage an overall silvery appearance.',
+  
+  
+    treatment:
+      'Confirm thrips presence and visible crop injury before taking action. Continue field monitoring and prioritize cultural and biological integrated pest-management practices while conserving natural enemies.',
+  
+  
+    prevention:
+      'Scout onion and garlic regularly, manage nearby weeds and alternate host plants where appropriate, and conserve beneficial insects. Do not rely on weather conditions alone to determine infestation.',
+  
+  
+    references:[
+  
+      {
+        name:
+          'UC IPM — Thrips in Onion and Garlic',
 
+        url:
+          'https://ipm.ucanr.edu/agriculture/onion-and-garlic/thrips/'
+      },
+
+      {
+        name:
+          'Philippine National Standard — GAP for Onion Production',
+
+        url:
+          'https://ppssd.buplant.da.gov.ph/storage/app/public/LegalReference/PNS_BAFS%20108_2014%20Code%20of%20GAP%20for%20Onion%20Production.pdf'
+      }
+
+    ]
+  },
+
+  {
+    name:'Corn Thrips',
+
+    icon:
+      'assets/ui/pest-thrips.svg',
+
+    // Corn can host different thrips
+    // species from those commonly
+    // emphasized in onion production.
+    // No generic weather threshold.
+    condition:null,
+  
     level:'monitor',
 
     crops:[
-      'Onion',
-      'Garlic',
       'Corn'
     ],
 
     signs:
-      'Silver streaks on leaves, distorted growth, bronze discoloration.',
+      'Inspect young corn plants, whorls, tassels, ears, and leaf undersides for thrips. Heavy feeding on seedlings may cause stunting and distorted leaves with browned edges.',
 
     treatment:
-      'Spinosad spray. Blue sticky traps. Remove weeds nearby.',
+      'Confirm that thrips are causing meaningful crop injury before taking action. Young corn can sometimes recover from thrips feeding, so continue scouting and preserve beneficial insects rather than treating based on thrips presence alone.',
 
     prevention:
-      'Avoid planting near alliums. Reflective mulch. Water regularly.'
+      'Maintain good field sanitation, monitor young plants and developing ears, manage nearby weeds where appropriate, and conserve beneficial insects that help regulate thrips populations.',
+
+    references:[
+  
+      {
+        name:
+          'UC IPM — Thrips in Corn',
+
+        url:
+          'https://ipm.ucanr.edu/agriculture/corn/thrips/'
+      }
+
+    ]
   },
 
   { name:'Spider Mites', 
