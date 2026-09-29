@@ -6145,6 +6145,482 @@ function resolveCropPlantingMethod(crop) {
   return null;
 }
 
+// ── HARVEST RULE INTEGRITY CHECK ──
+function normalizeHarvestRulePlantingMethod(
+  value = ''
+) {
+
+  const method =
+    String(
+      value || ''
+    ).trim();
+
+
+  // crop-data.js uses this more descriptive
+  // value, while existing harvest rules use
+  // the canonical "transplanted" key.
+  if (
+    method ===
+    'transplanted-seedlings'
+  ) {
+
+    return 'transplanted';
+
+  }
+
+
+  return method;
+}
+
+
+function hasValidHarvestTiming(
+  rule
+) {
+
+  if (!rule) {
+    return false;
+  }
+
+
+  const hasValidDayRange =
+    Number.isFinite(
+      rule.minDays
+    ) &&
+    Number.isFinite(
+      rule.maxDays
+    ) &&
+    rule.minDays > 0 &&
+    rule.maxDays >=
+      rule.minDays;
+
+
+  const hasValidMonthRange =
+    Number.isFinite(
+      rule.minMonths
+    ) &&
+    Number.isFinite(
+      rule.maxMonths
+    ) &&
+    rule.minMonths > 0 &&
+    rule.maxMonths >=
+      rule.minMonths;
+
+
+  return (
+    hasValidDayRange ||
+    hasValidMonthRange
+  );
+
+}
+
+
+function validateFarmCastHarvestRules() {
+
+  const issues = [];
+
+  let cropHarvestRuleCount =
+    0;
+
+  let riceHarvestRuleCount =
+    0;
+
+  let stageHarvestRuleCount =
+    0;
+
+
+  // ── Crop-level harvest rules ──
+  Object.entries(
+    CROP_HARVEST_WINDOWS
+  ).forEach(
+    ([
+      cropName,
+      harvestMethods
+    ]) => {
+
+      const cropReference =
+        getCropReference(
+          cropName
+        );
+
+
+      if (!cropReference) {
+
+        issues.push(
+          `${cropName}: harvest rules exist but no crop reference was found.`
+        );
+
+        return;
+      }
+
+
+      const supportedMethods =
+        new Set(
+          (
+            cropReference
+              .plantingMethods ||
+            []
+          )
+            .map(method =>
+              normalizeHarvestRulePlantingMethod(
+                method?.value
+              )
+            )
+            .filter(Boolean)
+        );
+
+
+      Object.entries(
+        harvestMethods || {}
+      ).forEach(
+        ([
+          ruleMethod,
+          rule
+        ]) => {
+
+          cropHarvestRuleCount++;
+
+
+          const normalizedRuleMethod =
+            normalizeHarvestRulePlantingMethod(
+              ruleMethod
+            );
+
+
+          if (
+            !supportedMethods.has(
+              normalizedRuleMethod
+            )
+          ) {
+
+            issues.push(
+              `${cropName}: harvest rule "${ruleMethod}" does not match a verified planting method.`
+            );
+
+          }
+
+
+          if (
+            !hasValidHarvestTiming(
+              rule
+            )
+          ) {
+
+            issues.push(
+              `${cropName} / ${ruleMethod}: invalid harvest timing range.`
+            );
+
+          }
+
+
+          if (
+            !String(
+              rule?.basis ||
+              ''
+            ).trim()
+          ) {
+
+            issues.push(
+              `${cropName} / ${ruleMethod}: missing harvest timing basis.`
+            );
+
+          }
+
+
+          if (
+            !String(
+              rule
+                ?.source
+                ?.url ||
+              ''
+            ).trim()
+          ) {
+
+            issues.push(
+              `${cropName} / ${ruleMethod}: missing harvest-rule source URL.`
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  // ── Rice variety-specific rules ──
+  const riceReference =
+    SPECIAL_CROP_REFERENCES
+      ?.Rice;
+
+
+  const riceSupportedMethods =
+    new Set(
+      (
+        riceReference
+          ?.plantingMethods ||
+        []
+      )
+        .map(method =>
+          normalizeHarvestRulePlantingMethod(
+            method?.value
+          )
+        )
+        .filter(Boolean)
+    );
+
+
+  Object.entries(
+    RICE_VARIETY_HARVEST_RULES
+  ).forEach(
+    ([
+      varietyKey,
+      varietyRules
+    ]) => {
+
+      Object.entries(
+        varietyRules || {}
+      ).forEach(
+        ([
+          ruleMethod,
+          rule
+        ]) => {
+
+          // Metadata only, not a planting method.
+          if (
+            ruleMethod ===
+            'displayName'
+          ) {
+            return;
+          }
+
+
+          riceHarvestRuleCount++;
+
+
+          const normalizedRuleMethod =
+            normalizeHarvestRulePlantingMethod(
+              ruleMethod
+            );
+
+
+          if (
+            !riceSupportedMethods.has(
+              normalizedRuleMethod
+            )
+          ) {
+
+            issues.push(
+              `Rice ${varietyKey}: harvest rule "${ruleMethod}" is not supported by the special Rice reference.`
+            );
+
+          }
+
+
+          if (
+            !hasValidHarvestTiming(
+              rule
+            )
+          ) {
+
+            issues.push(
+              `Rice ${varietyKey} / ${ruleMethod}: invalid harvest timing range.`
+            );
+
+          }
+
+
+          if (
+            !String(
+              rule?.basis ||
+              ''
+            ).trim()
+          ) {
+
+            issues.push(
+              `Rice ${varietyKey} / ${ruleMethod}: missing harvest timing basis.`
+            );
+
+          }
+
+
+          if (
+            !String(
+              rule
+                ?.source
+                ?.url ||
+              ''
+            ).trim()
+          ) {
+
+            issues.push(
+              `Rice ${varietyKey} / ${ruleMethod}: missing source URL.`
+            );
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  // ── Stage-based harvest rules ──
+  const validGrowthStages =
+    new Set([
+      'seedling',
+      'vegetative',
+      'flowering',
+      'fruiting',
+      'ready'
+    ]);
+
+
+  Object.entries(
+    CROP_STAGE_HARVEST_WINDOWS
+  ).forEach(
+    ([
+      cropName,
+      rule
+    ]) => {
+
+      stageHarvestRuleCount++;
+
+
+      const cropReference =
+        getCropReference(
+          cropName
+        );
+
+
+      if (!cropReference) {
+
+        issues.push(
+          `${cropName}: stage-based harvest rule has no crop reference.`
+        );
+
+      }
+
+
+      const stage =
+        String(
+          rule?.stage ||
+          ''
+        ).trim();
+
+
+      if (
+        !validGrowthStages.has(
+          stage
+        )
+      ) {
+
+        issues.push(
+          `${cropName}: invalid stage-based harvest stage "${stage || 'missing'}".`
+        );
+
+      }
+
+
+      if (
+        !hasValidHarvestTiming(
+          rule
+        )
+      ) {
+
+        issues.push(
+          `${cropName}: invalid stage-based harvest timing range.`
+        );
+
+      }
+
+
+      if (
+        !String(
+          rule?.basis ||
+          ''
+        ).trim()
+      ) {
+
+        issues.push(
+          `${cropName}: stage-based harvest rule is missing its timing basis.`
+        );
+
+      }
+
+
+      if (
+        !String(
+          rule
+            ?.source
+            ?.url ||
+          ''
+        ).trim()
+      ) {
+
+        issues.push(
+          `${cropName}: stage-based harvest rule is missing its source URL.`
+        );
+
+      }
+
+    }
+  );
+
+
+  const totalValidatedRules =
+    cropHarvestRuleCount +
+    riceHarvestRuleCount +
+    stageHarvestRuleCount;
+
+
+  return {
+
+    valid:
+      issues.length === 0,
+
+    cropHarvestRuleCount,
+
+    riceHarvestRuleCount,
+
+    stageHarvestRuleCount,
+
+    totalValidatedRules,
+
+    issues
+
+  };
+
+}
+
+
+const farmCastHarvestRuleReport =
+  validateFarmCastHarvestRules();
+
+
+window.FARMCAST_HARVEST_RULE_REPORT =
+  farmCastHarvestRuleReport;
+
+
+if (
+  farmCastHarvestRuleReport.valid
+) {
+
+  console.info(
+    `✅ FarmCast harvest rules passed integrity check (${farmCastHarvestRuleReport.totalValidatedRules} rules validated).`
+  );
+
+} else {
+
+  console.error(
+    '❌ FarmCast harvest-rule integrity check failed:',
+    farmCastHarvestRuleReport.issues
+  );
+
+}
+
+
 function getRiceVarietyHarvestRule(crop) {
   if (crop.type !== 'Rice' || !crop.variety) {
     return null;
