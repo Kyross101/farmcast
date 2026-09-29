@@ -1098,14 +1098,26 @@ const PESTS = [
 
   {
     name: 'Whitefly',
-    icon: 'assets/ui/pest-whitefly.svg',
-    condition: 'dry',
+
+    icon:
+      'assets/ui/pest-whitefly.svg',
+
+    // Whitefly development can be
+    // influenced by temperature, host
+    // plants, dust, natural enemies,
+    // and other field conditions.
+    // No generic humidity threshold.
+    condition: null,
+
     detail:
-      'Low humidity common during dry spells',
-    level: 'low',
+      'Monitor leaf undersides for whitefly adults and nymphs, especially on susceptible crops.',
+
+    level: 'monitor',
 
     reference: {
-      name: 'UC IPM — Whiteflies',
+      name:
+        'UC IPM — Whiteflies',
+
       url:
         'https://ipm.ucanr.edu/home-and-landscape/whiteflies/'
     }
@@ -9892,15 +9904,35 @@ const PEST_FULL_DB = [
     ]
   },
 
-  { name:'Whitefly',    
-    icon:'assets/ui/pest-whitefly.svg',
-    condition:'dry',   
-    level:'low',    
-    crops:['Tomato','Eggplant','Okra'],
-    signs:'Tiny white insects fly when plants are disturbed. Sticky honeydew on leaves.',
-    treatment:'Yellow sticky traps, neem oil spray. Reflective mulch repels adults.',
-    prevention:'Avoid planting near infested areas. Maintain crop diversity.' },
-    
+  {
+    name:'Whitefly',
+
+    icon:
+      'assets/ui/pest-whitefly.svg',
+
+    // Monitored through crop relevance
+    // and field inspection.
+    // No generic humidity threshold.
+    condition:null,
+
+    level:'monitor',
+
+    crops:[
+      'Tomato',
+      'Eggplant',
+      'Okra'
+    ],
+
+    signs:
+      'Tiny white insects may fly from plants when disturbed. Inspect leaf undersides for adults and nymphs, and check for sticky honeydew or sooty mold.',
+
+    treatment:
+      'Yellow sticky traps, neem oil spray. Reflective mulch repels adults.',
+
+    prevention:
+      'Avoid planting near infested areas. Maintain crop diversity.'
+  },
+
   { name:'Root Rot',    
     icon:'assets/ui/pest-root-rot.svg',
     condition:'rainy', 
