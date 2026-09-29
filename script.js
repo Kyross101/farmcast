@@ -10618,97 +10618,6 @@ function renderPestPage() {
           )
       }));
 
-  // Weather-based alert banner
-  if (currentWeather) {
-    const h = currentWeather.main.humidity;
-    const t = currentWeather.main.temp;
-    const desc = currentWeather.weather[0].description.toLowerCase();
-    const isRain = desc.includes('rain');
-
-    let bannerClass = 'ok';
-
-    let title =
-      'Low Pest Risk';
-
-    let sub =
-      'Current weather conditions are not particularly favorable for pests.';
-
-    let bannerIcon =
-      'assets/ui/pest-status-low.svg';
-
-
-    if (h > 80 && t > 28) {
-
-      bannerClass =
-        'danger';
-
-      title =
-        'Warm & Humid Weather';
-
-      sub =
-        `Warm and humid conditions are present. Weather alone does not confirm pest presence. Review crop-specific advisories and inspect crops for visible signs.`;
-      bannerIcon =
-        'assets/ui/pest-status-danger.svg';
-
-    } else if (isRain) {
-
-    bannerClass =
-      'warn';
-
-    title =
-      'Wet Weather Advisory';
-
-    sub =
-      'Rain is present. Rain alone does not confirm root disease. Check fields for prolonged soil saturation, standing water, and poor drainage, which can favor some root and crown rot pathogens.';
-
-    bannerIcon =
-      'assets/ui/pest-status-warning.svg';
-
-    } else if (t > 32) {
-
-      bannerClass =
-        'warn';
-
-      title =
-        'Watch for Heat Pests';
-
-      sub =
-        `High temperature (${Math.round(t)}°C) may favor some heat-associated pest activity.`;
-
-      bannerIcon =
-        'assets/ui/pest-status-warning.svg';
-
-    }
-    
-    const banner =
-      document.getElementById(
-        'pestAlertBanner'
-      );
-
-    const icon =
-      document.getElementById(
-        'pabIcon'
-      );
-
-
-    banner.className =
-      `pest-alert-banner ${bannerClass}`;
-
-    document.getElementById(
-      'pabTitle'
-    ).textContent = title;
-
-    document.getElementById(
-      'pabSub'
-    ).textContent = sub;
-
-
-    if (icon) {
-      icon.src = bannerIcon;
-    }
-
-  }
-
    
     // Weather is context only.
     // Pest monitoring priority is based
@@ -12684,7 +12593,17 @@ if (notifications.length === 0) {
   notifications = [
     { id:1, type:'system',  icon:'🌾', title:'Welcome to FarmCast!', body:'Your smart farm management app is ready. Set up your profile in Settings.', time: new Date(Date.now()-3600000).toISOString(), read:false },
     { id:2, type:'harvest', icon:'🌾', title:'Harvest Reminder: Pechay', body:'Pechay at Greenhouse 1 is due for harvest in 3 days.', time: new Date(Date.now()-7200000).toISOString(), read:false },
-    { id:3, type:'pest',    icon:'🦗', title:'Pest Risk: Aphids', body:'Current humidity (75%) is favorable for aphid colony growth. Inspect crops.', time: new Date(Date.now()-10800000).toISOString(), read:true },
+    
+    {
+      id:3,
+      type:'pest',
+      icon:'🦗',
+      title:'Pest Monitoring Reminder',
+      body:'Review Pest Alerts for crops saved in My Crops and inspect plants for visible signs before recording a pest sighting.',
+      time:new Date(Date.now()-10800000).toISOString(),
+      read:true
+    },
+
   ];
   lsSave(LS_NOTIFS, notifications);
   lsSave(LS_NOTIF_ID, 4);
@@ -13164,29 +13083,6 @@ function checkWeatherAlerts(data) {
     }
   }
 
-  // Pest sensitivity check
-  if (appSettings.pestNotif) {
-    const h = data.main.humidity;
-    const sensitivity = appSettings.pestSensitivity;
-    const humThresh =
-      sensitivity === 'low'
-        ? 85
-        : sensitivity === 'high'
-        ? 60
-        : 70;
-
-    if (h > humThresh) {
-      const title = '🦗 Elevated Pest Risk';
-
-      if (!hasRecentNotification('pest', title, 6)) {
-        addNotification(
-          'pest',
-          title,
-          `Humidity is currently ${h}% in ${data.name}. These conditions may favor certain pests or fungal diseases. Inspect crops for visible signs before taking action.`
-        );
-      }
-    }
-  }
 }
 
 function checkHarvestReminders() {
