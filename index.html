@@ -1817,22 +1817,19 @@
           <div class="modal-body">
             <div class="form-row">
 
-              <div class="form-group"><label>Pest Type</label>
-                <select id="logPestType"><option value="">Select pest…</option><option>Aphids</option><option>Stem Borer</option><option>Whitefly</option><option>Root Rot</option><option>Leaf Miner</option><option>Thrips</option>
-                  
-                  <option>Spider Mites</option>
-                  <option>Cutworm</option>
-                  <option>Diamondback Moth</option>
-                  <option>Bagrada Bug</option>
-                  <option>Fall Armyworm</option>
-                  <option>Brown Planthopper</option>
-                  <option>Powdery Mildew</option>
-                  <option>Other</option>
+              <div class="form-group">
+                <label>
+                  Observed Pest / Disease
+                </label>
 
+                <select id="logPestType">
+                  <option value="">
+                    Select observation…
+                  </option>
                 </select>
               </div>
 
-              <div class="form-group"><label>Severity</label>
+              <div class="form-group"><label>Observed Severity</label>
                 <select id="logPestSeverity"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
               </div>
             </div>
@@ -1840,9 +1837,19 @@
               <div class="form-group"><label>Affected Crop</label><input type="text" id="logPestCrop" placeholder="e.g. Tomato, Corn"></div>
               <div class="form-group"><label>Location</label><input type="text" id="logPestLocation" placeholder="e.g. North Field A"></div>
             </div>
-            <div class="form-group"><label>Notes / Treatment Applied</label>
-              <textarea id="logPestNotes" placeholder="Describe what you observed and action taken…" rows="3"></textarea>
+
+            <div class="form-group">
+              <label>
+                Observed Signs / Notes
+              </label>
+
+              <textarea
+                id="logPestNotes"
+                placeholder="Describe the pest, damage, or visible signs observed in the field…"
+                rows="3"
+              ></textarea>
             </div>
+
           </div>
           <div class="modal-footer">
             <button class="btn-cancel" onclick="closeLogPestModal()">Cancel</button>

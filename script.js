@@ -10456,11 +10456,46 @@ const PEST_FULL_DB = [
 
 ];
 
-let pestLogs = lsLoad(LS_PEST_LOGS, [
-  { id:1, date:'2026-03-10', pest:'Aphids',    crop:'Tomato',   location:'North Field A', severity:'medium', notes:'Treated with neem oil spray. Monitoring closely.' },
-  { id:2, date:'2026-03-12', pest:'Stem Borer',crop:'Rice',     location:'Paddy Field',   severity:'low',    notes:'Found 3 stems with borers. Applied Bt.' },
-  { id:3, date:'2026-03-14', pest:'Root Rot',  crop:'Kamote',   location:'Back Lot',      severity:'high',   notes:'Heavy rain caused waterlogging. Improved drainage.' },
-]);
+let pestLogs = lsLoad(
+  LS_PEST_LOGS,
+  [
+
+    {
+      id:1,
+      date:'2026-03-10',
+      pest:'Aphids',
+      crop:'Tomato',
+      location:'North Field A',
+      severity:'medium',
+      notes:
+        'Observed aphid clusters on young growth and leaf undersides. Monitoring the affected plants.'
+    },
+
+    {
+      id:2,
+      date:'2026-03-12',
+      pest:'Rice Stem Borer',
+      crop:'Rice',
+      location:'Paddy Field',
+      severity:'low',
+      notes:
+        'Observed several rice tillers with visible stem-borer damage. Monitoring the affected area.'
+    },
+
+    {
+      id:3,
+      date:'2026-03-14',
+      pest:'Phytophthora Root & Crown Rot',
+      crop:'Tomato',
+      location:'Back Lot',
+      severity:'high',
+      notes:
+        'Observed wilting and brown, water-soaked tissue near the crown in a poorly drained area.'
+    }
+
+  ]
+);
+
 let nextPestLogId = lsLoad('fc_nextPestLogId', 4);
 
 function getPestCropRelevanceHtml(
@@ -11207,11 +11242,125 @@ function renderPestLog() {
   `).join('');
 }
 
-function quickLogPest(pestName) {
-  openLogPestModal();
-  setTimeout(() => { document.getElementById('logPestType').value = pestName; }, 100);
+function populatePestLogTypeOptions(
+  selectedValue = ''
+) {
+
+  const select =
+    document.getElementById(
+      'logPestType'
+    );
+
+  if (!select) return;
+
+
+  const pestNames =
+    [
+      ...new Set(
+        PEST_FULL_DB
+          .map(pest =>
+            String(
+              pest?.name || ''
+            ).trim()
+          )
+          .filter(Boolean)
+      )
+    ];
+
+
+  select.innerHTML = '';
+
+
+  const placeholder =
+    document.createElement(
+      'option'
+    );
+
+  placeholder.value = '';
+  placeholder.textContent =
+    'Select observation…';
+
+  select.appendChild(
+    placeholder
+  );
+
+
+  pestNames.forEach(name => {
+
+    const option =
+      document.createElement(
+        'option'
+      );
+
+    option.value = name;
+    option.textContent = name;
+
+    select.appendChild(
+      option
+    );
+
+  });
+
+
+  const otherOption =
+    document.createElement(
+      'option'
+    );
+
+  otherOption.value = 'Other';
+  otherOption.textContent =
+    'Other';
+
+  select.appendChild(
+    otherOption
+  );
+
+
+  if (
+    selectedValue &&
+    [
+      ...select.options
+    ].some(
+      option =>
+        option.value ===
+        selectedValue
+    )
+  ) {
+
+    select.value =
+      selectedValue;
+
+  }
+
 }
-function openLogPestModal()  { document.getElementById('logPestModal').style.display = 'flex'; }
+
+
+function quickLogPest(
+  pestName
+) {
+
+  openLogPestModal(
+    pestName
+  );
+
+}
+
+
+function openLogPestModal(
+  selectedPest = ''
+) {
+
+  populatePestLogTypeOptions(
+    selectedPest
+  );
+
+  document.getElementById(
+    'logPestModal'
+  ).style.display =
+    'flex';
+
+}
+
 function closeLogPestModal() { document.getElementById('logPestModal').style.display = 'none'; }
 function savePestLog() {
   const pest = document.getElementById('logPestType').value;
@@ -11225,8 +11374,13 @@ function savePestLog() {
   lsSave(LS_PEST_LOGS, pestLogs); lsSave('fc_nextPestLogId', nextPestLogId);
   closeLogPestModal();
   renderPestLog();
-  toast(`Pest sighting logged: ${pest} on ${crop}`, 'warn');
+
+  toast(
+    `Field observation logged: ${pest} on ${crop}`,
+    'ok'
+  );
 }
+
 function deletePestLog(id) {
   pestLogs = pestLogs.filter(l => l.id !== id);
   lsSave(LS_PEST_LOGS, pestLogs);
