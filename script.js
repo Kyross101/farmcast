@@ -10035,7 +10035,8 @@ const PEST_FULL_DB = [
 
     // Vegetable leafminer activity and
     // development can be influenced by
-    // temperature and host conditions.
+    // temperature, host availability,
+    // natural enemies, and field conditions.
     // No generic humidity threshold.
     condition:null,
 
@@ -10047,16 +10048,25 @@ const PEST_FULL_DB = [
       'Pechay'
     ],
 
+
     signs:
-      'Winding white trails on leaf surfaces. Leaves look pale and papery.',
+      'Look for winding or serpentine whitish mines inside leaves. Small pale feeding punctures may also appear on the leaf surface, while heavy mining can cause damaged leaves to dry or drop.',
+
 
     treatment:
-      'Remove affected leaves. Systemic insecticide for severe infestations.',
+      'Confirm active leaf mines before taking action. Remove heavily infested leaves where practical and continue regular field inspection. Preserve natural enemies that help suppress leafminer populations.',
+
 
     prevention:
-      'Regular scouting. Yellow sticky traps to catch adult flies.'
-  },
-  
+      'Scout seedlings and young plants regularly, remove infested crop residue and nearby host weeds where practical, and conserve beneficial parasitoid wasps. Yellow sticky traps may be used to monitor adult leafminer activity.',
+
+
+    reference:
+      getPestFullReference(
+        'Leaf Miner'
+      )
+  },  
+
   { name:'Thrips',      
     icon:'assets/ui/pest-thrips.svg',
     condition:'dry',   
