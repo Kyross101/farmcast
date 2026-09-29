@@ -4484,6 +4484,333 @@ function getMyCropPickerDataset() {
   );
 }
 
+// ── SELECTABLE CROP DATASET INTEGRITY CHECK ──
+function validateFarmCastSelectableCropDataset() {
+
+  const EXPECTED_SELECTABLE_COUNT =
+    101;
+
+  const issues = [];
+
+  const selectableCrops =
+    getMyCropPickerDataset();
+
+  const seenNames =
+    new Set();
+
+
+  // Expected shared + special total
+  if (
+    selectableCrops.length !==
+    EXPECTED_SELECTABLE_COUNT
+  ) {
+
+    issues.push(
+      `Expected ${EXPECTED_SELECTABLE_COUNT} selectable crops, found ${selectableCrops.length}.`
+    );
+
+  }
+
+
+  // No duplicate selectable names
+  selectableCrops.forEach(
+    crop => {
+
+      const cropName =
+        String(
+          crop?.name ||
+          ''
+        ).trim();
+
+      const normalizedName =
+        cropName.toLowerCase();
+
+
+      if (!cropName) {
+
+        issues.push(
+          'Selectable crop has no name.'
+        );
+
+        return;
+      }
+
+
+      if (
+        seenNames.has(
+          normalizedName
+        )
+      ) {
+
+        issues.push(
+          `Duplicate selectable crop "${cropName}".`
+        );
+
+        return;
+      }
+
+
+      seenNames.add(
+        normalizedName
+      );
+
+    }
+  );
+
+
+  // Rice intentionally remains outside
+  // the shared 100-crop dataset.
+  const sharedRice =
+    CROPS.find(
+      crop =>
+        String(
+          crop?.name ||
+          ''
+        )
+          .trim()
+          .toLowerCase() ===
+        'rice'
+    );
+
+
+  if (sharedRice) {
+
+    issues.push(
+      'Rice is duplicated in the shared 100-crop dataset. Rice should currently remain a special crop reference.'
+    );
+
+  }
+
+
+  const riceReference =
+    SPECIAL_CROP_REFERENCES
+      ?.Rice;
+
+
+  if (!riceReference) {
+
+    issues.push(
+      'Missing special Rice reference.'
+    );
+
+  } else {
+
+    // Rice name
+    if (
+      riceReference.name !==
+      'Rice'
+    ) {
+
+      issues.push(
+        'Special Rice reference has an invalid name.'
+      );
+
+    }
+
+
+    // Local name
+    if (
+      !String(
+        riceReference.localName ||
+        ''
+      ).trim()
+    ) {
+
+      issues.push(
+        'Special Rice reference is missing localName.'
+      );
+
+    }
+
+
+    // Category
+    if (
+      !String(
+        riceReference.category ||
+        ''
+      ).trim()
+    ) {
+
+      issues.push(
+        'Special Rice reference is missing category.'
+      );
+
+    }
+
+
+    // Local SVG
+    if (
+      !/^assets\/crops\/.+\.svg$/i
+        .test(
+          String(
+            riceReference.icon ||
+            ''
+          ).trim()
+        )
+    ) {
+
+      issues.push(
+        'Special Rice reference has an invalid or missing SVG path.'
+      );
+
+    }
+
+
+    // Official source
+    if (
+      !String(
+        riceReference
+          ?.source
+          ?.url ||
+        ''
+      ).trim()
+    ) {
+
+      issues.push(
+        'Special Rice reference is missing its source URL.'
+      );
+
+    }
+
+
+    // Planting methods
+    const ricePlantingMethods =
+      riceReference
+        .plantingMethods;
+
+
+    if (
+      !Array.isArray(
+        ricePlantingMethods
+      ) ||
+      ricePlantingMethods.length === 0
+    ) {
+
+      issues.push(
+        'Special Rice reference has no planting methods.'
+      );
+
+    } else {
+
+      const riceMethodValues =
+        new Set(
+          ricePlantingMethods
+            .map(method =>
+              String(
+                method?.value ||
+                ''
+              ).trim()
+            )
+            .filter(Boolean)
+        );
+
+
+      if (
+        !riceMethodValues.has(
+          'direct-seeded'
+        )
+      ) {
+
+        issues.push(
+          'Special Rice reference is missing the direct-seeded planting method.'
+        );
+
+      }
+
+
+      if (
+        !riceMethodValues.has(
+          'transplanted'
+        )
+      ) {
+
+        issues.push(
+          'Special Rice reference is missing the transplanted planting method.'
+        );
+
+      }
+
+    }
+
+  }
+
+
+  // Rice must appear exactly once
+  // in the final selectable dataset.
+  const selectableRiceCount =
+    selectableCrops.filter(
+      crop =>
+        String(
+          crop?.name ||
+          ''
+        )
+          .trim()
+          .toLowerCase() ===
+        'rice'
+    ).length;
+
+
+  if (
+    selectableRiceCount !==
+    1
+  ) {
+
+    issues.push(
+      `Expected Rice exactly once in selectable crops, found ${selectableRiceCount}.`
+    );
+
+  }
+
+
+  return {
+
+    valid:
+      issues.length === 0,
+
+    expectedSelectableCount:
+      EXPECTED_SELECTABLE_COUNT,
+
+    actualSelectableCount:
+      selectableCrops.length,
+
+    riceSpecialReferencePresent:
+      Boolean(
+        riceReference
+      ),
+
+    selectableRiceCount,
+
+    issues
+
+  };
+
+}
+
+
+const farmCastSelectableCropReport =
+  validateFarmCastSelectableCropDataset();
+
+
+window.FARMCAST_SELECTABLE_CROP_REPORT =
+  farmCastSelectableCropReport;
+
+
+if (
+  farmCastSelectableCropReport.valid
+) {
+
+  console.info(
+    `✅ FarmCast selectable crop dataset passed integrity check (${farmCastSelectableCropReport.actualSelectableCount}/${farmCastSelectableCropReport.expectedSelectableCount}).`
+  );
+
+} else {
+
+  console.error(
+    '❌ FarmCast selectable crop dataset integrity check failed:',
+    farmCastSelectableCropReport.issues
+  );
+
+}
 
 function populateMyCropsCropSelect() {
 
