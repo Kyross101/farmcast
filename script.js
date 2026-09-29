@@ -10318,22 +10318,27 @@ const PEST_FULL_DB = [
     icon:
       'assets/ui/pest-bagrada-bug.svg',
 
-    condition:'hot',
-
-    level:'medium',
-
+    // Warmer temperatures can increase
+    // Bagrada bug activity and development,
+    // but temperature alone does not confirm
+    // an elevated field infestation.
+    // Crop relevance and scouting are required.
+    condition:null,
+  
+    level:'monitor',
+  
     crops:[
       'Cabbage',
       'Broccoli',
       'Cauliflower'
     ],
-
+  
     signs:
       'Look for small black bugs with orange and white markings, light starburst-shaped feeding spots, stippled leaves, wilting, or scorched-looking foliage.',
-
+  
     treatment:
       'Inspect affected plants closely and remove bugs by hand when populations are still low. Remove badly damaged plant material and continue regular scouting.',
-
+  
     prevention:
       'Remove nearby mustard-family weeds and crop residue after harvest. Inspect young plants regularly because populations can build up quickly.'
   },
