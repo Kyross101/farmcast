@@ -1124,16 +1124,27 @@ const PESTS = [
   },
 
   {
-    name: 'Root Rot',
-    icon: 'assets/ui/pest-root-rot.svg',
-    condition: 'rainy',
-    detail:
-      'Excessive moisture encourages fungal spread',
-    level: 'high',
+    name:
+      'Phytophthora Root & Crown Rot',
 
+    icon:
+      'assets/ui/pest-root-rot.svg',
+
+    // Rain alone does not confirm disease.
+    // Prolonged saturated soil, standing
+    // water, and poor drainage can favor
+    // Phytophthora root and crown rot.
+    condition: null,
+  
+    detail:
+      'Monitor susceptible crops when soil remains saturated or waterlogged, especially in poorly drained areas.',
+  
+    level: 'monitor',
+  
     reference: {
       name:
         'UC IPM — Phytophthora Root and Crown Rot',
+  
       url:
         'https://ipm.ucanr.edu/home-and-landscape/phytophthora-root-and-crown-rot/'
     }
@@ -9965,14 +9976,56 @@ const PEST_FULL_DB = [
     ]
   },
 
-  { name:'Root Rot',    
-    icon:'assets/ui/pest-root-rot.svg',
-    condition:'rainy', 
-    level:'high',   
-    crops:['Kamote','Tomato','Corn'],
-    signs:'Yellowing lower leaves, wilting despite watering, brown/black roots.',
-    treatment:'Improve drainage immediately. Remove affected plants. Apply fungicide.',
-    prevention:'Raised beds, proper spacing, avoid overwatering, good soil drainage.' },
+  {
+    name:
+      'Phytophthora Root & Crown Rot',
+
+    icon:
+      'assets/ui/pest-root-rot.svg',
+
+    // Monitored through crop relevance,
+    // drainage conditions, and field
+    // inspection.
+    // Rain alone is not a disease trigger.
+    condition:null,
+
+    level:'monitor',
+
+    crops:[
+      'Tomato',
+      'Eggplant',
+      'Bell Pepper'
+    ],
+
+  
+    signs:
+      'Watch for plants that wilt or yellow even when water is available. Inspect roots and the crown for water-soaked, brown, or decayed tissue, especially in poorly drained areas.',
+
+    treatment:
+      'If symptoms are present, improve drainage and avoid further soil saturation. Confirm the disease through crop-specific diagnosis or local agricultural guidance before choosing a treatment.',
+
+    prevention:
+      'Avoid prolonged soil saturation and standing water. Maintain good drainage, irrigate only as needed, and consider raised beds where drainage is a recurring problem.',
+
+    references:[
+
+      {
+        name:
+          'UC IPM — Phytophthora Root and Crown Rot',
+
+        url:
+          'https://ipm.ucanr.edu/home-and-landscape/phytophthora-root-and-crown-rot/'
+      },
+      {
+        name:
+          'UC IPM — Water Management and Pest Problems',
+
+        url:
+          'https://ipm.ucanr.edu/home-and-landscape/water-management-and-pest-problems/'
+      }
+
+    ]
+  },
 
   { name:'Leaf Miner',  
     icon:'assets/ui/pest-leaf-miner.svg', 
@@ -10487,18 +10540,18 @@ function renderPestPage() {
 
     } else if (isRain) {
 
-      bannerClass =
-        'warn';
+    bannerClass =
+      'warn';
 
-      title =
-        'Moderate Pest Risk';
+    title =
+      'Wet Weather Advisory';
 
-      sub =
-        'Rainy conditions may increase the risk of root rot and fungal infections.';
+    sub =
+      'Rain is present. Rain alone does not confirm root disease. Check fields for prolonged soil saturation, standing water, and poor drainage, which can favor some root and crown rot pathogens.';
 
-      bannerIcon =
-        'assets/ui/pest-status-warning.svg';
-
+    bannerIcon =
+      'assets/ui/pest-status-warning.svg';
+      
     } else if (t > 32) {
 
       bannerClass =
