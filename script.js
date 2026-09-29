@@ -9601,13 +9601,6 @@ const PEST_FULL_REFERENCE_META = {
       '../bagrada-bug/'
   },
 
-  'Powdery Mildew': {
-    name:
-      'UC IPM — Powdery Mildew',
-    relative:
-      '../powdery-mildew/'
-
-  },
 
 }
 
@@ -10498,10 +10491,15 @@ const PEST_FULL_DB = [
     icon:
       'assets/ui/pest-powdery-mildew.svg',
 
-    condition:'dry',
-
-    level:'medium',
-
+    // Powdery mildew can develop without
+    // free water on leaf surfaces.
+    // Humidity, temperature, shade, host crop,
+    // and field conditions all influence disease.
+    // No generic low-humidity threshold.
+    condition:null,
+ 
+    level:'monitor',
+  
     crops:[
       'Okra',
       'Cucumber',
@@ -10509,15 +10507,47 @@ const PEST_FULL_DB = [
       'Melon',
       'Watermelon'
     ],
-
+  
+  
     signs:
-      'Look for white powdery patches on leaves and stems. Infected leaves may yellow, curl, dry out, or turn brown.',
-
+      'Inspect leaves, petioles, and stems for white powdery fungal growth. Early infections may begin as pale or yellow spots before powdery growth becomes obvious. Affected leaves may later yellow, curl, become brown and papery, or dry out.',
+  
+   
     treatment:
-      'Remove heavily affected plant material where practical and improve airflow around plants. Continue monitoring nearby leaves for new powdery growth.',
-
+      'Confirm powdery mildew symptoms before taking action. Remove heavily affected plant material where practical, improve air circulation around plants, and continue monitoring nearby leaves for new powdery growth. Follow crop-specific disease-management guidance when symptoms continue to spread.',
+  
+  
     prevention:
-      'Use proper plant spacing, avoid excessive nitrogen fertilizer, maintain adequate watering, and keep plants in well-ventilated growing areas.'
+      'Use resistant or less susceptible varieties when available, provide adequate plant spacing and sunlight, maintain good field sanitation, control nearby weed hosts, and avoid excessive nitrogen fertilizer that can promote dense susceptible growth.',
+  
+  
+    references:[
+  
+      {
+        name:
+          'UC IPM — Powdery Mildew on Vegetables',
+  
+        url:
+          'https://ipm.ucanr.edu/home-and-landscape/powdery-mildew-on-vegetables/'
+      },
+  
+      {
+        name:
+          'UC IPM — Powdery Mildew on Cucurbits',
+  
+        url:
+          'https://ipm.ucanr.edu/home-and-landscape/powdery-mildew-on-cucurbits/'
+      },
+  
+      {
+        name:
+          'DA-ATI — Squash Production Guide',
+  
+        url:
+          'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2022-12/squash_production_guide_leaflet.pdf'
+      }
+  
+    ]
   },
 
 ];
