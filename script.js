@@ -10333,14 +10333,38 @@ const PEST_FULL_DB = [
       'Cauliflower'
     ],
   
+  
     signs:
-      'Look for small black bugs with orange and white markings, light starburst-shaped feeding spots, stippled leaves, wilting, or scorched-looking foliage.',
-  
+     'Inspect young plants for small black bugs with orange and white markings. Look for white or light-green starburst-shaped feeding lesions, stippling, wilting, stunting, damaged growing points, or malformed and multiple heads.',
+
+
     treatment:
-      'Inspect affected plants closely and remove bugs by hand when populations are still low. Remove badly damaged plant material and continue regular scouting.',
-  
+      'Confirm Bagrada bugs or characteristic feeding damage before taking action. When populations are still very low, bugs may be removed by hand where practical. Continue frequent scouting of young plants and field edges.',
+
+
     prevention:
-      'Remove nearby mustard-family weeds and crop residue after harvest. Inspect young plants regularly because populations can build up quickly.'
+      'Inspect seedlings and transplants before planting, remove nearby cruciferous weeds that may serve as hosts, clear crop residues after harvest, and monitor young plants regularly because they are especially vulnerable to feeding damage.',
+
+
+    references:[
+
+      {
+        name:
+          'UC IPM — Bagrada Bug in Cole Crops',
+  
+        url:
+          'https://ipm.ucanr.edu/agriculture/cole-crops/bagrada-bug/'
+      },
+  
+      {
+        name:
+          'UC IPM — Bagrada Bug',
+  
+         url:
+          'https://ipm.ucanr.edu/home-and-landscape/bagrada-bug/'
+      }
+
+    ]
   },
 
   {
