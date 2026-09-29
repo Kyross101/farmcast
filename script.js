@@ -10277,23 +10277,39 @@ const PEST_FULL_DB = [
       'Broccoli',
       'Cauliflower'
     ],
-  
+
+
     signs:
-      'Small green larvae may be found on leaf undersides. Look for windowpane-like feeding patches, small holes, and damage around growing points.',
+      'Inspect leaf undersides for small green larvae and characteristic windowpane-like feeding damage. Older larvae may create small holes and can damage growing points, cabbage leaves, broccoli heads, or cauliflower heads.',
+
   
     treatment:
-      'Inspect plants closely and hand-pick larvae where practical. Remove badly damaged leaves and continue regular crop monitoring.',
+      'Confirm diamondback moth larvae and feeding damage before taking action. Continue regular crop scouting and prioritize cultural and biological integrated pest-management practices while conserving natural enemies.',
+  
   
     prevention:
-      'Rotate away from Brassica crops between plantings and conserve natural enemies through regular field scouting.',
+      'Rotate away from Brassica crops between plantings where practical, remove cruciferous weeds and crop residues that may serve as hosts, and conserve parasitoid wasps and other beneficial organisms.',
   
-    reference: {
-      name:
-        'UC IPM — Diamondback Moth',
   
-      url:
-        'https://ipm.ucanr.edu/agriculture/cole-crops/diamondback-moth/'
-    }
+    references:[
+  
+      {
+        name:
+          'UC IPM — Diamondback Moth',
+  
+        url:
+          'https://ipm.ucanr.edu/agriculture/cole-crops/diamondback-moth/'
+      },
+  
+      {
+        name:
+          'BPI — Chinese Cabbage Production Guide',
+  
+        url:
+          'https://library.buplant.da.gov.ph/images/1641944299Chinese%20Cabbage%20production%20Guide.pdf'
+      }
+  
+    ]
   },
 
   {
