@@ -12800,7 +12800,6 @@ const DEFAULT_SETTINGS = {
   fontSize: 'medium',
 
   // System
-  language: 'en',
   lastExport: null,
 
 };
@@ -12836,6 +12835,21 @@ if (
 
   delete appSettings.pestNotif;
   delete appSettings.pestSensitivity;
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+}
+
+// Remove deprecated non-functional
+// language preference from older settings.
+if (
+  'language' in appSettings
+) {
+
+  delete appSettings.language;
 
   lsSave(
     LS_SETTINGS,
@@ -18171,14 +18185,6 @@ function setAnalyticsCardsCollapsed(
 
 }
 
-// Apply language on init
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    if (appSettings?.language && appSettings.language !== 'en') {
-      applyLanguage(appSettings.language);
-    }
-  }, 500);
-});
 
 // ═══════════════════════════════════════════════════════
 // ANIMATED WEATHER FUNCTIONS (RESTORED)
