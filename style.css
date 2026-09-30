@@ -5174,40 +5174,41 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
    SETTINGS — MOBILE POLISH
 ═══════════════════════════════════════════════ */
 
-.settings-profile-hero {
-  padding:
-    16px;
-}
-
-
-.settings-profile-identity {
-  align-items:
-    flex-start;
-}
-
-
-.settings-profile-hero
-.profile-avatar {
-  width: 68px;
-  height: 68px;
-}
-
-
-.settings-profile-actions {
-  flex-direction:
-    column;
-
-  align-items:
-    stretch;
-}
-
-
-.settings-profile-save-note {
-  text-align:
-    center;
-}
-
 @media(max-width:640px) {
+
+  .settings-profile-hero {
+    padding:
+      16px;
+  }
+
+
+  .settings-profile-identity {
+    align-items:
+      flex-start;
+  }
+
+
+  .settings-profile-hero
+  .profile-avatar {
+    width: 68px;
+    height: 68px;
+  }
+
+
+  .settings-profile-actions {
+    flex-direction:
+      column;
+
+    align-items:
+      stretch;
+  }
+
+
+  .settings-profile-save-note {
+    text-align:
+      center;
+  }
+
 
 .settings-page-intro {
   flex-direction: column;
