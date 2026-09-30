@@ -2770,114 +2770,524 @@
           </div>
 
           <!-- ─── 3. SMART NOTIFICATIONS ─── -->
-          <div class="settings-section" id="s-notifications">
-            <div class="settings-section-title">
-              <span class="material-symbols-outlined">notifications</span> Smart Notifications
-            </div>
+          <div
+            class="settings-section"
+            id="s-notifications"
+          >
 
-          
+          <div class="settings-section-title">
+            <span class="material-symbols-outlined">
+              notifications
+            </span>
 
-            <div class="settings-card">
-              <div class="sc-header">Weather Alert Thresholds</div>
-              <div class="sc-body">
-                <div class="setting-row">
-                  <div class="sr-info">
-                    <div class="sr-label">Temperature Alert</div>
-                    <div class="sr-sub">Alert when temperature exceeds this value</div>
-                  </div>
-                  <div class="threshold-input-wrap">
-                    <input type="number" class="threshold-input" id="thresholdTemp" value="35" min="20" max="45">
-                    <span class="threshold-unit" id="thresholdTempUnit">°C</span>
-                  </div>
-                </div>
-                <div class="setting-row">
-                  <div class="sr-info">
-                    <div class="sr-label">Heavy Rain Alert</div>
-                    <div class="sr-sub">Notify when heavy rain conditions are detected</div>
-                  </div>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="toggleRainAlert" checked onchange="saveSettingImmediate('rainAlert', this.checked)">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-                <div class="setting-row">
-                  <div class="sr-info">
-                    <div class="sr-label">High Wind Alert</div>
-                    <div class="sr-sub">Alert when wind speed exceeds 40 kph</div>
-                  </div>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="toggleWindAlert" checked onchange="saveSettingImmediate('windAlert', this.checked)">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-                <div class="setting-row">
-                  <div class="sr-info">
-                    <div class="sr-label">Daily Weather Briefing</div>
-                    <div class="sr-sub">Receive a daily weather summary notification</div>
-                  </div>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="toggleDailyBriefing" checked onchange="saveSettingImmediate('dailyBriefing', this.checked)">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-                <div class="setting-row">
-                  <div class="sr-info">
-                    <div class="sr-label">Briefing Time</div>
-                    <div class="sr-sub">When to send the daily weather summary</div>
-                  </div>
-                  <input type="time" class="setting-time-input" id="settingBriefingTime" value="05:00" onchange="saveSettingImmediate('briefingTime', this.value)">
-                </div>
-                <button class="settings-save-btn" onclick="saveThresholdSettings()">
-                  <span class="material-symbols-outlined">save</span> Save Thresholds
-                </button>
-              </div>
-            </div>
-
-            <div class="settings-card">
-              <div class="sc-header">Quiet Hours</div>
-              <div class="sc-body">
-                <div class="setting-row">
-                  <div class="sr-info">
-                    <div class="sr-label">Enable Quiet Hours</div>
-                    <div class="sr-sub">Suppress all notifications during these hours</div>
-                  </div>
-                  <label class="toggle-switch">
-                    <input type="checkbox" id="toggleQuietHours" checked onchange="saveSettingImmediate('quietHours', this.checked)">
-                    <span class="toggle-slider"></span>
-                  </label>
-                </div>
-                <div class="form-row" style="margin-top:12px">
-                  <div class="form-group">
-                    <label>Quiet From</label>
-                    <input type="time" id="quietFrom" value="21:00" onchange="saveSettingImmediate('quietFrom', this.value)">
-                  </div>
-                  <div class="form-group">
-                    <label>Quiet Until</label>
-                    <input type="time" id="quietUntil" value="06:00" onchange="saveSettingImmediate('quietUntil', this.value)">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="settings-card">
-              <div class="sc-header">Harvest Reminders</div>
-              <div class="sc-body">
-                <div class="setting-row">
-                  <div class="sr-info">
-                    <div class="sr-label">Days Before Harvest to Remind</div>
-                    <div class="sr-sub">Get notified this many days before expected harvest date</div>
-                  </div>
-                  <div class="threshold-input-wrap">
-                    <input type="number" class="threshold-input" id="harvestReminderDays" value="7" min="1" max="30">
-                    <span class="threshold-unit">days</span>
-                  </div>
-                </div>
-                <button class="settings-save-btn" onclick="saveThresholdSettings()">
-                  <span class="material-symbols-outlined">save</span> Save
-                </button>
-              </div>
-            </div>
+            Smart Notifications
           </div>
+
+
+          <!-- WEATHER ALERTS -->
+          <div class="settings-card notification-settings-card">
+
+            <div class="sc-header settings-card-heading">
+
+              <div class="settings-card-heading-icon">
+                <span class="material-symbols-outlined">
+                  thunderstorm
+                </span>
+              </div>
+
+              <div class="settings-card-heading-copy">
+
+              <strong>
+                Weather Alerts
+              </strong>
+
+              <span>
+                Farm conditions that need your attention
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="sc-body notification-settings-body">
+
+            <div class="setting-row notification-setting-row">
+
+              <div class="notification-setting-info">
+
+                <div class="notification-setting-icon heat">
+                  <span class="material-symbols-outlined">
+                    thermostat
+                  </span>
+                </div>
+
+                <div class="sr-info">
+
+                  <div class="sr-label">
+                    Temperature Alert
+                  </div>
+
+                  <div class="sr-sub">
+                    Notify when farm temperature rises above your selected threshold.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="threshold-input-wrap">
+
+                <input
+                  type="number"
+                  class="threshold-input"
+                  id="thresholdTemp"
+                  value="35"
+                  min="20"
+                  max="45"
+                >
+
+                <span
+                  class="threshold-unit"
+                  id="thresholdTempUnit"
+                >
+                  °C
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="setting-row notification-setting-row">
+
+              <div class="notification-setting-info">
+
+                <div class="notification-setting-icon rain">
+                  <span class="material-symbols-outlined">
+                    rainy
+                  </span>
+                </div>
+
+                <div class="sr-info">
+
+                  <div class="sr-label">
+                    Heavy Rain Alert
+                  </div>
+
+                  <div class="sr-sub">
+                    Notify when FarmCast detects heavy-rain conditions for your farm location.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <label class="toggle-switch">
+
+                <input
+                  type="checkbox"
+                  id="toggleRainAlert"
+                  checked
+                  onchange="saveSettingImmediate(
+                    'rainAlert',
+                    this.checked
+                  )"
+                >
+
+                <span class="toggle-slider"></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="setting-row notification-setting-row">
+
+              <div class="notification-setting-info">
+
+                <div class="notification-setting-icon wind">
+                  <span class="material-symbols-outlined">
+                    air
+                  </span>
+                </div>
+
+                <div class="sr-info">
+
+                  <div class="sr-label">
+                    High Wind Alert
+                  </div>
+
+                  <div class="sr-sub">
+                    Notify when wind speed exceeds 40 kph.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <label class="toggle-switch">
+
+                <input
+                  type="checkbox"
+                  id="toggleWindAlert"
+                  checked
+                  onchange="saveSettingImmediate(
+                    'windAlert',
+                    this.checked
+                  )"
+                >
+
+                <span class="toggle-slider"></span>
+
+              </label>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="settings-save-btn"
+              onclick="saveThresholdSettings()"
+            >
+              <span class="material-symbols-outlined">
+                save
+              </span>
+
+              Save Alert Settings
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- DAILY BRIEFING -->
+        <div class="settings-card notification-settings-card">
+
+          <div class="sc-header settings-card-heading">
+
+            <div class="settings-card-heading-icon">
+              <span class="material-symbols-outlined">
+                wb_twilight
+              </span>
+            </div>
+
+            <div class="settings-card-heading-copy">
+
+              <strong>
+                Daily Weather Briefing
+              </strong>
+
+              <span>
+                A daily snapshot of your farm weather
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="sc-body notification-settings-body">
+
+            <div class="setting-row notification-setting-row">
+
+              <div class="notification-setting-info">
+
+                <div class="notification-setting-icon briefing">
+                  <span class="material-symbols-outlined">
+                    notifications_active
+                  </span>
+                </div>
+
+                <div class="sr-info">
+
+                  <div class="sr-label">
+                    Enable Daily Briefing
+                  </div>
+
+                  <div class="sr-sub">
+                    Create one weather-summary notification each day after your selected time.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <label class="toggle-switch">
+
+                <input
+                  type="checkbox"
+                  id="toggleDailyBriefing"
+                  checked
+                  onchange="saveSettingImmediate(
+                    'dailyBriefing',
+                    this.checked
+                  )"
+                >
+
+                <span class="toggle-slider"></span>
+
+              </label>
+
+            </div>
+
+
+            <div class="setting-row notification-setting-row">
+
+              <div class="notification-setting-info">
+
+                <div class="notification-setting-icon briefing">
+                  <span class="material-symbols-outlined">
+                    schedule
+                  </span>
+                </div>
+
+                <div class="sr-info">
+
+                  <div class="sr-label">
+                    Briefing Time
+                  </div>
+
+                  <div class="sr-sub">
+                    Earliest time FarmCast can create today's weather briefing.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <input
+                type="time"
+                class="setting-time-input"
+                id="settingBriefingTime"
+                value="05:00"
+                onchange="saveSettingImmediate(
+                  'briefingTime',
+                  this.value
+                )"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- QUIET HOURS -->
+        <div class="settings-card notification-settings-card">
+
+          <div class="sc-header settings-card-heading">
+
+            <div class="settings-card-heading-icon">
+              <span class="material-symbols-outlined">
+                bedtime
+              </span>
+            </div>
+
+            <div class="settings-card-heading-copy">
+
+              <strong>
+                Quiet Hours
+              </strong>
+
+              <span>
+                Control when FarmCast should stay quiet
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="sc-body notification-settings-body">
+
+            <div class="setting-row notification-setting-row">
+
+              <div class="notification-setting-info">
+
+                <div class="notification-setting-icon quiet">
+                  <span class="material-symbols-outlined">
+                    do_not_disturb_on
+                  </span>
+                </div>
+
+                <div class="sr-info">
+
+                  <div class="sr-label">
+                    Enable Quiet Hours
+                  </div>
+
+                  <div class="sr-sub">
+                    Suppress FarmCast notifications during your chosen rest period.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <label class="toggle-switch">
+
+              <input
+                type="checkbox"
+                id="toggleQuietHours"
+                checked
+                onchange="saveSettingImmediate(
+                  'quietHours',
+                  this.checked
+                )"
+              >
+
+              <span class="toggle-slider"></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="notification-time-grid">
+
+            <div class="form-group">
+
+              <label>
+                Quiet From
+              </label>
+
+              <input
+                type="time"
+                id="quietFrom"
+                value="21:00"
+                onchange="saveSettingImmediate(
+                  'quietFrom',
+                  this.value
+                )"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Quiet Until
+              </label>
+
+              <input
+                type="time"
+                id="quietUntil"
+                value="06:00"
+                onchange="saveSettingImmediate(
+                  'quietUntil',
+                  this.value
+                )"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- HARVEST REMINDERS -->
+      <div class="settings-card notification-settings-card">
+
+        <div class="sc-header settings-card-heading">
+
+          <div class="settings-card-heading-icon farm">
+            <span class="material-symbols-outlined">
+              agriculture
+            </span>
+          </div>
+
+          <div class="settings-card-heading-copy">
+
+            <strong>
+              Harvest Reminders
+            </strong>
+
+            <span>
+              Prepare before crops reach their expected harvest date
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="sc-body notification-settings-body">
+
+          <div class="setting-row notification-setting-row">
+
+            <div class="notification-setting-info">
+
+              <div class="notification-setting-icon harvest">
+                <span class="material-symbols-outlined">
+                  event_upcoming
+                </span>
+              </div>
+
+              <div class="sr-info">
+
+              <div class="sr-label">
+                Days Before Harvest
+              </div>
+
+              <div class="sr-sub">
+                Remind you this many days before a saved crop's expected harvest date.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="threshold-input-wrap">
+
+            <input
+              type="number"
+              class="threshold-input"
+              id="harvestReminderDays"
+              value="7"
+              min="1"
+              max="30"
+            >
+
+            <span class="threshold-unit">
+              days
+            </span>
+
+          </div>
+
+        </div>
+
+ 
+        <button
+          type="button"
+          class="settings-save-btn"
+          onclick="saveThresholdSettings()"
+        >
+          <span class="material-symbols-outlined">
+            save
+          </span>
+  
+          Save Reminder
+        </button>
+  
+      </div>
+
+    </div>
+
+  </div>
 
           <!-- ─── 4. PLANTING & CROP PREFERENCES ─── -->
           <div class="settings-section" id="s-crops">

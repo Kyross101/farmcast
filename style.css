@@ -4927,6 +4927,169 @@ span {
 .theme-opt.active.dark  { background: rgba(13,17,23,0.8);  color: var(--blue);  border-color: rgba(88,166,255,0.4); }
 .theme-opt.active.light { background: rgba(255,255,255,0.9);color: var(--amber); border-color: rgba(227,160,8,0.4); }
 
+
+/* ═══════════════════════════════════════════════
+   SETTINGS — SMART NOTIFICATIONS
+═══════════════════════════════════════════════ */
+
+.notification-settings-body {
+  gap: 10px;
+}
+
+
+.notification-setting-row {
+  padding:
+    13px
+    14px;
+
+  background:
+    var(--bg3);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    11px;
+}
+
+
+.notification-setting-info {
+  min-width: 0;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    11px;
+
+  flex:
+    1;
+}
+
+
+.notification-setting-icon {
+  width:
+    36px;
+
+  height:
+    36px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  flex-shrink:
+    0;
+
+  border-radius:
+    9px;
+
+  color:
+    var(--green);
+
+  background:
+    var(--green-dim);
+}
+
+
+.notification-setting-icon
+.material-symbols-outlined {
+  font-size:
+    19px;
+}
+
+
+.notification-setting-icon.heat {
+  color:
+    var(--amber);
+
+  background:
+    var(--amber-dim);
+}
+
+
+.notification-setting-icon.rain {
+  color:
+    var(--blue);
+
+  background:
+    rgba(88,166,255,.12);
+}
+
+
+.notification-setting-icon.wind {
+  color:
+    var(--blue);
+
+  background:
+    rgba(88,166,255,.12);
+}
+
+
+.notification-setting-icon.briefing {
+  color:
+    var(--green);
+
+  background:
+    var(--green-dim);
+}
+
+
+.notification-setting-icon.quiet {
+  color:
+    var(--text-muted);
+
+  background:
+    rgba(125,133,144,.12);
+}
+
+
+.notification-setting-icon.harvest {
+  color:
+    var(--green);
+
+  background:
+    var(--green-dim);
+}
+
+
+.notification-time-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap:
+    12px;
+
+  padding:
+    13px
+    14px;
+
+  background:
+    rgba(255,255,255,.015);
+
+  border:
+    1px dashed
+    var(--border2);
+
+  border-radius:
+    11px;
+}
+
 /* Threshold input */
 .threshold-input-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .threshold-input {
@@ -5470,8 +5633,40 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 ═══════════════════════════════════════════════ */
 
 @media(max-width:640px) {
+  
+  /* Smart notifications */
+  .notification-setting-row {
+    padding:
+      12px;
+  }
 
-    /* Location settings */
+
+  .notification-setting-info {
+    width:
+      100%;
+
+    align-items:
+      flex-start;
+  }
+
+
+  .notification-time-grid {
+    grid-template-columns:
+      1fr;
+
+    padding:
+      12px;
+  }
+
+
+  .notification-setting-row
+  .toggle-switch {
+    align-self:
+      flex-end;
+  }
+
+
+  /* Location settings */
   .settings-location-method {
     padding: 13px;
   }
