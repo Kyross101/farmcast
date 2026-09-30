@@ -1577,15 +1577,11 @@ let currentMapWeatherPopup = null;
 const OWM_LAYERS = {
   precipitation_new: { name: 'Precipitation', legend: 'precip-gradient',  labels: ['None','Heavy'] },
   temp_new:          { name: 'Temperature',   legend: 'temp-gradient',    labels: ['Cold','Hot'] },
+  
   wind_new: {
     name: 'Wind Speed',
     legend: 'wind-gradient',
-    labels: [
-      'Calm<br><small>0–5 kph</small>',
-      'Light<br><small>6–19 kph</small>',
-      'Moderate<br><small>20–38 kph</small>',
-      'Strong<br><small>39+ kph</small>'
-    ]
+    labels: []
   },
 
   clouds_new:        { name: 'Cloud Cover',   legend: 'cloud-gradient',   labels: ['Clear','Overcast'] },
@@ -2022,7 +2018,95 @@ async function fetchMapPointWeather(
   }
 
 }
- 
+
+function getWindLegendLabels() {
+
+  if (
+    appSettings.windUnit ===
+    'mph'
+  ) {
+
+    return [
+      'Calm<br><small>0–3.1 mph</small>',
+      'Light<br><small>3.7–11.8 mph</small>',
+      'Moderate<br><small>12.4–23.6 mph</small>',
+      'Strong<br><small>24.2+ mph</small>'
+    ];
+
+  }
+
+
+  return [
+    'Calm<br><small>0–5 kph</small>',
+    'Light<br><small>6–19 kph</small>',
+    'Moderate<br><small>20–38 kph</small>',
+    'Strong<br><small>39+ kph</small>'
+  ];
+
+}
+
+
+function renderMapLegend(
+  layerName
+) {
+
+  const info =
+    OWM_LAYERS[layerName];
+
+
+  if (!info) {
+    return;
+  }
+
+
+  const legendTitle =
+    document.getElementById(
+      'mapLegendTitle'
+    );
+
+
+  const bar =
+    document.getElementById(
+      'mapLegendBar'
+    );
+
+
+  if (legendTitle) {
+
+    legendTitle.textContent =
+      info.name;
+
+  }
+
+
+  if (!bar) {
+    return;
+  }
+
+
+  const labels =
+    layerName === 'wind_new'
+      ? getWindLegendLabels()
+      : info.labels;
+
+
+  bar.innerHTML = `
+    <div
+      class="legend-gradient ${info.legend}"
+    ></div>
+
+    <div class="legend-labels">
+      ${labels
+        .map(
+          label =>
+            `<span>${label}</span>`
+        )
+        .join('')}
+    </div>
+  `;
+
+}
+
 function setMapLayer(el, layerName) {
 
   stopRadarAnimation();
@@ -2088,41 +2172,20 @@ function setMapLayer(el, layerName) {
   ).addTo(weatherMap);
  
   // Update legend
-  const info = OWM_LAYERS[layerName];
+  const info =
+    OWM_LAYERS[layerName];
 
-  const legendTitle =
-    document.getElementById(
-      'mapLegendTitle'
-    );
 
-  const bar =
-    document.getElementById(
-      'mapLegendBar'
-    );
+  renderMapLegend(
+    layerName
+  );
 
-  if (legendTitle) {
-    legendTitle.textContent =
-      info.name;
-  }
 
-  if (bar) {
-    bar.innerHTML = `
-      <div
-        class="legend-gradient ${info.legend}"
-      ></div>
+  toast(
+    `Showing ${info.name} layer`,
+    'ok'
+  );
 
-      <div class="legend-labels">
-        ${info.labels
-          .map(
-            label =>
-              `<span>${label}</span>`
-          )
-          .join('')}
-      </div>
-    `;
-  }
- 
-  toast(`Showing ${info.name} layer`, 'ok');
 }
  
 function setMapStyle(el, style) {
@@ -14122,6 +14185,18 @@ function setWindUnit(
 
 
   refreshMapWeatherUnits();
+
+
+  if (
+    currentMapLayerName ===
+    'wind_new'
+  ) {
+
+    renderMapLegend(
+      'wind_new'
+    );
+
+  }
 
 
   toast(
