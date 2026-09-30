@@ -1107,6 +1107,83 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 
 }
 
+/* Compact desktop sidebar for short laptop screens */
+@media (max-height:650px) and (min-width:769px) {
+
+  .sidebar {
+    padding:
+      10px
+      10px;
+  }
+
+  .sidebar-logo {
+    margin-bottom:
+      12px;
+  }
+
+  .nav-label {
+    margin-bottom:
+      4px;
+
+    font-size:
+      0.6rem;
+  }
+
+  .nav-item {
+    padding:
+      7px
+      10px;
+
+    margin-bottom:
+      1px;
+
+    font-size:
+      0.84rem;
+  }
+
+  .nav-item
+  .material-symbols-outlined {
+    font-size:
+      18px;
+  }
+
+  .nav-section {
+    margin-top:
+      8px;
+
+    margin-bottom:
+      4px;
+  }
+
+  .sidebar-user {
+    padding:
+      7px
+      9px;
+  }
+
+  .user-avatar {
+    width:
+      30px;
+
+    height:
+      30px;
+
+    font-size:
+      14px;
+  }
+
+  .user-name {
+    font-size:
+      0.78rem;
+  }
+
+  .user-farm {
+    font-size:
+      0.66rem;
+  }
+
+}
+
 @media(max-width:768px){
 
   .sidebar{
