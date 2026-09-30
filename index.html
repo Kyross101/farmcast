@@ -2492,37 +2492,207 @@
               <span class="material-symbols-outlined">location_on</span> Location & Environment
             </div>
 
-            <div class="settings-card">
-              <div class="sc-header">Farm Location</div>
-              <div class="sc-body">
-                <div class="form-group" style="margin-bottom:12px">
-                  <label>Search City / Municipality</label>
-                  <div style="display:flex;gap:8px">
-                    <input type="text" id="settingLocationSearch" placeholder="e.g. San Miguel, Bulacan" style="flex:1">
-                    <button class="settings-action-btn" onclick="applyLocationFromSearch()">
-                      <span class="material-symbols-outlined">search</span> Apply
-                    </button>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>Latitude</label>
-                    <input type="number" id="settingLat" placeholder="e.g. 14.99" step="0.0001">
-                  </div>
-                  <div class="form-group">
-                    <label>Longitude</label>
-                    <input type="number" id="settingLon" placeholder="e.g. 120.93" step="0.0001">
-                  </div>
-                </div>
-                <button class="settings-action-btn" onclick="getGPSLocation()" style="margin-bottom:12px">
-                  <span class="material-symbols-outlined">my_location</span> Use My GPS Location
-                </button>
-                <div class="location-status" id="locationStatus"></div>
-                <button class="settings-save-btn" onclick="saveLocationSettings()">
-                  <span class="material-symbols-outlined">save</span> Save Location
-                </button>
+            <div class="settings-card settings-location-card">
+
+              <div class="sc-header settings-card-heading">
+
+               <div class="settings-card-heading-icon farm">
+                 <span class="material-symbols-outlined">
+                   location_on
+                 </span>
+               </div>
+
+               <div class="settings-card-heading-copy">
+                 <strong>Farm Location</strong>
+
+                 <span>
+                   Used for local weather and location-based FarmCast features
+                 </span>
+               </div>
+
               </div>
+
+
+              <div class="sc-body settings-location-body">
+
+                <div class="settings-location-method">
+
+                  <div class="settings-location-method-icon">
+                    <span class="material-symbols-outlined">
+                      search
+                    </span>
+                  </div>
+
+                  <div class="settings-location-method-content">
+
+                    <div class="settings-location-method-title">
+                      Search your farm area
+                    </div>
+
+                    <div class="settings-location-method-sub">
+                      Enter your city or municipality to use it as the main FarmCast location.
+                    </div>
+
+                    <div class="settings-location-search">
+
+                    <input
+                      type="text"
+                      id="settingLocationSearch"
+                      placeholder="e.g. San Miguel, Bulacan"
+                    >
+
+                    <button
+                      type="button"
+                      class="settings-action-btn"
+                      onclick="applyLocationFromSearch()"
+                    >
+                      <span class="material-symbols-outlined">
+                        search
+                      </span>
+
+                      Apply
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="settings-location-divider">
+
+                <span>
+                  OR
+                </span>
+
+              </div>
+
+
+              <div class="settings-location-method">
+
+                <div class="settings-location-method-icon gps">
+                  <span class="material-symbols-outlined">
+                    my_location
+                  </span>
+                </div>
+
+                <div class="settings-location-method-content">
+
+                  <div class="settings-location-method-title">
+                    Use this device's location
+                  </div>
+
+                  <div class="settings-location-method-sub">
+                    Let FarmCast detect your current farm area using your device's GPS.
+                  </div>
+
+                  <button
+                    type="button"
+                    class="settings-action-btn settings-location-gps-btn"
+                    onclick="getGPSLocation()"
+                  >
+                    <span class="material-symbols-outlined">
+                      my_location
+                    </span>
+
+                    Use Current GPS
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <div class="settings-location-coordinates">
+
+                <div class="settings-location-coordinates-head">
+
+                  <div>
+                    <strong>
+                      Location Coordinates
+                    </strong>
+
+                    <span>
+                      Advanced location details
+                    </span>
+                  </div>
+
+                  <span class="material-symbols-outlined">
+                    map
+                  </span>
+
+                </div>
+
+
+                <div class="form-row">
+
+                  <div class="form-group">
+
+                    <label>
+                      Latitude
+                    </label>
+
+                    <input
+                      type="number"
+                      id="settingLat"
+                      placeholder="e.g. 14.9900"
+                      step="0.0001"
+                    >
+
+                  </div>
+                
+
+
+                  <div class="form-group">
+
+                    <label>
+                      Longitude
+                    </label>
+
+                    <input
+                      type="number"
+                      id="settingLon"
+                      placeholder="e.g. 120.9300"
+                      step="0.0001"
+                    >
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div
+                class="location-status"
+                id="locationStatus"
+              ></div>
+
+
+              <div class="settings-location-actions">
+
+                <button
+                  type="button"
+                  class="settings-save-btn"
+                  onclick="saveLocationSettings()"
+                >
+                  <span class="material-symbols-outlined">
+                    save
+                  </span>
+
+                  Save Location
+                </button>
+
+                <span class="settings-location-save-note">
+                  Saved location is kept on this device.
+                </span>
+
+              </div>
+
             </div>
+
+          </div>
 
             <div class="settings-card">
               <div class="sc-header">Default Dashboard View</div>

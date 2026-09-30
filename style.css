@@ -5005,6 +5005,301 @@ span {
 .asr-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 .asr-val   { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-top: 2px; }
 
+/* ═══════════════════════════════════════════════
+   SETTINGS — LOCATION & ENVIRONMENT
+═══════════════════════════════════════════════ */
+
+.settings-location-body {
+  gap: 16px;
+}
+
+
+.settings-location-method {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 14px;
+
+  padding: 16px;
+
+  background:
+    var(--bg3);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    12px;
+}
+
+
+.settings-location-method-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(88,166,255,.12);
+
+  color:
+    var(--blue);
+}
+
+
+.settings-location-method-icon.gps {
+  background:
+    var(--green-dim);
+
+  color:
+    var(--green);
+}
+
+
+.settings-location-method-icon
+.material-symbols-outlined {
+  font-size:
+    20px;
+}
+
+
+.settings-location-method-content {
+  min-width: 0;
+  flex: 1;
+}
+
+
+.settings-location-method-title {
+  color:
+    var(--text);
+
+  font-size:
+    .88rem;
+
+  font-weight:
+    700;
+}
+
+
+.settings-location-method-sub {
+  margin-top:
+    3px;
+
+  color:
+    var(--text-muted);
+
+  font-size:
+    .72rem;
+
+  line-height:
+    1.45;
+}
+
+
+.settings-location-search {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+
+  gap:
+    8px;
+
+  margin-top:
+    12px;
+}
+
+
+.settings-location-search input {
+  width: 100%;
+  min-width: 0;
+
+  padding:
+    9px
+    12px;
+
+  background:
+    var(--bg);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    var(--r-sm);
+
+  color:
+    var(--text);
+
+  font-family:
+    'DM Sans',
+    sans-serif;
+
+  font-size:
+    .88rem;
+
+  outline:
+    none;
+
+  transition:
+    border-color .2s,
+    box-shadow .2s;
+}
+
+
+.settings-location-search input:focus {
+  border-color:
+    var(--green);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(63,185,80,.1);
+}
+
+
+.settings-location-gps-btn {
+  margin-top:
+    12px;
+}
+
+
+.settings-location-divider {
+  display: flex;
+  align-items: center;
+
+  gap:
+    12px;
+
+  color:
+    var(--text-dim);
+
+  font-size:
+    .62rem;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    1px;
+}
+
+
+.settings-location-divider::before,
+.settings-location-divider::after {
+  content: '';
+
+  height:
+    1px;
+
+  flex:
+    1;
+
+  background:
+    var(--border);
+}
+
+
+.settings-location-coordinates {
+  padding:
+    14px
+    16px;
+
+  background:
+    rgba(255,255,255,.015);
+
+  border:
+    1px dashed
+    var(--border2);
+
+  border-radius:
+    12px;
+}
+
+
+.settings-location-coordinates-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap:
+    12px;
+
+  margin-bottom:
+    12px;
+}
+
+
+.settings-location-coordinates-head
+strong,
+.settings-location-coordinates-head
+span {
+  display:
+    block;
+}
+
+
+.settings-location-coordinates-head
+strong {
+  color:
+    var(--text);
+
+  font-size:
+    .8rem;
+}
+
+
+.settings-location-coordinates-head
+div > span {
+  margin-top:
+    2px;
+
+  color:
+    var(--text-muted);
+
+  font-size:
+    .67rem;
+}
+
+
+.settings-location-coordinates-head
+> .material-symbols-outlined {
+  color:
+    var(--text-muted);
+
+  font-size:
+    20px;
+}
+
+
+.settings-location-actions {
+  display: flex;
+  align-items: center;
+
+  gap:
+    12px;
+}
+
+
+.settings-location-save-note {
+  color:
+    var(--text-muted);
+
+  font-size:
+    .7rem;
+
+  line-height:
+    1.4;
+}
+
 /* Location status */
 .location-status {
   font-size: 0.82rem; padding: 8px 12px;
@@ -5175,6 +5470,44 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 ═══════════════════════════════════════════════ */
 
 @media(max-width:640px) {
+
+    /* Location settings */
+  .settings-location-method {
+    padding: 13px;
+  }
+
+
+  .settings-location-search {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .settings-location-search
+  .settings-action-btn {
+    width: 100%;
+  }
+
+
+  .settings-location-actions {
+    flex-direction:
+      column;
+
+    align-items:
+      stretch;
+  }
+
+
+  .settings-location-save-note {
+    text-align:
+      center;
+  }
+
+
+  .settings-location-coordinates {
+    padding:
+      13px;
+  }
 
   .settings-profile-hero {
     padding:
