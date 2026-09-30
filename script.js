@@ -12943,11 +12943,71 @@ function saveLocationSettings() {
 
 
 function saveThresholdSettings() {
-  appSettings.thresholdTemp        = parseFloat(document.getElementById('thresholdTemp').value) || 35;
-  appSettings.harvestReminderDays  = parseInt(document.getElementById('harvestReminderDays').value) || 7;
-  lsSave(LS_SETTINGS, appSettings);
-  toast('Alert thresholds saved!', 'ok');
-  addNotification('system', '⚙️ Settings Updated', 'Weather alert thresholds have been saved.');
+
+  const tempInput =
+    document.getElementById(
+      'thresholdTemp'
+    );
+
+
+  const enteredTemp =
+    parseFloat(
+      tempInput?.value
+    );
+
+
+  if (
+    Number.isFinite(
+      enteredTemp
+    )
+  ) {
+
+    /*
+     * Keep the saved threshold
+     * internally in Celsius.
+     */
+    appSettings.thresholdTemp =
+      appSettings.tempUnit === 'F'
+        ? (
+            (
+              enteredTemp -
+              32
+            ) *
+            5 /
+            9
+          )
+        : enteredTemp;
+
+  }
+
+
+  appSettings.harvestReminderDays =
+    parseInt(
+      document.getElementById(
+        'harvestReminderDays'
+      ).value
+    ) ||
+    7;
+
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  toast(
+    'Alert thresholds saved!',
+    'ok'
+  );
+
+
+  addNotification(
+    'system',
+    '⚙️ Settings Updated',
+    'Weather alert thresholds have been saved.'
+  );
+
 }
 
 // ═══ CROP PREFERENCES ═══
@@ -13054,17 +13114,122 @@ function applyTheme(theme) {
   }
 }
 
-function setTempUnit(el, unit) {
-  document.querySelectorAll('#tempUnitSelector .unit-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  appSettings.tempUnit = unit;
-  lsSave(LS_SETTINGS, appSettings);
-  // Update threshold input label
-  const lbl = document.getElementById('thresholdTempUnit');
-  if (lbl) lbl.textContent = unit === 'F' ? '°F' : '°C';
-  // Re-render weather if data available
-  if (currentWeather) displayWeatherData(currentWeather);
-  toast(`Temperature unit set to ${unit === 'F' ? '°F Fahrenheit' : '°C Celsius'}`, 'ok');
+function setTempUnit(
+  el,
+  unit
+) {
+
+  document
+    .querySelectorAll(
+      '#tempUnitSelector .unit-btn'
+    )
+    .forEach(button =>
+      button.classList.remove(
+        'active'
+      )
+    );
+
+
+  el.classList.add(
+    'active'
+  );
+
+
+  appSettings.tempUnit =
+    unit;
+
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  const thresholdInput =
+    document.getElementById(
+      'thresholdTemp'
+    );
+
+  const thresholdLabel =
+    document.getElementById(
+      'thresholdTempUnit'
+    );
+
+
+  if (thresholdLabel) {
+
+    thresholdLabel.textContent =
+      unit === 'F'
+        ? '°F'
+        : '°C';
+
+  }
+
+
+  if (thresholdInput) {
+
+    const thresholdC =
+      Number(
+        appSettings.thresholdTemp
+      );
+
+
+    if (unit === 'F') {
+
+      thresholdInput.value =
+        Math.round(
+          (
+            thresholdC *
+            9 /
+            5
+          ) +
+          32
+        );
+
+      thresholdInput.min =
+        '68';
+
+      thresholdInput.max =
+        '113';
+
+    } else {
+
+      thresholdInput.value =
+        Math.round(
+          thresholdC *
+          10
+        ) /
+        10;
+
+      thresholdInput.min =
+        '20';
+
+      thresholdInput.max =
+        '45';
+
+    }
+
+  }
+
+
+  if (currentWeather) {
+
+    displayWeatherData(
+      currentWeather
+    );
+
+  }
+
+
+  toast(
+    `Temperature unit set to ${
+      unit === 'F'
+        ? '°F Fahrenheit'
+        : '°C Celsius'
+    }`,
+    'ok'
+  );
+
 }
 
 function setWindUnit(el, unit) {
