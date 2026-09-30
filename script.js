@@ -13766,6 +13766,25 @@ function setTempUnit(
   }
 
 
+  /*
+   * Refresh the cached 7-day forecast
+   * and Smart Planting Calendar too,
+   * so °C / °F changes appear
+   * immediately without another API call.
+   */
+  if (
+    lastPlantingForecastData &&
+    lastPlantingCurrentData
+  ) {
+
+    renderForecastAndCalendar(
+      lastPlantingForecastData,
+      lastPlantingCurrentData
+    );
+
+  }
+
+
   toast(
     `Temperature unit set to ${
       unit === 'F'
