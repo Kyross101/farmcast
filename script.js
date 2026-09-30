@@ -13336,8 +13336,60 @@ function updateSettingsFormValues() {
   set('settingLat', s.lat);
   set('settingLon', s.lon);
   set('settingDefaultPage', s.defaultPage);
-  set('thresholdTemp', s.thresholdTemp);
-  set('harvestReminderDays', s.harvestReminderDays);
+
+  const thresholdForDisplay =
+    s.tempUnit === 'F'
+      ? Math.round(
+          (
+            Number(
+              s.thresholdTemp
+            ) *
+            9 /
+            5
+          ) +
+          32
+        )
+      : Math.round(
+          Number(
+            s.thresholdTemp
+          ) *
+          10
+        ) /
+        10;
+
+
+  set(
+    'thresholdTemp',
+    thresholdForDisplay
+  );
+
+
+  const thresholdInput =
+    document.getElementById(
+      'thresholdTemp'
+    );
+
+
+  if (thresholdInput) {
+
+    thresholdInput.min =
+      s.tempUnit === 'F'
+        ? '68'
+        : '20';
+
+    thresholdInput.max =
+      s.tempUnit === 'F'
+        ? '113'
+        : '45';
+
+  }
+
+
+  set(
+    'harvestReminderDays',
+    s.harvestReminderDays
+  );
+
   set('settingBriefingTime', s.briefingTime);
   set('quietFrom', s.quietFrom);
   set('quietUntil', s.quietUntil);
@@ -13998,19 +14050,42 @@ function checkWeatherAlerts(data) {
   const windKph = data.wind.speed * 3.6;
   const isRain = desc.includes('rain') || desc.includes('drizzle');
   const isHeavyRain = isRain && data.main.humidity > 85;
-  const threshold = appSettings.thresholdTemp;
+
+  const threshold =
+    Number(
+      appSettings.thresholdTemp
+    );
+
 
   // Temperature alert
-  if (temp > threshold && appSettings.tempUnit === 'C') {
-    const title = '🌡️ FarmCast Heat Risk';
+  if (
+    Number.isFinite(
+      threshold
+    ) &&
+    temp >
+      threshold
+  ) {
 
-    if (!hasRecentNotification('weather', title, 6)) {
+    const title =
+      '🌡️ FarmCast Heat Risk';
+
+
+    if (
+      !hasRecentNotification(
+        'weather',
+        title,
+        6
+      )
+    ) {
+  
       addNotification(
         'weather',
         title,
-        `Temperature in ${data.name} is ${displayTemp(temp)}, above your configured threshold of ${threshold}°C. Monitor crops for heat stress and review irrigation needs.`
+        `Temperature in ${data.name} is ${displayTemp(temp)}, above your configured threshold of ${displayTemp(threshold)}. Monitor crops for heat stress and review irrigation needs.`
       );
+ 
     }
+
   }
 
   // Heavy rain
