@@ -14845,30 +14845,109 @@ function updateSettingsFormValues() {
 // NOTIFICATIONS SYSTEM — Real-time alerts
 // ═══════════════════════════════════════════════════════
 
-let notifications = lsLoad(LS_NOTIFS, []);
-let nextNotifId   = lsLoad(LS_NOTIF_ID, 1);
-let notifFilterCurrent = 'all';
+const hasStoredNotifications =
+  localStorage.getItem(
+    LS_NOTIFS
+  ) !== null;
 
-// Sample bootstrap notifications on first run
-if (notifications.length === 0) {
+
+let notifications =
+  lsLoad(
+    LS_NOTIFS,
+    []
+  );
+
+
+let nextNotifId =
+  lsLoad(
+    LS_NOTIF_ID,
+    1
+  );
+
+
+let notifFilterCurrent =
+  'all';
+
+
+/*
+ * Add welcome/sample notifications
+ * only on the true first run.
+ *
+ * An intentionally saved empty array
+ * means the farmer cleared notifications
+ * or reset the workspace, so do not
+ * recreate the samples.
+ */
+if (
+  !hasStoredNotifications
+) {
+
   notifications = [
-    { id:1, type:'system',  icon:'🌾', title:'Welcome to FarmCast!', body:'Your smart farm management app is ready. Set up your profile in Settings.', time: new Date(Date.now()-3600000).toISOString(), read:false },
-    { id:2, type:'harvest', icon:'🌾', title:'Harvest Reminder: Pechay', body:'Pechay at Greenhouse 1 is due for harvest in 3 days.', time: new Date(Date.now()-7200000).toISOString(), read:false },
-    
+
     {
-      id:3,
-      type:'pest',
-      icon:'🦗',
-      title:'Pest Monitoring Reminder',
-      body:'Review Pest Alerts for crops saved in My Crops and inspect plants for visible signs before recording a pest sighting.',
-      time:new Date(Date.now()-10800000).toISOString(),
-      read:true
+      id: 1,
+      type: 'system',
+      title: 'Welcome to FarmCast!',
+      body:
+        'Your smart farm management app is ready. Set up your profile in Settings.',
+      time:
+        new Date(
+          Date.now() -
+          3600000
+        ).toISOString(),
+      read: false
     },
 
+
+    {
+      id: 2,
+      type: 'harvest',
+      title:
+        'Harvest Reminder: Pechay',
+      body:
+        'Pechay at Greenhouse 1 is due for harvest in 3 days.',
+      time:
+        new Date(
+          Date.now() -
+          7200000
+        ).toISOString(),
+      read: false
+    },
+
+
+    {
+      id: 3,
+      type: 'pest',
+      title:
+        'Pest Monitoring Reminder',
+      body:
+        'Review Pest Alerts for crops saved in My Crops and inspect plants for visible signs before recording a pest sighting.',
+      time:
+        new Date(
+          Date.now() -
+          10800000
+        ).toISOString(),
+      read: true
+    }
+
   ];
-  lsSave(LS_NOTIFS, notifications);
-  lsSave(LS_NOTIF_ID, 4);
-  nextNotifId = 4;
+
+
+  lsSave(
+    LS_NOTIFS,
+    notifications
+  );
+
+
+  lsSave(
+    LS_NOTIF_ID,
+    4
+  );
+
+
+  nextNotifId =
+    4;
+
 }
 
 function getNotificationIconPath(
