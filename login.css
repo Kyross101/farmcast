@@ -6701,3 +6701,30 @@ and (max-height: 680px) {
   }
 
 }
+
+/* ═══════════════════════════════════════════════
+   SHORT DESKTOP / LAPTOP VIEWPORT FALLBACK
+   Prevent the auth card from being clipped on
+   low-height laptop screens.
+═══════════════════════════════════════════════ */
+
+@media screen
+and (min-width: 901px)
+and (max-height: 650px) {
+
+  body {
+    align-items: flex-start;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .container {
+    margin:
+      12px
+      auto;
+
+    flex-shrink: 0;
+  }
+
+}
