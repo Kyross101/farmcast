@@ -12419,6 +12419,102 @@ function updateFarmerAvatarUI() {
 
 }
 
+function getFarmRoleLabel(
+  role
+) {
+
+  const labels = {
+    owner:
+      'Farm Owner',
+
+    worker:
+      'Farm Worker',
+
+    tech:
+      'Agricultural Technician',
+
+    researcher:
+      'Researcher / Student'
+  };
+
+
+  return (
+    labels[role] ||
+    'Farm User'
+  );
+
+}
+
+
+function updateSettingsProfileSummary() {
+
+  const nameEl =
+    document.getElementById(
+      'profileSummaryName'
+    );
+
+  const metaEl =
+    document.getElementById(
+      'profileSummaryMeta'
+    );
+
+  const contactEl =
+    document.getElementById(
+      'profileSummaryContact'
+    );
+
+
+  if (nameEl) {
+
+    nameEl.textContent =
+      appSettings.name ||
+      'FarmCast User';
+
+  }
+
+
+  if (metaEl) {
+
+    const role =
+      getFarmRoleLabel(
+        appSettings.role
+      );
+
+    const farm =
+      appSettings.farmName ||
+      'Unnamed Farm';
+
+    const size =
+      appSettings.farmSize
+        ? ` · ${appSettings.farmSize} ha`
+        : '';
+
+
+    metaEl.textContent =
+      `${role} · ${farm}${size}`;
+
+  }
+
+
+  if (contactEl) {
+
+    const contact =
+      [
+        appSettings.email,
+        appSettings.phone
+      ]
+        .filter(Boolean)
+        .join(' · ');
+
+
+    contactEl.textContent =
+      contact ||
+      'Contact details not set';
+
+  }
+
+}
+
 function updateSidebarProfile() {
 
   const nameEl =
@@ -12444,6 +12540,7 @@ function updateSidebarProfile() {
 
 
   updateFarmerAvatarUI();
+  updateSettingsProfileSummary(); 
 
 }
 

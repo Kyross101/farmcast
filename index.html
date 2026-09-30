@@ -2160,141 +2160,298 @@
               <span class="material-symbols-outlined">person</span> Account & Profile
             </div>
 
-            <div class="settings-card">
-              <div class="sc-header">Profile Information</div>
-              <div class="sc-body">
+            <div class="settings-profile-hero">
 
-                <div class="profile-avatar-row">
+              <div class="settings-profile-identity">
+
+                <div
+                  class="profile-avatar"
+                  id="profileAvatarDisplay"
+                >
+                  <img
+                    id="profileAvatarImg"
+                    class="profile-avatar-img"
+                    src="assets/ui/avatar-farmer-green.svg"
+                    alt="Selected farmer avatar"
+                  >
+                </div>
+
+
+                <div class="profile-summary-copy">
+
+                  <div class="profile-summary-eyebrow">
+                    FARMCAST PROFILE
+                  </div>
 
                   <div
-                    class="profile-avatar"
-                    id="profileAvatarDisplay"
+                    class="profile-summary-name"
+                    id="profileSummaryName"
+                  >
+                    Juan Dela Cruz
+                  </div>
+
+                  <div
+                    class="profile-summary-meta"
+                    id="profileSummaryMeta"
+                  >
+                    Farm Owner · Bulacan Farm
+                  </div>
+
+                  <div
+                    class="profile-summary-contact"
+                    id="profileSummaryContact"
+                  >
+                    Contact details not set
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="profile-avatar-options">
+
+                <div class="avatar-label">
+                  Choose Farmer Avatar
+                </div>
+
+                <div
+                  class="avatar-picker"
+                  id="avatarPicker"
+                >
+
+                  <button
+                    type="button"
+                    class="avatar-option active"
+                    data-avatar="assets/ui/avatar-farmer-green.svg"
+                    onclick="setAvatar(this.dataset.avatar)"
+                    aria-label="Green farmer avatar"
                   >
                     <img
-                      id="profileAvatarImg"
-                      class="profile-avatar-img"
                       src="assets/ui/avatar-farmer-green.svg"
-                      alt="Selected farmer avatar"
+                      alt=""
                     >
-                  </div>
+                  </button>
 
-                  <div class="profile-avatar-options">
-
-                  <div class="avatar-label">
-                    Choose Farmer Avatar
-                  </div>
-
-                  <div
-                    class="avatar-picker"
-                    id="avatarPicker"
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="assets/ui/avatar-farmer-blue.svg"
+                    onclick="setAvatar(this.dataset.avatar)"
+                    aria-label="Blue farmer avatar"
                   >
-
-                    <button
-                      type="button"
-                      class="avatar-option active"
-                      data-avatar="assets/ui/avatar-farmer-green.svg"
-                      onclick="setAvatar(this.dataset.avatar)"
-                      aria-label="Green farmer avatar"
+                    <img
+                      src="assets/ui/avatar-farmer-blue.svg"
+                      alt=""
                     >
-                      <img src="assets/ui/avatar-farmer-green.svg" alt="">
-                    </button>
+                  </button>
 
-                    <button
-                      type="button"
-                      class="avatar-option"
-                      data-avatar="assets/ui/avatar-farmer-blue.svg"
-                      onclick="setAvatar(this.dataset.avatar)"
-                      aria-label="Blue farmer avatar"
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="assets/ui/avatar-farmer-woman.svg"
+                    onclick="setAvatar(this.dataset.avatar)"
+                    aria-label="Woman farmer avatar"
+                  >
+                    <img
+                      src="assets/ui/avatar-farmer-woman.svg"
+                      alt=""
                     >
-                      <img src="assets/ui/avatar-farmer-blue.svg" alt="">
-                    </button>
+                  </button>
 
-                    <button
-                      type="button"
-                      class="avatar-option"
-                      data-avatar="assets/ui/avatar-farmer-woman.svg"
-                      onclick="setAvatar(this.dataset.avatar)"
-                      aria-label="Woman farmer avatar"
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="assets/ui/avatar-farmer-young.svg"
+                    onclick="setAvatar(this.dataset.avatar)"
+                    aria-label="Young farmer avatar"
+                  >
+                    <img
+                      src="assets/ui/avatar-farmer-young.svg"
+                      alt=""
                     >
-                      <img src="assets/ui/avatar-farmer-woman.svg" alt="">
-                    </button>
+                  </button>
 
-                    <button
-                      type="button"
-                      class="avatar-option"
-                      data-avatar="assets/ui/avatar-farmer-young.svg"
-                      onclick="setAvatar(this.dataset.avatar)"
-                      aria-label="Young farmer avatar"
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="assets/ui/avatar-farmer-senior-man.svg"
+                    onclick="setAvatar(this.dataset.avatar)"
+                    aria-label="Senior man farmer avatar"
+                  >
+                    <img
+                      src="assets/ui/avatar-farmer-senior-man.svg"
+                      alt=""
                     >
-                      <img src="assets/ui/avatar-farmer-young.svg" alt="">
-                    </button>
+                  </button>
 
-                    <button
-                      type="button"
-                      class="avatar-option"
-                      data-avatar="assets/ui/avatar-farmer-senior-man.svg"
-                      onclick="setAvatar(this.dataset.avatar)"
-                      aria-label="Senior man farmer avatar"
+                  <button
+                    type="button"
+                    class="avatar-option"
+                    data-avatar="assets/ui/avatar-farmer-senior-woman.svg"
+                    onclick="setAvatar(this.dataset.avatar)"
+                    aria-label="Senior woman farmer avatar"
+                  >
+                    <img
+                      src="assets/ui/avatar-farmer-senior-woman.svg"
+                      alt=""
                     >
-                      <img src="assets/ui/avatar-farmer-senior-man.svg" alt="">
-                    </button>
-
-                    <button
-                      type="button"
-                      class="avatar-option"
-                      data-avatar="assets/ui/avatar-farmer-senior-woman.svg"
-                      onclick="setAvatar(this.dataset.avatar)"
-                      aria-label="Senior woman farmer avatar"
-                    >
-                      <img src="assets/ui/avatar-farmer-senior-woman.svg" alt="">
-                    </button>
-
-                  </div>
+                  </button>
 
                 </div>
 
               </div>
 
-                <div class="form-row">
+            </div>
+
+
+            <div class="settings-profile-grid">
+
+              <div class="settings-card settings-profile-card">
+
+                <div class="sc-header settings-card-heading">
+
+                  <div class="settings-card-heading-icon">
+                    <span class="material-symbols-outlined">
+                      badge
+                    </span>
+                  </div>
+
+                  <div class="settings-card-heading-copy">
+                    <strong>Personal Information</strong>
+                    <span>
+                      Your contact and account details
+                    </span>
+                  </div>
+
+                </div>
+
+
+                <div class="sc-body settings-profile-fields">
+
                   <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" id="settingName" placeholder="e.g. Juan Dela Cruz">
-                  </div>
-                  <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="settingEmail" placeholder="e.g. juan@farm.ph">
-                  </div>
+                    <input
+                      type="text"
+                      id="settingName"
+                      placeholder="e.g. Juan Dela Cruz"
+                    >
                 </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>Farm Name / Alias</label>
-                    <input type="text" id="settingFarmName" placeholder="e.g. Lupang Hinirang Farm">
-                  </div>
-                  <div class="form-group">
-                    <label>Role</label>
-                    <select id="settingRole">
-                      <option value="owner">Farm Owner</option>
-                      <option value="worker">Farm Worker</option>
-                      <option value="tech">Agricultural Technician</option>
-                      <option value="researcher">Researcher / Student</option>
-                    </select>
-                  </div>
+
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input
+                    type="email"
+                    id="settingEmail"
+                    placeholder="e.g. juan@farm.ph"
+                  >
                 </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>Farm Size (hectares)</label>
-                    <input type="number" id="settingFarmSize" placeholder="e.g. 3.2" step="0.1" min="0">
-                  </div>
-                  <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" id="settingPhone" placeholder="e.g. 09XX-XXX-XXXX">
-                  </div>
+
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input
+                    type="tel"
+                    id="settingPhone"
+                    placeholder="e.g. 09XX-XXX-XXXX"
+                  >
                 </div>
-                <button class="settings-save-btn" onclick="saveProfileSettings()">
-                  <span class="material-symbols-outlined">save</span> Save Profile
-                </button>
+
               </div>
+
             </div>
+
+
+            <div class="settings-card settings-profile-card">
+
+              <div class="sc-header settings-card-heading">
+
+                <div class="settings-card-heading-icon farm">
+                  <span class="material-symbols-outlined">
+                    agriculture
+                  </span>
+                </div>
+
+                <div class="settings-card-heading-copy">
+                  <strong>Farm Information</strong>
+                  <span>
+                    Basic information about your farm
+                  </span>
+                </div>
+
+              </div>
+
+
+              <div class="sc-body settings-profile-fields">
+
+                <div class="form-group">
+                  <label>Farm Name / Alias</label>
+                  <input
+                    type="text"
+                    id="settingFarmName"
+                    placeholder="e.g. Lupang Hinirang Farm"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label>Role</label>
+
+                  <select id="settingRole">
+                    <option value="owner">
+                      Farm Owner
+                    </option>
+
+                    <option value="worker">
+                      Farm Worker
+                    </option>
+
+                    <option value="tech">
+                      Agricultural Technician
+                    </option>
+
+                    <option value="researcher">
+                      Researcher / Student
+                    </option>
+                  </select>
+
+                </div>
+
+                <div class="form-group">
+                  <label>Farm Size (hectares)</label>
+
+                  <input
+                    type="number"
+                    id="settingFarmSize"
+                    placeholder="e.g. 3.2"
+                    step="0.1"
+                    min="0"
+                  >
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="settings-profile-actions">
+
+            <button
+              class="settings-save-btn"
+              onclick="saveProfileSettings()"
+            >
+              <span class="material-symbols-outlined">
+                save
+              </span>
+
+              Save Profile
+            </button>
+
+            <span class="settings-profile-save-note">
+              Saved profile details also update your FarmCast sidebar.
+            </span>
+
+          </div>
 
             <div class="settings-card">
               <div class="sc-header">Account Status</div>
