@@ -13663,7 +13663,157 @@ function escapeAdvisoryHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
+function checkDailyWeatherBriefing(
+  data
+) {
 
+  if (
+    !data ||
+    !appSettings.dailyBriefing
+  ) {
+    return;
+  }
+
+
+  const briefingTime =
+    appSettings.briefingTime ||
+    '05:00';
+
+
+  const [
+    briefingHour,
+    briefingMinute
+  ] =
+    briefingTime
+      .split(':')
+      .map(Number);
+
+
+  if (
+    !Number.isFinite(
+      briefingHour
+    ) ||
+    !Number.isFinite(
+      briefingMinute
+    )
+  ) {
+    return;
+  }
+
+
+  const now =
+    new Date();
+
+
+  const currentMinutes =
+    (
+      now.getHours() *
+      60
+    ) +
+    now.getMinutes();
+
+
+  const briefingMinutes =
+    (
+      briefingHour *
+      60
+    ) +
+    briefingMinute;
+
+
+  /*
+   * Do not send before the
+   * farmer's selected time.
+   */
+  if (
+    currentMinutes <
+    briefingMinutes
+  ) {
+    return;
+  }
+
+
+  const title =
+    'Daily Weather Briefing';
+
+
+  /*
+   * Only one briefing
+   * per calendar day.
+   */
+  const alreadySentToday =
+    notifications.some(
+      notification => {
+
+        if (
+          notification.type !==
+            'weather' ||
+          notification.title !==
+            title
+        ) {
+          return false;
+        }
+
+
+        const notificationDate =
+          new Date(
+            notification.time
+          );
+
+
+        return (
+          notificationDate
+            .toDateString() ===
+          now.toDateString()
+        );
+
+      }
+    );
+
+
+  if (
+    alreadySentToday
+  ) {
+    return;
+  }
+
+
+  const description =
+    data.weather?.[0]
+      ?.description ||
+    'current weather conditions';
+
+
+  const formattedDescription =
+    description
+      .charAt(0)
+      .toUpperCase() +
+    description.slice(1);
+
+
+  const temperature =
+    displayTemp(
+      data.main.temp
+    );
+
+
+  const humidity =
+    data.main.humidity;
+
+
+  const wind =
+    displayWind(
+      data.wind.speed
+    );
+
+
+  addNotification(
+    'weather',
+    title,
+    `${data.name}: ${formattedDescription}. Temperature ${temperature}, humidity ${humidity}%, wind ${wind}. Review today's farm activities using the latest FarmCast weather conditions.`
+  );
+
+}
 
 function checkWeatherAlerts(data) {
   if (!data) return;
