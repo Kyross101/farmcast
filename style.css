@@ -4193,30 +4193,277 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 /* ═══════════════════════════════════════════════════════
    SETTINGS PAGE
 ═══════════════════════════════════════════════════════ */
+.settings-page-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 22px;
+  padding: 20px 22px;
+
+  border:
+    1px solid
+    rgba(63,185,80,.18);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(63,185,80,.10),
+      rgba(88,166,255,.035)
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255,255,255,.025);
+}
+
+
+.settings-page-intro-copy {
+  min-width: 0;
+}
+
+
+.settings-page-kicker {
+  margin-bottom: 5px;
+
+  color: var(--green);
+
+  font-size: .65rem;
+  font-weight: 800;
+
+  letter-spacing: 1.3px;
+}
+
+
+.settings-page-heading {
+  font-family:
+    'Syne',
+    sans-serif;
+
+  color: var(--text);
+
+  font-size: 1.22rem;
+  font-weight: 800;
+
+  line-height: 1.25;
+}
+
+
+.settings-page-sub {
+  max-width: 650px;
+
+  margin-top: 6px;
+
+  color: var(--text-muted);
+
+  font-size: .78rem;
+  line-height: 1.55;
+}
+
+
+.settings-page-status {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  padding: 10px 13px;
+
+  border:
+    1px solid
+    rgba(63,185,80,.20);
+
+  border-radius: 12px;
+
+  background:
+    rgba(13,17,23,.22);
+}
+
+
+.settings-page-status-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: var(--green-dim);
+
+  color: var(--green);
+}
+
+
+.settings-page-status-icon
+.material-symbols-outlined {
+  font-size: 19px;
+}
+
+
+.settings-page-status strong,
+.settings-page-status span {
+  display: block;
+}
+
+
+.settings-page-status strong {
+  color: var(--text);
+
+  font-size: .76rem;
+}
+
+
+.settings-page-status span {
+  margin-top: 2px;
+
+  color: var(--text-muted);
+
+  font-size: .65rem;
+}
+
+
 .settings-layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 20px;
-  min-height: calc(100vh - 130px);
+
+  grid-template-columns:
+    240px
+    minmax(0, 1fr);
+
+  gap: 24px;
+
+  min-height:
+    calc(100vh - 130px);
 }
 
 /* Settings Nav */
 .settings-nav {
-  display: flex; flex-direction: column; gap: 4px;
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: var(--r); padding: 14px 12px;
-  align-self: start; position: sticky; top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  align-self: start;
+
+  position: sticky;
+  top: 20px;
+
+  padding: 10px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(28,35,51,.92),
+      rgba(22,27,34,.92)
+    );
 }
+
+
 .settings-nav-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 12px; border-radius: var(--r-sm);
-  font-size: 0.88rem; font-weight: 500;
-  color: var(--text-muted); cursor: pointer;
-  transition: all 0.2s; border: 1px solid transparent;
+  position: relative;
+
+  min-height: 46px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    10px
+    12px;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius: 10px;
+
+  color: var(--text-muted);
+
+  font-size: .84rem;
+  font-weight: 600;
+
+  line-height: 1.25;
+
+  cursor: pointer;
+
+  transition:
+    color .2s ease,
+    border-color .2s ease,
+    background .2s ease,
+    transform .2s ease;
 }
-.settings-nav-item:hover { background: rgba(255,255,255,0.05); color: var(--text); }
-.settings-nav-item.active { background: var(--green-dim); color: var(--green); border-color: rgba(63,185,80,0.2); }
-.settings-nav-item .material-symbols-outlined { font-size: 18px; }
+
+
+.settings-nav-item:hover {
+  color: var(--text);
+
+  border-color:
+    var(--border);
+
+  background:
+    rgba(255,255,255,.035);
+
+  transform:
+    translateX(2px);
+}
+
+
+.settings-nav-item.active {
+  color: var(--green);
+
+  border-color:
+    rgba(63,185,80,.24);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(63,185,80,.16),
+      rgba(63,185,80,.055)
+    );
+}
+
+
+.settings-nav-item.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 9px;
+  bottom: 9px;
+
+  width: 3px;
+
+  border-radius: 0 99px 99px 0;
+
+  background:
+    var(--green);
+}
+
+
+.settings-nav-item
+.material-symbols-outlined {
+  font-size: 19px;
+
+  flex-shrink: 0;
+}
 
 /* Settings Content */
 .settings-content { display: flex; flex-direction: column; gap: 16px; }
@@ -4584,15 +4831,52 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 /* Settings needs more room because the desktop
    main sidebar already uses 220px of the viewport. */
 @media(max-width:1100px) {
+
   .settings-layout {
     grid-template-columns: 1fr;
+
+    gap: 18px;
   }
 
+
   .settings-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
     position: static;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+    gap: 8px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
   }
+
+
+  .settings-nav-item {
+    min-height: 50px;
+
+    background:
+      var(--bg2);
+
+    border:
+      1px solid
+      var(--border);
+  }
+
+
+  .settings-nav-item:hover {
+    transform:
+      translateY(-1px);
+  }
+
 }
 
 @media(max-width:900px) {
@@ -4613,22 +4897,67 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
 @media(max-width:640px) {
 
-  /* Settings navigation — mobile vertical */
-.settings-nav {
-  display: flex;
+.settings-page-intro {
   flex-direction: column;
-  flex-wrap: nowrap;
-  gap: 6px;
-  padding: 10px;
+
+  align-items: stretch;
+
+  gap: 14px;
+
+  margin-bottom: 16px;
+
+  padding:
+    16px;
+}
+
+
+.settings-page-heading {
+  font-size: 1.05rem;
+}
+
+
+.settings-page-sub {
+  font-size: .73rem;
+}
+
+
+.settings-page-status {
   width: 100%;
 }
 
-.settings-nav-item {
+/* Settings navigation — compact mobile grid */
+.settings-nav {
   width: 100%;
-  padding: 11px 14px;
-  font-size: 0.88rem;
-  gap: 10px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 8px;
+
+  padding: 0;
+}
+
+
+.settings-nav-item {
+  width: auto;
+
+  min-height: 56px;
+
+  padding:
+    9px
+    10px;
+
+  gap: 8px;
+
   justify-content: flex-start;
+
+  font-size: .76rem;
+  line-height: 1.25;
 }
 
 .settings-nav-item .material-symbols-outlined {
