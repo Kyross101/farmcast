@@ -15013,11 +15013,6 @@ function addNotification(
 
     type,
 
-    icon:
-      getNotificationIconPath(
-        type
-      ),
-
     title,
 
     body,
