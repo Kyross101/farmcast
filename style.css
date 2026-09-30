@@ -1078,6 +1078,35 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   }
 }
 
+/* Medium desktop / small laptop top bar */
+@media (max-width:1100px) and (min-width:769px) {
+
+  .topbar {
+    gap: 10px;
+    padding: 12px 18px;
+  }
+
+  .topbar-title {
+    min-width: 0;
+
+    font-size: 1rem;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .topbar-search {
+    width: min(240px, 30vw);
+    min-width: 180px;
+  }
+
+  .topbar-btn {
+    flex-shrink: 0;
+  }
+
+}
+
 @media(max-width:768px){
 
   .sidebar{
