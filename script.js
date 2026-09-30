@@ -14466,14 +14466,213 @@ function exportCSV(type) {
   addNotification('system', '📥 Data Exported', `${filename} was downloaded successfully.`);
 }
 
+function buildResetSettingsPreservingAccount() {
+
+  const authUser =
+    typeof getAuthUser === 'function'
+      ? getAuthUser()
+      : null;
+
+
+  return {
+
+    ...DEFAULT_SETTINGS,
+
+
+    name:
+      authUser?.name ||
+      appSettings.name ||
+      DEFAULT_SETTINGS.name,
+
+
+    email:
+      authUser?.email ||
+      appSettings.email ||
+      '',
+
+
+    farmName:
+      authUser?.farmName ||
+      appSettings.farmName ||
+      DEFAULT_SETTINGS.farmName,
+
+
+    farmSize:
+      authUser?.farmSize ??
+      appSettings.farmSize ??
+      DEFAULT_SETTINGS.farmSize,
+
+
+    role:
+      authUser?.role ||
+      appSettings.role ||
+      DEFAULT_SETTINGS.role,
+
+
+    phone:
+      authUser?.phone ||
+      appSettings.phone ||
+      '',
+
+
+    avatar:
+      authUser?.avatar ||
+      appSettings.avatar ||
+      DEFAULT_FARMER_AVATAR
+
+  };
+
+}
+
+
+function clearLocalFarmWorkspaceData() {
+
+  /*
+   * Store empty arrays instead of simply
+   * deleting the keys.
+   *
+   * Some FarmCast modules have sample data
+   * as their fallback, so removing the key
+   * would make those records return.
+   */
+
+  lsSave(
+    LS_CROPS,
+    []
+  );
+
+  lsSave(
+    LS_CROPS_ID,
+    1
+  );
+
+
+  lsSave(
+    LS_TASKS,
+    []
+  );
+
+
+  lsSave(
+    LS_PEST_LOGS,
+    []
+  );
+
+  lsSave(
+    'fc_nextPestLogId',
+    1
+  );
+
+
+  lsSave(
+    LS_IRR_FIELDS,
+    []
+  );
+
+  lsSave(
+    LS_IRR_FID,
+    1
+  );
+
+
+  lsSave(
+    LS_HARVEST,
+    []
+  );
+
+  lsSave(
+    LS_HARVEST_ID,
+    1
+  );
+
+
+  lsSave(
+    LS_NOTIFS,
+    []
+  );
+
+  lsSave(
+    LS_NOTIF_ID,
+    1
+  );
+
+
+  const resetSettings =
+    buildResetSettingsPreservingAccount();
+
+
+  appSettings = {
+    ...resetSettings
+  };
+
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  /*
+   * Clear secondary local-only state.
+   * Authentication is deliberately
+   * NOT removed.
+   */
+  [
+    LS_OFFICIAL_SEEN,
+    'fc_scanHistory',
+    'fc_sidebarCollapsed',
+
+    // Clean up old incorrect key too.
+    'fc_irrFid'
+  ].forEach(key => {
+
+    localStorage.removeItem(
+      key
+    );
+
+  });
+
+
+  return resetSettings;
+
+}
+
+
 function confirmResetData() {
-  if (!confirm('⚠️ WARNING: This will delete ALL your data (crops, harvests, pest logs, irrigation, settings). This CANNOT be undone. Are you absolutely sure?')) return;
-  if (!confirm('Last chance — really reset everything?')) return;
-  const keys = [LS_CROPS, LS_CROPS_ID, LS_TASKS, LS_PEST_LOGS, LS_IRR_FIELDS, LS_IRR_FID,
-                LS_HARVEST, LS_HARVEST_ID, LS_SETTINGS, LS_NOTIFS, LS_NOTIF_ID, 'fc_nextPestLogId'];
-  keys.forEach(k => localStorage.removeItem(k));
-  toast('All data has been reset. Reloading…', 'warn');
-  setTimeout(() => location.reload(), 1500);
+
+  if (
+    !confirm(
+      'Reset FarmCast data stored on this device? Crops, harvests, irrigation fields, pest logs, scan history, notifications, and preferences will be cleared. Your login account will be kept. If cloud sync is unavailable, synced records may return when the server reconnects.'
+    )
+  ) {
+    return;
+  }
+
+
+  if (
+    !confirm(
+      'Last chance — reset the local FarmCast workspace?'
+    )
+  ) {
+    return;
+  }
+
+
+  clearLocalFarmWorkspaceData();
+
+
+  toast(
+    'Local farm workspace reset. Reloading…',
+    'warn'
+  );
+
+
+  setTimeout(
+    () =>
+      location.reload(),
+    1500
+  );
+
 }
 
 // ═══ SETTINGS FORM POPULATION ═══

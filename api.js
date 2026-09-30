@@ -702,24 +702,145 @@ function patchScriptJsWithAPI() {
   };
 
   // Override confirmResetData
-  confirmResetData = async function() {
-    if (!confirm('⚠️ This will delete ALL your data. Cannot be undone. Sure?')) return;
-    if (!confirm('Last chance — really reset everything?')) return;
-    try {
-      // Delete all from backend not implemented (optional)
-      const keys = ['fc_myCrops','fc_nextCropId','fc_tasks','fc_pestLogs','fc_irrFields',
-                    'fc_irrFid','fc_harvestHistory','fc_nextHarvestId','fc_settings',
-                    'fc_notifications','fc_nextNotifId','fc_nextPestLogId'];
-      keys.forEach(k => localStorage.removeItem(k));
-      toast('Data reset. Reloading…', 'warn');
-      setTimeout(() => location.reload(), 1500);
-    } catch (err) {
-      toast('Error resetting data.', 'err');
-    }
-  };
+  confirmResetData =
+    async function() {
+
+      if (
+        !confirm(
+          'Reset your FarmCast workspace? Synced crops, harvests, irrigation fields, pest logs, scan history, notifications, and preferences will be deleted. Your login account will be kept.'
+        )
+      ) {
+        return;
+      }
+
+
+      if (
+        !confirm(
+          'Last chance — permanently reset the FarmCast workspace?'
+        )
+      ) {
+        return;
+      }
+  
+  
+      try {
+  
+        const resetSettings =
+          buildResetSettingsPreservingAccount();
+  
+  
+        const getRecordId =
+          record =>
+            record?._id ||
+            record?.id;
+  
+  
+        /*
+         * The backend delete routes are
+         * user-scoped, so only records
+         * belonging to the logged-in
+         * FarmCast account are removed.
+         */
+        await Promise.all([
+
+          ...myCrops.map(
+            crop =>
+              fcCrops.delete(
+                getRecordId(
+                  crop
+                )
+              )
+          ),
+  
+ 
+          ...harvestHistory.map(
+            record =>
+              fcHarvest.delete(
+                getRecordId(
+                  record
+                )
+              )
+          ),
+  
+  
+          ...irrFields.map(
+            field =>
+              fcIrrigation.delete(
+                getRecordId(
+                  field
+                )
+              )
+          ),
+  
+  
+           ...pestLogs.map(
+            log =>
+              fcPests.delete(
+                getRecordId(
+                  log
+                )
+              )
+          ),
+  
+  
+          /*
+           * Plant Scanner has its own
+           * authenticated delete-all route.
+           */
+          fcScanHistory.clearAll(),
+  
+  
+          /*
+           * Restore preferences to defaults
+           * while preserving the account
+           * identity/profile fields.
+           */
+          fcSettings.save(
+            resetSettings
+          )
+  
+        ]);
+  
+  
+        /*
+         * Keep localStorage synchronized
+         * with the now-cleared backend.
+         */
+        clearLocalFarmWorkspaceData();
+  
+  
+        toast(
+          'Farm workspace reset. Reloading…',
+          'warn'
+        );
+  
+  
+        setTimeout(
+          () =>
+            location.reload(),
+          1500
+        );
+  
+      } catch (error) {
+  
+        console.error(
+          'FarmCast reset failed:',
+          error
+        );
+  
+  
+        toast(
+          'Some synced data could not be reset. Reload the page and try again.',
+          'err'
+        );
+
+      }
+
+    };
 
   console.log('✅ API patches applied to script.js functions!');
 }
+
 // ══════════════════════════════════════════════
 // SCAN HISTORY
 // ══════════════════════════════════════════════
