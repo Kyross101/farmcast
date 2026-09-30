@@ -5113,6 +5113,29 @@ input:disabled {
     .75;
 }
 
+.notification-setting-row {
+  transition:
+    opacity .2s,
+    border-color .2s,
+    background .2s;
+}
+
+
+.notification-setting-row.is-disabled {
+  opacity:
+    .48;
+}
+
+
+.notification-setting-row.is-disabled
+input:disabled {
+  cursor:
+    not-allowed;
+
+  opacity:
+    .75;
+}
+
 /* Threshold input */
 .threshold-input-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .threshold-input {

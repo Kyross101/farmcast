@@ -12624,6 +12624,16 @@ function saveSettingImmediate(
 
   }
 
+
+  if (
+    key ===
+    'dailyBriefing'
+  ) {
+
+    updateDailyBriefingUI();
+
+  }
+
 }
 
 function updateQuietHoursUI() {
@@ -12671,6 +12681,45 @@ function updateQuietHoursUI() {
   if (timeGrid) {
 
     timeGrid.classList.toggle(
+      'is-disabled',
+      !enabled
+    );
+
+  }
+
+}
+
+function updateDailyBriefingUI() {
+
+  const enabled =
+    Boolean(
+      appSettings.dailyBriefing
+    );
+
+
+  const timeRow =
+    document.getElementById(
+      'dailyBriefingTimeRow'
+    );
+
+
+  const briefingTime =
+    document.getElementById(
+      'settingBriefingTime'
+    );
+
+
+  if (briefingTime) {
+
+    briefingTime.disabled =
+      !enabled;
+
+  }
+
+
+  if (timeRow) {
+
+    timeRow.classList.toggle(
       'is-disabled',
       !enabled
     );
@@ -13491,6 +13540,7 @@ function updateSettingsFormValues() {
 
 
   updateQuietHoursUI();
+  updateDailyBriefingUI();
 
   // Profile + sidebar farmer avatar
   updateFarmerAvatarUI();
