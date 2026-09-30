@@ -12056,6 +12056,28 @@ const LS_SETTINGS    = 'fc_settings';
 const LS_NOTIFS      = 'fc_notifications';
 const LS_NOTIF_ID    = 'fc_nextNotifId';
 const LS_OFFICIAL_SEEN = 'fc_official_advisories_seen';
+const DEFAULT_FARMER_AVATAR =
+  'assets/ui/avatar-farmer-green.svg';
+
+const LEGACY_FARMER_AVATARS = {
+  '👨‍🌾':
+    'assets/ui/avatar-farmer-green.svg',
+
+  '👩‍🌾':
+    'assets/ui/avatar-farmer-woman.svg',
+
+  '🧑‍🌾':
+    'assets/ui/avatar-farmer-young.svg',
+
+  '👴':
+    'assets/ui/avatar-farmer-senior-man.svg',
+
+  '👵':
+    'assets/ui/avatar-farmer-senior-woman.svg',
+
+  '🌾':
+    'assets/ui/avatar-farmer-green.svg'
+};
 
 // ── DEFAULT SETTINGS ──
 const DEFAULT_SETTINGS = {
@@ -12067,7 +12089,7 @@ const DEFAULT_SETTINGS = {
   farmSize: '3.2',
   role: 'owner',
   phone: '',
-  avatar: '👨‍🌾',
+  avatar: DEFAULT_FARMER_AVATAR,
 
   // Location
   city: 'San Miguel, Bulacan',
@@ -12105,6 +12127,25 @@ const DEFAULT_SETTINGS = {
 let appSettings = lsLoad(LS_SETTINGS, DEFAULT_SETTINGS);
 // Merge defaults for any missing keys (for upgrades)
 appSettings = Object.assign({}, DEFAULT_SETTINGS, appSettings);
+
+// Upgrade old emoji avatars to local SVG avatars.
+if (
+  LEGACY_FARMER_AVATARS[
+    appSettings.avatar
+  ]
+) {
+
+  appSettings.avatar =
+    LEGACY_FARMER_AVATARS[
+      appSettings.avatar
+    ];
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+}
 
 // Remove deprecated weather-driven pest settings.
 if (
@@ -12333,11 +12374,77 @@ function applyAllSettings() {
   checkHarvestReminders();
 }
 
+function updateFarmerAvatarUI() {
+
+  const avatarPath =
+    appSettings.avatar ||
+    DEFAULT_FARMER_AVATAR;
+
+
+  const profileAvatar =
+    document.getElementById(
+      'profileAvatarImg'
+    );
+
+  if (profileAvatar) {
+    profileAvatar.src =
+      avatarPath;
+  }
+
+
+  const sidebarAvatar =
+    document.getElementById(
+      'sidebarUserAvatar'
+    );
+
+  if (sidebarAvatar) {
+    sidebarAvatar.src =
+      avatarPath;
+  }
+
+
+  document
+    .querySelectorAll(
+      '#avatarPicker .avatar-option'
+    )
+    .forEach(option => {
+
+      option.classList.toggle(
+        'active',
+        option.dataset.avatar ===
+          avatarPath
+      );
+
+    });
+
+}
+
 function updateSidebarProfile() {
-  const nameEl = document.getElementById('sidebarUserName');
-  const farmEl = document.getElementById('sidebarUserFarm');
-  if (nameEl) nameEl.textContent = appSettings.name;
-  if (farmEl) farmEl.textContent = `${appSettings.farmName} · ${appSettings.farmSize} ha`;
+
+  const nameEl =
+    document.getElementById(
+      'sidebarUserName'
+    );
+
+  const farmEl =
+    document.getElementById(
+      'sidebarUserFarm'
+    );
+
+
+  if (nameEl) {
+    nameEl.textContent =
+      appSettings.name;
+  }
+
+  if (farmEl) {
+    farmEl.textContent =
+      `${appSettings.farmName} · ${appSettings.farmSize} ha`;
+  }
+
+
+  updateFarmerAvatarUI();
+
 }
 
 function saveSettingImmediate(key, value) {
@@ -12354,12 +12461,27 @@ function showSettingsSection(el, sectionId) {
 }
 
 // ═══ PROFILE SETTINGS ═══
-function setAvatar(emoji) {
-  appSettings.avatar = emoji;
-  lsSave(LS_SETTINGS, appSettings);
-  document.getElementById('profileAvatarDisplay').textContent = emoji;
-  document.querySelector('.user-avatar').textContent = emoji;
-  toast('Avatar updated!', 'ok');
+function setAvatar(
+  avatarPath
+) {
+
+  appSettings.avatar =
+    avatarPath;
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  updateFarmerAvatarUI();
+
+
+  toast(
+    'Farmer avatar updated!',
+    'ok'
+  );
+
 }
 
 function saveProfileSettings() {
@@ -12371,7 +12493,10 @@ function saveProfileSettings() {
   appSettings.phone    = document.getElementById('settingPhone').value.trim();
   lsSave(LS_SETTINGS, appSettings);
   updateSidebarProfile();
-  toast('Profile saved successfully! 👨‍🌾', 'ok');
+  toast(
+    'Profile saved successfully!',
+    'ok'
+  );
   addNotification('system', '✅ Profile Updated', `Your profile (${appSettings.name}) has been saved.`);
 }
 
@@ -12672,9 +12797,8 @@ function updateSettingsFormValues() {
   setChk('toggleDailyBriefing', s.dailyBriefing);
   setChk('toggleQuietHours', s.quietHours);
 
-  // Profile avatar display
-  const avatarEl = document.getElementById('profileAvatarDisplay');
-  if (avatarEl) avatarEl.textContent = s.avatar;
+  // Profile + sidebar farmer avatar
+  updateFarmerAvatarUI();
 
   // Last export
   const lte = document.getElementById('lastExportTime');

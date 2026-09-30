@@ -93,7 +93,16 @@
 
     <div class="sidebar-spacer"></div>
     <div class="sidebar-user" onclick="setNav(document.querySelector('[data-page=settings]'),'settings')" style="cursor:pointer" title="Open Settings">
-      <div class="user-avatar">👨‍🌾</div>
+      
+      <div class="user-avatar">
+        <img
+          id="sidebarUserAvatar"
+          class="user-avatar-img"
+          src="assets/ui/avatar-farmer-green.svg"
+          alt=""
+        >
+      </div>
+
       <div class="sidebar-text">
         <div class="user-name" id="sidebarUserName">Juan Dela Cruz</div>
         <div class="user-farm" id="sidebarUserFarm">Bulacan Farm · 3.2 ha</div>
@@ -2113,20 +2122,98 @@
             <div class="settings-card">
               <div class="sc-header">Profile Information</div>
               <div class="sc-body">
+
                 <div class="profile-avatar-row">
-                  <div class="profile-avatar" id="profileAvatarDisplay">👨‍🌾</div>
-                  <div class="profile-avatar-options">
-                    <div class="avatar-label">Choose Avatar</div>
-                    <div class="avatar-picker" id="avatarPicker">
-                      <span onclick="setAvatar('👨‍🌾')">👨‍🌾</span>
-                      <span onclick="setAvatar('👩‍🌾')">👩‍🌾</span>
-                      <span onclick="setAvatar('🧑‍🌾')">🧑‍🌾</span>
-                      <span onclick="setAvatar('👴')">👴</span>
-                      <span onclick="setAvatar('👵')">👵</span>
-                      <span onclick="setAvatar('🌾')">🌾</span>
-                    </div>
+
+                  <div
+                    class="profile-avatar"
+                    id="profileAvatarDisplay"
+                  >
+                    <img
+                      id="profileAvatarImg"
+                      class="profile-avatar-img"
+                      src="assets/ui/avatar-farmer-green.svg"
+                      alt="Selected farmer avatar"
+                    >
                   </div>
+
+                  <div class="profile-avatar-options">
+
+                  <div class="avatar-label">
+                    Choose Farmer Avatar
+                  </div>
+
+                  <div
+                    class="avatar-picker"
+                    id="avatarPicker"
+                  >
+
+                    <button
+                      type="button"
+                      class="avatar-option active"
+                      data-avatar="assets/ui/avatar-farmer-green.svg"
+                      onclick="setAvatar(this.dataset.avatar)"
+                      aria-label="Green farmer avatar"
+                    >
+                      <img src="assets/ui/avatar-farmer-green.svg" alt="">
+                    </button>
+
+                    <button
+                      type="button"
+                      class="avatar-option"
+                      data-avatar="assets/ui/avatar-farmer-blue.svg"
+                      onclick="setAvatar(this.dataset.avatar)"
+                      aria-label="Blue farmer avatar"
+                    >
+                      <img src="assets/ui/avatar-farmer-blue.svg" alt="">
+                    </button>
+
+                    <button
+                      type="button"
+                      class="avatar-option"
+                      data-avatar="assets/ui/avatar-farmer-woman.svg"
+                      onclick="setAvatar(this.dataset.avatar)"
+                      aria-label="Woman farmer avatar"
+                    >
+                      <img src="assets/ui/avatar-farmer-woman.svg" alt="">
+                    </button>
+
+                    <button
+                      type="button"
+                      class="avatar-option"
+                      data-avatar="assets/ui/avatar-farmer-young.svg"
+                      onclick="setAvatar(this.dataset.avatar)"
+                      aria-label="Young farmer avatar"
+                    >
+                      <img src="assets/ui/avatar-farmer-young.svg" alt="">
+                    </button>
+
+                    <button
+                      type="button"
+                      class="avatar-option"
+                      data-avatar="assets/ui/avatar-farmer-senior-man.svg"
+                      onclick="setAvatar(this.dataset.avatar)"
+                      aria-label="Senior man farmer avatar"
+                    >
+                      <img src="assets/ui/avatar-farmer-senior-man.svg" alt="">
+                    </button>
+
+                    <button
+                      type="button"
+                      class="avatar-option"
+                      data-avatar="assets/ui/avatar-farmer-senior-woman.svg"
+                      onclick="setAvatar(this.dataset.avatar)"
+                      aria-label="Senior woman farmer avatar"
+                    >
+                      <img src="assets/ui/avatar-farmer-senior-woman.svg" alt="">
+                    </button>
+
+                  </div>
+
                 </div>
+
+              </div>
+
                 <div class="form-row">
                   <div class="form-group">
                     <label>Full Name</label>
