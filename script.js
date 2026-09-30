@@ -13560,7 +13560,13 @@ if (notifications.length === 0) {
   nextNotifId = 4;
 }
 
-function addNotification(type, title, body, sourceUrl = null) {
+function addNotification(
+  type,
+  title,
+  body,
+  sourceUrl = null,
+  dedupeKey = null
+) {
   // Check quiet hours
   if (appSettings.quietHours) {
     const now  = new Date();
@@ -13583,16 +13589,35 @@ function addNotification(type, title, body, sourceUrl = null) {
     harvest: '🌾',
     system: '⚙️'
   };
-  notifications.unshift({
-  id: nextNotifId++,
-  type,
-  icon: iconMap[type] || '📢',
-  title,
-  body,
-  sourceUrl,
-  time: new Date().toISOString(),
-  read: false
+
+    notifications.unshift({
+
+    id:
+      nextNotifId++,
+
+    type,
+
+    icon:
+      iconMap[type] ||
+      '📢',
+
+    title,
+
+    body,
+
+    sourceUrl,
+
+    dedupeKey,
+
+    time:
+      new Date()
+        .toISOString(),
+
+    read:
+      false
+
   });
+
   if (notifications.length > 50) notifications = notifications.slice(0, 50);
   lsSave(LS_NOTIFS, notifications);
   lsSave(LS_NOTIF_ID, nextNotifId);
@@ -14209,48 +14234,130 @@ function checkWeatherAlerts(data) {
 }
 
 function checkHarvestReminders() {
-  if (typeof myCrops === 'undefined') return;
-  const days = appSettings.harvestReminderDays;
-  const today = new Date();
 
-  myCrops.forEach(crop => {
-
-    if (
-      !hasValidCropHarvestDate(
-       crop
-      )
-    ) {
-      return;
-    }
+  if (
+    typeof myCrops ===
+    'undefined'
+  ) {
+    return;
+  }
 
 
-    const harvestDate =
-      new Date(
-        `${crop.harvest}T00:00:00`
-      );
+  const days =
+    Number(
+      appSettings
+        .harvestReminderDays
+    ) ||
+    7;
 
 
-    const daysLeft =
-      Math.ceil(
-        (
-          harvestDate -
-          today
-        ) /
-        86400000
-      );
-  
-      if (daysLeft >= 0 && daysLeft <= days) {
-        // Only add if not already notified today (check by title match)
-        const alreadyNotified = notifications.some(n =>
-          n.title.includes(crop.type) && n.type === 'harvest' &&
-          new Date(n.time).toDateString() === today.toDateString()
-        );
-        if (!alreadyNotified) {
-          addNotification('harvest', `🌾 Harvest Reminder: ${crop.type}`,
-            `${crop.type} at ${crop.location} is due for harvest in ${daysLeft} day${daysLeft!==1?'s':''}. Plan your harvest activities.`);
-        }
+  const today =
+    new Date();
+
+
+  myCrops.forEach(
+    crop => {
+
+      if (
+        !hasValidCropHarvestDate(
+          crop
+        )
+      ) {
+        return;
       }
-  });
+
+
+      const harvestDate =
+        new Date(
+          `${crop.harvest}T00:00:00`
+        );
+
+
+      const daysLeft =
+        Math.ceil(
+          (
+            harvestDate -
+            today
+          ) /
+          86400000
+        );
+
+
+      if (
+        daysLeft < 0 ||
+        daysLeft > days
+      ) {
+        return;
+      }
+
+
+      /*
+       * Unique reminder for each
+       * saved crop record.
+       */
+      const reminderKey =
+        `harvest:${crop.id}`;
+
+
+      const alreadyNotifiedToday =
+        notifications.some(
+          notification => {
+
+            if (
+              notification.type !==
+              'harvest'
+            ) {
+              return false;
+            }
+
+
+            if (
+              notification.dedupeKey !==
+              reminderKey
+            ) {
+              return false;
+            }
+
+
+            return (
+              new Date(
+                notification.time
+              ).toDateString() ===
+              today.toDateString()
+            );
+
+          }
+        );
+
+
+      if (
+        alreadyNotifiedToday
+      ) {
+        return;
+      }
+
+
+      const cropName =
+        crop.type ||
+        'Crop';
+
+
+      const cropLocation =
+        crop.location ||
+        'Saved field';
+
+
+      addNotification(
+        'harvest',
+        `Harvest Reminder: ${cropName}`,
+        `${cropName} at ${cropLocation} is due for harvest in ${daysLeft} day${daysLeft !== 1 ? 's' : ''}. Plan your harvest activities.`,
+        null,
+        reminderKey
+      );
+
+    }
+  );
+
 }
 
 function updateNotifBadge() {
