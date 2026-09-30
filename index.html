@@ -3657,26 +3657,108 @@
             <div class="settings-card">
               <div class="sc-header">Help & Support</div>
               <div class="sc-body">
+
                 <div class="help-links">
-                  <div class="help-link-item" onclick="toast('Opening bug report form...','ok')">
-                    <span class="material-symbols-outlined">bug_report</span>
-                    <div><div class="hli-title">Report a Bug</div><div class="hli-sub">Help us improve FarmCast</div></div>
-                    <span class="material-symbols-outlined" style="margin-left:auto;color:var(--text-dim)">chevron_right</span>
+
+                  <div
+                    class="help-link-item"
+                    onclick="openFarmCastBugReport()"
+                  >
+
+                    <span class="material-symbols-outlined">
+                      bug_report
+                    </span>
+
+                    <div>
+                      <div class="hli-title">
+                        Report a Bug
+                      </div>
+
+                      <div class="hli-sub">
+                        Create a FarmCast GitHub issue
+                      </div>
+                    </div>
+
+                    <span
+                      class="material-symbols-outlined"
+                      style="
+                      margin-left:auto;
+                      color:var(--text-dim)
+                      "
+                    >
+                      open_in_new
+                    </span>
+
                   </div>
-                  <div class="help-link-item" onclick="toast('Opening developer contact...','ok')">
-                    <span class="material-symbols-outlined">mail</span>
-                    <div><div class="hli-title">Contact Developer</div><div class="hli-sub">Get support for your thesis</div></div>
-                    <span class="material-symbols-outlined" style="margin-left:auto;color:var(--text-dim)">chevron_right</span>
+
+
+                  <div
+                    class="help-link-item"
+                    onclick="openFarmCastRepository()"
+                  >
+
+                    <span class="material-symbols-outlined">
+                      code
+                    </span>
+
+                    <div>
+                      <div class="hli-title">
+                        Project Repository
+                      </div>
+
+                      <div class="hli-sub">
+                        View FarmCast source and project details
+                      </div>
+                    </div>
+
+                    <span
+                      class="material-symbols-outlined"
+                      style="
+                      margin-left:auto;
+                      color:var(--text-dim)
+                      "
+                    >
+                      open_in_new
+                    </span>
+
                   </div>
-                  <div class="help-link-item" onclick="toast('FarmCast v1.0.0 — Built for thesis 🌾','ok')">
-                    <span class="material-symbols-outlined">info</span>
-                    <div><div class="hli-title">About FarmCast</div><div class="hli-sub">Version 1.0.0</div></div>
-                    <span class="material-symbols-outlined" style="margin-left:auto;color:var(--text-dim)">chevron_right</span>
+
+
+                  <div
+                    class="help-link-item"
+                    onclick="showFarmCastAbout()"
+                  >
+
+                    <span class="material-symbols-outlined">
+                      info
+                    </span>
+
+                    <div>
+                      <div class="hli-title">
+                        About FarmCast
+                      </div>
+
+                      <div class="hli-sub">
+                        Version 1.0.0
+                      </div>
+                    </div>
+
+                    <span
+                      class="material-symbols-outlined"
+                      style="
+                      margin-left:auto;
+                      color:var(--text-dim)
+                      "
+                    >
+                      chevron_right
+                    </span>
+
                   </div>
                 </div>
               </div>
             </div>
 
+            
             <div class="settings-card danger-zone">
               <div class="sc-header" style="color:var(--red)">Danger Zone</div>
               <div class="sc-body">

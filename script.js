@@ -14274,7 +14274,36 @@ function applyFontSize(
 
 }
 
-// ═══ DATA EXPORT ═══
+function openFarmCastBugReport() {
+
+  window.open(
+    'https://github.com/Kyross101/farmcast/issues/new',
+    '_blank',
+    'noopener,noreferrer'
+  );
+
+}
+
+
+function openFarmCastRepository() {
+
+  window.open(
+    'https://github.com/Kyross101/farmcast',
+    '_blank',
+    'noopener,noreferrer'
+  );
+
+}
+
+
+function showFarmCastAbout() {
+
+  toast(
+    'FarmCast v1.0.0 — Smart Agriculture Management and Decision Support System',
+    'ok'
+  );
+
+}
 
 // ═══ DATA EXPORT ═══
 
