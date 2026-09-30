@@ -12288,9 +12288,19 @@ displayWeatherData = function(data) {
   renderPestAlerts();
 
   // ── REAL-TIME NOTIFICATION CHECKS ──
-  checkWeatherAlerts(data);
+  checkWeatherAlerts(
+    data
+  );
 
-  toast(`Weather updated for ${data.name}`, 'ok');
+  checkDailyWeatherBriefing(
+    data
+  );
+
+
+  toast(
+    `Weather updated for ${data.name}`,
+    'ok'
+  );
 };
 
 // ── PATCH renderForecastAndCalendar for unit conversion ──
