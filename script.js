@@ -11437,8 +11437,15 @@ const PLANTING_GUIDE = [
 ];
 
 function renderCalPage() {
+
   renderCalGrid();
+
+  renderCalList();
+
   renderBestPlanting();
+
+  applyCalendarView();
+
 }
 
 function renderCalGrid() {
@@ -11521,6 +11528,277 @@ function renderCalGrid() {
   document.getElementById('calDaysGrid').innerHTML = html;
 }
 
+function renderCalList() {
+
+  const list =
+    document.getElementById(
+      'calListView'
+    );
+
+
+  if (!list) {
+    return;
+  }
+
+
+  const events = [];
+
+
+  myCrops.forEach(
+    crop => {
+
+      const cropName =
+        crop.type ||
+        'Crop';
+
+
+      const cropLocation =
+        crop.location ||
+        'Saved field';
+
+
+      const iconHtml =
+        getCropIconHtml(
+          cropName,
+          'cal-list-crop-icon-img'
+        );
+
+
+      const plantedValue =
+        String(
+          crop.planted ||
+          ''
+        ).trim();
+
+
+      if (plantedValue) {
+
+        const plantedDate =
+          new Date(
+            `${plantedValue}T00:00:00`
+          );
+
+
+        if (
+          !Number.isNaN(
+            plantedDate.getTime()
+          ) &&
+          plantedDate.getFullYear() ===
+            calYear &&
+          plantedDate.getMonth() ===
+            calMonth
+        ) {
+
+          events.push({
+            date: plantedDate,
+            crop: cropName,
+            location: cropLocation,
+            icon: iconHtml,
+            type: 'planted',
+            color: 'green'
+          });
+
+        }
+
+      }
+
+
+      if (
+        hasValidCropHarvestDate(
+          crop
+        )
+      ) {
+
+        const harvestDate =
+          new Date(
+            `${crop.harvest}T00:00:00`
+          );
+
+
+        if (
+          harvestDate.getFullYear() ===
+            calYear &&
+          harvestDate.getMonth() ===
+            calMonth
+        ) {
+
+          events.push({
+            date: harvestDate,
+            crop: cropName,
+            location: cropLocation,
+            icon: iconHtml,
+            type: 'harvest',
+            color: 'amber'
+          });
+
+        }
+
+      }
+
+    }
+  );
+
+
+  events.sort(
+    (a, b) =>
+      a.date -
+      b.date
+  );
+
+
+  if (!events.length) {
+
+    list.innerHTML = `
+      <div class="cal-list-empty">
+        No planting or harvest events
+        saved for this month.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    events.map(event => {
+
+      const day =
+        event.date
+          .toLocaleDateString(
+            'en-PH',
+            {
+              month: 'short',
+              day: 'numeric'
+            }
+          );
+
+
+      const weekday =
+        event.date
+          .toLocaleDateString(
+            'en-PH',
+            {
+              weekday: 'short'
+            }
+          );
+
+
+      const typeLabel =
+        event.type ===
+        'planted'
+          ? 'Planted'
+          : 'Expected Harvest';
+
+
+      return `
+        <div class="cal-list-event ${event.color}">
+
+          <div class="cal-list-date">
+
+            <strong>
+              ${escapeHtml(day)}
+            </strong>
+
+            <span>
+              ${escapeHtml(weekday)}
+            </span>
+
+          </div>
+
+
+          <div class="cal-list-icon">
+            ${event.icon}
+          </div>
+
+
+          <div class="cal-list-info">
+
+            <strong>
+              ${escapeHtml(event.crop)}
+            </strong>
+
+            <span>
+              ${escapeHtml(event.location)}
+            </span>
+
+          </div>
+
+
+          <span class="cal-list-type ${event.color}">
+            ${typeLabel}
+          </span>
+
+        </div>
+      `;
+
+    }).join('');
+
+}
+
+function applyCalendarView() {
+
+  const view =
+    appSettings.calView ===
+    'list'
+      ? 'list'
+      : 'calendar';
+
+
+  const gridHeader =
+    document.getElementById(
+      'calGridHeader'
+    );
+
+
+  const grid =
+    document.getElementById(
+      'calDaysGrid'
+    );
+
+
+  const list =
+    document.getElementById(
+      'calListView'
+    );
+
+
+  const selectedDayCard =
+    document.getElementById(
+      'calSelectedDayCard'
+    );
+
+
+  const showList =
+    view ===
+    'list';
+
+
+  gridHeader?.classList.toggle(
+    'cal-view-hidden',
+    showList
+  );
+
+
+  grid?.classList.toggle(
+    'cal-view-hidden',
+    showList
+  );
+
+
+  list?.classList.toggle(
+    'cal-view-hidden',
+    !showList
+  );
+
+
+  selectedDayCard?.classList.toggle(
+    'cal-view-hidden',
+    showList
+  );
+
+}
+
 function selectCalDate(dateKey, day) {
   calSelectedDate = dateKey;
   renderCalGrid(); // Re-render to show selected
@@ -11577,6 +11855,9 @@ function changeCalMonth(dir) {
   if (calMonth > 11) { calMonth = 0;  calYear++; }
   calSelectedDate = null;
   renderCalGrid();
+  renderCalList();
+  renderBestPlanting();
+  applyCalendarView();
   document.getElementById('calSelectedDateTitle').textContent = 'Select a date';
   document.getElementById('calDayEvents').innerHTML = '<div class="cal-no-events">Click a date to see crop events</div>';
 }
@@ -11586,6 +11867,9 @@ function goToToday() {
   calYear = t.getFullYear(); calMonth = t.getMonth();
   calSelectedDate = null;
   renderCalGrid();
+  renderCalList();
+  renderBestPlanting();
+  applyCalendarView();
 }
 
 function renderBestPlanting() {
@@ -13295,12 +13579,51 @@ function saveFavCrops() {
 
 }
 
-function setCalView(el, view) {
-  document.querySelectorAll('#calViewSelector .sens-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  appSettings.calView = view;
-  lsSave(LS_SETTINGS, appSettings);
-  toast(`Calendar view set to ${view}`, 'ok');
+function setCalView(
+  el,
+  view
+) {
+
+  document
+    .querySelectorAll(
+      '#calViewSelector .sens-btn'
+    )
+    .forEach(button =>
+      button.classList.remove(
+        'active'
+      )
+    );
+
+
+  el.classList.add(
+    'active'
+  );
+
+
+  appSettings.calView =
+    view;
+
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  renderCalList();
+
+  applyCalendarView();
+
+
+  toast(
+    `Planting Calendar view set to ${
+      view === 'list'
+        ? 'List'
+        : 'Calendar'
+    }`,
+    'ok'
+  );
+
 }
 
 // ═══ DISPLAY SETTINGS ═══

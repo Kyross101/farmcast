@@ -1895,14 +1895,22 @@
             <div class="cal-page-day-header">Sat</div>
           </div>
           <div class="cal-page-grid cal-days-grid" id="calDaysGrid"></div>
+            <div
+              class="cal-list-view cal-view-hidden"
+              id="calListView"
+            ></div>
         </div>
+        
         <div class="cal-side-col">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title"><span class="material-symbols-outlined">event</span><span id="calSelectedDateTitle">Select a date</span></div>
-            </div>
+          
+          <div
+            class="card"
+            id="calSelectedDayCard"
+          >
+          </div>
             <div class="cal-day-events" id="calDayEvents"><div class="cal-no-events">Click a date to see crop events</div></div>
           </div>
+
           <div class="card" style="margin-top:16px">
             <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">sunny</span>Best Planting Months</div></div>
             <div class="best-planting-list" id="bestPlantingList"></div>

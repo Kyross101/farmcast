@@ -3591,6 +3591,183 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .cal-page-day-header { text-align: center; padding: 12px 4px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
 .cal-days-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
 
+.cal-view-hidden {
+  display: none !important;
+}
+
+
+.cal-list-view {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding: 14px;
+}
+
+
+.cal-list-empty {
+  padding: 28px 16px;
+
+  color: var(--text-muted);
+
+  font-size: .82rem;
+
+  text-align: center;
+}
+
+
+.cal-list-event {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 14px;
+
+  background: var(--bg3);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--r-sm);
+}
+
+
+.cal-list-event.green {
+  border-left:
+    3px solid
+    var(--green);
+}
+
+
+.cal-list-event.amber {
+  border-left:
+    3px solid
+    var(--amber);
+}
+
+
+.cal-list-date {
+  width: 58px;
+
+  flex-shrink: 0;
+
+  text-align: center;
+}
+
+
+.cal-list-date strong {
+  display: block;
+
+  color: var(--text);
+
+  font-size: .83rem;
+}
+
+
+.cal-list-date span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: var(--text-muted);
+
+  font-size: .67rem;
+}
+
+
+.cal-list-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+.cal-list-crop-icon-img {
+  width: 30px;
+  height: 30px;
+
+  display: block;
+  object-fit: contain;
+}
+
+
+.cal-list-info {
+  min-width: 0;
+  flex: 1;
+}
+
+
+.cal-list-info strong {
+  display: block;
+
+  color: var(--text);
+
+  font-size: .84rem;
+}
+
+
+.cal-list-info span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: var(--text-muted);
+
+  font-size: .72rem;
+
+  line-height: 1.4;
+}
+
+
+.cal-list-type {
+  flex-shrink: 0;
+
+  padding: 5px 8px;
+
+  border-radius: 99px;
+
+  font-size: .65rem;
+  font-weight: 700;
+}
+
+
+.cal-list-type.green {
+  color: var(--green);
+  background: var(--green-dim);
+}
+
+
+.cal-list-type.amber {
+  color: var(--amber);
+  background: var(--amber-dim);
+}
+
+@media(max-width:640px) {
+
+  .cal-list-event {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+
+  .cal-list-info {
+    min-width:
+      calc(100% - 110px);
+  }
+
+
+  .cal-list-type {
+    margin-left: 70px;
+  }
+
+}
+
 .cal-cell {
   min-height: 80px; padding: 8px; border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border); cursor: pointer;
