@@ -12600,9 +12600,83 @@ function updateSidebarProfile() {
 
 }
 
-function saveSettingImmediate(key, value) {
-  appSettings[key] = value;
-  lsSave(LS_SETTINGS, appSettings);
+function saveSettingImmediate(
+  key,
+  value
+) {
+
+  appSettings[key] =
+    value;
+
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  if (
+    key ===
+    'quietHours'
+  ) {
+
+    updateQuietHoursUI();
+
+  }
+
+}
+
+function updateQuietHoursUI() {
+
+  const enabled =
+    Boolean(
+      appSettings.quietHours
+    );
+
+
+  const timeGrid =
+    document.getElementById(
+      'quietHoursTimeGrid'
+    );
+
+
+  const quietFrom =
+    document.getElementById(
+      'quietFrom'
+    );
+
+
+  const quietUntil =
+    document.getElementById(
+      'quietUntil'
+    );
+
+
+  if (quietFrom) {
+
+    quietFrom.disabled =
+      !enabled;
+
+  }
+
+
+  if (quietUntil) {
+
+    quietUntil.disabled =
+      !enabled;
+
+  }
+
+
+  if (timeGrid) {
+
+    timeGrid.classList.toggle(
+      'is-disabled',
+      !enabled
+    );
+
+  }
+
 }
 
 // ═══ SETTINGS NAVIGATION ═══
@@ -13395,10 +13469,28 @@ function updateSettingsFormValues() {
   set('quietUntil', s.quietUntil);
   set('settingLanguage', s.language);
 
-  setChk('toggleRainAlert', s.rainAlert);
-  setChk('toggleWindAlert', s.windAlert);
-  setChk('toggleDailyBriefing', s.dailyBriefing);
-  setChk('toggleQuietHours', s.quietHours);
+  setChk(
+    'toggleRainAlert',
+    s.rainAlert
+  );
+
+  setChk(
+    'toggleWindAlert',
+    s.windAlert
+  );
+
+  setChk(
+    'toggleDailyBriefing',
+    s.dailyBriefing
+  );
+
+  setChk(
+    'toggleQuietHours',
+    s.quietHours
+  );
+
+
+  updateQuietHoursUI();
 
   // Profile + sidebar farmer avatar
   updateFarmerAvatarUI();

@@ -5090,6 +5090,29 @@ span {
     11px;
 }
 
+.notification-time-grid {
+  transition:
+    opacity .2s,
+    border-color .2s,
+    background .2s;
+}
+
+
+.notification-time-grid.is-disabled {
+  opacity:
+    .48;
+}
+
+
+.notification-time-grid.is-disabled
+input:disabled {
+  cursor:
+    not-allowed;
+
+  opacity:
+    .75;
+}
+
 /* Threshold input */
 .threshold-input-wrap { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .threshold-input {
