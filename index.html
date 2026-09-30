@@ -2695,22 +2695,78 @@
           </div>
 
             <div class="settings-card">
-              <div class="sc-header">Default Dashboard View</div>
-              <div class="sc-body">
-                <div class="setting-row">
-                  <div class="sr-info">
-                    <div class="sr-label">Default Page on Open</div>
-                    <div class="sr-sub">Which page shows first when you open FarmCast</div>
-                  </div>
-                  <select class="setting-select" id="settingDefaultPage" onchange="saveSettingImmediate('defaultPage', this.value)">
-                    <option value="dashboard">Dashboard</option>
-                    <option value="weather-maps">Weather Maps</option>
-                    <option value="planting-calendar">Planting Calendar</option>
-                    <option value="my-crops">My Crops</option>
-                  </select>
+
+              <div class="sc-header settings-card-heading">
+
+                <div class="settings-card-heading-icon">
+                  <span class="material-symbols-outlined">
+                    home
+                  </span>
                 </div>
+
+                <div class="settings-card-heading-copy">
+
+                  <strong>
+                    Startup Page
+                  </strong>
+
+                  <span>
+                    Choose which FarmCast page opens first
+                  </span>
+
+                </div>
+
               </div>
+
+
+              <div class="sc-body">
+
+                <div class="setting-row">
+
+                  <div class="sr-info">
+
+                    <div class="sr-label">
+                      Open FarmCast To
+                    </div>
+
+                    <div class="sr-sub">
+                      Your selection is saved automatically and will be used the next time FarmCast opens.
+                    </div>
+
+                  </div>
+
+
+                  <select
+                    class="setting-select"
+                    id="settingDefaultPage"
+                    onchange="saveSettingImmediate(
+                      'defaultPage',
+                      this.value
+                    )"
+                  >
+                    <option value="dashboard">
+                      Dashboard
+                    </option>
+
+                    <option value="weather-maps">
+                      Weather Maps
+                    </option>
+
+                    <option value="planting-calendar">
+                      Planting Calendar
+                    </option>
+
+                    <option value="my-crops">
+                      My Crops
+                    </option>
+                  </select>
+
+                </div>
+
+              </div>
+
             </div>
+
           </div>
 
           <!-- ─── 3. SMART NOTIFICATIONS ─── -->
