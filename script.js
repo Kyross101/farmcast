@@ -13795,10 +13795,45 @@ function setFontSize(el, size) {
   toast(`Font size set to ${size}`, 'ok');
 }
 
-function applyFontSize(size) {
-  const map = { small: '13px', medium: '14px', large: '16px' };
-  document.documentElement.style.setProperty('--font-size-base', map[size] || '14px');
-  document.body.style.fontSize = map[size] || '14px';
+function applyFontSize(
+  size
+) {
+
+  /*
+   * Most FarmCast text uses rem units,
+   * so the root font size must change.
+   *
+   * Medium keeps the current interface
+   * at its normal 16px rem baseline.
+   */
+  const rootSizes = {
+    small: '15px',
+    medium: '16px',
+    large: '18px'
+  };
+
+
+  const rootSize =
+    rootSizes[size] ||
+    rootSizes.medium;
+
+
+  document.documentElement
+    .style.fontSize =
+      rootSize;
+
+
+  /*
+   * Keep normal inherited body text
+   * proportional to the selected size.
+   *
+   * Medium:
+   * 16px × 0.875 = 14px
+   */
+  document.body
+    .style.fontSize =
+      '0.875rem';
+
 }
 
 // ═══ DATA EXPORT ═══
