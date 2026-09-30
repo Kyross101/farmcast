@@ -4807,7 +4807,9 @@ function populateMyCropsCropSelect() {
     select.value;
 
   const crops =
-    getMyCropPickerDataset();
+    sortCropsByFavoritePreference(
+      getMyCropPickerDataset()
+    );
 
 
   select.innerHTML =
@@ -5028,7 +5030,9 @@ function renderMyCropPicker() {
 
 
   const crops =
-    getMyCropPickerDataset();
+    sortCropsByFavoritePreference(
+      getMyCropPickerDataset()
+    );
 
 
   const filtered =
@@ -13135,6 +13139,87 @@ function saveThresholdSettings() {
 
 // ═══ CROP PREFERENCES ═══
 
+function sortCropsByFavoritePreference(
+  crops
+) {
+
+  const favoriteCrops =
+    Array.isArray(
+      appSettings.favCrops
+    )
+      ? appSettings.favCrops
+      : [];
+
+
+  const favoriteOrder =
+    new Map(
+      favoriteCrops.map(
+        (cropName, index) => [
+          cropName,
+          index
+        ]
+      )
+    );
+
+
+  return [
+    ...crops
+  ].sort(
+    (a, b) => {
+
+      const aFavorite =
+        favoriteOrder.has(
+          a.name
+        );
+
+      const bFavorite =
+        favoriteOrder.has(
+          b.name
+        );
+
+
+      if (
+        aFavorite &&
+        !bFavorite
+      ) {
+        return -1;
+      }
+
+
+      if (
+        !aFavorite &&
+        bFavorite
+      ) {
+        return 1;
+      }
+
+
+      if (
+        aFavorite &&
+        bFavorite
+      ) {
+
+        return (
+          favoriteOrder.get(
+            a.name
+          ) -
+          favoriteOrder.get(
+            b.name
+          )
+        );
+
+      }
+
+
+      return a.name.localeCompare(
+        b.name
+      );
+
+    }
+  );
+
+}
+
 function renderFavCropsGrid() {
 
   const el =
@@ -13192,8 +13277,22 @@ function toggleFavCrop(el, crop) {
 }
 
 function saveFavCrops() {
-  lsSave(LS_SETTINGS, appSettings);
-  toast('Crop preferences saved!', 'ok');
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  populateMyCropsCropSelect();
+  renderMyCropPicker();
+
+
+  toast(
+    'Favorite crop preferences saved!',
+    'ok'
+  );
+
 }
 
 function setCalView(el, view) {
