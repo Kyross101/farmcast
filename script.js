@@ -1515,12 +1515,24 @@ async function fetchWeather(city){
     ]);
     if(!wRes.ok) throw new Error('City not found');
     const [wData, fData] = await Promise.all([wRes.json(), fRes.json()]);
-    displayWeatherData(wData);
-    renderForecastAndCalendar(fData, wData);
-    currentCity = city;
-  } catch(e) {
-    toast(`Error: ${e.message}`, 'err');
-  } finally {
+    
+      displayWeatherData(wData);
+      renderForecastAndCalendar(fData, wData);
+      currentCity = city;
+
+      return wData;
+
+    } catch(e) {
+
+      toast(
+        `Error: ${e.message}`,
+        'err'
+      );
+
+      return null;
+
+    } finally {
+
     if (topIcon)  topIcon.style.animation  = '';
     if (heroIcon) heroIcon.style.animation = '';
     if (heroBtn)  heroBtn.classList.remove('refreshing');
@@ -12643,17 +12655,150 @@ function confirmSignOut() {
 }
 
 // ═══ LOCATION SETTINGS ═══
-function applyLocationFromSearch() {
-  const val = document.getElementById('settingLocationSearch').value.trim();
-  if (!val) { toast('Please enter a location.', 'warn'); return; }
-  appSettings.city = val;
-  lsSave(LS_SETTINGS, appSettings);
-  currentCity = val;
-  fetchWeather(val);
-  const status = document.getElementById('locationStatus');
-  status.className = 'location-status ok';
-  status.innerHTML = `<span class="material-symbols-outlined">check_circle</span> Location set to: ${val}`;
-  toast(`Location updated to ${val}`, 'ok');
+async function applyLocationFromSearch() {
+
+  const input =
+    document.getElementById(
+      'settingLocationSearch'
+    );
+
+  const status =
+    document.getElementById(
+      'locationStatus'
+    );
+
+
+  const val =
+    input.value.trim();
+
+
+  if (!val) {
+
+    toast(
+      'Please enter a location.',
+      'warn'
+    );
+
+    return;
+
+  }
+
+
+  if (status) {
+
+    status.className =
+      'location-status';
+
+    status.innerHTML = `
+      <span
+        class="material-symbols-outlined"
+        style="animation:spin .7s linear infinite"
+      >
+        refresh
+      </span>
+
+      Checking farm location…
+    `;
+
+  }
+
+
+  const weatherData =
+    await fetchWeather(
+      val
+    );
+
+
+  if (!weatherData) {
+
+    if (status) {
+
+      status.className =
+        'location-status error';
+
+      status.innerHTML = `
+        <span class="material-symbols-outlined">
+          error
+        </span>
+
+        Location not found. Check the city or municipality name.
+      `;
+
+    }
+
+    return;
+
+  }
+
+
+  const lat =
+    weatherData.coord.lat
+      .toFixed(4);
+
+  const lon =
+    weatherData.coord.lon
+      .toFixed(4);
+
+
+  appSettings.city =
+    val;
+
+  appSettings.lat =
+    lat;
+
+  appSettings.lon =
+    lon;
+
+
+  const latInput =
+    document.getElementById(
+      'settingLat'
+    );
+
+  const lonInput =
+    document.getElementById(
+      'settingLon'
+    );
+
+
+  if (latInput) {
+    latInput.value =
+      lat;
+  }
+
+  if (lonInput) {
+    lonInput.value =
+      lon;
+  }
+
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  if (status) {
+
+    status.className =
+      'location-status ok';
+
+    status.innerHTML = `
+      <span class="material-symbols-outlined">
+        check_circle
+      </span>
+
+      Farm location verified and saved
+    `;
+
+  }
+
+
+  toast(
+    `Location updated to ${val}`,
+    'ok'
+  );
+
 }
 
 function getGPSLocation() {
