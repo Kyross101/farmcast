@@ -4315,11 +4315,27 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e; --text-muted: #5a6478; }
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px) {
-  .settings-layout { grid-template-columns: 1fr; }
-  .settings-nav { flex-direction: row; flex-wrap: wrap; position: static; }
-  .notif-panel { width: 100%; right: -100%; }
+/* Settings needs more room because the desktop
+   main sidebar already uses 220px of the viewport. */
+@media(max-width:1100px) {
+  .settings-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: static;
+  }
 }
+
+@media(max-width:900px) {
+  .notif-panel {
+    width: 100%;
+    right: -100%;
+  }
+}
+
 @media(max-width:640px) {
   .account-status-row { flex-direction: column; }
   .setting-row { flex-direction: column; align-items: flex-start; }
