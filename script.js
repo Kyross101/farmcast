@@ -14275,20 +14275,96 @@ function applyFontSize(
 }
 
 // ═══ DATA EXPORT ═══
+
+// ═══ DATA EXPORT ═══
+
+function escapeCSVCell(
+  value
+) {
+
+  if (
+    value === null ||
+    value === undefined
+  ) {
+    return '""';
+  }
+
+
+  let text =
+    String(value);
+
+
+  /*
+   * Prevent spreadsheet apps from
+   * interpreting user-entered text
+   * as formulas.
+   */
+  if (
+    /^[=+\-@]/.test(
+      text.trimStart()
+    )
+  ) {
+
+    text =
+      `'${text}`;
+
+  }
+
+
+  return `"${text.replace(
+    /"/g,
+    '""'
+  )}"`;
+
+}
+
 function exportCSV(type) {
   let data, headers, rows, filename;
 
   if (type === 'crops') {
     headers = ['ID','Type','Area (m²)','Planted','Harvest','Location','Irrigation','Notes','Watered'];
-    rows = (typeof myCrops !== 'undefined' ? myCrops : []).map(c =>
-      [c.id, c.type, c.area, c.planted, c.harvest, c.location, c.irrigation, `"${(c.notes||'').replace(/"/g,'""')}"`, c.watered ? 'Yes':'No']
-    );
+    
+    rows =
+      (
+        typeof myCrops !==
+        'undefined'
+        ? myCrops
+        : []
+      ).map(c => [
+        c.id,
+        c.type,
+        c.area,
+        c.planted,
+        c.harvest,
+        c.location,
+        c.irrigation,
+        c.notes || '',
+        c.watered
+          ? 'Yes'
+          : 'No'
+      ]);
+    
     filename = 'farmcast_crops.csv';
   } else if (type === 'harvest') {
     headers = ['ID','Crop','Date','Location','Area (m²)','Yield (kg)','Quality','Notes'];
-    rows = (typeof harvestHistory !== 'undefined' ? harvestHistory : []).map(h =>
-      [h.id, h.crop, h.date, h.location, h.area, h.yield, h.quality, `"${(h.notes||'').replace(/"/g,'""')}"`]
-    );
+    
+    rows =
+      (
+        typeof harvestHistory !==
+        'undefined'
+          ? harvestHistory
+          : []
+      ).map(h => [
+        h.id,
+        h.crop,
+        h.date,
+        h.location,
+        h.area,
+        h.yield,
+        h.quality,
+        h.notes || ''
+      ]);
+    
     filename = 'farmcast_harvest.csv';
   } else if (type === 'irrigation') {
     headers = ['ID','Name','Crop','Area (m²)','Type','Frequency (days)','Water/Session (L)','Last Watered'];
@@ -14298,14 +14374,54 @@ function exportCSV(type) {
     filename = 'farmcast_irrigation.csv';
   } else if (type === 'pests') {
     headers = ['ID','Pest','Date','Crop','Location','Severity','Notes'];
-    rows = (typeof pestLogs !== 'undefined' ? pestLogs : []).map(p =>
-      [p.id, p.pest, p.date, p.crop, p.location, p.severity, `"${(p.notes||'').replace(/"/g,'""')}"`]
-    );
+    
+    rows =
+      (
+        typeof pestLogs !==
+        'undefined'
+          ? pestLogs
+          : []
+      ).map(p => [
+        p.id,
+        p.pest,
+        p.date,
+        p.crop,
+        p.location,
+        p.severity,
+        p.notes || ''
+      ]);
+    
     filename = 'farmcast_pests.csv';
   } else return;
 
-  const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const csvRows = [
+    headers.map(
+      escapeCSVCell
+    ).join(','),
+
+    ...rows.map(row =>
+      row.map(
+        escapeCSVCell
+      ).join(',')
+    )
+  ];
+
+
+  const csv =
+    '\uFEFF' +
+    csvRows.join(
+      '\r\n'
+    );
+
+
+  const blob =
+    new Blob(
+      [csv],
+      {
+        type:
+          'text/csv;charset=utf-8;'
+      }
+    );
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
   a.href = url; a.download = filename;
