@@ -2660,7 +2660,48 @@
             </div>
 
             <div class="settings-card">
+              <div class="sc-header">
+                Farm Defaults
+              </div>
+
+              <div class="sc-body">
+
+                <div class="setting-row">
+
+                  <div class="sr-info">
+                    <div class="sr-label">
+                      Default Irrigation Method
+                    </div>
+
+                    <div class="sr-sub">
+                      Automatically selected when adding a new irrigation field.
+                      You can still change it for individual fields.
+                    </div>
+                  </div>
+
+                  <select
+                    class="setting-select"
+                    id="settingDefaultIrrigation"
+                    onchange="saveSettingImmediate(
+                      'defaultIrrigationMethod',
+                      this.value
+                    )"
+                  >
+                    <option value="Manual">Manual</option>
+                    <option value="Drip">Drip</option>
+                    <option value="Sprinkler">Sprinkler</option>
+                    <option value="Flood">Flood</option>
+                    <option value="Rain-fed">Rain-fed</option>
+                  </select>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="settings-card">
               <div class="sc-header">Favorite Crops (Priority in Dashboard)</div>
+
               <div class="sc-body">
                 <div class="sr-sub" style="margin-bottom:14px">Select crops that will appear first in recommendations and calendar highlights.</div>
                 <div class="fav-crops-grid" id="favCropsGrid">

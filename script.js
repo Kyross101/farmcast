@@ -12027,8 +12027,41 @@ function deleteField(id) {
   toast(`${f.name} deleted.`, 'warn');
 }
 
-function openAddFieldModal()  { document.getElementById('addFieldModal').style.display = 'flex'; }
-function closeAddFieldModal() { document.getElementById('addFieldModal').style.display = 'none'; }
+function openAddFieldModal() {
+
+  const irrigationType =
+    document.getElementById(
+      'fieldIrrType'
+    );
+
+  if (irrigationType) {
+
+    irrigationType.value =
+      appSettings.defaultIrrigationMethod ||
+      'Manual';
+
+  }
+
+
+  const modal =
+    document.getElementById(
+      'addFieldModal'
+    );
+
+  if (modal) {
+    modal.style.display =
+      'flex';
+  }
+
+}
+
+
+function closeAddFieldModal() {
+  document.getElementById(
+    'addFieldModal'
+  ).style.display =
+    'none';
+}
 
 function saveNewField() {
   const name     = document.getElementById('fieldName').value.trim();
@@ -12108,9 +12141,10 @@ const DEFAULT_SETTINGS = {
   harvestReminderDays: 7,
   thresholdTemp: 35,
 
-  // Crops
+  // Crops / farm preferences
   favCrops: ['Rice','Corn','Tomato'],
   calView: 'calendar',
+  defaultIrrigationMethod: 'Manual',
 
   // Display
   theme: 'dark',
@@ -12878,7 +12912,14 @@ function updateSettingsFormValues() {
   set('settingRole', s.role);
   set('settingFarmSize', s.farmSize);
   set('settingPhone', s.phone);
+
+  set(
+    'settingDefaultIrrigation',
+    s.defaultIrrigationMethod
+  );
+
   set('settingLocationSearch', s.city);
+
   set('settingLat', s.lat);
   set('settingLon', s.lon);
   set('settingDefaultPage', s.defaultPage);
