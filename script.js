@@ -1570,6 +1570,9 @@ let weatherMap = null;
 let currentWeatherLayer = null;
 let currentBaseLayer = null;
 let currentMapLayerName = 'precipitation_new';
+
+let lastMapWeatherData = null;
+let currentMapWeatherPopup = null;
  
 const OWM_LAYERS = {
   precipitation_new: { name: 'Precipitation', legend: 'precip-gradient',  labels: ['None','Heavy'] },
@@ -1656,10 +1659,44 @@ function initWeatherMap() {
  
   // Add farm marker
   if (currentWeather) {
-    const marker = L.marker([lat, lon], {
-      icon: L.divIcon({ className: 'farm-marker', html: '🌾', iconSize: [30, 30], iconAnchor: [15, 15] })
-    }).addTo(weatherMap);
-    marker.bindPopup(`<b>${currentWeather.name}</b><br>${Math.round(currentWeather.main.temp)}°C — ${currentWeather.weather[0].description}`).openPopup();
+
+    lastMapWeatherData =
+      currentWeather;
+
+
+    const marker =
+      L.marker(
+        [lat, lon],
+        {
+          icon:
+            L.divIcon({
+              className:
+                'farm-marker',
+
+              html:
+                '🌾',
+  
+              iconSize:
+                [30, 30],
+  
+              iconAnchor:
+                [15, 15]
+            })
+        }
+      )
+        .addTo(
+          weatherMap
+        );
+
+
+    marker
+      .bindPopup(
+        `<b>${currentWeather.name}</b><br>${displayTemp(
+          currentWeather.main.temp
+        )} — ${currentWeather.weather[0].description}`
+      )
+      .openPopup();
+
   }
  
   // Click to get weather
@@ -1699,43 +1736,291 @@ function toggleWindModelInfo() {
   }
 }
 
-async function fetchMapPointWeather(lat, lng) {
-  try {
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${API_KEY}`);
-    if (!res.ok) return;
-    const data = await res.json();
- 
-    // Add popup marker
-    const popup = L.popup()
-      .setLatLng([lat, lng])
-      .setContent(`
-        <div style="font-family:'DM Sans',sans-serif;min-width:160px;">
-          <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px;">${data.name}, ${data.sys.country}</div>
-          <div style="font-size:1.4rem;font-weight:800;color:#3fb950;">${Math.round(data.main.temp)}°C</div>
-          <div style="font-size:0.78rem;color:#666;margin-top:2px;text-transform:capitalize;">${data.weather[0].description}</div>
-          <div style="margin-top:8px;font-size:0.78rem;display:grid;grid-template-columns:1fr 1fr;gap:4px;">
-            <div>💧 ${data.main.humidity}%</div>
-            <div>💨 ${(data.wind.speed*3.6).toFixed(1)} kph</div>
-            <div>☁️ ${data.clouds.all}%</div>
-            <div>👁 ${data.visibility ? (data.visibility/1000).toFixed(1) : '--'} km</div>
-          </div>
-        </div>
-      `)
-      .openOn(weatherMap);
- 
-    // Update sidebar summary
-    document.getElementById('mapWsCity').textContent  = `${data.name}, ${data.sys.country}`;
-    document.getElementById('mapWsTemp').textContent  = `${Math.round(data.main.temp)}°C`;
-    document.getElementById('mapWsHumid').textContent = `${data.main.humidity}%`;
-    document.getElementById('mapWsWind').textContent  = `${(data.wind.speed*3.6).toFixed(1)} kph`;
-    document.getElementById('mapWsCloud').textContent = `${data.clouds.all}%`;
- 
-    // Hide click hint
-    document.getElementById('mapClickHint').style.display = 'none';
- 
-  } catch (e) {
-    console.error('Map fetch error:', e);
+function buildMapWeatherPopupHtml(
+  data
+) {
+
+  if (!data) {
+    return '';
   }
+
+
+  const temperature =
+    displayTemp(
+      data.main.temp
+    );
+
+
+  const wind =
+    displayWind(
+      data.wind.speed
+    );
+
+
+  return `
+    <div
+      style="
+        font-family:'DM Sans',sans-serif;
+        min-width:160px;
+      "
+    >
+
+      <div
+        style="
+          font-weight:700;
+          font-size:0.95rem;
+          margin-bottom:4px;
+        "
+      >
+        ${data.name}, ${data.sys.country}
+      </div>
+
+
+      <div
+        style="
+          font-size:1.4rem;
+          font-weight:800;
+          color:#3fb950;
+        "
+      >
+        ${temperature}
+      </div>
+
+
+      <div
+        style="
+          font-size:0.78rem;
+          color:#666;
+          margin-top:2px;
+          text-transform:capitalize;
+        "
+      >
+        ${data.weather[0].description}
+      </div>
+
+
+      <div
+        style="
+          margin-top:8px;
+          font-size:0.78rem;
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:4px;
+        "
+      >
+
+        <div>
+          💧 ${data.main.humidity}%
+        </div>
+
+        <div>
+          💨 ${wind}
+        </div>
+
+        <div>
+          ☁️ ${data.clouds.all}%
+        </div>
+
+        <div>
+          👁 ${
+            data.visibility
+              ? (
+                  data.visibility /
+                  1000
+                ).toFixed(1)
+              : '--'
+          } km
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+}
+
+
+function renderMapWeatherSummary(
+  data
+) {
+
+  if (!data) {
+    return;
+  }
+
+
+  const city =
+    document.getElementById(
+      'mapWsCity'
+    );
+
+  const temp =
+    document.getElementById(
+      'mapWsTemp'
+    );
+
+  const humidity =
+    document.getElementById(
+      'mapWsHumid'
+    );
+
+  const wind =
+    document.getElementById(
+      'mapWsWind'
+    );
+
+  const cloud =
+    document.getElementById(
+      'mapWsCloud'
+    );
+
+
+  if (city) {
+
+    city.textContent =
+      `${data.name}, ${data.sys.country}`;
+
+  }
+
+
+  if (temp) {
+
+    temp.textContent =
+      displayTemp(
+        data.main.temp
+      );
+
+  }
+
+
+  if (humidity) {
+
+    humidity.textContent =
+      `${data.main.humidity}%`;
+
+  }
+
+
+  if (wind) {
+
+    wind.textContent =
+      displayWind(
+        data.wind.speed
+      );
+
+  }
+
+
+  if (cloud) {
+
+    cloud.textContent =
+      `${data.clouds.all}%`;
+
+  }
+
+}
+
+
+function refreshMapWeatherUnits() {
+
+  const data =
+    lastMapWeatherData ||
+    currentWeather;
+
+
+  if (!data) {
+    return;
+  }
+
+
+  renderMapWeatherSummary(
+    data
+  );
+
+
+  if (
+    currentMapWeatherPopup
+  ) {
+
+    currentMapWeatherPopup
+      .setContent(
+        buildMapWeatherPopupHtml(
+          data
+        )
+      );
+
+  }
+
+}
+
+async function fetchMapPointWeather(
+  lat,
+  lng
+) {
+
+  try {
+
+    const res =
+      await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${API_KEY}`
+      );
+
+
+    if (!res.ok) {
+      return;
+    }
+
+
+    const data =
+      await res.json();
+
+
+    lastMapWeatherData =
+      data;
+
+
+    currentMapWeatherPopup =
+      L.popup()
+        .setLatLng(
+          [lat, lng]
+        )
+        .setContent(
+          buildMapWeatherPopupHtml(
+            data
+          )
+        )
+        .openOn(
+          weatherMap
+        );
+
+
+    renderMapWeatherSummary(
+      data
+    );
+
+
+    const hint =
+      document.getElementById(
+        'mapClickHint'
+      );
+
+
+    if (hint) {
+
+      hint.style.display =
+        'none';
+
+    }
+
+  } catch (error) {
+
+    console.error(
+      'Map fetch error:',
+      error
+    );
+
+  }
+
 }
  
 function setMapLayer(el, layerName) {
@@ -1876,13 +2161,12 @@ function flyToFarm(lat, lon, name) {
 }
  
 function updateMapWeatherSummary() {
-  if (!currentWeather) return;
-  const d = currentWeather;
-  document.getElementById('mapWsCity').textContent  = `${d.name}, ${d.sys.country}`;
-  document.getElementById('mapWsTemp').textContent  = `${Math.round(d.main.temp)}°C`;
-  document.getElementById('mapWsHumid').textContent = `${d.main.humidity}%`;
-  document.getElementById('mapWsWind').textContent  = `${(d.wind.speed*3.6).toFixed(1)} kph`;
-  document.getElementById('mapWsCloud').textContent = `${d.clouds.all}%`;
+
+  renderMapWeatherSummary(
+    lastMapWeatherData ||
+    currentWeather
+  );
+
 }
 
 async function loadRainViewerRadar() {
@@ -13784,6 +14068,7 @@ function setTempUnit(
 
   }
 
+  refreshMapWeatherUnits();
 
   toast(
     `Temperature unit set to ${
@@ -13796,13 +14081,58 @@ function setTempUnit(
 
 }
 
-function setWindUnit(el, unit) {
-  document.querySelectorAll('#windUnitSelector .unit-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  appSettings.windUnit = unit;
-  lsSave(LS_SETTINGS, appSettings);
-  if (currentWeather) displayWeatherData(currentWeather);
-  toast(`Wind unit set to ${unit}`, 'ok');
+function setWindUnit(
+  el,
+  unit
+) {
+
+  document
+    .querySelectorAll(
+      '#windUnitSelector .unit-btn'
+    )
+    .forEach(button =>
+      button.classList.remove(
+        'active'
+      )
+    );
+
+
+  el.classList.add(
+    'active'
+  );
+
+
+  appSettings.windUnit =
+    unit;
+
+
+  lsSave(
+    LS_SETTINGS,
+    appSettings
+  );
+
+
+  if (currentWeather) {
+
+    displayWeatherData(
+      currentWeather
+    );
+
+  }
+
+
+  refreshMapWeatherUnits();
+
+
+  toast(
+    `Wind unit set to ${
+      unit === 'mph'
+        ? 'mph'
+        : 'km/h'
+    }`,
+    'ok'
+  );
+
 }
 
 function setFontSize(el, size) {
