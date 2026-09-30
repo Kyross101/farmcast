@@ -13422,7 +13422,12 @@ function saveProfileSettings() {
     'Profile saved successfully!',
     'ok'
   );
-  addNotification('system', '✅ Profile Updated', `Your profile (${appSettings.name}) has been saved.`);
+
+  addNotification(
+    'system',
+    'Profile Updated',
+    `Your profile (${appSettings.name}) has been saved.`
+  );
 }
 
 function confirmSignOut() {
@@ -13776,7 +13781,7 @@ function saveThresholdSettings() {
 
   addNotification(
     'system',
-    '⚙️ Settings Updated',
+    'Settings Updated',
     'Weather alert thresholds have been saved.'
   );
 
@@ -13994,7 +13999,15 @@ function setTheme(el, theme) {
   appSettings.theme = theme;
   lsSave(LS_SETTINGS, appSettings);
   applyTheme(theme);
-  toast(`${theme === 'dark' ? '🌙 Dark' : '☀️ Light'} mode activated!`, 'ok');
+
+  toast(
+    `${
+      theme === 'dark'
+        ? 'Dark'
+        : 'Light'
+    } mode activated!`,
+    'ok'
+  );
 }
 
 function applyTheme(theme) {
@@ -14462,8 +14475,17 @@ function exportCSV(type) {
   lsSave(LS_SETTINGS, appSettings);
   const lte = document.getElementById('lastExportTime');
   if (lte) lte.textContent = now;
-  toast(`${filename} downloaded! 📊`, 'ok');
-  addNotification('system', '📥 Data Exported', `${filename} was downloaded successfully.`);
+
+  toast(
+    `${filename} downloaded!`,
+    'ok'
+  );
+
+  addNotification(
+    'system',
+    'Data Exported',
+    `${filename} was downloaded successfully.`
+  );
 }
 
 function buildResetSettingsPreservingAccount() {
@@ -14849,6 +14871,40 @@ if (notifications.length === 0) {
   nextNotifId = 4;
 }
 
+function getNotificationIconPath(
+  type
+) {
+
+  const iconMap = {
+
+    weather:
+      'assets/ui/weather-partly-cloudy.svg',
+
+    official:
+      'assets/ui/pest-status-danger.svg',
+
+    pest:
+      'assets/ui/analytics-pest.svg',
+
+    'plant-health':
+      'assets/ui/scanner-disease.svg',
+
+    harvest:
+      'assets/ui/analytics-harvest.svg',
+
+    system:
+      'assets/ui/farmcast-logo.svg'
+
+  };
+
+
+  return (
+    iconMap[type] ||
+    'assets/ui/farmcast-logo.svg'
+  );
+
+}
+
 function addNotification(
   type,
   title,
@@ -14870,14 +14926,6 @@ function addNotification(
     if (inQuiet) return false; // suppress during quiet hours
   }
 
-  const iconMap = {
-    weather: '⛅',
-    official: '🔴',
-    pest: '🦗',
-    'plant-health': '🦠',
-    harvest: '🌾',
-    system: '⚙️'
-  };
 
     notifications.unshift({
 
@@ -14887,8 +14935,9 @@ function addNotification(
     type,
 
     icon:
-      iconMap[type] ||
-      '📢',
+      getNotificationIconPath(
+        type
+      ),
 
     title,
 
@@ -15677,7 +15726,18 @@ function renderNotifList() {
         class="notif-item${n.read ? '' : ' unread'}${n.type === 'official' ? ' notif-official' : ''}"
         onclick="handleNotifClick('${n.id}')"
       >
-      <div class="ni-icon type-${n.type}">${n.icon}</div>
+      <div
+        class="ni-icon type-${n.type}"
+      >
+        <img
+          src="${getNotificationIconPath(
+            n.type
+          )}"
+          alt=""
+          class="ni-icon-img"
+        >
+      </div>
+
       <div class="ni-body">
         <div class="ni-title">${n.title}</div>
         <div class="ni-text">${n.body}</div>

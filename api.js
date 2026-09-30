@@ -662,7 +662,12 @@ function patchScriptJsWithAPI() {
       appSettings = { ...appSettings, name, email, farmName, role, farmSize, phone };
       lsSave('fc_settings', appSettings);
       updateSidebarProfile();
-      toast('Profile saved successfully! 👨‍🌾', 'ok');
+
+      toast(
+        'Profile saved successfully!',
+        'ok'
+      );
+
     } catch (err) {
       toast(`Error: ${err.message}`, 'err');
     }
