@@ -12672,13 +12672,106 @@ function getGPSLocation() {
     status.className = 'location-status ok';
     status.innerHTML = `<span class="material-symbols-outlined">my_location</span> GPS: ${lat}°N, ${lon}°E`;
     // Fetch weather for coordinates
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`)
-      .then(r => r.json())
-      .then(d => {
-        currentCity = d.name;
-        fetchWeather(d.name);
-        toast(`📍 Location found: ${d.name}`, 'ok');
-      });
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+    )
+    .then(response => {
+
+      if (!response.ok) {
+        throw new Error(
+          'Unable to identify GPS location.'
+        );
+      }
+
+      return response.json();
+
+    })
+    .then(data => {
+
+      const cityName =
+        data.name ||
+        appSettings.city;
+
+
+      currentCity =
+        cityName;
+
+      appSettings.city =
+        cityName;
+
+      appSettings.lat =
+        lat;
+
+      appSettings.lon =
+        lon;
+
+
+      const searchInput =
+        document.getElementById(
+          'settingLocationSearch'
+        );
+
+      if (searchInput) {
+        searchInput.value =
+          cityName;
+      }
+
+
+      lsSave(
+        LS_SETTINGS,
+        appSettings
+      );
+
+      status.className =
+        'location-status ok';
+
+      status.innerHTML = `
+        <span class="material-symbols-outlined">
+          my_location
+        </span>
+
+        Farm location set to
+        <strong>${cityName}</strong>
+      `;
+
+
+      fetchWeather(
+        cityName
+      );
+
+      toast(
+        `Location found: ${cityName}`,
+        'ok'
+      );
+
+    })
+    .catch(error => {
+
+      console.warn(
+        'GPS city lookup failed:',
+        error
+      );
+
+
+      status.className =
+        'location-status ok';
+
+      status.innerHTML = `
+        <span class="material-symbols-outlined">
+          my_location
+        </span>
+
+        GPS coordinates saved
+      `;
+
+
+      toast(
+        'GPS coordinates saved, but the city name could not be identified.',
+        'warn'
+      );
+
+    });
+
   }, err => {
     status.className = 'location-status error';
     status.innerHTML = `<span class="material-symbols-outlined">error</span> GPS error: ${err.message}`;
