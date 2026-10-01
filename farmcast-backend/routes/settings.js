@@ -24,17 +24,147 @@ router.get('/', async (req, res) => {
 });
 
 // PUT save settings
-router.put('/', async (req, res) => {
-  try {
-    const settings = await Settings.findOneAndUpdate(
-      { user: req.user.id },
-      { ...req.body },
-      { new: true, upsert: true }
-    );
-    res.json({ message: 'Settings saved!', settings });
-  } catch (err) {
-    res.status(500).json({ message: 'Error saving settings.' });
+router.put(
+  '/',
+  async (
+    req,
+    res
+  ) => {
+
+    try {
+
+      /*
+       * Only allow real FarmCast
+       * preference fields.
+       *
+       * Account ownership (`user`) and
+       * MongoDB metadata can never be
+       * changed through this endpoint.
+       */
+      const allowedFields = [
+        'rainAlert',
+        'windAlert',
+        'dailyBriefing',
+        'briefingTime',
+        'quietHours',
+        'quietFrom',
+        'quietUntil',
+        'harvestReminderDays',
+        'thresholdTemp',
+        'favCrops',
+        'calView',
+        'defaultIrrigationMethod',
+        'theme',
+        'tempUnit',
+        'windUnit',
+        'fontSize',
+        'defaultPage'
+      ];
+
+
+      const updates =
+        {};
+
+
+      allowedFields.forEach(
+        field => {
+
+          if (
+            Object.prototype
+              .hasOwnProperty
+              .call(
+                req.body,
+                field
+              )
+          ) {
+
+            updates[field] =
+              req.body[field];
+
+          }
+
+        }
+      );
+
+
+      const settings =
+        await Settings.findOneAndUpdate(
+          {
+            user:
+              req.user.id
+          },
+
+          {
+            $set:
+              updates,
+
+            $setOnInsert: {
+              user:
+                req.user.id
+            }
+          },
+
+          {
+            new:
+              true,
+
+            upsert:
+              true,
+
+            runValidators:
+              true,
+
+            setDefaultsOnInsert:
+              true
+          }
+        );
+
+
+      res.json({
+        message:
+          'Settings saved!',
+
+        settings
+      });
+
+
+    } catch (err) {
+
+      /*
+       * Validation errors should not be
+       * reported as generic server errors.
+       */
+      if (
+        err?.name ===
+        'ValidationError'
+      ) {
+
+        return res
+          .status(400)
+          .json({
+            message:
+              'One or more settings values are invalid.'
+          });
+
+      }
+
+
+      console.error(
+        'Settings save error:',
+        err
+      );
+
+
+      res
+        .status(500)
+        .json({
+          message:
+            'Error saving settings.'
+        });
+
+    }
+
   }
-});
+);
 
 module.exports = router;
