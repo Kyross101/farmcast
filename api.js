@@ -1323,10 +1323,6 @@ function patchScriptJsWithAPI() {
 
   }
 
-  return;
-
-    
-  console.log('✅ API patches applied to script.js functions!');
 }
 
 // ══════════════════════════════════════════════
