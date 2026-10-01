@@ -14531,6 +14531,832 @@ function hasOnlyAllowedBackupKeys(
 
 }
 
+function isBackupText(
+  value
+) {
+
+  return (
+    typeof value ===
+      'string' &&
+    value.trim()
+      .length > 0
+  );
+
+}
+
+
+function isBackupDate(
+  value
+) {
+
+  return (
+    isBackupText(
+      value
+    ) &&
+    !Number.isNaN(
+      Date.parse(
+        value
+      )
+    )
+  );
+
+}
+
+
+function isBackupNumber(
+  value,
+  minimum = null
+) {
+
+  const number =
+    Number(
+      value
+    );
+
+
+  if (
+    !Number.isFinite(
+      number
+    )
+  ) {
+    return false;
+  }
+
+
+  if (
+    minimum !== null &&
+    number < minimum
+  ) {
+    return false;
+  }
+
+
+  return true;
+
+}
+
+
+function validateFarmCastBackupRecords(
+  backup,
+  errors
+) {
+
+  const data =
+    backup.data;
+
+
+  const plantingMethods =
+    new Set([
+      'direct-seeded',
+      'transplanted',
+      'cloves',
+      'cuttings'
+    ]);
+
+
+  const cropStages =
+    new Set([
+      'seedling',
+      'vegetative',
+      'flowering',
+      'fruiting',
+      'ready'
+    ]);
+
+
+  const harvestQualities =
+    new Set([
+      'excellent',
+      'good',
+      'poor'
+    ]);
+
+
+  const pestSeverities =
+    new Set([
+      'low',
+      'medium',
+      'high'
+    ]);
+
+
+  const scanSeverities =
+    new Set([
+      'none',
+      'low',
+      'medium',
+      'high',
+      'unknown'
+    ]);
+
+
+  const notificationTypes =
+    new Set([
+      'weather',
+      'official',
+      'pest',
+      'plant-health',
+      'harvest',
+      'system'
+    ]);
+
+
+  const taskPriorities =
+    new Set([
+      'low',
+      'med',
+      'high'
+    ]);
+
+
+  /*
+   * CROPS
+   */
+  if (
+    Array.isArray(
+      data.crops
+    )
+  ) {
+
+    data.crops.forEach(
+      (crop, index) => {
+
+        const label =
+          `crops[${index}]`;
+
+
+        if (
+          !isBackupText(
+            crop.type
+          )
+        ) {
+
+          errors.push(
+            `${label} has no valid crop type.`
+          );
+
+        }
+
+
+        if (
+          !plantingMethods.has(
+            crop.plantingMethod
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid planting method.`
+          );
+
+        }
+
+
+        if (
+          !isBackupNumber(
+            crop.area,
+            0.000001
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid area.`
+          );
+
+        }
+
+
+        if (
+          !isBackupDate(
+            crop.planted
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid planting date.`
+          );
+
+        }
+
+
+        if (
+          !isBackupDate(
+            crop.harvest
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid harvest date.`
+          );
+
+        }
+
+
+        if (
+          !isBackupText(
+            crop.location
+          )
+        ) {
+
+          errors.push(
+            `${label} has no valid location.`
+          );
+
+        }
+
+
+        if (
+          crop.currentStage !==
+            undefined &&
+          !cropStages.has(
+            crop.currentStage
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid growth stage.`
+          );
+
+        }
+
+
+        if (
+          crop.growthHistory !==
+            undefined
+        ) {
+
+          if (
+            !Array.isArray(
+              crop.growthHistory
+            )
+          ) {
+
+            errors.push(
+              `${label} has invalid growth history.`
+            );
+
+          } else {
+
+            crop.growthHistory.forEach(
+              (entry, historyIndex) => {
+
+                if (
+                  !isPlainBackupObject(
+                    entry
+                  ) ||
+                  !cropStages.has(
+                    entry.stage
+                  ) ||
+                  !isBackupDate(
+                    entry.date
+                  )
+                ) {
+
+                  errors.push(
+                    `${label}.growthHistory[${historyIndex}] is invalid.`
+                  );
+
+                }
+
+              }
+            );
+
+          }
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /*
+   * HARVEST HISTORY
+   */
+  if (
+    Array.isArray(
+      data.harvestHistory
+    )
+  ) {
+
+    data.harvestHistory.forEach(
+      (record, index) => {
+
+        const label =
+          `harvestHistory[${index}]`;
+
+
+        if (
+          !isBackupText(
+            record.crop
+          ) ||
+          !isBackupDate(
+            record.date
+          ) ||
+          !isBackupText(
+            record.location
+          )
+        ) {
+
+          errors.push(
+            `${label} is missing required harvest information.`
+          );
+
+        }
+
+
+        if (
+          !isBackupNumber(
+            record.area,
+            0.000001
+          ) ||
+          !isBackupNumber(
+            record.yield,
+            0.000001
+          )
+        ) {
+
+          errors.push(
+            `${label} has invalid area or yield values.`
+          );
+
+        }
+
+
+        if (
+          record.quality !==
+            undefined &&
+          !harvestQualities.has(
+            record.quality
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid quality value.`
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /*
+   * IRRIGATION
+   */
+  if (
+    Array.isArray(
+      data.irrigationFields
+    )
+  ) {
+
+    data.irrigationFields.forEach(
+      (field, index) => {
+
+        const label =
+          `irrigationFields[${index}]`;
+
+
+        if (
+          !isBackupText(
+            field.name
+          ) ||
+          !isBackupText(
+            field.crop
+          )
+        ) {
+
+          errors.push(
+            `${label} is missing required field information.`
+          );
+
+        }
+
+
+        if (
+          !isBackupNumber(
+            field.area,
+            0.000001
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid area.`
+          );
+
+        }
+
+
+        if (
+          field.freq !==
+            undefined &&
+          !isBackupNumber(
+            field.freq,
+            0
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid irrigation frequency.`
+          );
+
+        }
+
+
+        if (
+          field.waterAmt !==
+            undefined &&
+          !isBackupNumber(
+            field.waterAmt,
+            0
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid water amount.`
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /*
+   * PEST LOGS
+   */
+  if (
+    Array.isArray(
+      data.pestLogs
+    )
+  ) {
+
+    data.pestLogs.forEach(
+      (log, index) => {
+
+        const label =
+          `pestLogs[${index}]`;
+
+
+        if (
+          !isBackupText(
+            log.pest
+          ) ||
+          !isBackupText(
+            log.crop
+          ) ||
+          !isBackupText(
+            log.location
+          ) ||
+          !isBackupDate(
+            log.date
+          )
+        ) {
+
+          errors.push(
+            `${label} is missing required pest-log information.`
+          );
+
+        }
+
+
+        if (
+          log.severity !==
+            undefined &&
+          !pestSeverities.has(
+            log.severity
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid severity.`
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /*
+   * TASKS
+   */
+  if (
+    Array.isArray(
+      data.tasks
+    )
+  ) {
+
+    data.tasks.forEach(
+      (task, index) => {
+
+        const label =
+          `tasks[${index}]`;
+
+
+        if (
+          !isBackupText(
+            task.label
+          ) ||
+          !isBackupText(
+            task.time
+          )
+        ) {
+
+          errors.push(
+            `${label} is invalid.`
+          );
+
+        }
+
+
+        if (
+          typeof task.done !==
+            'boolean'
+        ) {
+
+          errors.push(
+            `${label} has an invalid completion state.`
+          );
+
+        }
+
+
+        if (
+          !taskPriorities.has(
+            task.priority
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid priority.`
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /*
+   * NOTIFICATIONS
+   */
+  if (
+    Array.isArray(
+      data.notifications
+    )
+  ) {
+
+    data.notifications.forEach(
+      (notification, index) => {
+
+        const label =
+          `notifications[${index}]`;
+
+
+        if (
+          !notificationTypes.has(
+            notification.type
+          ) ||
+          !isBackupText(
+            notification.title
+          ) ||
+          !isBackupText(
+            notification.body
+          )
+        ) {
+
+          errors.push(
+            `${label} is invalid.`
+          );
+
+        }
+
+
+        if (
+          !isBackupDate(
+            notification.time
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid date.`
+          );
+
+        }
+
+
+        if (
+          typeof notification.read !==
+            'boolean'
+        ) {
+
+          errors.push(
+            `${label} has an invalid read state.`
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /*
+   * PLANT SCANNER HISTORY
+   */
+  if (
+    Array.isArray(
+      data.scannerHistory
+    )
+  ) {
+
+    data.scannerHistory.forEach(
+      (scan, index) => {
+
+        const label =
+          `scannerHistory[${index}]`;
+
+
+        if (
+          !isBackupText(
+            scan.plant
+          )
+        ) {
+
+          errors.push(
+            `${label} has no valid plant name.`
+          );
+
+        }
+
+
+        if (
+          scan.severity !==
+            undefined &&
+          !scanSeverities.has(
+            scan.severity
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid severity.`
+          );
+
+        }
+
+
+        if (
+          scan.confidence !==
+            undefined &&
+          (
+            !isBackupNumber(
+              scan.confidence,
+              0
+            ) ||
+            Number(
+              scan.confidence
+            ) > 100
+          )
+        ) {
+
+          errors.push(
+            `${label} has an invalid confidence value.`
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /*
+   * CURRENT SETTINGS VALUES
+   */
+  if (
+    isPlainBackupObject(
+      data.settings
+    )
+  ) {
+
+    const settings =
+      data.settings;
+
+
+    if (
+      ![
+        'dark',
+        'light'
+      ].includes(
+        settings.theme
+      )
+    ) {
+
+      errors.push(
+        'Backup contains an invalid theme setting.'
+      );
+
+    }
+
+
+    if (
+      ![
+        'C',
+        'F'
+      ].includes(
+        settings.tempUnit
+      )
+    ) {
+
+      errors.push(
+        'Backup contains an invalid temperature unit.'
+      );
+
+    }
+
+
+    if (
+      ![
+        'kph',
+        'mph'
+      ].includes(
+        settings.windUnit
+      )
+    ) {
+
+      errors.push(
+        'Backup contains an invalid wind unit.'
+      );
+
+    }
+
+
+    if (
+      ![
+        'small',
+        'medium',
+        'large'
+      ].includes(
+        settings.fontSize
+      )
+    ) {
+
+      errors.push(
+        'Backup contains an invalid font-size setting.'
+      );
+
+    }
+
+
+    if (
+      ![
+        'calendar',
+        'list'
+      ].includes(
+        settings.calView
+      )
+    ) {
+
+      errors.push(
+        'Backup contains an invalid calendar view.'
+      );
+
+    }
+
+
+    if (
+      !Array.isArray(
+        settings.favCrops
+      ) ||
+      settings.favCrops.some(
+        crop =>
+          !isBackupText(
+            crop
+          )
+      )
+    ) {
+
+      errors.push(
+        'Backup contains invalid favorite-crop preferences.'
+      );
+
+    }
+
+  }
+
+}
+
 
 function validateFarmCastBackup(
   backup
@@ -14816,6 +15642,15 @@ function validateFarmCastBackup(
       }
 
     }
+  );
+
+  /*
+   * Validate the actual records before
+   * allowing a destructive restore.
+   */
+  validateFarmCastBackupRecords(
+    backup,
+    errors
   );
 
 
