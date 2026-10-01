@@ -433,18 +433,297 @@ router.post('/reset-password', async (req, res) => {
 });
 
 // ── UPDATE PROFILE (protected) ──
-router.put('/profile', authMW, async (req, res) => {
-  try {
-    const { name, farmName, farmSize, role, phone, avatar, city, lat, lon } = req.body;
-    const updated = await User.findByIdAndUpdate(
-      req.user.id,
-      { name, farmName, farmSize, role, phone, avatar, city, lat, lon },
-      { new: true }
-    ).select('-password');
-    res.json({ message: 'Profile updated!', user: updated });
-  } catch (err) {
-    res.status(500).json({ message: 'Server error.' });
+router.put(
+  '/profile',
+  authMW,
+  async (
+    req,
+    res
+  ) => {
+
+    try {
+
+      const allowedFields = [
+        'name',
+        'email',
+        'farmName',
+        'farmSize',
+        'role',
+        'phone',
+        'avatar',
+        'city',
+        'lat',
+        'lon'
+      ];
+
+
+      const updates =
+        {};
+
+
+      allowedFields.forEach(
+        field => {
+
+          if (
+            Object.prototype
+              .hasOwnProperty
+              .call(
+                req.body,
+                field
+              )
+          ) {
+
+            updates[field] =
+              req.body[field];
+
+          }
+
+        }
+      );
+
+
+      /*
+       * Email is also used for login
+       * and password recovery, so keep
+       * it normalized and unique.
+       */
+      if (
+        Object.prototype
+          .hasOwnProperty
+          .call(
+            updates,
+            'email'
+          )
+      ) {
+
+        const email =
+          String(
+            updates.email ||
+            ''
+          )
+            .trim()
+            .toLowerCase();
+
+
+        const emailPattern =
+          /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        if (
+          !emailPattern.test(
+            email
+          )
+        ) {
+
+          return res
+            .status(400)
+            .json({
+              message:
+                'Please enter a valid email address.'
+            });
+
+        }
+
+
+        const existingEmail =
+          await User.findOne({
+            email,
+
+            _id: {
+              $ne:
+                req.user.id
+            }
+          });
+
+
+        if (
+          existingEmail
+        ) {
+
+          return res
+            .status(409)
+            .json({
+              message:
+                'That email address is already in use.'
+            });
+
+        }
+
+
+        updates.email =
+          email;
+
+      }
+
+
+      /*
+       * Validate coordinates whenever
+       * they are supplied.
+       */
+      if (
+        Object.prototype
+          .hasOwnProperty
+          .call(
+            updates,
+            'lat'
+          )
+      ) {
+
+        const latitude =
+          Number(
+            updates.lat
+          );
+
+
+        if (
+          !Number.isFinite(
+            latitude
+          ) ||
+          latitude < -90 ||
+          latitude > 90
+        ) {
+
+          return res
+            .status(400)
+            .json({
+              message:
+                'Invalid latitude.'
+            });
+
+        }
+
+      }
+
+
+      if (
+        Object.prototype
+          .hasOwnProperty
+          .call(
+            updates,
+            'lon'
+          )
+      ) {
+
+        const longitude =
+          Number(
+            updates.lon
+          );
+
+
+        if (
+          !Number.isFinite(
+            longitude
+          ) ||
+          longitude < -180 ||
+          longitude > 180
+        ) {
+
+          return res
+            .status(400)
+            .json({
+              message:
+                'Invalid longitude.'
+            });
+
+        }
+
+      }
+
+
+      const updated =
+        await User
+          .findByIdAndUpdate(
+            req.user.id,
+
+            {
+              $set:
+                updates
+            },
+
+            {
+              new:
+                true,
+
+              runValidators:
+                true
+            }
+          )
+          .select(
+            '-password -resetPasswordToken -resetPasswordExpires'
+          );
+
+
+      if (
+        !updated
+      ) {
+
+        return res
+          .status(404)
+          .json({
+            message:
+              'User not found.'
+          });
+
+      }
+
+
+      res.json({
+        message:
+          'Profile updated!',
+
+        user:
+          updated
+      });
+
+
+    } catch (err) {
+
+      if (
+        err?.code ===
+        11000
+      ) {
+
+        return res
+          .status(409)
+          .json({
+            message:
+              'That email address is already in use.'
+          });
+
+      }
+
+
+      if (
+        err?.name ===
+        'ValidationError'
+      ) {
+
+        return res
+          .status(400)
+          .json({
+            message:
+              'One or more profile values are invalid.'
+          });
+
+      }
+
+
+      console.error(
+        'Profile update error:',
+        err
+      );
+
+
+      res
+        .status(500)
+        .json({
+          message:
+            'Server error while updating profile.'
+        });
+
+    }
+
   }
-});
+);
 
 module.exports = router;
