@@ -13966,13 +13966,9 @@ function setCalView(
   );
 
 
-  appSettings.calView =
-    view;
-
-
-  lsSave(
-    LS_SETTINGS,
-    appSettings
+  saveSettingImmediate(
+    'calView',
+    view
   );
 
 
@@ -13996,9 +13992,15 @@ function setCalView(
 function setTheme(el, theme) {
   document.querySelectorAll('.theme-opt').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
-  appSettings.theme = theme;
-  lsSave(LS_SETTINGS, appSettings);
-  applyTheme(theme);
+
+  saveSettingImmediate(
+    'theme',
+    theme
+  );
+
+  applyTheme(
+    theme
+  );
 
   toast(
     `${
@@ -14054,13 +14056,9 @@ function setTempUnit(
   );
 
 
-  appSettings.tempUnit =
-    unit;
-
-
-  lsSave(
-    LS_SETTINGS,
-    appSettings
+  saveSettingImmediate(
+    'tempUnit',
+    unit
   );
 
 
@@ -14192,13 +14190,9 @@ function setWindUnit(
   );
 
 
-  appSettings.windUnit =
-    unit;
-
-
-  lsSave(
-    LS_SETTINGS,
-    appSettings
+  saveSettingImmediate(
+    'windUnit',
+    unit
   );
 
 
@@ -14237,13 +14231,44 @@ function setWindUnit(
 
 }
 
-function setFontSize(el, size) {
-  document.querySelectorAll('#fontSizeSelector .sens-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  appSettings.fontSize = size;
-  lsSave(LS_SETTINGS, appSettings);
-  applyFontSize(size);
-  toast(`Font size set to ${size}`, 'ok');
+function setFontSize(
+  el,
+  size
+) {
+
+  document
+    .querySelectorAll(
+      '#fontSizeSelector .sens-btn'
+    )
+    .forEach(
+      button =>
+        button.classList.remove(
+          'active'
+        )
+    );
+
+
+  el.classList.add(
+    'active'
+  );
+
+
+  saveSettingImmediate(
+    'fontSize',
+    size
+  );
+
+
+  applyFontSize(
+    size
+  );
+
+
+  toast(
+    `Font size set to ${size}`,
+    'ok'
+  );
+
 }
 
 function applyFontSize(
