@@ -1321,6 +1321,17 @@ function patchScriptJsWithAPI() {
       }
   
     };
+  
+  /*
+   * Keep rapid saves for the same setting
+   * in the exact order the farmer selected
+   * them.
+   *
+   * Different settings can still sync
+   * independently.
+   */
+  const farmCastSettingSaveQueues =
+    new Map();
 
   // Save settings on toggle changes
   saveSettingImmediate =
@@ -1343,10 +1354,9 @@ function patchScriptJsWithAPI() {
         appSettings
       );
   
-  
+ 
       /*
-       * Preserve the original Settings UI
-       * behavior after the backend override.
+       * Preserve Settings UI side effects.
        */
       if (
         key ===
@@ -1364,31 +1374,90 @@ function patchScriptJsWithAPI() {
       ) {
   
         updateDailyBriefingUI();
- 
+  
       }
   
- 
+  
+      /*
+       * Serialize cloud saves PER SETTING.
+       *
+       * Example:
+       * Dark → Light → Dark
+       *
+       * MongoDB will receive those updates
+       * in that exact order instead of
+       * letting slower older requests win.
+       */
+      const previousSave =
+        farmCastSettingSaveQueues.get(
+          key
+        ) ||
+        Promise.resolve();
+  
+  
+      const currentSave =
+        previousSave
+          .catch(
+            () => {
+              /*
+               * A failed older request must
+               * not block newer values.
+               */
+            }
+          )
+          .then(
+            () =>
+              fcSettings.save({
+                [key]:
+                  value
+              })
+          );
+  
+  
+      farmCastSettingSaveQueues.set(
+        key,
+        currentSave
+      );
+  
+  
       try {
   
-        await fcSettings.save({
-          [key]:
-            value
-        });
+        await currentSave;
   
   
       } catch (err) {
   
         /*
          * Local value is already saved.
-         * Cloud sync can recover later.
          */
-        console.warn(
+         console.warn(
           `Could not sync setting "${key}" to FarmCast:`,
           err
         );
   
-      }
   
+      } finally {
+  
+        /*
+         * Only remove the queue entry if
+         * this is still the newest request
+         * for this setting.
+         */
+        if (
+          farmCastSettingSaveQueues.get(
+            key
+          ) ===
+           currentSave
+        ) {
+
+          farmCastSettingSaveQueues.delete(
+            key
+          );
+  
+        }
+
+      }
+
     };
 
   // Override confirmResetData
