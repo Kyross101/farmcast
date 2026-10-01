@@ -8,6 +8,38 @@ const BACKEND_URL = window.FARMCAST_CONFIG.API_URL;
 const FARMCAST_CACHE_OWNER_KEY =
   'fc_cache_owner_id';
 
+const FARMCAST_USER_SCOPED_KEYS = [
+
+  'fc_settings',
+
+  'fc_myCrops',
+  'fc_nextCropId',
+
+  'fc_tasks',
+
+  'fc_pestLogs',
+  'fc_nextPestLogId',
+
+  'fc_irrFields',
+  'fc_nextFieldId',
+
+  'fc_irrFid',
+
+  'fc_harvestHistory',
+  'fc_nextHarvestId',
+
+  'fc_notifications',
+  'fc_nextNotifId',
+
+  'fc_official_advisories_seen',
+
+  'fc_scanHistory',
+
+  'fc_sidebarCollapsed',
+
+  'fc_user'
+
+];
 
 function getStoredFarmCastUser() {
 
@@ -29,59 +61,204 @@ function getStoredFarmCastUser() {
 }
 
 
-function clearFarmCastUserScopedCache() {
+function getFarmCastParkedCacheKey(
+  userId,
+  key
+) {
+
+  return (
+    `fc_account_${String(userId)}__${key}`
+  );
+
+}
+
+
+function moveFarmCastCacheValue(
+  sourceKey,
+  targetKey
+) {
+
+  const value =
+    localStorage.getItem(
+      sourceKey
+    );
+
+
+  if (
+    value === null
+  ) {
+    return true;
+  }
+
 
   /*
-   * These belong to one FarmCast account.
-   *
-   * Do NOT clear:
-   * - fc_token
-   * - fc_authUser
-   * - fc_remembered_username
-   *
-   * The first two are replaced after a
-   * successful login/register, while
-   * Remember Me is device-level.
+   * Remove the source first so large
+   * offline scanner data does not need
+   * double localStorage space while
+   * changing ownership.
    */
-  const userScopedKeys = [
-
-    'fc_settings',
-
-    'fc_myCrops',
-    'fc_nextCropId',
-
-    'fc_tasks',
-
-    'fc_pestLogs',
-    'fc_nextPestLogId',
-
-    'fc_irrFields',
-    'fc_nextFieldId',
-
-    // Legacy incorrect irrigation key.
-    'fc_irrFid',
-
-    'fc_harvestHistory',
-    'fc_nextHarvestId',
-
-    'fc_notifications',
-    'fc_nextNotifId',
-
-    'fc_official_advisories_seen',
-
-    'fc_scanHistory',
-
-    'fc_sidebarCollapsed',
-
-    // Legacy user cache.
-    'fc_user'
-
-  ];
+  localStorage.removeItem(
+    sourceKey
+  );
 
 
-  userScopedKeys.forEach(
+  try {
+
+    localStorage.setItem(
+      targetKey,
+      value
+    );
+
+
+    return true;
+
+
+  } catch (error) {
+
+    /*
+     * Best effort rollback.
+     */
+    try {
+
+      localStorage.setItem(
+        sourceKey,
+        value
+      );
+
+    } catch {
+      // Storage may already be full.
+    }
+
+
+    console.warn(
+      'Could not move FarmCast cache:',
+      sourceKey,
+      error
+    );
+
+
+    return false;
+
+  }
+
+}
+
+
+function clearFarmCastUserScopedCache() {
+
+  FARMCAST_USER_SCOPED_KEYS.forEach(
     key => {
 
+      localStorage.removeItem(
+        key
+      );
+
+    }
+  );
+
+}
+
+
+function parkFarmCastUserScopedCache(
+  userId
+) {
+
+  if (!userId) {
+    return true;
+  }
+
+
+  let allMoved =
+    true;
+
+
+  FARMCAST_USER_SCOPED_KEYS.forEach(
+    key => {
+
+      /*
+       * No active value means there is
+       * nothing new to park.
+       */
+      if (
+        localStorage.getItem(
+          key
+        ) === null
+      ) {
+        return;
+      }
+
+
+      const parkedKey =
+        getFarmCastParkedCacheKey(
+          userId,
+          key
+        );
+
+
+      const moved =
+        moveFarmCastCacheValue(
+          key,
+          parkedKey
+        );
+
+
+      if (!moved) {
+
+        allMoved =
+          false;
+
+      }
+
+    }
+  );
+
+
+  return allMoved;
+
+}
+
+
+function restoreFarmCastUserScopedCache(
+  userId
+) {
+
+  if (!userId) {
+    return;
+  }
+
+
+  FARMCAST_USER_SCOPED_KEYS.forEach(
+    key => {
+
+      const parkedKey =
+        getFarmCastParkedCacheKey(
+          userId,
+          key
+        );
+
+
+      if (
+        localStorage.getItem(
+          parkedKey
+        ) !== null
+      ) {
+
+        moveFarmCastCacheValue(
+          parkedKey,
+          key
+        );
+
+
+        return;
+
+      }
+
+
+      /*
+       * No saved cache for this account.
+       * Make sure another account's
+       * active value cannot remain here.
+       */
       localStorage.removeItem(
         key
       );
@@ -129,9 +306,8 @@ function prepareFarmCastCacheForUser(
 
 
   /*
-   * Extra migration safety for browsers
-   * that already have FarmCast data from
-   * before cache ownership existed.
+   * Migration safety for browsers that
+   * already contain old unowned cache.
    */
   let cachedSettings =
     null;
@@ -192,11 +368,55 @@ function prepareFarmCastCacheForUser(
 
 
   if (
-    changedKnownAccount ||
+    changedKnownAccount
+  ) {
+
+    /*
+     * Put Account A's active cache into
+     * its own parking area before B uses
+     * the normal FarmCast storage keys.
+     */
+    const parkedSuccessfully =
+      parkFarmCastUserScopedCache(
+        previousUserId
+      );
+
+
+    /*
+     * Security/privacy takes priority.
+     * If a rare storage failure occurs,
+     * do not allow leftover Account A
+     * values to become visible to B.
+     */
+    if (
+      !parkedSuccessfully
+    ) {
+
+      clearFarmCastUserScopedCache();
+
+    }
+
+
+    restoreFarmCastUserScopedCache(
+      nextUserId
+    );
+
+  } else if (
     legacyAccountMismatch
   ) {
 
+    /*
+     * Old cache existed before account
+     * ownership tracking. Its real owner
+     * cannot be proven, so do not move it
+     * into another account.
+     */
     clearFarmCastUserScopedCache();
+
+
+    restoreFarmCastUserScopedCache(
+      nextUserId
+    );
 
   }
 
