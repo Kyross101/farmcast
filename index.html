@@ -3644,11 +3644,79 @@
 
                   </div>
 
+                  <div class="data-action-item">
+
+                    <div
+                      class="dai-icon"
+                      style="background:rgba(88,166,255,0.15)"
+                    >
+
+                      <img
+                        src="assets/ui/farmcast-logo.svg"
+                        alt=""
+                        class="dai-icon-img"
+                      >
+
+                    </div>
+
+
+                    <div class="dai-info">
+
+                      <div class="dai-title">
+                        Restore FarmCast Backup
+                      </div>
+
+                      <div class="dai-sub">
+                        Select and validate a FarmCast JSON backup before restoring
+                      </div>
+
+                    </div>
+
+
+                    <button
+                      class="dai-btn"
+                      onclick="selectFarmCastBackupFile()"
+                    >
+                      Choose File
+                    </button>
+
+
+                    <input
+                      type="file"
+                      id="restoreBackupFile"
+                      accept=".json,application/json"
+                      onchange="handleFarmCastBackupFile(event)"
+                      hidden
+                    >
+
+                  </div>
+
                 </div>
-                
+
                 <div class="backup-status" id="backupStatus">
                   <span class="material-symbols-outlined" style="font-size:16px;color:var(--green)">check_circle</span>
                   Last export: <span id="lastExportTime">Never</span>
+                </div>
+
+                <div
+                  class="backup-status"
+                  id="restoreBackupStatus"
+                  style="display:none"
+                >
+
+                  <span
+                    class="material-symbols-outlined"
+                    id="restoreBackupStatusIcon"
+                    style="font-size:16px"
+                  >
+                    info
+                  </span>
+
+                  <span
+                    id="restoreBackupStatusText"
+                  >
+                  </span>
+
                 </div>
               </div>
             </div>

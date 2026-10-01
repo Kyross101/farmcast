@@ -14493,6 +14493,643 @@ function cleanBackupSettings(
 
 }
 
+let pendingFarmCastBackup =
+  null;
+
+
+function isPlainBackupObject(
+  value
+) {
+
+  return (
+    value !== null &&
+    typeof value ===
+      'object' &&
+    !Array.isArray(
+      value
+    )
+  );
+
+}
+
+
+function hasOnlyAllowedBackupKeys(
+  object,
+  allowedKeys
+) {
+
+  return Object
+    .keys(
+      object
+    )
+    .every(
+      key =>
+        allowedKeys.includes(
+          key
+        )
+    );
+
+}
+
+
+function validateFarmCastBackup(
+  backup
+) {
+
+  const errors =
+    [];
+
+
+  if (
+    !isPlainBackupObject(
+      backup
+    )
+  ) {
+
+    return {
+      valid: false,
+      errors: [
+        'Backup root must be a JSON object.'
+      ]
+    };
+
+  }
+
+
+  const allowedRootKeys = [
+    'farmcastBackup',
+    'backupVersion',
+    'exportedAt',
+    'data',
+    'counters'
+  ];
+
+
+  if (
+    !hasOnlyAllowedBackupKeys(
+      backup,
+      allowedRootKeys
+    )
+  ) {
+
+    errors.push(
+      'Backup contains unsupported top-level fields.'
+    );
+
+  }
+
+
+  if (
+    backup.farmcastBackup !==
+      true
+  ) {
+
+    errors.push(
+      'This is not a FarmCast backup file.'
+    );
+
+  }
+
+
+  if (
+    backup.backupVersion !==
+      1
+  ) {
+
+    errors.push(
+      'Unsupported FarmCast backup version.'
+    );
+
+  }
+
+
+  if (
+    typeof backup.exportedAt !==
+      'string' ||
+    Number.isNaN(
+      Date.parse(
+        backup.exportedAt
+      )
+    )
+  ) {
+
+    errors.push(
+      'Backup export date is invalid.'
+    );
+
+  }
+
+
+  if (
+    !isPlainBackupObject(
+      backup.data
+    )
+  ) {
+
+    errors.push(
+      'Backup data section is missing or invalid.'
+    );
+
+  }
+
+
+  if (
+    !isPlainBackupObject(
+      backup.counters
+    )
+  ) {
+
+    errors.push(
+      'Backup counters section is missing or invalid.'
+    );
+
+  }
+
+
+  if (
+    errors.length >
+      0
+  ) {
+
+    return {
+      valid: false,
+      errors
+    };
+
+  }
+
+
+  const allowedDataKeys = [
+    'crops',
+    'harvestHistory',
+    'irrigationFields',
+    'pestLogs',
+    'tasks',
+    'notifications',
+    'scannerHistory',
+    'settings'
+  ];
+
+
+  if (
+    !hasOnlyAllowedBackupKeys(
+      backup.data,
+      allowedDataKeys
+    )
+  ) {
+
+    errors.push(
+      'Backup data contains unsupported fields.'
+    );
+
+  }
+
+
+  const collectionKeys = [
+    'crops',
+    'harvestHistory',
+    'irrigationFields',
+    'pestLogs',
+    'tasks',
+    'notifications',
+    'scannerHistory'
+  ];
+
+
+  collectionKeys.forEach(
+    key => {
+
+      if (
+        !Array.isArray(
+          backup.data[key]
+        )
+      ) {
+
+        errors.push(
+          `${key} must be an array.`
+        );
+
+        return;
+
+      }
+
+
+      const hasInvalidRecord =
+        backup.data[key]
+          .some(
+            record =>
+              !isPlainBackupObject(
+                record
+              )
+          );
+
+
+      if (
+        hasInvalidRecord
+      ) {
+
+        errors.push(
+          `${key} contains an invalid record.`
+        );
+
+      }
+
+    }
+  );
+
+
+  if (
+    !isPlainBackupObject(
+      backup.data.settings
+    )
+  ) {
+
+    errors.push(
+      'Backup settings are invalid.'
+    );
+
+  } else {
+
+    const allowedSettingKeys =
+      Object.keys(
+        DEFAULT_SETTINGS
+      );
+
+
+    if (
+      !hasOnlyAllowedBackupKeys(
+        backup.data.settings,
+        allowedSettingKeys
+      )
+    ) {
+
+      errors.push(
+        'Backup settings contain unsupported fields.'
+      );
+
+    }
+
+  }
+
+
+  const allowedCounterKeys = [
+    'nextCropId',
+    'nextHarvestId',
+    'nextFieldId',
+    'nextPestLogId',
+    'nextNotifId'
+  ];
+
+
+  if (
+    !hasOnlyAllowedBackupKeys(
+      backup.counters,
+      allowedCounterKeys
+    )
+  ) {
+
+    errors.push(
+      'Backup counters contain unsupported fields.'
+    );
+
+  }
+
+
+  allowedCounterKeys.forEach(
+    key => {
+
+      const value =
+        backup.counters[key];
+
+
+      if (
+        !Number.isInteger(
+          value
+        ) ||
+        value < 1
+      ) {
+
+        errors.push(
+          `${key} is invalid.`
+        );
+
+      }
+
+    }
+  );
+
+
+  return {
+    valid:
+      errors.length === 0,
+
+    errors
+  };
+
+}
+
+
+function setRestoreBackupStatus(
+  message,
+  type = 'info'
+) {
+
+  const status =
+    document.getElementById(
+      'restoreBackupStatus'
+    );
+
+  const icon =
+    document.getElementById(
+      'restoreBackupStatusIcon'
+    );
+
+  const text =
+    document.getElementById(
+      'restoreBackupStatusText'
+    );
+
+
+  if (
+    !status ||
+    !icon ||
+    !text
+  ) {
+    return;
+  }
+
+
+  const styles = {
+
+    info: {
+      icon: 'info',
+      color:
+        'var(--blue)'
+    },
+
+    success: {
+      icon:
+        'check_circle',
+      color:
+        'var(--green)'
+    },
+
+    error: {
+      icon: 'error',
+      color:
+        'var(--red)'
+    }
+
+  };
+
+
+  const selectedStyle =
+    styles[type] ||
+    styles.info;
+
+
+  status.style.display =
+    'flex';
+
+
+  icon.textContent =
+    selectedStyle.icon;
+
+
+  icon.style.color =
+    selectedStyle.color;
+
+
+  text.textContent =
+    message;
+
+}
+
+
+function selectFarmCastBackupFile() {
+
+  const input =
+    document.getElementById(
+      'restoreBackupFile'
+    );
+
+
+  if (!input) return;
+
+
+  /*
+   * Reset first so the same file
+   * can be selected again.
+   */
+  input.value =
+    '';
+
+
+  input.click();
+
+}
+
+
+async function handleFarmCastBackupFile(
+  event
+) {
+
+  const input =
+    event.target;
+
+
+  const file =
+    input.files?.[0];
+
+
+  pendingFarmCastBackup =
+    null;
+
+
+  if (!file) {
+    return;
+  }
+
+
+  setRestoreBackupStatus(
+    'Checking backup file…',
+    'info'
+  );
+
+
+  if (
+    !file.name
+      .toLowerCase()
+      .endsWith(
+        '.json'
+      )
+  ) {
+
+    setRestoreBackupStatus(
+      'Please select a FarmCast JSON backup file.',
+      'error'
+    );
+
+
+    toast(
+      'Please select a JSON backup file.',
+      'warn'
+    );
+
+
+    input.value =
+      '';
+
+    return;
+
+  }
+
+
+  const MAX_BACKUP_SIZE =
+    50 *
+    1024 *
+    1024;
+
+
+  if (
+    file.size >
+    MAX_BACKUP_SIZE
+  ) {
+
+    setRestoreBackupStatus(
+      'Backup file is larger than the supported 50 MB limit.',
+      'error'
+    );
+
+
+    toast(
+      'Backup file is too large.',
+      'err'
+    );
+
+
+    input.value =
+      '';
+
+    return;
+
+  }
+
+
+  try {
+
+    const text =
+      await file.text();
+
+
+    const backup =
+      JSON.parse(
+        text
+      );
+
+
+    const validation =
+      validateFarmCastBackup(
+        backup
+      );
+
+
+    if (
+      !validation.valid
+    ) {
+
+      console.warn(
+        'Invalid FarmCast backup:',
+        validation.errors
+      );
+
+
+      setRestoreBackupStatus(
+        `Invalid backup: ${
+          validation.errors[0]
+        }`,
+        'error'
+      );
+
+
+      toast(
+        'This backup file is not valid for FarmCast.',
+        'err'
+      );
+
+
+      input.value =
+        '';
+
+      return;
+
+    }
+
+
+    pendingFarmCastBackup =
+      backup;
+
+
+    const backupDate =
+      new Date(
+        backup.exportedAt
+      ).toLocaleString(
+        'en-PH'
+      );
+
+
+    const data =
+      backup.data;
+
+
+    setRestoreBackupStatus(
+      `Valid FarmCast backup from ${backupDate}. ` +
+      `${data.crops.length} crops, ` +
+      `${data.harvestHistory.length} harvest records, ` +
+      `${data.irrigationFields.length} irrigation fields, ` +
+      `${data.pestLogs.length} pest logs, and ` +
+      `${data.scannerHistory.length} scan records found.`,
+      'success'
+    );
+
+
+    toast(
+      'FarmCast backup validated successfully!',
+      'ok'
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      'Backup validation error:',
+      error
+    );
+
+
+    setRestoreBackupStatus(
+      'The selected file is not valid JSON.',
+      'error'
+    );
+
+
+    toast(
+      'Could not read the backup file.',
+      'err'
+    );
+
+
+    pendingFarmCastBackup =
+      null;
+
+  } finally {
+
+    input.value =
+      '';
+
+  }
+
+}
 
 async function exportFarmCastBackup() {
 
