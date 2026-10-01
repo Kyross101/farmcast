@@ -16065,6 +16065,30 @@ function buildRestoredSettingsPreservingAccount(
     appSettings.phone ||
     restored.phone;
 
+  /*
+   * Farm location also belongs to the
+   * currently signed-in User profile.
+   *
+   * A backup from another account must
+   * never replace it.
+   */
+  restored.city =
+    authUser?.city ??
+    appSettings.city ??
+    restored.city;
+
+
+  restored.lat =
+    authUser?.lat ??
+    appSettings.lat ??
+    restored.lat;
+
+
+  restored.lon =
+    authUser?.lon ??
+    appSettings.lon ??
+    restored.lon;
+
 
   restored.avatar =
     LEGACY_FARMER_AVATARS[
@@ -16976,13 +17000,35 @@ function buildResetSettingsPreservingAccount() {
     phone:
       authUser?.phone ||
       appSettings.phone ||
-      '',
+    '',
 
 
-    avatar:
-      authUser?.avatar ||
-      appSettings.avatar ||
-      DEFAULT_FARMER_AVATAR
+  /*
+   * Reset workspace preferences without
+   * resetting the farmer's saved location.
+   */
+  city:
+    authUser?.city ??
+    appSettings.city ??
+    DEFAULT_SETTINGS.city,
+
+
+  lat:
+    authUser?.lat ??
+    appSettings.lat ??
+    DEFAULT_SETTINGS.lat,
+
+
+  lon:
+    authUser?.lon ??
+    appSettings.lon ??
+    DEFAULT_SETTINGS.lon,
+
+
+  avatar:
+    authUser?.avatar ||
+    appSettings.avatar ||
+    DEFAULT_FARMER_AVATAR
 
   };
 
