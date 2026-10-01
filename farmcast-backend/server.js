@@ -7,6 +7,10 @@ const express    = require('express');
 const mongoose   = require('mongoose');
 const cors       = require('cors');
 const path       = require('path');
+
+const authMW =
+  require('./middleware/auth');
+
 require('dotenv').config();
 
 const app = express();
@@ -23,7 +27,35 @@ app.use(cors({
   },
   credentials: true
 }));
-app.use(express.json({ limit: '2mb' }));
+
+/*
+ * Backup restore gets its own larger
+ * JSON limit because scanner history
+ * may contain image thumbnails.
+ *
+ * Authentication runs BEFORE parsing
+ * the larger request body.
+ */
+app.use(
+  '/api/backup',
+  authMW,
+  express.json({
+    limit:
+      '50mb'
+  }),
+  require('./routes/backup')
+);
+
+
+/*
+ * Keep the normal API body limit small.
+ */
+app.use(
+  express.json({
+    limit:
+      '2mb'
+  })
+);
 
 // ── SERVE FRONTEND STATIC FILES ──
 app.use(express.static(path.join(__dirname, '..')));
