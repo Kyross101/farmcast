@@ -16377,7 +16377,12 @@ async function restoreFarmCastBackup() {
         data.pestLogs,
 
       scannerHistory:
-        data.scannerHistory
+        data.scannerHistory,
+
+      settings:
+        cleanBackupSettings(
+          data.settings
+        )
 
     });
 

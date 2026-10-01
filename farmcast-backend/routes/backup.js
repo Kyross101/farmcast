@@ -24,6 +24,8 @@ const PestLog =
 const ScanHistory =
   require('../models/ScanHistory');
 
+const Settings =
+  require('../models/Settings');
 
 function isPlainObject(
   value
@@ -287,6 +289,41 @@ function sanitizeScan(
 
 }
 
+function sanitizeRestoreSettings(
+  settings
+) {
+
+  /*
+   * Only preferences owned by the
+   * Settings collection are restored.
+   *
+   * Account/profile/location identity
+   * stays owned by the current user.
+   */
+  return pickFields(
+    settings,
+    [
+      'rainAlert',
+      'windAlert',
+      'dailyBriefing',
+      'briefingTime',
+      'quietHours',
+      'quietFrom',
+      'quietUntil',
+      'harvestReminderDays',
+      'thresholdTemp',
+      'favCrops',
+      'calView',
+      'defaultIrrigationMethod',
+      'theme',
+      'tempUnit',
+      'windUnit',
+      'fontSize',
+      'defaultPage'
+    ]
+  );
+
+}
 
 router.post(
   '/restore',
@@ -300,7 +337,8 @@ router.post(
       harvestHistory,
       irrigationFields,
       pestLogs,
-      scannerHistory
+      scannerHistory,
+      settings
     } =
       req.body || {};
 
@@ -315,7 +353,8 @@ router.post(
       !Array.isArray(harvestHistory) ||
       !Array.isArray(irrigationFields) ||
       !Array.isArray(pestLogs) ||
-      !Array.isArray(scannerHistory)
+      !Array.isArray(scannerHistory) ||
+      !isPlainObject(settings)
     ) {
 
       return res
@@ -401,6 +440,11 @@ router.post(
             userId
           )
       );
+    
+    const restoredSettings =
+        sanitizeRestoreSettings(
+           settings
+        );
 
 
     const session =
@@ -540,6 +584,38 @@ router.post(
             );
 
           }
+          await Settings.findOneAndUpdate(
+            {
+              user:
+                userId
+            },
+
+            {
+              $set:
+                restoredSettings,
+
+                $setOnInsert: {
+                  user:
+                    userId
+                }
+            },
+
+            {
+              new:
+                true,
+
+              upsert:
+                true,
+
+              runValidators:
+                true,
+
+              setDefaultsOnInsert:
+                true,
+
+              session
+            }
+        );
 
         }
       );
