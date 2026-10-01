@@ -214,8 +214,8 @@ function sanitizeScan(
   userId
 ) {
 
-  return {
-    ...pickFields(
+  const clean =
+    pickFields(
       scan,
       [
         'plant',
@@ -227,11 +227,63 @@ function sanitizeScan(
         'imageData',
         'notes'
       ]
-    ),
+    );
 
-    user:
-      userId
-  };
+
+  /*
+   * Local/offline scanner records use
+   * "type", while MongoDB uses
+   * "plantType".
+   */
+  if (
+    !clean.plantType &&
+    typeof scan.type ===
+      'string' &&
+    scan.type.trim()
+  ) {
+
+    clean.plantType =
+      scan.type.trim();
+
+  }
+
+
+  /*
+   * Preserve the original scan time.
+   *
+   * Older local records:
+   *   timestamp
+   *
+   * Existing MongoDB backups:
+   *   createdAt
+   */
+  const originalTimestamp =
+    scan.timestamp ||
+    scan.createdAt;
+
+
+  if (
+    originalTimestamp &&
+    !Number.isNaN(
+      Date.parse(
+        originalTimestamp
+      )
+    )
+  ) {
+
+    clean.timestamp =
+      new Date(
+        originalTimestamp
+      );
+
+  }
+
+
+  clean.user =
+    userId;
+
+
+  return clean;
 
 }
 

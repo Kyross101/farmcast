@@ -9,6 +9,10 @@ const ScanHistorySchema = new mongoose.Schema({
   plant:      { type: String, required: true },
   emoji:      { type: String, default: '🌿' },
   plantType:  { type: String, default: 'Unknown' },
+  timestamp: {
+    type: Date,
+    default: Date.now
+  },
   disease:    { type: String, default: 'Healthy' },
   severity:   { 
     type: String, 
