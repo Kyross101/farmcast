@@ -1064,26 +1064,63 @@ function patchScriptJsWithAPI() {
   saveThresholdSettings =
     async function() {
 
-      appSettings.thresholdTemp =
+      const tempInput =
+        document.getElementById(
+          'thresholdTemp'
+        );
+  
+  
+      const reminderInput =
+        document.getElementById(
+          'harvestReminderDays'
+        );
+  
+  
+      const enteredTemp =
         parseFloat(
-          document.getElementById(
-            'thresholdTemp'
-          ).value
-        ) || 35;
-
-
-      appSettings.harvestReminderDays =
-        parseInt(
-          document.getElementById(
-            'harvestReminderDays'
-          ).value
-        ) || 7;
+          tempInput?.value
+        );
   
   
       /*
+       * FarmCast always stores the
+       * temperature threshold internally
+       * in Celsius.
+       *
+       * Fahrenheit is display-only.
+       */
+      if (
+        Number.isFinite(
+          enteredTemp
+        )
+      ) {
+  
+        appSettings.thresholdTemp =
+          appSettings.tempUnit === 'F'
+            ? (
+                (
+                  enteredTemp -
+                  32
+                ) *
+                5 /
+                9
+              )
+            : enteredTemp;
+  
+      }
+  
+  
+      appSettings.harvestReminderDays =
+        parseInt(
+          reminderInput?.value
+        ) ||
+        7;
+  
+ 
+      /*
        * Local-first:
-       * persist immediately before trying
-       * to sync with MongoDB.
+       * keep the browser preference safe
+       * before attempting cloud sync.
        */
       lsSave(
         'fc_settings',
@@ -1094,11 +1131,13 @@ function patchScriptJsWithAPI() {
       try {
   
         await fcSettings.save({
+  
           thresholdTemp:
             appSettings.thresholdTemp,
   
           harvestReminderDays:
             appSettings.harvestReminderDays
+  
         });
   
   
@@ -1109,18 +1148,27 @@ function patchScriptJsWithAPI() {
   
   
       } catch (err) {
-   
-        /*
-         * Local copy is already safe even
-         * if the backend is temporarily down.
-         */
+  
+        console.warn(
+          'Settings cloud sync failed:',
+          err
+        );
+  
+  
         toast(
           'Saved locally. Cloud sync is temporarily unavailable.',
           'warn'
         );
-
+  
       }
-
+ 
+ 
+      addNotification(
+        'system',
+        'Settings Updated',
+        'Weather alert thresholds have been saved.'
+      );
+  
     };
 
   saveFavCrops =
