@@ -14447,6 +14447,52 @@ function cleanBackupCollection(
 
 }
 
+function cleanBackupSettings(
+  settings
+) {
+
+  const source =
+    settings &&
+    typeof settings ===
+      'object'
+      ? settings
+      : {};
+
+
+  const portableSettings =
+    {};
+
+
+  /*
+   * Only export settings that are
+   * officially supported by the
+   * current FarmCast version.
+   *
+   * This automatically excludes:
+   * - MongoDB _id / user / __v
+   * - createdAt / updatedAt
+   * - deprecated settings
+   * - unexpected backend fields
+   */
+  Object
+    .keys(
+      DEFAULT_SETTINGS
+    )
+    .forEach(key => {
+
+      portableSettings[key] =
+        source[key] !==
+        undefined
+          ? source[key]
+          : DEFAULT_SETTINGS[key];
+
+    });
+
+
+  return portableSettings;
+
+}
+
 
 async function exportFarmCastBackup() {
 
@@ -14530,9 +14576,10 @@ async function exportFarmCastBackup() {
           ),
 
 
-        settings: {
-          ...appSettings
-        }
+        settings:
+          cleanBackupSettings(
+            appSettings
+          )
 
       },
 
