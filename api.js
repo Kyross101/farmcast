@@ -1173,76 +1173,128 @@ function patchScriptJsWithAPI() {
     async function() {
 
       const tempInput =
-        document.getElementById(
-          'thresholdTemp'
-        );
-  
-  
-      const reminderInput =
-        document.getElementById(
-          'harvestReminderDays'
-        );
-  
-  
-      const enteredTemp =
-        parseFloat(
-          tempInput?.value
-        );
-  
-  
-      /*
-       * FarmCast always stores the
-       * temperature threshold internally
-       * in Celsius.
-       *
-       * Fahrenheit is display-only.
-       */
-      if (
-        Number.isFinite(
-          enteredTemp
-        )
-      ) {
-  
-        appSettings.thresholdTemp =
-          appSettings.tempUnit === 'F'
-            ? (
-                (
-                  enteredTemp -
-                  32
-                ) *
-                5 /
-                9
-              )
-            : enteredTemp;
-  
-      }
-  
-  
-      appSettings.harvestReminderDays =
-        parseInt(
-          reminderInput?.value
-        ) ||
-        7;
-  
- 
-      /*
-       * Local-first:
-       * keep the browser preference safe
-       * before attempting cloud sync.
+      document.getElementById(
+        'thresholdTemp'
+      );
+
+
+    const reminderInput =
+      document.getElementById(
+        'harvestReminderDays'
+      );
+
+
+    const enteredTemp =
+      Number(
+        tempInput?.value
+      );
+
+
+    const enteredReminderDays =
+      Number(
+        reminderInput?.value
+      );
+
+
+    /*
+     * Temperature input uses the currently
+     * selected display unit.
+     *
+     * Internally FarmCast still stores
+     * thresholdTemp in Celsius.
+     */
+    const minDisplayTemp =
+      appSettings.tempUnit === 'F'
+        ? 68
+        : 20;
+
+
+    const maxDisplayTemp =
+      appSettings.tempUnit === 'F'
+        ? 113
+        : 45;
+
+
+    if (
+      !Number.isFinite(
+        enteredTemp
+      ) ||
+      enteredTemp <
+        minDisplayTemp ||
+      enteredTemp >
+        maxDisplayTemp
+    ) {
+
+      toast(
+        appSettings.tempUnit === 'F'
+          ? 'Temperature threshold must be between 68°F and 113°F.'
+          : 'Temperature threshold must be between 20°C and 45°C.',
+        'warn'
+      );
+
+      return;
+
+    }
+
+
+    if (
+      !Number.isInteger(
+        enteredReminderDays
+      ) ||
+      enteredReminderDays < 1 ||
+      enteredReminderDays > 30
+    ) {
+
+      toast(
+        'Harvest reminder must be between 1 and 30 whole days.',
+        'warn'
+      );
+
+      return;
+
+    }
+
+
+    const thresholdCelsius =
+      appSettings.tempUnit === 'F'
+        ? (
+            (
+              enteredTemp -
+              32
+            ) *
+            5 /
+            9
+          )
+        : enteredTemp;
+
+
+    appSettings.thresholdTemp =
+      thresholdCelsius;
+
+
+    appSettings.harvestReminderDays =
+      enteredReminderDays;
+
+
+    /*
+     * Local-first after validation.
+     *
+     * Invalid values never reach either
+     * localStorage or MongoDB.
        */
       lsSave(
         'fc_settings',
         appSettings
       );
-  
-  
+
+
       try {
-  
+
         await fcSettings.save({
-  
+
           thresholdTemp:
             appSettings.thresholdTemp,
-  
+
           harvestReminderDays:
             appSettings.harvestReminderDays
   
@@ -1269,14 +1321,14 @@ function patchScriptJsWithAPI() {
         );
   
       }
- 
- 
+  
+  
       addNotification(
         'system',
         'Settings Updated',
         'Weather alert thresholds have been saved.'
       );
-  
+
     };
 
   saveFavCrops =

@@ -72,6 +72,13 @@ const SettingsSchema =
       harvestReminderDays: {
         type:
           Number,
+
+        min:
+          1,
+
+        max:
+          30,
+
         default:
           7
       },
@@ -79,9 +86,19 @@ const SettingsSchema =
       thresholdTemp: {
         type:
           Number,
-        default:
-          35
-      },
+
+      /*
+       * Stored internally in Celsius.
+       */
+      min:
+        20,
+
+      max:
+        45,
+
+      default:
+        35
+    },
 
 
       // Crop preferences
