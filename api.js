@@ -12,7 +12,44 @@ function getToken()        { return localStorage.getItem('fc_token'); }
 function saveToken(token)  { localStorage.setItem('fc_token', token); }
 function removeToken()     { localStorage.removeItem('fc_token'); }
 function getAuthUser()     { return JSON.parse(localStorage.getItem('fc_authUser') || 'null'); }
-function saveAuthUser(user){ localStorage.setItem('fc_authUser', JSON.stringify(user)); }
+
+function saveAuthUser(
+  user
+) {
+
+  localStorage.setItem(
+    'fc_authUser',
+    JSON.stringify(
+      user
+    )
+  );
+
+
+  /*
+   * Remember which account owns the
+   * current local FarmCast workspace.
+   *
+   * This key deliberately survives logout
+   * so the next login can detect an
+   * account switch.
+   */
+  const userId =
+    user?.id ||
+    user?._id;
+
+
+  if (userId) {
+
+    localStorage.setItem(
+      'fc_cache_owner_id',
+      String(
+        userId
+      )
+    );
+
+  }
+
+}
 
 // ── BASE FETCH with JWT header ──
 async function apiFetch(endpoint, options = {}) {

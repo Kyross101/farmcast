@@ -5,6 +5,209 @@
 
 const BACKEND_URL = window.FARMCAST_CONFIG.API_URL;
 
+const FARMCAST_CACHE_OWNER_KEY =
+  'fc_cache_owner_id';
+
+
+function getStoredFarmCastUser() {
+
+  try {
+
+    return JSON.parse(
+      localStorage.getItem(
+        'fc_authUser'
+      ) ||
+      'null'
+    );
+
+  } catch {
+
+    return null;
+
+  }
+
+}
+
+
+function clearFarmCastUserScopedCache() {
+
+  /*
+   * These belong to one FarmCast account.
+   *
+   * Do NOT clear:
+   * - fc_token
+   * - fc_authUser
+   * - fc_remembered_username
+   *
+   * The first two are replaced after a
+   * successful login/register, while
+   * Remember Me is device-level.
+   */
+  const userScopedKeys = [
+
+    'fc_settings',
+
+    'fc_myCrops',
+    'fc_nextCropId',
+
+    'fc_tasks',
+
+    'fc_pestLogs',
+    'fc_nextPestLogId',
+
+    'fc_irrFields',
+    'fc_nextFieldId',
+
+    // Legacy incorrect irrigation key.
+    'fc_irrFid',
+
+    'fc_harvestHistory',
+    'fc_nextHarvestId',
+
+    'fc_notifications',
+    'fc_nextNotifId',
+
+    'fc_official_advisories_seen',
+
+    'fc_scanHistory',
+
+    'fc_sidebarCollapsed',
+
+    // Legacy user cache.
+    'fc_user'
+
+  ];
+
+
+  userScopedKeys.forEach(
+    key => {
+
+      localStorage.removeItem(
+        key
+      );
+
+    }
+  );
+
+}
+
+
+function prepareFarmCastCacheForUser(
+  user
+) {
+
+  const nextUserId =
+    String(
+      user?.id ||
+      user?._id ||
+      ''
+    );
+
+
+  if (!nextUserId) {
+    return;
+  }
+
+
+  const previousUser =
+    getStoredFarmCastUser();
+
+
+  const storedOwnerId =
+    localStorage.getItem(
+      FARMCAST_CACHE_OWNER_KEY
+    );
+
+
+  const previousUserId =
+    String(
+      previousUser?.id ||
+      previousUser?._id ||
+      storedOwnerId ||
+      ''
+    );
+
+
+  /*
+   * Extra migration safety for browsers
+   * that already have FarmCast data from
+   * before cache ownership existed.
+   */
+  let cachedSettings =
+    null;
+
+
+  try {
+
+    cachedSettings =
+      JSON.parse(
+        localStorage.getItem(
+          'fc_settings'
+        ) ||
+        'null'
+      );
+
+  } catch {
+
+    cachedSettings =
+      null;
+
+  }
+
+
+  const cachedEmail =
+    String(
+      cachedSettings?.email ||
+      ''
+    )
+      .trim()
+      .toLowerCase();
+
+
+  const nextEmail =
+    String(
+      user?.email ||
+      ''
+    )
+      .trim()
+      .toLowerCase();
+
+
+  const changedKnownAccount =
+    Boolean(
+      previousUserId &&
+      previousUserId !==
+        nextUserId
+    );
+
+
+  const legacyAccountMismatch =
+    Boolean(
+      !previousUserId &&
+      cachedEmail &&
+      nextEmail &&
+      cachedEmail !==
+        nextEmail
+    );
+
+
+  if (
+    changedKnownAccount ||
+    legacyAccountMismatch
+  ) {
+
+    clearFarmCastUserScopedCache();
+
+  }
+
+
+  localStorage.setItem(
+    FARMCAST_CACHE_OWNER_KEY,
+    nextUserId
+  );
+
+}
+
 const container   = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
 const loginBtn    = document.querySelector('.login-btn');
@@ -238,9 +441,28 @@ loginForm.addEventListener('submit', async (e) => {
       return;
     }
 
+    /*
+    * Clear another account's cached
+    * workspace before installing this
+    * authenticated session.
+    */
+    prepareFarmCastCacheForUser(
+      data.user
+    );
+
+
     // Save token and user info
-    localStorage.setItem('fc_token', data.token);
-    localStorage.setItem('fc_authUser', JSON.stringify(data.user));
+    localStorage.setItem(
+      'fc_token',
+      data.token
+    );
+
+    localStorage.setItem(
+      'fc_authUser',
+      JSON.stringify(
+        data.user
+      )
+    );
 
     // Remember username only.
     // Never store the user's password.
@@ -338,9 +560,28 @@ registerForm.addEventListener('submit', async (e) => {
       return;
     }
 
+    /*
+     * A newly registered account must not
+     * inherit another account's cached
+     * FarmCast workspace.
+    */
+    prepareFarmCastCacheForUser(
+      data.user
+    );
+
+
     // Save token and user info
-    localStorage.setItem('fc_token', data.token);
-    localStorage.setItem('fc_authUser', JSON.stringify(data.user));
+    localStorage.setItem(
+      'fc_token',
+      data.token
+    );
+
+    localStorage.setItem(
+      'fc_authUser',
+      JSON.stringify(
+        data.user
+      )
+    );
 
 
     showtoast(
