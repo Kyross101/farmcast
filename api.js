@@ -368,6 +368,16 @@ async function loadAllDataFromBackend() {
         appSettings.city;
 
 
+      appSettings.lat =
+        user.lat ||
+        appSettings.lat;
+
+
+      appSettings.lon =
+        user.lon ||
+        appSettings.lon;
+
+
       appSettings.avatar =
         LEGACY_FARMER_AVATARS[
           savedAvatar
@@ -843,6 +853,176 @@ function patchScriptJsWithAPI() {
       toast(`Error: ${err.message}`, 'err');
     }
   };
+
+  saveLocationSettings =
+    async function() {
+
+      const cityInput =
+        document.getElementById(
+          'settingLocationSearch'
+        );
+
+
+      const latInput =
+        document.getElementById(
+          'settingLat'
+        );
+
+
+      const lonInput =
+        document.getElementById(
+          'settingLon'
+        );
+
+
+      const city =
+        cityInput?.value
+          .trim() ||
+        appSettings.city ||
+        '';
+
+
+      const lat =
+        latInput?.value
+          .trim() ||
+        '';
+
+
+      const lon =
+        lonInput?.value
+          .trim() ||
+        '';
+
+
+      const latitude =
+        Number(
+          lat
+        );
+
+
+      const longitude =
+        Number(
+          lon
+        );
+
+
+      if (
+        !city
+      ) {
+
+        toast(
+          'Please enter a city or municipality.',
+          'warn'
+        );
+
+        return;
+
+      }
+
+
+     if (
+        !Number.isFinite(
+          latitude
+        ) ||
+        latitude < -90 ||
+        latitude > 90
+      ) {
+  
+        toast(
+          'Please enter a valid latitude.',
+          'warn'
+        );
+  
+        return;
+  
+      }
+  
+  
+      if (
+        !Number.isFinite(
+          longitude
+        ) ||
+        longitude < -180 ||
+        longitude > 180
+      ) {
+  
+        toast(
+          'Please enter a valid longitude.',
+          'warn'
+        );
+  
+        return;
+  
+      }
+ 
+  
+      try {
+  
+        const result =
+          await fcAuth.updateProfile({
+            city,
+            lat,
+            lon
+          });
+  
+  
+        /*
+         * Keep the cached authenticated
+         * user synchronized with MongoDB.
+         */
+        saveAuthUser({
+          ...getAuthUser(),
+          ...result.user
+        });
+  
+  
+        appSettings.city =
+          city;
+  
+  
+        appSettings.lat =
+          lat;
+  
+  
+        appSettings.lon =
+          lon;
+  
+  
+        lsSave(
+          'fc_settings',
+          appSettings
+        );
+  
+  
+        currentCity =
+          city;
+  
+  
+        updateSettingsFormValues();
+  
+  
+        toast(
+          'Farm location saved successfully!',
+          'ok'
+        );
+  
+  
+      } catch (err) {
+ 
+        console.error(
+          'Location save error:',
+          err
+        );
+ 
+
+        toast(
+          `Could not save farm location: ${err.message}`,
+          'err'
+        );
+
+      }
+
+    };
 
   saveThresholdSettings = async function() {
     appSettings.thresholdTemp       = parseFloat(document.getElementById('thresholdTemp').value) || 35;

@@ -90,13 +90,26 @@ router.post('/login', async (req, res) => {
     res.json({
       message: `Welcome back, ${user.name || user.username}! 🌾`,
       token,
+
       user: {
-        id: user._id, username: user.username,
-        name: user.name, farmName: user.farmName,
-        farmSize: user.farmSize, role: user.role,
-        avatar: user.avatar, city: user.city,
-        email: user.email, phone: user.phone,
+        id: user._id,
+        username: user.username,
+
+        name: user.name,
+        farmName: user.farmName,
+        farmSize: user.farmSize,
+        role: user.role,
+
+        avatar: user.avatar,
+
+        city: user.city,
+        lat: user.lat,
+        lon: user.lon,
+
+        email: user.email,
+        phone: user.phone
       }
+
     });
 
   } catch (err) {
