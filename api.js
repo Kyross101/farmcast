@@ -1253,115 +1253,79 @@ function patchScriptJsWithAPI() {
           buildResetSettingsPreservingAccount();
   
   
-        const getRecordId =
-          record =>
-            record?._id ||
-            record?.id;
-  
-  
         /*
-         * The backend delete routes are
-         * user-scoped, so only records
-         * belonging to the logged-in
-         * FarmCast account are removed.
+         * Reset the complete server-backed
+         * FarmCast workspace in ONE MongoDB
+         * transaction.
+         *
+         * The existing backup restore endpoint
+         * already provides all-or-nothing
+         * replacement semantics.
+         *
+         * Empty collections = reset workspace.
          */
-        await Promise.all([
+        await fcBackup.restore({
 
-          ...myCrops.map(
-            crop =>
-              fcCrops.delete(
-                getRecordId(
-                  crop
-                )
-              )
-          ),
-  
- 
-          ...harvestHistory.map(
-            record =>
-              fcHarvest.delete(
-                getRecordId(
-                  record
-                )
-              )
-          ),
-  
-  
-          ...irrFields.map(
-            field =>
-              fcIrrigation.delete(
-                getRecordId(
-                  field
-                )
-              )
-          ),
-  
-  
-           ...pestLogs.map(
-            log =>
-              fcPests.delete(
-                getRecordId(
-                  log
-                )
-              )
-          ),
-  
-  
-          /*
-           * Plant Scanner has its own
-           * authenticated delete-all route.
-           */
-          fcScanHistory.clearAll(),
-  
-  
-          /*
-           * Restore preferences to defaults
-           * while preserving the account
-           * identity/profile fields.
-           */
-          fcSettings.save(
-            resetSettings
-          )
-  
-        ]);
-  
-  
-        /*
-         * Keep localStorage synchronized
-         * with the now-cleared backend.
-         */
-        clearLocalFarmWorkspaceData();
-  
-  
-        toast(
-          'Farm workspace reset. Reloading…',
-          'warn'
-        );
-  
-  
-        setTimeout(
-          () =>
-            location.reload(),
-          1500
-        );
-  
-      } catch (error) {
-  
-        console.error(
-          'FarmCast reset failed:',
-          error
-        );
-  
-  
-        toast(
-          'Some synced data could not be reset. Reload the page and try again.',
-          'err'
-        );
+          crops:
+            [],
 
-      }
+          harvestHistory:
+            [],
 
-    };
+          irrigationFields:
+            [],
 
+          pestLogs:
+            [],
+
+          scannerHistory:
+            [],
+
+          settings:
+            cleanBackupSettings(
+              resetSettings
+            )
+
+        });
+
+    /*
+     * Only clear browser data AFTER
+     * the MongoDB transaction succeeds.
+     */
+    clearLocalFarmWorkspaceData();
+  
+
+    toast(
+      'Farm workspace reset. Reloading…',
+      'warn'
+    );
+  
+  
+    setTimeout(
+      () =>
+        location.reload(),
+      1500
+    );
+  
+
+  } catch (error) {
+
+    console.error(
+      'FarmCast reset failed:',
+      error
+    );
+
+
+    toast(
+      'Farm workspace reset failed. Your existing data was preserved.',
+      'err'
+    );
+
+  }
+
+  return;
+
+    
   console.log('✅ API patches applied to script.js functions!');
 }
 
