@@ -1323,15 +1323,73 @@ function patchScriptJsWithAPI() {
     };
 
   // Save settings on toggle changes
-  saveSettingImmediate = async function(key, value) {
-    appSettings[key] = value;
-    lsSave('fc_settings', appSettings);
-    try {
-      await fcSettings.save({ [key]: value });
-    } catch (err) {
-      // Silent fail — localStorage already saved
-    }
-  };
+  saveSettingImmediate =
+    async function(
+      key,
+      value
+    ) {
+
+      /*
+       * Local-first:
+       * update the active preference and
+       * browser cache immediately.
+       */
+      appSettings[key] =
+        value;
+  
+  
+      lsSave(
+        'fc_settings',
+        appSettings
+      );
+  
+  
+      /*
+       * Preserve the original Settings UI
+       * behavior after the backend override.
+       */
+      if (
+        key ===
+        'quietHours'
+      ) {
+  
+        updateQuietHoursUI();
+  
+      }
+  
+  
+      if (
+        key ===
+        'dailyBriefing'
+      ) {
+  
+        updateDailyBriefingUI();
+ 
+      }
+  
+ 
+      try {
+  
+        await fcSettings.save({
+          [key]:
+            value
+        });
+  
+  
+      } catch (err) {
+  
+        /*
+         * Local value is already saved.
+         * Cloud sync can recover later.
+         */
+        console.warn(
+          `Could not sync setting "${key}" to FarmCast:`,
+          err
+        );
+  
+      }
+  
+    };
 
   // Override confirmResetData
   confirmResetData =
