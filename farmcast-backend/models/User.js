@@ -23,7 +23,10 @@ resetPasswordExpires: {
   farmSize:  { type: String, default: '0' },
   role:      { type: String, default: 'owner' },
   phone:     { type: String, default: '' },
-  avatar:    { type: String, default: '👨‍🌾' },
+  avatar: {
+    type: String,
+    default: 'assets/ui/avatar-farmer-green.svg'
+  },
   // Location
   city:      { type: String, default: 'Manila' },
   lat:       { type: String, default: '' },

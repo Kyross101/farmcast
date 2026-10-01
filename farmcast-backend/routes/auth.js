@@ -48,10 +48,55 @@ router.post('/register', async (req, res) => {
       { expiresIn: '7d' }
     );
 
-    res.status(201).json({
-      message: 'Registered successfully! Welcome to FarmCast 🌾',
+    res
+      .status(201)
+      .json({
+
+      message:
+        'Registered successfully! Welcome to FarmCast 🌾',
+
       token,
-      user: { id: user._id, username: user.username, name: user.name, farmName: user.farmName, avatar: user.avatar }
+
+      user: {
+
+        id:
+          user._id,
+
+        username:
+          user.username,
+  
+        name:
+          user.name,
+  
+        email:
+          user.email,
+   
+        farmName:
+          user.farmName,
+  
+        farmSize:
+          user.farmSize,
+  
+        role:
+          user.role,
+ 
+        phone:
+          user.phone,
+  
+        avatar:
+          user.avatar,
+  
+        city:
+          user.city,
+  
+        lat:
+          user.lat,
+  
+        lon:
+          user.lon
+ 
+      }
+
     });
 
   } catch (err) {
