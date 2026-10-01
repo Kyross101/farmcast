@@ -243,22 +243,120 @@ async function loadAllDataFromBackend() {
     irrFields = irrFieldsData;
     pestLogs = pestLogsData;
 
-    if (settingsData) {
-      appSettings =
-        Object.assign(
-          {},
-          DEFAULT_SETTINGS,
-          settingsData
-        );
-
-      lsSave(
-        'fc_settings',
-        appSettings
-      );
-    }
-
     const user =
       getAuthUser();
+
+
+    const hasLocalSettings =
+      localStorage.getItem(
+        'fc_settings'
+      ) !== null;
+
+
+    if (settingsData) {
+
+    /*
+     * Only accept settings supported by
+     * the current FarmCast version.
+     *
+     * This prevents deprecated backend
+     * fields from returning to the app.
+     */
+    const safeBackendSettings =
+      typeof cleanBackupSettings ===
+        'function'
+        ? cleanBackupSettings(
+            settingsData
+          )
+        : settingsData;
+  
+  
+    /*
+     * FarmCast is local-first.
+     *
+     * Existing local preferences take
+     * priority over backend settings.
+     * On a device with no local settings,
+     * backend values can initialize them.
+     */
+    appSettings =
+      hasLocalSettings
+        ? Object.assign(
+            {},
+            DEFAULT_SETTINGS,
+            safeBackendSettings,
+            appSettings
+          )
+        : Object.assign(
+            {},
+            DEFAULT_SETTINGS,
+            safeBackendSettings
+          );
+
+
+    /*
+     * Account/profile identity remains
+     * owned by the authenticated User.
+     */
+    if (user) {
+
+      const savedAvatar =
+        user.avatar ||
+        appSettings.avatar ||
+        DEFAULT_FARMER_AVATAR;
+
+
+      appSettings.name =
+        user.name ||
+        appSettings.name;
+
+
+      appSettings.email =
+        user.email ||
+        appSettings.email;
+
+
+      appSettings.farmName =
+        user.farmName ||
+        appSettings.farmName;
+
+
+      appSettings.farmSize =
+       user.farmSize ??
+        appSettings.farmSize;
+
+
+      appSettings.role =
+        user.role ||
+        appSettings.role;
+  
+  
+      appSettings.phone =
+        user.phone ||
+        appSettings.phone;
+
+  
+      appSettings.city =
+        user.city ||
+        appSettings.city;
+
+
+      appSettings.avatar =
+        LEGACY_FARMER_AVATARS[
+          savedAvatar
+        ] ||
+        savedAvatar ||
+        DEFAULT_FARMER_AVATAR;
+
+    }
+
+
+    lsSave(
+      'fc_settings',
+      appSettings
+    );
+
+  }
 
 
     if (user) {
