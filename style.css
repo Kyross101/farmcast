@@ -5763,6 +5763,28 @@ div > span {
   cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; flex-shrink: 0;
 }
 .dai-btn:hover { background: rgba(63,185,80,0.2); }
+
+.dai-btn:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  background:
+    var(--bg2);
+
+  color:
+    var(--text-dim);
+
+  border-color:
+    var(--border);
+}
+
+
+.dai-btn:disabled:hover {
+  background:
+    var(--bg2);
+}
+
 .backup-status {
   display: flex; align-items: center; gap: 6px;
   font-size: 0.75rem; color: var(--text-muted);

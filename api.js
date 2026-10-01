@@ -213,6 +213,33 @@ const fcSettings = {
 };
 
 // ══════════════════════════════════════════════
+// BACKUP / RESTORE
+// ══════════════════════════════════════════════
+
+const fcBackup = {
+
+  async restore(
+    backupData
+  ) {
+
+    return await apiFetch(
+      '/backup/restore',
+      {
+        method:
+          'POST',
+
+        body:
+          JSON.stringify(
+            backupData
+          )
+      }
+    );
+
+  }
+
+};
+
+// ══════════════════════════════════════════════
 // INIT — Load all data from backend on page load
 // Called in script.js DOMContentLoaded
 // ══════════════════════════════════════════════

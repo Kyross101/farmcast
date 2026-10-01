@@ -15740,6 +15740,23 @@ function setRestoreBackupStatus(
 
 }
 
+function setRestoreBackupActionEnabled(
+  enabled
+) {
+
+  const button =
+    document.getElementById(
+      'restoreBackupButton'
+    );
+
+
+  if (!button) return;
+
+
+  button.disabled =
+    !enabled;
+
+}
 
 function selectFarmCastBackupFile() {
 
@@ -15753,9 +15770,18 @@ function selectFarmCastBackupFile() {
 
 
   /*
-   * Reset first so the same file
-   * can be selected again.
+   * Selecting another file invalidates
+   * the previously validated backup.
    */
+  pendingFarmCastBackup =
+    null;
+
+
+  setRestoreBackupActionEnabled(
+    false
+  );
+
+
   input.value =
     '';
 
@@ -15779,7 +15805,10 @@ async function handleFarmCastBackupFile(
 
   pendingFarmCastBackup =
     null;
-
+  
+  setRestoreBackupActionEnabled(
+    false
+  );
 
   if (!file) {
     return;
@@ -15903,7 +15932,10 @@ async function handleFarmCastBackupFile(
 
     pendingFarmCastBackup =
       backup;
-
+    
+    setRestoreBackupActionEnabled(
+      true
+    );
 
     const backupDate =
       new Date(
@@ -15961,6 +15993,500 @@ async function handleFarmCastBackupFile(
 
     input.value =
       '';
+
+  }
+
+}
+
+function buildRestoredSettingsPreservingAccount(
+  backupSettings
+) {
+
+  const authUser =
+    typeof getAuthUser ===
+      'function'
+      ? getAuthUser()
+      : null;
+
+
+  const restored =
+    Object.assign(
+      {},
+      DEFAULT_SETTINGS,
+      cleanBackupSettings(
+        backupSettings
+      )
+    );
+
+
+  /*
+   * Restore farm preferences but never
+   * replace the identity/profile of the
+   * currently signed-in account.
+   */
+  const currentAvatar =
+    authUser?.avatar ||
+    appSettings.avatar ||
+    DEFAULT_FARMER_AVATAR;
+
+
+  restored.name =
+    authUser?.name ||
+    appSettings.name ||
+    restored.name;
+
+
+  restored.email =
+    authUser?.email ||
+    appSettings.email ||
+    restored.email;
+
+
+  restored.farmName =
+    authUser?.farmName ||
+    appSettings.farmName ||
+    restored.farmName;
+
+
+  restored.farmSize =
+    authUser?.farmSize ??
+    appSettings.farmSize ??
+    restored.farmSize;
+
+
+  restored.role =
+    authUser?.role ||
+    appSettings.role ||
+    restored.role;
+
+
+  restored.phone =
+    authUser?.phone ||
+    appSettings.phone ||
+    restored.phone;
+
+
+  restored.avatar =
+    LEGACY_FARMER_AVATARS[
+      currentAvatar
+    ] ||
+    currentAvatar ||
+    DEFAULT_FARMER_AVATAR;
+
+
+  return restored;
+
+}
+
+function persistFarmCastBackupLocally(
+  backup
+) {
+
+  const data =
+    backup.data;
+
+
+  const counters =
+    backup.counters;
+
+
+  const restoredSettings =
+    buildRestoredSettingsPreservingAccount(
+      data.settings
+    );
+
+
+  /*
+   * The scanner history is already
+   * restored to MongoDB.
+   *
+   * Do not duplicate potentially large
+   * base64 images into localStorage.
+   */
+  localStorage.removeItem(
+    'fc_scanHistory'
+  );
+
+
+  localStorage.removeItem(
+    LS_OFFICIAL_SEEN
+  );
+
+
+  localStorage.removeItem(
+    'fc_irrFid'
+  );
+
+
+  const localValues = [
+
+    [
+      LS_CROPS,
+      data.crops
+    ],
+
+    [
+      LS_CROPS_ID,
+      counters.nextCropId
+    ],
+
+    [
+      LS_TASKS,
+      data.tasks
+    ],
+
+    [
+      LS_PEST_LOGS,
+      data.pestLogs
+    ],
+
+    [
+      'fc_nextPestLogId',
+      counters.nextPestLogId
+    ],
+
+    [
+      LS_IRR_FIELDS,
+      data.irrigationFields
+    ],
+
+    [
+      LS_IRR_FID,
+      counters.nextFieldId
+    ],
+
+    [
+      LS_HARVEST,
+      data.harvestHistory
+    ],
+
+    [
+      LS_HARVEST_ID,
+      counters.nextHarvestId
+    ],
+
+    [
+      LS_NOTIFS,
+      data.notifications
+    ],
+
+    [
+      LS_NOTIF_ID,
+      counters.nextNotifId
+    ],
+
+    [
+      LS_SETTINGS,
+      restoredSettings
+    ]
+
+  ];
+
+
+  localValues.forEach(
+    ([key, value]) => {
+
+      localStorage.setItem(
+        key,
+        JSON.stringify(
+          value
+        )
+      );
+
+    }
+  );
+
+
+  return restoredSettings;
+
+}
+
+async function restoreFarmCastBackup() {
+
+  const backup =
+    pendingFarmCastBackup;
+
+
+  if (!backup) {
+
+    toast(
+      'Choose and validate a FarmCast backup first.',
+      'warn'
+    );
+
+    return;
+
+  }
+
+
+  /*
+   * Validate again immediately before
+   * the destructive operation.
+   */
+  const validation =
+    validateFarmCastBackup(
+      backup
+    );
+
+
+  if (
+    !validation.valid
+  ) {
+
+    pendingFarmCastBackup =
+      null;
+
+
+    setRestoreBackupActionEnabled(
+      false
+    );
+
+
+    setRestoreBackupStatus(
+      `Backup is no longer valid: ${
+        validation.errors[0]
+      }`,
+      'error'
+    );
+
+
+    toast(
+      'Backup validation failed.',
+      'err'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    typeof fcBackup ===
+      'undefined' ||
+    typeof fcBackup.restore !==
+      'function'
+  ) {
+
+    setRestoreBackupStatus(
+      'FarmCast restore service is unavailable.',
+      'error'
+    );
+
+
+    toast(
+      'Restore service is unavailable.',
+      'err'
+    );
+
+    return;
+
+  }
+
+
+  const data =
+    backup.data;
+
+
+  const backupDate =
+    new Date(
+      backup.exportedAt
+    ).toLocaleString(
+      'en-PH'
+    );
+
+
+  const firstConfirm =
+    confirm(
+      `Restore FarmCast backup from ${backupDate}?\n\n` +
+      `This will replace your current synced workspace with:\n` +
+      `• ${data.crops.length} crop records\n` +
+      `• ${data.harvestHistory.length} harvest records\n` +
+      `• ${data.irrigationFields.length} irrigation fields\n` +
+      `• ${data.pestLogs.length} pest logs\n` +
+      `• ${data.scannerHistory.length} plant scans\n\n` +
+      `Your current login account will NOT be replaced.`
+    );
+
+
+  if (!firstConfirm) {
+    return;
+  }
+
+
+  const finalConfirm =
+    confirm(
+      'Final confirmation: replace the current FarmCast workspace with this backup?\n\n' +
+      'This action cannot be undone unless you already created a backup of the current workspace.'
+    );
+
+
+  if (!finalConfirm) {
+    return;
+  }
+
+
+  const restoreButton =
+    document.getElementById(
+      'restoreBackupButton'
+    );
+
+
+  setRestoreBackupActionEnabled(
+    false
+  );
+
+
+  if (restoreButton) {
+    restoreButton.textContent =
+      'Restoring…';
+  }
+
+
+  setRestoreBackupStatus(
+    'Restoring FarmCast workspace securely…',
+    'info'
+  );
+
+
+  let serverRestored =
+    false;
+
+
+  try {
+
+    /*
+     * Server first.
+     *
+     * The backend uses a MongoDB
+     * transaction, so local data is not
+     * changed unless the server restore
+     * succeeds completely.
+     */
+    await fcBackup.restore({
+
+      crops:
+        data.crops,
+
+      harvestHistory:
+        data.harvestHistory,
+
+      irrigationFields:
+        data.irrigationFields,
+
+      pestLogs:
+        data.pestLogs,
+
+      scannerHistory:
+        data.scannerHistory
+
+    });
+
+
+    serverRestored =
+      true;
+
+
+    const restoredSettings =
+      persistFarmCastBackupLocally(
+        backup
+      );
+
+
+    appSettings = {
+      ...restoredSettings
+    };
+
+
+    pendingFarmCastBackup =
+      null;
+
+
+    setRestoreBackupStatus(
+      'FarmCast backup restored successfully. Reloading…',
+      'success'
+    );
+
+
+    toast(
+      'FarmCast backup restored successfully!',
+      'ok'
+    );
+
+
+    setTimeout(
+      () => {
+        location.reload();
+      },
+      900
+    );
+
+
+  } catch (error) {
+
+    console.error(
+      'FarmCast restore error:',
+      error
+    );
+
+
+    if (
+      serverRestored
+    ) {
+
+      /*
+       * Very unusual case:
+       * MongoDB succeeded but browser
+       * storage could not be written.
+       *
+       * Reload so server-backed records
+       * still return from MongoDB.
+       */
+      setRestoreBackupStatus(
+        'Server restore succeeded, but this browser could not save the local copy. Reloading from the server…',
+        'error'
+      );
+
+
+      toast(
+        'Server data restored. Reloading FarmCast…',
+        'warn'
+      );
+
+
+      setTimeout(
+        () => {
+          location.reload();
+        },
+        1400
+      );
+
+
+      return;
+
+    }
+
+
+    setRestoreBackupStatus(
+      'Restore failed. Your existing FarmCast server data was preserved.',
+      'error'
+    );
+
+
+    toast(
+      'FarmCast restore failed. No server data was replaced.',
+      'err'
+    );
+
+
+    setRestoreBackupActionEnabled(
+      true
+    );
+
+
+    if (restoreButton) {
+      restoreButton.textContent =
+        'Restore';
+    }
 
   }
 
