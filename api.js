@@ -523,6 +523,23 @@ async function loadAllDataFromBackend() {
 
   }
 
+  /*
+   * Backend settings may be different from
+   * the defaults/local values that were
+   * applied before the API finished loading.
+   *
+   * Re-apply the final merged settings now
+   * so a fresh browser/device immediately
+   * reflects the saved FarmCast preferences.
+   */
+  if (
+    typeof applyAllSettings ===
+    'function'
+  ) {
+
+    applyAllSettings();
+
+  }
 
     if (user) {
 
