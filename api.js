@@ -1061,27 +1061,110 @@ function patchScriptJsWithAPI() {
 
     };
 
-  saveThresholdSettings = async function() {
-    appSettings.thresholdTemp       = parseFloat(document.getElementById('thresholdTemp').value) || 35;
-    appSettings.harvestReminderDays = parseInt(document.getElementById('harvestReminderDays').value) || 7;
-    try {
-      await fcSettings.save(appSettings);
-      toast('Alert thresholds saved!', 'ok');
-    } catch (err) {
-      lsSave('fc_settings', appSettings);
-      toast('Saved locally (backend error).', 'warn');
-    }
-  };
+  saveThresholdSettings =
+    async function() {
 
-  saveFavCrops = async function() {
-    try {
-      await fcSettings.save({ favCrops: appSettings.favCrops });
-      toast('Crop preferences saved!', 'ok');
-    } catch (err) {
-      lsSave('fc_settings', appSettings);
-      toast('Saved locally.', 'warn');
-    }
-  };
+      appSettings.thresholdTemp =
+        parseFloat(
+          document.getElementById(
+            'thresholdTemp'
+          ).value
+        ) || 35;
+
+
+      appSettings.harvestReminderDays =
+        parseInt(
+          document.getElementById(
+            'harvestReminderDays'
+          ).value
+        ) || 7;
+  
+  
+      /*
+       * Local-first:
+       * persist immediately before trying
+       * to sync with MongoDB.
+       */
+      lsSave(
+        'fc_settings',
+        appSettings
+      );
+  
+  
+      try {
+  
+        await fcSettings.save({
+          thresholdTemp:
+            appSettings.thresholdTemp,
+  
+          harvestReminderDays:
+            appSettings.harvestReminderDays
+        });
+  
+  
+        toast(
+          'Alert settings saved!',
+          'ok'
+        );
+  
+  
+      } catch (err) {
+   
+        /*
+         * Local copy is already safe even
+         * if the backend is temporarily down.
+         */
+        toast(
+          'Saved locally. Cloud sync is temporarily unavailable.',
+          'warn'
+        );
+
+      }
+
+    };
+
+  saveFavCrops =
+    async function() {
+
+      /*
+       * Save locally first because FarmCast
+       * treats the browser copy as the
+       * active preference cache.
+       */
+      lsSave(
+        'fc_settings',
+        appSettings
+      );
+  
+  
+      populateMyCropsCropSelect();
+      renderMyCropPicker();
+  
+  
+      try {
+  
+        await fcSettings.save({
+          favCrops:
+            appSettings.favCrops
+        });
+  
+  
+        toast(
+          'Favorite crop preferences saved!',
+          'ok'
+        );
+  
+  
+      } catch (err) {
+  
+        toast(
+          'Favorites saved locally. Cloud sync is temporarily unavailable.',
+          'warn'
+        );
+  
+      }
+  
+    };
 
   // Save settings on toggle changes
   saveSettingImmediate = async function(key, value) {
