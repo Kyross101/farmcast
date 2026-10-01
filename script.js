@@ -13390,20 +13390,21 @@ function setAvatar(
   avatarPath
 ) {
 
+  /*
+   * Avatar selection is only a preview.
+   *
+   * The actual User profile is persisted
+   * when Save Profile is pressed.
+   */
   appSettings.avatar =
     avatarPath;
-
-  lsSave(
-    LS_SETTINGS,
-    appSettings
-  );
 
 
   updateFarmerAvatarUI();
 
 
   toast(
-    'Farmer avatar updated!',
+    'Avatar selected. Click Save Profile to save it.',
     'ok'
   );
 
