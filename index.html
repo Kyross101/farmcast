@@ -3605,7 +3605,47 @@
                     </div>
                     <button class="dai-btn" onclick="exportCSV('pests')">Export</button>
                   </div>
+
+                  <div class="data-action-item">
+
+                    <div
+                      class="dai-icon"
+                      style="background:rgba(63,185,80,0.15)"
+                    >
+
+                      <img
+                        src="assets/ui/farmcast-logo.svg"
+                        alt=""
+                        class="dai-icon-img"
+                      >
+
+                    </div>
+
+
+                    <div class="dai-info">
+
+                      <div class="dai-title">
+                        Export FarmCast Backup
+                      </div>
+
+                      <div class="dai-sub">
+                        Download your complete FarmCast workspace as a JSON backup
+                      </div>
+
+                    </div>
+
+
+                    <button
+                      class="dai-btn"
+                      onclick="exportFarmCastBackup()"
+                    >
+                      Backup
+                    </button>
+
+                  </div>
+
                 </div>
+                
                 <div class="backup-status" id="backupStatus">
                   <span class="material-symbols-outlined" style="font-size:16px;color:var(--green)">check_circle</span>
                   Last export: <span id="lastExportTime">Never</span>

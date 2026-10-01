@@ -14320,6 +14320,398 @@ function showFarmCastAbout() {
 
 // ═══ DATA EXPORT ═══
 
+async function getBackupScannerHistory() {
+
+  /*
+   * Scanner history is loaded only when
+   * the scanner page is opened.
+   *
+   * For a true backup, try the backend
+   * directly even if that page has not
+   * been visited during this session.
+   */
+  try {
+
+    if (
+      typeof fcScanHistory !==
+        'undefined' &&
+      typeof fcScanHistory.getAll ===
+        'function'
+    ) {
+
+      const syncedHistory =
+        await fcScanHistory.getAll();
+
+
+      if (
+        Array.isArray(
+          syncedHistory
+        )
+      ) {
+
+        return syncedHistory;
+
+      }
+
+    }
+
+  } catch (error) {
+
+    console.warn(
+      'Scanner history backup is using local fallback:',
+      error
+    );
+
+  }
+
+
+  try {
+
+    const localHistory =
+      JSON.parse(
+        localStorage.getItem(
+          'fc_scanHistory'
+        ) ||
+        '[]'
+      );
+
+
+    return Array.isArray(
+      localHistory
+    )
+      ? localHistory
+      : [];
+
+  } catch {
+
+    return [];
+
+  }
+
+}
+
+
+function cleanBackupRecord(
+  record
+) {
+
+  if (
+    !record ||
+    typeof record !==
+      'object'
+  ) {
+
+    return record;
+
+  }
+
+
+  /*
+   * Remove MongoDB/account metadata.
+   *
+   * These values are server-specific
+   * and must never be required when
+   * restoring the backup later.
+   */
+  const {
+    _id,
+    user,
+    __v,
+    ...portableRecord
+  } = record;
+
+
+  return portableRecord;
+
+}
+
+
+function cleanBackupCollection(
+  collection
+) {
+
+  if (
+    !Array.isArray(
+      collection
+    )
+  ) {
+
+    return [];
+
+  }
+
+
+  return collection.map(
+    cleanBackupRecord
+  );
+
+}
+
+
+async function exportFarmCastBackup() {
+
+  try {
+
+    const scannerBackup =
+      await getBackupScannerHistory();
+
+
+    const exportedAt =
+      new Date()
+        .toISOString();
+
+
+    const backup = {
+
+      farmcastBackup: true,
+
+      backupVersion: 1,
+
+      exportedAt,
+
+
+      data: {
+
+        crops:
+          cleanBackupCollection(
+            typeof myCrops !==
+              'undefined'
+              ? myCrops
+              : []
+          ),
+
+
+        harvestHistory:
+          cleanBackupCollection(
+            typeof harvestHistory !==
+              'undefined'
+              ? harvestHistory
+              : []
+          ),
+
+
+        irrigationFields:
+          cleanBackupCollection(
+            typeof irrFields !==
+              'undefined'
+              ? irrFields
+              : []
+          ),
+
+
+        pestLogs:
+          cleanBackupCollection(
+            typeof pestLogs !==
+              'undefined'
+              ? pestLogs
+              : []
+          ),
+
+
+        tasks:
+          Array.isArray(
+            tasks
+          )
+            ? tasks
+            : [],
+
+
+        notifications:
+          Array.isArray(
+            notifications
+          )
+            ? notifications
+            : [],
+
+
+        scannerHistory:
+          cleanBackupCollection(
+            scannerBackup
+          ),
+
+
+        settings: {
+          ...appSettings
+        }
+
+      },
+
+
+      counters: {
+
+        nextCropId:
+          typeof nextCropId !==
+            'undefined'
+            ? nextCropId
+            : 1,
+
+
+        nextHarvestId:
+          typeof nextHarvestId !==
+            'undefined'
+            ? nextHarvestId
+            : 1,
+
+
+        nextFieldId:
+          typeof nextFieldId !==
+            'undefined'
+            ? nextFieldId
+            : 1,
+
+
+        nextPestLogId:
+          typeof nextPestLogId !==
+            'undefined'
+            ? nextPestLogId
+            : 1,
+
+
+        nextNotifId:
+          typeof nextNotifId !==
+            'undefined'
+            ? nextNotifId
+            : 1
+
+      }
+
+    };
+
+
+    /*
+     * Authentication/session information
+     * is deliberately never included.
+     *
+     * Examples excluded:
+     * fc_token
+     * fc_user
+     * fc_authUser
+     * remembered login information
+     */
+    const json =
+      JSON.stringify(
+        backup,
+        null,
+        2
+      );
+
+
+    const blob =
+      new Blob(
+        [json],
+        {
+          type:
+            'application/json;charset=utf-8'
+        }
+      );
+
+
+    const url =
+      URL.createObjectURL(
+        blob
+      );
+
+
+    const link =
+      document.createElement(
+        'a'
+      );
+
+
+    const dateStamp =
+      new Date()
+        .toISOString()
+        .slice(
+          0,
+          10
+        );
+
+
+    link.href =
+      url;
+
+    link.download =
+      `farmcast-backup-${dateStamp}.json`;
+
+
+    document.body.appendChild(
+      link
+    );
+
+
+    link.click();
+
+
+    document.body.removeChild(
+      link
+    );
+
+
+    URL.revokeObjectURL(
+      url
+    );
+
+
+    const now =
+      new Date()
+        .toLocaleString(
+          'en-PH'
+        );
+
+
+    appSettings.lastExport =
+      now;
+
+
+    lsSave(
+      LS_SETTINGS,
+      appSettings
+    );
+
+
+    const lastExport =
+      document.getElementById(
+        'lastExportTime'
+      );
+
+
+    if (lastExport) {
+
+      lastExport.textContent =
+        now;
+
+    }
+
+
+    toast(
+      'FarmCast backup downloaded!',
+      'ok'
+    );
+
+
+    addNotification(
+      'system',
+      'FarmCast Backup Created',
+      'A complete FarmCast workspace backup was downloaded successfully.'
+    );
+
+  } catch (error) {
+
+    console.error(
+      'FarmCast backup error:',
+      error
+    );
+
+
+    toast(
+      'Could not create the FarmCast backup.',
+      'err'
+    );
+
+  }
+
+}
+
 function escapeCSVCell(
   value
 ) {
