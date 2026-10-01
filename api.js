@@ -257,32 +257,78 @@ async function loadAllDataFromBackend() {
       );
     }
 
-    const user = getAuthUser();
+    const user =
+      getAuthUser();
+
 
     if (user) {
+
       const nameEl =
-        document.getElementById('sidebarUserName');
+        document.getElementById(
+          'sidebarUserName'
+        );
 
       const farmEl =
-        document.getElementById('sidebarUserFarm');
+        document.getElementById(
+          'sidebarUserFarm'
+        );
+
 
       if (nameEl) {
+
         nameEl.textContent =
-          user.name || user.username;
+          user.name ||
+          user.username ||
+          appSettings.name;
+
       }
+
 
       if (farmEl) {
+
         farmEl.textContent =
-          `${user.farmName || 'My Farm'} · ${user.farmSize || '0'} ha`;
+          `${
+            user.farmName ||
+            appSettings.farmName ||
+            'My Farm'
+          } · ${
+            user.farmSize ||
+            appSettings.farmSize ||
+            '0'
+          } ha`;
+
       }
 
-      const avatarEl =
-        document.querySelector('.user-avatar');
 
-      if (avatarEl) {
-        avatarEl.textContent =
-          user.avatar || '👨‍🌾';
-      }
+      /*
+       * Keep the new SVG farmer-avatar system.
+       *
+       * Older accounts may still contain an
+       * emoji avatar, so migrate it before
+       * updating the image element.
+      */
+     const savedAvatar =
+       user.avatar ||
+       appSettings.avatar ||
+       DEFAULT_FARMER_AVATAR;
+
+
+      appSettings.avatar =
+        LEGACY_FARMER_AVATARS[
+          savedAvatar
+        ] ||
+        savedAvatar ||
+        DEFAULT_FARMER_AVATAR;
+
+
+      lsSave(
+        'fc_settings',
+        appSettings
+      );
+
+
+      updateFarmerAvatarUI();
+
     }
 
     console.log(
