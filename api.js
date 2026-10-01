@@ -1265,64 +1265,72 @@ function patchScriptJsWithAPI() {
          * Empty collections = reset workspace.
          */
         await fcBackup.restore({
-
+  
           crops:
             [],
-
+  
           harvestHistory:
             [],
-
+  
           irrigationFields:
             [],
-
+  
           pestLogs:
             [],
-
+  
           scannerHistory:
             [],
-
+  
           settings:
             cleanBackupSettings(
               resetSettings
             )
-
+  
         });
-
-    /*
-     * Only clear browser data AFTER
-     * the MongoDB transaction succeeds.
-     */
-    clearLocalFarmWorkspaceData();
-  
-
-    toast(
-      'Farm workspace reset. Reloading…',
-      'warn'
-    );
   
   
-    setTimeout(
-      () =>
-        location.reload(),
-      1500
+        /*
+         * Only clear browser data AFTER
+         * the MongoDB transaction succeeds.
+         */
+        clearLocalFarmWorkspaceData();
+  
+  
+        toast(
+          'Farm workspace reset. Reloading…',
+          'warn'
+        );
+  
+  
+        setTimeout(
+          () =>
+            location.reload(),
+          1500
+        );
+  
+  
+      } catch (error) {
+  
+        console.error(
+          'FarmCast reset failed:',
+          error
+        );
+  
+  
+        toast(
+          'Farm workspace reset failed. Your existing data was preserved.',
+          'err'
+        );
+  
+      }
+
+    };
+
+
+    console.log(
+      '✅ API patches applied to script.js functions!'
     );
   
-
-  } catch (error) {
-
-    console.error(
-      'FarmCast reset failed:',
-      error
-    );
-
-
-    toast(
-      'Farm workspace reset failed. Your existing data was preserved.',
-      'err'
-    );
-
-  }
-
 }
 
 // ══════════════════════════════════════════════
