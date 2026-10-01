@@ -13450,6 +13450,7 @@ async function applyLocationFromSearch() {
       'settingLocationSearch'
     );
 
+
   const status =
     document.getElementById(
       'locationStatus'
@@ -13457,7 +13458,8 @@ async function applyLocationFromSearch() {
 
 
   const val =
-    input.value.trim();
+    input?.value
+      .trim();
 
 
   if (!val) {
@@ -13491,13 +13493,123 @@ async function applyLocationFromSearch() {
   }
 
 
-  const weatherData =
-    await fetchWeather(
-      val
+  try {
+
+    /*
+     * Verify the location only.
+     *
+     * Do NOT call fetchWeather() here
+     * because that function changes the
+     * active Dashboard weather location.
+     */
+    const response =
+      await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${
+          encodeURIComponent(
+            val
+          )
+        }&units=metric&appid=${API_KEY}`
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        'Location not found.'
+      );
+
+    }
+
+
+    const weatherData =
+      await response.json();
+
+
+    const lat =
+      weatherData.coord.lat
+        .toFixed(4);
+
+
+    const lon =
+      weatherData.coord.lon
+        .toFixed(4);
+
+
+    const latInput =
+      document.getElementById(
+        'settingLat'
+      );
+
+
+    const lonInput =
+      document.getElementById(
+        'settingLon'
+      );
+
+
+    if (latInput) {
+      latInput.value =
+        lat;
+    }
+
+
+    if (lonInput) {
+      lonInput.value =
+        lon;
+    }
+
+
+    /*
+     * Keep the canonical location name
+     * returned by the weather service
+     * in the form only.
+     *
+     * appSettings and localStorage are
+     * intentionally untouched until
+     * Save Location is pressed.
+     */
+    if (
+      input &&
+      weatherData.name
+    ) {
+
+      input.value =
+        weatherData.name;
+
+    }
+
+
+    if (status) {
+
+      status.className =
+        'location-status ok';
+
+      status.innerHTML = `
+        <span class="material-symbols-outlined">
+          check_circle
+        </span>
+
+        Location verified. Click
+        <strong>Save Location</strong>
+        to use it as your farm location.
+      `;
+
+    }
+
+
+    toast(
+      'Location verified. Click Save Location to save it.',
+      'ok'
     );
 
 
-  if (!weatherData) {
+  } catch (error) {
+
+    console.warn(
+      'Location verification failed:',
+      error
+    );
+
 
     if (status) {
 
@@ -13514,129 +13626,81 @@ async function applyLocationFromSearch() {
 
     }
 
+
+    toast(
+      'Could not verify that location.',
+      'err'
+    );
+
+  }
+
+}
+
+function getGPSLocation() {
+
+  if (
+    !navigator.geolocation
+  ) {
+
+    toast(
+      'Geolocation is not supported by your browser.',
+      'err'
+    );
+
     return;
 
   }
 
 
-  const lat =
-    weatherData.coord.lat
-      .toFixed(4);
-
-  const lon =
-    weatherData.coord.lon
-      .toFixed(4);
-
-
-  appSettings.city =
-    val;
-
-  appSettings.lat =
-    lat;
-
-  appSettings.lon =
-    lon;
-
-
-  const latInput =
+  const status =
     document.getElementById(
-      'settingLat'
+      'locationStatus'
     );
-
-  const lonInput =
-    document.getElementById(
-      'settingLon'
-    );
-
-
-  if (latInput) {
-    latInput.value =
-      lat;
-  }
-
-  if (lonInput) {
-    lonInput.value =
-      lon;
-  }
-
-
-  lsSave(
-    LS_SETTINGS,
-    appSettings
-  );
 
 
   if (status) {
 
     status.className =
-      'location-status ok';
+      'location-status';
 
     status.innerHTML = `
-      <span class="material-symbols-outlined">
-        check_circle
+      <span
+        class="material-symbols-outlined"
+        style="animation:spin .7s linear infinite"
+      >
+        refresh
       </span>
 
-      Farm location verified and saved
+      Getting GPS location…
     `;
 
   }
 
 
-  toast(
-    `Location updated to ${val}`,
-    'ok'
-  );
+  navigator.geolocation.getCurrentPosition(
 
-}
+    async position => {
 
-function getGPSLocation() {
-  if (!navigator.geolocation) { toast('Geolocation is not supported by your browser.', 'err'); return; }
-  const status = document.getElementById('locationStatus');
-  status.className = 'location-status';
-  status.innerHTML = `<span class="material-symbols-outlined" style="animation:spin .7s linear infinite">refresh</span> Getting GPS location…`;
+      const lat =
+        position.coords.latitude
+          .toFixed(4);
 
-  navigator.geolocation.getCurrentPosition(pos => {
-    const lat = pos.coords.latitude.toFixed(4);
-    const lon = pos.coords.longitude.toFixed(4);
-    document.getElementById('settingLat').value = lat;
-    document.getElementById('settingLon').value = lon;
-    appSettings.lat = lat; appSettings.lon = lon;
-    lsSave(LS_SETTINGS, appSettings);
-    status.className = 'location-status ok';
-    status.innerHTML = `<span class="material-symbols-outlined">my_location</span> GPS: ${lat}°N, ${lon}°E`;
-    // Fetch weather for coordinates
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
-    )
-    .then(response => {
 
-      if (!response.ok) {
-        throw new Error(
-          'Unable to identify GPS location.'
+      const lon =
+        position.coords.longitude
+          .toFixed(4);
+
+
+      const latInput =
+        document.getElementById(
+          'settingLat'
         );
-      }
-
-      return response.json();
-
-    })
-    .then(data => {
-
-      const cityName =
-        data.name ||
-        appSettings.city;
 
 
-      currentCity =
-        cityName;
-
-      appSettings.city =
-        cityName;
-
-      appSettings.lat =
-        lat;
-
-      appSettings.lon =
-        lon;
+      const lonInput =
+        document.getElementById(
+          'settingLon'
+        );
 
 
       const searchInput =
@@ -13644,72 +13708,178 @@ function getGPSLocation() {
           'settingLocationSearch'
         );
 
-      if (searchInput) {
-        searchInput.value =
-          cityName;
+
+      /*
+       * Preview the detected coordinates
+       * in the form only.
+       *
+       * Nothing is persisted yet.
+       */
+      if (latInput) {
+        latInput.value =
+          lat;
       }
 
 
-      lsSave(
-        LS_SETTINGS,
-        appSettings
-      );
-
-      status.className =
-        'location-status ok';
-
-      status.innerHTML = `
-        <span class="material-symbols-outlined">
-          my_location
-        </span>
-
-        Farm location set to
-        <strong>${cityName}</strong>
-      `;
+      if (lonInput) {
+        lonInput.value =
+          lon;
+      }
 
 
-      fetchWeather(
-        cityName
-      );
+      try {
+
+        /*
+         * Use OpenWeather only to identify
+         * the city associated with these
+         * coordinates.
+         */
+        const response =
+          await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${
+              encodeURIComponent(
+                lat
+              )
+            }&lon=${
+              encodeURIComponent(
+                lon
+              )
+            }&units=metric&appid=${API_KEY}`
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            'Unable to identify GPS location.'
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        const cityName =
+          String(
+            data.name ||
+            ''
+          )
+            .trim();
+
+
+        if (!cityName) {
+
+          throw new Error(
+            'GPS location has no city name.'
+          );
+
+        }
+
+
+        if (searchInput) {
+
+          searchInput.value =
+            cityName;
+
+        }
+
+
+        if (status) {
+
+          status.className =
+            'location-status ok';
+
+          status.innerHTML = `
+            <span class="material-symbols-outlined">
+              my_location
+            </span>
+
+            GPS detected
+            <strong>${cityName}</strong>.
+            Click
+            <strong>Save Location</strong>
+            to use it.
+          `;
+
+        }
+
+
+        toast(
+          `GPS location found: ${cityName}. Click Save Location to save it.`,
+          'ok'
+        );
+
+
+      } catch (error) {
+
+        console.warn(
+          'GPS city lookup failed:',
+          error
+        );
+
+
+        /*
+         * Coordinates can still be shown,
+         * but do not claim that the farm
+         * location has been saved.
+         */
+        if (status) {
+
+          status.className =
+            'location-status error';
+
+          status.innerHTML = `
+            <span class="material-symbols-outlined">
+              warning
+            </span>
+
+            GPS coordinates were detected,
+            but the city could not be identified.
+            Search for your city before saving.
+          `;
+
+        }
+
+
+        toast(
+          'GPS coordinates found, but the city could not be identified.',
+          'warn'
+        );
+
+      }
+
+    },
+
+
+    error => {
+
+      if (status) {
+
+        status.className =
+          'location-status error';
+
+        status.innerHTML = `
+          <span class="material-symbols-outlined">
+            error
+          </span>
+
+          GPS error: ${error.message}
+        `;
+
+      }
+
 
       toast(
-        `Location found: ${cityName}`,
-        'ok'
+        'Could not get GPS location.',
+        'err'
       );
 
-    })
-    .catch(error => {
+    }
 
-      console.warn(
-        'GPS city lookup failed:',
-        error
-      );
+  );
 
-
-      status.className =
-        'location-status ok';
-
-      status.innerHTML = `
-        <span class="material-symbols-outlined">
-          my_location
-        </span>
-
-        GPS coordinates saved
-      `;
-
-
-      toast(
-        'GPS coordinates saved, but the city name could not be identified.',
-        'warn'
-      );
-
-    });
-
-  }, err => {
-    status.className = 'location-status error';
-    status.innerHTML = `<span class="material-symbols-outlined">error</span> GPS error: ${err.message}`;
-    toast('Could not get GPS location.', 'err');
-  });
 }
 
 function saveLocationSettings() {
