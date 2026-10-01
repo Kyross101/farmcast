@@ -13,6 +13,80 @@ function saveToken(token)  { localStorage.setItem('fc_token', token); }
 function removeToken()     { localStorage.removeItem('fc_token'); }
 function getAuthUser()     { return JSON.parse(localStorage.getItem('fc_authUser') || 'null'); }
 
+let farmCastSessionExpiryHandled =
+  false;
+
+
+function clearFarmCastAuthSession() {
+
+  removeToken();
+
+
+  localStorage.removeItem(
+    'fc_authUser'
+  );
+
+
+  /*
+   * Legacy FarmCast user cache.
+   */
+  localStorage.removeItem(
+    'fc_user'
+  );
+
+
+  /*
+   * IMPORTANT:
+   * Do not remove fc_cache_owner_id.
+   *
+   * It is needed to identify who owns
+   * the preserved local workspace.
+   */
+
+}
+
+
+function handleExpiredFarmCastSession() {
+
+  /*
+   * Several API calls can fail with 403
+   * at the same time during page load.
+   *
+   * Show only one warning and schedule
+   * only one redirect.
+   */
+  if (
+    farmCastSessionExpiryHandled
+  ) {
+    return;
+  }
+
+
+  farmCastSessionExpiryHandled =
+    true;
+
+
+  clearFarmCastAuthSession();
+
+
+  toast(
+    'Session expired. Please login again.',
+    'warn'
+  );
+
+
+  setTimeout(
+    () => {
+
+      window.location.href =
+        'login.html';
+
+    },
+    1500
+  );
+
+}
+
 function saveAuthUser(
   user
 ) {
@@ -67,13 +141,19 @@ async function apiFetch(endpoint, options = {}) {
 
   const data = await res.json();
 
-  // Token expired — redirect to login
-  if (res.status === 401 || res.status === 403) {
-    removeToken();
-    localStorage.removeItem('fc_authUser');
-    toast('Session expired. Please login again.', 'warn');
-    setTimeout(() => window.location.href = 'login.html', 1500);
-    throw new Error('Unauthorized');
+  // Token missing, invalid, or expired.
+  if (
+    res.status === 401 ||
+    res.status === 403
+  ) {
+
+    handleExpiredFarmCastSession();
+
+
+    throw new Error(
+      'Unauthorized'
+    );
+
   }
 
   if (!res.ok) throw new Error(data.message || 'Server error');
@@ -121,30 +201,17 @@ const fcAuth = {
     /*
      * End only the authenticated session.
      *
-     * Keep fc_cache_owner_id and the
-     * account's FarmCast workspace so the
-     * cache can be restored safely on the
-     * next login.
+     * The workspace owner marker and local
+     * FarmCast data deliberately remain.
      */
-    removeToken();
-  
-    localStorage.removeItem(
-      'fc_authUser'
-    );
-  
-    /*
-     * Remove the old legacy user cache too.
-     */
-    localStorage.removeItem(
-      'fc_user'
-    );
-  
-  
+    clearFarmCastAuthSession();
+
+
     window.location.href =
       'login.html';
 
   }
-  
+   
 };
 
 // ══════════════════════════════════════════════
