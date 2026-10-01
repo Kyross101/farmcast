@@ -117,10 +117,34 @@ const fcAuth = {
   },
 
   logout() {
+
+    /*
+     * End only the authenticated session.
+     *
+     * Keep fc_cache_owner_id and the
+     * account's FarmCast workspace so the
+     * cache can be restored safely on the
+     * next login.
+     */
     removeToken();
-    localStorage.removeItem('fc_authUser');
-    window.location.href = 'login.html';
+  
+    localStorage.removeItem(
+      'fc_authUser'
+    );
+  
+    /*
+     * Remove the old legacy user cache too.
+     */
+    localStorage.removeItem(
+      'fc_user'
+    );
+  
+  
+    window.location.href =
+      'login.html';
+
   }
+  
 };
 
 // ══════════════════════════════════════════════

@@ -13432,14 +13432,55 @@ function saveProfileSettings() {
 }
 
 function confirmSignOut() {
-  if (!confirm('Sign out of FarmCast? Your local data will be preserved.')) return;
 
-  // Remove authentication data only
-  localStorage.removeItem('fc_token');
-  localStorage.removeItem('fc_user');
+  if (
+    !confirm(
+      'Sign out of FarmCast? Your local data will be preserved.'
+    )
+  ) {
+    return;
+  }
 
-  // Redirect back to login page
-  window.location.href = 'login.html';
+
+  /*
+   * Use the centralized auth logout so
+   * every sign-out path clears the same
+   * session keys.
+   */
+  if (
+    typeof fcAuth !==
+      'undefined' &&
+    typeof fcAuth.logout ===
+      'function'
+  ) {
+
+    fcAuth.logout();
+
+    return;
+
+  }
+
+
+  /*
+   * Safe fallback if the API helper is
+   * unavailable for some reason.
+   */
+  localStorage.removeItem(
+    'fc_token'
+  );
+
+  localStorage.removeItem(
+    'fc_authUser'
+  );
+
+  localStorage.removeItem(
+    'fc_user'
+  );
+
+
+  window.location.href =
+    'login.html';
+
 }
 
 // ═══ LOCATION SETTINGS ═══
