@@ -1766,6 +1766,7 @@ let currentMapLayerName = 'precipitation_new';
 
 let lastMapWeatherData = null;
 let currentMapWeatherPopup = null;
+let farmLocationMarker = null;
  
 const OWM_LAYERS = {
   precipitation_new: { name: 'Precipitation', legend: 'precip-gradient',  labels: ['None','Heavy'] },
@@ -1913,7 +1914,7 @@ if (
   }
 
 
-  const marker =
+  farmLocationMarker =
     L.marker(
       [lat, lon],
       {
@@ -1940,7 +1941,7 @@ if (
 
   if (currentWeather) {
 
-    marker
+    farmLocationMarker
       .bindPopup(
         `<b>${currentWeather.name}</b><br>${displayTemp(
           currentWeather.main.temp
@@ -1950,7 +1951,7 @@ if (
 
   } else {
 
-    marker
+    farmLocationMarker
       .bindPopup(
         `<b>${farmLocationName}</b><br>Saved farm location`
       )
@@ -1981,7 +1982,95 @@ if (
   // Update map weather summary
   updateMapWeatherSummary();
 }
- 
+
+function syncWeatherMapToSavedLocation(
+  lat,
+  lon,
+  name
+) {
+
+  const latitude =
+    Number(lat);
+
+  const longitude =
+    Number(lon);
+
+
+  if (
+    !weatherMap ||
+    !Number.isFinite(latitude) ||
+    latitude < -90 ||
+    latitude > 90 ||
+    !Number.isFinite(longitude) ||
+    longitude < -180 ||
+    longitude > 180
+  ) {
+    return;
+  }
+
+
+  const safeName =
+    escapeHtml(
+      name ||
+      appSettings.city ||
+      'Saved Farm Location'
+    );
+
+
+  weatherMap.setView(
+    [latitude, longitude],
+    10
+  );
+
+
+  if (farmLocationMarker) {
+
+    farmLocationMarker.setLatLng([
+      latitude,
+      longitude
+    ]);
+
+  } else {
+
+    farmLocationMarker =
+      L.marker(
+        [latitude, longitude],
+        {
+          icon:
+            L.divIcon({
+              className:
+                'farm-marker',
+
+              html:
+                '🌾',
+
+              iconSize:
+                [30, 30],
+
+              iconAnchor:
+                [15, 15]
+            })
+        }
+      )
+        .addTo(weatherMap);
+
+  }
+
+
+  farmLocationMarker
+    .bindPopup(
+      `<b>${safeName}</b><br>Saved farm location`
+    )
+    .openPopup();
+
+
+  fetchMapPointWeather(
+    latitude,
+    longitude
+  );
+
+}
+
 function toggleWindModelInfo() {
   const details =
     document.getElementById(

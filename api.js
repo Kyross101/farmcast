@@ -1152,6 +1152,20 @@ function patchScriptJsWithAPI() {
           null;
 
 
+        if (
+          typeof syncWeatherMapToSavedLocation ===
+            'function'
+        ) {
+
+          syncWeatherMapToSavedLocation(
+            lat,
+            lon,
+            city
+          );
+
+        }
+
+
         updateSettingsFormValues();
   
   
