@@ -18712,7 +18712,9 @@ function renderOfficialAdvisories(advisories) {
     return;
   }
 
-  container.innerHTML = advisories.map(advisory => {
+    const advisoryCardsHtml =
+      advisories.map(
+        (advisory, index) => {
 
     const issuedDate = advisory.issuedAt
       ? new Date(advisory.issuedAt)
@@ -18747,7 +18749,18 @@ function renderOfficialAdvisories(advisories) {
         : 'Issuance time unavailable';
 
     return `
-      <article class="official-advisory-card">
+      <article
+        class="official-advisory-card${
+          index > 0
+            ? ' official-advisory-extra'
+            : ''
+        }"
+        ${
+          index > 0
+            ? 'hidden'
+            : ''
+        }
+      >
 
         <div class="official-advisory-header">
 
@@ -18857,9 +18870,106 @@ function renderOfficialAdvisories(advisories) {
           </a>
         ` : ''}
 
-      </article>
-    `;
-  }).join('');
+            </article>
+          `;
+      }
+    ).join('');
+
+
+    const hiddenAdvisoryCount =
+      Math.max(
+        advisories.length - 1,
+        0
+      );
+
+
+    container.innerHTML =
+      advisoryCardsHtml +
+      (
+        hiddenAdvisoryCount > 0
+          ? `
+            <button
+              type="button"
+              class="official-advisory-toggle"
+              aria-expanded="false"
+              data-hidden-count="${hiddenAdvisoryCount}"
+              onclick="toggleOfficialAdvisories(this)"
+            >
+              Show ${hiddenAdvisoryCount} more ${
+                hiddenAdvisoryCount === 1
+                  ? 'advisory'
+                  : 'advisories'
+              }
+            </button>
+          `
+          : ''
+      );
+
+}
+
+function toggleOfficialAdvisories(
+  button
+) {
+
+  const container =
+    document.getElementById(
+      'officialAdvisoryList'
+    );
+
+
+  if (
+    !container ||
+    !button
+  ) {
+    return;
+  }
+
+
+  const isExpanded =
+    button.getAttribute(
+      'aria-expanded'
+    ) === 'true';
+
+
+  const shouldExpand =
+    !isExpanded;
+
+
+  container
+    .querySelectorAll(
+      '.official-advisory-extra'
+    )
+    .forEach(card => {
+
+      card.hidden =
+        !shouldExpand;
+
+    });
+
+
+  button.setAttribute(
+    'aria-expanded',
+    String(
+      shouldExpand
+    )
+  );
+
+
+  const hiddenCount =
+    Number(
+      button.dataset.hiddenCount
+    ) || 0;
+
+
+  button.textContent =
+    shouldExpand
+      ? 'Show less'
+      : `Show ${hiddenCount} more ${
+          hiddenCount === 1
+            ? 'advisory'
+            : 'advisories'
+        }`;
+
 }
 
 function escapeAdvisoryHtml(value) {
