@@ -18616,9 +18616,12 @@ async function loadOfficialAdvisories() {
           'afterbegin',
           `
             <div class="official-advisory-partial">
-              <span class="material-symbols-outlined">
-                info
-              </span>
+
+              <img
+                src="assets/ui/advisory-info.svg"
+                alt=""
+                class="official-advisory-partial-icon"
+              >
 
               <div>
                 <strong>
@@ -18863,9 +18866,11 @@ function renderOfficialAdvisories(advisories) {
 
             </span>
 
-            <span class="official-advisory-link-arrow">
-              ↗
-           </span>
+            <img
+              src="assets/ui/advisory-open.svg"
+              alt=""
+              class="official-advisory-open-icon"
+           >
 
           </a>
         ` : ''}

@@ -9551,11 +9551,14 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 }
 
 
-.official-advisory-link-arrow {
+.official-advisory-open-icon {
+  width: 16px;
+  height: 16px;
+
   flex-shrink: 0;
 
-  font-size: 15px;
-  line-height: 1;
+  display: block;
+  object-fit: contain;
 }
 
 /* META */
@@ -9671,16 +9674,16 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     var(--text-muted);
 }
 
-.official-advisory-partial
-.material-symbols-outlined {
+.official-advisory-partial-icon {
+  width: 18px;
+  height: 18px;
+
   flex-shrink: 0;
 
+  display: block;
+  object-fit: contain;
+
   margin-top: 1px;
-
-  font-size: 18px;
-
-  color:
-    var(--blue);
 }
 
 .official-advisory-partial strong {
