@@ -14832,6 +14832,20 @@ function isBackupNumber(
 
 }
 
+function isBackupTime(
+  value
+) {
+
+  return (
+    typeof value ===
+      'string' &&
+    /^(?:[01]\d|2[0-3]):[0-5]\d$/
+      .test(
+        value
+      )
+  );
+
+}
 
 function validateFarmCastBackupRecords(
   backup,
@@ -15489,6 +15503,129 @@ function validateFarmCastBackupRecords(
 
     const settings =
       data.settings;
+    
+    const booleanSettingKeys = [
+      'rainAlert',
+      'windAlert',
+      'dailyBriefing',
+      'quietHours'
+    ];
+
+
+    booleanSettingKeys.forEach(
+      key => {
+
+        if (
+          typeof settings[key] !==
+            'boolean'
+        ) {
+
+          errors.push(
+            `Backup contains an invalid ${key} setting.`
+          );
+
+        }
+
+      }
+    );
+
+
+    [
+      'briefingTime',
+      'quietFrom',
+      'quietUntil'
+    ].forEach(
+      key => {
+
+        if (
+          !isBackupTime(
+            settings[key]
+          )
+        ) {
+
+          errors.push(
+            `Backup contains an invalid ${key} time.`
+          );
+
+      }
+
+    }
+  );
+
+
+  if (
+    !isBackupNumber(
+      settings.thresholdTemp,
+      20
+    ) ||
+    Number(
+      settings.thresholdTemp
+    ) > 45
+  ) {
+
+    errors.push(
+      'Backup contains an invalid temperature threshold.'
+    );
+
+  }
+
+
+  if (
+    !Number.isInteger(
+      Number(
+        settings.harvestReminderDays
+      )
+    ) ||
+    Number(
+      settings.harvestReminderDays
+    ) < 1 ||
+    Number(
+      settings.harvestReminderDays
+    ) > 30
+  ) {
+
+    errors.push(
+      'Backup contains an invalid harvest-reminder range.'
+    );
+
+  }
+
+
+  if (
+    ![
+      'dashboard',
+      'weather-maps',
+      'planting-calendar',
+      'my-crops'
+    ].includes(
+      settings.defaultPage
+    )
+  ) {
+
+    errors.push(
+      'Backup contains an invalid startup page.'
+    );
+
+  }
+
+
+  if (
+    ![
+      'Manual',
+      'Drip',
+      'Sprinkler',
+      'Flood',
+      'Rain-fed'
+    ].includes(
+      settings.defaultIrrigationMethod
+    )
+  ) {
+
+    errors.push(
+      'Backup contains an invalid irrigation-method preference.'
+    );
+
+  }
 
 
     if (
