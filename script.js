@@ -18396,6 +18396,105 @@ function notifyNewOfficialAdvisories(advisories) {
   });
 }
 
+function updateOfficialAdvisorySummary(
+  count = null,
+  sourceState = 'checking'
+) {
+
+  const countEl =
+    document.getElementById(
+      'officialAdvisoryCount'
+    );
+
+
+  const checkedEl =
+    document.getElementById(
+      'officialAdvisoryChecked'
+    );
+
+
+  const sourceEl =
+    document.getElementById(
+      'officialAdvisorySourceState'
+    );
+
+
+  if (countEl) {
+
+    countEl.textContent =
+      Number.isInteger(count)
+        ? `${count} Recent`
+        : '-- Recent';
+
+  }
+
+
+  if (checkedEl) {
+
+    const checkedTime =
+      new Date()
+        .toLocaleTimeString(
+          'en-PH',
+          {
+            timeZone:
+              'Asia/Manila',
+
+            hour:
+              'numeric',
+
+            minute:
+              '2-digit'
+          }
+        );
+
+
+    checkedEl.textContent =
+      `Checked ${checkedTime}`;
+
+  }
+
+
+  if (sourceEl) {
+
+    sourceEl.dataset.state =
+      sourceState;
+
+
+    if (
+      sourceState ===
+      'connected'
+    ) {
+
+      sourceEl.textContent =
+        'PAGASA Connected';
+
+    } else if (
+      sourceState ===
+      'partial'
+    ) {
+
+      sourceEl.textContent =
+        'PAGASA Partial';
+
+    } else if (
+      sourceState ===
+      'unavailable'
+    ) {
+
+      sourceEl.textContent =
+        'PAGASA Unavailable';
+
+    } else {
+
+      sourceEl.textContent =
+        'Checking PAGASA';
+
+    }
+
+  }
+
+}
+
 async function loadOfficialAdvisories() {
   try {
     const response = await fetch(
@@ -18417,6 +18516,48 @@ async function loadOfficialAdvisories() {
     const weatherAdvisorySourceAvailable =
       data?.sources
         ?.weatherAdvisories;
+
+    const advisorySourceStates = [
+      data?.sources
+        ?.weatherAdvisories,
+
+      data?.sources
+        ?.tropicalCycloneBulletins,
+
+      data?.sources
+        ?.dailyWeather
+    ]
+      .filter(
+        value =>
+        typeof value ===
+        'boolean'
+      );
+
+
+    const availableSourceCount =
+      advisorySourceStates
+        .filter(Boolean)
+        .length;
+
+
+    const advisorySourceState =
+      advisorySourceStates.length === 0
+        ? 'unavailable'
+
+        : availableSourceCount ===
+          advisorySourceStates.length
+            ? 'connected'
+
+        : availableSourceCount > 0
+          ? 'partial'
+
+          : 'unavailable';
+
+
+    updateOfficialAdvisorySummary(
+      advisories.length,
+      advisorySourceState
+    );
 
     if (
       weatherAdvisorySourceAvailable ===
@@ -18503,6 +18644,11 @@ async function loadOfficialAdvisories() {
     console.warn(
       'Unable to load official advisories:',
       error.message
+    );
+
+    updateOfficialAdvisorySummary(
+      null,
+      'unavailable'
     );
 
     const container =
