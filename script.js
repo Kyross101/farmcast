@@ -18752,9 +18752,18 @@ function renderOfficialAdvisories(advisories) {
         <div class="official-advisory-header">
 
           <div class="official-advisory-badges">
+
             <span class="official-advisory-badge">
-               🔴 OFFICIAL
-            </span>
+
+              <img
+                src="assets/ui/advisory-official.svg"
+                alt=""
+                class="official-advisory-badge-icon"
+              >
+
+                OFFICIAL
+
+              </span>
 
             <span class="official-advisory-status ${advisoryStatusClass}">
               ${advisoryStatus}
@@ -18785,19 +18794,39 @@ function renderOfficialAdvisories(advisories) {
 
           <span class="official-meta-item">
             <span class="official-meta-label">Affected areas</span>
-            <span>
-              📍 ${escapeAdvisoryHtml(
+
+            <span class="official-meta-value">
+
+              <img
+                src="assets/ui/advisory-location.svg"
+                alt=""
+                class="official-meta-icon"
+              >
+
+              ${escapeAdvisoryHtml(
                 advisory.location ||
                 'See official advisory for affected areas'
               )}
+
             </span>
+
           </span>
 
             <span class="official-meta-item">
               <span class="official-meta-label">Issued</span>
-              <span>
-                🕒 ${issuedText}
+
+              <span class="official-meta-value">
+
+                <img
+                  src="assets/ui/advisory-time.svg"
+                  alt=""
+                  class="official-meta-icon"
+                >
+
+                ${issuedText}
+
               </span>
+
             </span>
 
         </div>
@@ -18809,13 +18838,22 @@ function renderOfficialAdvisories(advisories) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span>
-              📄 Open Official PAGASA Document
+            <span class="official-advisory-link-label">
+
+              <img
+                src="assets/ui/advisory-document.svg"
+                alt=""
+                class="official-advisory-document-icon"
+              >
+
+              Open Official PAGASA Document
+
             </span>
 
-            <span class="material-symbols-outlined">
-              open_in_new
-            </span>
+            <span class="official-advisory-link-arrow">
+              ↗
+           </span>
+
           </a>
         ` : ''}
 
