@@ -44,6 +44,12 @@ const SettingsSchema =
       briefingTime: {
         type:
           String,
+
+        match: [
+          /^(?:[01]\d|2[0-3]):[0-5]\d$/,
+          'Briefing time must use HH:MM format.'
+        ],
+
         default:
           '05:00'
       },
@@ -58,16 +64,28 @@ const SettingsSchema =
       quietFrom: {
         type:
           String,
-        default:
-          '21:00'
-      },
 
-      quietUntil: {
-        type:
-          String,
-        default:
-          '06:00'
-      },
+      match: [
+        /^(?:[01]\d|2[0-3]):[0-5]\d$/,
+        'Quiet-hours start time must use HH:MM format.'
+      ],
+
+      default:
+        '21:00'
+    },
+
+    quietUntil: {
+      type:
+        String,
+
+      match: [
+        /^(?:[01]\d|2[0-3]):[0-5]\d$/,
+        'Quiet-hours end time must use HH:MM format.'
+      ],
+
+      default:
+        '06:00'
+    },
 
       harvestReminderDays: {
         type:
@@ -190,6 +208,14 @@ const SettingsSchema =
       defaultPage: {
         type:
           String,
+
+        enum: [
+          'dashboard',
+          'weather-maps',
+          'planting-calendar',
+          'my-crops'
+        ],
+
         default:
           'dashboard'
       }
