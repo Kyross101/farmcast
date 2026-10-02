@@ -1701,36 +1701,51 @@ function initWeatherMap() {
   ).addTo(weatherMap);
  
   // Add farm marker
+if (
+  currentWeather ||
+  hasSavedCoordinates
+) {
+
+  const farmLocationName =
+    currentWeather?.name ||
+    appSettings.city ||
+    'Saved Farm Location';
+
+
   if (currentWeather) {
 
     lastMapWeatherData =
       currentWeather;
 
+  }
 
-    const marker =
-      L.marker(
-        [lat, lon],
-        {
-          icon:
-            L.divIcon({
-              className:
-                'farm-marker',
 
-              html:
-                '🌾',
-  
-              iconSize:
-                [30, 30],
-  
-              iconAnchor:
-                [15, 15]
-            })
-        }
-      )
-        .addTo(
-          weatherMap
-        );
+  const marker =
+    L.marker(
+      [lat, lon],
+      {
+        icon:
+          L.divIcon({
+            className:
+              'farm-marker',
 
+            html:
+              '🌾',
+
+            iconSize:
+              [30, 30],
+
+            iconAnchor:
+              [15, 15]
+          })
+      }
+    )
+      .addTo(
+        weatherMap
+      );
+
+
+  if (currentWeather) {
 
     marker
       .bindPopup(
@@ -1740,7 +1755,29 @@ function initWeatherMap() {
       )
       .openPopup();
 
+  } else {
+
+    marker
+      .bindPopup(
+        `<b>${farmLocationName}</b><br>Saved farm location`
+      )
+      .openPopup();
+
+
+    /*
+     * Direct Weather Maps startup:
+     * load current conditions for the
+     * saved farm coordinates without
+     * requiring the Dashboard first.
+     */
+    fetchMapPointWeather(
+      lat,
+      lon
+    );
+
   }
+
+}
  
   // Click to get weather
   weatherMap.on('click', async (e) => {
