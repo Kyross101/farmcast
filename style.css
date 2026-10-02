@@ -9100,8 +9100,21 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   color: #f85149;
 }
 
-.official-header-icon .material-symbols-outlined {
-  font-size: 20px;
+.official-header-icon-img {
+  width: 22px;
+  height: 22px;
+
+  display: block;
+  object-fit: contain;
+}
+
+.official-header-copy {
+  min-width: 0;
+}
+
+.official-header-icon-img {
+  width: 22px;
+  height: 22px;
 }
 
 
@@ -9165,10 +9178,13 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   font-weight: 700;
 }
 
-.official-source-tag .material-symbols-outlined {
-  font-size: 14px;
-}
+.official-source-icon {
+  width: 14px;
+  height: 14px;
 
+  display: block;
+  object-fit: contain;
+}
 
 /* MOBILE */
 
@@ -9198,8 +9214,9 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     font-size: 0;
   }
 
-  .official-source-tag .material-symbols-outlined {
-    font-size: 16px;
+  .official-source-icon {
+    width: 16px;
+    height: 16px;
   }
 }
 
