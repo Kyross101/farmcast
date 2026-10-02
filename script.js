@@ -9769,8 +9769,31 @@ function setNav(el, pageId) {
   // Page-specific initialization
   switch (pageId) {
     case 'dashboard':
-      renderTasks();
-      break;
+
+    renderTasks();
+
+
+    /*
+     * Load the farmer's saved location on
+     * the first Dashboard visit.
+     *
+     * Do not refetch every time the farmer
+     * switches pages if weather is already
+     * loaded.
+     */
+    if (
+      !currentWeather
+    ) {
+  
+      fetchWeather(
+        appSettings.city ||
+        currentCity
+      );
+  
+    }
+  
+  
+    break;
 
     case 'weather-maps':
       initWeatherMap();
