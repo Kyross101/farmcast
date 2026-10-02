@@ -9621,39 +9621,6 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   .official-advisory-link {
     padding: 12px;
   }
-}
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-  .official-advisory-card {
-    padding: 16px;
-  }
-
-  .official-advisory-header {
-    align-items: flex-start;
-  }
-
-  .official-advisory-card h3 {
-    font-size: 16px;
-  }
-
-  .official-advisory-message {
-    font-size: 12px;
-  }
-
-  .official-advisory-meta {
-    flex-direction: column;
-  }
-
-  .official-advisory-meta span {
-    width: fit-content;
-  }
-
-  .official-advisory-link {
-    padding: 12px;
-  }
 
 
   .official-advisory-empty {
