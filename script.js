@@ -1604,10 +1604,57 @@ let mapInitialized = false;
 function initWeatherMap() {
   if (mapInitialized) return;
   mapInitialized = true;
- 
-  const lat = currentWeather ? currentWeather.coord.lat : 14.99;
-  const lon = currentWeather ? currentWeather.coord.lon : 120.93;
- 
+
+
+  /*
+   * Prefer live weather coordinates when
+   * available.
+   *
+   * On a direct Weather Maps startup,
+   * currentWeather may not exist yet, so
+   * use the farmer's saved location.
+   */
+  const savedLat =
+    Number(
+      appSettings.lat
+    );
+
+
+  const savedLon =
+    Number(
+      appSettings.lon
+    );
+
+
+  const hasSavedCoordinates =
+    Number.isFinite(
+      savedLat
+    ) &&
+    savedLat >= -90 &&
+    savedLat <= 90 &&
+    Number.isFinite(
+      savedLon
+    ) &&
+    savedLon >= -180 &&
+    savedLon <= 180;
+
+
+  const lat =
+    currentWeather
+      ? currentWeather.coord.lat
+      : hasSavedCoordinates
+        ? savedLat
+        : 14.99;
+
+
+  const lon =
+    currentWeather
+      ? currentWeather.coord.lon
+      : hasSavedCoordinates
+        ? savedLon
+        : 120.93;
+
+
   weatherMap = L.map('weatherMap', {
     zoomControl: true,
     worldCopyJump: false,
