@@ -686,8 +686,8 @@ router.put(
             },
 
             {
-              new:
-                true,
+              returnDocument:
+                'after',
 
               runValidators:
                 true
