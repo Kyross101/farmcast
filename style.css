@@ -9490,13 +9490,19 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 /* TITLE */
 
 .official-advisory-card h3 {
-  margin: 0 0 6px;
+  margin: 0 0 7px;
+
+  font-family: 'Syne', sans-serif;
 
   color: var(--text);
 
-  font-size: 16px;
-  line-height: 1.35;
+  font-size: 15px;
+  line-height: 1.42;
   font-weight: 700;
+
+  letter-spacing: -0.18px;
+
+  overflow-wrap: anywhere;
 }
 
 
@@ -9505,10 +9511,17 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .official-advisory-message {
   margin: 0;
 
+  font-family: 'DM Sans', sans-serif;
+
   color: var(--text-muted);
 
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 1.58;
+  font-weight: 400;
+
+  letter-spacing: 0.05px;
+
+  overflow-wrap: anywhere;
 }
 
 .official-meta-value {
@@ -9810,17 +9823,13 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   }
 
   .official-advisory-card h3 {
-    font-size: 15px;
-    line-height: 1.42;
-    font-weight: 650;
-    letter-spacing: -0.1px;
-    overflow-wrap: anywhere;
+    font-size: 14px;
+    line-height: 1.45;
   }
 
   .official-advisory-message {
-    font-size: 12px;
-    line-height: 1.55;
-    overflow-wrap: anywhere;
+    font-size: 11.5px;
+    line-height: 1.6;
   }
 
   .official-advisory-meta {
