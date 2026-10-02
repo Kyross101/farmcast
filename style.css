@@ -9566,8 +9566,10 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .official-advisory-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 16px;
+
+  gap: 16px;
+
+  margin-top: 11px;
 }
 
 .official-meta-item {
@@ -9624,8 +9626,8 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   width: 100%;
   box-sizing: border-box;
 
-  margin-top: 15px;
-  padding: 11px 13px;
+  margin-top: 10px;
+  padding: 9px 11px;
 
   background: rgba(248, 81, 73, 0.09);
   border: 1px solid rgba(248, 81, 73, 0.22);
@@ -9654,8 +9656,8 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   align-items: flex-start;
   gap: 10px;
 
-  margin-bottom: 12px;
-  padding: 10px 12px;
+  margin-bottom: 8px;
+  padding: 9px 10px;
 
   border-radius: 10px;
 
@@ -9802,6 +9804,9 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 
   .official-advisory-header {
     align-items: flex-start;
+    flex-wrap: wrap;
+
+    gap: 8px;
   }
 
   .official-advisory-card h3 {
@@ -9821,7 +9826,11 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   }
 
   .official-advisory-link {
-    padding: 12px;
+    gap: 8px;
+
+    padding: 9px 10px;
+
+    font-size: 11px;
   }
 
 
@@ -9861,6 +9870,24 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
     font-size: 10px;
   }
 
+  .official-advisory-source {
+    font-size: 10px;
+  }
+
+
+  .official-advisory-meta {
+    gap: 10px;
+
+    margin-top: 10px;
+  }
+
+
+  .official-advisory-partial {
+    gap: 8px;
+
+    padding: 8px 9px;
+  }
+
 }
 
 /* ============================================================
@@ -9897,41 +9924,6 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   color: #e3a008;
 }
 
-/* ============================================================
-   OFFICIAL ADVISORY META — CLEAN VERSION
-============================================================ */
-
-.official-advisory-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 16px;
-}
-
-.official-meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-}
-
-.official-meta-label {
-  font-size: 0.60rem;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  opacity: 0.7;
-}
-
-.official-meta-item > span:last-child {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
 
 /* ============================================================
    NOTIFICATION FILTER TABS — MOBILE SCROLL
