@@ -49,8 +49,11 @@ router.put('/:id', async (req, res) => {
     if (!field) return res.status(404).json({ message: 'Field not found.' });
 
     const updated = await IrrigationField.findByIdAndUpdate(
-      req.params.id, { ...req.body }, { new: true }
+      req.params.id,
+      { ...req.body },
+      { returnDocument: 'after' }
     );
+
     res.json({ message: 'Field updated!', field: updated });
   } catch (err) {
     res.status(500).json({ message: 'Error updating field.' });
