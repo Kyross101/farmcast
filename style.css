@@ -9810,11 +9810,17 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   }
 
   .official-advisory-card h3 {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.42;
+    font-weight: 650;
+    letter-spacing: -0.1px;
+    overflow-wrap: anywhere;
   }
 
   .official-advisory-message {
     font-size: 12px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
   }
 
   .official-advisory-meta {
