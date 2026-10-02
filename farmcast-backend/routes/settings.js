@@ -105,8 +105,8 @@ router.put(
           },
 
           {
-            new:
-              true,
+            returnDocument:
+              'after',
 
             upsert:
               true,
@@ -117,6 +117,7 @@ router.put(
             setDefaultsOnInsert:
               true
           }
+
         );
 
 
