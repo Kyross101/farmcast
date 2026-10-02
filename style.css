@@ -9506,13 +9506,87 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
 .official-advisory-empty {
   display: flex;
   align-items: center;
-  gap: 12px;
 
-  padding: 16px;
+  gap: 10px;
 
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  padding: 10px 12px;
+
+  min-height: 44px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+
+  border-radius: 11px;
+}
+
+.official-advisory-empty-icon {
+  width: 30px;
+  height: 30px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+}
+
+
+.official-advisory-empty-clear
+.official-advisory-empty-icon {
+  background:
+    rgba(63, 185, 80, 0.08);
+
+  border:
+    1px solid
+    rgba(63, 185, 80, 0.16);
+}
+
+
+.official-advisory-empty-warning
+.official-advisory-empty-icon {
+  background:
+    rgba(227, 160, 8, 0.08);
+
+  border:
+    1px solid
+    rgba(227, 160, 8, 0.17);
+}
+
+
+.official-advisory-empty-icon-img {
+  width: 18px;
+  height: 18px;
+
+  display: block;
+  object-fit: contain;
+}
+
+
+.official-advisory-empty strong {
+  display: block;
+
+  margin-bottom: 2px;
+
+  color: var(--text);
+
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+
+.official-advisory-empty p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 10px;
+  line-height: 1.4;
 }
 
 
@@ -9547,6 +9621,71 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   .official-advisory-link {
     padding: 12px;
   }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .official-advisory-card {
+    padding: 16px;
+  }
+
+  .official-advisory-header {
+    align-items: flex-start;
+  }
+
+  .official-advisory-card h3 {
+    font-size: 16px;
+  }
+
+  .official-advisory-message {
+    font-size: 12px;
+  }
+
+  .official-advisory-meta {
+    flex-direction: column;
+  }
+
+  .official-advisory-meta span {
+    width: fit-content;
+  }
+
+  .official-advisory-link {
+    padding: 12px;
+  }
+
+
+  .official-advisory-empty {
+    gap: 9px;
+
+    padding: 9px 10px;
+  }
+
+
+  .official-advisory-empty-icon {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 8px;
+  }
+
+
+  .official-advisory-empty-icon-img {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  .official-advisory-empty strong {
+    font-size: 11px;
+  }
+
+
+  .official-advisory-empty p {
+    font-size: 9px;
+  }
+
 }
 
 /* ============================================================

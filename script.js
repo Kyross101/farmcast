@@ -18430,11 +18430,14 @@ async function loadOfficialAdvisories() {
 
       if (container) {
         container.innerHTML = `
-          <div class="official-advisory-empty">
+          <div class="official-advisory-empty official-advisory-empty-warning">
+
             <div class="official-advisory-empty-icon">
-              <span class="material-symbols-outlined">
-                cloud_off
-              </span>
+              <img
+                src="assets/ui/advisory-unavailable.svg"
+                alt=""
+                class="official-advisory-empty-icon-img"
+              >
             </div>
 
             <div>
@@ -18507,9 +18510,14 @@ async function loadOfficialAdvisories() {
 
     if (container) {
       container.innerHTML = `
-        <div class="official-advisory-empty">
+        <div class="official-advisory-empty official-advisory-empty-warning">
+
           <div class="official-advisory-empty-icon">
-            ⚠️
+            <img
+              src="assets/ui/advisory-unavailable.svg"
+              alt=""
+              class="official-advisory-empty-icon-img"
+            >
           </div>
 
           <div>
@@ -18534,9 +18542,14 @@ function renderOfficialAdvisories(advisories) {
 
   if (!advisories.length) {
     container.innerHTML = `
-      <div class="official-advisory-empty">
+      <div class="official-advisory-empty official-advisory-empty-clear">
+
         <div class="official-advisory-empty-icon">
-          ✅
+          <img
+            src="assets/ui/advisory-clear.svg"
+            alt=""
+            class="official-advisory-empty-icon-img"
+          >
         </div>
 
         <div>
