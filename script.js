@@ -1499,47 +1499,240 @@ function renderForecastAndCalendar(forecastData, currentData){
 }
 
 // ── FETCH WEATHER ──
-async function fetchWeather(city){
-  // Animate both refresh icons
-  const topIcon  = document.getElementById('refreshIcon');
-  const heroIcon = document.getElementById('heroRefreshIcon');
-  const heroBtn  = document.getElementById('heroRefreshBtn');
-  if (topIcon)  topIcon.style.animation  = 'spin .7s linear infinite';
-  if (heroIcon) heroIcon.style.animation = 'spin .7s linear infinite';
-  if (heroBtn)  heroBtn.classList.add('refreshing');
+async function fetchWeather(
+  city,
+  lat = null,
+  lon = null
+) {
+
+  const topIcon =
+    document.getElementById(
+      'refreshIcon'
+    );
+
+  const heroIcon =
+    document.getElementById(
+      'heroRefreshIcon'
+    );
+
+  const heroBtn =
+    document.getElementById(
+      'heroRefreshBtn'
+    );
+
+
+  if (topIcon) {
+    topIcon.style.animation =
+      'spin .7s linear infinite';
+  }
+
+
+  if (heroIcon) {
+    heroIcon.style.animation =
+      'spin .7s linear infinite';
+  }
+
+
+  if (heroBtn) {
+    heroBtn.classList.add(
+      'refreshing'
+    );
+  }
+
 
   try {
-    const [wRes, fRes] = await Promise.all([
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${API_KEY}`),
-      fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&units=metric&appid=${API_KEY}`)
-    ]);
-    if(!wRes.ok) throw new Error('City not found');
-    const [wData, fData] = await Promise.all([wRes.json(), fRes.json()]);
-    
-      displayWeatherData(wData);
-      renderForecastAndCalendar(fData, wData);
-      currentCity = city;
 
-      return wData;
+    const hasLatitude =
+      lat !== null &&
+      lat !== undefined &&
+      String(lat).trim() !== '';
 
-    } catch(e) {
 
-      toast(
-        `Error: ${e.message}`,
-        'err'
+    const hasLongitude =
+      lon !== null &&
+      lon !== undefined &&
+      String(lon).trim() !== '';
+
+
+    const latitude =
+      Number(lat);
+
+
+    const longitude =
+      Number(lon);
+
+
+    const useCoordinates =
+      hasLatitude &&
+      hasLongitude &&
+      Number.isFinite(latitude) &&
+      latitude >= -90 &&
+      latitude <= 90 &&
+      Number.isFinite(longitude) &&
+      longitude >= -180 &&
+      longitude <= 180;
+
+
+    /*
+     * Saved farm locations use their
+     * exact coordinates.
+     *
+     * Manual Dashboard searches can still
+     * use the normal city-name query.
+     */
+    const locationQuery =
+      useCoordinates
+        ? `lat=${encodeURIComponent(
+            latitude
+          )}&lon=${encodeURIComponent(
+            longitude
+          )}`
+        : `q=${encodeURIComponent(
+            city
+          )}`;
+
+
+    const [
+      wRes,
+      fRes
+    ] =
+      await Promise.all([
+
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?${locationQuery}&units=metric&appid=${API_KEY}`
+        ),
+
+        fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?${locationQuery}&units=metric&appid=${API_KEY}`
+        )
+
+      ]);
+
+
+    if (
+      !wRes.ok ||
+      !fRes.ok
+    ) {
+
+      throw new Error(
+        'Weather data is temporarily unavailable.'
       );
 
-      return null;
+    }
 
-    } finally {
 
-    if (topIcon)  topIcon.style.animation  = '';
-    if (heroIcon) heroIcon.style.animation = '';
-    if (heroBtn)  heroBtn.classList.remove('refreshing');
+    const [
+      wData,
+      fData
+    ] =
+      await Promise.all([
+        wRes.json(),
+        fRes.json()
+      ]);
+
+
+    if (
+      !Array.isArray(
+        fData?.list
+      )
+    ) {
+
+      throw new Error(
+        'Forecast data is incomplete.'
+      );
+
+    }
+
+
+    displayWeatherData(
+      wData
+    );
+
+
+    renderForecastAndCalendar(
+      fData,
+      wData
+    );
+
+
+    currentCity =
+      wData.name ||
+      city ||
+      currentCity;
+
+
+    return wData;
+
+
+  } catch (error) {
+
+    console.error(
+      'Dashboard weather error:',
+      error
+    );
+
+
+    toast(
+      `Weather error: ${error.message}`,
+      'err'
+    );
+
+
+    return null;
+
+
+  } finally {
+
+    if (topIcon) {
+      topIcon.style.animation =
+        '';
+    }
+
+
+    if (heroIcon) {
+      heroIcon.style.animation =
+        '';
+    }
+
+
+    if (heroBtn) {
+      heroBtn.classList.remove(
+        'refreshing'
+      );
+    }
+
   }
+
 }
 
-function refreshWeather(){ fetchWeather(currentCity); }
+function refreshWeather() {
+
+  if (
+    currentWeather?.coord
+  ) {
+
+    fetchWeather(
+      currentCity,
+      currentWeather.coord.lat,
+      currentWeather.coord.lon
+    );
+
+    return;
+
+  }
+
+
+  fetchWeather(
+    appSettings.city ||
+      currentCity,
+
+    appSettings.lat,
+
+    appSettings.lon
+  );
+
+}
+
 function searchCity(){
   const val = document.getElementById('citySearch').value.trim();
   if(!val){ toast('Please enter a city name','warn'); return; }
@@ -9871,7 +10064,11 @@ function setNav(el, pageId) {
   
       fetchWeather(
         appSettings.city ||
-        currentCity
+        currentCity,
+
+        appSettings.lat,
+
+        appSettings.lon
       );
   
     }
@@ -18920,7 +19117,16 @@ async function initApp() {
   else {
     document.getElementById('page-dashboard').style.display = 'block';
     renderTasks();
-    fetchWeather(appSettings.city || currentCity);
+
+    fetchWeather(
+      appSettings.city ||
+      currentCity,
+
+      appSettings.lat,
+
+      appSettings.lon
+   );
+
   }
 }
 

@@ -1141,8 +1141,17 @@ function patchScriptJsWithAPI() {
   
         currentCity =
           city;
-  
-  
+
+
+        /*
+         * The saved farm location changed.
+         * Force Dashboard weather to reload
+         * from the newly saved coordinates.
+         */
+        currentWeather =
+          null;
+
+
         updateSettingsFormValues();
   
   
