@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Sweet Cherry</title>
+
+  <desc id="desc">
+    A sweet cherry branch with green leaves
+    and pairs of ripe dark-red cherry fruits.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M27 114
+       C39 95 50 77 62 59
+       C73 42 84 27 97 14" fill="none" stroke="#73583f" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M54 73
+       C45 61 37 49 31 37" fill="none" stroke="#557b45" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M67 55
+       C79 48 89 39 98 29" fill="none" stroke="#557b45" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <g fill="#64944d" stroke="#416d3b" stroke-width="1.4">
+
+    <ellipse cx="31" cy="39" rx="15" ry="6" transform="rotate(-30 31 39)">
+    </ellipse>
+
+    <ellipse cx="47" cy="48" rx="15" ry="6" transform="rotate(27 47 48)">
+    </ellipse>
+
+    <ellipse cx="82" cy="44" rx="15" ry="6" transform="rotate(26 82 44)">
+    </ellipse>
+
+    <ellipse cx="95" cy="33" rx="15" ry="6" transform="rotate(-28 95 33)">
+    </ellipse>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#92ad7d" stroke-width="1.3" stroke-linecap="round">
+
+    <path d="M21 43 L41 35"></path>
+    <path d="M37 45 L57 51"></path>
+    <path d="M72 48 L92 40"></path>
+    <path d="M85 37 L105 29"></path>
+
+  </g>
+
+  <!-- Cherry stems -->
+  <path d="M69 59
+       C79 67 84 76 87 87
+
+       M70 59
+       C89 65 99 75 104 87" fill="none" stroke="#547944" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Cherry 1 -->
+  <circle cx="87" cy="98" r="14" fill="#b9363f" stroke="#842b34" stroke-width="2">
+  </circle>
+
+  <!-- Cherry 1 darker side -->
+  <path d="M92 85
+       C101 90 103 101 98 108
+       C95 112 91 114 87 113
+       C94 105 96 94 92 85Z" fill="#9f303a" opacity="0.8">
+  </path>
+
+  <!-- Cherry 1 highlight -->
+  <path d="M80 91
+       C77 94 77 99 79 102" fill="none" stroke="#df7b7f" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Cherry 2 -->
+  <circle cx="108" cy="98" r="13" fill="#c13b43" stroke="#862c34" stroke-width="2">
+  </circle>
+
+  <!-- Cherry 2 darker side -->
+  <path d="M112 86
+       C120 91 122 100 118 106
+       C115 110 111 112 107 111
+       C113 104 115 94 112 86Z" fill="#a53139" opacity="0.8">
+  </path>
+
+  <!-- Cherry 2 highlight -->
+  <path d="M102 91
+       C99 94 99 98 101 101" fill="none" stroke="#e18285" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="48" cy="117" rx="28" ry="5" fill="#81664a" opacity="0.3">
+  </ellipse>
+
+</svg>

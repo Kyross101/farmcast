@@ -8288,6 +8288,76 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Sweet Cherry',
+      scientificName: 'Prunus avium L.',
+      category: 'fruit',
+      icon: 'assets/crops/sweet-cherry.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Oregon State University Extension Service',
+
+        title:
+          'Sweet Cherry Rootstocks for the Pacific Northwest',
+
+        url:
+          [
+            'https://',
+            'extension.oregonstate.edu/sites/extd8/files/catalog/auto/PNW619.pdf'
+          ].join('')
+      },
+
+      minTemp: 6,
+      maxTemp: 40,
+
+      idealTempRange:
+        '18–28°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–900 mm; the FAO ECOCROP absolute range is about 300–1500 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 4.5–7.0.',
+
+      soilNote:
+        'Sweet cherry performs best in deep, well-drained soil. FAO ECOCROP lists heavy- and medium-textured soils as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Commercial sweet cherry cultivars are propagated vegetatively on suitable rootstocks. Oregon State University Extension states that commercial sweet cherry trees are either budded or grafted, with the cultivar forming the scion above the graft or bud union.',
+
+      harvestNote:
+        'Sweet cherry is a perennial deciduous fruit tree and harvest timing varies among cultivars, locations, and seasons. Fruit maturity should therefore be judged using cultivar-appropriate characteristics rather than a fixed number of days. Oregon State University Extension identifies skin color as an important ripeness indicator and recommends also considering fruit firmness and soluble solids when determining harvest maturity.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Prunus avium — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=8965'
+          ].join('')
+      }
+    },
    
 
 ];
