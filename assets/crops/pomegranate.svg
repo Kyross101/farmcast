@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Pomegranate</title>
+
+  <desc id="desc">
+    A pomegranate branch with narrow green leaves,
+    orange-red flowers, and ripe red fruits.
+  </desc>
+
+  <!-- Woody branch -->
+  <path d="M27 114
+       C39 95 50 77 62 59
+       C73 42 84 27 97 14" fill="none" stroke="#74583e" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M53 73
+       C44 61 36 49 31 37" fill="none" stroke="#527b44" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M67 55
+       C79 48 89 39 98 29" fill="none" stroke="#527b44" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <g fill="#64964e" stroke="#426f3c" stroke-width="1.3">
+
+    <ellipse cx="32" cy="38" rx="11" ry="4" transform="rotate(-30 32 38)"></ellipse>
+
+    <ellipse cx="42" cy="47" rx="11" ry="4" transform="rotate(28 42 47)"></ellipse>
+
+    <ellipse cx="48" cy="42" rx="11" ry="4" transform="rotate(-24 48 42)"></ellipse>
+
+    <ellipse cx="56" cy="53" rx="11" ry="4" transform="rotate(24 56 53)"></ellipse>
+
+    <ellipse cx="82" cy="44" rx="11" ry="4" transform="rotate(26 82 44)"></ellipse>
+
+    <ellipse cx="92" cy="34" rx="11" ry="4" transform="rotate(-27 92 34)"></ellipse>
+
+  </g>
+
+  <!-- Flower -->
+  <path d="M68 58
+       C75 61 80 65 84 70" fill="none" stroke="#527b44" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <g transform="translate(85 72)">
+    <path d="M0 -7
+         C8 -11 13 -5 10 2
+         C15 7 8 14 2 10
+         C-3 16 -11 10 -8 3
+         C-15 0 -11 -8 -4 -7Z" fill="#dd6048" stroke="#aa4238" stroke-width="1.5"></path>
+
+    <circle cx="0" cy="1" r="3" fill="#e9b849"></circle>
+  </g>
+
+  <!-- Fruit stems -->
+  <path d="M70 61 C78 68 84 76 88 84
+       M75 62 C87 65 97 72 103 80" fill="none" stroke="#537644" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Pomegranate fruit 1 -->
+  <path d="M87 79
+       L83 74
+       L88 75
+       L91 71
+       L94 76
+       L99 75
+       L96 81
+       C104 86 104 101 96 109
+       C87 118 73 112 72 100
+       C71 89 78 82 87 79Z" fill="#c84a45" stroke="#913833" stroke-width="2"></path>
+
+  <!-- Pomegranate fruit 2 -->
+  <path d="M104 78
+       L100 73
+       L105 74
+       L108 70
+       L111 75
+       L116 74
+       L113 80
+       C120 85 120 97 114 104
+       C107 112 95 108 94 98
+       C93 89 97 82 104 78Z" fill="#d15449" stroke="#943a35" stroke-width="2"></path>
+
+  <!-- Fruit highlights -->
+  <path d="M81 88
+       C78 95 80 103 85 108" fill="none" stroke="#e27b6d" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M102 86
+       C100 92 102 99 106 103" fill="none" stroke="#e58574" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Ground -->
+  <ellipse cx="48" cy="117" rx="28" ry="5" fill="#81664a" opacity="0.3"></ellipse>
+
+</svg>

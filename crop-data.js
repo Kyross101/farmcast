@@ -7954,6 +7954,70 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1071'
       }
     },
+
+    {
+      name: 'Pomegranate',
+      scientificName: 'Punica granatum L.',
+      category: 'fruit',
+      icon: 'assets/crops/pomegranate.svg',
+
+      plantingMethods: [
+        {
+          value: 'hardwood-cuttings',
+          label: 'Hardwood Cuttings'
+        },
+        {
+          value: 'softwood-cuttings',
+          label: 'Softwood Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Georgia Cooperative Extension',
+
+        title:
+          'Pomegranate Production',
+
+        url:
+          'https://extension.uga.edu/publications/detail.html?number=C997'
+      },
+
+      minTemp: 8,
+      maxTemp: 40,
+
+      idealTempRange:
+        '23–32°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1200 mm; the FAO ECOCROP absolute range is about 400–4200 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.5; absolute range 5.8–8.5.',
+
+      soilNote:
+        'Pomegranate performs best in deep soil with good drainage. FAO ECOCROP lists heavy- and medium-textured soils as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Pomegranate may be propagated using hardwood or softwood cuttings. University of Georgia Cooperative Extension identifies hardwood cuttings as the preferred propagation method, while softwood cuttings may also be used.',
+
+      harvestNote:
+        'Pomegranate is a perennial fruit crop. Fruit generally ripens about five to seven months after flowering, depending on cultivar and growing conditions. Because flowering may occur in several flushes, harvest should also use actual maturity indicators such as cultivar-appropriate rind color, sugar and acid development, and the characteristic metallic sound of mature fruit when tapped. Pomegranates should be harvested ripe because they do not continue ripening after harvest.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Punica granatum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1829'
+      }
+    },
    
 
 ];
