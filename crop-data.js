@@ -6105,7 +6105,7 @@ window.FARMCAST_CROPS = [
           'Chickpea Seed Production Manual',
 
         url:
-          'https://oar.icrisat.org/10276/?utm_source=ICRISAT+Website&utm_campaign=3e7f1c0d4b-EMAIL_CAMPAIGN_2023_09_14_02_00_COPY_01&utm_medium=email&utm_term=0_9f6e2a5f8b-3e7f1c0d4b-199187949'
+          'https://oar.icrisat.org/10276/'
       },
 
       minTemp: 7,
@@ -6137,7 +6137,7 @@ window.FARMCAST_CROPS = [
           'Cicer arietinum — ECOCROP Data Sheet',
 
         url:
-          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2479&utm_source'
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2479'
       }
     },
    
