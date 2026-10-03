@@ -6679,6 +6679,87 @@ window.FARMCAST_CROPS = [
           'https://extension.usu.edu/yardandgarden/research/watercress-in-the-garden'
       }
     },
+
+    {
+      name: 'Artichoke',
+      scientificName: 'Cynara scolymus L.',
+      category: 'vegetable',
+      icon: 'assets/crops/artichoke.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        },
+        {
+          value: 'rooted-shoots',
+          label: 'Rooted Shoots'
+        },
+        {
+          value: 'crown-divisions',
+          label: 'Crown Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Statewide Integrated Pest Management Program',
+
+        office:
+          'UC IPM',
+
+        title:
+          'Cultural Tips for Growing Artichoke',
+
+        url:
+          [
+            'https://',
+            'ipm.ucanr.edu/home-and-landscape/cultural-tips-for-growing-artichoke/'
+          ].join('')
+      },
+
+      minTemp: 5,
+      maxTemp: 30,
+
+      idealTempRange:
+        '15–25°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1200 mm; the FAO ECOCROP absolute range is about 300–1500 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.5; absolute range 5.5–8.3.',
+
+      soilNote:
+        'Artichoke performs best in fertile, well-drained soil. FAO ECOCROP lists medium- and light-textured soils as optimal, while heavy, medium, and light soils are within its broader tolerance range.',
+
+      plantingNote:
+        'Artichoke may be established from transplants, rooted shoots, crown divisions, or seed. UC IPM notes that direct seeding and transplanting are both used when artichoke is grown as an annual crop.',
+
+      harvestNote:
+        'Harvest artichoke flower buds when they have reached full size but before the bracts begin to spread open. Buds left too long become woody and less desirable. Annual transplanted artichokes may require about 4–6 months to reach maturity, while perennial plantings follow a longer production cycle, so visible bud maturity should take priority over a fixed calendar date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cynara scolymus — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=847'
+          ].join('')
+      }
+    },
    
 
 ];
