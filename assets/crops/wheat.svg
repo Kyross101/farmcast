@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Wheat</title>
+
+  <desc id="desc">
+    A wheat plant with green leaves,
+    a tall stalk, and a golden grain head.
+  </desc>
+
+  <!-- Main stalk -->
+  <path d="M63 116
+       C63 93 63 72 64 51
+       C65 36 66 23 66 11" fill="none" stroke="#6f914b" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Left leaf -->
+  <path d="M61 79
+       C47 66 33 61 18 62
+       C32 72 46 82 62 89Z" fill="#72a456" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <!-- Right leaf -->
+  <path d="M66 67
+       C81 54 95 50 111 51
+       C97 61 83 72 66 78Z" fill="#7aaa5b" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <!-- Lower leaf -->
+  <path d="M61 96
+       C48 87 36 84 24 87
+       C37 94 49 101 62 106Z" fill="#66994d" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <!-- Wheat head stem -->
+  <path d="M66 13
+       C66 27 66 38 65 49" fill="none" stroke="#b68a38" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Left awns -->
+  <path d="M64 17 L53 8" stroke="#c79a42" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M64 23 L51 16" stroke="#c79a42" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M64 30 L50 25" stroke="#c79a42" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M64 37 L51 34" stroke="#c79a42" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Right awns -->
+  <path d="M68 17 L79 8" stroke="#c79a42" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M68 23 L81 16" stroke="#c79a42" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M68 30 L82 25" stroke="#c79a42" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M67 37 L80 34" stroke="#c79a42" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Wheat grains -->
+  <ellipse cx="62" cy="15" rx="4" ry="7" transform="rotate(-25 62 15)" fill="#e0ae45">
+  </ellipse>
+
+  <ellipse cx="70" cy="15" rx="4" ry="7" transform="rotate(25 70 15)" fill="#e7b84e">
+  </ellipse>
+
+  <ellipse cx="61" cy="23" rx="4" ry="7" transform="rotate(-25 61 23)" fill="#d7a23d">
+  </ellipse>
+
+  <ellipse cx="70" cy="23" rx="4" ry="7" transform="rotate(25 70 23)" fill="#e2ae43">
+  </ellipse>
+
+  <ellipse cx="61" cy="31" rx="4" ry="7" transform="rotate(-25 61 31)" fill="#e0ad44">
+  </ellipse>
+
+  <ellipse cx="69" cy="31" rx="4" ry="7" transform="rotate(25 69 31)" fill="#d8a13b">
+  </ellipse>
+
+  <ellipse cx="62" cy="39" rx="4" ry="7" transform="rotate(-20 62 39)" fill="#e5b34b">
+  </ellipse>
+
+  <ellipse cx="68" cy="39" rx="4" ry="7" transform="rotate(20 68 39)" fill="#dca73f">
+  </ellipse>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.4">
+  </ellipse>
+
+</svg>
