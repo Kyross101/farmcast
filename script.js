@@ -6720,6 +6720,58 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    Chives: {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 60,
+      basis:
+        'earliest first harvest after seeding',
+      derived: false,
+
+      note:
+        'Utah State University Extension states that chives may be harvested as early as about 60 days after seeding. This is a first-harvest benchmark; actual plant size and regrowth condition should still guide cutting.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Chives in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/chives-in-the-garden'
+      }
+    },
+
+    transplanted: {
+      minDays: 30,
+      maxDays: 30,
+      basis:
+        'earliest first harvest after transplanting',
+      derived: false,
+
+      note:
+        'Utah State University Extension states that chives may be harvested as early as about 30 days after transplanting. This is a first-harvest benchmark rather than a one-time final maturity date.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Chives in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/chives-in-the-garden'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

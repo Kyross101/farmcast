@@ -7484,6 +7484,77 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2192'
       }
     },
+
+    {
+      name: 'Chives',
+      scientificName: 'Allium schoenoprasum L.',
+      category: 'herb',
+      icon: 'assets/crops/chives.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        },
+        {
+          value: 'divisions',
+          label: 'Plant Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Chives in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/chives-in-the-garden'
+      },
+
+      minTemp: 2,
+      maxTemp: 35,
+
+      idealTempRange:
+        '10–20°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 450–1600 mm; the FAO ECOCROP absolute range is about 300–2800 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.6; absolute range 5.0–8.2.',
+
+      soilNote:
+        'Chives prefer fertile, moist, well-drained soil. FAO ECOCROP lists medium-textured and organic soils as optimal, while heavy, medium, and light soils fall within the broader tolerance range.',
+
+      plantingNote:
+        'Chives may be established from seed, transplants, or divisions of established clumps. Utah State University Extension notes that divisions are an easy way to propagate existing plants and that established beds benefit from periodic division.',
+
+      harvestNote:
+        'Harvest chive leaves by cutting them back to about 1–2 inches above the soil. Utah State University Extension reports that the first harvest may begin as early as about 60 days after seeding or 30 days after transplanting. During the first year, plants may be harvested several times; established plants can be cut repeatedly as they regrow.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Allium schoenoprasum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=810'
+      }
+    },
    
 
 ];
