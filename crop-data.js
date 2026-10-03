@@ -7216,6 +7216,77 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1107'
       }
     },
+
+    {
+      name: 'Katuray',
+      scientificName: 'Sesbania grandiflora (L.) Poir.',
+      category: 'tree-crop',
+      icon: 'assets/crops/katuray.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'DOST-PCAARRD',
+
+        office:
+          'Documentation of Indigenous Vegetables',
+
+        title:
+          'Katuray — Sesbania grandiflora',
+
+        url:
+          'https://iveg.pcaarrd.dost.gov.ph/crop/sesbania-grandiflora'
+      },
+
+      minTemp: 16,
+      maxTemp: 40,
+
+      idealTempRange:
+        '24–34°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1000–3000 mm; the FAO ECOCROP absolute range is about 800–4500 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.5; absolute range 4.5–8.5.',
+
+      soilNote:
+        'Katuray can grow in heavy, medium, or light-textured soils. FAO ECOCROP lists moderate soil fertility as optimal and shows tolerance of a broad range of soil-drainage conditions.',
+
+      plantingNote:
+        'Katuray may be established by direct seeding, nursery-raised seedlings that are later transplanted, or stem cuttings. DOST-PCAARRD documents all of these establishment methods for Sesbania grandiflora.',
+
+      harvestNote:
+        'Katuray is grown for several edible parts, especially its fresh flowers, young leaves, and tender pods. Harvest timing therefore depends on the intended product. FAO ECOCROP reports that the tree can produce ripe pods about 270 days after planting, but this ripe-pod timing should not be treated as a universal harvest date for edible flowers, leaves, or tender pods.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Sesbania grandiflora — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1938'
+      }
+    },
    
 
 ];

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Katuray</title>
+
+  <desc id="desc">
+    A katuray tree branch with compound green leaves,
+    a large hanging white flower, and a slender young pod.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M29 111
+       C42 91 53 72 63 53
+       C72 36 80 24 91 14" fill="none" stroke="#70583d" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Leaf branch -->
+  <path d="M53 73
+       C43 60 37 47 34 34" fill="none" stroke="#57874e" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <!-- Compound leaf stem -->
+  <path d="M35 35
+       C47 39 58 44 68 50" fill="none" stroke="#5a8b50" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Leaflets -->
+  <g fill="#6ea55f" stroke="#4b7a45" stroke-width="1">
+
+    <ellipse cx="40" cy="35" rx="7" ry="3.2" transform="rotate(-25 40 35)">
+    </ellipse>
+
+    <ellipse cx="45" cy="43" rx="7" ry="3.2" transform="rotate(25 45 43)">
+    </ellipse>
+
+    <ellipse cx="50" cy="39" rx="7" ry="3.2" transform="rotate(-25 50 39)">
+    </ellipse>
+
+    <ellipse cx="55" cy="48" rx="7" ry="3.2" transform="rotate(25 55 48)">
+    </ellipse>
+
+    <ellipse cx="60" cy="44" rx="7" ry="3.2" transform="rotate(-25 60 44)">
+    </ellipse>
+
+    <ellipse cx="65" cy="52" rx="7" ry="3.2" transform="rotate(25 65 52)">
+    </ellipse>
+
+  </g>
+
+  <!-- Flower stalk -->
+  <path d="M73 42
+       C78 49 80 56 80 63" fill="none" stroke="#5f8e52" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Large katuray flower -->
+  <path d="M80 62
+       C67 61 60 69 62 80
+       C64 92 76 102 87 101
+       C98 99 105 87 101 77
+       C97 68 90 63 80 62Z" fill="#f2efe4" stroke="#c6c5b6" stroke-width="2">
+  </path>
+
+  <!-- Flower inner petal -->
+  <path d="M80 67
+       C72 70 70 78 74 85
+       C78 92 87 95 93 90
+       C98 85 96 76 90 71
+       C87 68 84 67 80 67Z" fill="#e7e5d8" stroke="#c3c2b2" stroke-width="1.5">
+  </path>
+
+  <!-- Flower center -->
+  <path d="M77 72
+       C82 76 86 80 89 87" fill="none" stroke="#d5ae58" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <circle cx="90" cy="88" r="2.5" fill="#c99d45">
+  </circle>
+
+  <!-- Young pod stalk -->
+  <path d="M67 51
+       C76 51 84 53 92 57" fill="none" stroke="#59894d" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <!-- Young slender pod -->
+  <path d="M92 57
+       C100 66 105 77 108 91" fill="none" stroke="#719b57" stroke-width="5" stroke-linecap="round">
+  </path>
+
+  <!-- Pod seed bumps -->
+  <circle cx="98" cy="66" r="1.6" fill="#8caf69">
+  </circle>
+
+  <circle cx="102" cy="74" r="1.6" fill="#8caf69">
+  </circle>
+
+  <circle cx="105" cy="82" r="1.6" fill="#8caf69">
+  </circle>
+
+  <!-- Ground -->
+  <ellipse cx="48" cy="116" rx="27" ry="5" fill="#81664a" opacity="0.3">
+  </ellipse>
+
+</svg>
