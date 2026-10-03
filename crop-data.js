@@ -6614,6 +6614,71 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2474'
       }
     },
+
+    {
+      name: 'Watercress',
+      scientificName: 'Nasturtium officinale R. Br.',
+      category: 'vegetable',
+      icon: 'assets/crops/watercress.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Watercress in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/watercress-in-the-garden'
+      },
+
+      idealTempRange:
+        'Watercress favors cool, continuously moist growing conditions; seeds may germinate well around 10–15°C.',
+
+      soilPH:
+        'Preferred pH is about 6.5–7.5.',
+
+      soilNote:
+        'Watercress requires continuously wet or saturated growing conditions. It performs well in organically rich media and can be grown along clean shallow water, saturated beds, or suitable containers kept consistently wet.',
+
+      plantingNote:
+        'Watercress may be established from seed, rooted stem cuttings, or transplants. Seeds should be kept continuously moist during germination, while stem cuttings readily root under wet conditions.',
+
+      harvestNote:
+        'Harvest young leaves and tender stems before flowering for best quality. University of Florida IFAS notes that plants may be ready for an initial harvest about three weeks after seedlings appear. Cut the tops while leaving enough plant growth for regrowth and later harvests.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Watercress in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/watercress-in-the-garden'
+      }
+    },
    
 
 ];
