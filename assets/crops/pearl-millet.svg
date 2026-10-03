@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Pearl Millet</title>
+
+  <desc id="desc">
+    A pearl millet plant with broad green leaves,
+    a tall stalk, and a dense cylindrical grain head.
+  </desc>
+
+  <!-- Main stalk -->
+  <path d="M64 116
+       C64 91 64 70 64 50
+       C64 35 65 22 65 12" fill="none" stroke="#6d914c" stroke-width="7" stroke-linecap="round">
+  </path>
+
+  <!-- Left leaf -->
+  <path d="M61 79
+       C47 66 33 61 17 62
+       C31 71 46 82 62 89Z" fill="#72a456" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <!-- Right leaf -->
+  <path d="M67 66
+       C81 54 96 49 112 51
+       C97 60 83 71 66 77Z" fill="#79aa59" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <!-- Lower leaf -->
+  <path d="M61 97
+       C48 87 35 84 23 87
+       C36 94 49 101 62 106Z" fill="#65984c" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <!-- Pearl millet grain head -->
+  <rect x="55" y="5" width="20" height="42" rx="10" fill="#b78b55" stroke="#80613d" stroke-width="2">
+  </rect>
+
+  <!-- Grain texture -->
+  <circle cx="61" cy="11" r="2.4" fill="#d1ad74"></circle>
+  <circle cx="68" cy="10" r="2.4" fill="#c49a62"></circle>
+
+  <circle cx="58" cy="17" r="2.4" fill="#caa36d"></circle>
+  <circle cx="65" cy="17" r="2.4" fill="#d5b27a"></circle>
+  <circle cx="72" cy="17" r="2.4" fill="#bf925c"></circle>
+
+  <circle cx="61" cy="24" r="2.4" fill="#d2aa70"></circle>
+  <circle cx="69" cy="24" r="2.4" fill="#c29760"></circle>
+
+  <circle cx="58" cy="31" r="2.4" fill="#c69c65"></circle>
+  <circle cx="65" cy="31" r="2.4" fill="#d4af75"></circle>
+  <circle cx="72" cy="31" r="2.4" fill="#bd8e58"></circle>
+
+  <circle cx="61" cy="38" r="2.4" fill="#d0a76e"></circle>
+  <circle cx="69" cy="38" r="2.4" fill="#c39962"></circle>
+
+  <circle cx="64" cy="44" r="2.2" fill="#d5b27a"></circle>
+
+  <!-- Short top bristles -->
+  <path d="M59 6 L57 1
+       M64 5 L64 0
+       M69 6 L72 1" fill="none" stroke="#9b774a" stroke-width="1.5" stroke-linecap="round">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.4">
+  </ellipse>
+
+</svg>
