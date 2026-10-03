@@ -5820,6 +5820,9 @@ window.FARMCAST_CROPS = [
       plantingNote:
         'Wheat is established from seed. Direct seeding can reduce land-preparation requirements and allow timely crop establishment under suitable production systems.',
 
+      harvestNote:
+        'Wheat maturity varies strongly by cultivar and season. FAO ECOCROP reports about 90–130 days for spring wheat and about 180–250 days for autumn-sown or winter wheat, so field maturity and the selected variety should guide harvest timing.',
+
       source: {
         agency:
           'Food and Agriculture Organization of the United Nations',
@@ -5880,6 +5883,9 @@ window.FARMCAST_CROPS = [
       plantingNote:
         'Barley is propagated through seed. Use healthy seed and establish the crop in a suitable, well-prepared field according to local production recommendations.',
 
+      harvestNote:
+        'Barley harvest timing depends on the production type. FAO ECOCROP reports about 90–120 days for spring varieties and about 180–240 days for winter varieties, so the variety and actual crop maturity should determine harvest.',
+
       source: {
         agency:
           'Food and Agriculture Organization of the United Nations',
@@ -5936,6 +5942,9 @@ window.FARMCAST_CROPS = [
 
       plantingNote:
         'Oats are established from seed. Use healthy seed of an appropriate variety and follow locally suitable seeding dates and rates for crop establishment.',
+
+      harvestNote:
+        'Oat maturity varies by cultivar. FAO ECOCROP reports about 110–160 days for spring cultivars and about 210–270 days for winter cultivars, so harvest should follow the selected variety and actual grain maturity.',
 
       source: {
         agency:
@@ -5999,7 +6008,10 @@ window.FARMCAST_CROPS = [
         'Pearl millet is suited to well-drained medium- and light-textured soils and can tolerate relatively low soil fertility under suitable growing conditions.',
 
       plantingNote:
-        'Pearl millet may be established by direct seeding through drilling or dibbling. Transplanting is also used in some production systems. The suitable sowing time depends on local growing conditions.',
+        'Foxtail millet may be established by line sowing or broadcasting. ICAR-IIMR guidance prefers line sowing because it can make intercultural weed management easier.',
+
+      harvestNote:
+        'Foxtail millet may mature in about 60–70 days or about 90–120 days depending on variety and growing conditions. Use actual crop maturity rather than this broad range as the final harvest decision.',
 
       source: {
         agency:
@@ -6125,6 +6137,9 @@ window.FARMCAST_CROPS = [
 
       plantingNote:
         'Chickpea is established from seed. ICRISAT guidance for seed production recommends line sowing and placing seed deeply enough to maintain good contact with moist soil.',
+
+      harvestNote:
+        'Harvest chickpea when about 90% of the stems and pods have lost their green color and turned light golden yellow. Additional maturity signs include senescing or shedding leaves, yellow pods, dry plants, and hard seeds that rattle inside the pods.',
 
       source: {
         agency:
