@@ -5834,6 +5834,66 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2114'
       }
     },
+
+    {
+      name: 'Barley',
+      scientificName: 'Hordeum vulgare L.',
+      category: 'grain',
+      icon: 'assets/crops/barley.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Republic of South Africa',
+
+        title:
+          'Barley Production Guideline',
+
+        url:
+          'https://www.nda.gov.za/phocadownloadpap/Brochures_and_Production_Guidelines/Brochure%20Barley.pdf'
+      },
+
+      minTemp: 2,
+      maxTemp: 40,
+
+      idealTempRange:
+        '15–20°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–1000 mm; the FAO ECOCROP absolute range is about 200–2000 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.5; absolute range 6.0–8.0.',
+
+      soilNote:
+        'Barley performs best in well-drained soils. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils are within its broader tolerance range.',
+
+      plantingNote:
+        'Barley is propagated through seed. Use healthy seed and establish the crop in a suitable, well-prepared field according to local production recommendations.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Hordeum vulgare — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1232'
+      }
+    },
    
 
 ];
