@@ -6657,6 +6657,32 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    Dill: {
+    'direct-seeded': {
+      minDays: 42,
+      maxDays: 56,
+      basis: 'after sowing',
+      derived: false,
+
+      note:
+        'Utah State University Extension reports that dill is generally ready for its first fresh-foliage harvest about 6–8 weeks after sowing. Seed harvest occurs considerably later and should be based on mature brown flower heads.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Dill in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/dill-in-the-garden'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

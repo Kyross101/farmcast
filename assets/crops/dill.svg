@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Dill</title>
+
+  <desc id="desc">
+    A dill plant with slender upright stems,
+    feathery green leaves,
+    yellow umbrella-shaped flowers,
+    and mature seeds.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 116
+       C63 95 64 75 64 56
+       C64 38 63 24 63 12" fill="none" stroke="#679451" stroke-width="5" stroke-linecap="round">
+  </path>
+
+  <!-- Side branches -->
+  <path d="M63 49
+       C51 43 42 35 35 26" fill="none" stroke="#679451" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <path d="M65 54
+       C77 48 87 40 95 31" fill="none" stroke="#679451" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <path d="M63 70
+       C51 66 41 59 33 52" fill="none" stroke="#679451" stroke-width="2.8" stroke-linecap="round">
+  </path>
+
+  <path d="M65 76
+       C78 71 88 64 97 56" fill="none" stroke="#679451" stroke-width="2.8" stroke-linecap="round">
+  </path>
+
+  <!-- Feathery dill foliage -->
+  <g stroke="#76a863" stroke-width="2" stroke-linecap="round">
+
+    <path d="M36 27 L24 20
+         M37 28 L23 28
+         M41 32 L29 39
+         M45 36 L34 44">
+    </path>
+
+    <path d="M94 32 L105 24
+         M93 33 L107 33
+         M89 38 L101 45
+         M85 42 L96 50">
+    </path>
+
+    <path d="M34 53 L22 47
+         M36 54 L22 56
+         M41 59 L29 66
+         M47 63 L36 71">
+    </path>
+
+    <path d="M96 57 L108 50
+         M95 58 L109 60
+         M89 63 L101 70
+         M83 67 L94 75">
+    </path>
+
+    <path d="M61 40 L51 31
+         M63 43 L52 45
+         M66 38 L75 29
+         M67 45 L78 47">
+    </path>
+
+  </g>
+
+  <!-- Flower umbel -->
+  <path d="M63 13
+       L52 6
+       M63 13
+       L58 3
+       M63 13
+       L64 2
+       M63 13
+       L70 4
+       M63 13
+       L76 7" fill="none" stroke="#668e4e" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Yellow flowers -->
+  <g fill="#dfc347">
+
+    <circle cx="49" cy="6" r="2.5"></circle>
+    <circle cx="54" cy="4" r="2.4"></circle>
+    <circle cx="58" cy="2.5" r="2.5"></circle>
+    <circle cx="64" cy="2.5" r="2.5"></circle>
+    <circle cx="70" cy="4" r="2.5"></circle>
+    <circle cx="76" cy="7" r="2.5"></circle>
+
+  </g>
+
+  <!-- Mature dill seeds -->
+  <ellipse cx="42" cy="84" rx="3" ry="6" transform="rotate(-25 42 84)" fill="#9a7951" stroke="#70563d" stroke-width="1">
+  </ellipse>
+
+  <ellipse cx="52" cy="90" rx="3" ry="6" transform="rotate(-12 52 90)" fill="#a18156" stroke="#70563d" stroke-width="1">
+  </ellipse>
+
+  <ellipse cx="84" cy="87" rx="3" ry="6" transform="rotate(20 84 87)" fill="#9a7951" stroke="#70563d" stroke-width="1">
+  </ellipse>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.3">
+  </ellipse>
+
+</svg>

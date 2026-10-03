@@ -7424,6 +7424,66 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2285'
       }
     },
+
+    {
+      name: 'Dill',
+      scientificName: 'Anethum graveolens L.',
+      category: 'herb',
+      icon: 'assets/crops/dill.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Dill in Home Gardens',
+
+        url:
+          'https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-dill'
+      },
+
+      minTemp: 6,
+      maxTemp: 26,
+
+      idealTempRange:
+        '15–18°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 800–1200 mm; the FAO ECOCROP absolute range is about 500–1700 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 5.0–8.0.',
+
+      soilNote:
+        'Dill performs best in well-drained soil. FAO ECOCROP lists medium-textured soil and high fertility as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Dill is best established by direct seeding because its taproot makes transplanting difficult. Sow seed where the plants will grow and thin seedlings after emergence to provide adequate spacing.',
+
+      harvestNote:
+        'For fresh dill foliage, harvest leaves and tender stems during vegetative growth and before or as flowering begins. Utah State University Extension reports that foliage harvest generally begins about 6–8 weeks after sowing. For seed harvest, wait until flower heads turn brown and mature seeds separate readily.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Anethum graveolens — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2192'
+      }
+    },
    
 
 ];
