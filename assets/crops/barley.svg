@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Barley</title>
+
+  <desc id="desc">
+    A barley plant with narrow green leaves,
+    a tall stalk, and a golden awned grain head.
+  </desc>
+
+  <!-- Main stalk -->
+  <path d="M64 116
+       C64 92 64 70 65 49
+       C65 34 66 22 66 10" fill="none" stroke="#6d8f4c" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Leaves -->
+  <path d="M61 82
+       C47 69 34 64 18 64
+       C32 74 46 84 62 91Z" fill="#72a456" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <path d="M67 69
+       C82 56 96 51 111 52
+       C97 62 83 74 66 80Z" fill="#79aa59" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <path d="M62 98
+       C49 88 37 85 24 88
+       C37 95 49 102 63 107Z" fill="#65984c" stroke="#4e7c42" stroke-width="2">
+  </path>
+
+  <!-- Grain head center -->
+  <path d="M66 12
+       C66 20 66 29 66 39" fill="none" stroke="#b98b3d" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Left grains -->
+  <ellipse cx="61" cy="15" rx="4" ry="7" transform="rotate(-30 61 15)" fill="#d9a543">
+  </ellipse>
+
+  <ellipse cx="60" cy="23" rx="4" ry="7" transform="rotate(-30 60 23)" fill="#e1af4b">
+  </ellipse>
+
+  <ellipse cx="60" cy="31" rx="4" ry="7" transform="rotate(-30 60 31)" fill="#d6a03d">
+  </ellipse>
+
+  <!-- Right grains -->
+  <ellipse cx="71" cy="15" rx="4" ry="7" transform="rotate(30 71 15)" fill="#e6b64f">
+  </ellipse>
+
+  <ellipse cx="72" cy="23" rx="4" ry="7" transform="rotate(30 72 23)" fill="#dca746">
+  </ellipse>
+
+  <ellipse cx="72" cy="31" rx="4" ry="7" transform="rotate(30 72 31)" fill="#e4b24b">
+  </ellipse>
+
+  <!-- Long barley awns -->
+  <path d="M59 14 L43 2" fill="none" stroke="#c79b45" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M59 21 L40 11" fill="none" stroke="#c79b45" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M59 29 L39 22" fill="none" stroke="#c79b45" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M73 14 L89 2" fill="none" stroke="#c79b45" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M73 21 L92 11" fill="none" stroke="#c79b45" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <path d="M73 29 L93 22" fill="none" stroke="#c79b45" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.4">
+  </ellipse>
+
+</svg>
