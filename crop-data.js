@@ -7149,6 +7149,73 @@ window.FARMCAST_CROPS = [
           'https://extension.psu.edu/herb-garden-plants-thyme'
       }
     },
+
+    {
+      name: 'Fennel',
+      scientificName: 'Foeniculum vulgare Mill.',
+      category: 'vegetable',
+      icon: 'assets/crops/fennel.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Fennel in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/fennel-in-the-garden'
+      },
+
+      minTemp: 6,
+      maxTemp: 32,
+
+      idealTempRange:
+        '15–25°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 700–1500 mm; the FAO ECOCROP absolute range is about 300–2600 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.5; absolute range 4.8–8.2.',
+
+      soilNote:
+        'Fennel performs best in fertile, well-drained soil. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils are within its broader tolerance range.',
+
+      plantingNote:
+        'Fennel may be established by direct seeding or by starting seedlings indoors and transplanting them. Utah State University Extension notes that direct seeding is generally preferred for Florence fennel because root disturbance and transplant shock may encourage bolting.',
+
+      harvestNote:
+        'Fennel harvest depends on the intended product. Leaves may be harvested while plants are growing; common fennel seed is harvested after seed heads turn brown and dry; Florence fennel is harvested when its swollen base is firm and still less than about 4 inches across. FAO ECOCROP also reports first leaf harvest around 30–40 days after transplanting, first seed harvest around 55–70 days, and first swollen stem-base harvest around 90–110 days.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Foeniculum vulgare — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1107'
+      }
+    },
    
 
 ];

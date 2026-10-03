@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Fennel</title>
+
+  <desc id="desc">
+    A fennel plant with a pale bulbous base,
+    tall green stems, feathery leaves,
+    and small yellow umbel flowers.
+  </desc>
+
+  <!-- Bulbous base -->
+  <path d="M47 103
+       C47 91 52 80 58 73
+       C61 69 67 69 70 73
+       C77 80 81 91 81 103
+       C75 109 54 109 47 103Z" fill="#dce7c8" stroke="#8ea77c" stroke-width="2.5">
+  </path>
+
+  <!-- Main stalks -->
+  <path d="M57 79
+       C55 60 54 42 53 24" fill="none" stroke="#65985a" stroke-width="5" stroke-linecap="round">
+  </path>
+
+  <path d="M64 76
+       C64 56 64 36 64 16" fill="none" stroke="#6aa05e" stroke-width="5" stroke-linecap="round">
+  </path>
+
+  <path d="M71 79
+       C74 59 77 42 81 25" fill="none" stroke="#629457" stroke-width="5" stroke-linecap="round">
+  </path>
+
+  <!-- Side branches -->
+  <path d="M54 48 C43 41 36 34 30 27
+       M74 50 C84 42 91 34 98 28
+       M55 63 C45 60 37 56 30 51
+       M73 65 C83 61 92 56 99 50" fill="none" stroke="#64995a" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <!-- Feathery leaves -->
+  <g stroke="#6fa965" stroke-width="2" stroke-linecap="round">
+
+    <path d="M31 28 L21 22
+             M31 28 L20 29
+             M34 31 L25 38
+             M40 37 L30 42">
+    </path>
+
+    <path d="M97 29 L107 22
+             M97 29 L108 30
+             M93 34 L103 40
+             M88 40 L98 46">
+    </path>
+
+    <path d="M31 51 L21 46
+             M32 52 L20 54
+             M39 56 L29 63
+             M45 60 L36 68">
+    </path>
+
+    <path d="M98 51 L108 46
+             M97 52 L109 55
+             M91 57 L101 64
+             M84 61 L93 69">
+    </path>
+
+    <path d="M53 38 L43 29
+             M55 43 L44 45
+             M64 32 L56 24
+             M65 39 L74 30
+             M77 41 L87 34">
+    </path>
+
+  </g>
+
+  <!-- Umbel stems -->
+  <path d="M64 17
+       L56 8
+       M64 17
+       L64 5
+       M64 17
+       L73 8" fill="none" stroke="#648f55" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Yellow flowers -->
+  <g fill="#e0c34f">
+    <circle cx="53" cy="7" r="2.5"></circle>
+    <circle cx="58" cy="5" r="2.5"></circle>
+    <circle cx="63" cy="4" r="2.5"></circle>
+    <circle cx="68" cy="5" r="2.5"></circle>
+    <circle cx="74" cy="7" r="2.5"></circle>
+    <circle cx="78" cy="10" r="2.2"></circle>
+    <circle cx="49" cy="10" r="2.2"></circle>
+  </g>
+
+  <!-- Bulb details -->
+  <path d="M56 79
+       C56 88 55 97 56 104
+       M64 76
+       C64 88 64 98 64 106
+       M72 80
+       C72 90 73 98 72 104" fill="none" stroke="#b8caa4" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Roots -->
+  <path d="M55 106 C51 112 48 116 45 120
+       M61 107 C59 113 58 117 57 121
+       M67 107 C68 113 69 117 70 121
+       M74 106 C78 112 81 116 84 119" fill="none" stroke="#aa9068" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="119" rx="30" ry="5" fill="#81664a" opacity="0.3">
+  </ellipse>
+
+</svg>
