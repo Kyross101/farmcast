@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Persimmon</title>
+
+  <desc id="desc">
+    A persimmon branch with broad green leaves
+    and ripe orange persimmon fruits.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M27 114
+       C39 95 50 77 62 59
+       C73 42 84 27 97 14" fill="none" stroke="#72583f" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M54 73
+       C45 61 37 49 31 37" fill="none" stroke="#557b45" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M67 55
+       C79 48 89 39 98 29" fill="none" stroke="#557b45" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <!-- Leaves -->
+  <g fill="#62904e" stroke="#426d3c" stroke-width="1.5">
+
+    <ellipse cx="31" cy="39" rx="14" ry="7" transform="rotate(-28 31 39)"></ellipse>
+
+    <ellipse cx="47" cy="48" rx="14" ry="7" transform="rotate(26 47 48)"></ellipse>
+
+    <ellipse cx="82" cy="44" rx="14" ry="7" transform="rotate(25 82 44)"></ellipse>
+
+    <ellipse cx="94" cy="33" rx="14" ry="7" transform="rotate(-27 94 33)"></ellipse>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#91ad7c" stroke-width="1.5" stroke-linecap="round">
+
+    <path d="M22 43 L40 35"></path>
+    <path d="M38 45 L56 51"></path>
+    <path d="M73 48 L91 40"></path>
+    <path d="M85 37 L103 29"></path>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <path d="M67 60
+       C76 66 82 73 87 81
+
+       M74 61
+       C86 65 96 72 103 80" fill="none" stroke="#557644" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Persimmon fruit 1 -->
+  <g transform="translate(87 93)">
+
+    <!-- Calyx -->
+    <path d="M0 -14
+         L-8 -19
+         L-5 -11
+         L-13 -8
+         L-4 -6
+         L0 -1
+         L4 -6
+         L13 -8
+         L5 -11
+         L8 -19Z" fill="#557a43"></path>
+
+    <!-- Fruit -->
+    <path d="M-14 -6
+         C-18 2 -15 14 -8 19
+         C-2 24 7 23 13 17
+         C19 11 19 1 14 -7
+         C7 -11 -7 -11 -14 -6Z" fill="#e98237" stroke="#b85a29" stroke-width="2"></path>
+
+    <path d="M-8 0
+         C-10 7 -6 14 -1 18" fill="none" stroke="#f3aa65" stroke-width="2" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- Persimmon fruit 2 -->
+  <g transform="translate(107 91)">
+
+    <path d="M0 -13
+         L-7 -17
+         L-5 -10
+         L-11 -7
+         L-4 -5
+         L0 -1
+         L4 -5
+         L11 -7
+         L5 -10
+         L7 -17Z" fill="#557a43"></path>
+
+    <path d="M-12 -5
+         C-16 2 -14 12 -7 17
+         C-1 21 7 20 12 15
+         C17 9 17 1 12 -6
+         C6 -10 -6 -10 -12 -5Z" fill="#e58b3d" stroke="#b85a29" stroke-width="2"></path>
+
+  </g>
+
+  <!-- Ground -->
+  <ellipse cx="48" cy="117" rx="28" ry="5" fill="#81664a" opacity="0.3"></ellipse>
+
+</svg>

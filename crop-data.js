@@ -8018,6 +8018,70 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1829'
       }
     },
+
+    {
+      name: 'Persimmon',
+      scientificName: 'Diospyros kaki L.f.',
+      category: 'fruit',
+      icon: 'assets/crops/persimmon.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'chip-budded-plants',
+          label: 'Chip-Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Japanese Persimmon Cultural Practices in Florida',
+
+        url:
+          'https://edis.ifas.ufl.edu/publication/HS1389'
+      },
+
+      minTemp: 8,
+      maxTemp: 35,
+
+      idealTempRange:
+        '20–31°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1000–1700 mm; the FAO ECOCROP absolute range is about 300–3000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 5.0–8.3.',
+
+      soilNote:
+        'Persimmon performs best in deep, well-drained soil. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Japanese persimmon cultivars are commonly propagated on rootstocks by grafting or budding. University of Florida IFAS Extension identifies whip grafting and chip budding as the two common methods and notes that propagation from cuttings generally has a low success rate.',
+
+      harvestNote:
+        'Persimmon is a perennial fruit tree. FAO ECOCROP reports that fruit matures about seven months after bloom and that trees may begin fruiting about four years after planting. Harvest maturity is cultivar-dependent: most cultivars develop their characteristic yellow-orange to orange-red peel color as they mature, while astringent types generally require further softening before eating.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Diospyros kaki — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=945'
+      }
+    },
    
 
 ];
