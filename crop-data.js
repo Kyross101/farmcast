@@ -5951,6 +5951,70 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=481'
       }
     },
+
+    {
+      name: 'Pearl Millet',
+      scientificName: 'Pennisetum glaucum (L.) R. Br.',
+      category: 'grain',
+      icon: 'assets/crops/pearl-millet.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'International Crops Research Institute for the Semi-Arid Tropics',
+
+        office:
+          'ICRISAT',
+
+        title:
+          'Pearl Millet Crop Management and Seed Production Manual',
+
+        url:
+          'https://oar.icrisat.org/4060/'
+      },
+
+      minTemp: 12,
+      maxTemp: 40,
+
+      idealTempRange:
+        '25–35°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 400–900 mm; the FAO ECOCROP absolute range is about 200–1700 mm.',
+
+      soilPH:
+        'Optimal pH 5.0–6.5; absolute range 4.5–8.3.',
+
+      soilNote:
+        'Pearl millet is suited to well-drained medium- and light-textured soils and can tolerate relatively low soil fertility under suitable growing conditions.',
+
+      plantingNote:
+        'Pearl millet may be established by direct seeding through drilling or dibbling. Transplanting is also used in some production systems. The suitable sowing time depends on local growing conditions.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Pennisetum glaucum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=8418'
+      }
+    },
    
 
 ];
