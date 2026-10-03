@@ -6480,6 +6480,73 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=3881'
       }
     },
+
+    {
+      name: 'Leek',
+      scientificName: 'Allium ampeloprasum L. var. porrum',
+      category: 'vegetable',
+      icon: 'assets/crops/leek.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        office:
+          'UF/IFAS',
+
+        title:
+          'Leek Cultivation Guide for Florida',
+
+        url:
+          'https://ask.ifas.ufl.edu/publication/HS1388'
+      },
+
+      minTemp: 6,
+      maxTemp: 27,
+
+      idealTempRange:
+        '18–24°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 750–1000 mm; the FAO ECOCROP absolute range is about 350–2800 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.5; absolute range 4.5–7.5.',
+
+      soilNote:
+        'Leek performs best in fertile, moist, well-drained soil. FAO ECOCROP lists medium-textured and organic soils as optimal, with heavy, medium, and light soils within its broader tolerance range.',
+
+      plantingNote:
+        'Leek may be established by direct seeding or transplanting. UF/IFAS notes that transplanting is commonly used because leek is a relatively long-season crop.',
+
+      harvestNote:
+        'Leeks may be harvested young, but full-sized crops commonly require around 100–130 days depending on planting system, cultivar, and growing conditions. A stalk about 1 inch in diameter is a useful field maturity indicator.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Allium ampeloprasum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=363'
+      }
+    },
    
 
 ];

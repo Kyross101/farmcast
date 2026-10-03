@@ -6532,6 +6532,56 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    Leek: {
+    'direct-seeded': {
+      minDays: 100,
+      maxDays: 130,
+      basis: 'after seeding',
+      derived: false,
+
+      note:
+        'UF/IFAS production guidance lists approximately 100–130 days to maturity for seeded leek/allium production. Stalk size and cultivar maturity should still be checked before harvest.',
+
+      source: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        office:
+          'UF/IFAS',
+
+        title:
+          'Chapter 12. Onion, Leek, and Chive Production',
+
+        url:
+          'https://ask.ifas.ufl.edu/publication/CV299'
+      }
+    },
+
+    transplanted: {
+      minDays: 100,
+      maxDays: 130,
+      basis: 'after transplanting',
+      derived: false,
+
+      note:
+        'UF/IFAS production guidance lists approximately 100–130 days to maturity for transplanted leek/allium production. Actual stalk size and cultivar maturity should remain the final harvest guide.',
+
+      source: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        office:
+          'UF/IFAS',
+
+        title:
+          'Chapter 12. Onion, Leek, and Chive Production',
+
+        url:
+          'https://ask.ifas.ufl.edu/publication/CV299'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Leek</title>
+
+  <desc id="desc">
+    A leek plant with long upright green leaves,
+    a pale blanched stem, and fibrous roots.
+  </desc>
+
+  <!-- White / pale edible stem -->
+  <path d="M51 104
+       C52 88 54 70 56 54
+       L72 54
+       C74 70 76 88 77 104
+       C70 109 58 109 51 104Z" fill="#e8ead4" stroke="#a9b18d" stroke-width="2.5">
+  </path>
+
+  <!-- Leaf bases -->
+  <path d="M57 66
+       C54 50 48 35 40 19" fill="none" stroke="#568b4d" stroke-width="8" stroke-linecap="round">
+  </path>
+
+  <path d="M61 61
+       C59 43 59 27 61 12" fill="none" stroke="#629a55" stroke-width="8" stroke-linecap="round">
+  </path>
+
+  <path d="M66 61
+       C68 43 71 28 78 14" fill="none" stroke="#548849" stroke-width="8" stroke-linecap="round">
+  </path>
+
+  <path d="M70 66
+       C77 49 85 36 95 25" fill="none" stroke="#659d57" stroke-width="8" stroke-linecap="round">
+  </path>
+
+  <!-- Leaf highlights -->
+  <path d="M42 20 C49 36 54 50 57 63" fill="none" stroke="#78ac69" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <path d="M61 14 C60 31 61 46 62 59" fill="none" stroke="#7caf6d" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <path d="M78 16 C72 32 69 47 67 59" fill="none" stroke="#75aa66" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <path d="M94 27 C83 40 76 52 71 64" fill="none" stroke="#7db06e" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <!-- Stem shading -->
+  <path d="M58 68
+       C58 82 57 95 57 103" fill="none" stroke="#c8cfad" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <path d="M69 68
+       C70 83 70 95 70 103" fill="none" stroke="#c1c9a5" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Roots -->
+  <path d="M55 104 C51 111 47 114 43 118
+       M60 106 C58 112 56 116 54 121
+       M64 106 C64 113 64 117 64 122
+       M69 106 C71 112 73 117 75 121
+       M73 104 C78 110 82 114 86 118" fill="none" stroke="#b99f74" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="119" rx="31" ry="5" fill="#81664a" opacity="0.3">
+  </ellipse>
+
+</svg>
