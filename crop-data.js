@@ -7287,6 +7287,79 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1938'
       }
     },
+
+   {
+      name: 'Kamias',
+      scientificName: 'Averrhoa bilimbi L.',
+      category: 'fruit',
+      icon: 'assets/crops/kamias.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        office:
+          'TNAU Agritech Portal',
+
+        title:
+          'Crop Production Guide — Bilimbi',
+
+        url:
+          [
+            'https://',
+            'www.agritech.tnau.ac.in/pdf/HORTICULTURE.pdf'
+          ].join('')
+      },
+
+      minTemp: 10,
+      maxTemp: 36,
+
+      idealTempRange:
+        '23–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1200–2300 mm; the FAO ECOCROP absolute range is about 700–4000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 5.0–8.3.',
+
+      soilNote:
+        'Kamias performs best in deep, fertile soil with good drainage. FAO ECOCROP lists heavy, medium, light, and organic soils within its optimal soil-texture range and identifies well-drained conditions as suitable.',
+
+      plantingNote:
+        'Kamias may be established using seed-grown seedlings or air-layered planting material. Tamil Nadu Agricultural University lists seedlings and air layers as Bilimbi propagation methods.',
+
+      harvestNote:
+        'Kamias is a perennial fruit tree. FAO ECOCROP reports that fruit development takes about 90–110 days. Clonally propagated trees may begin bearing in about 2–3 years, while seed-grown trees may require about 5–6 years. Flowering and fruit production can continue through much of the year, so actual fruit maturity and intended use should guide harvest rather than a single planting-date estimate.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Averrhoa bilimbi — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=482'
+          ].join('')
+      }
+    },
    
 
 ];

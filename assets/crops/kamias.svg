@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Kamias</title>
+
+  <desc id="desc">
+    A kamias branch with compound green leaves,
+    reddish-purple flowers, and elongated green bilimbi fruits.
+  </desc>
+
+  <!-- Woody branch -->
+  <path d="M28 113
+       C39 94 51 76 62 58
+       C73 40 83 25 95 14" fill="none" stroke="#745b3e" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Leaf branch -->
+  <path d="M55 70
+       C45 58 37 46 31 33" fill="none" stroke="#57874b" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <!-- Compound leaf rachis -->
+  <path d="M31 33
+       C43 37 55 42 68 49" fill="none" stroke="#5d914f" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Leaflets -->
+  <g fill="#6da45b" stroke="#4b7b43" stroke-width="1">
+
+    <ellipse cx="37" cy="33" rx="8" ry="3.5" transform="rotate(-28 37 33)">
+    </ellipse>
+
+    <ellipse cx="42" cy="41" rx="8" ry="3.5" transform="rotate(27 42 41)">
+    </ellipse>
+
+    <ellipse cx="48" cy="37" rx="8" ry="3.5" transform="rotate(-25 48 37)">
+    </ellipse>
+
+    <ellipse cx="53" cy="46" rx="8" ry="3.5" transform="rotate(25 53 46)">
+    </ellipse>
+
+    <ellipse cx="59" cy="42" rx="8" ry="3.5" transform="rotate(-23 59 42)">
+    </ellipse>
+
+    <ellipse cx="64" cy="51" rx="8" ry="3.5" transform="rotate(23 64 51)">
+    </ellipse>
+
+  </g>
+
+  <!-- Flower cluster attached near branch -->
+  <path d="M64 58
+       C72 61 77 65 82 70" fill="none" stroke="#66894e" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <g>
+    <circle cx="76" cy="66" r="4" fill="#9c536f">
+    </circle>
+
+    <circle cx="83" cy="70" r="4" fill="#b15d79">
+    </circle>
+
+    <circle cx="74" cy="74" r="3.5" fill="#8c4866">
+    </circle>
+
+    <circle cx="87" cy="77" r="3.5" fill="#a65572">
+    </circle>
+
+    <circle cx="81" cy="68" r="1.5" fill="#e4bf67">
+    </circle>
+  </g>
+
+  <!-- Fruit stalks -->
+  <path d="M72 58
+       C78 60 84 63 89 67
+
+       M77 52
+       C85 53 91 57 96 62
+
+       M68 65
+       C72 72 75 77 77 82" fill="none" stroke="#588349" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <!-- Kamias fruits -->
+  <path d="M89 65
+       C82 68 81 80 84 91
+       C87 102 94 107 100 101
+       C105 95 103 82 99 73
+       C97 68 93 65 89 65Z" fill="#8dad53" stroke="#607f3e" stroke-width="2">
+  </path>
+
+  <path d="M96 60
+       C90 63 90 74 93 84
+       C96 94 103 98 108 92
+       C112 86 109 75 106 67
+       C104 62 100 60 96 60Z" fill="#98b85c" stroke="#607f3e" stroke-width="2">
+  </path>
+
+  <path d="M77 80
+       C71 82 70 92 73 101
+       C76 110 82 114 87 108
+       C91 103 89 92 86 85
+       C84 81 80 79 77 80Z" fill="#85a94e" stroke="#607f3e" stroke-width="2">
+  </path>
+
+  <!-- Fruit highlights -->
+  <path d="M89 71 C87 80 89 91 94 99
+       M97 66 C96 75 99 84 104 90
+       M77 85 C76 94 78 102 83 108" fill="none" stroke="#b5ca78" stroke-width="2" stroke-linecap="round" opacity="0.75">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="47" cy="117" rx="27" ry="5" fill="#81664a" opacity="0.3">
+  </ellipse>
+
+</svg>
