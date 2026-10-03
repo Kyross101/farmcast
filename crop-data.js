@@ -7034,6 +7034,68 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2369'
       }
     },
+
+    {
+      name: 'Rosemary',
+      scientificName: 'Rosmarinus officinalis L.',
+      category: 'herb',
+      icon: 'assets/crops/rosemary.svg',
+
+      plantingMethods: [
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'layering',
+          label: 'Layering'
+        },
+        {
+          value: 'divisions',
+          label: 'Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Herb Garden Plants: Rosemary',
+
+        url:
+          [
+            'https://',
+            'extension.psu.edu/herb-garden-plants-rosemary'
+          ].join('')
+      },
+
+      soilPH:
+        'Recommended soil pH is about 6.5–7.0.',
+
+      soilNote:
+        'Rosemary performs best in well-drained soil and should not remain in persistently wet or poorly drained conditions. Once established, it is relatively drought tolerant.',
+
+      plantingNote:
+        'Rosemary may be propagated using stem cuttings, layering, or division. Penn State Extension lists these vegetative methods for establishing rosemary plants.',
+
+      harvestNote:
+        'Fresh rosemary leaves and tender shoots may be harvested as needed during the growing season. For drying, harvest foliage before flowering. Avoid removing too much growth at once so the perennial plant can continue producing healthy new shoots.',
+
+      source: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Herb Garden Plants: Rosemary',
+
+        url:
+          [
+            'https://',
+            'extension.psu.edu/herb-garden-plants-rosemary'
+          ].join('')
+      }
+    },
    
 
 ];
