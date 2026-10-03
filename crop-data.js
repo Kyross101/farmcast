@@ -7096,6 +7096,59 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Thyme',
+      scientificName: 'Thymus vulgaris L.',
+      category: 'herb',
+      icon: 'assets/crops/thyme.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Herb Garden Plants: Thyme',
+
+        url:
+          'https://extension.psu.edu/herb-garden-plants-thyme'
+      },
+
+      soilNote:
+        'Thyme performs best in a sunny location with well-drained soil. Poor drainage can shorten the useful life of this perennial herb.',
+
+      plantingNote:
+        'Thyme may be propagated from seed, stem cuttings, or root divisions. Penn State Extension recommends division of established plants in spring and cuttings from new growth in late spring.',
+
+      harvestNote:
+        'Harvest leafy thyme branches just before the plant flowers for good culinary quality. Stems may also be cut throughout the growing season as needed, while leaving enough healthy growth for the perennial plant to continue developing.',
+
+      source: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Herb Garden Plants: Thyme',
+
+        url:
+          'https://extension.psu.edu/herb-garden-plants-thyme'
+      }
+    },
    
 
 ];
