@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Longan</title>
+
+  <desc id="desc">
+    A longan branch with glossy green compound leaves
+    and clusters of ripe golden-brown fruits.
+  </desc>
+
+  <!-- Main woody branch -->
+  <path d="M27 114
+       C39 94 51 77 63 58
+       C74 41 84 27 97 14" fill="none" stroke="#71573c" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Leaf stems -->
+  <path d="M54 72
+       C45 60 37 48 31 35" fill="none" stroke="#4d7944" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <path d="M68 53
+       C79 46 89 37 97 27" fill="none" stroke="#4d7944" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Longan leaves -->
+  <g fill="#58894a" stroke="#3f6b3a" stroke-width="1.4">
+
+    <ellipse cx="34" cy="35" rx="13" ry="5" transform="rotate(-29 34 35)"></ellipse>
+
+    <ellipse cx="42" cy="46" rx="13" ry="5" transform="rotate(28 42 46)"></ellipse>
+
+    <ellipse cx="47" cy="40" rx="13" ry="5" transform="rotate(-25 47 40)"></ellipse>
+
+    <ellipse cx="54" cy="52" rx="13" ry="5" transform="rotate(25 54 52)"></ellipse>
+
+    <ellipse cx="59" cy="47" rx="13" ry="5" transform="rotate(-22 59 47)"></ellipse>
+
+    <ellipse cx="65" cy="58" rx="13" ry="5" transform="rotate(22 65 58)"></ellipse>
+
+    <ellipse cx="82" cy="43" rx="13" ry="5" transform="rotate(26 82 43)"></ellipse>
+
+    <ellipse cx="91" cy="34" rx="13" ry="5" transform="rotate(-27 91 34)"></ellipse>
+
+  </g>
+
+  <!-- Fruit panicle stems -->
+  <path d="M69 58
+       C77 64 84 70 89 77
+
+       M75 63
+       C84 65 93 69 101 75
+
+       M72 65
+       C74 74 76 83 78 92" fill="none" stroke="#5c7e44" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <!-- Longan fruits -->
+  <g stroke="#866c46" stroke-width="2">
+
+    <circle cx="89" cy="81" r="11" fill="#b89459"></circle>
+
+    <circle cx="102" cy="80" r="10" fill="#c19d61"></circle>
+
+    <circle cx="78" cy="94" r="10" fill="#b58f55"></circle>
+
+    <circle cx="94" cy="98" r="11" fill="#c29c5c"></circle>
+
+    <circle cx="108" cy="95" r="9" fill="#b88f53"></circle>
+
+  </g>
+
+  <!-- Fruit skin highlights -->
+  <g fill="#d2b47d" opacity="0.8">
+
+    <circle cx="85" cy="77" r="1.5"></circle>
+    <circle cx="92" cy="84" r="1.3"></circle>
+
+    <circle cx="99" cy="76" r="1.4"></circle>
+    <circle cx="105" cy="82" r="1.3"></circle>
+
+    <circle cx="75" cy="91" r="1.3"></circle>
+    <circle cx="81" cy="98" r="1.4"></circle>
+
+    <circle cx="91" cy="94" r="1.4"></circle>
+    <circle cx="98" cy="102" r="1.3"></circle>
+
+    <circle cx="107" cy="92" r="1.3"></circle>
+
+  </g>
+
+  <!-- Ground -->
+  <ellipse cx="49" cy="117" rx="28" ry="5" fill="#81664a" opacity="0.3"></ellipse>
+
+</svg>

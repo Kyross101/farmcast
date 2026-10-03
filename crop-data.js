@@ -7754,6 +7754,78 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1357'
       }
     },
+
+    {
+      name: 'Longan',
+      scientificName: 'Dimocarpus longan Lour.',
+      category: 'fruit',
+      icon: 'assets/crops/longan.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered / Marcotted Plants'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Longan Growing in the Florida Home Landscape',
+
+        url:
+          'https://edis.ifas.ufl.edu/publication/MG049'
+      },
+
+      minTemp: 7,
+      maxTemp: 36,
+
+      idealTempRange:
+        '18–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1300–2000 mm; the FAO ECOCROP absolute range is about 800–3000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.0; absolute range 5.0–8.0.',
+
+      soilNote:
+        'Longan performs well in deep, well-drained soils. FAO ECOCROP lists medium- and light-textured soils as optimal, while UF/IFAS notes that longan does not tolerate prolonged flooding or excessively wet soil.',
+
+      plantingNote:
+        'Longan may be propagated from seed, air-layering or marcotting, grafting, and rooted cuttings. Air-layering is a common vegetative propagation method. Seed-grown trees may take substantially longer to bear and do not reliably reproduce the parent cultivar.',
+
+      harvestNote:
+        'Longan is a perennial fruit tree. UF/IFAS reports about 140–190 days from flowering to harvest. Fruit should be harvested ripe because longan is non-climacteric; mature fruit typically develops tan, light-brown, or yellowish-brown skin and sweet flesh.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Dimocarpus longan var. longan — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=5349'
+      }
+    },
    
 
 ];

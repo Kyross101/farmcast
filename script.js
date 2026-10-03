@@ -6923,6 +6923,25 @@ const CROP_STAGE_HARVEST_WINDOWS = {
     }
   },
 
+    Longan: {
+    stage: 'flowering',
+    minDays: 140,
+    maxDays: 190,
+    basis:
+      'after farmer-observed flowering',
+
+    source: {
+      agency:
+        'University of Florida IFAS Extension',
+
+      title:
+        'Longan Growing in the Florida Home Landscape',
+
+      url:
+        'https://edis.ifas.ufl.edu/publication/MG049'
+    }
+  }
+
 
 };
 
