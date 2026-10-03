@@ -8082,6 +8082,76 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=945'
       }
     },
+
+    {
+      name: 'Peach',
+      scientificName: 'Prunus persica (L.) Batsch',
+      category: 'fruit',
+      icon: 'assets/crops/peach.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Georgia Cooperative Extension',
+
+        title:
+          'Propagating Deciduous Fruit Plants Common to Georgia',
+
+        url:
+          [
+            'https://',
+            'extension.uga.edu/publications/detail.html?number=B818'
+          ].join('')
+      },
+
+      minTemp: 7,
+      maxTemp: 35,
+
+      idealTempRange:
+        '20–33°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1100 mm; the FAO ECOCROP absolute range is about 750–1600 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.3; absolute range 4.5–7.5.',
+
+      soilNote:
+        'Peach performs best in deep, well-drained soil. FAO ECOCROP lists medium- and light-textured soils as optimal and heavy, medium, and light soils within its broader tolerance range.',
+
+      plantingNote:
+        'Named peach cultivars are normally propagated vegetatively on suitable rootstocks. Grafting and budding preserve the desired cultivar while allowing the grower to use rootstocks selected for local soil and pest conditions.',
+
+      harvestNote:
+        'Peach is a perennial deciduous fruit tree and harvest timing varies substantially among cultivars. Penn State Extension recommends judging harvest primarily from fruit firmness and cultivar-appropriate color. A tree normally requires several pickings because all peaches do not mature at the same time.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Prunus persica — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1796'
+          ].join('')
+      }
+    },
    
 
 ];

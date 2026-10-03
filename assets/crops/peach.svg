@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Peach</title>
+
+  <desc id="desc">
+    A peach branch with narrow green leaves,
+    pink flowers, and ripe orange-red peach fruits.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M27 114
+       C39 95 50 77 62 59
+       C73 42 84 27 97 14" fill="none" stroke="#74583f" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M54 73
+       C45 61 37 49 31 37" fill="none" stroke="#567d46" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M67 55
+       C79 48 89 39 98 29" fill="none" stroke="#567d46" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <!-- Peach leaves -->
+  <g fill="#65954d" stroke="#426d3b" stroke-width="1.4">
+
+    <ellipse cx="31" cy="39" rx="15" ry="4.5" transform="rotate(-31 31 39)"></ellipse>
+
+    <ellipse cx="45" cy="48" rx="15" ry="4.5" transform="rotate(27 45 48)"></ellipse>
+
+    <ellipse cx="82" cy="44" rx="15" ry="4.5" transform="rotate(26 82 44)"></ellipse>
+
+    <ellipse cx="95" cy="33" rx="15" ry="4.5" transform="rotate(-28 95 33)"></ellipse>
+
+  </g>
+
+  <!-- Flower -->
+  <path d="M66 58
+       C73 61 78 65 82 70" fill="none" stroke="#567d46" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <g transform="translate(83 71)">
+
+    <ellipse cx="0" cy="-6" rx="5" ry="7" fill="#e88a9f"></ellipse>
+
+    <ellipse cx="6" cy="-1" rx="5" ry="7" transform="rotate(70 6 -1)" fill="#ef98aa"></ellipse>
+
+    <ellipse cx="4" cy="6" rx="5" ry="7" transform="rotate(145 4 6)" fill="#df8199"></ellipse>
+
+    <ellipse cx="-4" cy="6" rx="5" ry="7" transform="rotate(-145 -4 6)" fill="#ea91a5"></ellipse>
+
+    <ellipse cx="-6" cy="-1" rx="5" ry="7" transform="rotate(-70 -6 -1)" fill="#df829a"></ellipse>
+
+    <circle cx="0" cy="1" r="3" fill="#e7bd55"></circle>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <path d="M69 61
+       C78 67 84 75 88 82
+
+       M75 62
+       C87 66 96 73 103 81" fill="none" stroke="#557644" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Peach 1 -->
+  <path d="M89 78
+       C78 78 72 87 74 99
+       C76 111 86 117 96 112
+       C106 107 110 94 104 84
+       C100 78 95 76 89 78Z" fill="#e99858" stroke="#bb653b" stroke-width="2"></path>
+
+  <!-- Peach red blush -->
+  <path d="M95 80
+       C104 83 108 92 105 101
+       C103 107 99 111 94 113
+       C98 103 99 91 95 80Z" fill="#dc6c55" opacity="0.85"></path>
+
+  <!-- Peach crease -->
+  <path d="M91 81
+       C88 90 88 102 92 112" fill="none" stroke="#c8754d" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Peach 2 -->
+  <path d="M106 79
+       C98 79 94 86 95 95
+       C96 105 104 110 112 106
+       C120 102 122 92 117 84
+       C114 80 110 78 106 79Z" fill="#efa05d" stroke="#bd693d" stroke-width="2"></path>
+
+  <!-- Ground -->
+  <ellipse cx="48" cy="117" rx="28" ry="5" fill="#81664a" opacity="0.3"></ellipse>
+
+</svg>
