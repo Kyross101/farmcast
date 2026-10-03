@@ -7619,6 +7619,73 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2412'
       }
     },
+
+    {
+      name: 'Lavender',
+      scientificName: 'Lavandula angustifolia Mill.',
+      category: 'herb',
+      icon: 'assets/crops/lavender.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-started-transplants',
+          label: 'Seed-Started Transplants'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow English Lavender in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/english-lavender-in-the-garden'
+      },
+
+      minTemp: 7,
+      maxTemp: 28,
+
+      idealTempRange:
+        '15–24°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–1000 mm; the FAO ECOCROP absolute range is about 300–1300 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.5; absolute range 5.8–8.3.',
+
+      soilNote:
+        'English lavender performs best in dry, well-drained medium- to light-textured soil. Saturated or waterlogged conditions should be avoided.',
+
+      plantingNote:
+        'Lavender may be raised from seed and later transplanted, or propagated from stem cuttings. Utah State University Extension notes that most commercial lavender is started from cuttings because seed propagation is slow and direct seeding is not recommended.',
+
+      harvestNote:
+        'Harvest English lavender flower stalks as flowering begins. For dried flowers, Utah State University Extension recommends cutting when the first two flowers on the spike have opened. First-year plants are commonly allowed to establish rather than being heavily harvested, while FAO ECOCROP notes that commercial first harvest may occur after several years of establishment.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Lavandula angustifolia — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=7172'
+      }
+    },
    
 
 ];

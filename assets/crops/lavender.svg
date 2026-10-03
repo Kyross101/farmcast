@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Lavender</title>
+
+  <desc id="desc">
+    English lavender with gray-green leaves
+    and upright purple flower spikes.
+  </desc>
+
+  <!-- Woody base -->
+  <path d="M64 116
+       C63 96 63 78 64 61" fill="none" stroke="#74614d" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Flower stems -->
+  <path d="M52 103 C50 78 48 53 47 28" fill="none" stroke="#687a58" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M62 105 C61 77 61 49 61 20" fill="none" stroke="#687a58" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M72 104 C74 77 76 52 79 27" fill="none" stroke="#687a58" stroke-width="4" stroke-linecap="round"></path>
+
+  <path d="M83 108 C85 84 88 64 91 43" fill="none" stroke="#687a58" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M42 108 C40 85 38 67 37 47" fill="none" stroke="#687a58" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <!-- Gray-green leaves -->
+  <g fill="#81917a" stroke="#61705c" stroke-width="1">
+
+    <ellipse cx="44" cy="81" rx="11" ry="3" transform="rotate(-25 44 81)"></ellipse>
+
+    <ellipse cx="55" cy="72" rx="11" ry="3" transform="rotate(23 55 72)"></ellipse>
+
+    <ellipse cx="69" cy="76" rx="11" ry="3" transform="rotate(-22 69 76)"></ellipse>
+
+    <ellipse cx="82" cy="83" rx="11" ry="3" transform="rotate(25 82 83)"></ellipse>
+
+    <ellipse cx="47" cy="94" rx="11" ry="3" transform="rotate(-18 47 94)"></ellipse>
+
+    <ellipse cx="76" cy="96" rx="11" ry="3" transform="rotate(18 76 96)"></ellipse>
+
+  </g>
+
+  <!-- Lavender flower spikes -->
+  <g>
+    <ellipse cx="47" cy="28" rx="6" ry="11" fill="#8468a2"></ellipse>
+    <ellipse cx="47" cy="20" rx="5" ry="8" fill="#9476b0"></ellipse>
+
+    <ellipse cx="61" cy="20" rx="6" ry="12" fill="#785b98"></ellipse>
+    <ellipse cx="61" cy="11" rx="5" ry="8" fill="#9575b2"></ellipse>
+
+    <ellipse cx="79" cy="27" rx="6" ry="11" fill="#8666a3"></ellipse>
+    <ellipse cx="79" cy="19" rx="5" ry="8" fill="#9a7ab5"></ellipse>
+
+    <ellipse cx="91" cy="43" rx="5" ry="10" fill="#81619f"></ellipse>
+
+    <ellipse cx="37" cy="47" rx="5" ry="10" fill="#8f71aa"></ellipse>
+  </g>
+
+  <!-- Flower details -->
+  <g fill="#b49ac7">
+    <circle cx="44" cy="25" r="2"></circle>
+    <circle cx="50" cy="30" r="2"></circle>
+    <circle cx="59" cy="16" r="2"></circle>
+    <circle cx="64" cy="23" r="2"></circle>
+    <circle cx="76" cy="24" r="2"></circle>
+    <circle cx="82" cy="31" r="2"></circle>
+  </g>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.3"></ellipse>
+</svg>
