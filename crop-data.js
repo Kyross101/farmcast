@@ -6015,6 +6015,70 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=8418'
       }
     },
+
+    {
+      name: 'Foxtail Millet',
+      scientificName: 'Setaria italica (L.) Beauv.',
+      category: 'grain',
+      icon: 'assets/crops/foxtail-millet.svg',
+
+      plantingMethods: [
+        {
+          value: 'line-sown',
+          label: 'Line Sown'
+        },
+        {
+          value: 'broadcast-seeded',
+          label: 'Broadcast Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Indian Council of Agricultural Research',
+
+        office:
+          'ICAR - Indian Institute of Millets Research',
+
+        title:
+          'Good Agricultural Practices (GAP) Manual for Sustainable Millets Production',
+
+        url:
+          'https://www.millets.res.in/pub/2026/GAP-English.pdf'
+      },
+
+      minTemp: 5,
+      maxTemp: 35,
+
+      idealTempRange:
+        '16–26°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–700 mm; the FAO ECOCROP absolute range is about 300–4000 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.8; absolute range 5.5–8.3.',
+
+      soilNote:
+        'FAO ECOCROP lists medium- and light-textured soils as optimal for foxtail millet and identifies well-drained conditions as suitable.',
+
+      plantingNote:
+        'Foxtail millet may be established by line sowing or broadcasting. ICAR-IIMR guidance prefers line sowing because it can make intercultural weed management easier.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Setaria italica — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=9732'
+      }
+    },
    
 
 ];
