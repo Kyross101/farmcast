@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Beetroot</title>
+
+  <desc id="desc">
+    A beetroot plant with broad green leaves,
+    reddish leaf veins, and a rounded dark-red root.
+  </desc>
+
+  <!-- Root -->
+  <path d="M43 72
+       C43 57 53 49 64 49
+       C76 49 86 57 86 72
+       C86 88 76 100 64 105
+       C52 100 43 88 43 72Z" fill="#9f3045" stroke="#6f2637" stroke-width="3">
+  </path>
+
+  <!-- Root tip -->
+  <path d="M64 103
+       C63 111 60 116 57 121" fill="none" stroke="#7c2b3c" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Leaf stems -->
+  <path d="M60 54 C54 42 45 32 37 24" fill="none" stroke="#9a3d4c" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <path d="M64 53 C64 39 64 27 65 16" fill="none" stroke="#9a3d4c" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <path d="M69 54 C76 42 84 33 94 26" fill="none" stroke="#9a3d4c" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <!-- Left leaf -->
+  <path d="M39 25
+       C26 20 18 27 20 38
+       C22 50 36 56 51 47
+       C49 37 45 30 39 25Z" fill="#659b50" stroke="#47783e" stroke-width="2">
+  </path>
+
+  <!-- Center leaf -->
+  <path d="M65 17
+       C54 7 45 11 44 22
+       C43 35 53 43 64 44
+       C75 42 83 32 81 21
+       C79 11 71 9 65 17Z" fill="#72a75a" stroke="#47783e" stroke-width="2">
+  </path>
+
+  <!-- Right leaf -->
+  <path d="M93 27
+       C106 22 113 30 110 41
+       C107 52 94 57 79 48
+       C81 39 86 32 93 27Z" fill="#679d51" stroke="#47783e" stroke-width="2">
+  </path>
+
+  <!-- Leaf veins -->
+  <path d="M39 27 L49 45
+       M65 19 L64 42
+       M92 29 L80 46" fill="none" stroke="#994350" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Root highlight -->
+  <path d="M53 64
+       C50 72 52 82 58 88" fill="none" stroke="#c75b6d" stroke-width="3" stroke-linecap="round" opacity="0.7">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="118" rx="30" ry="5" fill="#81664a" opacity="0.35">
+  </ellipse>
+
+</svg>

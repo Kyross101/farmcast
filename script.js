@@ -6486,6 +6486,29 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    Beetroot: {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 80,
+      basis: 'after seeding',
+      derived: false,
+
+      note:
+        'Beet roots are generally mature about 60–80 days after seeding depending on variety. Root size and quality should still be checked before harvest.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Beets in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/beets-in-the-garden'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

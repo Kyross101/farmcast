@@ -6360,6 +6360,66 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Beetroot',
+      scientificName: 'Beta vulgaris L. var. crassa',
+      category: 'root-crop',
+      icon: 'assets/crops/beetroot.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Starting Your Summer Vegetable Garden — Seeds or Transplants?',
+
+        url:
+          'https://extension.psu.edu/starting-your-summer-vegetable-garden-seeds-or-transplants'
+      },
+
+      minTemp: 5,
+      maxTemp: 30,
+
+      idealTempRange:
+        '15–25°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 800–1500 mm; the FAO ECOCROP absolute range is about 500–2500 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.8; absolute range 5.0–8.3.',
+
+      soilNote:
+        'Beetroot performs best in well-drained soil. FAO ECOCROP lists medium- and light-textured soils as optimal, while heavy soils are also within its broader tolerance range.',
+
+      plantingNote:
+        'Beetroot is best established by direct seeding because transplanting root vegetables can cause misshapen roots. Sow seed into loose, prepared soil to support proper root development.',
+
+      harvestNote:
+        'Beet roots may be harvested once the roots begin to size. Utah State University Extension notes that roots are generally mature about 60–80 days after seeding, depending on variety.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Beta vulgaris var. crassa — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=3712'
+      }
+    },
    
 
 ];
