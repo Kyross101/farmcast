@@ -6509,6 +6509,29 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    Turnip: {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 80,
+      basis: 'after seeding',
+      derived: false,
+
+      note:
+        'Turnip roots generally mature about 60–80 days after seeding. Root size and field condition should still be checked before harvest.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Rutabagas and Turnips in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/rutabagas-and-turnips-in-the-garden'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

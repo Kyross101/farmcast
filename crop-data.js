@@ -6420,6 +6420,66 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=3712'
       }
     },
+
+    {
+      name: 'Turnip',
+      scientificName: 'Brassica rapa L. var. rapifera',
+      category: 'root-crop',
+      icon: 'assets/crops/turnip.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Rutabagas and Turnips in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/rutabagas-and-turnips-in-the-garden'
+      },
+
+      minTemp: 7,
+      maxTemp: 30,
+
+      idealTempRange:
+        '10–17°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1400 mm; the FAO ECOCROP absolute range is about 300–2000 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.8; absolute range 4.3–7.5.',
+
+      soilNote:
+        'Turnip performs best in fertile, deep, well-drained soil. FAO ECOCROP lists medium- and light-textured soils as optimal and heavy soils within its broader tolerance range.',
+
+      plantingNote:
+        'Turnips are established directly from seed. Utah State University Extension recommends planting seed shallowly and thinning seedlings after establishment to provide adequate root spacing.',
+
+      harvestNote:
+        'Turnip roots generally mature about 60–80 days after seeding. Begin harvesting when roots reach the desired size; Utah State University Extension suggests starting when turnip roots are greater than about 2 inches in diameter.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Brassica rapa var. rapifera — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=3881'
+      }
+    },
    
 
 ];
