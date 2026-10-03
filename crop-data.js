@@ -6200,6 +6200,76 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=7209'
       }
     },
+
+    {
+      name: 'Black Gram',
+      scientificName: 'Vigna mungo (L.) Hepper',
+      category: 'legume',
+      icon: 'assets/crops/black-gram.svg',
+
+      plantingMethods: [
+        {
+          value: 'dibbled-seed',
+          label: 'Dibbled Seed'
+        },
+        {
+          value: 'broadcast-seeded',
+          label: 'Broadcast Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        office:
+          'TNAU Agritech Portal',
+
+        title:
+          'Crop Production — Pulses — Blackgram',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/agriculture/pulses_blackgram.html'
+          ].join('')
+      },
+
+      minTemp: 8,
+      maxTemp: 40,
+
+      idealTempRange:
+        '22–35°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 650–900 mm; the FAO ECOCROP absolute range is about 530–2430 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 4.5–7.5.',
+
+      soilNote:
+        'FAO ECOCROP lists heavy- and medium-textured soils as suitable for black gram and identifies well-drained conditions as appropriate.',
+
+      plantingNote:
+        'Black gram is established from seed. TNAU guidance uses dibbling for irrigated and rainfed crops, while broadcasting is used in some rice-fallow and relay-cropping systems.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vigna mungo — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2149'
+          ].join('')
+      }
+    },
    
 
 ];

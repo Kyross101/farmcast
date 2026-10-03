@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Black Gram</title>
+
+  <desc id="desc">
+    A bushy black gram plant with green trifoliate leaves,
+    yellow flowers, dark pods, and black seeds.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 116
+       C63 95 64 76 64 58
+       C64 43 63 30 62 18" fill="none" stroke="#5d8949" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Branches -->
+  <path d="M63 48
+       C50 41 41 33 34 24" fill="none" stroke="#5d8949" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <path d="M65 56
+       C78 48 88 40 96 31" fill="none" stroke="#5d8949" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <path d="M63 69
+       C51 64 42 58 35 51" fill="none" stroke="#5d8949" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <!-- Trifoliate leaves -->
+  <ellipse cx="35" cy="25" rx="8" ry="5" transform="rotate(35 35 25)" fill="#76a95b">
+  </ellipse>
+
+  <ellipse cx="45" cy="31" rx="8" ry="5" transform="rotate(15 45 31)" fill="#6ea153">
+  </ellipse>
+
+  <ellipse cx="40" cy="38" rx="8" ry="5" transform="rotate(-20 40 38)" fill="#7bae5f">
+  </ellipse>
+
+  <ellipse cx="96" cy="31" rx="8" ry="5" transform="rotate(-35 96 31)" fill="#76a95b">
+  </ellipse>
+
+  <ellipse cx="86" cy="38" rx="8" ry="5" transform="rotate(-15 86 38)" fill="#6ea153">
+  </ellipse>
+
+  <ellipse cx="91" cy="45" rx="8" ry="5" transform="rotate(20 91 45)" fill="#7bae5f">
+  </ellipse>
+
+  <ellipse cx="37" cy="53" rx="8" ry="5" transform="rotate(30 37 53)" fill="#72a657">
+  </ellipse>
+
+  <ellipse cx="47" cy="60" rx="8" ry="5" transform="rotate(10 47 60)" fill="#67994d">
+  </ellipse>
+
+  <ellipse cx="42" cy="67" rx="8" ry="5" transform="rotate(-20 42 67)" fill="#79ab5d">
+  </ellipse>
+
+  <!-- Yellow flowers -->
+  <circle cx="30" cy="20" r="4.5" fill="#e8c954" stroke="#b59432" stroke-width="1.5">
+  </circle>
+
+  <circle cx="101" cy="27" r="4.5" fill="#e8c954" stroke="#b59432" stroke-width="1.5">
+  </circle>
+
+  <!-- Pods -->
+  <path d="M25 45
+       C21 48 22 59 27 66
+       C31 72 36 73 39 70
+       C41 67 39 62 36 57
+       C32 51 29 46 25 45Z" fill="#637c45" stroke="#425d35" stroke-width="2">
+  </path>
+
+  <path d="M103 47
+       C107 51 106 61 101 68
+       C97 74 92 75 89 72
+       C87 68 89 63 92 58
+       C96 52 99 48 103 47Z" fill="#5c7540" stroke="#425d35" stroke-width="2">
+  </path>
+
+  <path d="M36 73
+       C32 77 33 87 38 94
+       C42 100 47 101 50 98
+       C52 94 50 89 47 84
+       C43 78 40 74 36 73Z" fill="#657f46" stroke="#425d35" stroke-width="2">
+  </path>
+
+  <!-- Black seeds -->
+  <circle cx="28" cy="54" r="2.3" fill="#252923"></circle>
+  <circle cx="32" cy="61" r="2.3" fill="#1f231e"></circle>
+
+  <circle cx="100" cy="56" r="2.3" fill="#252923"></circle>
+  <circle cx="96" cy="63" r="2.3" fill="#1f231e"></circle>
+
+  <circle cx="39" cy="82" r="2.3" fill="#252923"></circle>
+  <circle cx="43" cy="89" r="2.3" fill="#1f231e"></circle>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.4">
+  </ellipse>
+
+</svg>
