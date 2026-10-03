@@ -6079,6 +6079,67 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=9732'
       }
     },
+
+    {
+      name: 'Chickpea',
+      localName: 'Garbanzos',
+      scientificName: 'Cicer arietinum L.',
+      category: 'legume',
+      icon: 'assets/crops/chickpea.svg',
+
+      plantingMethods: [
+        {
+          value: 'line-sown',
+          label: 'Line Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'International Crops Research Institute for the Semi-Arid Tropics',
+
+        office:
+          'ICRISAT',
+
+        title:
+          'Chickpea Seed Production Manual',
+
+        url:
+          'https://oar.icrisat.org/10276/?utm_source=ICRISAT+Website&utm_campaign=3e7f1c0d4b-EMAIL_CAMPAIGN_2023_09_14_02_00_COPY_01&utm_medium=email&utm_term=0_9f6e2a5f8b-3e7f1c0d4b-199187949'
+      },
+
+      minTemp: 7,
+      maxTemp: 35,
+
+      idealTempRange:
+        '15–29°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 600–1000 mm; the FAO ECOCROP absolute range is about 300–1800 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–8.5; absolute range 4.7–9.5.',
+
+      soilNote:
+        'Chickpea performs best in well-drained soils. FAO ECOCROP lists heavy- and medium-textured soils within its optimal range.',
+
+      plantingNote:
+        'Chickpea is established from seed. ICRISAT guidance for seed production recommends line sowing and placing seed deeply enough to maintain good contact with moist soil.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cicer arietinum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2479&utm_source'
+      }
+    },
    
 
 ];
