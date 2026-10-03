@@ -6460,6 +6460,32 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    'Green Pea': {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 70,
+      basis: 'after planting',
+      derived: false,
+
+      note:
+        'Fresh green peas commonly take about 60–70 days from planting until harvest, depending on the variety or type grown.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'Harvest and Storage — Legumes',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/vegetableguide/legumes/harvest'
+          ].join('')
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

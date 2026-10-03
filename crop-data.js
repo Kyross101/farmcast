@@ -6253,6 +6253,9 @@ window.FARMCAST_CROPS = [
       plantingNote:
         'Black gram is established from seed. TNAU guidance uses dibbling for irrigated and rainfed crops, while broadcasting is used in some rice-fallow and relay-cropping systems.',
 
+      harvestNote:
+        'Harvest when about 80% of the pods have matured or when the crop reaches physiological maturity, indicated by grain color changing from green to black, yellowing leaves, and leaf shedding.',
+
       source: {
         agency:
           'Food and Agriculture Organization of the United Nations',
@@ -6267,6 +6270,72 @@ window.FARMCAST_CROPS = [
           [
             'https://',
             'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2149'
+          ].join('')
+      }
+    },
+
+    {
+      name: 'Green Pea',
+      scientificName: 'Pisum sativum L.',
+      category: 'legume',
+      icon: 'assets/crops/green-pea.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Peas in Home Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/vegetables/growing-peas'
+          ].join('')
+      },
+
+      minTemp: 4,
+      maxTemp: 30,
+
+      idealTempRange:
+        '10–24°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 800–1200 mm; the FAO ECOCROP absolute range is about 350–2500 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.0; absolute range 4.5–8.3.',
+
+      soilNote:
+        'FAO ECOCROP lists heavy-, medium-, and light-textured soils as suitable for peas and identifies well-drained conditions as appropriate.',
+
+      plantingNote:
+        'Green peas are established directly from seed. Seeds may be placed evenly in shallow trenches or suitable prepared seedbeds and covered with soil.',
+
+      harvestNote:
+        'Fresh green peas commonly reach harvest about 60–70 days after planting, depending on the variety or type grown.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Pisum sativum — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1721'
           ].join('')
       }
     },
