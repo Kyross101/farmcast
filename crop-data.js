@@ -8358,6 +8358,72 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Sour Cherry',
+      scientificName: 'Prunus cerasus L.',
+      category: 'fruit',
+      icon: 'assets/crops/sour-cherry.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Cherries in the Garden and the Kitchen',
+
+        url:
+          [
+            'https://',
+            'extension.psu.edu/cherries-in-the-garden-and-the-kitchen'
+          ].join('')
+      },
+
+      minTemp: 4,
+      maxTemp: 30,
+
+      idealTempRange:
+        '15–25°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 800–1600 mm; the FAO ECOCROP absolute range is about 500–2700 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.5; absolute range 4.5–7.5.',
+
+      soilNote:
+        'Sour cherry performs best in deep, well-drained soil. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Named sour cherry cultivars are commonly supplied as grafted trees on selected rootstocks. Penn State Extension notes that cherry cultivars are grafted onto rootstocks that influence characteristics such as mature tree size.',
+
+      harvestNote:
+        'Sour cherry is a perennial deciduous fruit tree and harvest timing varies with cultivar, location, and season. Fruit should be harvested according to actual maturity rather than a fixed number of days. Mature cherries should show good, uniform cultivar-appropriate color while remaining firm and sound.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Prunus cerasus — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=8970'
+          ].join('')
+      }
+    },
    
 
 ];
