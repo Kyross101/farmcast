@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Buckwheat</title>
+
+  <desc id="desc">
+    A buckwheat plant with reddish stems,
+    heart-shaped green leaves,
+    clusters of small white flowers,
+    and dark triangular seeds.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 115
+       C63 94 63 76 62 58
+       C61 42 59 27 57 15" fill="none" stroke="#8a5b55" stroke-width="5.5" stroke-linecap="round">
+  </path>
+
+  <!-- Side stems -->
+  <path d="M62 51
+       C50 45 41 36 34 27" fill="none" stroke="#8a5b55" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <path d="M64 58
+       C77 51 87 42 95 32" fill="none" stroke="#8a5b55" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <path d="M62 74
+       C50 69 41 62 34 54" fill="none" stroke="#8a5b55" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <path d="M65 80
+       C77 75 87 68 96 60" fill="none" stroke="#8a5b55" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Heart-shaped leaves -->
+  <path d="M34 28
+       C26 20 17 25 19 34
+       C21 43 31 49 40 52
+       C47 43 50 33 45 27
+       C41 22 36 24 34 28Z" fill="#6fa55d" stroke="#4d7b45" stroke-width="1.8">
+  </path>
+
+  <path d="M94 33
+       C102 24 112 29 109 38
+       C106 47 97 53 87 56
+       C80 47 78 37 83 31
+       C87 26 92 29 94 33Z" fill="#72a860" stroke="#4d7b45" stroke-width="1.8">
+  </path>
+
+  <path d="M35 55
+       C27 48 19 53 21 61
+       C23 70 32 75 41 78
+       C48 70 50 61 45 55
+       C42 51 37 52 35 55Z" fill="#78ad65" stroke="#4d7b45" stroke-width="1.8">
+  </path>
+
+  <path d="M95 61
+       C103 53 111 58 109 66
+       C107 75 98 80 89 83
+       C82 75 80 66 85 60
+       C88 56 93 58 95 61Z" fill="#78ad65" stroke="#4d7b45" stroke-width="1.8">
+  </path>
+
+  <!-- Leaf veins -->
+  <path d="M34 31 L39 47
+       M94 36 L89 51
+       M35 58 L40 74
+       M95 64 L90 79" fill="none" stroke="#9ac184" stroke-width="1.5" stroke-linecap="round">
+  </path>
+
+  <!-- Flower branches -->
+  <path d="M57 17
+       L49 9
+
+       M58 17
+       L58 6
+
+       M59 18
+       L68 9" fill="none" stroke="#7d6657" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- White/pink flower clusters -->
+  <g>
+    <circle cx="46" cy="8" r="3.5" fill="#f1e7e8">
+    </circle>
+
+    <circle cx="52" cy="6" r="3.5" fill="#faf6f2">
+    </circle>
+
+    <circle cx="57" cy="4" r="3.5" fill="#eee0e4">
+    </circle>
+
+    <circle cx="63" cy="6" r="3.5" fill="#faf5f3">
+    </circle>
+
+    <circle cx="69" cy="8" r="3.5" fill="#eadbdf">
+    </circle>
+
+    <circle cx="50" cy="12" r="3" fill="#f8f2ef">
+    </circle>
+
+    <circle cx="64" cy="12" r="3" fill="#f4e8e9">
+    </circle>
+  </g>
+
+  <!-- Buckwheat seeds -->
+  <path d="M47 88
+       L54 99
+       L42 99Z" fill="#66513f" stroke="#46372e" stroke-width="1.5">
+  </path>
+
+  <path d="M78 91
+       L85 102
+       L73 102Z" fill="#705845" stroke="#46372e" stroke-width="1.5">
+  </path>
+
+  <path d="M60 98
+       L67 110
+       L55 109Z" fill="#5f4b3a" stroke="#46372e" stroke-width="1.5">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.3">
+  </ellipse>
+
+</svg>

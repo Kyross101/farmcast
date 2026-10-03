@@ -7360,6 +7360,70 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Buckwheat',
+      scientificName: 'Fagopyrum esculentum Moench',
+      category: 'grain',
+      icon: 'assets/crops/buckwheat.svg',
+
+      plantingMethods: [
+        {
+          value: 'drill-seeded',
+          label: 'Drill Seeded'
+        },
+        {
+          value: 'broadcast-seeded',
+          label: 'Broadcast Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Missouri Extension',
+
+        title:
+          'Growing Buckwheat for Grain or Cover Crop Use',
+
+        url:
+          'https://extension.missouri.edu/publications/g4163'
+      },
+
+      minTemp: 7,
+      maxTemp: 40,
+
+      idealTempRange:
+        '17–27°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 700–1000 mm; the FAO ECOCROP absolute range is about 400–1300 mm.',
+
+      soilPH:
+        'Optimal pH 5.0–6.5; absolute range 4.4–7.5.',
+
+      soilNote:
+        'Buckwheat performs best in well-drained medium- to light-textured soils. FAO ECOCROP lists moderate soil fertility as optimal, and buckwheat generally performs poorly in heavy, wet soils.',
+
+      plantingNote:
+        'Buckwheat may be planted in narrow rows with a grain drill or established by broadcasting seed and incorporating it into the soil. University of Missouri Extension notes that drilling generally uses less seed and produces a more uniform stand than broadcasting.',
+
+      harvestNote:
+        'Common buckwheat is a short-season crop. FAO ECOCROP reports a crop cycle of about 55–85 days, while University of Maine Extension notes that buckwheat commonly takes about 12 weeks to mature. For grain harvest, begin when roughly three-quarters of the seeds are brown and hard, before substantial seed shattering occurs.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Fagopyrum esculentum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2285'
+      }
+    },
    
 
 ];
