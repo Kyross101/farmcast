@@ -6962,6 +6962,78 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2099'
       }
     },
+
+    {
+      name: 'Oregano',
+      scientificName: 'Origanum vulgare L.',
+      category: 'herb',
+      icon: 'assets/crops/oregano.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Herb Garden Plants: Oregano',
+
+        url:
+          'https://extension.psu.edu/herb-garden-plants-oregano'
+      },
+
+      minTemp: 4,
+      maxTemp: 32,
+
+      idealTempRange:
+        '17–28°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 700–1300 mm; the FAO ECOCROP absolute range is about 400–2700 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.0; absolute range 4.5–8.7.',
+
+      soilNote:
+        'Oregano prefers well-drained soil and bright growing conditions. FAO ECOCROP lists light-textured soil as optimal and medium- to light-textured soils within its broader tolerance range.',
+
+      plantingNote:
+        'Oregano may be established from seed, transplants, stem cuttings, or root divisions. Penn State Extension notes that seed may be sown directly outdoors or started under lights for transplanting, while cuttings and root division are also suitable propagation methods.',
+
+      harvestNote:
+        'Harvest oregano stems before the plant reaches full flower for good culinary quality. Illinois Extension recommends removing stem tips while leaving about 4–6 pairs of leaves so the plant can produce side shoots and support repeated harvests.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Origanum vulgare — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2369'
+      }
+    },
    
 
 ];
