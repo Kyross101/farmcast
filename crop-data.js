@@ -6760,6 +6760,67 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Coriander',
+      localName: 'Wansoy',
+      scientificName: 'Coriandrum sativum L.',
+      category: 'herb',
+      icon: 'assets/crops/coriander.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Maryland Extension',
+
+        title:
+          'Care of Herbs and Starting Herbs from Seed',
+
+        url:
+          'https://extension.umd.edu/resource/care-herbs-and-starting-herbs-seed'
+      },
+
+      minTemp: 4,
+      maxTemp: 32,
+
+      idealTempRange:
+        '15–25°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–1400 mm; the FAO ECOCROP absolute range is about 300–2600 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.5; absolute range 4.0–8.0.',
+
+      soilNote:
+        'Coriander performs best in well-drained soil. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils are within its broader tolerance range.',
+
+      plantingNote:
+        'Coriander is best established by direct seeding. University of Maryland Extension recommends sowing coriander or cilantro directly in the garden because the crop does not transplant especially well.',
+
+      harvestNote:
+        'For fresh cilantro leaves, harvest when plants are about 4–6 inches tall. For coriander seed, allow plants to flower and form seed, then harvest when the plants and seed heads begin turning brown. FAO ECOCROP notes that leaves may be harvested around 35 days from sowing, while mature seed commonly requires about 80–140 days.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Coriandrum sativum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=784'
+      }
+    },
    
 
 ];

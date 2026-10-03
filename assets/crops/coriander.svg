@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Coriander</title>
+
+  <desc id="desc">
+    A coriander plant with delicate divided green leaves,
+    slender stems, small white flowers, and round seeds.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 116
+       C63 95 64 75 64 56
+       C64 39 63 25 62 15" fill="none" stroke="#5c8c4f" stroke-width="5" stroke-linecap="round">
+  </path>
+
+  <!-- Branches -->
+  <path d="M63 49
+       C51 42 42 34 35 26" fill="none" stroke="#5c8c4f" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <path d="M65 54
+       C77 47 87 38 95 29" fill="none" stroke="#5c8c4f" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <path d="M63 69
+       C50 64 41 58 34 50" fill="none" stroke="#5c8c4f" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <path d="M65 75
+       C78 69 88 63 96 56" fill="none" stroke="#5c8c4f" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Divided leaves -->
+  <g fill="#6fa95e" stroke="#4d8145" stroke-width="1.2">
+
+    <ellipse cx="34" cy="29" rx="8" ry="4" transform="rotate(35 34 29)">
+    </ellipse>
+
+    <ellipse cx="42" cy="35" rx="7" ry="3.5" transform="rotate(15 42 35)">
+    </ellipse>
+
+    <ellipse cx="38" cy="42" rx="7" ry="3.5" transform="rotate(-25 38 42)">
+    </ellipse>
+
+    <ellipse cx="94" cy="32" rx="8" ry="4" transform="rotate(-35 94 32)">
+    </ellipse>
+
+    <ellipse cx="86" cy="39" rx="7" ry="3.5" transform="rotate(-15 86 39)">
+    </ellipse>
+
+    <ellipse cx="91" cy="46" rx="7" ry="3.5" transform="rotate(25 91 46)">
+    </ellipse>
+
+    <ellipse cx="35" cy="54" rx="8" ry="4" transform="rotate(30 35 54)">
+    </ellipse>
+
+    <ellipse cx="44" cy="61" rx="7" ry="3.5" transform="rotate(10 44 61)">
+    </ellipse>
+
+    <ellipse cx="39" cy="67" rx="7" ry="3.5" transform="rotate(-25 39 67)">
+    </ellipse>
+
+    <ellipse cx="94" cy="59" rx="8" ry="4" transform="rotate(-30 94 59)">
+    </ellipse>
+
+    <ellipse cx="85" cy="66" rx="7" ry="3.5" transform="rotate(-10 85 66)">
+    </ellipse>
+
+  </g>
+
+  <!-- Small flower cluster -->
+  <g transform="translate(99 24)">
+
+    <circle cx="-6" cy="0" r="3" fill="#f4f1ea">
+    </circle>
+
+    <circle cx="6" cy="0" r="3" fill="#f4f1ea">
+    </circle>
+
+    <circle cx="0" cy="-5" r="3" fill="#f7f4ed">
+    </circle>
+
+    <circle cx="0" cy="5" r="3" fill="#f7f4ed">
+    </circle>
+
+    <circle cx="0" cy="0" r="2" fill="#d2b95a">
+    </circle>
+
+  </g>
+
+  <!-- Coriander seeds -->
+  <circle cx="27" cy="77" r="5" fill="#b99b67" stroke="#826d49" stroke-width="1.5">
+  </circle>
+
+  <path d="M24 77 L30 77
+       M27 74 L27 80" stroke="#927851" stroke-width="1">
+  </path>
+
+  <circle cx="101" cy="76" r="5" fill="#b99b67" stroke="#826d49" stroke-width="1.5">
+  </circle>
+
+  <path d="M98 76 L104 76
+       M101 73 L101 79" stroke="#927851" stroke-width="1">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.35">
+  </ellipse>
+
+</svg>
