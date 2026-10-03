@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Fig</title>
+
+  <desc id="desc">
+    A common fig branch with broad lobed green leaves
+    and ripe purple-green fig fruits.
+  </desc>
+
+  <!-- Main branch -->
+  <path d="M27 114
+       C39 95 50 77 62 59
+       C73 42 83 27 96 14" fill="none" stroke="#75593f" stroke-width="6" stroke-linecap="round"></path>
+
+  <!-- Side branches -->
+  <path d="M54 72
+       C44 60 36 49 30 37" fill="none" stroke="#557c47" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <path d="M67 55
+       C78 48 88 39 97 29" fill="none" stroke="#557c47" stroke-width="3.5" stroke-linecap="round"></path>
+
+  <!-- Fig leaves -->
+  <path d="M29 36
+       C23 26 15 28 16 38
+       C10 39 12 48 21 50
+       C18 58 27 62 33 55
+       C39 63 49 57 45 49
+       C53 45 48 36 40 38
+       C40 29 33 28 29 36Z" fill="#659451" stroke="#426e3d" stroke-width="1.8"></path>
+
+  <path d="M94 31
+       C99 21 108 24 108 34
+       C115 34 115 43 107 47
+       C111 54 102 59 96 53
+       C90 61 80 56 84 48
+       C76 44 81 35 88 37
+       C87 29 91 27 94 31Z" fill="#61904e" stroke="#426e3d" stroke-width="1.8"></path>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#9ab887" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="M31 38 L31 55"></path>
+    <path d="M31 43 L20 48"></path>
+    <path d="M32 43 L43 48"></path>
+
+    <path d="M95 33 L96 52"></path>
+    <path d="M95 40 L85 46"></path>
+    <path d="M96 40 L106 45"></path>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <path d="M65 60
+       C74 65 81 72 86 79
+
+       M71 61
+       C83 65 92 71 99 79
+
+       M65 67
+       C67 77 68 86 69 95" fill="none" stroke="#557644" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <!-- Fig fruit 1 -->
+  <path d="M86 76
+       C77 79 75 91 79 100
+       C83 109 93 110 98 101
+       C103 92 98 80 90 77
+       C89 76 87 76 86 76Z" fill="#74506f" stroke="#4e384d" stroke-width="2"></path>
+
+  <!-- Fig fruit 2 -->
+  <path d="M101 77
+       C93 80 92 90 95 98
+       C99 106 108 107 113 99
+       C118 91 113 81 105 78
+       C104 77 102 77 101 77Z" fill="#7c596f" stroke="#4e384d" stroke-width="2"></path>
+
+  <!-- Fig fruit 3 -->
+  <path d="M69 93
+       C61 96 60 106 63 113
+       C66 120 75 121 79 114
+       C83 106 79 97 72 94
+       C71 93 70 93 69 93Z" fill="#738553" stroke="#52643d" stroke-width="2"></path>
+
+  <!-- Fruit highlights -->
+  <path d="M84 84 C82 90 84 97 88 102" fill="none" stroke="#a67c98" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M99 84 C98 90 100 96 104 101" fill="none" stroke="#aa8299" stroke-width="2" stroke-linecap="round"></path>
+
+  <path d="M67 100 C66 106 69 111 72 115" fill="none" stroke="#a4aa73" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Ground -->
+  <ellipse cx="48" cy="118" rx="28" ry="5" fill="#81664a" opacity="0.3"></ellipse>
+
+</svg>

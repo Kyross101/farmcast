@@ -7886,6 +7886,74 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1491'
       }
     },
+
+    {
+      name: 'Fig',
+      scientificName: 'Ficus carica L.',
+      category: 'fruit',
+      icon: 'assets/crops/fig.svg',
+
+      plantingMethods: [
+        {
+          value: 'hardwood-cuttings',
+          label: 'Hardwood Cuttings'
+        },
+        {
+          value: 'rooted-side-shoots',
+          label: 'Rooted Side Shoots'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Georgia Cooperative Extension',
+
+        title:
+          'Home Garden Figs',
+
+        url:
+          'https://extension.uga.edu/publications/detail.html?number=C945'
+      },
+
+      minTemp: 4,
+      maxTemp: 38,
+
+      idealTempRange:
+        '16–26°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 700–1500 mm; the FAO ECOCROP absolute range is about 300–2700 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 4.3–8.6.',
+
+      soilNote:
+        'Common fig performs best in deep, well-drained soil. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Common fig may be propagated using hardwood stem cuttings, rooted side shoots, or air layering. University of Georgia Cooperative Extension describes stem cuttings as the simplest and easiest propagation method.',
+
+      harvestNote:
+        'Common fig is a perennial fruit crop. FAO ECOCROP reports a fruiting cycle of about 120–150 days, but this should not be treated as a universal days-after-planting estimate. Harvest fruit when it has reached cultivar-appropriate color, becomes soft, begins to droop on its stem, and separates easily from the branch. Milky latex from the fruit stem can indicate that the fig is not yet fully ripe.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Ficus carica — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1071'
+      }
+    },
    
 
 ];
