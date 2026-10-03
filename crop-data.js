@@ -5773,6 +5773,67 @@ window.FARMCAST_CROPS = [
           'https://ati2.da.gov.ph/ati-car/content/sites/default/files/2023-01/salt_4_brochure.pdf'
       }
     },
+
+    {
+      name: 'Wheat',
+      localName: 'Trigo',
+      scientificName: 'Triticum aestivum L.',
+      category: 'grain',
+      icon: 'assets/crops/wheat.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'International Maize and Wheat Improvement Center',
+
+        office:
+          'CIMMYT',
+
+        title:
+          'Direct Seeding with Two-Wheel Tractors Increases Wheat Yield and Saves Time in the Ethiopian Highlands',
+
+        url:
+          'https://www.cimmyt.org/news/direct-seeding-with-two-wheel-tractors-increases-wheat-yield-and-saves-time-in-the-ethiopian-highlands/'
+      },
+
+      minTemp: 5,
+      maxTemp: 27,
+
+      idealTempRange:
+        '15–23°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 750–900 mm; the FAO ECOCROP absolute range is about 300–1600 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 5.5–8.5.',
+
+      soilNote:
+        'Wheat performs best in well-drained soils. FAO ECOCROP lists medium-textured and organic soils within its optimal soil characteristics.',
+
+      plantingNote:
+        'Wheat is established from seed. Direct seeding can reduce land-preparation requirements and allow timely crop establishment under suitable production systems.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Triticum aestivum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2114'
+      }
+    },
    
 
 ];
