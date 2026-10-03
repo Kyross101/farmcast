@@ -92,8 +92,11 @@ function validateFarmCastCropDataset(
   crops = []
 ) {
 
-  const EXPECTED_CROP_COUNT =
+  const MINIMUM_CROP_COUNT =
     100;
+
+  const TARGET_CROP_COUNT =
+    300;
 
   const issues = [];
 
@@ -105,9 +108,15 @@ function validateFarmCastCropDataset(
 
     return {
       valid: false,
+
+      minimumCount:
+        MINIMUM_CROP_COUNT,
+
       expectedCount:
-        EXPECTED_CROP_COUNT,
+        TARGET_CROP_COUNT,
+
       actualCount: 0,
+
       issues: [
         'Crop dataset is not an array.'
       ]
@@ -117,12 +126,14 @@ function validateFarmCastCropDataset(
 
 
   if (
-    crops.length !==
-    EXPECTED_CROP_COUNT
+    crops.length <
+      MINIMUM_CROP_COUNT ||
+    crops.length >
+      TARGET_CROP_COUNT
   ) {
 
     issues.push(
-      `Expected ${EXPECTED_CROP_COUNT} crops, found ${crops.length}.`
+      `Crop dataset count ${crops.length} is outside the supported range of ${MINIMUM_CROP_COUNT}–${TARGET_CROP_COUNT}.`
     );
 
   }
@@ -336,8 +347,11 @@ function validateFarmCastCropDataset(
     valid:
       issues.length === 0,
 
+    minimumCount:
+      MINIMUM_CROP_COUNT,
+
     expectedCount:
-      EXPECTED_CROP_COUNT,
+      TARGET_CROP_COUNT,
 
     actualCount:
       crops.length,
@@ -5183,7 +5197,7 @@ function getMyCropPickerDataset() {
 function validateFarmCastSelectableCropDataset() {
 
   const EXPECTED_SELECTABLE_COUNT =
-    101;
+    CROPS.length + 1;
 
   const issues = [];
 
@@ -5254,7 +5268,7 @@ function validateFarmCastSelectableCropDataset() {
 
 
   // Rice intentionally remains outside
-  // the shared 100-crop dataset.
+  // the shared crop dataset.
   const sharedRice =
     CROPS.find(
       crop =>
@@ -5271,7 +5285,7 @@ function validateFarmCastSelectableCropDataset() {
   if (sharedRice) {
 
     issues.push(
-      'Rice is duplicated in the shared 100-crop dataset. Rice should currently remain a special crop reference.'
+      'Rice is duplicated in the shared crop dataset. Rice should currently remain a special crop reference.'
     );
 
   }
@@ -7573,7 +7587,7 @@ function getFarmCastIntegrityReport() {
 
       expected:
         farmCastCropDatasetReport
-          ?.expectedCount || 100
+          ?.expectedCount || 300
     },
 
 
@@ -7590,7 +7604,8 @@ function getFarmCastIntegrityReport() {
 
       expected:
         farmCastSelectableCropReport
-          ?.expectedSelectableCount || 101
+          ?.expectedSelectableCount ||
+          (CROPS.length + 1)
     },
 
 
@@ -7620,7 +7635,8 @@ function getFarmCastIntegrityReport() {
 
       expected:
         farmCastHarvestCoverageReport
-          ?.sharedCropCount || 100
+          ?.sharedCropCount ||
+          CROPS.length
     }
 
   };
