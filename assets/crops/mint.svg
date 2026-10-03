@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Mint</title>
+
+  <desc id="desc">
+    A peppermint plant with upright green stems,
+    opposite serrated leaves, and small purple flowers.
+  </desc>
+
+  <!-- Main stem -->
+  <path d="M64 116
+       C63 96 64 76 64 57
+       C64 40 64 27 63 15" fill="none" stroke="#54884b" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Side branches -->
+  <path d="M63 50
+       C50 45 40 37 32 29" fill="none" stroke="#54884b" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <path d="M65 57
+       C78 51 88 43 97 35" fill="none" stroke="#54884b" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <path d="M63 72
+       C50 68 40 61 32 54" fill="none" stroke="#54884b" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <path d="M65 79
+       C78 74 88 68 97 60" fill="none" stroke="#54884b" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <!-- Left upper leaf -->
+  <path d="M33 30
+       C21 22 16 29 19 38
+       L16 42
+       L21 43
+       C22 52 33 53 41 47
+       C48 41 46 34 39 31
+       L38 26
+       L34 29Z" fill="#67a05a" stroke="#467940" stroke-width="2">
+  </path>
+
+  <!-- Right upper leaf -->
+  <path d="M96 36
+       C107 27 113 34 110 43
+       L113 47
+       L108 48
+       C107 57 96 58 88 52
+       C81 46 83 39 90 36
+       L90 31
+       L94 35Z" fill="#6aa45c" stroke="#467940" stroke-width="2">
+  </path>
+
+  <!-- Left lower leaf -->
+  <path d="M32 55
+       C20 48 15 56 19 65
+       L16 69
+       L21 70
+       C23 79 34 80 42 73
+       C48 67 45 60 39 57
+       L38 52
+       L34 55Z" fill="#72aa62" stroke="#467940" stroke-width="2">
+  </path>
+
+  <!-- Right lower leaf -->
+  <path d="M96 61
+       C108 53 113 61 109 70
+       L112 74
+       L107 75
+       C105 84 94 85 87 78
+       C81 72 84 65 90 62
+       L91 57
+       L94 60Z" fill="#72aa62" stroke="#467940" stroke-width="2">
+  </path>
+
+  <!-- Center leaves -->
+  <path d="M63 39
+       C54 31 53 23 59 19
+       C65 15 72 21 70 29
+       C69 34 67 37 63 39Z" fill="#78ae67" stroke="#467940" stroke-width="2">
+  </path>
+
+  <path d="M64 65
+       C55 58 54 50 60 46
+       C66 42 73 48 71 56
+       C70 61 68 64 64 65Z" fill="#75aa63" stroke="#467940" stroke-width="2">
+  </path>
+
+  <!-- Leaf veins -->
+  <path d="M34 32 L43 44
+       M94 38 L86 49
+       M33 58 L42 70
+       M95 63 L87 75" fill="none" stroke="#8abc78" stroke-width="1.8" stroke-linecap="round">
+  </path>
+
+  <!-- Purple flower spike -->
+  <path d="M63 16 L63 7" stroke="#56864c" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <circle cx="59" cy="9" r="3" fill="#a583b6">
+  </circle>
+
+  <circle cx="66" cy="8" r="3" fill="#9875aa">
+  </circle>
+
+  <circle cx="61" cy="4" r="3" fill="#ad8abd">
+  </circle>
+
+  <circle cx="68" cy="3" r="2.5" fill="#9b79ad">
+  </circle>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="117" rx="30" ry="5" fill="#81664a" opacity="0.35">
+  </ellipse>
+
+</svg>

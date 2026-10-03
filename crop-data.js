@@ -6886,6 +6886,82 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1661'
       }
     },
+
+    {
+      name: 'Mint',
+      localName: 'Peppermint',
+      scientificName: 'Mentha piperita L.',
+      category: 'herb',
+      icon: 'assets/crops/mint.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'rootstock-divisions',
+          label: 'Rootstock Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Mint in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/Mint-in-the-garden'
+      },
+
+      minTemp: 4,
+      maxTemp: 35,
+
+      idealTempRange:
+        '15–25°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1000–2200 mm; the FAO ECOCROP absolute range is about 700–4000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 4.5–8.3.',
+
+      soilNote:
+        'Peppermint prefers moist, fertile soil. FAO ECOCROP lists medium-textured and organic soils as optimal, while heavy, medium, and light soils are within its broader tolerance range.',
+
+      plantingNote:
+        'Mint may be established from seed, transplants, stem cuttings, or divisions. Utah State University Extension notes that seed-grown mint may not remain true to type because mints readily hybridize, so established plants, cuttings, or divisions are preferred when preserving a specific cultivar.',
+
+      harvestNote:
+        'Fresh mint leaves and tender stems may be harvested throughout the growing season once plants are about 3–4 inches tall. For best flavor, harvest young growth and cut plants before flowering when possible. Established plants can provide repeated harvests during the season.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Mentha piperita — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2099'
+      }
+    },
    
 
 ];

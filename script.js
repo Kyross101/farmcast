@@ -6631,6 +6631,32 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    Mint: {
+    'rootstock-divisions': {
+      minDays: 40,
+      maxDays: 55,
+      basis: 'after planting',
+      derived: false,
+
+      note:
+        'FAO ECOCROP states that the first peppermint shoots may be harvested about 40–55 days after planting divided rootstocks. Subsequent harvests depend on regrowth and field condition.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Mentha piperita — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2099'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
