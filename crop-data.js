@@ -8222,6 +8222,72 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Apricot',
+      scientificName: 'Prunus armeniaca L.',
+      category: 'fruit',
+      icon: 'assets/crops/apricot.svg',
+
+      plantingMethods: [
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Growing Fruit Plants from Seed',
+
+        url:
+          [
+            'https://',
+            'extension.psu.edu/growing-fruit-plants-from-seed'
+          ].join('')
+      },
+
+      minTemp: 7,
+      maxTemp: 40,
+
+      idealTempRange:
+        '14–35°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1300 mm; the FAO ECOCROP absolute range is about 800–1470 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.0; absolute range 5.0–8.0.',
+
+      soilNote:
+        'Apricot performs best in deep, well-drained soil. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Named apricot cultivars are normally propagated vegetatively rather than relied upon to come true from seed. Penn State Extension notes that apricot seedlings may be used as rootstocks and budded during their first summer.',
+
+      harvestNote:
+        'Apricot is a perennial deciduous fruit tree and harvest timing varies by cultivar and growing conditions. Fruit should be harvested using actual maturity indicators: ripe apricots begin to soften and their skin changes from green toward yellow, orange, red, or combinations of these colors depending on the cultivar.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Prunus armeniaca — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2398'
+          ].join('')
+      }
+    },
    
 
 ];
