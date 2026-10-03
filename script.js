@@ -6605,6 +6605,32 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    Parsley: {
+    transplanted: {
+      minDays: 70,
+      maxDays: 100,
+      basis: 'after transplanting',
+      derived: false,
+
+      note:
+        'FAO ECOCROP notes that parsley leaves may begin to be harvested about 70–100 days after transplanting. Continue harvesting usable outer stems while allowing younger inner growth to develop.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Petroselinum crispum — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=1661'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

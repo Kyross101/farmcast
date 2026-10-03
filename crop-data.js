@@ -6821,6 +6821,71 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=784'
       }
     },
+
+    {
+      name: 'Parsley',
+      scientificName:
+        'Petroselinum crispum (Mill.) Nym. ex A.W. Hill',
+      category: 'herb',
+      icon: 'assets/crops/parsley.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Illinois Extension',
+
+        title:
+          'Parsley',
+
+        url:
+          'https://extension.illinois.edu/herbs/parsley'
+      },
+
+      minTemp: 7,
+      maxTemp: 28,
+
+      idealTempRange:
+        '11–20°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1500 mm; the FAO ECOCROP absolute range is about 300–2800 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.5; absolute range 5.3–8.3.',
+
+      soilNote:
+        'Parsley prefers moderately rich, moist, well-drained soil. FAO ECOCROP lists medium-textured and organic soils as optimal, while heavy, medium, and light soils are within its broader tolerance range.',
+
+      plantingNote:
+        'Parsley may be established by direct seeding or transplanting. Direct-seeded parsley can germinate slowly, while transplanted seedlings should be handled carefully to avoid damaging the taproot.',
+
+      harvestNote:
+        'Harvest parsley once the plant is large enough to provide usable foliage. Cut mature outer stems near the base while leaving younger inner growth to continue developing. FAO ECOCROP notes that transplanted parsley may begin leaf harvest about 70–100 days after transplanting.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Petroselinum crispum — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1661'
+      }
+    },
    
 
 ];
