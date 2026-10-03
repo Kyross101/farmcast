@@ -7826,6 +7826,66 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=5349'
       }
     },
+
+    {
+      name: 'Mulberry',
+      scientificName: 'Morus alba L.',
+      category: 'fruit',
+      icon: 'assets/crops/mulberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'hardwood-cuttings',
+          label: 'Hardwood Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Georgia Cooperative Extension',
+
+        title:
+          'Minor Fruits and Nuts in Georgia',
+
+        url:
+          'https://extension.uga.edu/publications/detail.html?number=b992'
+      },
+
+      minTemp: 13,
+      maxTemp: 45,
+
+      idealTempRange:
+        '20–28°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 700–2500 mm; the FAO ECOCROP absolute range is about 300–5100 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.5; absolute range 4.3–8.3.',
+
+      soilNote:
+        'White mulberry performs best in deep, fertile, well-drained soil. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Mulberry may be propagated using hardwood cuttings. University of Georgia Cooperative Extension describes mulberries as easily propagated from hardwood cuttings taken during the dormant season.',
+
+      harvestNote:
+        'Mulberry is a perennial fruit tree that may begin bearing within the first or second year under suitable conditions. Fruit color varies strongly by cultivar and may mature white, pinkish, red, purple, or nearly black, so harvest should be based on full cultivar-specific ripeness rather than a universal fruit color or fixed planting-date estimate.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Morus alba — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1491'
+      }
+    },
    
 
 ];
