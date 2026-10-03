@@ -5894,6 +5894,63 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1232'
       }
     },
+
+   {
+      name: 'Oats',
+      scientificName: 'Avena sativa L.',
+      category: 'grain',
+      icon: 'assets/crops/oats.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Organic Oat Production',
+
+        url:
+          'https://extension.umn.edu/agriculture/crop-production/small-grains/organic-oat-production'
+      },
+
+      minTemp: 5,
+      maxTemp: 30,
+
+      idealTempRange:
+        '16–20°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 600–1000 mm; the FAO ECOCROP absolute range is about 250–1500 mm.',
+
+      soilPH:
+        'Optimal pH 5.0–6.0; absolute range 4.5–7.5.',
+
+      soilNote:
+        'FAO ECOCROP lists heavy, medium, and light soil textures within the suitable range for oats, with well-drained soil conditions preferred.',
+
+      plantingNote:
+        'Oats are established from seed. Use healthy seed of an appropriate variety and follow locally suitable seeding dates and rates for crop establishment.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Avena sativa — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=481'
+      }
+    },
    
 
 ];
