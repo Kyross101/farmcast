@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Lychee</title>
+
+  <desc id="desc">
+    A lychee branch with glossy compound green leaves
+    and a cluster of ripe red lychee fruits.
+  </desc>
+
+  <!-- Woody branch -->
+  <path d="M28 113
+       C40 94 51 76 63 57
+       C73 41 83 27 96 14" fill="none" stroke="#73583c" stroke-width="6" stroke-linecap="round">
+  </path>
+
+  <!-- Leaf rachis -->
+  <path d="M54 72
+       C45 59 37 47 31 34" fill="none" stroke="#4e7945" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <path d="M67 52
+       C79 45 88 36 96 26" fill="none" stroke="#4e7945" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Compound leaves -->
+  <g fill="#5e924e" stroke="#426e3c" stroke-width="1.4">
+
+    <ellipse cx="34" cy="34" rx="12" ry="5" transform="rotate(-28 34 34)">
+    </ellipse>
+
+    <ellipse cx="42" cy="45" rx="12" ry="5" transform="rotate(28 42 45)">
+    </ellipse>
+
+    <ellipse cx="46" cy="39" rx="12" ry="5" transform="rotate(-25 46 39)">
+    </ellipse>
+
+    <ellipse cx="53" cy="51" rx="12" ry="5" transform="rotate(25 53 51)">
+    </ellipse>
+
+    <ellipse cx="58" cy="46" rx="12" ry="5" transform="rotate(-22 58 46)">
+    </ellipse>
+
+    <ellipse cx="65" cy="57" rx="12" ry="5" transform="rotate(22 65 57)">
+    </ellipse>
+
+    <ellipse cx="81" cy="43" rx="12" ry="5" transform="rotate(26 81 43)">
+    </ellipse>
+
+    <ellipse cx="90" cy="33" rx="12" ry="5" transform="rotate(-27 90 33)">
+    </ellipse>
+
+  </g>
+
+  <!-- Fruit cluster stems -->
+  <path d="M69 59
+       C77 65 83 71 88 78
+
+       M75 64
+       C84 66 92 70 99 76
+
+       M72 65
+       C74 74 76 82 77 91" fill="none" stroke="#5b7e43" stroke-width="2.5" stroke-linecap="round">
+  </path>
+
+  <!-- Lychee fruits -->
+  <g stroke="#9b3f44" stroke-width="2">
+
+    <circle cx="88" cy="82" r="12" fill="#d6585e">
+    </circle>
+
+    <circle cx="101" cy="81" r="11" fill="#ce4d55">
+    </circle>
+
+    <circle cx="78" cy="95" r="11" fill="#d96062">
+    </circle>
+
+    <circle cx="94" cy="99" r="12" fill="#c94b52">
+    </circle>
+
+    <circle cx="108" cy="96" r="10" fill="#d55a5e">
+    </circle>
+
+  </g>
+
+  <!-- Lychee skin texture -->
+  <g fill="#e7867e" opacity="0.8">
+
+    <circle cx="84" cy="78" r="1.5"></circle>
+    <circle cx="91" cy="85" r="1.4"></circle>
+    <circle cx="99" cy="77" r="1.4"></circle>
+    <circle cx="104" cy="84" r="1.3"></circle>
+
+    <circle cx="74" cy="91" r="1.4"></circle>
+    <circle cx="80" cy="99" r="1.5"></circle>
+
+    <circle cx="90" cy="95" r="1.4"></circle>
+    <circle cx="97" cy="103" r="1.4"></circle>
+
+    <circle cx="105" cy="93" r="1.3"></circle>
+    <circle cx="111" cy="98" r="1.3"></circle>
+
+  </g>
+
+  <!-- Ground -->
+  <ellipse cx="49" cy="117" rx="28" ry="5" fill="#81664a" opacity="0.3">
+  </ellipse>
+
+</svg>

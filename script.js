@@ -6899,7 +6899,31 @@ const CROP_STAGE_HARVEST_WINDOWS = {
       title: 'Gabay sa Produksyon ng Kamatis',
       url: 'https://ati2.da.gov.ph/ati-4b/content/sites/default/files/2024-06/Gabay%20sa%20Produksyon%20ng%20Kamatis.pdf'
     }
-  }
+  },
+
+  Lychee: {
+    stage: 'flowering',
+    minDays: 98,
+    maxDays: 106,
+    basis:
+      'after farmer-observed flowering',
+
+    source: {
+      agency:
+        'Food and Agriculture Organization of the United Nations',
+
+      office:
+        'FAO ECOCROP',
+
+      title:
+        'Litchi chinensis — ECOCROP',
+
+      url:
+        'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=1357'
+    }
+  },
+
+
 };
 
 function updatePlantingMethodOptions() {

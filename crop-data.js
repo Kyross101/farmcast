@@ -7686,6 +7686,74 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=7172'
       }
     },
+
+    {
+      name: 'Lychee',
+      scientificName: 'Litchi chinensis Sonn.',
+      category: 'fruit',
+      icon: 'assets/crops/lychee.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'marcotted-plants',
+          label: 'Marcotted / Air-Layered Plants'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        title:
+          'Lychee Production in the Philippines',
+
+        url:
+          'https://www.fao.org/4/ac684e/ac684e0b.htm'
+      },
+
+      minTemp: 15,
+      maxTemp: 40,
+
+      idealTempRange:
+        '20–35°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1000–1700 mm; the FAO ECOCROP absolute range is about 700–2800 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 5.0–8.5.',
+
+      soilNote:
+        'Lychee performs best in deep soil. FAO ECOCROP lists medium-textured and organic soils as optimal and identifies well-drained conditions with periodic dry spells as suitable for production.',
+
+      plantingNote:
+        'Lychee may be raised from seed, but seedlings take much longer to bear and do not reliably reproduce the parent variety. For named fruiting varieties, Philippine production commonly uses marcotting or air-layering and grafting.',
+
+      harvestNote:
+        'Lychee is a perennial fruit tree. FAO ECOCROP reports about 98–106 days from bloom to harvest. Fruit should be harvested at full maturity; red skin color together with appropriate fruit size is a useful maturity indicator, and lychee does not continue ripening after harvest.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Litchi chinensis — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1357'
+      }
+    },
    
 
 ];
