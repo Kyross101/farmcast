@@ -6077,6 +6077,9 @@ window.FARMCAST_CROPS = [
       plantingNote:
         'Foxtail millet may be established by line sowing or broadcasting. ICAR-IIMR guidance prefers line sowing because it can make intercultural weed management easier.',
 
+      harvestNote:
+        'Foxtail millet is a fast-growing annual that may mature in about 60–70 days or about 90–120 days depending on the variety and growing conditions. Use actual crop maturity as the final harvest guide.',
+
       source: {
         agency:
           'Food and Agriculture Organization of the United Nations',
@@ -6200,6 +6203,9 @@ window.FARMCAST_CROPS = [
 
       plantingNote:
         'Lentil is established from seed. NDSU Extension notes that lentils may be seeded with grain drills in relatively narrow rows, with seed typically placed about 1–1.5 inches deep.',
+
+      harvestNote:
+        'Lentil maturity varies by cultivar and planting season. FAO ECOCROP reports about 70–120 days for early cultivars, 120–130 days for late cultivars, and about 180–240 days for some autumn-sown crops. Use actual crop maturity to guide harvest.',
 
       source: {
         agency:
