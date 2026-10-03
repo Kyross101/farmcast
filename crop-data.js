@@ -8152,6 +8152,76 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Plum',
+      scientificName: 'Prunus domestica',
+      category: 'fruit',
+      icon: 'assets/crops/plum.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Georgia Cooperative Extension',
+
+        title:
+          'Propagating Deciduous Fruit Plants Common to Georgia',
+
+        url:
+          [
+            'https://',
+            'extension.uga.edu/publications/detail.html?number=B818'
+          ].join('')
+      },
+
+      minTemp: 6,
+      maxTemp: 36,
+
+      idealTempRange:
+        '18–33°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1500 mm; the FAO ECOCROP absolute range is about 600–1800 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.1; absolute range 4.5–7.4.',
+
+      soilNote:
+        'Plum performs best in deep, well-drained soil. FAO ECOCROP lists heavy- and medium-textured soils as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Named plum cultivars are commonly propagated vegetatively on suitable rootstocks. University of Georgia Cooperative Extension identifies T-budding and whip grafting as common propagation methods for plums.',
+
+      harvestNote:
+        'Plum is a perennial deciduous fruit tree and harvest timing depends on the cultivar. Fruit should be judged by actual maturity rather than a fixed number of days: ripe plums soften and develop their cultivar-appropriate blue, purple, red, or yellow coloration. Trees may require more than one picking because individual fruits do not necessarily ripen at the same time.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Prunus domestica — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=16203'
+          ].join('')
+      }
+    },
    
 
 ];
