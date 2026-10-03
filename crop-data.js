@@ -7555,6 +7555,70 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=810'
       }
     },
+
+    {
+      name: 'Sage',
+      scientificName: 'Salvia officinalis L.',
+      category: 'herb',
+      icon: 'assets/crops/sage.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Illinois Extension',
+
+        title:
+          'Sage',
+
+        url:
+          'https://extension.illinois.edu/herbs/sage'
+      },
+
+      minTemp: 5,
+      maxTemp: 30,
+
+      idealTempRange:
+        '15–26°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–1000 mm; the FAO ECOCROP absolute range is about 300–1500 mm.',
+
+      soilPH:
+        'Optimal pH 5.0–6.5; absolute range 4.2–8.3.',
+
+      soilNote:
+        'Sage performs best in well-drained soil and bright growing conditions. FAO ECOCROP lists medium-textured soil as optimal and well-drained to relatively dry soil conditions as suitable.',
+
+      plantingNote:
+        'Common sage may be propagated from seed or stem cuttings. University of Illinois Extension notes that cuttings are often preferred because seed-grown plants may take longer to develop into strongly harvestable plants.',
+
+      harvestNote:
+        'Sage leaves may be harvested as needed once the plant has enough healthy foliage. Harvest lightly during the first year so the perennial plant can establish well. FAO ECOCROP notes that sage may receive its first harvest during the fall of the first year and may provide about two to three harvests from an established plant.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Salvia officinalis — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2412'
+      }
+    },
    
 
 ];
