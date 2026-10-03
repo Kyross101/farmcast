@@ -6547,6 +6547,73 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=363'
       }
     },
+
+    {
+      name: 'Swiss Chard',
+      scientificName: 'Beta vulgaris L. var. cicla',
+      category: 'vegetable',
+      icon: 'assets/crops/swiss-chard.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        office:
+          'USU Extension',
+
+        title:
+          'How to Grow Swiss Chard in Your Garden',
+
+        url:
+          'https://extension.usu.edu/yardandgarden/research/swiss-chard-in-the-garden'
+      },
+
+      minTemp: 5,
+      maxTemp: 35,
+
+      idealTempRange:
+        '15–25°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 800 mm; the FAO ECOCROP absolute range is about 500–1000 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.5; absolute range 5.5–8.3.',
+
+      soilNote:
+        'Swiss chard performs best in well-drained soil. FAO ECOCROP lists medium-textured soil as optimal, while heavy, medium, and light soils are within its broader tolerance range.',
+
+      plantingNote:
+        'Swiss chard may be established by direct seeding or transplanting. Utah State University Extension notes that transplants can provide an earlier harvest, while seeded crops may be planted earlier in suitable cool conditions.',
+
+      harvestNote:
+        'Swiss chard is harvested for its leaves. FAO ECOCROP notes that first harvest commonly begins around 50–60 days, while actual timing varies with cultivar and growing conditions. Harvest usable outer leaves while allowing younger inner leaves to continue growing.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Beta vulgaris var. cicla — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2474'
+      }
+    },
    
 
 ];

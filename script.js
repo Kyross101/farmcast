@@ -6582,6 +6582,29 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+    'Swiss Chard': {
+    'direct-seeded': {
+      minDays: 55,
+      maxDays: 70,
+      basis: 'after seeding',
+      derived: false,
+
+      note:
+        'Oregon State University Extension lists approximately 55–70 days to maturity for direct-seeded chard. Begin harvest when leaves reach usable size, while younger inner leaves may remain for continued production.',
+
+      source: {
+        agency:
+          'Oregon State University Extension Service',
+
+        title:
+          'Growing Your Own',
+
+        url:
+          'https://extension.oregonstate.edu/sites/extd8/files/catalog/auto/EM9128.pdf'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

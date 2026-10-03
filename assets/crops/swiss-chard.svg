@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Swiss Chard</title>
+
+  <desc id="desc">
+    A Swiss chard plant with broad green leaves,
+    prominent red stems, and colorful leaf veins.
+  </desc>
+
+  <!-- Main stems -->
+  <path d="M58 111
+       C57 91 55 73 51 54" fill="none" stroke="#b94b5c" stroke-width="7" stroke-linecap="round">
+  </path>
+
+  <path d="M65 111
+       C65 89 65 68 65 45" fill="none" stroke="#d15b63" stroke-width="7" stroke-linecap="round">
+  </path>
+
+  <path d="M72 111
+       C74 91 78 73 83 56" fill="none" stroke="#c84f59" stroke-width="7" stroke-linecap="round">
+  </path>
+
+  <!-- Left leaf -->
+  <path d="M50 58
+       C34 58 22 49 20 35
+       C18 21 29 13 42 18
+       C55 23 61 38 55 53
+       C54 55 52 57 50 58Z" fill="#4f8b4d" stroke="#3e713f" stroke-width="2">
+  </path>
+
+  <!-- Center leaf -->
+  <path d="M65 47
+       C52 39 49 25 55 14
+       C61 3 72 5 78 15
+       C84 26 80 40 68 47
+       C67 48 66 48 65 47Z" fill="#5a9854" stroke="#3e713f" stroke-width="2">
+  </path>
+
+  <!-- Right leaf -->
+  <path d="M82 59
+       C96 58 108 50 110 37
+       C112 23 102 15 89 19
+       C76 23 70 39 77 53
+       C78 56 80 58 82 59Z" fill="#4b8749" stroke="#3e713f" stroke-width="2">
+  </path>
+
+  <!-- Smaller lower leaves -->
+  <path d="M52 75
+       C40 76 31 70 29 61
+       C27 52 34 47 43 50
+       C52 53 57 63 54 72Z" fill="#609e56" stroke="#43753f" stroke-width="2">
+  </path>
+
+  <path d="M77 76
+       C89 76 98 70 100 61
+       C102 52 95 47 86 50
+       C77 53 72 64 75 72Z" fill="#609e56" stroke="#43753f" stroke-width="2">
+  </path>
+
+  <!-- Leaf veins -->
+  <path d="M51 54 L37 24
+       M47 45 L31 38
+       M52 48 L47 31" fill="none" stroke="#b94b5c" stroke-width="2.3" stroke-linecap="round">
+  </path>
+
+  <path d="M65 44 L66 13
+       M65 34 L58 24
+       M66 31 L74 21" fill="none" stroke="#d15b63" stroke-width="2.3" stroke-linecap="round">
+  </path>
+
+  <path d="M79 54 L92 25
+       M82 46 L99 39
+       M79 48 L85 32" fill="none" stroke="#c84f59" stroke-width="2.3" stroke-linecap="round">
+  </path>
+
+  <!-- Lower veins -->
+  <path d="M53 72 L40 54" fill="none" stroke="#bd5260" stroke-width="2">
+  </path>
+
+  <path d="M76 72 L89 54" fill="none" stroke="#c4515c" stroke-width="2">
+  </path>
+
+  <!-- Ground -->
+  <ellipse cx="64" cy="116" rx="31" ry="5" fill="#81664a" opacity="0.35">
+  </ellipse>
+
+</svg>
