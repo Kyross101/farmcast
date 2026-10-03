@@ -414,7 +414,8 @@ function getFilteredPlantingCrops() {
       .trim()
       .toLowerCase();
 
-  return CROPS.filter(crop => {
+  return getFarmCastSelectableCropReferences()
+    .filter(crop => {
 
     const matchesCategory =
       plantingCropCategory === 'all' ||
@@ -530,13 +531,19 @@ function initPlantingCropFilters() {
 
   if (!select) return;
 
+
+  const plantingCrops =
+    getFarmCastSelectableCropReferences();
+
+
   const categories = [
     ...new Set(
-      CROPS
+      plantingCrops
         .map(crop => crop.category)
         .filter(Boolean)
     )
   ].sort();
+
 
   select.innerHTML =
     '<option value="all">All Categories</option>' +
@@ -546,7 +553,10 @@ function initPlantingCropFilters() {
       </option>
     `).join('');
 
-  updatePlantingCropCount(CROPS.length);
+
+  updatePlantingCropCount(
+    plantingCrops.length
+  );
 }
 
 
@@ -744,7 +754,11 @@ function openPlantingCropDetails(
 ) {
 
   const crop =
-    CROPS.find(item => item.name === cropName);
+    getFarmCastSelectableCropReferences()
+      .find(
+        item =>
+          item.name === cropName
+      );
 
   if (!crop) {
     toast('Crop information not found.', 'warn');
@@ -4873,6 +4887,50 @@ const SPECIAL_CROP_REFERENCES = {
   }
 };
 
+function getFarmCastSelectableCropReferences() {
+
+  const specialCrops =
+    Object.values(
+      SPECIAL_CROP_REFERENCES
+    )
+      .filter(
+        specialCrop =>
+          !CROPS.some(
+            crop =>
+              crop.name ===
+              specialCrop.name
+          )
+      )
+      .map(crop => {
+
+        /*
+         * Rice remains outside crop-data.js.
+         * Preserve its existing legacy weather
+         * limits when it is used by features
+         * such as Smart Planting Calendar.
+         */
+        if (
+          crop.name === 'Rice' &&
+          CROP_INFO?.Rice
+        ) {
+
+          return {
+            ...CROP_INFO.Rice,
+            ...crop
+          };
+
+        }
+
+        return crop;
+
+      });
+
+
+  return [
+    ...CROPS,
+    ...specialCrops
+  ];
+}
 
 function getCropReference(cropName) {
 
@@ -5152,45 +5210,24 @@ let myCropPickerCategory = 'all';
 
 function getMyCropPickerDataset() {
 
-  const datasetCrops =
-    CROPS.map(crop => ({
-      name: crop.name,
-      localName: crop.localName || '',
-      category: crop.category || '',
-      icon: crop.icon || null
-    }));
+  return getFarmCastSelectableCropReferences()
+    .map(crop => ({
+      name:
+        crop.name,
 
+      localName:
+        crop.localName || '',
 
-  const specialCrops =
-    Object.values(
-      SPECIAL_CROP_REFERENCES
-    )
-      .filter(
-        specialCrop =>
-          !CROPS.some(
-            crop =>
-              crop.name ===
-              specialCrop.name
-          )
-      )
-      .map(crop => ({
-        name: crop.name,
-        localName:
-          crop.localName || '',
-        category:
-          crop.category || '',
-        icon:
-          crop.icon || null
-      }));
+      category:
+        crop.category || '',
 
-
-  return [
-    ...datasetCrops,
-    ...specialCrops
-  ].sort(
-    (a, b) =>
-      a.name.localeCompare(b.name)
-  );
+      icon:
+        crop.icon || null
+    }))
+    .sort(
+      (a, b) =>
+        a.name.localeCompare(b.name)
+    );
 }
 
 // ── SELECTABLE CROP DATASET INTEGRITY CHECK ──
