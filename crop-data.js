@@ -6140,6 +6140,66 @@ window.FARMCAST_CROPS = [
           'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2479'
       }
     },
+
+    {
+      name: 'Lentil',
+      scientificName: 'Lens culinaris Medik.',
+      category: 'legume',
+      icon: 'assets/crops/lentil.svg',
+
+      plantingMethods: [
+        {
+          value: 'drill-seeded',
+          label: 'Drill Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'North Dakota State University Extension',
+
+        office:
+          'NDSU Extension',
+
+        title:
+          'Pulse Crop Production Field Guide for North Dakota — Lentil Production',
+
+        url:
+          'https://www.ndsu.edu/agriculture/sites/default/files/2025-09/a1922.pdf'
+      },
+
+      minTemp: 5,
+      maxTemp: 32,
+
+      idealTempRange:
+        '15–29°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 600–1000 mm; the FAO ECOCROP absolute range is about 250–2500 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.5; absolute range 4.5–8.2.',
+
+      soilNote:
+        'Lentil performs best in well-drained soils. FAO ECOCROP lists heavy- and medium-textured soils within its optimal range.',
+
+      plantingNote:
+        'Lentil is established from seed. NDSU Extension notes that lentils may be seeded with grain drills in relatively narrow rows, with seed typically placed about 1–1.5 inches deep.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Lens culinaris — ECOCROP Data Sheet',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=7209'
+      }
+    },
    
 
 ];
