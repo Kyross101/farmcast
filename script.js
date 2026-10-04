@@ -6772,6 +6772,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Bambara Groundnut': {
+    'direct-seeded': {
+      minDays: 90,
+      maxDays: 180,
+      basis:
+        'after sowing',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports that bunch-type Bambara groundnut generally matures about 90–120 days after sowing, while spreading types generally mature about 120–180 days after sowing. FarmCast uses the combined 90–180 day range so both documented growth habits remain covered.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vigna subterranea — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=10830'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

@@ -9101,6 +9101,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Bambara Groundnut',
+      scientificName: 'Vigna subterranea (L.) Verdc.',
+      category: 'legume',
+      icon: 'assets/crops/bambara-groundnut.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'PROTA / PlantUse',
+
+        title:
+          'Vigna subterranea — Propagation and Planting',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/Vigna_subterranea_%28PROTA%29'
+          ].join('')
+      },
+
+      minTemp: 16,
+      maxTemp: 38,
+
+      idealTempRange:
+        '19–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 750–1400 mm; the FAO ECOCROP absolute range is about 300–3000 mm.',
+
+      soilPH:
+        'Optimal pH 5.0–6.5; absolute range 4.3–7.0.',
+
+      soilNote:
+        'Bambara groundnut performs best in light, well-drained soil. FAO ECOCROP lists light-textured soil as optimal while heavy, medium, light, and organic soils occur within its broader tolerance range.',
+
+      plantingNote:
+        'Bambara groundnut is propagated by seed and is established by sowing directly into the field. The crop needs a soil condition that allows its fertilized flower stalks to enter the ground, where the pods develop.',
+
+      harvestNote:
+        'Bambara groundnut is an annual crop. FAO ECOCROP reports that bunch types generally mature about 90–120 days after sowing, while spreading types generally mature about 120–180 days after sowing. Harvest timing should therefore account for growth type and actual pod maturity.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vigna subterranea — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=10830'
+          ].join('')
+      }
+    },
+
    
 
 ];

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Bambara Groundnut</title>
+
+  <desc id="desc">
+    Bambara groundnut seeds with a split pod and small green trifoliate leaves.
+  </desc>
+
+  <!-- Small trifoliate leaves -->
+  <ellipse cx="50" cy="27" rx="13" ry="7" transform="rotate(-30 50 27)" fill="#66914c" stroke="#426c3a" stroke-width="1.7">
+  </ellipse>
+
+  <ellipse cx="67" cy="23" rx="13" ry="7" fill="#6a9650" stroke="#426c3a" stroke-width="1.7">
+  </ellipse>
+
+  <ellipse cx="84" cy="28" rx="13" ry="7" transform="rotate(30 84 28)" fill="#66914c" stroke="#426c3a" stroke-width="1.7">
+  </ellipse>
+
+  <!-- Small leaf stems -->
+  <path d="M67 43
+       L67 29
+
+       M67 35
+       L52 29
+
+       M67 35
+       L82 30" fill="none" stroke="#607040" stroke-width="2.4" stroke-linecap="round">
+  </path>
+
+  <!-- Whole pod -->
+  <path d="M28 62
+       C34 48 53 46 63 56
+       C70 63 69 76 59 82
+       C49 88 32 84 27 73
+       C25 69 25 66 28 62Z" fill="#ba8a4d" stroke="#795b36" stroke-width="2.3">
+  </path>
+
+  <!-- Pod seam -->
+  <path d="M31 67
+       C41 62 52 62 63 67" fill="none" stroke="#8d693e" stroke-width="1.8" stroke-linecap="round">
+  </path>
+
+  <!-- Open pod -->
+  <path d="M65 56
+       C76 48 96 51 102 63
+       C107 73 99 83 87 85
+       C76 87 66 80 63 70
+       C61 64 62 60 65 56Z" fill="#c3995f" stroke="#7d603b" stroke-width="2.3">
+  </path>
+
+  <!-- Inner pod -->
+  <path d="M70 61
+       C78 56 92 57 97 65
+       C101 72 95 78 87 79
+       C78 80 70 75 68 69
+       C67 66 68 63 70 61Z" fill="#dfc596">
+  </path>
+
+  <!-- Seeds inside pod -->
+  <circle cx="77" cy="68" r="6" fill="#b45f45" stroke="#784032" stroke-width="1.5">
+  </circle>
+
+  <circle cx="90" cy="68" r="6" fill="#d2a064" stroke="#86653e" stroke-width="1.5">
+  </circle>
+
+  <!-- Loose Bambara seeds -->
+  <circle cx="44" cy="99" r="11" fill="#d0a267" stroke="#85623e" stroke-width="2">
+  </circle>
+
+  <circle cx="68" cy="101" r="11" fill="#a95b46" stroke="#733d31" stroke-width="2">
+  </circle>
+
+  <circle cx="92" cy="99" r="11" fill="#c38b52" stroke="#805a38" stroke-width="2">
+  </circle>
+
+  <!-- Seed eye marks -->
+  <ellipse cx="44" cy="99" rx="2" ry="4" fill="#73553b"></ellipse>
+  <ellipse cx="68" cy="101" rx="2" ry="4" fill="#63372e"></ellipse>
+  <ellipse cx="92" cy="99" rx="2" ry="4" fill="#705039"></ellipse>
+
+  <!-- Shadow -->
+  <ellipse cx="68" cy="116" rx="42" ry="5" fill="#81664a" opacity="0.18">
+  </ellipse>
+
+</svg>
