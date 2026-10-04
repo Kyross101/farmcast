@@ -9953,6 +9953,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Cumin',
+      scientificName: 'Cuminum cyminum L.',
+      category: 'spice',
+      icon: 'assets/crops/cumin.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Vermont Extension',
+
+        title:
+          'Spice Up Your Garden With Asian Flavors',
+
+        url:
+          [
+            'https://',
+            'www.uvm.edu/extension/news/spice-your-garden-asian-flavors'
+          ].join('')
+      },
+
+      minTemp: 9,
+      maxTemp: 30,
+
+      idealTempRange:
+        '17–26°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1200–1800 mm; the FAO ECOCROP absolute range is about 800–2700 mm.',
+
+      soilPH:
+        'Optimal pH 5.0–6.5; absolute range 4.5–8.3.',
+
+      soilNote:
+        'Cumin performs best in well-drained medium-textured or organic soil. FAO ECOCROP lists medium and organic soil textures as optimal and medium to light soils within its broader tolerance range.',
+
+      plantingNote:
+        'Cumin is grown from seed and generally prefers direct seeding. University of Vermont Extension notes that cumin prefers direct seeding, while FAO describes it as an annual herb adapted to cool, comparatively dry growing conditions rather than tropical lowlands.',
+
+      harvestNote:
+        'Cumin is an annual edible spice crop grown primarily for its aromatic seeds. FAO ECOCROP reports harvest about 60–110 days after sowing, while ICAR-IISR reports maturity around 100–120 days after sowing under Indian cultivation. Plants are ready when they yellow and the seeds become brown and dry. Because published maturity ranges differ by environment and production system, FarmCast keeps Cumin as guidance-only instead of assigning one generic automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cuminum cyminum — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=5043'
+          ].join('')
+      }
+    },
+
    
 
 ];

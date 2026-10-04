@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Cumin</title>
+
+  <desc id="desc">
+    Detailed illustration of cumin foliage, small white flowers, and mature elongated cumin seeds.
+  </desc>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="118" rx="42" ry="5" fill="#7d674c" opacity="0.16">
+  </ellipse>
+
+  <!-- Main stems -->
+  <path d="M61 105 C61 83 62 63 63 42
+       M67 105 C67 82 67 62 66 42" fill="none" stroke="#5b7744" stroke-width="3.2" stroke-linecap="round">
+  </path>
+
+  <!-- Fine cumin foliage -->
+  <g fill="none" stroke="#6f9459" stroke-width="2" stroke-linecap="round">
+
+    <path d="M61 77 C52 69 44 64 35 60"></path>
+    <path d="M59 70 C48 63 41 56 34 50"></path>
+    <path d="M62 62 C52 54 48 47 43 40"></path>
+
+    <path d="M67 76 C76 69 84 63 94 60"></path>
+    <path d="M68 68 C78 60 86 54 95 49"></path>
+    <path d="M67 60 C77 52 82 45 87 39"></path>
+
+  </g>
+
+  <!-- Thin leaf divisions -->
+  <g stroke="#7ba064" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="M42 64 L34 69 M46 66 L40 73 M49 59 L41 57 M44 55 L36 53"></path>
+    <path d="M80 65 L88 71 M84 62 L92 66 M79 56 L88 53 M86 51 L95 47"></path>
+    <path d="M52 51 L45 47 M55 55 L48 59 M76 50 L83 45 M74 54 L81 58"></path>
+
+  </g>
+
+  <!-- Flower stems -->
+  <path d="M63 44 C55 36 50 31 44 27
+       M66 43 C74 35 79 30 85 26" fill="none" stroke="#5c7843" stroke-width="2.2" stroke-linecap="round">
+  </path>
+
+  <!-- Left umbel -->
+  <g fill="none" stroke="#718b54" stroke-width="1.4">
+
+    <path d="M44 28 L36 21"></path>
+    <path d="M44 28 L41 18"></path>
+    <path d="M44 28 L48 18"></path>
+    <path d="M44 28 L54 22"></path>
+
+  </g>
+
+  <!-- Right umbel -->
+  <g fill="none" stroke="#718b54" stroke-width="1.4">
+
+    <path d="M85 27 L77 20"></path>
+    <path d="M85 27 L82 17"></path>
+    <path d="M85 27 L89 17"></path>
+    <path d="M85 27 L95 21"></path>
+
+  </g>
+
+  <!-- Small flowers -->
+  <g fill="#f3eee0" stroke="#b6aa8d" stroke-width="1">
+
+    <circle cx="35" cy="20" r="3"></circle>
+    <circle cx="41" cy="17" r="3"></circle>
+    <circle cx="49" cy="17" r="3"></circle>
+    <circle cx="55" cy="21" r="3"></circle>
+
+    <circle cx="76" cy="19" r="3"></circle>
+    <circle cx="82" cy="16" r="3"></circle>
+    <circle cx="90" cy="16" r="3"></circle>
+    <circle cx="96" cy="20" r="3"></circle>
+
+  </g>
+
+  <!-- Mature cumin seed cluster -->
+  <g>
+
+    <ellipse cx="34" cy="96" rx="4" ry="10" transform="rotate(-28 34 96)" fill="#b78a54" stroke="#765839" stroke-width="1.7">
+    </ellipse>
+
+    <ellipse cx="50" cy="104" rx="4" ry="10" transform="rotate(-15 50 104)" fill="#c0955d" stroke="#7a5c3b" stroke-width="1.7">
+    </ellipse>
+
+    <ellipse cx="66" cy="106" rx="4" ry="10" transform="rotate(4 66 106)" fill="#aa7e4d" stroke="#705237" stroke-width="1.7">
+    </ellipse>
+
+    <ellipse cx="82" cy="103" rx="4" ry="10" transform="rotate(17 82 103)" fill="#c19860" stroke="#7b5d3c" stroke-width="1.7">
+    </ellipse>
+
+    <ellipse cx="98" cy="95" rx="4" ry="10" transform="rotate(29 98 95)" fill="#b38752" stroke="#735638" stroke-width="1.7">
+    </ellipse>
+
+  </g>
+
+  <!-- Seed ridges -->
+  <g fill="none" stroke="#8c673e" stroke-width="1" stroke-linecap="round">
+
+    <path d="M31 88 L37 104"></path>
+    <path d="M47 95 L53 113"></path>
+    <path d="M64 97 L68 115"></path>
+    <path d="M79 94 L85 112"></path>
+    <path d="M94 87 L102 103"></path>
+
+  </g>
+
+  <!-- Seed highlights -->
+  <g fill="none" stroke="#dfbd83" stroke-width="1.2" stroke-linecap="round" opacity="0.8">
+
+    <path d="M31 91 L34 98"></path>
+    <path d="M47 98 L50 105"></path>
+    <path d="M64 100 L66 107"></path>
+    <path d="M79 97 L82 104"></path>
+    <path d="M95 90 L98 97"></path>
+
+  </g>
+
+</svg>
