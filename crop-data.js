@@ -9431,6 +9431,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Cluster Bean',
+      scientificName: 'Cyamopsis tetragonoloba (L.) Taub.',
+      category: 'legume',
+      icon: 'assets/crops/cluster-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Horticulture — Vegetables — Clusterbeans',
+
+        url:
+          [
+            'https://',
+            'www.agritech.tnau.ac.in/horticulture/horti_vegetables_clusterbeans.html'
+          ].join('')
+      },
+
+      minTemp: 10,
+      maxTemp: 45,
+
+      idealTempRange:
+        '25–35°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–800 mm; the FAO ECOCROP absolute range is about 400–2700 mm.',
+
+      soilPH:
+        'Optimal pH 7.5–8.0; absolute range 5.5–8.5.',
+
+      soilNote:
+        'Cluster bean performs best in well-drained medium- to light-textured soils. FAO ECOCROP lists medium and light soil textures as optimal and records tolerance of heavy, medium, and light soils under its broader range.',
+
+      plantingNote:
+        'Cluster bean is established directly from seed. Tamil Nadu Agricultural University recommends dibbling the seeds on the sides of prepared ridges at the specified field spacing.',
+
+      harvestNote:
+        'Cluster bean is an annual legume used for tender green pods as well as mature seed. FAO ECOCROP reports that green pods generally become harvestable about 50–90 days after sowing, while mature seeds generally ripen about 90–160 days after sowing. FarmCast uses the mature-seed range for the general legume harvest estimate.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cyamopsis tetragonoloba — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=830'
+          ].join('')
+      }
+    },
+
    
 
 ];

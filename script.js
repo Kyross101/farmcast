@@ -6907,6 +6907,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Cluster Bean': {
+    'direct-seeded': {
+      minDays: 90,
+      maxDays: 160,
+      basis:
+        'seed maturity after sowing',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports that Cluster Bean green pods are generally harvested about 50–90 days after sowing, while mature seeds ripen about 90–160 days after sowing. FarmCast uses the mature-seed range because this entry is classified as a grain legume.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cyamopsis tetragonoloba — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=830'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
