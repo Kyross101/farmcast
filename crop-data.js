@@ -8755,6 +8755,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Indian Gooseberry',
+      scientificName: 'Phyllanthus emblica L.',
+      category: 'fruit',
+      icon: 'assets/crops/indian-gooseberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Horticulture — Fruits — Amla',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/horticulture/horti_fruits_amla.html'
+          ].join('')
+      },
+
+      minTemp: 14,
+      maxTemp: 35,
+
+      idealTempRange:
+        '20–29°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1500–2500 mm; the FAO ECOCROP absolute range is about 700–4200 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–8.0; absolute range 5.0–8.5.',
+
+      soilNote:
+        'Indian gooseberry performs best in deep, well-drained medium-textured soil. FAO ECOCROP records heavy, medium, and light soils within its broader tolerance range.',
+
+      plantingNote:
+        'Indian gooseberry may be established using grafted or budded planting material. Tamil Nadu Agricultural University lists seedlings, grafts, and buddings as planting materials used for Amla cultivation.',
+
+      harvestNote:
+        'Indian gooseberry is a perennial fruit tree and should not use a fixed days-after-planting harvest estimate. ICAR research identifies physiological maturity through changes including increased fruit specific gravity, development of fiber on the seed cover, and seed-color change from creamy-white to brown. FAO ECOCROP also notes that the tree is slow-growing and normally begins bearing only after several years.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Emblica officinalis (syn. Phyllanthus emblica) — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=8537'
+          ].join('')
+      }
+    },
+
    
 
 ];

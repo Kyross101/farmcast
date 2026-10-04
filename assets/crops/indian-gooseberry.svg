@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Indian Gooseberry</title>
+
+  <desc id="desc">
+    Three ripe pale-green Indian gooseberry fruits with small green leaves.
+  </desc>
+
+  <!-- Leaves -->
+  <ellipse cx="42" cy="28" rx="18" ry="6" transform="rotate(-27 42 28)" fill="#638f4a" stroke="#416b39" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="91" cy="29" rx="18" ry="6" transform="rotate(27 91 29)" fill="#638f4a" stroke="#416b39" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Leaf veins -->
+  <path d="M28 34 L56 24
+       M77 24 L105 35" fill="none" stroke="#94ae7b" stroke-width="1.4" stroke-linecap="round">
+  </path>
+
+  <!-- Small fruit stems -->
+  <path d="M64 22
+       C56 33 52 43 50 54
+
+       M64 22
+       C65 35 67 45 68 56
+
+       M64 22
+       C75 33 82 43 87 54" fill="none" stroke="#697043" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Left fruit -->
+  <circle cx="49" cy="70" r="17" fill="#a7ba63" stroke="#718449" stroke-width="2.2">
+  </circle>
+
+  <!-- Left fruit ribs -->
+  <path d="M49 54
+       C43 60 43 80 49 86
+
+       M49 54
+       C55 60 55 80 49 86
+
+       M37 61
+       C43 66 43 75 37 80
+
+       M61 61
+       C55 66 55 75 61 80" fill="none" stroke="#8fa554" stroke-width="1.4" opacity="0.9">
+  </path>
+
+  <!-- Left highlight -->
+  <path d="M41 61
+       C38 67 39 75 42 79" fill="none" stroke="#d3df98" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Center fruit -->
+  <circle cx="68" cy="87" r="20" fill="#afc268" stroke="#74874a" stroke-width="2.3">
+  </circle>
+
+  <!-- Center ribs -->
+  <path d="M68 68
+       C61 75 61 99 68 106
+
+       M68 68
+       C75 75 75 99 68 106
+
+       M54 76
+       C61 81 61 93 54 98
+
+       M82 76
+       C75 81 75 93 82 98" fill="none" stroke="#94aa59" stroke-width="1.5" opacity="0.9">
+  </path>
+
+  <!-- Center highlight -->
+  <path d="M58 76
+       C54 84 56 94 60 98" fill="none" stroke="#d8e3a0" stroke-width="2.2" stroke-linecap="round">
+  </path>
+
+  <!-- Right fruit -->
+  <circle cx="89" cy="70" r="17" fill="#a4b85f" stroke="#6f8247" stroke-width="2.2">
+  </circle>
+
+  <!-- Right ribs -->
+  <path d="M89 54
+       C83 60 83 80 89 86
+
+       M89 54
+       C95 60 95 80 89 86
+
+       M77 61
+       C83 66 83 75 77 80
+
+       M101 61
+       C95 66 95 75 101 80" fill="none" stroke="#8ca252" stroke-width="1.4" opacity="0.9">
+  </path>
+
+  <!-- Right highlight -->
+  <path d="M81 61
+       C78 67 79 75 82 79" fill="none" stroke="#d1dd94" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Shadow -->
+  <ellipse cx="69" cy="115" rx="38" ry="5" fill="#81664a" opacity="0.2">
+  </ellipse>
+
+</svg>
