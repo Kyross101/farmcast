@@ -8965,6 +8965,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Mamey Sapote',
+      scientificName: 'Pouteria sapota (Jacq.) H.E.Moore & Stearn',
+      category: 'fruit',
+      icon: 'assets/crops/mamey-sapote.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Mamey Sapote Growing in the Florida Home Landscape',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/MG331'
+          ].join('')
+      },
+
+      minTemp: 15,
+      maxTemp: 36,
+
+      idealTempRange:
+        '24–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 2000–3300 mm; the FAO ECOCROP absolute range is about 800–4000 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.5; absolute range 5.0–7.0.',
+
+      soilNote:
+        'Mamey sapote performs best in deep, well-drained heavy- to medium-textured soil. FAO ECOCROP lists heavy and medium soil textures as optimal, with heavy, medium, and light soils within its broader tolerance range.',
+
+      plantingNote:
+        'Mamey sapote cultivars are commonly propagated by grafting. University of Florida IFAS Extension identifies modified veneer grafting as a common propagation method and also describes cleft and other grafting techniques.',
+
+      harvestNote:
+        'Mamey sapote is a perennial fruit tree and should not use a fixed days-after-planting harvest estimate. University of Florida IFAS Extension reports that fruit may require about 13 to 24 months from flowering to maturity depending on cultivar. A common maturity test is to lightly scratch the outer skin; mature fruit shows pinkish-brown, orange, or red tissue beneath rather than green.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Pouteria sapota — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=8917'
+          ].join('')
+      }
+    },
+
    
 
 ];

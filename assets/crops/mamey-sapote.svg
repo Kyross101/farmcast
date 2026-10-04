@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Mamey Sapote</title>
+
+  <desc id="desc">
+    Two brown mamey sapote fruits and one cut fruit showing orange-red flesh and a dark seed.
+  </desc>
+
+  <!-- Leaves -->
+  <ellipse cx="41" cy="28" rx="18" ry="7" transform="rotate(-27 41 28)" fill="#5e8b49" stroke="#3e6939" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="92" cy="29" rx="18" ry="7" transform="rotate(27 92 29)" fill="#5e8b49" stroke="#3e6939" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Leaf veins -->
+  <path d="M27 35 L56 24
+       M78 24 L106 36" fill="none" stroke="#92ad79" stroke-width="1.4" stroke-linecap="round">
+  </path>
+
+  <!-- Small stems -->
+  <path d="M64 22
+       C56 33 52 43 50 54
+
+       M64 22
+       C75 33 82 43 87 54" fill="none" stroke="#6b6242" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Left whole fruit -->
+  <ellipse cx="48" cy="75" rx="17" ry="25" transform="rotate(-8 48 75)" fill="#98704d" stroke="#684b35" stroke-width="2.3">
+  </ellipse>
+
+  <!-- Rough skin texture -->
+  <g fill="#76543d" opacity="0.65">
+    <circle cx="42" cy="61" r="1.2"></circle>
+    <circle cx="51" cy="65" r="1.1"></circle>
+    <circle cx="40" cy="73" r="1.1"></circle>
+    <circle cx="55" cy="77" r="1.2"></circle>
+    <circle cx="44" cy="86" r="1.2"></circle>
+    <circle cx="52" cy="92" r="1.1"></circle>
+  </g>
+
+  <!-- Left highlight -->
+  <path d="M39 61
+       C34 71 35 83 40 90" fill="none" stroke="#b99471" stroke-width="2.2" stroke-linecap="round">
+  </path>
+
+  <!-- Right whole fruit -->
+  <ellipse cx="90" cy="73" rx="17" ry="25" transform="rotate(8 90 73)" fill="#9f7450" stroke="#6a4c36" stroke-width="2.3">
+  </ellipse>
+
+  <!-- Rough skin texture -->
+  <g fill="#79573e" opacity="0.65">
+    <circle cx="85" cy="59" r="1.2"></circle>
+    <circle cx="94" cy="63" r="1.1"></circle>
+    <circle cx="83" cy="72" r="1.1"></circle>
+    <circle cx="98" cy="77" r="1.2"></circle>
+    <circle cx="87" cy="86" r="1.2"></circle>
+    <circle cx="95" cy="91" r="1.1"></circle>
+  </g>
+
+  <!-- Right highlight -->
+  <path d="M81 60
+       C77 69 78 81 82 87" fill="none" stroke="#bc9672" stroke-width="2.1" stroke-linecap="round">
+  </path>
+
+  <!-- Cut fruit -->
+  <g transform="translate(69 98)">
+
+    <!-- Brown skin -->
+    <ellipse cx="0" cy="0" rx="23" ry="16" fill="#8f6849" stroke="#674a35" stroke-width="2.3">
+    </ellipse>
+
+    <!-- Orange-red flesh -->
+    <ellipse cx="0" cy="0" rx="18" ry="12" fill="#d86f50">
+    </ellipse>
+
+    <!-- Flesh highlight -->
+    <path d="M-13 -3
+         C-8 -8 5 -9 12 -4" fill="none" stroke="#ee9b79" stroke-width="2" stroke-linecap="round">
+    </path>
+
+    <!-- Large seed -->
+    <ellipse cx="2" cy="1" rx="8" ry="5" transform="rotate(-10 2 1)" fill="#4e3028" stroke="#36221d" stroke-width="1.5">
+    </ellipse>
+
+    <path d="M-2 -1
+         C1 -3 5 -3 8 -1" fill="none" stroke="#8b6759" stroke-width="1.2" stroke-linecap="round">
+    </path>
+
+  </g>
+
+  <!-- Shadow -->
+  <ellipse cx="69" cy="118" rx="40" ry="5" fill="#81664a" opacity="0.2">
+  </ellipse>
+
+</svg>
