@@ -9758,6 +9758,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Safflower',
+      scientificName: 'Carthamus tinctorius L.',
+      category: 'oilseed',
+      icon: 'assets/crops/safflower.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Crop Production — Oil Seeds — Safflower',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/agriculture/oilseeds_safflower.html'
+          ].join('')
+      },
+
+      minTemp: 5,
+      maxTemp: 45,
+
+      idealTempRange:
+        '20–32°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 600–1000 mm; the FAO ECOCROP absolute range is about 300–1400 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.5; absolute range 5.0–8.0.',
+
+      soilNote:
+        'Safflower performs best in well-drained medium- to light-textured soils. FAO ECOCROP lists medium and light soil textures as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Safflower is established directly from seed. Tamil Nadu Agricultural University recommends sowing seed in rows about 2–3 cm deep and covering it with soil.',
+
+      harvestNote:
+        'Safflower is an annual oilseed crop. FAO ECOCROP reports a broad crop cycle of about 120–245 days. Tamil Nadu Agricultural University reports durations of about 120 days for the K 1 variety and 125 days for CO 1, while recommending harvest when the leaves and entire plant lose their green color and turn brown. Because the narrower durations are variety-specific and the broader FAO value is a general crop-cycle range, FarmCast keeps Safflower as guidance-only instead of assigning one generic automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Carthamus tinctorius — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2514'
+          ].join('')
+      }
+    },
+
    
 
 ];
