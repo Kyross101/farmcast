@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Cinnamon</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of cinnamon leaves,
+    woody branches, cinnamon bark, and rolled cinnamon quills.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#759e59"></stop>
+      <stop offset="0.55" stop-color="#47783e"></stop>
+      <stop offset="1" stop-color="#285537"></stop>
+    </linearGradient>
+
+    <linearGradient id="youngLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d7775e"></stop>
+      <stop offset="0.55" stop-color="#b75446"></stop>
+      <stop offset="1" stop-color="#853b36"></stop>
+    </linearGradient>
+
+    <linearGradient id="bark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bc7445"></stop>
+      <stop offset="0.45" stop-color="#965432"></stop>
+      <stop offset="1" stop-color="#653820"></stop>
+    </linearGradient>
+
+    <linearGradient id="barkLight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d79a68"></stop>
+      <stop offset="0.5" stop-color="#b46d43"></stop>
+      <stop offset="1" stop-color="#79452c"></stop>
+    </linearGradient>
+
+    <radialGradient id="quillInside" cx="45%" cy="45%" r="60%">
+      <stop offset="0" stop-color="#e8b47f"></stop>
+      <stop offset="0.65" stop-color="#b86d43"></stop>
+      <stop offset="1" stop-color="#774129"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#3d3028" flood-opacity="0.25"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="119" rx="45" ry="5" fill="#5c4a3c" opacity="0.17"></ellipse>
+
+  <!-- Main branch -->
+  <path d="M63 101
+       C63 85 64 69 65 54
+       C66 42 69 30 73 19" fill="none" stroke="#674732" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Main branch highlight -->
+  <path d="M65 98
+       C65 81 66 68 67 54
+       C68 42 70 31 73 21" fill="none" stroke="#a27352" stroke-width="1.5" stroke-linecap="round" opacity="0.75"></path>
+
+  <!-- Side branches -->
+  <g fill="none" stroke="#6b4b35" stroke-linecap="round">
+    <path d="M65 69
+         C53 61 44 54 35 44" stroke-width="3"></path>
+
+    <path d="M66 61
+         C77 54 87 46 96 36" stroke-width="3"></path>
+
+    <path d="M67 47
+         C57 41 50 34 45 27" stroke-width="2.5"></path>
+
+    <path d="M68 45
+         C78 38 85 31 89 24" stroke-width="2.5"></path>
+  </g>
+
+  <!-- Mature leaves -->
+  <g filter="url(#softShadow)">
+    <path d="M58 75
+         C45 65 31 63 20 69
+         C27 82 42 89 58 82Z" fill="url(#leafGreen)" stroke="#294e32" stroke-width="2"></path>
+
+    <path d="M55 57
+         C43 47 30 43 21 49
+         C29 61 42 65 56 63Z" fill="url(#leafGreen)" stroke="#294e32" stroke-width="2"></path>
+
+    <path d="M72 74
+         C85 65 99 64 109 70
+         C101 82 86 87 71 81Z" fill="url(#leafGreen)" stroke="#294e32" stroke-width="2"></path>
+
+    <path d="M74 56
+         C87 46 100 43 109 50
+         C101 61 88 65 73 62Z" fill="url(#leafGreen)" stroke="#294e32" stroke-width="2"></path>
+  </g>
+
+  <!-- Young reddish cinnamon leaves -->
+  <g filter="url(#softShadow)">
+    <path d="M56 43
+         C47 33 36 27 27 31
+         C34 42 44 48 56 49Z" fill="url(#youngLeaf)" stroke="#733a35" stroke-width="1.8"></path>
+
+    <path d="M77 42
+         C86 31 97 26 105 30
+         C99 41 89 47 77 48Z" fill="url(#youngLeaf)" stroke="#733a35" stroke-width="1.8"></path>
+  </g>
+
+  <!-- Characteristic cinnamon leaf veins -->
+  <g fill="none" stroke="#a7c795" stroke-width="1.15" stroke-linecap="round" opacity="0.85">
+    <path d="M23 70 C36 72 48 77 57 81"></path>
+    <path d="M23 51 C36 53 47 58 55 62"></path>
+
+    <path d="M106 71 C93 72 82 77 72 80"></path>
+    <path d="M106 51 C94 53 83 58 75 61"></path>
+
+    <path d="M28 32 C39 36 48 42 55 47"></path>
+    <path d="M103 31 C94 35 85 41 78 46"></path>
+  </g>
+
+  <!-- Additional twin basal veins -->
+  <g fill="none" stroke="#759b68" stroke-width="0.9" opacity="0.75">
+    <path d="M27 70 C36 77 44 80 53 81"></path>
+    <path d="M28 51 C36 57 44 60 52 61"></path>
+
+    <path d="M103 70 C94 77 85 79 76 80"></path>
+    <path d="M102 51 C94 57 86 60 78 61"></path>
+  </g>
+
+  <!-- Cut cinnamon bark section -->
+  <g transform="translate(29 93) rotate(-13)" filter="url(#softShadow)">
+    <rect x="-7" y="-20" width="14" height="40" rx="5" fill="url(#bark)" stroke="#57331f" stroke-width="2"></rect>
+
+    <path d="M-3 -16
+         C1 -10 -1 -4 2 2
+         C4 8 1 13 3 17" fill="none" stroke="#dda376" stroke-width="1.3" stroke-linecap="round" opacity="0.8"></path>
+
+    <path d="M4 -15
+         C1 -8 4 -2 1 5
+         C-1 10 1 14 -2 18" fill="none" stroke="#65381f" stroke-width="1" opacity="0.65"></path>
+  </g>
+
+  <!-- Cinnamon quill 1 -->
+  <g transform="translate(55 96) rotate(7)" filter="url(#softShadow)">
+    <path d="M-8 -20
+         C-3 -22 4 -22 8 -19
+         L8 18
+         C4 21 -4 21 -8 18Z" fill="url(#barkLight)" stroke="#653821" stroke-width="2"></path>
+
+    <!-- Rolled top -->
+    <ellipse cx="0" cy="-19" rx="8" ry="4.7" fill="url(#quillInside)" stroke="#60351f" stroke-width="1.5"></ellipse>
+
+    <ellipse cx="0" cy="-19" rx="4.6" ry="2.6" fill="none" stroke="#77432a" stroke-width="1.4"></ellipse>
+
+    <ellipse cx="0" cy="-19" rx="2.1" ry="1.1" fill="#60341f"></ellipse>
+
+    <!-- Long bark texture -->
+    <path d="M-4 -14 L-4 14" fill="none" stroke="#e1aa7e" stroke-width="1" opacity="0.72"></path>
+
+    <path d="M3 -14 L4 15" fill="none" stroke="#704028" stroke-width="1" opacity="0.65"></path>
+  </g>
+
+  <!-- Cinnamon quill 2 -->
+  <g transform="translate(76 98) rotate(-8)" filter="url(#softShadow)">
+    <path d="M-7 -18
+         C-2 -20 3 -20 7 -17
+         L7 17
+         C3 20 -3 20 -7 17Z" fill="url(#bark)" stroke="#5e3521" stroke-width="2"></path>
+
+    <ellipse cx="0" cy="-17" rx="7" ry="4.2" fill="url(#quillInside)" stroke="#5b321f" stroke-width="1.5"></ellipse>
+
+    <ellipse cx="0" cy="-17" rx="4" ry="2.2" fill="none" stroke="#704029" stroke-width="1.2"></ellipse>
+
+    <ellipse cx="0" cy="-17" rx="1.7" ry="0.9" fill="#56301e"></ellipse>
+
+    <path d="M-3 -12 L-3 14" fill="none" stroke="#d99d72" stroke-width="1" opacity="0.7"></path>
+  </g>
+
+  <!-- Loose curled bark -->
+  <path d="M90 105
+       C97 99 104 100 107 106
+       C103 103 99 104 96 108
+       C94 111 91 111 88 109
+       C91 108 92 106 90 105Z" fill="url(#barkLight)" stroke="#633921" stroke-width="1.5" filter="url(#softShadow)"></path>
+
+  <path d="M95 106
+       C99 104 102 105 104 107" fill="none" stroke="#e3ae82" stroke-width="1" stroke-linecap="round"></path>
+
+  <!-- Small highlights -->
+  <g fill="#e4d7ab" opacity="0.6">
+    <circle cx="82" cy="36" r="1.3"></circle>
+    <circle cx="45" cy="62" r="1.1"></circle>
+    <circle cx="94" cy="66" r="1.2"></circle>
+  </g>
+
+</svg>

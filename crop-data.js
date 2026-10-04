@@ -10349,6 +10349,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Cinnamon',
+      scientificName: 'Cinnamomum verum J.Presl',
+      category: 'spice',
+      icon: 'assets/crops/cinnamon.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedling'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Kerala Agricultural University',
+
+        title:
+          'Package of Practices Recommendations — Cinnamon',
+
+        url:
+          [
+            'https://',
+            'pop.kau.in/spices%26condiments.htm'
+          ].join('')
+      },
+
+      minTemp: 24,
+      maxTemp: 30,
+
+      idealTempRange:
+        '24–30°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 2000–2600 mm, with an absolute range of about 1200–3000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 5.0–7.0.',
+
+      soilNote:
+        'Cinnamon prefers warm, humid tropical conditions and well-drained soils. FAO ECOCROP lists deep, light-textured, well-drained soil among its optimal ecological conditions, while Kerala Agricultural University recommends deep sandy soil rich in humus and advises avoiding marshy areas.',
+
+      plantingNote:
+        'Cinnamon may be propagated from seed, semi-hardwood cuttings, or air layers. Kerala Agricultural University recommends transplanting selected seedlings to the main field when they are about 1–2 years old, generally with the onset of the monsoon.',
+
+      harvestNote:
+        'Cinnamon is a perennial edible spice tree grown mainly for its aromatic bark. Kerala Agricultural University reports that plants may be ready for harvest at about three years after planting, while Tamil Nadu Agricultural University reports that harvesting commonly starts in the fourth or fifth year. FAO ECOCROP similarly describes about 3–5 years from planting to first harvest. Because first-harvest timing varies among sources and subsequent bark harvests depend on coppice and shoot development, FarmCast keeps Cinnamon as guidance-only instead of generating one automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cinnamomum verum — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=702'
+          ].join('')
+      }
+    },
+
 
   
 ];
