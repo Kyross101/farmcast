@@ -10485,6 +10485,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Allspice',
+      scientificName: 'Pimenta dioica (L.) Merr.',
+      category: 'spice',
+      icon: 'assets/crops/allspice.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedling'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        office:
+          'Agritech Portal',
+
+        title:
+          'Horticulture — Propagation — Allspice',
+
+        url:
+          [
+            'https://',
+            'www.agritech.tnau.ac.in/horticulture/horti_Propogation_Allspice.html'
+          ].join('')
+      },
+
+      minTemp: 15,
+      maxTemp: 32,
+
+      idealTempRange:
+        'Mean annual temperature is commonly about 18–24°C, with reported minimum and maximum conditions around 15–32°C.',
+
+      rainfallRange:
+        'Optimum average annual rainfall is about 1500–1600 mm; about 1000–2500 mm annually is reported as acceptable.',
+
+      soilPH:
+        'Best growth is reported on well-drained loamy limestone soils around pH 6.3–8.0.',
+
+      soilNote:
+        'Allspice prefers warm tropical conditions and well-drained loamy limestone soils. PROSEA reports that the crop performs best on well-drained soils and commonly grows from sea level to about 1000 m, although production is generally better at lower elevations.',
+
+      plantingNote:
+        'Allspice can be propagated from fresh seed and vegetatively. Tamil Nadu Agricultural University describes nursery propagation from seed and also reports air layering. PROSEA reports that nursery seedlings may be transplanted to the field when they are about 9–10 months old and roughly 25–40 cm tall.',
+
+      harvestNote:
+        'Allspice is a perennial edible spice tree grown mainly for its aromatic green-mature berries, which are dried to produce the spice. PROSEA reports that seed-grown trees generally begin flowering at about 7–8 years, while grafted material may flower earlier. Fully mature but still green berries are commonly harvested about 3–4 months after flowering. Because berry maturity is tied to flowering and first bearing varies with propagation method and tree development, FarmCast keeps Allspice as guidance-only rather than generating an automatic harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia',
+
+        office:
+          'PROSEA',
+
+        title:
+          'Pimenta dioica — PROSEA Species Profile',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/Pimenta_dioica_(PROSEA)'
+          ].join('')
+      }
+    },
+
 
   
 ];

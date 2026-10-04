@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Allspice</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of an allspice branch with glossy leaves,
+    white flowers, green and purple berries, and dried brown allspice fruits.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#78a66a"></stop>
+      <stop offset="0.5" stop-color="#477b4d"></stop>
+      <stop offset="1" stop-color="#28573a"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#95bb80"></stop>
+      <stop offset="1" stop-color="#3c7045"></stop>
+    </linearGradient>
+
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9a7758"></stop>
+      <stop offset="1" stop-color="#5d402e"></stop>
+    </linearGradient>
+
+    <radialGradient id="greenBerry" cx="35%" cy="28%" r="72%">
+      <stop offset="0" stop-color="#b6ca74"></stop>
+      <stop offset="0.55" stop-color="#7e9a50"></stop>
+      <stop offset="1" stop-color="#526b39"></stop>
+    </radialGradient>
+
+    <radialGradient id="ripeBerry" cx="35%" cy="28%" r="72%">
+      <stop offset="0" stop-color="#806476"></stop>
+      <stop offset="0.55" stop-color="#564254"></stop>
+      <stop offset="1" stop-color="#302632"></stop>
+    </radialGradient>
+
+    <radialGradient id="dryBerry" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#a06b4a"></stop>
+      <stop offset="0.55" stop-color="#70452f"></stop>
+      <stop offset="1" stop-color="#422a20"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerPetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf3"></stop>
+      <stop offset="1" stop-color="#e3e3cf"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#2f332b" flood-opacity="0.24"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="119" rx="44" ry="5" fill="#5a5147" opacity="0.16"></ellipse>
+
+  <!-- Main branch -->
+  <path d="M63 104
+       C64 87 64 70 66 54
+       C68 40 72 29 77 18" fill="none" stroke="url(#wood)" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M65 101
+       C66 84 66 69 68 54
+       C70 41 73 30 77 20" fill="none" stroke="#bea080" stroke-width="1.4" stroke-linecap="round" opacity="0.7"></path>
+
+  <!-- Side branches -->
+  <g fill="none" stroke="#684a35" stroke-linecap="round">
+    <path d="M65 72 C54 63 44 55 34 45" stroke-width="3"></path>
+    <path d="M67 62 C78 55 88 47 99 37" stroke-width="3"></path>
+    <path d="M68 49 C58 42 50 35 44 27" stroke-width="2.5"></path>
+    <path d="M69 46 C79 39 87 32 92 24" stroke-width="2.5"></path>
+  </g>
+
+  <!-- Glossy leaves -->
+  <g filter="url(#softShadow)">
+    <path d="M58 78
+         C45 67 31 64 20 70
+         C28 84 43 90 59 83Z" fill="url(#leafGreen)" stroke="#294e35" stroke-width="2"></path>
+
+    <path d="M55 59
+         C43 49 30 45 21 51
+         C29 63 42 67 56 64Z" fill="url(#leafLight)" stroke="#294e35" stroke-width="2"></path>
+
+    <path d="M73 77
+         C86 67 100 65 110 72
+         C101 84 86 89 72 83Z" fill="url(#leafGreen)" stroke="#294e35" stroke-width="2"></path>
+
+    <path d="M75 58
+         C88 48 101 45 110 52
+         C101 63 88 67 74 64Z" fill="url(#leafLight)" stroke="#294e35" stroke-width="2"></path>
+
+    <path d="M57 44
+         C47 34 36 29 28 33
+         C35 44 45 50 57 50Z" fill="url(#leafGreen)" stroke="#294e35" stroke-width="1.8"></path>
+
+    <path d="M79 43
+         C88 33 99 28 107 32
+         C101 43 91 49 79 49Z" fill="url(#leafGreen)" stroke="#294e35" stroke-width="1.8"></path>
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#a6c89c" stroke-linecap="round" opacity="0.82">
+    <path d="M23 71 C36 73 48 78 57 82" stroke-width="1.2"></path>
+    <path d="M23 52 C36 54 47 59 55 63" stroke-width="1.2"></path>
+    <path d="M107 73 C94 74 83 79 73 82" stroke-width="1.2"></path>
+    <path d="M107 53 C95 55 84 59 76 63" stroke-width="1.2"></path>
+    <path d="M30 34 C40 37 49 43 56 48" stroke-width="1"></path>
+    <path d="M105 33 C95 37 87 42 80 47" stroke-width="1"></path>
+  </g>
+
+  <!-- Leaf gloss -->
+  <g fill="none" stroke="#d8ead0" stroke-width="1.1" stroke-linecap="round" opacity="0.45">
+    <path d="M29 68 C38 68 46 71 52 75"></path>
+    <path d="M82 68 C91 66 99 68 104 71"></path>
+  </g>
+
+  <!-- Flower panicle -->
+  <path d="M67 54
+       C61 49 57 44 54 39
+       M58 45 L49 39
+       M61 48 L68 39" fill="none" stroke="#687344" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <!-- White flowers -->
+  <g filter="url(#softShadow)">
+    <g transform="translate(48 37)">
+      <g fill="url(#flowerPetal)" stroke="#d0cfbd" stroke-width="0.8">
+        <ellipse cx="0" cy="-4.7" rx="2.3" ry="4.8"></ellipse>
+        <ellipse cx="0" cy="-4.7" rx="2.3" ry="4.8" transform="rotate(90)"></ellipse>
+        <ellipse cx="0" cy="-4.7" rx="2.3" ry="4.8" transform="rotate(180)"></ellipse>
+        <ellipse cx="0" cy="-4.7" rx="2.3" ry="4.8" transform="rotate(270)"></ellipse>
+      </g>
+
+      <circle cx="0" cy="0" r="2.1" fill="#d8b45a"></circle>
+
+      <g fill="#f0d889">
+        <circle cx="-2.5" cy="-1.7" r="0.6"></circle>
+        <circle cx="2.5" cy="-1.5" r="0.6"></circle>
+        <circle cx="-1.5" cy="2.2" r="0.6"></circle>
+        <circle cx="1.8" cy="2.1" r="0.6"></circle>
+      </g>
+    </g>
+
+    <g transform="translate(69 37) scale(0.88)">
+      <g fill="url(#flowerPetal)" stroke="#d0cfbd" stroke-width="0.8">
+        <ellipse cx="0" cy="-4.7" rx="2.3" ry="4.8"></ellipse>
+        <ellipse cx="0" cy="-4.7" rx="2.3" ry="4.8" transform="rotate(90)"></ellipse>
+        <ellipse cx="0" cy="-4.7" rx="2.3" ry="4.8" transform="rotate(180)"></ellipse>
+        <ellipse cx="0" cy="-4.7" rx="2.3" ry="4.8" transform="rotate(270)"></ellipse>
+      </g>
+
+      <circle cx="0" cy="0" r="2.1" fill="#d8b45a"></circle>
+    </g>
+  </g>
+
+  <!-- Berry stems -->
+  <g fill="none" stroke="#687044" stroke-width="1.7" stroke-linecap="round">
+    <path d="M68 58 C76 65 82 70 87 77"></path>
+    <path d="M72 62 L98 74"></path>
+    <path d="M74 65 L77 82"></path>
+    <path d="M75 65 L91 87"></path>
+  </g>
+
+  <!-- Green harvest-stage berries -->
+  <g filter="url(#softShadow)">
+    <circle cx="88" cy="79" r="6.2" fill="url(#greenBerry)" stroke="#52683b" stroke-width="1.6"></circle>
+
+    <circle cx="100" cy="76" r="5.7" fill="url(#greenBerry)" stroke="#52683b" stroke-width="1.6"></circle>
+
+    <circle cx="78" cy="84" r="5.8" fill="url(#greenBerry)" stroke="#52683b" stroke-width="1.6"></circle>
+
+    <circle cx="92" cy="89" r="5.6" fill="url(#greenBerry)" stroke="#52683b" stroke-width="1.6"></circle>
+  </g>
+
+  <!-- Berry calyx crowns -->
+  <g fill="#657441" stroke="#4f6037" stroke-width="0.8">
+    <path d="M84 74 L88 76 L91 73 L90 78 L86 79Z"></path>
+    <path d="M96 71 L100 73 L103 70 L102 75 L98 76Z"></path>
+    <path d="M74 79 L78 81 L81 78 L80 83 L76 84Z"></path>
+    <path d="M88 84 L92 86 L95 83 L94 88 L90 89Z"></path>
+  </g>
+
+  <!-- Ripening purple berry -->
+  <g filter="url(#softShadow)">
+    <circle cx="105" cy="92" r="6.5" fill="url(#ripeBerry)" stroke="#382b38" stroke-width="1.6"></circle>
+
+    <ellipse cx="102.5" cy="89.5" rx="1.8" ry="2.5" fill="#b6a4b1" opacity="0.22"></ellipse>
+  </g>
+
+  <!-- Dried allspice berries -->
+  <g filter="url(#softShadow)">
+    <circle cx="35" cy="101" r="8" fill="url(#dryBerry)" stroke="#41291f" stroke-width="1.8"></circle>
+
+    <circle cx="51" cy="106" r="7.2" fill="url(#dryBerry)" stroke="#41291f" stroke-width="1.8"></circle>
+
+    <circle cx="67" cy="101" r="7.6" fill="url(#dryBerry)" stroke="#41291f" stroke-width="1.8"></circle>
+  </g>
+
+  <!-- Dried berry texture -->
+  <g fill="none" stroke="#bd835d" stroke-width="0.9" stroke-linecap="round" opacity="0.7">
+    <path d="M30 96 C33 98 37 98 40 96"></path>
+    <path d="M31 102 C35 100 38 102 40 105"></path>
+    <path d="M47 102 C50 104 53 104 56 102"></path>
+    <path d="M62 97 C65 99 69 99 72 97"></path>
+    <path d="M63 104 C66 102 70 103 72 106"></path>
+  </g>
+
+  <!-- Dried calyx marks -->
+  <g fill="#4a3024">
+    <circle cx="35" cy="94" r="1.4"></circle>
+    <circle cx="51" cy="99" r="1.3"></circle>
+    <circle cx="67" cy="94" r="1.4"></circle>
+  </g>
+
+  <!-- Botanical highlights -->
+  <g fill="#efe5bd" opacity="0.62">
+    <circle cx="87" cy="78" r="1"></circle>
+    <circle cx="99" cy="75" r="0.9"></circle>
+    <circle cx="77" cy="83" r="0.9"></circle>
+    <circle cx="44" cy="66" r="1.1"></circle>
+  </g>
+
+</svg>
