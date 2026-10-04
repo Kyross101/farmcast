@@ -9824,6 +9824,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Sunflower',
+      scientificName: 'Helianthus annuus L.',
+      category: 'oilseed',
+      icon: 'assets/crops/sunflower.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Crop Production — Oil Seeds — Sunflower',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/agriculture/2/oilseeds_sunflower.html'
+          ].join('')
+      },
+
+      minTemp: 5,
+      maxTemp: 45,
+
+      idealTempRange:
+        '17–34°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 600–1000 mm; the FAO ECOCROP absolute range is about 300–1600 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.5; absolute range 5.5–8.0.',
+
+      soilNote:
+        'Sunflower performs best in well-drained medium- to light-textured soils. FAO ECOCROP lists medium and light soils as optimal and records heavy, medium, and light textures within its broader tolerance range.',
+
+      plantingNote:
+        'Sunflower is established directly from seed. Tamil Nadu Agricultural University recommends placing seeds about 3 cm deep along prepared furrows, covering them with soil, and initially sowing two seeds per planting hole before thinning.',
+
+      harvestNote:
+        'Sunflower is an annual oilseed crop. FAO ECOCROP reports a broad crop cycle of about 70–200 days and notes that sunflower may commonly be harvested around 90–160 days depending on cultivar and environment. Tamil Nadu Agricultural University lists specific varieties and hybrids with durations around 80–95 days and recommends harvesting when the back bracts of the flower head turn lemon yellow and the head becomes firm. Because maturity varies considerably among cultivars, FarmCast keeps Sunflower as guidance-only rather than assigning one generic automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Helianthus annuus — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1191'
+          ].join('')
+      }
+    },
+
    
 
 ];
