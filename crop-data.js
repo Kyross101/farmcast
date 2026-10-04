@@ -9167,6 +9167,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Horse Gram',
+      scientificName: 'Macrotyloma uniflorum (Lam.) Verdc.',
+      category: 'legume',
+      icon: 'assets/crops/horse-gram.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Crop Production — Pulses — Horsegram',
+
+        url:
+          [
+            'https://',
+            'www.agritech.tnau.ac.in/agriculture/CropProduction/Pulses/pulses_horsegram.html'
+          ].join('')
+      },
+
+      minTemp: 17,
+      maxTemp: 35,
+
+      idealTempRange:
+        '20–28°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–1200 mm; the FAO ECOCROP absolute range is about 300–4300 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.0; absolute range 5.0–8.0.',
+
+      soilNote:
+        'Horse gram performs best in well-drained medium- to light-textured soil. FAO ECOCROP lists medium and light soil textures as optimal, with heavy, medium, and light soils within its broader tolerance range.',
+
+      plantingNote:
+        'Horse gram is established directly from seed. Tamil Nadu Agricultural University recommends preparing the field to a fine tilth and dibbling the seed at the recommended field spacing.',
+
+      harvestNote:
+        'Horse gram grown for seed is harvested when the plants and pods are mature. FAO ECOCROP reports a seed-maturity period of about 120–180 days, while forage may be ready considerably earlier. FarmCast therefore uses the seed-maturity range for its crop harvest estimate.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Macrotyloma uniflorum — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1399'
+          ].join('')
+      }
+    },
+
    
 
 ];

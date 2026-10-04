@@ -6799,6 +6799,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Horse Gram': {
+    'direct-seeded': {
+      minDays: 120,
+      maxDays: 180,
+      basis:
+        'seed maturity after sowing',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports that Horse Gram grown for seed generally matures in about 120–180 days. The much earlier approximately 40-day period applies to forage production, so FarmCast intentionally uses the seed-maturity range for harvest estimation.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Macrotyloma uniflorum — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=1399'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

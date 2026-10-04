@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Horse Gram</title>
+
+  <desc id="desc">
+    Horse gram pods and brown seeds with small green trifoliate leaves.
+  </desc>
+
+  <!-- Trifoliate leaves -->
+  <ellipse cx="49" cy="26" rx="14" ry="7" transform="rotate(-30 49 26)" fill="#638e4b" stroke="#406b39" stroke-width="1.7">
+  </ellipse>
+
+  <ellipse cx="66" cy="22" rx="14" ry="7" fill="#69954f" stroke="#406b39" stroke-width="1.7">
+  </ellipse>
+
+  <ellipse cx="84" cy="27" rx="14" ry="7" transform="rotate(30 84 27)" fill="#638e4b" stroke="#406b39" stroke-width="1.7">
+  </ellipse>
+
+  <!-- Leaf stems -->
+  <path d="M66 43
+       L66 28
+
+       M66 35
+       L51 28
+
+       M66 35
+       L82 29" fill="none" stroke="#5e7040" stroke-width="2.4" stroke-linecap="round">
+  </path>
+
+  <!-- Left pod -->
+  <path d="M25 58
+       C38 49 54 51 64 59
+       C69 63 68 71 62 75
+       C52 81 36 78 27 70
+       C23 66 22 62 25 58Z" fill="#b88a50" stroke="#765a38" stroke-width="2.2">
+  </path>
+
+  <!-- Pod seam -->
+  <path d="M29 63
+       C39 60 51 61 61 65" fill="none" stroke="#896941" stroke-width="1.6" stroke-linecap="round">
+  </path>
+
+  <!-- Right pod -->
+  <path d="M66 57
+       C78 49 96 51 103 62
+       C108 70 101 78 91 80
+       C79 82 69 77 65 68
+       C63 64 63 60 66 57Z" fill="#c0955a" stroke="#7c603c" stroke-width="2.2">
+  </path>
+
+  <!-- Open inner pod -->
+  <path d="M71 61
+       C79 56 93 57 98 64
+       C102 69 97 75 89 76
+       C80 77 72 73 69 67
+       C68 65 69 63 71 61Z" fill="#dfc392">
+  </path>
+
+  <!-- Seeds inside -->
+  <ellipse cx="78" cy="67" rx="5" ry="4" fill="#8d563b" stroke="#603b2c" stroke-width="1.3">
+  </ellipse>
+
+  <ellipse cx="89" cy="67" rx="5" ry="4" fill="#9c6241" stroke="#67402e" stroke-width="1.3">
+  </ellipse>
+
+  <!-- Loose horse gram seeds -->
+  <ellipse cx="38" cy="96" rx="10" ry="8" transform="rotate(-10 38 96)" fill="#9d6746" stroke="#69422f" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="59" cy="101" rx="10" ry="8" transform="rotate(8 59 101)" fill="#8b573e" stroke="#603b2d" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="81" cy="99" rx="10" ry="8" transform="rotate(-6 81 99)" fill="#a46c47" stroke="#6a432f" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="101" cy="94" rx="10" ry="8" transform="rotate(12 101 94)" fill="#936044" stroke="#63402f" stroke-width="2">
+  </ellipse>
+
+  <!-- Seed eye marks -->
+  <ellipse cx="38" cy="96" rx="2" ry="3.5" fill="#5d3c2d"></ellipse>
+  <ellipse cx="59" cy="101" rx="2" ry="3.5" fill="#53362a"></ellipse>
+  <ellipse cx="81" cy="99" rx="2" ry="3.5" fill="#5d3c2d"></ellipse>
+  <ellipse cx="101" cy="94" rx="2" ry="3.5" fill="#58382b"></ellipse>
+
+  <!-- Shadow -->
+  <ellipse cx="67" cy="116" rx="43" ry="5" fill="#81664a" opacity="0.18">
+  </ellipse>
+
+</svg>
