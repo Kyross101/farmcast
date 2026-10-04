@@ -6961,6 +6961,34 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Faba Bean': {
+    'direct-seeded': {
+      minDays: 120,
+      maxDays: 150,
+      basis:
+        'mature beans after sowing',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports that Faba Bean plants generally mature in about 100–150 days, while mature beans are normally obtained about 120–150 days after sowing. FarmCast uses the mature-bean range for the general grain-legume harvest estimate.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vicia faba — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2146'
+      }
+    }
+  },
+
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {

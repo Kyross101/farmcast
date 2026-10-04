@@ -9692,6 +9692,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Faba Bean',
+      scientificName: 'Vicia faba L.',
+      category: 'legume',
+      icon: 'assets/crops/faba-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'Legume Planting and Spacing',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/vegetableguide/legumes/planting'
+          ].join('')
+      },
+
+      minTemp: 5,
+      maxTemp: 32,
+
+      idealTempRange:
+        '18–28°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 650–1000 mm; the FAO ECOCROP absolute range is about 250–2600 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 4.5–8.6.',
+
+      soilNote:
+        'Faba bean performs best in well-drained medium-textured or organic soils. FAO ECOCROP lists medium and organic soil textures as optimal while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Faba bean is established directly from seed. Utah State University Extension classifies broad bean among cool-season legumes and states that legume crops are direct-seeded.',
+
+      harvestNote:
+        'Faba bean is an annual grain legume. FAO ECOCROP reports overall maturity about 100–150 days after sowing, with immature pods around 100 days and mature beans generally around 120–150 days after sowing. FarmCast uses the mature-bean range for its automatic harvest estimate.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vicia faba — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2146'
+          ].join('')
+      }
+    },
+
    
 
 ];
