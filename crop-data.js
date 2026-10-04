@@ -10151,6 +10151,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Cardamom',
+      scientificName: 'Elettaria cardamomum (L.) Maton',
+      category: 'spice',
+      icon: 'assets/crops/cardamom.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedling / Sucker'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Horticulture — Spice Crops — Cardamom',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/horticulture/horti_spice%20crops_cardamom.html'
+          ].join('')
+      },
+
+      minTemp: 10,
+      maxTemp: 35,
+
+      idealTempRange:
+        '22–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 3000–6000 mm; the FAO ECOCROP absolute range is about 1500–7000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.0; absolute range 4.8–7.0.',
+
+      soilNote:
+        'Cardamom prefers humid tropical conditions, light shade, and well-drained medium-textured or organic soils. Tamil Nadu Agricultural University recommends thick shady areas with loamy, acidic soil and adequate drainage.',
+
+      plantingNote:
+        'Cardamom may be propagated from seedlings or suckers. Tamil Nadu Agricultural University recommends transplanting established planting material into prepared pits and notes that field planting may use about 18–22-month-old seedlings.',
+
+      harvestNote:
+        'Cardamom is a perennial edible spice crop grown for its aromatic capsules and seeds. Tamil Nadu Agricultural University reports that plants normally start bearing about two years after planting, with harvest commonly concentrated during October–November in its production region. FAO ECOCROP lists a crop cycle of about 240–365 days, but because Cardamom is perennial and first bearing depends on the age and type of planting material, FarmCast keeps Cardamom as guidance-only instead of converting years or crop-cycle values into one automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Elettaria cardamomum — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=984'
+          ].join('')
+      }
+    },
+
 
   
 ];

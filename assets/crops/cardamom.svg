@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Cardamom</title>
+
+  <desc id="desc">
+    Detailed illustration of green cardamom leaves, pale flowers, green seed capsules, and dark aromatic seeds.
+  </desc>
+
+  <!-- Ground shadow -->
+  <ellipse cx="65" cy="119" rx="44" ry="5" fill="#756248" opacity="0.17">
+  </ellipse>
+
+  <!-- Main leafy shoots -->
+  <path d="M53 105
+       C53 84 54 61 55 35
+
+       M73 105
+       C72 81 72 59 73 31" fill="none" stroke="#587942" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <!-- Left lower leaf -->
+  <path d="M54 78
+       C43 70 29 69 18 75
+       C27 84 41 88 54 84Z" fill="#69984e" stroke="#3f6c39" stroke-width="2">
+  </path>
+
+  <!-- Left middle leaf -->
+  <path d="M54 63
+       C42 53 29 51 20 57
+       C29 67 42 70 54 68Z" fill="#73a157" stroke="#3f6c39" stroke-width="2">
+  </path>
+
+  <!-- Left upper leaf -->
+  <path d="M55 48
+       C45 38 34 34 25 39
+       C32 49 43 53 55 53Z" fill="#78a65a" stroke="#3f6c39" stroke-width="2">
+  </path>
+
+  <!-- Right lower leaf -->
+  <path d="M73 77
+       C84 68 98 67 109 73
+       C101 83 87 87 74 83Z" fill="#68974d" stroke="#3f6c39" stroke-width="2">
+  </path>
+
+  <!-- Right middle leaf -->
+  <path d="M73 61
+       C85 51 99 49 108 56
+       C99 66 86 69 73 67Z" fill="#73a157" stroke="#3f6c39" stroke-width="2">
+  </path>
+
+  <!-- Right upper leaf -->
+  <path d="M73 46
+       C83 36 95 33 104 38
+       C97 48 85 52 73 52Z" fill="#78a65a" stroke="#3f6c39" stroke-width="2">
+  </path>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#a0bd83" stroke-width="1.3" stroke-linecap="round">
+
+    <path d="M21 76 C33 77 43 79 52 82"></path>
+    <path d="M23 58 C34 59 44 62 53 65"></path>
+    <path d="M28 40 C38 43 46 46 54 50"></path>
+
+    <path d="M106 74 C95 76 85 79 75 81"></path>
+    <path d="M105 57 C94 59 84 62 75 65"></path>
+    <path d="M101 39 C91 42 82 46 74 49"></path>
+
+  </g>
+
+  <!-- Basal flowering stalk -->
+  <path d="M62 104
+       C58 98 54 94 48 90
+
+       M64 105
+       C70 98 76 93 84 89" fill="none" stroke="#668249" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Cardamom flowers -->
+  <path d="M43 87
+       C36 82 36 75 41 72
+       C46 70 51 75 51 81
+       C51 86 47 89 43 87Z" fill="#f2ede1" stroke="#b8ac95" stroke-width="1.6">
+  </path>
+
+  <path d="M84 87
+       C91 81 91 75 86 72
+       C81 70 76 75 77 81
+       C77 86 80 89 84 87Z" fill="#f2ede1" stroke="#b8ac95" stroke-width="1.6">
+  </path>
+
+  <!-- Flower lips -->
+  <path d="M41 82
+       C44 78 47 78 50 82
+       C47 85 44 86 41 82Z
+
+       M78 82
+       C81 78 84 78 87 82
+       C84 85 81 86 78 82Z" fill="#d8b5ce" stroke="#a9839e" stroke-width="1">
+  </path>
+
+  <!-- Purple flower markings -->
+  <path d="M43 81 L48 83
+       M80 83 L85 81" fill="none" stroke="#9d658b" stroke-width="1.3" stroke-linecap="round">
+  </path>
+
+  <!-- Green capsule cluster -->
+  <ellipse cx="45" cy="101" rx="8" ry="11" transform="rotate(-20 45 101)" fill="#8ba35a" stroke="#596f3e" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="61" cy="101" rx="8" ry="11" transform="rotate(-5 61 101)" fill="#92aa5e" stroke="#596f3e" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="77" cy="100" rx="8" ry="11" transform="rotate(10 77 100)" fill="#859d55" stroke="#566c3b" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="92" cy="96" rx="8" ry="11" transform="rotate(20 92 96)" fill="#90a95d" stroke="#596f3e" stroke-width="2">
+  </ellipse>
+
+  <!-- Capsule ribs -->
+  <g fill="none" stroke="#667c45" stroke-width="1.2" stroke-linecap="round">
+
+    <path d="M42 91 L47 111"></path>
+    <path d="M59 90 L63 112"></path>
+    <path d="M75 89 L79 110"></path>
+    <path d="M89 86 L95 106"></path>
+
+  </g>
+
+  <!-- Capsule highlights -->
+  <g fill="none" stroke="#b4ca85" stroke-width="1.3" stroke-linecap="round" opacity="0.85">
+
+    <path d="M41 94 C43 92 45 92 47 94"></path>
+    <path d="M57 94 C60 92 62 92 64 94"></path>
+    <path d="M73 93 C76 91 78 91 80 93"></path>
+    <path d="M88 90 C90 88 93 88 95 90"></path>
+
+  </g>
+
+  <!-- Open capsule -->
+  <path d="M103 103
+       C98 97 99 90 104 87
+       C109 85 114 89 115 95
+       C116 100 111 105 103 103Z" fill="#b0a467" stroke="#746a43" stroke-width="1.8">
+  </path>
+
+  <!-- Dark aromatic seeds -->
+  <g fill="#3d3025" stroke="#211a15" stroke-width="0.8">
+
+    <circle cx="105" cy="92" r="2.2"></circle>
+    <circle cx="110" cy="94" r="2.2"></circle>
+    <circle cx="106" cy="98" r="2.2"></circle>
+    <circle cx="111" cy="99" r="2.2"></circle>
+
+  </g>
+
+  <!-- Loose seeds -->
+  <g fill="#403126" stroke="#211914" stroke-width="1">
+
+    <circle cx="28" cy="108" r="3"></circle>
+    <circle cx="34" cy="112" r="3"></circle>
+    <circle cx="23" cy="113" r="3"></circle>
+    <circle cx="30" cy="117" r="3"></circle>
+
+  </g>
+
+  <!-- Seed highlights -->
+  <g fill="#76604b" opacity="0.8">
+
+    <circle cx="27" cy="107" r="0.8"></circle>
+    <circle cx="33" cy="111" r="0.8"></circle>
+    <circle cx="22" cy="112" r="0.8"></circle>
+    <circle cx="29" cy="116" r="0.8"></circle>
+
+  </g>
+
+</svg>
