@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Black Sapote</title>
+
+  <desc id="desc">
+    Two ripe dark-green black sapote fruits and one cut fruit showing dark brown pulp.
+  </desc>
+
+  <!-- Leaves -->
+  <ellipse cx="40" cy="28" rx="18" ry="8" transform="rotate(-27 40 28)" fill="#598848" stroke="#39683a" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="91" cy="29" rx="18" ry="8" transform="rotate(27 91 29)" fill="#598848" stroke="#39683a" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Leaf veins -->
+  <path d="M26 35 L54 24
+       M77 24 L105 36" fill="none" stroke="#8fa879" stroke-width="1.4" stroke-linecap="round">
+  </path>
+
+  <!-- Small fruit stems -->
+  <path d="M64 22
+       C56 33 52 43 50 54
+
+       M64 22
+       C75 33 82 43 87 54" fill="none" stroke="#656b40" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Left black sapote -->
+  <g transform="translate(49 75)">
+
+    <!-- Calyx -->
+    <path d="M0 -25
+         L-9 -30
+         L-6 -21
+         L-17 -18
+         L-7 -14
+         L0 -10
+         L7 -14
+         L17 -18
+         L6 -21
+         L9 -30Z" fill="#557545">
+    </path>
+
+    <!-- Fruit -->
+    <path d="M-21 -14
+         C-28 -5 -27 10 -19 20
+         C-11 30 9 30 18 21
+         C27 12 28 -4 21 -14
+         C12 -21 -12 -21 -21 -14Z" fill="#65734a" stroke="#424f35" stroke-width="2.3">
+    </path>
+
+    <!-- Dull olive ripe side -->
+    <path d="M7 -17
+         C18 -11 23 1 20 13
+         C17 22 10 27 3 28
+         C8 16 10 0 7 -17Z" fill="#515d3c" opacity="0.8">
+    </path>
+
+    <!-- Highlight -->
+    <path d="M-13 -7
+         C-17 1 -15 11 -10 16" fill="none" stroke="#909b72" stroke-width="2.1" stroke-linecap="round">
+    </path>
+
+  </g>
+
+  <!-- Right black sapote -->
+  <g transform="translate(91 74)">
+
+    <path d="M0 -23
+         L-8 -28
+         L-5 -20
+         L-15 -17
+         L-6 -13
+         L0 -9
+         L6 -13
+         L15 -17
+         L5 -20
+         L8 -28Z" fill="#557545">
+    </path>
+
+    <path d="M-18 -13
+         C-24 -4 -23 9 -16 18
+         C-8 27 7 28 15 19
+         C23 10 24 -4 18 -13
+         C9 -19 -9 -19 -18 -13Z" fill="#6a784d" stroke="#455239" stroke-width="2.2">
+    </path>
+
+    <path d="M6 -16
+         C15 -10 19 1 17 11
+         C15 19 9 24 3 25
+         C7 14 9 0 6 -16Z" fill="#535f3e" opacity="0.78">
+    </path>
+
+  </g>
+
+  <!-- Cut black sapote -->
+  <g transform="translate(70 99)">
+
+    <ellipse cx="0" cy="0" rx="19" ry="14" fill="#6b754e" stroke="#465139" stroke-width="2.2">
+    </ellipse>
+
+    <!-- Dark ripe pulp -->
+    <ellipse cx="0" cy="1" rx="14" ry="10" fill="#594338">
+    </ellipse>
+
+    <ellipse cx="-4" cy="-2" rx="3" ry="5" transform="rotate(-25 -4 -2)" fill="#d8c49b">
+    </ellipse>
+
+    <ellipse cx="5" cy="2" rx="3" ry="5" transform="rotate(25 5 2)" fill="#d8c49b">
+    </ellipse>
+
+    <path d="M-9 -5
+         C-5 -9 4 -9 9 -5" fill="none" stroke="#80685a" stroke-width="1.5" stroke-linecap="round">
+    </path>
+
+  </g>
+
+  <!-- Shadow -->
+  <ellipse cx="69" cy="117" rx="39" ry="5" fill="#81664a" opacity="0.2">
+  </ellipse>
+
+</svg>

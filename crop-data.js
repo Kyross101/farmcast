@@ -8895,6 +8895,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Black Sapote',
+      scientificName: 'Diospyros nigra (J.F.Gmel.) Perr.',
+      category: 'fruit',
+      icon: 'assets/crops/black-sapote.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Black Sapote Growing in the Florida Home Landscape',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/HS305'
+          ].join('')
+      },
+
+      minTemp: 12,
+      maxTemp: 34,
+
+      idealTempRange:
+        '20–27°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1200–1600 mm; the FAO ECOCROP absolute range is about 1000–2400 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 5.5–7.5.',
+
+      soilNote:
+        'Black sapote performs best in deep, well-drained medium-textured soil. FAO ECOCROP records heavy, medium, and light soil textures within its broader tolerance range.',
+
+      plantingNote:
+        'Superior black sapote cultivars should be propagated vegetatively because seedlings do not reliably come true to type. University of Florida IFAS Extension identifies budding and grafting as suitable propagation methods for selected varieties.',
+
+      harvestNote:
+        'Black sapote is a perennial fruit tree and should not use a fixed days-after-planting harvest estimate. University of Florida IFAS Extension identifies maturity when the fruit changes from shiny green to dull green and the calyx lobes begin to reflex upward. Harvested mature fruit generally softens to eating quality after picking.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Diospyros digyna (syn. Diospyros nigra) — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2263'
+          ].join('')
+      }
+    },
+
    
 
 ];
