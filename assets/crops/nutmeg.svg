@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Nutmeg</title>
+
+  <desc id="desc">
+    Detailed illustration of glossy nutmeg leaves, a split ripe fruit revealing red mace around the dark seed, and warm botanical shading.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6fa767"></stop>
+      <stop offset="0.55" stop-color="#3f7e49"></stop>
+      <stop offset="1" stop-color="#285c38"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7bb272"></stop>
+      <stop offset="1" stop-color="#356f43"></stop>
+    </linearGradient>
+
+    <linearGradient id="fruitSkin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2bd66"></stop>
+      <stop offset="0.55" stop-color="#c9953e"></stop>
+      <stop offset="1" stop-color="#a9712c"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitFlesh" cx="40%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#f7dc8d"></stop>
+      <stop offset="1" stop-color="#d8a54d"></stop>
+    </radialGradient>
+
+    <linearGradient id="maceRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e95742"></stop>
+      <stop offset="0.55" stop-color="#bd2f29"></stop>
+      <stop offset="1" stop-color="#8f211f"></stop>
+    </linearGradient>
+
+    <radialGradient id="seedBrown" cx="35%" cy="28%" r="75%">
+      <stop offset="0" stop-color="#8a6044"></stop>
+      <stop offset="0.6" stop-color="#5e3d2c"></stop>
+      <stop offset="1" stop-color="#37251d"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#26352a" flood-opacity="0.28"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="118" rx="43" ry="5.5" fill="#4b493d" opacity="0.16"></ellipse>
+
+  <!-- Main woody stem -->
+  <path d="M62 105 C63 86 63 68 65 48 C66 38 69 28 73 20" fill="none" stroke="#6b4d36" stroke-width="5" stroke-linecap="round"></path>
+
+  <path d="M63 103 C64 83 65 66 67 49 C68 38 70 30 73 22" fill="none" stroke="#9b7653" stroke-width="1.6" stroke-linecap="round" opacity="0.75"></path>
+
+  <!-- Branches -->
+  <g fill="none" stroke="#70523b" stroke-linecap="round">
+    <path d="M64 66 C52 57 42 50 31 43" stroke-width="3"></path>
+
+    <path d="M65 59 C78 52 89 45 99 36" stroke-width="3"></path>
+
+    <path d="M66 47 C57 40 51 34 46 27" stroke-width="2.6"></path>
+
+    <path d="M67 45 C77 38 84 31 89 24" stroke-width="2.6"></path>
+  </g>
+
+  <!-- Leaves -->
+  <g filter="url(#softShadow)">
+    <path d="M58 73
+         C45 65 31 64 20 72
+         C29 84 44 88 59 81Z" fill="url(#leafGreen)" stroke="#285638" stroke-width="2"></path>
+
+    <path d="M54 55
+         C42 45 29 43 20 50
+         C29 61 42 65 56 61Z" fill="url(#leafGreen2)" stroke="#285638" stroke-width="2"></path>
+
+    <path d="M71 72
+         C84 64 99 63 109 70
+         C100 81 85 85 70 80Z" fill="url(#leafGreen)" stroke="#285638" stroke-width="2"></path>
+
+    <path d="M74 54
+         C87 45 100 43 109 50
+         C100 61 87 64 73 60Z" fill="url(#leafGreen2)" stroke="#285638" stroke-width="2"></path>
+
+    <path d="M55 41
+         C46 31 35 26 27 30
+         C33 41 43 47 55 47Z" fill="url(#leafGreen2)" stroke="#285638" stroke-width="1.8"></path>
+
+    <path d="M77 40
+         C86 30 97 25 105 29
+         C99 40 89 46 77 46Z" fill="url(#leafGreen2)" stroke="#285638" stroke-width="1.8"></path>
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke-linecap="round">
+    <g stroke="#9bc392" stroke-width="1.25" opacity="0.8">
+      <path d="M23 72 C37 73 48 77 57 80"></path>
+      <path d="M23 51 C36 52 46 56 54 59"></path>
+
+      <path d="M106 71 C93 72 82 76 72 79"></path>
+      <path d="M106 51 C94 52 83 56 75 59"></path>
+
+      <path d="M29 31 C39 35 46 40 54 46"></path>
+      <path d="M103 30 C94 34 86 39 78 45"></path>
+    </g>
+
+    <!-- Leaf highlights -->
+    <g stroke="#d7e9cf" stroke-width="1" opacity="0.45">
+      <path d="M29 69 C38 69 46 72 52 75"></path>
+      <path d="M82 68 C91 66 98 67 103 70"></path>
+    </g>
+  </g>
+
+  <!-- Hanging fruit stem -->
+  <path d="M66 49 C66 58 65 65 64 73" fill="none" stroke="#6a7040" stroke-width="2.4" stroke-linecap="round"></path>
+
+  <!-- Closed nutmeg fruit -->
+  <g transform="translate(89 78)" filter="url(#softShadow)">
+    <path d="M0 -16
+         C10 -15 15 -6 13 5
+         C11 16 4 23 -3 22
+         C-12 20 -16 10 -14 0
+         C-12 -10 -8 -15 0 -16Z" fill="url(#fruitSkin)" stroke="#8b632c" stroke-width="2"></path>
+
+    <path d="M-7 -9 C-2 -13 5 -12 8 -7" fill="none" stroke="#f3d58c" stroke-width="2" stroke-linecap="round" opacity="0.7"></path>
+
+    <path d="M-11 6 C-6 12 2 14 8 10" fill="none" stroke="#9b6c2e" stroke-width="1.3" opacity="0.55"></path>
+  </g>
+
+  <!-- Split ripe nutmeg fruit -->
+  <g transform="translate(48 88)" filter="url(#softShadow)">
+    <!-- Left husk -->
+    <path d="M0 -22
+         C-10 -22 -18 -14 -19 -3
+         C-20 9 -14 19 -5 23
+         C-2 13 -1 2 0 -22Z" fill="url(#fruitSkin)" stroke="#8b632c" stroke-width="2"></path>
+
+    <path d="M-2 -18
+         C-9 -16 -14 -9 -14 -2
+         C-14 5 -11 11 -7 15" fill="none" stroke="#f0cf7c" stroke-width="1.5" opacity="0.75"></path>
+
+    <!-- Right husk -->
+    <path d="M1 -22
+         C11 -21 19 -13 20 -2
+         C21 10 15 20 6 23
+         C3 13 2 2 1 -22Z" fill="url(#fruitFlesh)" stroke="#8b632c" stroke-width="2"></path>
+
+    <path d="M5 -16
+         C12 -13 15 -7 15 0
+         C15 7 12 13 8 16" fill="none" stroke="#f7e4ad" stroke-width="1.6" opacity="0.8"></path>
+
+    <!-- Red mace aril -->
+    <g fill="none" stroke="url(#maceRed)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1 -15
+           C-5 -10 -8 -4 -7 4
+           C-6 10 -3 14 0 18"></path>
+
+      <path d="M1 -13
+           C7 -9 10 -3 9 4
+           C8 10 5 14 2 18"></path>
+
+      <path d="M0 -7
+           C-8 -4 -11 1 -10 7"></path>
+
+      <path d="M2 -6
+           C10 -3 12 2 11 8"></path>
+    </g>
+
+    <!-- Nutmeg seed -->
+    <ellipse cx="1" cy="4" rx="8.5" ry="12.5" fill="url(#seedBrown)" stroke="#2f211a" stroke-width="2"></ellipse>
+
+    <path d="M-3 -3 C0 -6 4 -6 6 -3" fill="none" stroke="#b78a68" stroke-width="1.3" stroke-linecap="round" opacity="0.8"></path>
+
+    <path d="M-4 5 C-1 9 3 10 6 7" fill="none" stroke="#8e684d" stroke-width="1.1" opacity="0.75"></path>
+
+    <ellipse cx="-2" cy="0" rx="2.2" ry="4" fill="#d4b196" opacity="0.22"></ellipse>
+  </g>
+
+  <!-- Detached mace ribbon -->
+  <path d="M76 103
+       C84 97 91 99 94 106
+       C88 104 83 106 80 111
+       C79 108 78 105 76 103Z" fill="url(#maceRed)" stroke="#81211f" stroke-width="1.5"></path>
+
+  <path d="M81 104 C85 103 88 104 90 107" fill="none" stroke="#f27863" stroke-width="1" stroke-linecap="round" opacity="0.7"></path>
+
+  <!-- Botanical highlights -->
+  <g fill="#f7e7b2" opacity="0.7">
+    <circle cx="97" cy="68" r="1.5"></circle>
+    <circle cx="42" cy="72" r="1.2"></circle>
+    <circle cx="73" cy="29" r="1.1"></circle>
+  </g>
+</svg>

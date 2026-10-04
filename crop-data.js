@@ -10280,6 +10280,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Nutmeg',
+      scientificName: 'Myristica fragrans Houtt.',
+      category: 'spice',
+      icon: 'assets/crops/nutmeg.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedling'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        office:
+          'Agritech Portal',
+
+        title:
+          'Horticulture — Spice Crops — Nutmeg',
+
+        url:
+          [
+            'https://',
+            'www.agritech.tnau.ac.in/horticulture/horti_spice%20crops_nutmeg.html'
+          ].join('')
+      },
+
+      minTemp: 22,
+      maxTemp: 34,
+
+      idealTempRange:
+        '22–34°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 1500–3500 mm, with an absolute range of about 1200–4000 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 5.5–7.5.',
+
+      soilNote:
+        'Nutmeg prefers deep, well-drained medium-textured or organic soils under humid tropical conditions. FAO ECOCROP lists deep soil, high fertility, and good drainage among its optimal ecological requirements.',
+
+      plantingNote:
+        'Nutmeg may be propagated from seed, grafted plants, or budded plants. Tamil Nadu Agricultural University reports that nursery-raised seedlings are commonly transplanted to the main field at about 18–24 months after sowing.',
+
+      harvestNote:
+        'Nutmeg is a perennial edible spice tree grown for both the seed called nutmeg and the surrounding aril called mace. Tamil Nadu Agricultural University reports that bearing generally begins about 6–7 years after planting and mature fruits are harvested when they start splitting. Because this is a long-lived perennial tree and first-bearing age is not an exact harvest interval for every planting, FarmCast keeps Nutmeg as guidance-only rather than creating an automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Myristica fragrans — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1514'
+          ].join('')
+      }
+    },
+
 
   
 ];
