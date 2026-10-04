@@ -6852,7 +6852,7 @@ const CROP_HARVEST_WINDOWS = {
       }
     }
   },
-  
+
   'Adzuki Bean': {
     'direct-seeded': {
       minDays: 60,
@@ -6879,6 +6879,30 @@ const CROP_HARVEST_WINDOWS = {
             'https://',
             'ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2147'
           ].join('')
+      }
+    }
+  },
+
+  'Rice Bean': {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 150,
+      basis:
+        'crop maturity after sowing',
+      derived: false,
+
+      note:
+        'PROSEA reports that Rice Bean generally matures about 60–150 days after sowing. In the Philippines, average time to maturity is reported at about 92 days, while later types may require around 130–150 days.',
+
+      source: {
+        agency:
+          'PROSEA / PROTA',
+
+        title:
+          'Vigna umbellata — Rice Bean',
+
+        url:
+          'https://prosea.prota4u.org/view.aspx?id=3'
       }
     }
   },

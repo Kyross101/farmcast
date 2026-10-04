@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Rice Bean</title>
+
+  <desc id="desc">
+    Detailed illustration of rice bean pods, reddish-brown seeds, and green trifoliate leaves.
+  </desc>
+
+  <!-- Trifoliate leaves -->
+  <ellipse cx="46" cy="26" rx="15" ry="8" transform="rotate(-29 46 26)" fill="#638f4b" stroke="#406b39" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="65" cy="21" rx="15" ry="8" fill="#6b9750" stroke="#406b39" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="85" cy="27" rx="15" ry="8" transform="rotate(29 85 27)" fill="#638f4b" stroke="#406b39" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Leaf veins -->
+  <path d="M34 31 L57 23
+       M65 29 L65 15
+       M73 24 L97 33" fill="none" stroke="#93ae79" stroke-width="1.4" stroke-linecap="round">
+  </path>
+
+  <!-- Leaf stems -->
+  <path d="M65 44
+       L65 28
+
+       M65 36
+       L49 29
+
+       M65 36
+       L82 29" fill="none" stroke="#607142" stroke-width="2.6" stroke-linecap="round">
+  </path>
+
+  <!-- Left mature pod -->
+  <path d="M22 57
+       C33 49 49 48 62 54
+       C69 57 72 63 68 68
+       C62 75 47 78 34 74
+       C25 71 19 64 22 57Z" fill="#b68b52" stroke="#75583a" stroke-width="2.2">
+  </path>
+
+  <!-- Left pod seam -->
+  <path d="M27 62
+       C38 58 52 59 64 64" fill="none" stroke="#88663f" stroke-width="1.7" stroke-linecap="round">
+  </path>
+
+  <!-- Left pod highlight -->
+  <path d="M29 56
+       C39 52 51 53 60 57" fill="none" stroke="#dab581" stroke-width="1.5" stroke-linecap="round" opacity="0.8">
+  </path>
+
+  <!-- Right open pod -->
+  <path d="M65 56
+       C77 48 95 50 104 60
+       C110 67 105 76 94 80
+       C82 84 71 79 66 71
+       C63 66 62 60 65 56Z" fill="#c29a60" stroke="#7d613d" stroke-width="2.2">
+  </path>
+
+  <!-- Inner pod -->
+  <path d="M70 61
+       C79 56 93 56 99 63
+       C104 68 100 74 91 77
+       C82 79 73 75 70 69
+       C68 66 68 63 70 61Z" fill="#e1c699">
+  </path>
+
+  <!-- Seeds inside open pod -->
+  <ellipse cx="77" cy="67" rx="5" ry="4" fill="#9c5141" stroke="#67352e" stroke-width="1.3">
+  </ellipse>
+
+  <ellipse cx="89" cy="67" rx="5" ry="4" fill="#ad5b47" stroke="#70392f" stroke-width="1.3">
+  </ellipse>
+
+  <ellipse cx="98" cy="65" rx="4.5" ry="3.7" fill="#a85744" stroke="#6d382f" stroke-width="1.2">
+  </ellipse>
+
+  <!-- Seed highlights inside pod -->
+  <path d="M74 65 C76 63 79 63 81 65
+       M86 65 C88 63 91 63 93 65" fill="none" stroke="#d98b7c" stroke-width="1" stroke-linecap="round" opacity="0.8">
+  </path>
+
+  <!-- Loose rice bean seeds -->
+  <ellipse cx="34" cy="96" rx="9" ry="7" transform="rotate(-12 34 96)" fill="#9d4f40" stroke="#68332d" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="55" cy="102" rx="9" ry="7" transform="rotate(8 55 102)" fill="#ac5a46" stroke="#70382f" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="77" cy="100" rx="9" ry="7" transform="rotate(-7 77 100)" fill="#93483d" stroke="#62302b" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="99" cy="94" rx="9" ry="7" transform="rotate(11 99 94)" fill="#b06148" stroke="#713a30" stroke-width="2">
+  </ellipse>
+
+  <!-- Pale hila -->
+  <ellipse cx="34" cy="96" rx="1.8" ry="4" fill="#e3cfb2"></ellipse>
+  <ellipse cx="55" cy="102" rx="1.8" ry="4" fill="#e7d5b8"></ellipse>
+  <ellipse cx="77" cy="100" rx="1.8" ry="4" fill="#dfc9ac"></ellipse>
+  <ellipse cx="99" cy="94" rx="1.8" ry="4" fill="#e9d6b9"></ellipse>
+
+  <!-- Seed highlights -->
+  <path d="M30 93 C32 91 35 91 37 93
+       M51 99 C53 97 56 97 58 99
+       M73 97 C75 95 78 95 80 97
+       M95 91 C97 89 100 89 102 91" fill="none" stroke="#d88476" stroke-width="1" stroke-linecap="round" opacity="0.75">
+  </path>
+
+  <!-- Ground shadow -->
+  <ellipse cx="67" cy="116" rx="43" ry="5" fill="#81664a" opacity="0.18">
+  </ellipse>
+
+</svg>

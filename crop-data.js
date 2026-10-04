@@ -9365,6 +9365,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Rice Bean',
+      scientificName: 'Vigna umbellata (Thunb.) Ohwi & H.Ohashi',
+      category: 'legume',
+      icon: 'assets/crops/rice-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'PROSEA / PROTA',
+
+        title:
+          'Vigna umbellata — Rice Bean',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/view.aspx?id=3'
+          ].join('')
+      },
+
+      minTemp: 10,
+      maxTemp: 40,
+
+      idealTempRange:
+        '18–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 700–1500 mm; the FAO ECOCROP absolute range is about 300–2000 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.5; absolute range 5.5–8.0.',
+
+      soilNote:
+        'Rice bean performs best in well-drained medium-textured soil. FAO ECOCROP lists medium soil as optimal, while heavy, medium, and light soils occur within its broader tolerance range.',
+
+      plantingNote:
+        'Rice bean is propagated directly by seed. PROSEA reports that seed may be broadcast after field preparation or planted in rows.',
+
+      harvestNote:
+        'Rice bean is generally grown as an annual grain legume. PROSEA reports crop maturity about 60–150 days after sowing depending on type and environment. In the Philippines, average maturity is reported at about 92 days.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vigna umbellata — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2152'
+          ].join('')
+      }
+    },
+
    
 
 ];
