@@ -6988,6 +6988,30 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Fenugreek: {
+    'direct-seeded': {
+      minDays: 90,
+      maxDays: 100,
+      basis:
+        'grain harvest after sowing',
+      derived: false,
+
+      note:
+        'Tamil Nadu Agricultural University reports a crop duration of about 90–100 days when Fenugreek is grown for grain. Greens may be harvested much earlier at about 20–25 days, so FarmCast intentionally uses the grain-harvest range for the general crop estimate.',
+
+      source: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Horticulture — Spice Crops — Fenugreek',
+
+        url:
+          'https://www.agritech.tnau.ac.in/horticulture/horti_spice%20crops_fenugreek.html'
+      }
+    }
+  },
+
 
 };
 

@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Fenugreek</title>
+
+  <desc id="desc">
+    Detailed illustration of fenugreek trifoliate leaves, pale flowers, slender pods, and golden angular seeds.
+  </desc>
+
+  <!-- Ground shadow -->
+  <ellipse cx="65" cy="118" rx="43" ry="5" fill="#80674a" opacity="0.16">
+  </ellipse>
+
+  <!-- Main stems -->
+  <path d="M61 102
+       C61 81 62 62 63 42
+
+       M67 102
+       C67 82 67 62 66 43" fill="none" stroke="#5a7741" stroke-width="3.5" stroke-linecap="round">
+  </path>
+
+  <!-- Left trifoliate leaf -->
+  <path d="M61 67
+       C53 61 47 55 42 49" fill="none" stroke="#5d7842" stroke-width="2.4" stroke-linecap="round">
+  </path>
+
+  <ellipse cx="35" cy="44" rx="13" ry="8" transform="rotate(-25 35 44)" fill="#6f9954" stroke="#416c3a" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="45" cy="35" rx="13" ry="8" transform="rotate(-5 45 35)" fill="#78a05a" stroke="#416c3a" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="53" cy="46" rx="13" ry="8" transform="rotate(27 53 46)" fill="#6b9550" stroke="#416c3a" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Left leaf veins -->
+  <path d="M25 47 L44 41
+       M36 35 L53 35
+       M46 42 L58 50" fill="none" stroke="#9bb680" stroke-width="1.2" stroke-linecap="round">
+  </path>
+
+  <!-- Right trifoliate leaf -->
+  <path d="M67 61
+       C75 56 82 51 88 45" fill="none" stroke="#5d7842" stroke-width="2.4" stroke-linecap="round">
+  </path>
+
+  <ellipse cx="78" cy="44" rx="13" ry="8" transform="rotate(-27 78 44)" fill="#6c9651" stroke="#416c3a" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="89" cy="34" rx="13" ry="8" fill="#78a05a" stroke="#416c3a" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="99" cy="44" rx="13" ry="8" transform="rotate(27 99 44)" fill="#6f9954" stroke="#416c3a" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Right leaf veins -->
+  <path d="M69 48 L87 40
+       M80 34 L98 34
+       M91 40 L107 47" fill="none" stroke="#9bb680" stroke-width="1.2" stroke-linecap="round">
+  </path>
+
+  <!-- Pale yellow flowers -->
+  <path d="M59 56
+       C51 50 48 42 52 38
+       C56 35 62 39 64 45
+       C65 50 63 54 59 56Z" fill="#efe4ad" stroke="#b9a56d" stroke-width="1.7">
+  </path>
+
+  <path d="M70 54
+       C76 47 80 40 77 36
+       C73 33 68 37 66 43
+       C65 48 67 52 70 54Z" fill="#f2e8b6" stroke="#b9a56d" stroke-width="1.7">
+  </path>
+
+  <!-- Flower highlights -->
+  <path d="M54 40 C57 41 59 44 60 48
+       M74 38 C71 40 69 43 68 47" fill="none" stroke="#fff8d4" stroke-width="1.4" stroke-linecap="round">
+  </path>
+
+  <!-- Long slender left pod -->
+  <path d="M47 69
+       C38 74 30 84 25 97
+       C24 101 27 104 30 101
+       C38 91 44 82 51 73Z" fill="#afa361" stroke="#756d3e" stroke-width="2">
+  </path>
+
+  <path d="M46 72
+       C38 80 32 89 27 98" fill="none" stroke="#d1c47b" stroke-width="1.3" stroke-linecap="round">
+  </path>
+
+  <!-- Long right pod -->
+  <path d="M78 68
+       C88 75 97 84 104 96
+       C106 100 103 104 100 102
+       C91 94 84 84 74 72Z" fill="#b6a765" stroke="#786f40" stroke-width="2">
+  </path>
+
+  <path d="M79 72
+       C87 80 95 89 101 98" fill="none" stroke="#d5c77d" stroke-width="1.3" stroke-linecap="round">
+  </path>
+
+  <!-- Small pod bumps -->
+  <g fill="#8f844f" opacity="0.8">
+    <circle cx="38" cy="81" r="1.5"></circle>
+    <circle cx="34" cy="87" r="1.5"></circle>
+    <circle cx="30" cy="94" r="1.5"></circle>
+
+    <circle cx="88" cy="81" r="1.5"></circle>
+    <circle cx="93" cy="87" r="1.5"></circle>
+    <circle cx="98" cy="94" r="1.5"></circle>
+  </g>
+
+  <!-- Fenugreek seeds -->
+  <path d="M38 103
+       L46 99
+       L52 105
+       L49 113
+       L40 112
+       Z" fill="#c89a42" stroke="#82652e" stroke-width="1.8">
+  </path>
+
+  <path d="M56 106
+       L64 101
+       L71 106
+       L68 114
+       L59 115
+       Z" fill="#d3a64a" stroke="#896a30" stroke-width="1.8">
+  </path>
+
+  <path d="M75 104
+       L84 101
+       L90 107
+       L86 114
+       L77 113
+       Z" fill="#c6963e" stroke="#7e612d" stroke-width="1.8">
+  </path>
+
+  <!-- Seed grooves -->
+  <path d="M42 103 L48 109
+       M60 105 L67 111
+       M79 104 L86 110" fill="none" stroke="#9b7331" stroke-width="1.3" stroke-linecap="round">
+  </path>
+
+  <!-- Seed highlights -->
+  <path d="M40 102 L45 101
+       M58 105 L63 103
+       M77 104 L82 103" fill="none" stroke="#edc86e" stroke-width="1.3" stroke-linecap="round" opacity="0.9">
+  </path>
+
+</svg>

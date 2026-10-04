@@ -9890,6 +9890,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Fenugreek',
+      scientificName: 'Trigonella foenum-graecum L.',
+      category: 'spice',
+      icon: 'assets/crops/fenugreek.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Horticulture — Spice Crops — Fenugreek',
+
+        url:
+          [
+            'https://',
+            'www.agritech.tnau.ac.in/horticulture/horti_spice%20crops_fenugreek.html'
+          ].join('')
+      },
+
+      minTemp: 7.8,
+      maxTemp: 34.5,
+
+      idealTempRange:
+        'Fenugreek seed germination has a reported base temperature of about 7.8°C, optimum near 18°C, and ceiling near 34.5°C. For field cultivation, TNAU recommends a cool, comparatively dry, frost-free climate.',
+
+      rainfallRange:
+        'No fixed annual rainfall range is stored because the cited TNAU production guide does not specify one. Fenugreek is recommended for a cool, comparatively dry climate, with dry conditions preferred as the crop approaches maturity.',
+
+      soilPH:
+        'Preferred pH about 6.0–7.0; ICAR reports that fenugreek can tolerate approximately pH 5.3–8.2.',
+
+      soilNote:
+        'Fenugreek performs best in rich, well-drained loamy soil. ICAR also identifies well-drained loam or sandy-loam soils as suitable for good crop growth.',
+
+      plantingNote:
+        'Fenugreek is established directly from seed. Tamil Nadu Agricultural University recommends preparing a fine seedbed and sowing seed at about 20 × 15 cm spacing.',
+
+      harvestNote:
+        'Fenugreek is an annual edible spice and leafy crop. Tamil Nadu Agricultural University reports that greens may be harvested about 20–25 days after sowing, while crops grown for grain are generally ready about 90–100 days after sowing. FarmCast uses the grain-harvest range for the automatic general crop estimate.',
+
+      source: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Horticulture — Spice Crops — Fenugreek',
+
+        url:
+          [
+            'https://',
+            'www.agritech.tnau.ac.in/horticulture/horti_spice%20crops_fenugreek.html'
+          ].join('')
+      }
+    },
+
    
 
 ];
