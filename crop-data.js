@@ -9233,6 +9233,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Moth Bean',
+      scientificName: 'Vigna aconitifolia (Jacq.) Maréchal',
+      category: 'legume',
+      icon: 'assets/crops/moth-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'PROTA / PlantUse',
+
+        title:
+          'Vigna aconitifolia — Propagation and Planting',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/Vigna_aconitifolia_%28PROTA%29'
+          ].join('')
+      },
+
+      minTemp: 13,
+      maxTemp: 45,
+
+      idealTempRange:
+        '24–32°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 500–900 mm; the FAO ECOCROP absolute range is about 400–2500 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.5; absolute range 5.0–8.0.',
+
+      soilNote:
+        'Moth bean performs best in light, well-drained soil and is particularly suited to dry sandy conditions. FAO ECOCROP lists light-textured soil as optimal, while heavy, medium, and light soils occur within its broader tolerance range.',
+
+      plantingNote:
+        'Moth bean is propagated directly from seed. PROTA recommends sowing seed into a well-prepared seedbed and describes both broadcast sowing and row planting as established field methods.',
+
+      harvestNote:
+        'Moth bean is an annual grain legume. FAO ECOCROP reports that mature seeds are generally reached about 60–90 days after planting. Actual pod maturity should still be checked before harvesting and threshing.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vigna aconitifolia — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2524'
+          ].join('')
+      }
+    },
+
    
 
 ];

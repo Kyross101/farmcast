@@ -6826,6 +6826,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Moth Bean': {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 90,
+      basis:
+        'seed maturity after planting',
+      derived: false,
+
+      note:
+        'FAO ECOCROP states that mature Moth Bean seeds are generally obtained about 60–90 days after planting. FarmCast uses this source-backed seed-maturity range for direct-seeded crops.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vigna aconitifolia — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2524'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
