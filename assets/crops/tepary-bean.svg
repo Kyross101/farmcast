@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Tepary Bean</title>
+
+  <desc id="desc">
+    Detailed illustration of tepary bean pods, cream and brown seeds, and green trifoliate leaves.
+  </desc>
+
+  <!-- Trifoliate leaves -->
+  <ellipse cx="45" cy="25" rx="15" ry="8" transform="rotate(-28 45 25)" fill="#619049" stroke="#3f6a39" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="64" cy="20" rx="15" ry="8" fill="#69984f" stroke="#3f6a39" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="84" cy="26" rx="15" ry="8" transform="rotate(28 84 26)" fill="#619049" stroke="#3f6a39" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Leaf veins -->
+  <path d="M33 30 L56 23
+       M64 28 L64 14
+       M72 23 L96 32" fill="none" stroke="#91ad77" stroke-width="1.4" stroke-linecap="round">
+  </path>
+
+  <!-- Stems -->
+  <path d="M64 43
+       L64 27
+
+       M64 35
+       L48 28
+
+       M64 35
+       L81 29" fill="none" stroke="#607041" stroke-width="2.6" stroke-linecap="round">
+  </path>
+
+  <!-- Left pod -->
+  <path d="M22 55
+       C32 47 48 47 62 54
+       C69 58 71 65 66 70
+       C57 78 40 80 28 73
+       C20 69 18 61 22 55Z" fill="#b88c56" stroke="#74583a" stroke-width="2.3">
+  </path>
+
+  <!-- Pod seam -->
+  <path d="M27 61
+       C38 57 51 58 63 64" fill="none" stroke="#8a6942" stroke-width="1.7" stroke-linecap="round">
+  </path>
+
+  <!-- Pod highlight -->
+  <path d="M28 55
+       C38 51 49 52 58 56" fill="none" stroke="#dbb985" stroke-width="1.6" stroke-linecap="round" opacity="0.8">
+  </path>
+
+  <!-- Right open pod -->
+  <path d="M64 54
+       C77 46 96 48 105 59
+       C111 66 105 76 94 79
+       C81 83 70 78 65 69
+       C62 64 62 58 64 54Z" fill="#c49b61" stroke="#7c603d" stroke-width="2.3">
+  </path>
+
+  <!-- Inner pod -->
+  <path d="M70 59
+       C80 54 94 55 100 62
+       C104 67 99 73 90 75
+       C81 77 73 73 70 68
+       C68 65 68 62 70 59Z" fill="#e1c99c">
+  </path>
+
+  <!-- Seeds inside pod -->
+  <ellipse cx="77" cy="65" rx="5.5" ry="4.5" fill="#ead9b5" stroke="#92785b" stroke-width="1.4">
+  </ellipse>
+
+  <ellipse cx="89" cy="65" rx="5.5" ry="4.5" fill="#9c684a" stroke="#674431" stroke-width="1.4">
+  </ellipse>
+
+  <ellipse cx="98" cy="64" rx="4.5" ry="3.8" fill="#d8bf99" stroke="#897157" stroke-width="1.3">
+  </ellipse>
+
+  <!-- Seed highlights -->
+  <path d="M73 63 C76 61 79 61 81 63
+       M85 63 C88 61 91 61 93 63" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.7">
+  </path>
+
+  <!-- Loose seeds -->
+  <ellipse cx="33" cy="98" rx="9" ry="7" transform="rotate(-10 33 98)" fill="#ead8b5" stroke="#90765a" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="54" cy="104" rx="9" ry="7" transform="rotate(8 54 104)" fill="#9b6548" stroke="#65412f" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="76" cy="102" rx="9" ry="7" transform="rotate(-7 76 102)" fill="#e6d2ad" stroke="#8c7257" stroke-width="2">
+  </ellipse>
+
+  <ellipse cx="98" cy="96" rx="9" ry="7" transform="rotate(10 98 96)" fill="#aa7351" stroke="#6c4833" stroke-width="2">
+  </ellipse>
+
+  <!-- Seed hila -->
+  <path d="M28 98 L38 98
+       M49 104 L59 104
+       M71 102 L81 102
+       M93 96 L103 96" fill="none" stroke="#79573e" stroke-width="1.8" stroke-linecap="round">
+  </path>
+
+  <!-- Highlights on loose seeds -->
+  <path d="M29 94 C32 92 35 92 38 94
+       M50 100 C53 98 56 98 59 100
+       M72 98 C75 96 78 96 81 98" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.7">
+  </path>
+
+  <!-- Ground shadow -->
+  <ellipse cx="66" cy="117" rx="44" ry="5" fill="#81664a" opacity="0.17">
+  </ellipse>
+
+</svg>

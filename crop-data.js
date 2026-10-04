@@ -9626,6 +9626,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Tepary Bean',
+      scientificName: 'Phaseolus acutifolius A.Gray',
+      category: 'legume',
+      icon: 'assets/crops/tepary-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'PROSEA / PROTA',
+
+        title:
+          'Phaseolus acutifolius — Tepary Bean',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/view.aspx?id=3311'
+          ].join('')
+      },
+
+      minTemp: 8,
+      maxTemp: 38,
+
+      idealTempRange:
+        '20–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 600–1000 mm; the FAO ECOCROP absolute range is about 300–1700 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 5.0–8.0.',
+
+      soilNote:
+        'Tepary bean performs best in well-drained medium- to light-textured soil. FAO ECOCROP lists medium and light soil textures as optimal and records heavy, medium, light, and organic soils within its broader tolerance range.',
+
+      plantingNote:
+        'Tepary bean is propagated directly by seed. PROSEA reports that seed may be broadcast, drilled in rows, or planted on mounds. The crop is drought tolerant but is sensitive to excessive moisture and waterlogging.',
+
+      harvestNote:
+        'Tepary bean is an annual grain legume. FAO ECOCROP reports that the first harvest may be taken about 60–120 days after sowing and lists a crop cycle of about 60–120 days. Mature dry pods should still be checked before final seed harvest.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Phaseolus acutifolius — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2516'
+          ].join('')
+      }
+    },
+
    
 
 ];

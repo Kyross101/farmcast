@@ -6934,6 +6934,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Tepary Bean': {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 120,
+      basis:
+        'first harvest after sowing',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports that the first Tepary Bean harvest may be taken about 60–120 days after sowing and lists a crop cycle of about 60–120 days. Actual mature pod condition should still guide dry-seed harvest.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Phaseolus acutifolius — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2516'
+      }
+    }
+  },
+
 };
 
 const RICE_VARIETY_HARVEST_RULES = {
