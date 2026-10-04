@@ -10019,7 +10019,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
-   
+    {
+      name: 'Anise',
+      scientificName: 'Pimpinella anisum L.',
+      category: 'spice',
+      icon: 'assets/crops/anise.svg',
 
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Iowa State University Extension and Outreach',
+
+        title:
+          'Growing, Harvesting, and Drying Herbs',
+
+        url:
+          [
+            'https://',
+            'yardandgarden.extension.iastate.edu/how-to/growing-harvesting-and-drying-herbs'
+          ].join('')
+      },
+
+      minTemp: 5,
+      maxTemp: 30,
+
+      idealTempRange:
+        '18–26°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1300 mm; the FAO ECOCROP absolute range is about 600–1700 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.0; absolute range 6.0–7.3.',
+
+      soilNote:
+        'Anise performs best in well-drained, medium-textured soil with relatively high fertility. FAO ECOCROP lists medium soil texture and good drainage as its preferred conditions.',
+
+      plantingNote:
+        'Anise is established directly from seed. Iowa State University Extension recommends sowing seed directly because Anise does not transplant well.',
+
+      harvestNote:
+        'Anise is an annual edible spice crop grown for aromatic seeds as well as usable leaves. FAO ECOCROP reports a crop cycle of about 120–150 days and describes seed ripening as the final stage of that annual cycle. Iowa State University Extension recommends harvesting the seeds after they turn brown. FarmCast therefore uses the source-backed 120–150 day crop cycle for its automatic general harvest estimate.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Pimpinella anisum — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=8595'
+          ].join('')
+      }
+    },
+
+
+  
 ];
 

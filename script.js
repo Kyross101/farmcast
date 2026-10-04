@@ -7012,6 +7012,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Anise: {
+    'direct-seeded': {
+      minDays: 120,
+      maxDays: 150,
+      basis:
+        'crop cycle after sowing',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports an Anise crop cycle of about 120–150 days. Its crop description follows development from germination through flowering, seed development, and seed ripening, while Iowa State University Extension recommends direct sowing and harvesting seeds once they turn brown.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Pimpinella anisum — ECOCROP Crop Profile',
+
+        url:
+          'https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=8595'
+      }
+    }
+  },
+
 
 };
 

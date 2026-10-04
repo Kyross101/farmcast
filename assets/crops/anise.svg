@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Anise</title>
+
+  <desc id="desc">
+    Detailed illustration of anise foliage, white flower umbels, and mature aromatic anise seeds.
+  </desc>
+
+  <!-- Ground shadow -->
+  <ellipse cx="65" cy="118" rx="43" ry="5" fill="#7d674b" opacity="0.16">
+  </ellipse>
+
+  <!-- Main stems -->
+  <path d="M61 105
+       C61 83 62 62 63 42
+
+       M67 105
+       C67 82 67 61 66 41" fill="none" stroke="#587742" stroke-width="3.4" stroke-linecap="round">
+  </path>
+
+  <!-- Lower left leaf -->
+  <path d="M60 79
+       C50 74 39 71 28 73
+       C35 80 45 85 58 84Z" fill="#6d9754" stroke="#416c3a" stroke-width="1.9">
+  </path>
+
+  <!-- Lower right leaf -->
+  <path d="M68 75
+       C79 68 91 67 101 71
+       C94 79 82 83 69 80Z" fill="#719b56" stroke="#416c3a" stroke-width="1.9">
+  </path>
+
+  <!-- Lower leaf veins -->
+  <path d="M31 75
+       C41 76 49 78 57 81
+
+       M98 73
+       C88 73 79 75 71 78" fill="none" stroke="#9bb580" stroke-width="1.3" stroke-linecap="round">
+  </path>
+
+  <!-- Fine upper foliage -->
+  <g fill="none" stroke="#73975a" stroke-width="2" stroke-linecap="round">
+
+    <path d="M61 67 C51 61 44 55 37 49"></path>
+    <path d="M61 59 C52 52 47 46 42 39"></path>
+    <path d="M67 66 C77 59 85 54 94 49"></path>
+    <path d="M67 58 C77 51 82 45 87 38"></path>
+
+  </g>
+
+  <!-- Fine leaf divisions -->
+  <g fill="none" stroke="#81a167" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="M49 57 L42 62"></path>
+    <path d="M45 53 L38 55"></path>
+    <path d="M52 50 L47 44"></path>
+    <path d="M47 45 L40 45"></path>
+
+    <path d="M80 56 L87 61"></path>
+    <path d="M85 52 L93 54"></path>
+    <path d="M78 49 L83 43"></path>
+    <path d="M84 44 L91 44"></path>
+
+  </g>
+
+  <!-- Flower stems -->
+  <path d="M63 43
+       C55 36 49 31 43 26
+
+       M66 42
+       C74 35 81 30 87 25" fill="none" stroke="#587541" stroke-width="2.2" stroke-linecap="round">
+  </path>
+
+  <!-- Left umbel rays -->
+  <g fill="none" stroke="#728d56" stroke-width="1.4">
+
+    <path d="M43 27 L32 19"></path>
+    <path d="M43 27 L38 16"></path>
+    <path d="M43 27 L45 15"></path>
+    <path d="M43 27 L52 17"></path>
+    <path d="M43 27 L57 22"></path>
+
+  </g>
+
+  <!-- Right umbel rays -->
+  <g fill="none" stroke="#728d56" stroke-width="1.4">
+
+    <path d="M87 26 L75 19"></path>
+    <path d="M87 26 L81 15"></path>
+    <path d="M87 26 L88 14"></path>
+    <path d="M87 26 L96 17"></path>
+    <path d="M87 26 L102 22"></path>
+
+  </g>
+
+  <!-- White anise flowers -->
+  <g fill="#f7f4e9" stroke="#b9ae92" stroke-width="1">
+
+    <circle cx="31" cy="18" r="3.2"></circle>
+    <circle cx="38" cy="15" r="3.2"></circle>
+    <circle cx="45" cy="14" r="3.2"></circle>
+    <circle cx="53" cy="16" r="3.2"></circle>
+    <circle cx="58" cy="21" r="3.2"></circle>
+
+    <circle cx="74" cy="18" r="3.2"></circle>
+    <circle cx="81" cy="14" r="3.2"></circle>
+    <circle cx="89" cy="13" r="3.2"></circle>
+    <circle cx="97" cy="16" r="3.2"></circle>
+    <circle cx="103" cy="21" r="3.2"></circle>
+
+  </g>
+
+  <!-- Flower centers -->
+  <g fill="#d9bd6d">
+
+    <circle cx="31" cy="18" r="1"></circle>
+    <circle cx="38" cy="15" r="1"></circle>
+    <circle cx="45" cy="14" r="1"></circle>
+    <circle cx="53" cy="16" r="1"></circle>
+    <circle cx="58" cy="21" r="1"></circle>
+
+    <circle cx="74" cy="18" r="1"></circle>
+    <circle cx="81" cy="14" r="1"></circle>
+    <circle cx="89" cy="13" r="1"></circle>
+    <circle cx="97" cy="16" r="1"></circle>
+    <circle cx="103" cy="21" r="1"></circle>
+
+  </g>
+
+  <!-- Mature Anise seeds -->
+  <ellipse cx="34" cy="99" rx="5" ry="10" transform="rotate(-24 34 99)" fill="#b49562" stroke="#75613f" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="50" cy="106" rx="5" ry="10" transform="rotate(-10 50 106)" fill="#c0a06b" stroke="#7b6543" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="67" cy="108" rx="5" ry="10" transform="rotate(4 67 108)" fill="#ad8b5b" stroke="#715b3c" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="84" cy="104" rx="5" ry="10" transform="rotate(15 84 104)" fill="#c29f68" stroke="#7c6542" stroke-width="1.8">
+  </ellipse>
+
+  <ellipse cx="100" cy="97" rx="5" ry="10" transform="rotate(25 100 97)" fill="#b28f5c" stroke="#735d3d" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Characteristic seed ribs -->
+  <g fill="none" stroke="#8c7049" stroke-width="1" stroke-linecap="round">
+
+    <path d="M30 91 L38 107"></path>
+    <path d="M46 97 L54 115"></path>
+    <path d="M64 99 L70 117"></path>
+    <path d="M80 95 L88 113"></path>
+    <path d="M96 89 L104 105"></path>
+
+  </g>
+
+  <!-- Seed highlights -->
+  <g fill="none" stroke="#dfc18d" stroke-width="1.2" stroke-linecap="round" opacity="0.85">
+
+    <path d="M31 94 L34 101"></path>
+    <path d="M47 100 L50 107"></path>
+    <path d="M65 102 L67 109"></path>
+    <path d="M81 98 L84 105"></path>
+    <path d="M97 92 L100 99"></path>
+
+  </g>
+
+</svg>
