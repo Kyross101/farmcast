@@ -8490,6 +8490,73 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Indian Jujube',
+      scientificName: 'Ziziphus mauritiana Lam.',
+      category: 'fruit',
+      icon: 'assets/crops/indian-jujube.svg',
+
+      plantingMethods: [
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Horticulture — Fruits — Ber',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/horticulture/horti_fruits_ber.html'
+          ].join('')
+      },
+
+      minTemp: 7,
+      maxTemp: 50,
+
+      idealTempRange:
+        '25–42°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 300–1500 mm; the FAO ECOCROP absolute range is about 130–4000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.5; absolute range 5.0–8.5.',
+
+      soilNote:
+        'Indian jujube performs optimally in medium- to light-textured soils with good drainage. FAO ECOCROP records a much broader soil-texture tolerance under less favorable conditions.',
+
+      plantingNote:
+        'Indian jujube cultivars may be established using budded planting material. Tamil Nadu Agricultural University specifically recommends budded plants for Ber cultivation.',
+
+      harvestNote:
+        'Indian jujube is a perennial fruit crop and maturity varies among cultivars. Fruit should therefore be judged using cultivar-appropriate maturity characteristics rather than a fixed number of days after planting. ICAR research reports substantial variation in mature fruit skin color, including yellow, light yellow, greenish-yellow, and brown shades among different Indian jujube genotypes.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Ziziphus mauritiana — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=17633'
+          ].join('')
+      }
+    },
+
    
 
 ];
