@@ -8689,6 +8689,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Ambarella',
+      scientificName: 'Spondias dulcis Parkinson',
+      category: 'fruit',
+      icon: 'assets/crops/ambarella.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        title:
+          'Compendium of Forgotten Foods in Africa',
+
+        url:
+          [
+            'https://',
+            'openknowledge.fao.org/3/cc5044en/cc5044en.pdf'
+          ].join('')
+      },
+
+      minTemp: 12,
+      maxTemp: 35,
+
+      idealTempRange:
+        '22–27°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1800 mm; the FAO ECOCROP absolute range is about 600–2200 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 4.5–8.0.',
+
+      soilNote:
+        'Ambarella performs best in deep, well-drained soil. FAO ECOCROP lists medium- and light-textured soils as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Ambarella may be propagated by seed or grafting. For FarmCast, grafted planting material is retained as the selectable vegetative method because FAO identifies grafting as a supported propagation method for the crop.',
+
+      harvestNote:
+        'Ambarella is a fast-growing perennial fruit tree. FAO ECOCROP reports that trees generally begin bearing about four to five years after planting and that fruit matures about six to eight months after flowering. Mature fruit should also be judged by actual size and cultivar-appropriate yellow to orange color rather than by a fixed number of days after planting.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Spondias cytherea (syn. Spondias dulcis) — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2000'
+          ].join('')
+      }
+    },
+
    
 
 ];
