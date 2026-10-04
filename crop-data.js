@@ -10415,6 +10415,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Star Anise',
+      scientificName: 'Illicium verum Hook.f.',
+      category: 'spice',
+      icon: 'assets/crops/star-anise.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedling'
+        },
+        {
+          value: 'cuttings',
+          label: 'Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Botanic Gardens, Kew',
+
+        title:
+          'Illicium verum Hook.f. — Kew Species Profile',
+
+        url:
+          [
+            'https://',
+            'powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A554553-1/general-information'
+          ].join('')
+      },
+
+      minTemp: 12,
+      maxTemp: 18,
+
+      idealTempRange:
+        'Mean annual temperature about 12–18°C.',
+
+      rainfallRange:
+        'World Agroforestry lists mean annual rainfall of about 1500–2400 mm.',
+
+      soilPH:
+        'Suitable soil pH about 4.0–6.0.',
+
+      soilNote:
+        'World Agroforestry reports that Star Anise grows on deep feralite soils derived from mica schists or clayish sandstone, with soil depth around 120 cm or more, pH about 4–6, and at least 2% humus. Young trees can tolerate shade, although established trees require adequate light.',
+
+      plantingNote:
+        'Star Anise can be propagated from seed or cuttings. Kew reports that seeds should be sown fresh and that nursery-raised seedlings may be planted into a well-manured field when about three years old. World Agroforestry also describes plantations established using seedlings.',
+
+      harvestNote:
+        'Star Anise is a perennial edible spice tree grown for its aromatic star-shaped fruits. World Agroforestry reports two flowering and fruiting seasons within its natural range, flowering beginning at about 5–6 years of age and seed production generally beginning around 9–10 years. Fruits are harvested directly from the tree while still green or collected when turning brown but before they open. Because establishment-to-bearing takes several years and harvest timing follows recurring fruit development rather than one fixed interval from planting, FarmCast keeps Star Anise as guidance-only.',
+
+      source: {
+        agency:
+          'World Agroforestry Centre',
+
+        office:
+          'Agroforestree Database 4.0',
+
+        title:
+          'Illicium verum — Agroforestree Species Profile',
+
+        url:
+          [
+            'https://',
+            'apps.worldagroforestry.org/treedb/AFTPDFS/Illicium_verum.pdf'
+          ].join('')
+      }
+    },
+
 
   
 ];
