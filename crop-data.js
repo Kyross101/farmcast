@@ -9560,6 +9560,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Jack Bean',
+      scientificName: 'Canavalia ensiformis (L.) DC.',
+      category: 'legume',
+      icon: 'assets/crops/jack-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'PROSEA / PlantUse',
+
+        title:
+          'Canavalia ensiformis — Jack Bean',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/Canavalia_ensiformis_%28PROSEA%29'
+          ].join('')
+      },
+
+      minTemp: 14,
+      maxTemp: 36,
+
+      idealTempRange:
+        '20–28°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 800–2000 mm; the FAO ECOCROP absolute range is about 600–4300 mm.',
+
+      soilPH:
+        'Optimal pH 5.0–6.0; absolute range 4.3–8.0.',
+
+      soilNote:
+        'Jack bean tolerates a broad range of tropical soils. FAO ECOCROP lists heavy, medium, light, and organic soil textures within its optimal range and records tolerance of both poorly drained and excessively drained conditions within the broader ecological range.',
+
+      plantingNote:
+        'Jack bean is propagated directly by seed. PROSEA describes shallow sowing at a range of field spacings and notes that sowing time may be adjusted according to rainfall conditions.',
+
+      harvestNote:
+        'Jack bean flowering may begin about 50–110 days after sowing depending on accession and growing conditions. PROSEA reports that the time from sowing to seed harvest is normally about 170 days, while FAO ECOCROP records a much broader overall crop-cycle range of about 80–300 days. Because maturity varies substantially with accession, environment, and intended use, FarmCast keeps Jack Bean as guidance-only instead of assigning one generic automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Canavalia ensiformis — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=609'
+          ].join('')
+      }
+    },
+
    
 
 ];
