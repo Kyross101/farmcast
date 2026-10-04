@@ -9031,6 +9031,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'White Sapote',
+      scientificName: 'Casimiroa edulis La Llave',
+      category: 'fruit',
+      icon: 'assets/crops/white-sapote.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'White Sapote Growing in the Home Landscape',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/HS304'
+          ].join('')
+      },
+
+      minTemp: 14,
+      maxTemp: 31,
+
+      idealTempRange:
+        '18–26°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1500–3000 mm; the FAO ECOCROP absolute range is about 500–4000 mm.',
+
+      soilPH:
+        'Optimal pH 7.0–7.5; absolute range 6.5–8.0.',
+
+      soilNote:
+        'White sapote performs best in well-drained medium- to light-textured soil. FAO ECOCROP records heavy, medium, and light soil textures within its broader tolerance range.',
+
+      plantingNote:
+        'Named white sapote varieties should be propagated vegetatively because seedlings do not reliably come true to type. University of Florida IFAS Extension identifies grafting and budding onto seedling rootstocks as suitable propagation methods.',
+
+      harvestNote:
+        'White sapote is a perennial fruit tree and should not use a fixed days-after-planting harvest estimate. FAO ECOCROP reports that fruit ripens gradually about four to five months after pollination. University of Florida IFAS Extension recommends harvesting mature fruit several days before natural fruit drop and clipping it with a small piece of stem attached.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Casimiroa edulis — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=633'
+          ].join('')
+      }
+    },
+
    
 
 ];
