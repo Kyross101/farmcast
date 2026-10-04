@@ -10217,6 +10217,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Clove',
+      scientificName: 'Syzygium aromaticum (L.) Merr. & L.M.Perry',
+      category: 'spice',
+      icon: 'assets/crops/clove.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedling'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Kerala Agricultural University',
+
+        title:
+          'Package of Practices Recommendations — Clove',
+
+        url:
+          [
+            'https://',
+            'pop.kau.in/spices%26condiments.htm'
+          ].join('')
+      },
+
+      minTemp: 22,
+      maxTemp: 30,
+
+      idealTempRange:
+        '22–30°C',
+
+      rainfallRange:
+        'A World Agroforestry field manual lists about 1500–4500 mm annual rainfall as suitable for Clove.',
+
+      soilPH:
+        'Suitable pH about 5.5–6.5.',
+
+      soilNote:
+        'Clove prefers deep loamy soil. World Agroforestry lists loamy soil with a minimum depth of about 2 m and pH around 5.5–6.5 among suitable site conditions.',
+
+      plantingNote:
+        'Clove is commonly raised from fresh seed in a nursery and later established in the field as a seedling. Kerala Agricultural University recommends selecting about 18-month-old seedlings for field planting during the rainy season.',
+
+      harvestNote:
+        'Clove is a perennial edible spice tree grown for its unopened aromatic flower buds. Kerala Agricultural University reports that trees generally begin yielding about 7–8 years after field planting. Buds should be harvested when the base of the calyx changes from green toward pink, before the flowers open. Because first bearing occurs years after establishment and varies with tree development, FarmCast keeps Clove as guidance-only rather than converting the bearing age into one automatic harvest date.',
+
+      source: {
+        agency:
+          'World Agroforestry Centre (ICRAF) / University of Copenhagen',
+
+        title:
+          'Field Manual: Decentralised Procurement of Tree Seed — Clove Site Suitability',
+
+        url:
+          [
+            'https://',
+            'publikasi.agroforestri.id/sites/all/modules/publication/data/softcopy/MN00096-17.pdf'
+          ].join('')
+      }
+    },
+
 
   
 ];

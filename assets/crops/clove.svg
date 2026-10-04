@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Clove</title>
+
+  <desc id="desc">
+    Detailed illustration of glossy clove leaves, clusters of green and pink unopened flower buds, and dried brown cloves.
+  </desc>
+
+  <!-- Ground shadow -->
+  <ellipse cx="65" cy="119" rx="44" ry="5" fill="#735f48" opacity="0.16">
+  </ellipse>
+
+  <!-- Main stem -->
+  <path d="M64 103
+       C63 82 64 62 65 43" fill="none" stroke="#654f37" stroke-width="4" stroke-linecap="round">
+  </path>
+
+  <!-- Side stems -->
+  <path d="M64 68
+       C53 60 45 53 38 45
+
+       M65 64
+       C77 57 85 50 92 43" fill="none" stroke="#6b563c" stroke-width="2.8" stroke-linecap="round">
+  </path>
+
+  <!-- Left glossy leaf -->
+  <path d="M59 72
+       C47 65 32 64 21 72
+       C31 82 44 86 58 80Z" fill="#477d4d" stroke="#315d39" stroke-width="2">
+  </path>
+
+  <!-- Left upper leaf -->
+  <path d="M55 55
+       C44 45 31 43 22 50
+       C31 60 43 63 56 61Z" fill="#528957" stroke="#315d39" stroke-width="2">
+  </path>
+
+  <!-- Right glossy leaf -->
+  <path d="M69 70
+       C81 62 96 62 107 69
+       C98 79 84 83 70 78Z" fill="#477d4d" stroke="#315d39" stroke-width="2">
+  </path>
+
+  <!-- Right upper leaf -->
+  <path d="M72 53
+       C83 44 96 42 106 49
+       C97 59 84 62 72 59Z" fill="#528957" stroke="#315d39" stroke-width="2">
+  </path>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#82a67d" stroke-width="1.3" stroke-linecap="round">
+
+    <path d="M24 72 C37 73 47 76 57 79"></path>
+    <path d="M25 51 C37 52 46 56 54 59"></path>
+
+    <path d="M104 70 C92 71 82 74 71 77"></path>
+    <path d="M103 50 C92 52 82 55 73 58"></path>
+
+  </g>
+
+  <!-- Bud cluster stems -->
+  <g fill="none" stroke="#6d7341" stroke-width="2" stroke-linecap="round">
+
+    <path d="M64 48 L54 36"></path>
+    <path d="M64 47 L61 31"></path>
+    <path d="M65 47 L69 30"></path>
+    <path d="M66 48 L78 35"></path>
+
+    <path d="M54 36 L47 27"></path>
+    <path d="M61 31 L58 21"></path>
+    <path d="M69 30 L72 20"></path>
+    <path d="M78 35 L86 26"></path>
+
+  </g>
+
+  <!-- Green unopened buds -->
+  <g fill="#78934e" stroke="#4e6938" stroke-width="1.7">
+
+    <ellipse cx="47" cy="25" rx="5" ry="8"></ellipse>
+    <ellipse cx="58" cy="19" rx="5" ry="8"></ellipse>
+    <ellipse cx="72" cy="18" rx="5" ry="8"></ellipse>
+    <ellipse cx="87" cy="24" rx="5" ry="8"></ellipse>
+
+  </g>
+
+  <!-- Pink harvest-ready buds -->
+  <g fill="#bf6c69" stroke="#814846" stroke-width="1.7">
+
+    <ellipse cx="52" cy="34" rx="5.5" ry="8"></ellipse>
+    <ellipse cx="63" cy="29" rx="5.5" ry="8"></ellipse>
+    <ellipse cx="76" cy="33" rx="5.5" ry="8"></ellipse>
+
+  </g>
+
+  <!-- Bud crowns -->
+  <g fill="#d58b84" stroke="#814846" stroke-width="1">
+
+    <circle cx="52" cy="29" r="3"></circle>
+    <circle cx="63" cy="24" r="3"></circle>
+    <circle cx="76" cy="28" r="3"></circle>
+
+  </g>
+
+  <!-- Bud highlights -->
+  <g fill="none" stroke="#e9aea6" stroke-width="1.2" stroke-linecap="round">
+
+    <path d="M49 32 L52 38"></path>
+    <path d="M60 27 L63 33"></path>
+    <path d="M73 31 L76 37"></path>
+
+  </g>
+
+  <!-- Dried cloves -->
+  <g>
+
+    <path d="M27 94
+         C24 91 24 87 27 85
+         C30 83 34 85 35 88
+         L39 107
+         C39 111 35 113 32 110Z" fill="#70472f" stroke="#492d20" stroke-width="2">
+    </path>
+
+    <circle cx="29" cy="87" r="6" fill="#815139" stroke="#492d20" stroke-width="2">
+    </circle>
+
+    <path d="M49 99
+         C46 96 46 91 49 89
+         C52 87 56 89 57 93
+         L60 111
+         C59 115 55 116 52 113Z" fill="#785038" stroke="#4b3022" stroke-width="2">
+    </path>
+
+    <circle cx="51" cy="91" r="6" fill="#8a5c40" stroke="#4b3022" stroke-width="2">
+    </circle>
+
+    <path d="M72 98
+         C69 95 69 90 72 88
+         C75 86 79 88 80 92
+         L83 111
+         C82 115 78 116 75 113Z" fill="#6d452f" stroke="#462c20" stroke-width="2">
+    </path>
+
+    <circle cx="74" cy="90" r="6" fill="#805038" stroke="#462c20" stroke-width="2">
+    </circle>
+
+    <path d="M96 94
+         C93 91 93 87 96 84
+         C99 82 103 84 104 88
+         L108 106
+         C107 110 103 112 100 109Z" fill="#754b33" stroke="#492e20" stroke-width="2">
+    </path>
+
+    <circle cx="98" cy="86" r="6" fill="#87563c" stroke="#492e20" stroke-width="2">
+    </circle>
+
+  </g>
+
+  <!-- Clove head divisions -->
+  <g fill="none" stroke="#ad7655" stroke-width="1.2" stroke-linecap="round">
+
+    <path d="M25 84 L33 90 M33 84 L26 90"></path>
+    <path d="M47 88 L55 94 M55 88 L48 94"></path>
+    <path d="M70 87 L78 93 M78 87 L71 93"></path>
+    <path d="M94 83 L102 89 M102 83 L95 89"></path>
+
+  </g>
+
+  <!-- Dried stem highlights -->
+  <g fill="none" stroke="#9d6a4a" stroke-width="1.2" stroke-linecap="round" opacity="0.85">
+
+    <path d="M31 94 L35 106"></path>
+    <path d="M53 98 L56 110"></path>
+    <path d="M76 97 L79 110"></path>
+    <path d="M100 93 L103 105"></path>
+
+  </g>
+
+</svg>
