@@ -10085,6 +10085,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Caraway',
+      scientificName: 'Carum carvi L.',
+      category: 'spice',
+      icon: 'assets/crops/caraway.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Illinois Extension',
+
+        title:
+          'Caraway',
+
+        url:
+          [
+            'https://',
+            'extension.illinois.edu/herbs/caraway'
+          ].join('')
+      },
+
+      minTemp: 7,
+      maxTemp: 26,
+
+      idealTempRange:
+        '16–20°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 700–1000 mm; the FAO ECOCROP absolute range is about 600–1300 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 4.8–7.8.',
+
+      soilNote:
+        'Caraway performs best in fertile, well-drained medium-textured soil. FAO ECOCROP lists medium soil texture as optimal while heavy, medium, and light soils occur within its broader tolerance range.',
+
+      plantingNote:
+        'Caraway is grown directly from seed. University of Illinois Extension recommends direct sowing because established Caraway develops a deep root system and does not transplant successfully.',
+
+      harvestNote:
+        'Caraway is an edible aromatic spice crop whose seeds, leaves, and roots may be used as food. FAO ECOCROP records annual, biennial, and perennial forms. Annual forms may reach seed harvest about 140–160 days after sowing, whereas biennial forms may require roughly 440–460 days from sowing to fruit ripening. Seeds are ready when they turn brown. Because crop duration differs drastically among life forms, FarmCast keeps Caraway as guidance-only rather than assigning one generic automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Carum carvi — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=4256'
+          ].join('')
+      }
+    },
+
 
   
 ];
