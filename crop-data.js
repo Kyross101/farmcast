@@ -8825,6 +8825,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Canistel',
+      scientificName: 'Pouteria campechiana (Kunth) Baehni',
+      category: 'fruit',
+      icon: 'assets/crops/canistel.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Canistel Growing in the Florida Home Landscape',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/HS299'
+          ].join('')
+      },
+
+      minTemp: 16,
+      maxTemp: 30,
+
+      idealTempRange:
+        '20–26°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 1200–2000 mm; the FAO ECOCROP absolute range is about 650–2700 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.5; absolute range 5.5–8.0.',
+
+      soilNote:
+        'Canistel performs well in well-drained soils and FAO ECOCROP lists heavy, medium, and light soil textures within both its optimal and broader tolerance ranges.',
+
+      plantingNote:
+        'Superior canistel cultivars should be propagated vegetatively. University of Florida IFAS Extension identifies side-veneer or cleft grafting and patch budding onto seedling rootstocks as suitable propagation methods.',
+
+      harvestNote:
+        'Canistel is a perennial fruit tree. FAO ECOCROP reports first harvest about three to four years after planting and fruit ripening about five to six months after bloom. University of Florida IFAS Extension recommends harvesting when the fruit turns yellow-orange; ripe fruit becomes soft but should not be mushy.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Pouteria campechiana — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2394'
+          ].join('')
+      }
+    },
+
    
 
 ];
