@@ -10554,6 +10554,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Vanilla',
+      scientificName: 'Vanilla planifolia Andrews',
+      category: 'spice',
+      icon: 'assets/crops/vanilla.svg',
+
+      plantingMethods: [
+        {
+          value: 'cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Agricultural Training Institute — CALABARZON',
+
+        title:
+          'Produksyon ng Vanilla',
+
+        url:
+          [
+            'https://',
+            'ati2.da.gov.ph/ati-4a/content/publications/maridelle-g-jaurigue/produksyon-ng-vanilla'
+          ].join('')
+      },
+
+      minTemp: 21,
+      maxTemp: 30,
+
+      idealTempRange:
+        '21–30°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 2000–2500 mm, with an absolute range of about 1500–3000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.0; absolute range 4.3–8.0.',
+
+      soilNote:
+        'Vanilla is a perennial tropical climbing orchid that prefers humid conditions, light shade, high soil fertility, and well-drained medium-textured or organic soils. DA-ATI CALABARZON likewise recommends loamy soil with good drainage and suitable shade management.',
+
+      plantingNote:
+        'Vanilla is commonly established vegetatively using stem cuttings. Tamil Nadu Agricultural University recommends stem cuttings about 60–120 cm long and planting two nodes below the soil surface near a support. DA-ATI CALABARZON also provides Philippine production guidance for establishing and managing Vanilla planifolia vines.',
+
+      harvestNote:
+        'Vanilla is a perennial edible spice vine grown for its aromatic pods. DA-ATI CALABARZON reports that flowering may begin about 2–3 years after planting, although some vines may take about four years depending on planting material and management. Tamil Nadu Agricultural University reports that pods become ready for harvest about 6–9 months after flowering, when mature green pods begin turning pale yellow and the distal end starts yellowing. Because pod maturity is tied to flowering rather than a fixed interval from planting, FarmCast keeps Vanilla as guidance-only instead of generating an automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vanilla planifolia — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2131'
+          ].join('')
+      }
+    },
+
 
   
 ];
