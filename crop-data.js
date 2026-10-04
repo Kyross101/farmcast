@@ -8623,6 +8623,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Feijoa',
+      scientificName: 'Acca sellowiana (O. Berg) Burret',
+      category: 'fruit',
+      icon: 'assets/crops/feijoa.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Pineapple Guava',
+
+        url:
+          [
+            'https://',
+            'gardeningsolutions.ifas.ufl.edu/plants/edibles/fruits/pineapple-guava/'
+          ].join('')
+      },
+
+      minTemp: 12,
+      maxTemp: 28,
+
+      idealTempRange:
+        '18–21°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 750–1500 mm; the FAO ECOCROP absolute range is about 600–2000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.0; absolute range 4.5–8.0.',
+
+      soilNote:
+        'Feijoa performs best in well-drained, medium or organic soil. FAO ECOCROP records a broader tolerance that includes heavy, medium, light, and organic soil textures.',
+
+      plantingNote:
+        'Named feijoa cultivars are best established using vegetatively propagated planting material so desirable fruit characteristics are retained. University of Florida IFAS Extension recommends known grafted cultivars for fruit production rather than relying on seedlings.',
+
+      harvestNote:
+        'Feijoa is a perennial fruit crop and harvest timing varies with cultivar and growing conditions. Mature fruit changes from dark green toward lighter green, softens slightly, and separates more easily from the tree. Fruit should be harvested close to natural abscission rather than using a fixed number of days after planting.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Acca sellowiana — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2741'
+          ].join('')
+      }
+    },
+
    
 
 ];
