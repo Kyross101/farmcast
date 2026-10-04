@@ -6852,6 +6852,36 @@ const CROP_HARVEST_WINDOWS = {
       }
     }
   },
+  
+  'Adzuki Bean': {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 190,
+      basis:
+        'seed ripening after planting',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports that Adzuki Bean seed ripening may occur about 60–190 days after planting. The broad range reflects variation among crop types and growing environments, so actual mature pod condition should still be checked before harvest.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vigna angularis — ECOCROP Crop Profile',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2147'
+          ].join('')
+      }
+    }
+  },
 
 };
 

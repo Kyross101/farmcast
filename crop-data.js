@@ -9299,6 +9299,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Adzuki Bean',
+      scientificName: 'Vigna angularis (Willd.) Ohwi & H.Ohashi',
+      category: 'legume',
+      icon: 'assets/crops/adzuki-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Wisconsin-Madison Cooperative Extension',
+
+        title:
+          'Adzuki Bean',
+
+        url:
+          [
+            'https://',
+            'corn.agronomy.wisc.edu/Crops/AdzukiBean.aspx'
+          ].join('')
+      },
+
+      minTemp: 5,
+      maxTemp: 36,
+
+      idealTempRange:
+        '15–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 900–1300 mm; the FAO ECOCROP absolute range is about 530–1800 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 5.0–7.5.',
+
+      soilNote:
+        'Adzuki bean performs best in well-drained heavy- to medium-textured soil. FAO ECOCROP lists heavy and medium soil textures as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Adzuki bean is established directly from seed. University of Wisconsin-Madison Cooperative Extension provides field seeding recommendations including row planting, seeding rate, planting depth, and the need for good seed-to-soil contact.',
+
+      harvestNote:
+        'Adzuki bean is an annual grain legume. FAO ECOCROP reports that seed ripening may occur about 60–190 days after planting depending on type and growing conditions. University of Wisconsin-Madison reports that plants in its production region commonly mature about 110–120 days after planting, so actual pod maturity should still guide harvest.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Vigna angularis — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2147'
+          ].join('')
+      }
+    },
+
    
 
 ];
