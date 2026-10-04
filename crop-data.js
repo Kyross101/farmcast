@@ -8557,6 +8557,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Loquat',
+      scientificName: 'Eriobotrya japonica (Thunb.) Lindl.',
+      category: 'fruit',
+      icon: 'assets/crops/loquat.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Loquat Growing in the Florida Home Landscape',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/MG050'
+          ].join('')
+      },
+
+      minTemp: 9,
+      maxTemp: 36,
+
+      idealTempRange:
+        '21–27°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 600–1600 mm; the FAO ECOCROP absolute range is about 400–4000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 4.5–8.0.',
+
+      soilNote:
+        'Loquat performs best in deep, well-drained soil. FAO ECOCROP lists medium- and light-textured soils as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Named loquat cultivars are commonly propagated vegetatively to preserve desirable fruit characteristics. University of Florida IFAS Extension states that loquat may be grafted using cleft, veneer, or whip grafting and notes that trees are commonly grafted onto loquat seedlings.',
+
+      harvestNote:
+        'Loquat is a perennial fruit tree and harvest timing varies with cultivar and local conditions. Ripe fruit develops its cultivar-appropriate yellow to orange color and should be harvested when ripe because loquat fruit does not continue ripening after it is picked.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Eriobotrya japonica — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1002'
+          ].join('')
+      }
+    },
+
    
 
 ];
