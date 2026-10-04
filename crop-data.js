@@ -8424,6 +8424,72 @@ window.FARMCAST_CROPS = [
           ].join('')
       }
     },
+
+    {
+      name: 'Quince',
+      scientificName: 'Cydonia oblonga Mill.',
+      category: 'fruit',
+      icon: 'assets/crops/quince.svg',
+
+      plantingMethods: [
+        {
+          value: 'hardwood-cuttings',
+          label: 'Hardwood Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        title:
+          'Quince Propagation',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/sites/btfnp/fruitnutproduction/Quince/Quince_Propagation/'
+          ].join('')
+      },
+
+      minTemp: 7,
+      maxTemp: 35,
+
+      idealTempRange:
+        '10–30°C',
+
+      rainfallRange:
+        'Optimal annual rainfall is about 700–900 mm; the FAO ECOCROP absolute range is about 500–1100 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–6.5; absolute range 5.5–7.0.',
+
+      soilNote:
+        'Quince performs best in deep, well-drained soil. FAO ECOCROP lists heavy- and medium-textured soils as optimal, while heavy, medium, and light soils fall within its broader tolerance range.',
+
+      plantingNote:
+        'Quince can be propagated readily from hardwood cuttings. University of California Agriculture and Natural Resources describes hardwood cuttings from one-year-old wood as a common propagation method and notes that quince roots readily by this method.',
+
+      harvestNote:
+        'Quince is a perennial fruit tree and harvest timing should be based on actual fruit maturity rather than a fixed number of days after planting. UC Davis identifies the change in skin color from green to yellow as the primary maturity indicator and recommends harvesting fruit when it is full-yellow and still firm.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cydonia oblonga — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=5117'
+          ].join('')
+      }
+    },
    
 
 ];

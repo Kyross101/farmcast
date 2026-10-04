@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Quince</title>
+
+  <desc id="desc">
+    A fruit-focused quince icon with two ripe yellow quince fruits
+    and a few green leaves, without a large branch.
+  </desc>
+
+  <!-- Back leaf -->
+  <ellipse cx="44" cy="37" rx="16" ry="8" transform="rotate(-28 44 37)" fill="#6b9a4e" stroke="#456f3d" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Back leaf vein -->
+  <path d="M31 42 L56 32" fill="none" stroke="#98b883" stroke-width="1.4" stroke-linecap="round">
+  </path>
+
+  <!-- Right leaf -->
+  <ellipse cx="87" cy="35" rx="16" ry="8" transform="rotate(28 87 35)" fill="#6b9a4e" stroke="#456f3d" stroke-width="1.8">
+  </ellipse>
+
+  <!-- Right leaf vein -->
+  <path d="M76 29 L98 40" fill="none" stroke="#98b883" stroke-width="1.4" stroke-linecap="round">
+  </path>
+
+  <!-- Small top stem -->
+  <path d="M64 36
+       C61 42 58 47 54 53
+
+       M64 36
+       C67 42 71 48 76 55" fill="none" stroke="#6f5a3e" stroke-width="3" stroke-linecap="round">
+  </path>
+
+  <!-- Left quince fruit -->
+  <path d="M51 48
+       C41 49 34 57 33 68
+       C32 82 39 94 51 98
+       C64 102 75 94 76 81
+       C77 69 71 56 61 50
+       C58 48 55 48 51 48Z" fill="#e1b447" stroke="#a87a2d" stroke-width="2.2">
+  </path>
+
+  <!-- Left fruit top dip -->
+  <path d="M50 51
+       C53 56 58 56 61 51" fill="none" stroke="#aa7a2f" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Left fruit highlight -->
+  <path d="M43 60
+       C40 69 43 80 48 86" fill="none" stroke="#f2d47d" stroke-width="2.2" stroke-linecap="round">
+  </path>
+
+  <!-- Right quince fruit -->
+  <path d="M77 54
+       C68 55 62 62 61 72
+       C60 84 66 94 77 98
+       C88 102 98 95 99 84
+       C100 73 94 62 86 56
+       C84 54 81 54 77 54Z" fill="#e8bb4e" stroke="#ad7d31" stroke-width="2.2">
+  </path>
+
+  <!-- Right fruit top dip -->
+  <path d="M76 57
+       C79 61 83 61 86 57" fill="none" stroke="#ac7d32" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Right fruit highlight -->
+  <path d="M71 67
+       C69 75 71 83 75 88" fill="none" stroke="#f4d985" stroke-width="2" stroke-linecap="round">
+  </path>
+
+  <!-- Small shadow -->
+  <ellipse cx="66" cy="106" rx="30" ry="6" fill="#81664a" opacity="0.22">
+  </ellipse>
+
+</svg>
