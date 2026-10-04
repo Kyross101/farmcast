@@ -9497,6 +9497,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Sword Bean',
+      scientificName: 'Canavalia gladiata (Jacq.) DC.',
+      category: 'legume',
+      icon: 'assets/crops/sword-bean.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'PROSEA / PROTA',
+
+        title:
+          'Canavalia gladiata — Sword Bean',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/view.aspx?id=2156'
+          ].join('')
+      },
+
+      minTemp: 10,
+      maxTemp: 38,
+
+      idealTempRange:
+        '15–30°C',
+
+      rainfallRange:
+        'Tamil Nadu Agricultural University reports an annual rainfall range of about 700–4200 mm for Sword Bean. PROSEA notes that the crop performs especially well with evenly distributed rainfall of about 900–1500 mm.',
+
+      soilPH:
+        'Reported suitable pH range is about 4.5–7.0.',
+
+      soilNote:
+        'Sword bean is tolerant of relatively poor tropical soils and acidic conditions. PROSEA notes that it can tolerate drought, temporary waterlogging, salinity, and some shade once established.',
+
+      plantingNote:
+        'Sword bean is propagated directly by seed. PROSEA recommends sowing seeds about 5–7.5 cm deep, commonly with plants spaced about 45–60 cm apart and rows about 75–90 cm apart.',
+
+      harvestNote:
+        'Sword bean may be harvested for tender green pods or mature seed. Tamil Nadu Agricultural University reports tender pods from about 75 days after sowing for the SBS 1 variety and overall maturity around 110–120 days for that variety. Research on seed development found physiological seed maturity about 80 days after anthesis, accompanied by pod color changing toward brown and mature seed color becoming dark red. Because these timings are variety- or stage-specific, FarmCast keeps Sword Bean as guidance-only rather than applying one generic automatic harvest date.',
+
+      source: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        title:
+          'Crop Production — Pulses — Sword Bean',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/agriculture/CropProduction/Pulses/pulses_swordbean.html'
+          ].join('')
+      }
+    },
+
    
 
 ];
