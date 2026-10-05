@@ -10896,6 +10896,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Asafoetida',
+      scientificName: 'Ferula assa-foetida L.',
+      category: 'spice',
+      icon: 'assets/crops/asafoetida.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedling'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Government of India',
+
+        office:
+          'Press Information Bureau / CSIR-Institute of Himalayan Bioresource Technology',
+
+        title:
+          'CSIR-IHBT makes history by introducing Asafoetida cultivation in Indian Himalayan region',
+
+        url:
+          [
+            'https://',
+            'www.pib.gov.in/PressReleasePage.aspx?PRID=1665796'
+          ].join('')
+      },
+
+      minTemp: 10,
+      maxTemp: 20,
+
+      idealTempRange:
+        'Optimal vegetative growth is reported at about 10–20°C. Germination performs best around 15°C, while established plants can tolerate substantially warmer conditions.',
+
+      rainfallRange:
+        'Dry-temperate cultivation literature reports average annual rainfall of about 250–350 mm. Heavy and continuous rainfall can adversely affect the crop.',
+
+      soilPH:
+        'No single numeric pH range is used because reviewed cultivation sources describe Asafoetida as tolerant of acidic, neutral, and alkaline soils rather than defining one dependable crop-wide numeric range.',
+
+      soilNote:
+        'Asafoetida prefers deep, fertile, well-drained sandy or sandy-loam soils under dry temperate conditions and abundant sunlight. Excessive or prolonged soil moisture can promote root problems, so good drainage is important.',
+
+      plantingNote:
+        'Asafoetida is propagated from seed. CSIR-IHBT raised imported Ferula assa-foetida seed in nurseries and established the crop in farmers fields using seedlings, making transplanted seedlings the FarmCast establishment method for this entry.',
+
+      harvestNote:
+        'Asafoetida is a perennial edible spice crop grown for the oleo-gum resin produced by its fleshy taproot. Government of India and CSIR-IHBT report that plants require approximately five years before resin production. Mature roots are cut near the crown and the exuded resin is collected repeatedly. Because the five-year figure is an approximate perennial maturity stage rather than one exact transplant-to-harvest interval, FarmCast keeps Asafoetida as guidance-only.',
+
+      source: {
+        agency:
+          'Journal of Applied and Natural Science',
+
+        title:
+          'Asafoetida (Ferula asafoetida): A high-value crop suitable for the cold desert of Himachal Pradesh, India',
+
+        url:
+          [
+            'https://',
+            'journals.ansfoundation.org/index.php/jans/article/view/2418'
+          ].join('')
+      }
+    },
+
 
   
 ];
