@@ -11234,6 +11234,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Summer Savory',
+      scientificName: 'Satureja hortensis L.',
+      category: 'herb',
+      icon: 'assets/crops/summer-savory.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Illinois Extension',
+
+        title:
+          'Savory: Summer — Herb Gardening',
+
+        url:
+          [
+            'https://',
+            'extension.illinois.edu/herbs/savory-summer'
+          ].join('')
+      },
+
+      minTemp: 20,
+      maxTemp: 26,
+
+      idealTempRange:
+        '20–26°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 500–800 mm, with an absolute range of about 300–1300 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.0; absolute range 5.5–8.2.',
+
+      soilNote:
+        'Summer Savory prefers fertile, well-drained medium-textured soil and bright conditions. FAO ECOCROP lists high soil fertility, medium texture, and good drainage among its optimal ecological requirements, while University of Illinois Extension recommends full sun and moist but well-drained garden soil.',
+
+      plantingNote:
+        'Summer Savory is an annual culinary herb that can be direct-seeded outdoors or started indoors and later transplanted. University of Illinois Extension recommends shallow sowing because light improves germination and notes that transplants generally require about 4–6 weeks of indoor growth before field establishment.',
+
+      harvestNote:
+        'Summer Savory is grown mainly for its aromatic leaves and tender stems. FAO ECOCROP reports that leaves are commonly harvested about 75–120 days around the period just before first flowering, while University of Illinois Extension recommends cutting leafy tops when flower buds begin to appear. Because the published 75–120 day guidance does not explicitly state whether the count begins at sowing, sprouting, or transplanting, FarmCast keeps Summer Savory as guidance-only instead of creating an automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Satureja hortensis — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=9582'
+          ].join('')
+      }
+    },
+
 
   
 ];
