@@ -11374,6 +11374,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Lemon Balm',
+      scientificName: 'Melissa officinalis L.',
+      category: 'herb',
+      icon: 'assets/crops/lemon-balm.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Lemon Balm in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/lemon-balm-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: 14,
+      maxTemp: 25,
+
+      idealTempRange:
+        'About 14–25°C according to FAO ECOCROP-derived ecological data.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Lemon Balm prefers consistently moist but well-drained soil and should not be allowed to remain waterlogged or severely water-stressed.',
+
+      soilPH:
+        'Recommended pH about 5.0–7.5.',
+
+      soilNote:
+        'Lemon Balm grows in a range of soil types but performs well in rich, humus-filled, moist, well-drained soil. It tolerates full sun to partial shade, and excessive soil moisture should be avoided because waterlogged conditions can encourage root rot.',
+
+      plantingNote:
+        'Lemon Balm is a perennial culinary herb that can be established from seed, stem cuttings, or root divisions. Utah State University Extension also describes layering as a reliable propagation method, while PROSEA confirms propagation by seed and cuttings.',
+
+      harvestNote:
+        'Lemon Balm is grown mainly for its aromatic leaves and tender stems. Illinois Extension reports that stems may be harvested as needed throughout the growing season, preferably before flowering. Utah State University recommends frequent foliage harvests and cutting about one-third of the foliage at intervals to encourage healthy branching and regrowth. Because harvest readiness is based on vegetative growth and repeated management rather than one fixed interval from sowing, cutting, or division, FarmCast keeps Lemon Balm as guidance-only.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Melissa officinalis — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2340'
+          ].join('')
+      }
+    },
+
 
   
 ];
