@@ -11522,6 +11522,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Borage',
+      scientificName: 'Borago officinalis L.',
+      category: 'herb',
+      icon: 'assets/crops/borage.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Maryland Extension',
+
+        title:
+          'Borage',
+
+        url:
+          [
+            'https://',
+            'extension.umd.edu/resource/borage'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Borage is adapted to a broad range of cool to mild growing conditions. Published seed-production research notes that seed development below about 25°C is favorable for high-quality seed oil, but FarmCast does not convert that quality threshold into a universal optimal temperature range.',
+
+      rainfallRange:
+        'No single crop-wide annual rainfall requirement is used. Borage has been grown successfully under contrasting climates, and University of Maryland Extension describes it as performing well in dry, sunny locations. FarmCast avoids treating rainfall observed at individual research sites as a universal crop requirement.',
+
+      soilPH:
+        'Published crop research reports broad soil tolerance around pH 4.3–8.5.',
+
+      soilNote:
+        'Borage is adaptable but performs well in sunny, well-drained growing sites. University of Maryland Extension describes it as easy to grow from seed and particularly suited to dry, sunny locations.',
+
+      plantingNote:
+        'Borage is an annual herb that is best established by direct seeding. University of Maryland Extension notes that it is easy to grow from seed, readily reseeds itself, and is relatively difficult to transplant, so FarmCast uses direct seeding as the supported establishment method.',
+
+      harvestNote:
+        'Borage has several harvest stages depending on the intended product. University of Maryland Extension notes that fresh leaves may be used earlier and flowers can be picked as they open. For seed-crop production, peer-reviewed Chilean agricultural research reports that Borage is ready for harvest at about 75 days after sowing. FarmCast therefore uses a 75-day automatic harvest estimate specifically as a seed-crop maturity reference rather than as the earliest possible leaf or flower harvest.',
+
+      source: {
+        agency:
+          'Chilean Journal of Agricultural Research',
+
+        title:
+          'Borage (Borago officinalis L.) Response to N, P, K, and S Fertilization in South Central Chile',
+
+        url:
+          [
+            'https://',
+            'www.scielo.cl/scielo.php?lng=en&nrm=iso&pid=S0718-58392010000200006&script=sci_arttext&tlng=en'
+          ].join('')
+      }
+    },
+
 
   
 ];

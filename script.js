@@ -7217,6 +7217,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Borage: {
+    'direct-seeded': {
+      minDays: 75,
+      maxDays: 75,
+      basis:
+        'seed-crop harvest after sowing',
+      derived: false,
+
+      note:
+        'Peer-reviewed Chilean agricultural research reports that Borage is ready for harvest at about 75 days after sowing. This FarmCast automatic estimate represents seed-crop maturity; culinary leaves may be used earlier and flowers may be picked as they open.',
+
+      source: {
+        agency:
+          'Chilean Journal of Agricultural Research',
+
+        title:
+          'Borage (Borago officinalis L.) Response to N, P, K, and S Fertilization in South Central Chile',
+
+        url:
+          [
+            'https://',
+            'www.scielo.cl/scielo.php?lng=en&nrm=iso&pid=S0718-58392010000200006&script=sci_arttext&tlng=en'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };
