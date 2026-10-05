@@ -10962,6 +10962,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Galangal',
+      localName: 'Langkawas',
+      scientificName: 'Alpinia galanga (L.) Willd.',
+      category: 'spice',
+      icon: 'assets/crops/galangal.svg',
+
+      plantingMethods: [
+        {
+          value: 'rhizome-pieces',
+          label: 'Rhizome Pieces'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Japan International Research Center for Agricultural Sciences',
+
+        office:
+          'JIRCAS',
+
+        title:
+          'Alpinia galanga (L.) Willd. — Thai Vegetable Database',
+
+        url:
+          [
+            'https://',
+            'www.jircas.go.jp/en/database/thaivege/005'
+          ].join('')
+      },
+
+      minTemp: 27,
+      maxTemp: 32,
+
+      idealTempRange:
+        '27–32°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 2500–3000 mm, with an absolute range of about 2000–3700 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 5.0–6.8.',
+
+      soilNote:
+        'Galangal prefers fertile, moist but well-drained tropical soils and can grow in sunny to moderately shaded conditions. FAO ECOCROP lists high fertility and well-drained soils among its optimal ecological requirements, while PROSEA specifically notes that waterlogged conditions interfere with rhizome development.',
+
+      plantingNote:
+        'Galangal is propagated vegetatively using sections of mature rhizomes. JIRCAS recommends dividing older rhizomes into pieces about 5–10 cm long, each with at least two healthy terminal buds, and planting the rhizome pieces directly in the field.',
+
+      harvestNote:
+        'Galangal is a perennial edible spice crop grown mainly for its aromatic rhizomes. FAO ECOCROP and PROSEA report that rhizomes develop rapidly and reach their best market-spice harvest quality about three months after planting. PROSEA also notes that rhizomes left substantially longer may become woody and fibrous. Because the timing is directly tied to planting and FarmCast supports calendar-month harvest rules without converting months into invented day counts, Galangal can safely use an automatic three-month harvest estimate.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Alpinia galanga — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=3052'
+          ].join('')
+      }
+    },
+
 
   
 ];

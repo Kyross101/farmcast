@@ -7069,6 +7069,36 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Galangal: {
+    'rhizome-pieces': {
+      minMonths: 3,
+      maxMonths: 3,
+      basis:
+        'after planting',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports that Galangal rhizomes develop rapidly and reach their best harvest quality about three months after planting. PROSEA likewise reports that market rhizomes are harvested at about three months, before older rhizomes become increasingly woody and fibrous.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Alpinia galanga — ECOCROP Crop Profile',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=3052'
+          ].join('')
+      }
+    }
+  },
+
 
 };
 

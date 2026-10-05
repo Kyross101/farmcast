@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Galangal</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of greater galangal with glossy lance-shaped leaves,
+    a white flower cluster with lilac markings, fresh reddish rhizomes, and sliced rhizome.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fb66d"></stop>
+      <stop offset="0.5" stop-color="#56834d"></stop>
+      <stop offset="1" stop-color="#2f5a3b"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a9c883"></stop>
+      <stop offset="1" stop-color="#497548"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#839c5d"></stop>
+      <stop offset="1" stop-color="#4e6840"></stop>
+    </linearGradient>
+
+    <linearGradient id="rhizomeSkin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#cf8a67"></stop>
+      <stop offset="0.5" stop-color="#a45e4d"></stop>
+      <stop offset="1" stop-color="#6f4038"></stop>
+    </linearGradient>
+
+    <radialGradient id="rhizomeCut" cx="38%" cy="32%" r="70%">
+      <stop offset="0" stop-color="#fff0c3"></stop>
+      <stop offset="0.6" stop-color="#e8c887"></stop>
+      <stop offset="1" stop-color="#bc8a55"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf4"></stop>
+      <stop offset="1" stop-color="#e5e6d5"></stop>
+    </linearGradient>
+
+    <linearGradient id="flowerLilac" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9a7c4"></stop>
+      <stop offset="1" stop-color="#925a83"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#293029" flood-opacity="0.24"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="119" rx="45" ry="5" fill="#574f47" opacity="0.16"></ellipse>
+
+  <!-- Pseudostems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M58 106
+         C58 87 58 68 57 49
+         C56 35 54 24 51 15" stroke-width="6"></path>
+
+    <path d="M72 106
+         C72 87 73 69 74 51
+         C75 36 78 25 82 16" stroke-width="6"></path>
+
+    <path d="M45 107
+         C45 91 44 76 42 62
+         C40 50 37 40 33 31" stroke-width="4.5"></path>
+
+  </g>
+
+  <!-- Stem highlights -->
+  <g fill="none" stroke="#b0c382" stroke-linecap="round" opacity="0.64">
+
+    <path d="M60 102 C60 81 60 60 59 40" stroke-width="1.2"></path>
+
+    <path d="M74 102 C74 82 75 61 77 40" stroke-width="1.2"></path>
+
+  </g>
+
+  <!-- Leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M55 82
+         C43 72 30 69 20 75
+         C28 88 42 93 56 88Z" fill="url(#leafGreen)" stroke="#31533a" stroke-width="2"></path>
+
+    <path d="M55 63
+         C43 53 30 50 21 56
+         C29 68 42 72 56 69Z" fill="url(#leafLight)" stroke="#31533a" stroke-width="2"></path>
+
+    <path d="M55 44
+         C44 34 32 31 23 37
+         C31 49 43 53 56 50Z" fill="url(#leafGreen)" stroke="#31533a" stroke-width="1.8"></path>
+
+    <path d="M75 82
+         C88 72 101 70 111 77
+         C102 89 89 93 74 88Z" fill="url(#leafGreen)" stroke="#31533a" stroke-width="2"></path>
+
+    <path d="M75 63
+         C88 53 101 50 110 57
+         C101 69 88 72 74 68Z" fill="url(#leafLight)" stroke="#31533a" stroke-width="2"></path>
+
+    <path d="M76 44
+         C88 34 100 31 108 37
+         C100 49 88 53 75 50Z" fill="url(#leafGreen)" stroke="#31533a" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#afc99d" stroke-linecap="round" opacity="0.8">
+
+    <path d="M23 76 C36 78 47 83 54 87" stroke-width="1.1"></path>
+    <path d="M24 57 C36 59 46 64 54 68" stroke-width="1.1"></path>
+    <path d="M26 38 C37 41 46 46 54 49" stroke-width="1"></path>
+
+    <path d="M108 78 C96 79 84 84 76 87" stroke-width="1.1"></path>
+    <path d="M107 58 C95 60 84 64 76 67" stroke-width="1.1"></path>
+    <path d="M105 38 C95 41 85 46 77 49" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Gloss -->
+  <g fill="none" stroke="#dcebd3" stroke-width="1" stroke-linecap="round" opacity="0.42">
+
+    <path d="M29 74 C38 74 46 78 51 81"></path>
+    <path d="M84 74 C93 72 101 73 106 76"></path>
+
+  </g>
+
+  <!-- Flower stem -->
+  <path d="M72 28
+       C81 25 90 24 98 27" fill="none" stroke="#6d7847" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- Galangal flower -->
+  <g transform="translate(98 27)" filter="url(#softShadow)">
+
+    <g fill="url(#flowerWhite)" stroke="#c8cbb8" stroke-width="0.9">
+
+      <ellipse cx="-6" cy="-4" rx="3" ry="6" transform="rotate(-35 -6 -4)"></ellipse>
+
+      <ellipse cx="0" cy="-6" rx="3" ry="6"></ellipse>
+
+      <ellipse cx="6" cy="-3" rx="3" ry="6" transform="rotate(35 6 -3)"></ellipse>
+
+      <ellipse cx="-5" cy="4" rx="3" ry="5" transform="rotate(-65 -5 4)"></ellipse>
+
+      <ellipse cx="5" cy="4" rx="3" ry="5" transform="rotate(65 5 4)"></ellipse>
+
+    </g>
+
+    <path d="M-5 1
+         C-2 8 3 10 7 6
+         C8 4 7 1 5 -1
+         C2 2 -1 3 -5 1Z" fill="url(#flowerLilac)" stroke="#7c4b70" stroke-width="1"></path>
+
+    <path d="M-2 2 C1 4 4 4 6 2" fill="none" stroke="#f7d7ea" stroke-width="1" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- Rhizome connecting line -->
+  <path d="M38 107
+       C47 101 58 101 67 105
+       C76 100 88 102 97 108" fill="none" stroke="#74443a" stroke-width="4" stroke-linecap="round"></path>
+
+  <!-- Fresh rhizomes -->
+  <g filter="url(#softShadow)">
+
+    <path d="M30 103
+         C36 96 44 94 51 98
+         C56 101 57 107 53 111
+         C47 116 37 114 31 110
+         C28 108 28 105 30 103Z" fill="url(#rhizomeSkin)" stroke="#60372f" stroke-width="2"></path>
+
+    <path d="M52 105
+         C58 98 68 97 75 101
+         C81 104 81 111 76 115
+         C69 119 58 117 53 113
+         C50 111 50 108 52 105Z" fill="url(#rhizomeSkin)" stroke="#60372f" stroke-width="2"></path>
+
+    <path d="M75 105
+         C82 99 91 100 97 104
+         C102 108 101 113 97 116
+         C91 120 82 118 76 114
+         C73 112 73 108 75 105Z" fill="url(#rhizomeSkin)" stroke="#60372f" stroke-width="2"></path>
+
+  </g>
+
+  <!-- Rhizome highlights -->
+  <g fill="none" stroke="#e4aa88" stroke-width="1.2" stroke-linecap="round" opacity="0.72">
+
+    <path d="M34 103 C40 101 46 102 50 105"></path>
+    <path d="M57 105 C63 102 69 103 74 106"></path>
+    <path d="M80 106 C86 103 92 104 96 108"></path>
+
+  </g>
+
+  <!-- Sliced galangal rhizome -->
+  <g transform="translate(106 105)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="0" rx="9" ry="7" fill="url(#rhizomeCut)" stroke="#764b37" stroke-width="2"></ellipse>
+
+    <ellipse cx="0" cy="0" rx="5.5" ry="4" fill="none" stroke="#d2a66b" stroke-width="1" opacity="0.75"></ellipse>
+
+    <path d="M-4 -1 C-1 -3 3 -3 5 0" fill="none" stroke="#fff1c7" stroke-width="1.1" stroke-linecap="round" opacity="0.8"></path>
+
+  </g>
+
+  <!-- Small highlights -->
+  <g fill="#eee1b7" opacity="0.62">
+
+    <circle cx="49" cy="66" r="1"></circle>
+    <circle cx="86" cy="61" r="1"></circle>
+    <circle cx="61" cy="35" r="1"></circle>
+
+  </g>
+
+</svg>
