@@ -10761,6 +10761,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Grains of Paradise',
+      scientificName: 'Aframomum melegueta K.Schum.',
+      category: 'spice',
+      icon: 'assets/crops/grains-of-paradise.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedling'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Economic Botany',
+
+        title:
+          'The Cultivation of Melegueta Pepper (Aframomum melegueta) in Ghana',
+
+        url:
+          [
+            'https://',
+            'www.jstor.org/stable/4253855'
+          ].join('')
+      },
+
+      minTemp: 21,
+      maxTemp: 28,
+
+      idealTempRange:
+        '21–28°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 1500–1900 mm, with an absolute range of about 1000–2400 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–6.5; absolute range 4.5–7.5.',
+
+      soilNote:
+        'Grains of Paradise is a perennial rhizomatous tropical herb that performs best in warm, humid conditions. FAO ECOCROP lists medium to heavy soils, moderate fertility, and generally well-drained conditions among its optimal ecological requirements. Kew and West African botanical sources also describe the crop as commonly occurring or cultivated under shade.',
+
+      plantingNote:
+        'Grains of Paradise may be raised from seed. Traditional Ghana cultivation described by Lock, Hall and Abbiw sows seeds during the main rainy period and transplants the young plants during the following wet season to obtain more even field spacing.',
+
+      harvestNote:
+        'Grains of Paradise is a perennial edible spice crop grown for the aromatic seeds contained inside its fleshy fruits. Ghana cultivation research reports that a few flowers may appear during the second wet season after sowing, but the main cropping period generally begins about three years after sowing. FAO ECOCROP also lists the crop as perennial and gives a general crop-cycle range, but this does not provide one unambiguous transplant-to-harvest interval. Because first bearing occurs over multiple seasons and subsequent harvests recur from established rhizomes, FarmCast keeps Grains of Paradise as guidance-only instead of generating an automatic harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Aframomum melegueta — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2872'
+          ].join('')
+      }
+    },
+
 
   
 ];

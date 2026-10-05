@@ -1,0 +1,264 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Grains of Paradise</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Aframomum melegueta with lance-shaped leaves,
+    mauve flowers, red ripe pods, and aromatic brown seeds.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#92b86f"></stop>
+      <stop offset="0.52" stop-color="#5d874e"></stop>
+      <stop offset="1" stop-color="#315b3b"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aecb82"></stop>
+      <stop offset="1" stop-color="#4f7b48"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#829a56"></stop>
+      <stop offset="1" stop-color="#53673f"></stop>
+    </linearGradient>
+
+    <linearGradient id="podRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d36a54"></stop>
+      <stop offset="0.5" stop-color="#a8463f"></stop>
+      <stop offset="1" stop-color="#6b2e2f"></stop>
+    </linearGradient>
+
+    <linearGradient id="podOrange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e29a58"></stop>
+      <stop offset="1" stop-color="#a64f37"></stop>
+    </linearGradient>
+
+    <linearGradient id="flowerMauve" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e4b4d8"></stop>
+      <stop offset="0.52" stop-color="#b86ca6"></stop>
+      <stop offset="1" stop-color="#824c83"></stop>
+    </linearGradient>
+
+    <linearGradient id="flowerLip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6bc71"></stop>
+      <stop offset="0.55" stop-color="#df7f51"></stop>
+      <stop offset="1" stop-color="#a44b4c"></stop>
+    </linearGradient>
+
+    <radialGradient id="seedBrown" cx="35%" cy="30%" r="72%">
+      <stop offset="0" stop-color="#b18561"></stop>
+      <stop offset="0.55" stop-color="#76513d"></stop>
+      <stop offset="1" stop-color="#3e2b24"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#29302a" flood-opacity="0.24"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="119" rx="45" ry="5" fill="#5b5146" opacity="0.16"></ellipse>
+
+  <!-- Pseudostems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M57 109
+         C57 91 57 72 56 53
+         C56 38 54 26 51 16" stroke-width="6"></path>
+
+    <path d="M72 109
+         C72 90 73 71 74 52
+         C75 38 78 26 82 17" stroke-width="6"></path>
+
+    <path d="M44 109
+         C44 92 43 76 41 61
+         C39 48 36 38 32 29" stroke-width="4.5"></path>
+
+  </g>
+
+  <!-- Stem highlights -->
+  <g fill="none" stroke="#b0c27f" stroke-linecap="round" opacity="0.62">
+
+    <path d="M59 105
+         C59 84 59 62 58 42" stroke-width="1.2"></path>
+
+    <path d="M74 105
+         C74 84 75 62 77 40" stroke-width="1.2"></path>
+
+  </g>
+
+  <!-- Leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M55 82
+         C43 72 30 69 20 75
+         C28 88 42 93 56 88Z" fill="url(#leafGreen)" stroke="#31533a" stroke-width="2"></path>
+
+    <path d="M55 63
+         C43 53 30 50 21 56
+         C29 68 42 72 56 69Z" fill="url(#leafLight)" stroke="#31533a" stroke-width="2"></path>
+
+    <path d="M55 45
+         C44 35 32 32 23 38
+         C31 49 43 54 56 51Z" fill="url(#leafGreen)" stroke="#31533a" stroke-width="1.8"></path>
+
+    <path d="M75 82
+         C88 72 101 70 111 77
+         C102 89 89 93 74 88Z" fill="url(#leafGreen)" stroke="#31533a" stroke-width="2"></path>
+
+    <path d="M75 63
+         C88 53 101 50 110 57
+         C101 69 88 72 74 68Z" fill="url(#leafLight)" stroke="#31533a" stroke-width="2"></path>
+
+    <path d="M76 45
+         C88 35 100 32 108 38
+         C100 50 88 54 75 51Z" fill="url(#leafGreen)" stroke="#31533a" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#afc99e" stroke-linecap="round" opacity="0.8">
+
+    <path d="M23 76 C36 78 47 83 54 87" stroke-width="1.1"></path>
+    <path d="M24 57 C36 59 46 64 54 68" stroke-width="1.1"></path>
+    <path d="M26 39 C37 42 46 47 54 50" stroke-width="1"></path>
+
+    <path d="M108 78 C96 79 84 84 76 87" stroke-width="1.1"></path>
+    <path d="M107 58 C95 60 84 64 76 67" stroke-width="1.1"></path>
+    <path d="M105 39 C95 42 85 47 77 50" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Leaf gloss -->
+  <g fill="none" stroke="#dcebd3" stroke-width="1" stroke-linecap="round" opacity="0.42">
+
+    <path d="M29 74 C38 74 46 78 51 81"></path>
+    <path d="M84 74 C93 72 101 73 106 76"></path>
+
+  </g>
+
+  <!-- Basal flower stalk -->
+  <path d="M60 109
+       C59 100 59 92 59 84" fill="none" stroke="#6f7142" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- Mauve flower -->
+  <g transform="translate(58 81)" filter="url(#softShadow)">
+
+    <path d="M0 7
+         C-8 4 -11 -3 -7 -10
+         C-3 -16 4 -18 10 -13
+         C15 -8 14 0 8 5
+         C5 7 2 8 0 7Z" fill="url(#flowerMauve)" stroke="#74466f" stroke-width="1.5"></path>
+
+    <path d="M-4 -7
+         C0 -2 5 -1 9 -5" fill="none" stroke="#f1d4eb" stroke-width="1.2" opacity="0.75"></path>
+
+    <path d="M-4 2
+         C-2 9 2 12 7 10
+         C10 8 11 5 9 2
+         C6 5 2 5 -1 3Z" fill="url(#flowerLip)" stroke="#9b5546" stroke-width="1.1"></path>
+
+    <path d="M-1 4
+         C2 5 5 5 7 3" fill="none" stroke="#ffd69a" stroke-width="1" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <g fill="none" stroke="#6c7140" stroke-width="1.8" stroke-linecap="round">
+
+    <path d="M66 108 L79 94"></path>
+    <path d="M67 108 L91 99"></path>
+    <path d="M67 108 L77 110"></path>
+    <path d="M64 107 L57 96"></path>
+
+  </g>
+
+  <!-- Ripe pods -->
+  <g filter="url(#softShadow)">
+
+    <path d="M80 83
+         C88 84 92 91 89 100
+         C87 106 82 109 77 105
+         C72 101 72 94 74 88
+         C75 85 77 83 80 83Z" fill="url(#podRed)" stroke="#632f2d" stroke-width="1.8"></path>
+
+    <path d="M94 91
+         C102 92 106 99 103 107
+         C101 113 96 116 91 112
+         C86 108 86 101 88 96
+         C89 93 91 91 94 91Z" fill="url(#podOrange)" stroke="#6a342e" stroke-width="1.8"></path>
+
+    <path d="M77 101
+         C84 102 88 108 86 114
+         C84 118 79 120 75 117
+         C71 114 70 108 72 104
+         C73 102 75 101 77 101Z" fill="url(#podRed)" stroke="#632f2d" stroke-width="1.7"></path>
+
+    <path d="M56 88
+         C63 89 67 95 65 102
+         C63 108 58 110 53 107
+         C49 104 48 98 50 93
+         C51 90 53 88 56 88Z" fill="url(#podOrange)" stroke="#6a342e" stroke-width="1.7"></path>
+
+  </g>
+
+  <!-- Pod ribs -->
+  <g fill="none" stroke="#e7a17d" stroke-width="1" opacity="0.72">
+
+    <path d="M77 87 C79 93 81 99 80 104"></path>
+    <path d="M83 87 C84 93 84 99 82 104"></path>
+
+    <path d="M91 95 C95 100 97 106 96 111"></path>
+    <path d="M97 95 C100 101 100 106 99 111"></path>
+
+    <path d="M53 92 C56 96 58 102 57 106"></path>
+
+  </g>
+
+  <!-- Open fruit with seeds -->
+  <g transform="translate(35 103)" filter="url(#softShadow)">
+
+    <path d="M0 0
+         C-8 -7 -10 -15 -6 -20
+         C-1 -18 3 -11 3 -2Z" fill="url(#podRed)" stroke="#552a29" stroke-width="1.7"></path>
+
+    <path d="M3 -2
+         C11 -8 13 -15 9 -19
+         C4 -17 1 -10 3 -2Z" fill="#8e4438" stroke="#552a29" stroke-width="1.7"></path>
+
+    <g fill="url(#seedBrown)" stroke="#35241e" stroke-width="0.7">
+
+      <circle cx="-1" cy="-10" r="2"></circle>
+      <circle cx="4" cy="-12" r="2"></circle>
+      <circle cx="7" cy="-8" r="1.9"></circle>
+      <circle cx="1" cy="-6" r="2"></circle>
+      <circle cx="5" cy="-4" r="1.8"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- Loose aromatic seeds -->
+  <g fill="url(#seedBrown)" stroke="#34241f" stroke-width="0.75" filter="url(#softShadow)">
+
+    <ellipse cx="44" cy="112" rx="3" ry="2.4" transform="rotate(-15 44 112)"></ellipse>
+
+    <ellipse cx="52" cy="115" rx="3.1" ry="2.5" transform="rotate(18 52 115)"></ellipse>
+
+    <ellipse cx="61" cy="113" rx="2.9" ry="2.4" transform="rotate(-8 61 113)"></ellipse>
+
+  </g>
+
+  <!-- Botanical highlights -->
+  <g fill="#efe0b6" opacity="0.62">
+
+    <circle cx="78" cy="90" r="1"></circle>
+    <circle cx="92" cy="98" r="0.9"></circle>
+    <circle cx="53" cy="95" r="0.9"></circle>
+    <circle cx="46" cy="65" r="1"></circle>
+
+  </g>
+
+</svg>
