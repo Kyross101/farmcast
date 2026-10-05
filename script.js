@@ -7099,6 +7099,36 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+   Nigella: {
+    'direct-seeded': {
+      minDays: 100,
+      maxDays: 150,
+      basis:
+        'crop cycle after sowing',
+      derived: false,
+
+      note:
+        'FAO ECOCROP reports that Nigella sativa is an annual herb with a general crop cycle of about 100–150 days. FarmCast uses this source-backed range for direct-seeded Nigella rather than narrowing it to a cultivar-specific maturity period.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Nigella sativa — ECOCROP Crop Profile',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=7987'
+          ].join('')
+      }
+    }
+  },
+
 
 };
 

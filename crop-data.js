@@ -11032,6 +11032,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Nigella',
+      localName: 'Black Cumin',
+      scientificName: 'Nigella sativa L.',
+      category: 'spice',
+      icon: 'assets/crops/nigella.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Sher-e-Bangla Agricultural University',
+
+        title:
+          'Effect of Date of Sowing and Spacing on Growth and Seed Yield of Black Cumin (Nigella sativa L.)',
+
+        url:
+          [
+            'https://',
+            'archive.saulibrary.edu.bd/handle/123456789/4266'
+          ].join('')
+      },
+
+      minTemp: 14,
+      maxTemp: 26,
+
+      idealTempRange:
+        '14–26°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 600–800 mm, with an absolute range of about 400–1000 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.3; absolute range 6.0–8.0.',
+
+      soilNote:
+        'Nigella prefers well-drained soils and is adapted to comparatively dry growing conditions. FAO ECOCROP lists light, medium, and heavy soil textures as suitable, with moderate fertility and good drainage under its optimal ecological conditions.',
+
+      plantingNote:
+        'Nigella is an annual seed spice established by direct sowing. University field research on Black Cumin evaluates sowing dates and field spacing using seed sown directly into prepared plots, while FAO ECOCROP classifies the crop as an annual herb.',
+
+      harvestNote:
+        'Nigella is an annual edible spice crop grown for its aromatic black seeds. FAO ECOCROP reports a general crop cycle of about 100–150 days. Because the crop is direct-seeded and the published crop cycle covers the annual growth period through seed maturity, FarmCast can use a 100–150 day automatic harvest window after sowing. Individual cultivars may mature within a narrower portion of this range.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Nigella sativa — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=7987'
+          ].join('')
+      }
+    },
+
 
   
 ];
