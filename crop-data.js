@@ -11802,6 +11802,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Arugula',
+      scientificName: 'Eruca sativa Mill.',
+      category: 'vegetable',
+      icon: 'assets/crops/arugula.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Illinois Extension',
+
+        title:
+          'Arugula: A New Trendy Green from the Old World',
+
+        url:
+          [
+            'https://',
+            'extension.illinois.edu/blogs/good-growing/2018-11-07-arugula-new-trendy-green-old-world'
+          ].join('')
+      },
+
+      minTemp: 15,
+      maxTemp: 25,
+
+      idealTempRange:
+        '15–25°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 500–900 mm, with an absolute range of about 300–1100 mm.',
+
+      soilPH:
+        'Optimal pH 7.0–8.0; absolute range 6.0–8.5.',
+
+      soilNote:
+        'Arugula performs best in well-drained light- to medium-textured soil under bright growing conditions. FAO ECOCROP lists moderate soil fertility, good drainage, and light to medium soil texture among its preferred ecological conditions.',
+
+      plantingNote:
+        'Arugula is a fast-growing annual leafy vegetable that is readily established by direct seeding. University of Illinois Extension recommends sowing seed directly in the ground, and University of Minnesota Extension likewise lists Arugula among crops typically direct-seeded for leafy harvest.',
+
+      harvestNote:
+        'Arugula is harvested primarily for its tender peppery leaves. University of Illinois Extension reports that summer-grown Arugula may be harvested within about 20 days after seeding, while spring and fall crops are generally harvested about 30–40 days after seeding. FarmCast therefore uses a broad 20–40 day first-harvest estimate for direct-seeded Arugula, with actual timing depending on temperature, season, cultivar, and desired leaf size.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Eruca sativa — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=5794'
+          ].join('')
+      }
+    },
+
 
   
 ];

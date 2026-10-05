@@ -7244,6 +7244,36 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Arugula: {
+    'direct-seeded': {
+      minDays: 20,
+      maxDays: 40,
+      basis:
+        'after seeding',
+      derived: true,
+
+      derivationNote:
+        'Broad FarmCast range combining University of Illinois Extension seasonal guidance: summer-grown Arugula may be harvested within about 20 days after seeding, while spring and fall crops are generally harvested about 30–40 days after seeding.',
+
+      note:
+        'This range represents first leafy harvest rather than seed maturity. Actual timing varies with season, temperature, cultivar, and desired leaf size.',
+
+      source: {
+        agency:
+          'University of Illinois Extension',
+
+        title:
+          'Arugula: A New Trendy Green from the Old World',
+
+        url:
+          [
+            'https://',
+            'extension.illinois.edu/blogs/good-growing/2018-11-07-arugula-new-trendy-green-old-world'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };
