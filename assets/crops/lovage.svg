@@ -1,0 +1,271 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Lovage</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of lovage with celery-like green leaves,
+    yellow flower umbels, aromatic brown seeds, and an edible pale root.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fb570"></stop>
+      <stop offset="0.52" stop-color="#59844d"></stop>
+      <stop offset="1" stop-color="#315b3c"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a9c986"></stop>
+      <stop offset="1" stop-color="#4e7948"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#839c5d"></stop>
+      <stop offset="1" stop-color="#4d6940"></stop>
+    </linearGradient>
+
+    <linearGradient id="rootSkin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d6c29b"></stop>
+      <stop offset="0.55" stop-color="#ad916b"></stop>
+      <stop offset="1" stop-color="#796049"></stop>
+    </linearGradient>
+
+    <radialGradient id="seedBrown" cx="35%" cy="28%" r="72%">
+      <stop offset="0" stop-color="#baa27a"></stop>
+      <stop offset="0.55" stop-color="#806749"></stop>
+      <stop offset="1" stop-color="#49382b"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerYellow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3df75"></stop>
+      <stop offset="1" stop-color="#b99a37"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#273028" flood-opacity="0.23"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="119" rx="45" ry="5" fill="#565047" opacity="0.16"></ellipse>
+
+  <!-- Main stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M63 107
+         C63 88 64 70 64 53
+         C65 38 64 25 62 15" stroke-width="5.5"></path>
+
+    <path d="M52 106
+         C52 90 50 75 47 62
+         C45 50 41 40 36 31" stroke-width="3.5"></path>
+
+    <path d="M75 106
+         C75 90 78 75 82 62
+         C86 50 91 40 96 32" stroke-width="3.5"></path>
+
+  </g>
+
+  <!-- Stem highlights -->
+  <g fill="none" stroke="#b0c483" stroke-linecap="round" opacity="0.65">
+
+    <path d="M66 103
+         C65 82 66 62 66 43" stroke-width="1.2"></path>
+
+    <path d="M54 102
+         C54 84 52 69 49 56" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Left compound leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M58 88
+         C47 79 34 77 23 83
+         C31 94 44 98 58 94Z" fill="url(#leafGreen)" stroke="#31543a" stroke-width="2"></path>
+
+    <path d="M56 70
+         C44 61 32 59 22 65
+         C30 76 43 80 57 76Z" fill="url(#leafLight)" stroke="#31543a" stroke-width="2"></path>
+
+    <path d="M56 52
+         C45 43 34 40 25 46
+         C33 56 44 61 57 58Z" fill="url(#leafGreen)" stroke="#31543a" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- Right compound leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M72 88
+         C84 78 98 76 109 83
+         C101 95 87 99 72 94Z" fill="url(#leafGreen)" stroke="#31543a" stroke-width="2"></path>
+
+    <path d="M73 70
+         C85 61 98 59 108 66
+         C100 77 87 81 73 76Z" fill="url(#leafLight)" stroke="#31543a" stroke-width="2"></path>
+
+    <path d="M73 52
+         C84 43 96 40 105 46
+         C97 57 85 61 72 58Z" fill="url(#leafGreen)" stroke="#31543a" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#b0ca9e" stroke-linecap="round" opacity="0.82">
+
+    <path d="M26 84 C38 86 48 91 56 93" stroke-width="1.1"></path>
+    <path d="M25 66 C37 68 47 72 55 75" stroke-width="1.1"></path>
+    <path d="M28 47 C38 50 47 54 55 57" stroke-width="1"></path>
+
+    <path d="M106 84 C94 86 83 91 74 93" stroke-width="1.1"></path>
+    <path d="M105 67 C94 69 83 72 75 75" stroke-width="1.1"></path>
+    <path d="M102 47 C92 50 83 54 74 57" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Smaller leaflet details -->
+  <g fill="url(#leafLight)" stroke="#3f6841" stroke-width="1.2">
+
+    <path d="M44 79
+         C36 73 30 72 25 76
+         C30 82 37 84 44 82Z"></path>
+
+    <path d="M47 65
+         C39 59 32 59 27 63
+         C32 69 39 71 47 68Z"></path>
+
+    <path d="M85 79
+         C93 73 100 72 105 76
+         C100 82 93 84 85 82Z"></path>
+
+    <path d="M82 65
+         C90 59 97 59 102 63
+         C97 69 90 71 82 68Z"></path>
+
+  </g>
+
+  <!-- Flower branches -->
+  <g fill="none" stroke="#707b47" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="M64 38 L53 27"></path>
+    <path d="M65 35 L66 22"></path>
+    <path d="M66 36 L79 26"></path>
+
+    <path d="M53 27 L45 21"></path>
+    <path d="M53 27 L52 18"></path>
+    <path d="M53 27 L60 20"></path>
+
+    <path d="M66 22 L61 14"></path>
+    <path d="M66 22 L67 12"></path>
+    <path d="M66 22 L73 15"></path>
+
+    <path d="M79 26 L76 18"></path>
+    <path d="M79 26 L84 18"></path>
+    <path d="M79 26 L88 22"></path>
+
+  </g>
+
+  <!-- Yellow umbels -->
+  <g fill="url(#flowerYellow)" stroke="#9b8130" stroke-width="0.6" filter="url(#softShadow)">
+
+    <circle cx="44" cy="20" r="2.6"></circle>
+    <circle cx="52" cy="17" r="2.6"></circle>
+    <circle cx="60" cy="20" r="2.6"></circle>
+
+    <circle cx="61" cy="13" r="2.7"></circle>
+    <circle cx="67" cy="11" r="2.7"></circle>
+    <circle cx="74" cy="14" r="2.7"></circle>
+
+    <circle cx="76" cy="17" r="2.6"></circle>
+    <circle cx="84" cy="17" r="2.6"></circle>
+    <circle cx="89" cy="22" r="2.6"></circle>
+
+  </g>
+
+  <!-- Flower centers -->
+  <g fill="#675d28">
+
+    <circle cx="44" cy="20" r="0.6"></circle>
+    <circle cx="52" cy="17" r="0.6"></circle>
+    <circle cx="60" cy="20" r="0.6"></circle>
+
+    <circle cx="61" cy="13" r="0.6"></circle>
+    <circle cx="67" cy="11" r="0.6"></circle>
+    <circle cx="74" cy="14" r="0.6"></circle>
+
+    <circle cx="76" cy="17" r="0.6"></circle>
+    <circle cx="84" cy="17" r="0.6"></circle>
+    <circle cx="89" cy="22" r="0.6"></circle>
+
+  </g>
+
+  <!-- Root crown -->
+  <path d="M55 103
+       C59 99 70 99 75 104
+       L74 109
+       C69 113 59 113 55 109Z" fill="#788f54" stroke="#52673f" stroke-width="1.8"></path>
+
+  <!-- Edible lovage root -->
+  <g filter="url(#softShadow)">
+
+    <path d="M58 108
+         C58 116 60 123 64 126
+         C69 123 71 116 71 108
+         C68 104 61 104 58 108Z" fill="url(#rootSkin)" stroke="#685642" stroke-width="1.8"></path>
+
+    <path d="M62 108
+         C62 115 63 121 64 123" fill="none" stroke="#ead9b5" stroke-width="1.2" opacity="0.72"></path>
+
+    <path d="M59 114
+         C53 116 50 120 48 123" fill="none" stroke="#8a7054" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <path d="M70 113
+         C76 116 79 120 80 123" fill="none" stroke="#8a7054" stroke-width="1.5" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- Dry seed head -->
+  <path d="M94 88
+       C99 92 103 97 105 102" fill="none" stroke="#80744c" stroke-width="1.4" stroke-linecap="round"></path>
+
+  <g fill="url(#seedBrown)" stroke="#4d3c2d" stroke-width="0.8" filter="url(#softShadow)">
+
+    <ellipse cx="104" cy="101" rx="2.4" ry="4" transform="rotate(-18 104 101)"></ellipse>
+
+    <ellipse cx="98" cy="98" rx="2.4" ry="4" transform="rotate(12 98 98)"></ellipse>
+
+    <ellipse cx="108" cy="107" rx="2.4" ry="4" transform="rotate(24 108 107)"></ellipse>
+
+  </g>
+
+  <!-- Loose lovage seeds -->
+  <g fill="url(#seedBrown)" stroke="#4d3b2d" stroke-width="0.8" filter="url(#softShadow)">
+
+    <ellipse cx="31" cy="108" rx="2.7" ry="4.5" transform="rotate(-20 31 108)"></ellipse>
+
+    <ellipse cx="39" cy="113" rx="2.7" ry="4.5" transform="rotate(15 39 113)"></ellipse>
+
+    <ellipse cx="47" cy="109" rx="2.7" ry="4.5" transform="rotate(-7 47 109)"></ellipse>
+
+  </g>
+
+  <!-- Seed ridges -->
+  <g fill="none" stroke="#d3ba8d" stroke-width="0.7" opacity="0.7">
+
+    <path d="M30 105 L32 111"></path>
+    <path d="M38 110 L40 116"></path>
+    <path d="M46 106 L48 112"></path>
+
+  </g>
+
+  <!-- Highlights -->
+  <g fill="#eee2ba" opacity="0.6">
+
+    <circle cx="48" cy="63" r="1"></circle>
+    <circle cx="84" cy="65" r="1"></circle>
+    <circle cx="57" cy="44" r="0.9"></circle>
+
+  </g>
+
+</svg>

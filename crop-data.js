@@ -11167,6 +11167,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Lovage',
+      scientificName: 'Levisticum officinale W.D.J.Koch',
+      category: 'herb',
+      icon: 'assets/crops/lovage.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Illinois Extension',
+
+        title:
+          'Lovage — Herb Gardening',
+
+        url:
+          [
+            'https://',
+            'extension.illinois.edu/herbs/lovage'
+          ].join('')
+      },
+
+      minTemp: 20,
+      maxTemp: 30,
+
+      idealTempRange:
+        '20–30°C',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Lovage prefers consistently moist soil, and irrigation is beneficial where natural rainfall does not provide adequate moisture.',
+
+      soilPH:
+        'Recommended pH 6.0–7.5.',
+
+      soilNote:
+        'Lovage prefers rich, moist, well-drained soil. Ontario agriculture guidance lists sandy or loam soils as suitable, while University of Illinois Extension notes that light shade can improve crop quality.',
+
+      plantingNote:
+        'Lovage is a hardy perennial herb that can be propagated from seed or by division. University of Illinois Extension recommends sowing seed in spring or fall and also lists division as a propagation method.',
+
+      harvestNote:
+        'Lovage is a perennial culinary herb with edible leaves, stems, seeds, and roots. Ontario agriculture guidance reports no commercial harvest during the first year, with roots generally harvested in early autumn after the second or third year. Leaves can be harvested during vegetative growth, while seed heads are collected when they begin turning brown. Because harvest timing depends on the plant part being harvested, season, and establishment age rather than one universal planting-to-harvest interval, FarmCast keeps Lovage as guidance-only.',
+
+      source: {
+        agency:
+          'Ontario Ministry of Agriculture, Food and Rural Affairs',
+
+        title:
+          'Lovage — Specialty Cropportunities',
+
+        url:
+          [
+            'https://',
+            'www.omafra.gov.on.ca/CropOp/en/herbs/culinary/lovag.html'
+          ].join('')
+      }
+    },
+
 
   
 ];
