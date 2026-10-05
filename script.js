@@ -7187,6 +7187,36 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Sweet Marjoram': {
+    transplanted: {
+      minDays: 49,
+      maxDays: 56,
+      basis:
+        'after planting',
+      derived: true,
+
+      derivationNote:
+        'Derived directly from Cornell Cooperative Extension guidance that Sweet Marjoram leaves may be used 7–8 weeks from planting: 7 × 7 = 49 days and 8 × 7 = 56 days.',
+
+      note:
+        'Cornell Cooperative Extension recommends sowing Sweet Marjoram indoors and transplanting seedlings to the field, and reports that leaves may be used about 7–8 weeks from planting. FarmCast applies this first-harvest estimate only to the transplanted-seedling establishment method.',
+
+      source: {
+        agency:
+          'Cornell Cooperative Extension',
+
+        title:
+          'Herbs — Sweet Marjoram',
+
+        url:
+          [
+            'https://',
+            's3.amazonaws.com/assets.cce.cornell.edu/attachments/22766/Herbs.pdf?1493928858='
+          ].join('')
+      }
+    }
+  },
+
 
 
 };

@@ -11448,6 +11448,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Sweet Marjoram',
+      scientificName: 'Origanum majorana L.',
+      category: 'herb',
+      icon: 'assets/crops/sweet-marjoram.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Cornell Cooperative Extension',
+
+        title:
+          'Herbs — Sweet Marjoram',
+
+        url:
+          [
+            'https://',
+            's3.amazonaws.com/assets.cce.cornell.edu/attachments/22766/Herbs.pdf?1493928858='
+          ].join('')
+      },
+
+      minTemp: 20,
+      maxTemp: 26,
+
+      idealTempRange:
+        '20–26°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 800–1000 mm, with an absolute range of about 600–2300 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.0; absolute range 4.9–8.7.',
+
+      soilNote:
+        'Sweet Marjoram prefers fertile, well-drained medium-textured soil and bright growing conditions. FAO ECOCROP lists high soil fertility, medium texture, and good drainage among its optimal ecological requirements.',
+
+      plantingNote:
+        'Sweet Marjoram may be propagated from seed, stem cuttings, or root division. Cornell Cooperative Extension recommends sowing the small seed indoors in early spring and transplanting established seedlings to the field, while cuttings and root divisions are also suitable vegetative propagation methods.',
+
+      harvestNote:
+        'Sweet Marjoram is an edible aromatic herb grown primarily for its leaves and tender flowering tops. Cornell Cooperative Extension reports that leaves may be used about 7–8 weeks from planting and recommends harvesting leaves and flower heads at the pre-bloom to early-bloom stage. FarmCast therefore uses a derived 49–56 day automatic first-harvest estimate for transplanted seedlings only. Stem cuttings and root divisions remain guidance-only because the reviewed source does not provide separate method-specific establishment-to-harvest timing for those propagation methods.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Origanum majorana — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2368'
+          ].join('')
+      }
+    },
+
 
   
 ];
