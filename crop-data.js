@@ -11733,6 +11733,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Chervil',
+      scientificName: 'Anthriscus cerefolium (L.) Hoffm.',
+      category: 'herb',
+      icon: 'assets/crops/chervil.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia',
+
+        office:
+          'PROSEA',
+
+        title:
+          'Anthriscus cerefolium — Chervil',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/Anthriscus_cerefolium_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Chervil is a cool-growing herb that is sensitive to heat. PROSEA reports poor growth under hot, dry conditions and recommends protection from direct sunlight; in tropical regions it is normally grown in cooler high-altitude locations.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Chervil requires consistently moist growing conditions, but FarmCast avoids converting irrigation or site-specific rainfall observations into a universal annual rainfall range.',
+
+      soilPH:
+        'About pH 6.5.',
+
+      soilNote:
+        'Chervil prefers moist soil rich in organic matter. It performs best under cool conditions and benefits from protection against intense direct sunlight, particularly in warm tropical environments.',
+
+      plantingNote:
+        'Chervil is propagated by seed and is best direct-seeded. PROSEA recommends sowing seed in shallow drills and notes that the young seedlings are too fragile for reliable transplanting. University extension guidance likewise recommends direct sowing because Chervil does not transplant well.',
+
+      harvestNote:
+        'Chervil is an edible culinary herb grown mainly for its tender leaves and stems. PROSEA reports that leaves and stems are harvested as needed before flower buds open. Sowing-to-harvest can be as short as about six weeks under greenhouse conditions, while field production may take substantially longer. Because the six-week figure is production-system specific and field harvest is governed by leaf tenderness and pre-flowering stage rather than one universal interval, FarmCast keeps Chervil as guidance-only.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia',
+
+        office:
+          'PROSEA',
+
+        title:
+          'Anthriscus cerefolium — Chervil',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/Anthriscus_cerefolium_(PROSEA)'
+          ].join('')
+      }
+    },
+
 
   
 ];
