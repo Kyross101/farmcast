@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Winter Savory</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of winter savory with narrow dark-green leaves,
+    woody branching stems, small white-lilac flowers, and freshly harvested culinary sprigs.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#95ad73"></stop>
+      <stop offset="0.52" stop-color="#5f7f4e"></stop>
+      <stop offset="1" stop-color="#34583d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aec48c"></stop>
+      <stop offset="1" stop-color="#4e7048"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b795b"></stop>
+      <stop offset="0.55" stop-color="#695942"></stop>
+      <stop offset="1" stop-color="#443a2f"></stop>
+    </linearGradient>
+
+    <linearGradient id="youngStem" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#859d64"></stop>
+      <stop offset="1" stop-color="#536b43"></stop>
+    </linearGradient>
+
+    <linearGradient id="flowerWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffef7"></stop>
+      <stop offset="1" stop-color="#e2e4d7"></stop>
+    </linearGradient>
+
+    <linearGradient id="flowerLilac" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dfbfd9"></stop>
+      <stop offset="1" stop-color="#9b7398"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#292e29" flood-opacity="0.23"></feDropShadow>
+    </filter>
+  </defs>
+
+  <ellipse cx="64" cy="119" rx="44" ry="5" fill="#554f47" opacity="0.15"></ellipse>
+
+  <g fill="none" stroke="url(#stemBrown)" stroke-linecap="round">
+
+    <path d="M63 110
+         C62 93 63 76 64 59
+         C65 45 64 32 62 20" stroke-width="5"></path>
+
+    <path d="M52 108
+         C52 93 50 79 47 66
+         C45 54 41 44 36 35" stroke-width="3.4"></path>
+
+    <path d="M76 108
+         C75 93 78 78 82 65
+         C86 53 91 43 96 35" stroke-width="3.4"></path>
+
+  </g>
+
+  <g fill="none" stroke="url(#youngStem)" stroke-linecap="round">
+
+    <path d="M61 70 C51 64 43 58 36 50" stroke-width="1.8"></path>
+    <path d="M64 62 C75 56 84 49 91 42" stroke-width="1.8"></path>
+    <path d="M61 89 C51 82 42 75 33 67" stroke-width="1.8"></path>
+    <path d="M63 80 C74 73 85 66 95 57" stroke-width="1.8"></path>
+
+  </g>
+
+  <g fill="none" stroke="#b5b08d" stroke-linecap="round" opacity="0.5">
+
+    <path d="M66 106 C65 86 66 67 66 48" stroke-width="1"></path>
+    <path d="M54 104 C54 87 52 73 49 60" stroke-width="0.8"></path>
+
+  </g>
+
+  <g filter="url(#softShadow)">
+
+    <path d="M34 67 C26 61 20 60 16 64 C21 71 28 74 35 72Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M42 75 C34 69 28 69 23 73 C28 80 35 82 43 79Z" fill="url(#leafLight)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M49 82 C41 77 35 77 30 81 C35 87 42 89 50 86Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M36 50 C28 44 22 44 18 48 C23 55 30 57 37 54Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M44 57 C36 52 30 52 25 56 C30 62 37 64 45 61Z" fill="url(#leafLight)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M95 57 C103 51 109 51 113 55 C108 62 101 64 94 61Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M87 65 C95 59 102 59 106 63 C101 70 94 72 86 69Z" fill="url(#leafLight)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M80 72 C88 67 95 67 99 71 C94 77 87 79 79 76Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M91 42 C99 36 105 36 109 40 C104 47 97 49 90 46Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="1.25"></path>
+
+    <path d="M84 49 C92 44 98 44 103 48 C98 54 91 56 83 53Z" fill="url(#leafLight)" stroke="#31523a" stroke-width="1.25"></path>
+
+  </g>
+
+  <g fill="none" stroke="#d0dcc0" stroke-width="0.75" stroke-linecap="round" opacity="0.72">
+
+    <path d="M18 65 C24 66 30 69 34 71"></path>
+    <path d="M25 74 C32 75 37 77 42 78"></path>
+    <path d="M111 56 C104 57 99 59 95 61"></path>
+    <path d="M104 64 C97 65 92 67 87 69"></path>
+
+  </g>
+
+  <g fill="none" stroke="#687448" stroke-width="1.3" stroke-linecap="round">
+
+    <path d="M63 48 L52 38"></path>
+    <path d="M64 44 L65 33"></path>
+    <path d="M65 45 L77 36"></path>
+    <path d="M52 38 L45 31"></path>
+    <path d="M52 38 L53 29"></path>
+    <path d="M77 36 L76 28"></path>
+    <path d="M77 36 L84 30"></path>
+
+  </g>
+
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(45 30)">
+      <path d="M0 0 C-5 -5 -4 -10 0 -12 C4 -10 5 -5 0 0Z" fill="url(#flowerWhite)" stroke="#b8bcad" stroke-width="0.8"></path>
+
+      <path d="M0 0 C5 -4 9 -3 10 1 C8 5 4 5 0 0Z" fill="url(#flowerWhite)" stroke="#b8bcad" stroke-width="0.8"></path>
+
+      <path d="M0 0 C2 5 0 9 -4 9 C-7 6 -6 2 0 0Z" fill="url(#flowerLilac)" stroke="#80647d" stroke-width="0.8"></path>
+
+      <circle cx="0" cy="0" r="1.6" fill="#d4b65c"></circle>
+    </g>
+
+    <g transform="translate(66 31) scale(0.9)">
+      <path d="M0 0 C-5 -5 -4 -10 0 -12 C4 -10 5 -5 0 0Z" fill="url(#flowerWhite)" stroke="#b8bcad" stroke-width="0.8"></path>
+
+      <path d="M0 0 C5 -4 9 -3 10 1 C8 5 4 5 0 0Z" fill="url(#flowerWhite)" stroke="#b8bcad" stroke-width="0.8"></path>
+
+      <path d="M0 0 C2 5 0 9 -4 9 C-7 6 -6 2 0 0Z" fill="url(#flowerLilac)" stroke="#80647d" stroke-width="0.8"></path>
+
+      <circle cx="0" cy="0" r="1.6" fill="#d4b65c"></circle>
+    </g>
+
+    <g transform="translate(84 29) scale(0.82)">
+      <path d="M0 0 C-5 -5 -4 -10 0 -12 C4 -10 5 -5 0 0Z" fill="url(#flowerWhite)" stroke="#b8bcad" stroke-width="0.8"></path>
+
+      <path d="M0 0 C5 -4 9 -3 10 1 C8 5 4 5 0 0Z" fill="url(#flowerWhite)" stroke="#b8bcad" stroke-width="0.8"></path>
+
+      <path d="M0 0 C2 5 0 9 -4 9 C-7 6 -6 2 0 0Z" fill="url(#flowerLilac)" stroke="#80647d" stroke-width="0.8"></path>
+
+      <circle cx="0" cy="0" r="1.6" fill="#d4b65c"></circle>
+    </g>
+
+  </g>
+
+  <path d="M54 103
+       C58 98 70 98 76 104
+       L75 111
+       C69 114 59 114 54 109Z" fill="#71634b" stroke="#4c4234" stroke-width="1.8"></path>
+
+  <g fill="none" stroke="#76644b" stroke-width="1.6" stroke-linecap="round">
+
+    <path d="M59 109 C55 114 52 119 51 123"></path>
+    <path d="M65 110 C64 116 64 121 64 125"></path>
+    <path d="M71 109 C76 114 79 118 81 122"></path>
+
+  </g>
+
+  <g transform="translate(37 107) rotate(-13)" filter="url(#softShadow)">
+
+    <path d="M-15 2 C-5 1 6 -1 18 -3" fill="none" stroke="#596c48" stroke-width="2.2" stroke-linecap="round"></path>
+
+    <path d="M-8 0 C-13 -4 -17 -3 -18 0 C-14 3 -11 3 -8 2Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="0.9"></path>
+
+    <path d="M0 -1 C-5 -5 -8 -4 -10 -1 C-6 2 -3 2 0 1Z" fill="url(#leafLight)" stroke="#31523a" stroke-width="0.9"></path>
+
+    <path d="M8 -2 C3 -6 0 -5 -2 -2 C2 1 5 1 8 0Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="0.9"></path>
+
+    <path d="M15 -3 C10 -7 7 -6 5 -3 C9 0 12 0 15 -1Z" fill="url(#leafLight)" stroke="#31523a" stroke-width="0.9"></path>
+
+  </g>
+
+  <g transform="translate(92 109) rotate(16)" opacity="0.95">
+
+    <path d="M-12 1 C-3 0 6 -1 14 -2" fill="none" stroke="#596c48" stroke-width="2" stroke-linecap="round"></path>
+
+    <path d="M-5 0 C-9 -4 -12 -4 -14 -2 C-11 1 -8 2 -5 2Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="0.8"></path>
+
+    <path d="M3 -1 C-1 -5 -4 -5 -6 -3 C-3 0 0 1 3 1Z" fill="url(#leafLight)" stroke="#31523a" stroke-width="0.8"></path>
+
+    <path d="M10 -2 C6 -6 3 -6 1 -4 C4 -1 7 0 10 0Z" fill="url(#leafGreen)" stroke="#31523a" stroke-width="0.8"></path>
+
+  </g>
+
+  <g fill="#efe2b8" opacity="0.6">
+
+    <circle cx="49" cy="64" r="1"></circle>
+    <circle cx="84" cy="62" r="1"></circle>
+    <circle cx="58" cy="43" r="0.9"></circle>
+
+  </g>
+
+</svg>

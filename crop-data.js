@@ -11585,6 +11585,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Winter Savory',
+      scientificName: 'Satureja montana L.',
+      category: 'herb',
+      icon: 'assets/crops/winter-savory.svg',
+
+      plantingMethods: [
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Georgia Cooperative Extension',
+
+        title:
+          'Herbs in Southern Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.uga.edu/publications/detail.html?number=B1170'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'No single numeric optimum is used. Winter Savory is a temperate perennial culinary herb, and FarmCast avoids converting USDA hardiness-zone information into a temperature requirement.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of California and North Carolina State Extension describe Winter Savory as drought tolerant or low-water once established, with good soil drainage being especially important.',
+
+      soilPH:
+        'No narrow numeric pH range is used. North Carolina State Extension reports that Winter Savory tolerates acidic, neutral, and alkaline soils.',
+
+      soilNote:
+        'Winter Savory prefers full sun and well-drained soil and is well adapted to comparatively dry conditions. North Carolina State Extension lists sandy and shallow rocky soils as suitable and notes tolerance of dry and poor soils.',
+
+      plantingNote:
+        'Winter Savory is a perennial culinary herb. University of Georgia Cooperative Extension recommends establishing it from cuttings or divisions rather than treating it like annual Summer Savory, while University of California guidance also documents propagation by division or softwood cuttings.',
+
+      harvestNote:
+        'Winter Savory is grown for its aromatic edible leaves and flowering shoots. University of California guidance reports that leaves may be harvested throughout the growing season as needed and that their flavor is more pronounced before flowering. Because harvest is continuous and stage-based rather than tied to one universal interval after cutting or division, FarmCast keeps Winter Savory as guidance-only.',
+
+      source: {
+        agency:
+          'North Carolina State University Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Satureja montana — Winter Savory',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/plants/satureja-montana/'
+          ].join('')
+      }
+    },
+
 
   
 ];
