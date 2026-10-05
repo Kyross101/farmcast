@@ -10623,6 +10623,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Black Cardamom',
+      scientificName: 'Amomum subulatum Roxb.',
+      category: 'spice',
+      icon: 'assets/crops/black-cardamom.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Sucker / Seedling'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Government of Sikkim',
+
+        office:
+          'Agriculture Department',
+
+        title:
+          'Large Cardamom — Soil Requirement and Planting',
+
+        url:
+          [
+            'https://',
+            'agri.sikkim.gov.in/Department/AgriSubMenuDetails?ContID=28&SubContID=119'
+          ].join('')
+      },
+
+      minTemp: 15,
+      maxTemp: 25,
+
+      idealTempRange:
+        'About 15–25°C is reported as a suitable production range; Spices Board India notes that the crop is grown across a broader 6–30°C range in its traditional growing regions.',
+
+      rainfallRange:
+        'Spices Board India and the Government of Sikkim report about 3000–3500 mm of well-distributed annual rainfall in traditional large-cardamom growing areas.',
+
+      soilPH:
+        'Large-cardamom soils in Sikkim are generally acidic, with the majority reported around pH 5.0–5.5.',
+
+      soilNote:
+        'Black Cardamom prefers cool, humid, partially shaded conditions and forest-loam soils with good drainage. Government of Sikkim notes that waterlogged conditions are unsuitable and that the crop performs well under partial shade near reliable moisture sources.',
+
+      plantingNote:
+        'Black Cardamom may be established using healthy suckers or nursery-raised seedlings. Government of Sikkim recommends field planting during June–July when adequate soil moisture is available, using healthy planting material and avoiding deep planting.',
+
+      harvestNote:
+        'Black Cardamom is a perennial edible spice crop grown for its aromatic capsules. Nepal government sector guidance reports that plants may begin fruiting from about the third year, while Government of Sikkim documents cultivar- and altitude-dependent harvest seasons commonly ranging from September through November. Because first bearing takes several years and harvest timing varies with cultivar, elevation, flowering, and plant development, FarmCast keeps Black Cardamom as guidance-only rather than generating one automatic harvest date.',
+
+      source: {
+        agency:
+          'Spices Board India',
+
+        office:
+          'Ministry of Commerce & Industry, Government of India',
+
+        title:
+          'Cardamom (Large)',
+
+        url:
+          [
+            'https://',
+            'www.indianspices.com/spice-catalog/cardamom-large.html'
+          ].join('')
+      }
+    },
+
 
   
 ];
