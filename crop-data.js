@@ -11655,6 +11655,84 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Hyssop',
+      scientificName:
+        'Dracocephalum officinale (L.) Y.P.Chen & B.T.Drew',
+      category: 'herb',
+      icon: 'assets/crops/hyssop.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown',
+          label: 'Seed-Grown Plants'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'North Carolina State University Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Hyssopus officinalis — Hyssop',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/plants/hyssopus-officinalis/'
+          ].join('')
+      },
+
+      minTemp: 10,
+      maxTemp: 24,
+
+      idealTempRange:
+        '10–24°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 600–1000 mm, with an absolute range of about 400–1500 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.5; absolute range 5.5–8.5.',
+
+      soilNote:
+        'Hyssop prefers well-drained soil and performs well in comparatively dry conditions. FAO ECOCROP lists light to medium soil textures with good to excessive drainage among its optimal conditions, while North Carolina State University Extension lists loam, sand, and shallow rocky soils as suitable.',
+
+      plantingNote:
+        'Hyssop is a perennial culinary and aromatic herb that may be propagated from seed, stem cuttings, or division. North Carolina State University Extension lists all three propagation strategies. Current Kew taxonomy accepts Dracocephalum officinale, while the familiar name Hyssopus officinalis used by FAO ECOCROP and many horticultural references is treated as a synonym.',
+
+      harvestNote:
+        'Hyssop has edible leaves, young shoot tips, and flowers that are used as culinary flavoring. Washington State University Extension recommends harvesting Hyssop around the full-flowering stage when collecting the herb for its aromatic qualities. Because this harvest cue is based on plant development rather than one fixed interval from seed, cutting, or division, FarmCast keeps Hyssop as guidance-only.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Hyssopus officinalis — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=6852'
+          ].join('')
+      }
+    },
+
 
   
 ];
