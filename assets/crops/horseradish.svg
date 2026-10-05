@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Horseradish</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of horseradish with broad green leaves,
+    small white flowers, a long cream-colored taproot, cut root slices,
+    and natural shading.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#91b872"></stop>
+      <stop offset="0.52" stop-color="#5f884f"></stop>
+      <stop offset="1" stop-color="#345d3d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#abc989"></stop>
+      <stop offset="1" stop-color="#527b49"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#86a25e"></stop>
+      <stop offset="1" stop-color="#526d43"></stop>
+    </linearGradient>
+
+    <linearGradient id="rootSkin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9c9a4"></stop>
+      <stop offset="0.55" stop-color="#b39d78"></stop>
+      <stop offset="1" stop-color="#826d54"></stop>
+    </linearGradient>
+
+    <radialGradient id="rootCut" cx="38%" cy="32%" r="70%">
+      <stop offset="0" stop-color="#fffdf0"></stop>
+      <stop offset="0.65" stop-color="#eee4c9"></stop>
+      <stop offset="1" stop-color="#c6b28b"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="1" stop-color="#e4e8d9"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#293027" flood-opacity="0.23"></feDropShadow>
+    </filter>
+  </defs>
+
+  <ellipse cx="64" cy="119" rx="45" ry="5" fill="#574f45" opacity="0.16"></ellipse>
+
+  <!-- Central crown -->
+  <path d="M57 98
+       C58 91 70 90 75 98
+       L74 106
+       C69 110 60 110 56 105Z" fill="#789052" stroke="#50653e" stroke-width="2"></path>
+
+  <!-- Flower stalk -->
+  <path d="M66 96
+       C66 77 66 59 67 43
+       C68 31 67 22 65 15" fill="none" stroke="url(#stemGreen)" stroke-width="4.5" stroke-linecap="round"></path>
+
+  <path d="M68 92
+       C68 72 68 55 69 40" fill="none" stroke="#aec183" stroke-width="1.1" opacity="0.65"></path>
+
+  <!-- Broad leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M59 91
+         C48 78 34 73 21 79
+         C27 94 43 101 59 98Z" fill="url(#leafGreen)" stroke="#31543a" stroke-width="2"></path>
+
+    <path d="M58 72
+         C46 61 32 58 22 65
+         C30 78 44 83 59 79Z" fill="url(#leafLight)" stroke="#31543a" stroke-width="2"></path>
+
+    <path d="M73 91
+         C84 78 99 74 111 81
+         C103 95 88 101 73 98Z" fill="url(#leafGreen)" stroke="#31543a" stroke-width="2"></path>
+
+    <path d="M73 72
+         C85 61 99 59 109 66
+         C101 79 87 83 72 79Z" fill="url(#leafLight)" stroke="#31543a" stroke-width="2"></path>
+
+    <path d="M61 54
+         C50 43 38 39 28 45
+         C36 57 49 62 62 60Z" fill="url(#leafGreen)" stroke="#31543a" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#b1cc9f" stroke-linecap="round" opacity="0.82">
+
+    <path d="M24 80 C37 84 48 91 57 96" stroke-width="1.2"></path>
+    <path d="M25 66 C38 69 48 74 57 78" stroke-width="1.2"></path>
+    <path d="M108 82 C95 85 84 91 75 96" stroke-width="1.2"></path>
+    <path d="M106 67 C94 70 84 74 74 78" stroke-width="1.2"></path>
+    <path d="M31 46 C42 50 52 55 60 59" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Flower branches -->
+  <g fill="none" stroke="#6e7b49" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="M67 39 L53 29"></path>
+    <path d="M67 35 L80 26"></path>
+    <path d="M67 30 L59 21"></path>
+    <path d="M68 27 L75 18"></path>
+
+  </g>
+
+  <!-- White four-petaled flowers -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(52 28)">
+      <g fill="url(#flowerWhite)" stroke="#cfd4c4" stroke-width="0.6">
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(90)"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(180)"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(270)"></ellipse>
+      </g>
+      <circle cx="0" cy="0" r="1.4" fill="#d4b64e"></circle>
+    </g>
+
+    <g transform="translate(81 25)">
+      <g fill="url(#flowerWhite)" stroke="#cfd4c4" stroke-width="0.6">
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(90)"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(180)"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(270)"></ellipse>
+      </g>
+      <circle cx="0" cy="0" r="1.4" fill="#d4b64e"></circle>
+    </g>
+
+    <g transform="translate(58 20) scale(0.85)">
+      <g fill="url(#flowerWhite)" stroke="#cfd4c4" stroke-width="0.6">
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(90)"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(180)"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(270)"></ellipse>
+      </g>
+      <circle cx="0" cy="0" r="1.4" fill="#d4b64e"></circle>
+    </g>
+
+    <g transform="translate(76 17) scale(0.85)">
+      <g fill="url(#flowerWhite)" stroke="#cfd4c4" stroke-width="0.6">
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(90)"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(180)"></ellipse>
+        <ellipse cx="0" cy="-3.4" rx="2" ry="3.7" transform="rotate(270)"></ellipse>
+      </g>
+      <circle cx="0" cy="0" r="1.4" fill="#d4b64e"></circle>
+    </g>
+
+  </g>
+
+  <!-- Main edible taproot -->
+  <g filter="url(#softShadow)">
+
+    <path d="M58 104
+         C57 111 58 121 63 126
+         C68 123 72 113 71 104
+         C68 101 61 101 58 104Z" fill="url(#rootSkin)" stroke="#6b5845" stroke-width="2"></path>
+
+    <path d="M62 105
+         C61 113 62 120 64 123" fill="none" stroke="#e7d6b4" stroke-width="1.3" opacity="0.75"></path>
+
+    <path d="M69 109
+         C76 112 79 116 81 121" fill="none" stroke="#91775c" stroke-width="2" stroke-linecap="round"></path>
+
+    <path d="M59 111
+         C52 114 49 118 47 122" fill="none" stroke="#91775c" stroke-width="1.8" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- Harvested horseradish root -->
+  <g transform="translate(30 108) rotate(-12)" filter="url(#softShadow)">
+
+    <path d="M-14 0
+         C-6 -5 7 -5 17 -2
+         C15 3 6 7 -6 7
+         C-12 6 -16 3 -14 0Z" fill="url(#rootSkin)" stroke="#6b5845" stroke-width="1.8"></path>
+
+    <path d="M-8 1 C0 -1 7 0 12 2" fill="none" stroke="#e1cfaa" stroke-width="1" opacity="0.7"></path>
+
+  </g>
+
+  <!-- Cut root slice -->
+  <g transform="translate(96 108)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="0" rx="10" ry="7.5" fill="url(#rootCut)" stroke="#746047" stroke-width="2"></ellipse>
+
+    <ellipse cx="0" cy="0" rx="5.8" ry="4" fill="none" stroke="#d6c399" stroke-width="1"></ellipse>
+
+    <path d="M-4 -1
+         C-1 -3 3 -3 5 0" fill="none" stroke="#fffdf0" stroke-width="1.2" opacity="0.82"></path>
+
+  </g>
+
+  <!-- Small texture -->
+  <g fill="#f0e2ba" opacity="0.6">
+    <circle cx="48" cy="64" r="1"></circle>
+    <circle cx="85" cy="68" r="1"></circle>
+    <circle cx="58" cy="86" r="0.9"></circle>
+  </g>
+
+</svg>

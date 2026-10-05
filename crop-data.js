@@ -11099,6 +11099,74 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Horseradish',
+      scientificName:
+        'Armoracia rusticana G.Gaertn., B.Mey. & Scherb.',
+      category: 'root-crop',
+      icon: 'assets/crops/horseradish.svg',
+
+      plantingMethods: [
+        {
+          value: 'root-cuttings',
+          label: 'Root Cuttings'
+        },
+        {
+          value: 'crown-cuttings',
+          label: 'Crown Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Horseradish in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/horseradish-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: 15.6,
+      maxTemp: 18.3,
+
+      idealTempRange:
+        'About 15.6–18.3°C (60–65°F). Utah State University reports that Horseradish grows best under cool temperatures.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Horseradish is relatively drought tolerant but produces poorer-quality roots when moisture stress is excessive. Utah State University recommends maintaining adequate soil moisture while avoiding overwatering.',
+
+      soilPH:
+        'Recommended pH 6.0–7.5.',
+
+      soilNote:
+        'Horseradish grows in many soil types but produces larger, straighter, higher-quality roots in fertile, well-drained soil rich in organic matter. Light, deep soils also make root harvesting easier.',
+
+      plantingNote:
+        'Horseradish is propagated vegetatively using crown sections or root cuttings. Utah State University recommends planting root pieces with the upper end positioned higher than the lower end, while crown divisions should include both leaf and root tissue.',
+
+      harvestNote:
+        'Horseradish is a perennial edible root crop that is commonly managed as an annual for high-quality roots. Utah State University reports that plants in areas with a sufficiently long growing season may be harvested at the end of the first year, preferably after several frosts, while University of Wisconsin guidance notes that spring-planted roots are not always ready by the first autumn and that year-old roots generally have the best flavor. Because readiness depends on growing-season length, frost timing, planting date, and root development rather than one universal planting-to-harvest interval, FarmCast keeps Horseradish as guidance-only.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Horseradish in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/horseradish-in-the-garden'
+          ].join('')
+      }
+    },
+
 
   
 ];
