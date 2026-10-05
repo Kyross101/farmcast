@@ -7039,6 +7039,36 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Ajwain: {
+    'direct-seeded': {
+      minDays: 100,
+      maxDays: 130,
+      basis:
+        'maturity after sowing',
+      derived: false,
+
+      note:
+        'ICAR-Indian Institute of Spices Research reports that Ajwain matures in about 100–130 days after sowing. Seeds are harvested when the umbels turn grey-brown, so FarmCast can use this range directly for the general direct-seeded maturity estimate.',
+
+      source: {
+        agency:
+          'Indian Council of Agricultural Research',
+
+        office:
+          'Indian Institute of Spices Research',
+
+        title:
+          'Ajwain (Carom) — Trachyspermum ammi',
+
+        url:
+          [
+            'https://',
+            'spices.res.in/products/spices/ajwain.html'
+          ].join('')
+      }
+    }
+  },
+
 
 };
 

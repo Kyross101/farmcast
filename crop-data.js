@@ -10827,6 +10827,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Ajwain',
+      scientificName: 'Trachyspermum ammi (L.) Sprague',
+      category: 'spice',
+      icon: 'assets/crops/ajwain.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Sardarkrushinagar Dantiwada Agricultural University',
+
+        office:
+          'Seed Spices Research Station, Jagudan',
+
+        title:
+          'Effect of date of sowing and crop geometry on growth, yield and quality of ajwain',
+
+        url:
+          [
+            'https://',
+            'epubs.icar.org.in/index.php/IJSS/article/view/151828'
+          ].join('')
+      },
+
+      minTemp: 15,
+      maxTemp: 27,
+
+      idealTempRange:
+        'About 15–27°C during the growth period; Ajwain prefers a moderately cool and dry climate.',
+
+      rainfallRange:
+        'No single numeric annual rainfall range is used because the higher-priority cultivation sources reviewed do not provide one. Ajwain prefers comparatively dry conditions, is moderately drought-tolerant, and prolonged wet or humid conditions around flowering should be avoided.',
+
+      soilPH:
+        'Published cultivation literature reports suitable loamy soils around pH 6.5–8.2.',
+
+      soilNote:
+        'Ajwain performs well in light, well-drained soils. PSSCIVE/NCERT recommends loamy to sandy-loam soils with good drainage, while ICAR-IISR similarly describes light, well-drained soil as suitable for the crop.',
+
+      plantingNote:
+        'Ajwain is an annual seed spice established by sowing seed directly in the field. Research from Sardarkrushinagar Dantiwada Agricultural University evaluates direct sowing dates and crop spacing, while ICAR research consistently reports crop development and management in days after sowing.',
+
+      harvestNote:
+        'Ajwain is an annual edible seed spice. ICAR-Indian Institute of Spices Research reports that the crop matures about 100–130 days after sowing and that seeds should be harvested when the umbels turn grey-brown. Because this maturity range is explicitly tied to sowing, FarmCast can safely use an automatic harvest estimate for direct-seeded Ajwain.',
+
+      source: {
+        agency:
+          'Indian Council of Agricultural Research',
+
+        office:
+          'Indian Institute of Spices Research',
+
+        title:
+          'Ajwain (Carom) — Trachyspermum ammi',
+
+        url:
+          [
+            'https://',
+            'spices.res.in/products/spices/ajwain.html'
+          ].join('')
+      }
+    },
+
 
   
 ];
