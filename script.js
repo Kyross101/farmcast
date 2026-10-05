@@ -7129,6 +7129,65 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'French Tarragon': {
+    'stem-cuttings': {
+      minDays: 42,
+      maxDays: 56,
+      basis:
+        'after setting out',
+      derived: true,
+
+      derivationNote:
+        'Derived directly from the source-backed first-harvest timing of 6–8 weeks after setting out: 6 × 7 = 42 days and 8 × 7 = 56 days.',
+
+      note:
+        'The Midwest Vegetable Production Guide reports that French Tarragon can generally be harvested twice per year, with the first harvest about 6–8 weeks after plants are set out.',
+
+      source: {
+        agency:
+          'Midwest Vegetable Production Guide',
+
+        title:
+          'Leafy Vegetables and Herbs — French Tarragon',
+
+        url:
+          [
+            'https://',
+            'extension.illinois.edu/media/4037/download?inline='
+          ].join('')
+      }
+    },
+
+    'root-divisions': {
+      minDays: 42,
+      maxDays: 56,
+      basis:
+        'after setting out',
+      derived: true,
+
+      derivationNote:
+        'Derived directly from the source-backed first-harvest timing of 6–8 weeks after setting out: 6 × 7 = 42 days and 8 × 7 = 56 days.',
+
+      note:
+        'The Midwest Vegetable Production Guide reports that French Tarragon can generally be harvested twice per year, with the first harvest about 6–8 weeks after plants are set out.',
+
+      source: {
+        agency:
+          'Midwest Vegetable Production Guide',
+
+        title:
+          'Leafy Vegetables and Herbs — French Tarragon',
+
+        url:
+          [
+            'https://',
+            'extension.illinois.edu/media/4037/download?inline='
+          ].join('')
+      }
+    }
+  },
+
+
 
 };
 

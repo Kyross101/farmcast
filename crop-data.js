@@ -11304,6 +11304,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'French Tarragon',
+      scientificName: 'Artemisia dracunculus L.',
+      category: 'herb',
+      icon: 'assets/crops/french-tarragon.svg',
+
+      plantingMethods: [
+        {
+          value: 'stem-cuttings',
+          label: 'Rooted Stem Cuttings'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow French Tarragon in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/french-tarragon-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: 12,
+      maxTemp: 22,
+
+      idealTempRange:
+        '12–22°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 500–1000 mm, with an absolute range of about 250–1400 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.0; absolute range 4.9–7.5.',
+
+      soilNote:
+        'French Tarragon prefers light to medium-textured, well-drained soil. FAO ECOCROP lists good drainage among its optimal ecological requirements, while Utah State University Extension emphasizes that French Tarragon does not tolerate wet or saturated soil.',
+
+      plantingNote:
+        'French Tarragon is propagated vegetatively rather than reliably from seed. Utah State University Extension recommends stem cuttings or root divisions, while the Midwest Vegetable Production Guide likewise states that French Tarragon must be propagated by stem cuttings or division.',
+
+      harvestNote:
+        'French Tarragon is a perennial culinary herb grown for its aromatic leaves and young stem tips. The Midwest Vegetable Production Guide reports that two harvests can generally be made each year and that the first harvest occurs about 6–8 weeks after plants are set out. Because this timing is explicitly tied to field establishment, FarmCast can use a derived automatic first-harvest estimate of 42–56 days after setting out.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Artemisia dracunculus — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=3402'
+          ].join('')
+      }
+    },
+
 
   
 ];
