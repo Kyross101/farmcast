@@ -10692,6 +10692,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Long Pepper',
+      scientificName: 'Piper longum L.',
+      category: 'spice',
+      icon: 'assets/crops/long-pepper.svg',
+
+      plantingMethods: [
+        {
+          value: 'cuttings',
+          label: 'Rooted Vine Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        office:
+          'Agritech Portal',
+
+        title:
+          'Horticulture — Medicinal Crops — Tippili',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/horticulture/horti_medicinal%20crops_tippili.html'
+          ].join('')
+      },
+
+      minTemp: 30,
+      maxTemp: 32,
+
+      idealTempRange:
+        'Tamil Nadu Agricultural University reports that Long Pepper thrives well around 30–32°C under humid growing conditions.',
+
+      rainfallRange:
+        'Tamil Nadu Agricultural University reports suitable annual rainfall of about 150 cm, equivalent to about 1500 mm, together with high humidity.',
+
+      soilPH:
+        'Research published through the Indian Council of Agricultural Research reports suitable well-drained, organic-rich soils around pH 5.5–8.5.',
+
+      soilNote:
+        'Long Pepper prefers well-drained red or loamy soil rich in organic matter and humid, partially shaded conditions. Tamil Nadu Agricultural University recommends lower elevations with high humidity and describes cultivation beneath crops such as coconut or arecanut where additional shade can protect vines from excessive afternoon heat.',
+
+      plantingNote:
+        'Long Pepper is commonly propagated vegetatively using rooted vine cuttings. Tamil Nadu Agricultural University specifically recommends rooted cuttings, while Kerala Agricultural University also describes suckers or rooted vine cuttings as suitable planting material.',
+
+      harvestNote:
+        'Long Pepper is a perennial edible spice vine grown for its pungent fruit spikes. Tamil Nadu Agricultural University and the ICAR Directorate of Medicinal and Aromatic Plants Research report harvest beginning around eight months after planting, followed by repeated pickings. Kerala Agricultural University similarly describes spike development beginning several months after establishment. Because Long Pepper continues producing repeated harvests as a perennial crop and the published timing is expressed in calendar months rather than one exact day-based terminal harvest interval, FarmCast keeps Long Pepper as guidance-only instead of generating one automatic harvest date.',
+
+      source: {
+        agency:
+          'Tamil Nadu Agricultural University',
+
+        office:
+          'Agritech Portal',
+
+        title:
+          'Horticulture — Medicinal Crops — Tippili',
+
+        url:
+          [
+            'https://',
+            'agritech.tnau.ac.in/horticulture/horti_medicinal%20crops_tippili.html'
+          ].join('')
+      }
+    },
+
 
   
 ];
