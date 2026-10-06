@@ -11868,6 +11868,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Garden Sorrel',
+      scientificName: 'Rumex acetosa L.',
+      category: 'vegetable',
+      icon: 'assets/crops/sorrel.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        },
+        {
+          value: 'root-divisions',
+          label: 'Root Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Sorrel',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/herbs/sorrel/grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'No single universal numeric temperature range is used. Kew describes Rumex acetosa as a perennial of the temperate biome, while PROSEA reports that Rumex can be cultivated in tropical regions at higher altitudes. FarmCast therefore keeps temperature guidance descriptive rather than inventing a tropical numeric range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. PROSEA records Rumex acetosa from humid meadows and states that Rumex grown as a vegetable requires frequent watering, while RHS recommends moisture-retentive soil and consistent moisture during establishment.',
+
+      soilPH:
+        'Acid to neutral.',
+
+      soilNote:
+        'Garden Sorrel grows well in fertile, moisture-retentive soil and tolerates several soil types. RHS recommends well-prepared soil that retains moisture without remaining waterlogged, while PROSEA notes successful tropical cultivation at higher altitudes in fertile soils.',
+
+      plantingNote:
+        'Garden Sorrel is a perennial leafy vegetable that can be established by direct seeding, by raising seedlings indoors and transplanting them, or by dividing established plants. RHS describes all three approaches and notes that established clumps can be divided periodically to maintain productivity.',
+
+      harvestNote:
+        'Garden Sorrel is harvested for its tender sour leaves. RHS recommends picking young leaves regularly once new growth is available because repeated harvesting encourages fresh tender foliage, while older leaves become tougher and more bitter. Because harvest is repeated and based on leaf stage and seasonal growth rather than one fixed interval from sowing, transplanting, or division, FarmCast keeps Garden Sorrel as guidance-only.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia',
+
+        office:
+          'PROSEA',
+
+        title:
+          'Rumex acetosa — Sorrel',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/Rumex_acetosa_(PROSEA)'
+          ].join('')
+      }
+    },
+
 
   
 ];

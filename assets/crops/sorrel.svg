@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Garden Sorrel</title>
+  <desc id="desc">
+    Detailed botanical illustration of garden sorrel with arrow-shaped green leaves,
+    reddish leaf veins and stems, a flowering panicle, and a compact perennial crown.
+  </desc>
+
+  <defs>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b7d58e"></stop>
+      <stop offset="0.52" stop-color="#6ea85d"></stop>
+      <stop offset="1" stop-color="#3f7747"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fbe70"></stop>
+      <stop offset="1" stop-color="#35663f"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9d6a61"></stop>
+      <stop offset="0.5" stop-color="#7e514d"></stop>
+      <stop offset="1" stop-color="#5f3d43"></stop>
+    </linearGradient>
+
+    <linearGradient id="flowerRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dba3a0"></stop>
+      <stop offset="1" stop-color="#925c68"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#273129" flood-opacity="0.2"></feDropShadow>
+    </filter>
+  </defs>
+
+  <ellipse cx="64" cy="118" rx="43" ry="5" fill="#4d5149" opacity="0.15"></ellipse>
+
+  <!-- Perennial crown -->
+  <path d="M48 107
+       C52 102 58 100 64 100
+       C71 100 77 102 81 107
+       C76 112 70 115 64 115
+       C57 115 52 112 48 107Z" fill="#76614c" stroke="#4f4439" stroke-width="1.6"></path>
+
+  <!-- Main petioles and flowering stem -->
+  <g fill="none" stroke-linecap="round">
+
+    <path d="M64 105
+         C64 85 64 65 64 45
+         C64 31 62 20 60 11" stroke="url(#stemRed)" stroke-width="3.2"></path>
+
+    <path d="M57 106
+         C53 92 49 79 43 67" stroke="url(#stemRed)" stroke-width="2.5"></path>
+
+    <path d="M50 108
+         C44 96 38 88 31 81" stroke="url(#stemRed)" stroke-width="2.3"></path>
+
+    <path d="M71 106
+         C75 92 80 80 86 68" stroke="url(#stemRed)" stroke-width="2.5"></path>
+
+    <path d="M78 108
+         C84 96 91 88 98 81" stroke="url(#stemRed)" stroke-width="2.3"></path>
+
+    <path d="M61 104
+         C58 89 57 76 56 63" stroke="url(#stemRed)" stroke-width="2.2"></path>
+
+    <path d="M67 104
+         C70 88 72 75 74 61" stroke="url(#stemRed)" stroke-width="2.2"></path>
+
+  </g>
+
+  <!-- Arrow-shaped basal and mid leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M54 101
+         C46 100 39 98 33 94
+         C27 90 24 85 24 80
+         C29 81 34 82 38 80
+         C35 75 34 70 35 65
+         C42 69 48 74 52 80
+         C56 85 58 92 58 99Z" fill="url(#leafGreen)" stroke="#315d3b" stroke-width="1.7"></path>
+
+    <path d="M74 101
+         C82 100 89 98 95 94
+         C101 90 104 85 104 80
+         C99 81 94 82 90 80
+         C93 75 94 70 93 65
+         C86 69 80 74 76 80
+         C72 85 70 92 70 99Z" fill="url(#leafGreen)" stroke="#315d3b" stroke-width="1.7"></path>
+
+    <path d="M57 84
+         C50 82 44 79 40 75
+         C36 71 34 66 35 61
+         C40 63 44 64 48 62
+         C46 58 45 54 46 50
+         C52 54 56 58 59 63
+         C62 69 63 76 62 82Z" fill="url(#leafDark)" stroke="#315d3b" stroke-width="1.6"></path>
+
+    <path d="M71 84
+         C78 82 84 79 88 75
+         C92 71 94 66 93 61
+         C88 63 84 64 80 62
+         C82 58 83 54 82 50
+         C76 54 72 58 69 63
+         C66 69 65 76 66 82Z" fill="url(#leafDark)" stroke="#315d3b" stroke-width="1.6"></path>
+
+    <path d="M62 69
+         C56 67 51 64 48 60
+         C45 56 44 52 45 48
+         C49 50 53 50 56 48
+         C54 44 54 40 55 37
+         C60 41 63 45 65 50
+         C67 56 67 62 66 67Z" fill="url(#leafGreen)" stroke="#315d3b" stroke-width="1.5"></path>
+
+    <path d="M66 68
+         C72 66 77 63 80 59
+         C83 55 84 51 83 47
+         C79 49 75 49 72 47
+         C74 43 74 39 73 36
+         C68 40 65 44 63 49
+         C61 55 61 61 62 66Z" fill="url(#leafGreen)" stroke="#315d3b" stroke-width="1.5"></path>
+
+  </g>
+
+  <!-- Leaf midribs and secondary veins -->
+  <g fill="none" stroke-linecap="round">
+
+    <path d="M56 99 C49 91 42 84 33 78" stroke="#cfddba" stroke-width="1.1" opacity="0.85"></path>
+
+    <path d="M72 99 C79 91 86 84 95 78" stroke="#cfddba" stroke-width="1.1" opacity="0.85"></path>
+
+    <path d="M60 81 C54 73 49 66 42 59" stroke="#c8d9b2" stroke-width="0.9" opacity="0.82"></path>
+
+    <path d="M68 81 C74 73 79 66 86 59" stroke="#c8d9b2" stroke-width="0.9" opacity="0.82"></path>
+
+    <path d="M64 67 C59 59 56 52 52 45" stroke="#d1dfbe" stroke-width="0.85" opacity="0.8"></path>
+
+    <path d="M64 66 C69 58 72 51 76 44" stroke="#d1dfbe" stroke-width="0.85" opacity="0.8"></path>
+
+  </g>
+
+  <!-- Reddish vein accents -->
+  <g fill="none" stroke="#8f5556" stroke-linecap="round" opacity="0.72">
+
+    <path d="M56 99 C49 91 42 84 33 78" stroke-width="0.65"></path>
+
+    <path d="M72 99 C79 91 86 84 95 78" stroke-width="0.65"></path>
+
+    <path d="M60 81 C54 73 49 66 42 59" stroke-width="0.55"></path>
+
+    <path d="M68 81 C74 73 79 66 86 59" stroke-width="0.55"></path>
+
+  </g>
+
+  <!-- Flowering panicle -->
+  <g fill="none" stroke="url(#stemRed)" stroke-width="1.15" stroke-linecap="round">
+
+    <path d="M63 47 L51 38"></path>
+    <path d="M62 42 L73 34"></path>
+    <path d="M61 35 L48 29"></path>
+    <path d="M61 31 L70 24"></path>
+    <path d="M60 26 L52 19"></path>
+    <path d="M60 22 L64 14"></path>
+    <path d="M51 38 L44 33"></path>
+    <path d="M73 34 L80 29"></path>
+    <path d="M48 29 L40 25"></path>
+    <path d="M70 24 L77 19"></path>
+
+  </g>
+
+  <!-- Small reddish sorrel flowers -->
+  <g fill="url(#flowerRose)" stroke="#6e4850" stroke-width="0.65">
+
+    <circle cx="44" cy="33" r="2.2"></circle>
+    <circle cx="80" cy="29" r="2.2"></circle>
+    <circle cx="40" cy="25" r="2.1"></circle>
+    <circle cx="77" cy="19" r="2.1"></circle>
+    <circle cx="52" cy="19" r="2"></circle>
+    <circle cx="64" cy="14" r="2"></circle>
+    <circle cx="51" cy="37" r="1.8"></circle>
+    <circle cx="73" cy="33" r="1.8"></circle>
+
+  </g>
+
+  <!-- Flower centers -->
+  <g fill="#e8c28e">
+
+    <circle cx="44" cy="33" r="0.7"></circle>
+    <circle cx="80" cy="29" r="0.7"></circle>
+    <circle cx="40" cy="25" r="0.7"></circle>
+    <circle cx="77" cy="19" r="0.7"></circle>
+    <circle cx="52" cy="19" r="0.65"></circle>
+    <circle cx="64" cy="14" r="0.65"></circle>
+
+  </g>
+
+  <!-- Crown/root detail -->
+  <g fill="none" stroke="#6d5947" stroke-linecap="round">
+
+    <path d="M55 111 C53 116 51 120 48 123" stroke-width="1.6"></path>
+
+    <path d="M62 112 C61 117 60 121 60 124" stroke-width="1.5"></path>
+
+    <path d="M69 112 C70 117 72 121 74 124" stroke-width="1.5"></path>
+
+    <path d="M76 110 C79 115 82 119 85 121" stroke-width="1.4"></path>
+
+  </g>
+
+</svg>
