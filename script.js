@@ -7274,6 +7274,39 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Purslane: {
+    'direct-seeded': {
+      minDays: 21,
+      maxDays: 28,
+      basis:
+        'first cut after sowing',
+      derived: true,
+
+      derivationNote:
+        'Derived directly from PROSEA guidance that the first commercial cut is about 3–4 weeks after sowing: 3 × 7 = 21 days and 4 × 7 = 28 days.',
+
+      note:
+        'This estimate represents the first leafy harvest. PROSEA also reports that cultivated Purslane may receive successive cuts at about two-week intervals, so later harvests are managed as repeated-cut guidance rather than one final maturity date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia',
+
+        office:
+          'PROSEA',
+
+        title:
+          'Portulaca L. — Purslane',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/view.aspx?id=2191'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };

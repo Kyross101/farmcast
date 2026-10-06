@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Purslane</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of purslane with reddish succulent stems,
+    fleshy oval green leaves, yellow flowers, a seed capsule, and black seeds.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bd7669"></stop>
+      <stop offset="0.55" stop-color="#92534e"></stop>
+      <stop offset="1" stop-color="#623d42"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c0dc96"></stop>
+      <stop offset="0.5" stop-color="#79aa5e"></stop>
+      <stop offset="1" stop-color="#3e7448"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d4e7ae"></stop>
+      <stop offset="1" stop-color="#659757"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerYellow" cx="42%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#fff6a4"></stop>
+      <stop offset="0.55" stop-color="#ebca4d"></stop>
+      <stop offset="1" stop-color="#b58a2c"></stop>
+    </radialGradient>
+
+    <linearGradient id="capsuleGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#afbe78"></stop>
+      <stop offset="1" stop-color="#68794b"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#283128" flood-opacity="0.22"></feDropShadow>
+
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="118" rx="45" ry="5" fill="#505148" opacity="0.15"></ellipse>
+
+  <!-- Reddish succulent stems -->
+  <g fill="none" stroke="url(#stemRed)" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="M23 105
+         C38 99 49 90 58 79
+         C68 67 76 53 85 36" stroke-width="4.8"></path>
+
+    <path d="M41 102
+         C52 93 58 82 62 70
+         C65 58 65 47 63 34" stroke-width="3.8"></path>
+
+    <path d="M57 105
+         C69 95 79 87 91 82
+         C100 78 107 76 114 75" stroke-width="3.6"></path>
+
+    <path d="M70 95
+         C76 83 82 72 91 63
+         C98 56 104 52 110 47" stroke-width="3.1"></path>
+
+    <path d="M51 87
+         C43 78 36 68 31 56" stroke-width="2.8"></path>
+
+  </g>
+
+  <!-- Stem highlights -->
+  <g fill="none" stroke="#dda39b" stroke-linecap="round" opacity="0.55">
+
+    <path d="M28 102
+         C42 95 52 86 60 75" stroke-width="0.9"></path>
+
+    <path d="M61 101
+         C72 92 83 85 95 81" stroke-width="0.8"></path>
+
+  </g>
+
+  <!-- Succulent leaves -->
+  <g filter="url(#softShadow)">
+
+    <ellipse cx="33" cy="92" rx="11" ry="6.5" transform="rotate(-28 33 92)" fill="url(#leafGreen)" stroke="#35633f" stroke-width="1.5"></ellipse>
+
+    <ellipse cx="45" cy="79" rx="11.5" ry="6.6" transform="rotate(-42 45 79)" fill="url(#leafLight)" stroke="#35633f" stroke-width="1.5"></ellipse>
+
+    <ellipse cx="54" cy="64" rx="11" ry="6.2" transform="rotate(-67 54 64)" fill="url(#leafGreen)" stroke="#35633f" stroke-width="1.5"></ellipse>
+
+    <ellipse cx="52" cy="97" rx="11" ry="6.4" transform="rotate(21 52 97)" fill="url(#leafLight)" stroke="#35633f" stroke-width="1.5"></ellipse>
+
+    <ellipse cx="68" cy="88" rx="11.5" ry="6.5" transform="rotate(-15 68 88)" fill="url(#leafGreen)" stroke="#35633f" stroke-width="1.5"></ellipse>
+
+    <ellipse cx="84" cy="81" rx="11" ry="6.2" transform="rotate(-8 84 81)" fill="url(#leafLight)" stroke="#35633f" stroke-width="1.5"></ellipse>
+
+    <ellipse cx="100" cy="75" rx="10" ry="5.8" fill="url(#leafGreen)" stroke="#35633f" stroke-width="1.4"></ellipse>
+
+    <ellipse cx="80" cy="65" rx="10.5" ry="6" transform="rotate(-52 80 65)" fill="url(#leafLight)" stroke="#35633f" stroke-width="1.4"></ellipse>
+
+    <ellipse cx="95" cy="57" rx="10" ry="5.8" transform="rotate(-37 95 57)" fill="url(#leafGreen)" stroke="#35633f" stroke-width="1.4"></ellipse>
+
+    <ellipse cx="39" cy="64" rx="10" ry="5.8" transform="rotate(42 39 64)" fill="url(#leafGreen)" stroke="#35633f" stroke-width="1.4"></ellipse>
+
+    <ellipse cx="28" cy="52" rx="9.5" ry="5.5" transform="rotate(58 28 52)" fill="url(#leafLight)" stroke="#35633f" stroke-width="1.4"></ellipse>
+
+    <ellipse cx="65" cy="49" rx="10" ry="5.8" transform="rotate(83 65 49)" fill="url(#leafGreen)" stroke="#35633f" stroke-width="1.4"></ellipse>
+
+    <ellipse cx="82" cy="42" rx="9.5" ry="5.5" transform="rotate(-58 82 42)" fill="url(#leafLight)" stroke="#35633f" stroke-width="1.4"></ellipse>
+
+  </g>
+
+  <!-- Leaf highlights -->
+  <g fill="none" stroke="#dbe9c2" stroke-linecap="round" opacity="0.72">
+
+    <path d="M26 94 C31 92 36 89 40 87" stroke-width="0.8"></path>
+    <path d="M39 83 C44 79 48 75 51 71" stroke-width="0.8"></path>
+    <path d="M67 90 C73 87 79 84 85 81" stroke-width="0.8"></path>
+    <path d="M92 77 C99 76 104 76 109 76" stroke-width="0.75"></path>
+    <path d="M89 61 C95 57 100 54 105 51" stroke-width="0.75"></path>
+
+  </g>
+
+  <!-- Flower stems -->
+  <g fill="none" stroke="#79574b" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="M84 37 L92 29"></path>
+    <path d="M63 35 L56 27"></path>
+    <path d="M109 48 L114 40"></path>
+
+  </g>
+
+  <!-- Main five-petaled yellow flower -->
+  <g transform="translate(92 27)" filter="url(#softShadow)">
+
+    <path d="M0 0
+         C-5 -2 -8 -7 -6 -11
+         C-1 -11 3 -7 3 -2Z" fill="url(#flowerYellow)" stroke="#ac852c" stroke-width="0.8"></path>
+
+    <path d="M1 -1
+         C0 -7 3 -12 7 -13
+         C10 -9 8 -4 4 0Z" fill="url(#flowerYellow)" stroke="#ac852c" stroke-width="0.8"></path>
+
+    <path d="M3 0
+         C8 -3 13 -2 15 2
+         C12 6 7 6 3 3Z" fill="url(#flowerYellow)" stroke="#ac852c" stroke-width="0.8"></path>
+
+    <path d="M2 3
+         C6 7 6 12 2 14
+         C-2 11 -3 6 0 3Z" fill="url(#flowerYellow)" stroke="#ac852c" stroke-width="0.8"></path>
+
+    <path d="M0 2
+         C-4 7 -9 7 -12 4
+         C-10 -1 -5 -3 0 -1Z" fill="url(#flowerYellow)" stroke="#ac852c" stroke-width="0.8"></path>
+
+    <circle cx="2" cy="1" r="3.4" fill="#d3a437" stroke="#806128" stroke-width="0.7"></circle>
+
+    <g stroke="#745626" stroke-width="0.55" stroke-linecap="round">
+
+      <path d="M2 1 L-2 -4"></path>
+      <path d="M2 1 L5 -4"></path>
+      <path d="M2 1 L8 1"></path>
+      <path d="M2 1 L5 6"></path>
+      <path d="M2 1 L-2 6"></path>
+      <path d="M2 1 L-5 1"></path>
+
+    </g>
+
+  </g>
+
+  <!-- Smaller flower -->
+  <g transform="translate(56 27)" filter="url(#softShadow)">
+
+    <circle cx="0" cy="0" r="6" fill="url(#flowerYellow)" stroke="#ac852c" stroke-width="0.8"></circle>
+
+    <circle cx="0" cy="0" r="2" fill="#c89932"></circle>
+
+    <path d="M0 -6 L0 6
+         M-6 0 L6 0
+         M-4 -4 L4 4
+         M4 -4 L-4 4" stroke="#bd9331" stroke-width="0.5" opacity="0.75"></path>
+
+  </g>
+
+  <!-- Seed capsule -->
+  <g transform="translate(114 39)" filter="url(#softShadow)">
+
+    <path d="M0 9
+         C-5 7 -7 2 -5 -3
+         C-2 -7 3 -7 6 -3
+         C8 1 6 7 2 9Z" fill="url(#capsuleGreen)" stroke="#586943" stroke-width="1.1"></path>
+
+    <path d="M-5 1
+         C-1 3 3 3 7 1" fill="none" stroke="#607348" stroke-width="0.8"></path>
+
+  </g>
+
+  <!-- Black purslane seeds -->
+  <g fill="#292c27" stroke="#56594f" stroke-width="0.4">
+
+    <ellipse cx="94" cy="108" rx="2.2" ry="1.6" transform="rotate(22 94 108)"></ellipse>
+
+    <ellipse cx="102" cy="113" rx="2.1" ry="1.5" transform="rotate(-18 102 113)"></ellipse>
+
+    <ellipse cx="109" cy="107" rx="2" ry="1.45" transform="rotate(35 109 107)"></ellipse>
+
+    <ellipse cx="88" cy="114" rx="2.1" ry="1.5" transform="rotate(-30 88 114)"></ellipse>
+
+    <ellipse cx="99" cy="119" rx="2" ry="1.4" transform="rotate(12 99 119)"></ellipse>
+
+    <ellipse cx="112" cy="116" rx="2.1" ry="1.5" transform="rotate(-12 112 116)"></ellipse>
+
+  </g>
+
+  <!-- Small crown and roots -->
+  <path d="M21 104
+       C30 101 39 101 47 105
+       C43 111 36 115 29 115
+       C24 113 20 109 21 104Z" fill="#80624c" stroke="#57453a" stroke-width="1.3"></path>
+
+  <g fill="none" stroke="#6c5443" stroke-linecap="round">
+
+    <path d="M29 112 C27 117 24 120 21 123" stroke-width="1.4"></path>
+    <path d="M34 112 C34 117 33 121 32 124" stroke-width="1.3"></path>
+    <path d="M39 110 C42 115 44 119 46 122" stroke-width="1.2"></path>
+
+  </g>
+
+</svg>

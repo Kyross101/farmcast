@@ -11942,6 +11942,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Purslane',
+      localName: 'Golasiman',
+      scientificName: 'Portulaca oleracea L.',
+      category: 'vegetable',
+      icon: 'assets/crops/purslane.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia',
+
+        office:
+          'PROSEA',
+
+        title:
+          'Portulaca L. — Purslane',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/view.aspx?id=2191'
+          ].join('')
+      },
+
+      minTemp: 18,
+      maxTemp: 32,
+
+      idealTempRange:
+        '18–32°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 1000–2000 mm, with an absolute range of about 500–4000 mm.',
+
+      soilPH:
+        'Optimal pH 5.5–7.0; absolute range 4.3–8.3.',
+
+      soilNote:
+        'Purslane performs best in well-drained light- to medium-textured soil with good fertility. FAO ECOCROP lists high soil fertility and well-drained light to medium soils among its optimal conditions, while PROSEA notes that purslanes tolerate a wide range of soils but prefer sand or sandy loams.',
+
+      plantingNote:
+        'Purslane is an annual leafy vegetable commonly established by seed. PROSEA reports that cultivated Purslane is propagated by seed and that the very small seeds may be mixed with sand before being broadcast or direct-seeded in rows. In the Philippines, PROSEA records Golasiman as a Tagalog vernacular name for Portulaca oleracea.',
+
+      harvestNote:
+        'Purslane is harvested for its edible tender leaves and young shoots. PROSEA reports that commercial crops may be harvested by uprooting or by successive cuts, with the first cut about 3–4 weeks after sowing and later cuts at about two-week intervals. FarmCast therefore uses a 21–28 day first-harvest estimate for direct-seeded Purslane; later harvests remain repeated-cut guidance rather than separate automatic maturity dates.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Portulaca oleracea — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1784'
+          ].join('')
+      }
+    },
+
 
   
 ];
