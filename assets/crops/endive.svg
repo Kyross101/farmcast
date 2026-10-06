@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Endive</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of endive with a dense rosette of curled,
+    finely cut green leaves, pale inner foliage, a branching flowering stem,
+    and a blue chicory-like flower.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="outerLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b8d48b"></stop>
+      <stop offset="0.5" stop-color="#72a35a"></stop>
+      <stop offset="1" stop-color="#3c7045"></stop>
+    </linearGradient>
+
+    <linearGradient id="innerLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e0e7a9"></stop>
+      <stop offset="0.55" stop-color="#b9cc79"></stop>
+      <stop offset="1" stop-color="#789855"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9fbd72"></stop>
+      <stop offset="1" stop-color="#587849"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerBlue" cx="42%" cy="38%" r="70%">
+      <stop offset="0" stop-color="#dce9ef"></stop>
+      <stop offset="0.5" stop-color="#9dbed1"></stop>
+      <stop offset="1" stop-color="#638ba5"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#273128" flood-opacity="0.2"></feDropShadow>
+
+    </filter>
+
+  </defs>
+
+  <ellipse cx="64" cy="118" rx="46" ry="5" fill="#4e5148" opacity="0.15"></ellipse>
+
+  <!-- Outer curled rosette -->
+  <g filter="url(#softShadow)">
+
+    <path d="M58 108
+         C48 108 38 105 30 100
+         C23 95 18 88 17 81
+         C23 84 29 85 34 82
+         C28 78 25 73 25 68
+         C32 71 38 71 43 68
+         C39 63 38 58 40 53
+         C48 59 54 67 57 76
+         C61 87 62 98 58 108Z" fill="url(#outerLeaf)" stroke="#315c3b" stroke-width="1.7"></path>
+
+    <path d="M70 108
+         C80 108 90 105 98 100
+         C105 95 110 88 111 81
+         C105 84 99 85 94 82
+         C100 78 103 73 103 68
+         C96 71 90 71 85 68
+         C89 63 90 58 88 53
+         C80 59 74 67 71 76
+         C67 87 66 98 70 108Z" fill="url(#outerLeaf)" stroke="#315c3b" stroke-width="1.7"></path>
+
+    <path d="M52 105
+         C43 101 36 96 31 89
+         C27 83 25 76 27 70
+         C32 74 37 75 42 73
+         C38 68 37 63 39 59
+         C45 63 50 69 53 76
+         C57 85 57 96 52 105Z" fill="url(#outerLeaf)" stroke="#315c3b" stroke-width="1.6"></path>
+
+    <path d="M76 105
+         C85 101 92 96 97 89
+         C101 83 103 76 101 70
+         C96 74 91 75 86 73
+         C90 68 91 63 89 59
+         C83 63 78 69 75 76
+         C71 85 71 96 76 105Z" fill="url(#outerLeaf)" stroke="#315c3b" stroke-width="1.6"></path>
+
+  </g>
+
+  <!-- Mid rosette leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M59 103
+         C51 99 46 93 43 86
+         C41 80 42 74 45 69
+         C49 73 53 74 57 72
+         C54 67 54 62 57 58
+         C62 65 64 73 64 82
+         C64 91 63 98 59 103Z" fill="url(#innerLeaf)" stroke="#587144" stroke-width="1.45"></path>
+
+    <path d="M69 103
+         C77 99 82 93 85 86
+         C87 80 86 74 83 69
+         C79 73 75 74 71 72
+         C74 67 74 62 71 58
+         C66 65 64 73 64 82
+         C64 91 65 98 69 103Z" fill="url(#innerLeaf)" stroke="#587144" stroke-width="1.45"></path>
+
+    <path d="M62 99
+         C57 93 55 86 56 79
+         C57 72 60 66 64 62
+         C68 66 71 72 72 79
+         C73 86 71 93 66 99Z" fill="#d9e3a3" stroke="#718452" stroke-width="1.35"></path>
+
+  </g>
+
+  <!-- Curled leaf margins -->
+  <g fill="none" stroke="#d9e6bc" stroke-linecap="round" opacity="0.78">
+
+    <path d="M22 83
+         C30 88 37 88 43 84
+         C38 81 35 77 34 73" stroke-width="0.95"></path>
+
+    <path d="M106 83
+         C98 88 91 88 85 84
+         C90 81 93 77 94 73" stroke-width="0.95"></path>
+
+    <path d="M32 96
+         C40 99 47 98 53 94" stroke-width="0.85"></path>
+
+    <path d="M96 96
+         C88 99 81 98 75 94" stroke-width="0.85"></path>
+
+    <path d="M47 88
+         C52 91 57 90 60 87" stroke-width="0.75"></path>
+
+    <path d="M81 88
+         C76 91 71 90 68 87" stroke-width="0.75"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#cbdbae" stroke-linecap="round" opacity="0.7">
+
+    <path d="M57 104 C49 94 39 84 29 74" stroke-width="0.85"></path>
+    <path d="M71 104 C79 94 89 84 99 74" stroke-width="0.85"></path>
+
+    <path d="M59 99 C55 89 51 79 47 70" stroke-width="0.75"></path>
+    <path d="M69 99 C73 89 77 79 81 70" stroke-width="0.75"></path>
+
+  </g>
+
+  <!-- Flowering stalk -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M64 76
+         C64 62 64 48 63 35
+         C62 27 61 20 59 14" stroke-width="2.9"></path>
+
+    <path d="M63 48
+         C55 42 50 36 46 29" stroke-width="1.5"></path>
+
+    <path d="M63 42
+         C72 37 79 31 84 24" stroke-width="1.5"></path>
+
+    <path d="M61 31
+         C55 27 51 23 49 18" stroke-width="1.1"></path>
+
+  </g>
+
+  <!-- Small stem leaves -->
+  <g fill="url(#outerLeaf)" stroke="#3c6844" stroke-width="1">
+
+    <path d="M57 52
+         C50 51 46 47 45 42
+         C51 41 56 44 59 48Z"></path>
+
+    <path d="M69 45
+         C75 43 80 45 83 49
+         C78 52 73 51 68 48Z"></path>
+
+    <path d="M55 34
+         C50 32 47 29 47 25
+         C52 24 56 27 58 31Z"></path>
+
+  </g>
+
+  <!-- Blue chicory-like flower -->
+  <g transform="translate(85 21)" filter="url(#softShadow)">
+
+    <g fill="url(#flowerBlue)" stroke="#567d98" stroke-width="0.65">
+
+      <path d="M0 0 C-2 -5 -1 -10 3 -13 C6 -9 5 -4 2 0Z"></path>
+      <path d="M1 1 C5 -3 10 -4 13 -1 C10 3 6 4 2 3Z"></path>
+      <path d="M1 2 C5 5 6 10 3 13 C-1 10 -2 6 0 3Z"></path>
+      <path d="M0 2 C-4 6 -9 6 -12 3 C-9 -1 -5 -2 -1 0Z"></path>
+      <path d="M-1 1 C-5 -2 -7 -7 -4 -10 C0 -8 2 -4 1 0Z"></path>
+
+      <path d="M2 0 C3 -5 6 -8 10 -8 C11 -4 8 -1 3 2Z"></path>
+      <path d="M1 3 C0 7 -3 10 -7 9 C-8 5 -5 2 0 1Z"></path>
+
+    </g>
+
+    <circle cx="1" cy="1" r="3.2" fill="#5d7790" stroke="#415e76" stroke-width="0.6"></circle>
+
+    <g stroke="#d7d396" stroke-width="0.55" stroke-linecap="round">
+
+      <path d="M1 1 L-2 -4"></path>
+      <path d="M1 1 L4 -4"></path>
+      <path d="M1 1 L6 1"></path>
+      <path d="M1 1 L4 6"></path>
+      <path d="M1 1 L-2 6"></path>
+      <path d="M1 1 L-5 1"></path>
+
+    </g>
+
+  </g>
+
+  <!-- Small secondary flower bud -->
+  <g transform="translate(49 17)">
+
+    <path d="M0 5
+         C-4 1 -4 -4 0 -7
+         C4 -4 4 1 0 5Z" fill="#809b66" stroke="#536d4e" stroke-width="0.8"></path>
+
+    <path d="M-3 1 L0 5 L3 1" fill="none" stroke="#5f784f" stroke-width="0.6"></path>
+
+  </g>
+
+  <!-- Root crown -->
+  <path d="M48 108
+       C53 103 59 101 64 101
+       C70 101 76 103 81 108
+       C76 113 70 116 64 116
+       C57 116 52 113 48 108Z" fill="#78614c" stroke="#514238" stroke-width="1.3"></path>
+
+  <g fill="none" stroke="#6c5747" stroke-linecap="round">
+
+    <path d="M55 112 C53 117 51 121 48 124" stroke-width="1.2"></path>
+    <path d="M62 113 C61 118 61 121 60 124" stroke-width="1.15"></path>
+    <path d="M69 112 C71 117 73 121 76 124" stroke-width="1.15"></path>
+
+  </g>
+
+</svg>

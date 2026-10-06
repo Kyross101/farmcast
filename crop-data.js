@@ -12211,6 +12211,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Endive',
+      scientificName: 'Cichorium endivia L.',
+      category: 'vegetable',
+      icon: 'assets/crops/endive.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Mississippi State University Extension',
+
+        title:
+          'Endive, Escarole',
+
+        url:
+          [
+            'https://',
+            'extension.msstate.edu/lawn-and-garden/vegetable-gardens/endive-escarole'
+          ].join('')
+      },
+
+      minTemp: 15,
+      maxTemp: 23,
+
+      idealTempRange:
+        '15–23°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 1000–1400 mm, with an absolute range of about 300–2500 mm.',
+
+      soilPH:
+        'Optimal pH 6.5–7.8; absolute range 5.3–8.5.',
+
+      soilNote:
+        'Endive prefers fertile, well-drained soil with good moisture availability. FAO ECOCROP lists medium- to organic-textured soils, high fertility, and good drainage among its optimal ecological conditions.',
+
+      plantingNote:
+        'Endive is a cool-season leafy vegetable that may be established by direct seeding or by transplanting seedlings. Mississippi State University Extension recommends transplants for spring crops and direct seeding for fall crops. Escarole is a broad-leaved form of the same cultivated species rather than a separate species.',
+
+      harvestNote:
+        'Endive is harvested for its edible leafy rosette. FAO ECOCROP reports that leaves may be harvested after about 40 days and developed heads after about 55–90 days. Florida IFAS gives a standard garden harvest range of about 60–80 days from seeding. FarmCast therefore uses the explicit 60–80 day seeding-to-harvest range for direct-seeded Endive, while transplanted crops remain guidance-only because the cited source does not provide a separate transplant-to-harvest interval.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cichorium endivia — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=693'
+          ].join('')
+      }
+    },
+
 
   
 ];

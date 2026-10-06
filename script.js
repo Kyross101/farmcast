@@ -7334,6 +7334,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Endive: {
+    'direct-seeded': {
+      minDays: 60,
+      maxDays: 80,
+      basis:
+        'after seeding',
+      derived: false,
+
+      note:
+        'Florida IFAS lists approximately 60–80 days from seeding to harvest for Endive/Escarole. FAO ECOCROP notes that individual leaves may be harvested earlier and that developed heads may mature over a broader range, so this FarmCast estimate represents the standard garden harvest window rather than the earliest possible leaf picking.',
+
+      source: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Endive/Escarole — Florida Fresh',
+
+        url:
+          [
+            'https://',
+            'floridafresh.ifas.ufl.edu/PlantDetails/Details/18'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };
