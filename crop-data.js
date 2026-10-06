@@ -12348,6 +12348,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Radicchio',
+      scientificName: 'Cichorium intybus L.',
+      category: 'vegetable',
+      icon: 'assets/crops/radicchio.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Oregon State University',
+
+        office:
+          'Oregon Vegetables',
+
+        title:
+          'Radicchio',
+
+        url:
+          [
+            'https://',
+            'horticulture.oregonstate.edu/oregon-vegetables/radicchio-0'
+          ].join('')
+      },
+
+      minTemp: 10,
+      maxTemp: 30,
+
+      idealTempRange:
+        '10–30°C',
+
+      rainfallRange:
+        'FAO ECOCROP lists optimal annual rainfall of about 1500–2500 mm, with an absolute range of about 300–4000 mm.',
+
+      soilPH:
+        'Optimal pH 6.0–7.5; absolute range 4.5–8.3.',
+
+      soilNote:
+        'Radicchio performs best in fertile soils that retain adequate moisture while maintaining good internal drainage. Oregon State University recommends loose fertile loams or muck soils with good water-holding capacity and drainage, while FAO ECOCROP lists medium-textured, well-drained soil among the preferred ecological conditions of Cichorium intybus.',
+
+      plantingNote:
+        'Radicchio is a cultivated leafy form of Cichorium intybus that can be established either by direct seeding or by transplanting seedlings. Oregon State University describes both production methods and recommends cool-season production. Current Kew taxonomy accepts Cichorium intybus L.; Radicchio belongs to cultivated salad forms of that species rather than representing a separate botanical species.',
+
+      harvestNote:
+        'Radicchio is harvested primarily for its compact edible leafy head. University of California guidance reports a growing period of about 80–85 days in the Salinas Valley, but also distinguishes forcing and nonforcing types and notes substantial variety and seasonal effects on head formation. Because that timing is production-system and cultivar dependent rather than one universal sowing- or transplanting-to-harvest interval, FarmCast keeps Radicchio as guidance-only.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        office:
+          'FAO ECOCROP',
+
+        title:
+          'Cichorium intybus — ECOCROP Data Sheet',
+
+        url:
+          [
+            'https://',
+            'ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=694'
+          ].join('')
+      }
+    },
+
 
   
 ];

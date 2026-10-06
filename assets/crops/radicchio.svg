@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Radicchio</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a compact radicchio head with deep burgundy leaves,
+    prominent creamy white veins, layered inner foliage, a short root crown,
+    and a small blue chicory flower.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="outerRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a64e61"></stop>
+      <stop offset="0.48" stop-color="#823447"></stop>
+      <stop offset="1" stop-color="#542638"></stop>
+    </linearGradient>
+
+    <linearGradient id="midRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bd6874"></stop>
+      <stop offset="0.5" stop-color="#923e51"></stop>
+      <stop offset="1" stop-color="#672b40"></stop>
+    </linearGradient>
+
+    <linearGradient id="innerRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d98789"></stop>
+      <stop offset="0.52" stop-color="#ad5363"></stop>
+      <stop offset="1" stop-color="#773448"></stop>
+    </linearGradient>
+
+    <linearGradient id="veinCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff4da"></stop>
+      <stop offset="1" stop-color="#d9d0b5"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9eb27a"></stop>
+      <stop offset="1" stop-color="#526d4e"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerBlue" cx="42%" cy="38%" r="70%">
+      <stop offset="0" stop-color="#e6eef2"></stop>
+      <stop offset="0.52" stop-color="#9bbdd0"></stop>
+      <stop offset="1" stop-color="#5d829d"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#2c2930" flood-opacity="0.22"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="62" cy="119" rx="44" ry="5" fill="#51484b" opacity="0.16"></ellipse>
+
+  <!-- Outer head leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M57 108
+         C45 108 34 104 27 96
+         C20 88 18 78 22 69
+         C26 60 34 55 43 57
+         C51 60 57 68 59 79
+         C61 90 60 100 57 108Z" fill="url(#outerRed)" stroke="#4b2535" stroke-width="1.8"></path>
+
+    <path d="M69 108
+         C81 108 92 104 99 96
+         C106 88 108 78 104 69
+         C100 60 92 55 83 57
+         C75 60 69 68 67 79
+         C65 90 66 100 69 108Z" fill="url(#outerRed)" stroke="#4b2535" stroke-width="1.8"></path>
+
+    <path d="M48 104
+         C38 102 30 97 25 90
+         C21 84 20 76 23 70
+         C28 72 34 72 39 69
+         C36 64 36 59 39 55
+         C47 62 52 71 54 81
+         C56 91 54 99 48 104Z" fill="url(#midRed)" stroke="#57293a" stroke-width="1.6"></path>
+
+    <path d="M78 104
+         C88 102 96 97 101 90
+         C105 84 106 76 103 70
+         C98 72 92 72 87 69
+         C90 64 90 59 87 55
+         C79 62 74 71 72 81
+         C70 91 72 99 78 104Z" fill="url(#midRed)" stroke="#57293a" stroke-width="1.6"></path>
+
+  </g>
+
+  <!-- Middle layered leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M57 104
+         C49 99 45 91 45 82
+         C45 74 48 67 54 63
+         C60 67 63 74 63 83
+         C63 92 61 99 57 104Z" fill="url(#midRed)" stroke="#653043" stroke-width="1.5"></path>
+
+    <path d="M69 104
+         C77 99 81 91 81 82
+         C81 74 78 67 72 63
+         C66 67 63 74 63 83
+         C63 92 65 99 69 104Z" fill="url(#midRed)" stroke="#653043" stroke-width="1.5"></path>
+
+    <path d="M62 102
+         C56 95 54 87 56 79
+         C57 72 60 66 63 62
+         C67 67 70 73 70 80
+         C71 88 68 96 64 102Z" fill="url(#innerRed)" stroke="#734052" stroke-width="1.35"></path>
+
+  </g>
+
+  <!-- Thick white central veins -->
+  <g fill="none" stroke="url(#veinCream)" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="M56 105
+         C51 94 45 83 35 69" stroke-width="3"></path>
+
+    <path d="M70 105
+         C75 94 81 83 91 69" stroke-width="3"></path>
+
+    <path d="M58 101
+         C56 90 55 79 55 67" stroke-width="2.5"></path>
+
+    <path d="M68 101
+         C70 90 71 79 71 67" stroke-width="2.5"></path>
+
+    <path d="M63 101
+         C63 88 63 75 63 64" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- Secondary white veins -->
+  <g fill="none" stroke="#eee5ce" stroke-linecap="round" opacity="0.9">
+
+    <path d="M48 89 C42 85 36 81 29 79" stroke-width="1.1"></path>
+    <path d="M45 82 C39 77 34 74 28 72" stroke-width="1"></path>
+    <path d="M52 95 C46 94 39 93 33 91" stroke-width="1"></path>
+
+    <path d="M78 89 C84 85 90 81 97 79" stroke-width="1.1"></path>
+    <path d="M81 82 C87 77 92 74 98 72" stroke-width="1"></path>
+    <path d="M74 95 C80 94 87 93 93 91" stroke-width="1"></path>
+
+    <path d="M57 83 C52 80 49 77 46 73" stroke-width="0.9"></path>
+    <path d="M69 83 C74 80 77 77 80 73" stroke-width="0.9"></path>
+
+  </g>
+
+  <!-- Leaf-edge highlights -->
+  <g fill="none" stroke="#d69aa1" stroke-linecap="round" opacity="0.6">
+
+    <path d="M25 86
+         C29 94 38 100 47 102" stroke-width="0.8"></path>
+
+    <path d="M101 86
+         C97 94 88 100 79 102" stroke-width="0.8"></path>
+
+    <path d="M41 59
+         C47 64 51 70 53 77" stroke-width="0.7"></path>
+
+    <path d="M85 59
+         C79 64 75 70 73 77" stroke-width="0.7"></path>
+
+  </g>
+
+  <!-- Short flowering stalk -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M88 64
+         C94 53 97 42 97 31" stroke-width="2.2"></path>
+
+    <path d="M96 44
+         C102 39 106 34 108 28" stroke-width="1.3"></path>
+
+  </g>
+
+  <!-- Small stem leaf -->
+  <path d="M94 50
+       C88 48 85 44 85 40
+       C91 40 96 43 98 47Z" fill="url(#outerRed)" stroke="#593041" stroke-width="1"></path>
+
+  <!-- Blue chicory flower -->
+  <g transform="translate(108 26)" filter="url(#softShadow)">
+
+    <g fill="url(#flowerBlue)" stroke="#567b96" stroke-width="0.6">
+
+      <path d="M0 0 C-2 -5 -1 -10 3 -13 C6 -9 5 -4 2 0Z"></path>
+      <path d="M1 1 C5 -3 10 -4 13 -1 C10 3 6 4 2 3Z"></path>
+      <path d="M1 2 C5 5 6 10 3 13 C-1 10 -2 6 0 3Z"></path>
+      <path d="M0 2 C-4 6 -9 6 -12 3 C-9 -1 -5 -2 -1 0Z"></path>
+      <path d="M-1 1 C-5 -2 -7 -7 -4 -10 C0 -8 2 -4 1 0Z"></path>
+
+      <path d="M2 0 C3 -5 6 -8 10 -8 C11 -4 8 -1 3 2Z"></path>
+      <path d="M1 3 C0 7 -3 10 -7 9 C-8 5 -5 2 0 1Z"></path>
+
+    </g>
+
+    <circle cx="1" cy="1" r="3" fill="#607e97" stroke="#405e76" stroke-width="0.55"></circle>
+
+    <g stroke="#e2d99b" stroke-width="0.5" stroke-linecap="round">
+
+      <path d="M1 1 L-2 -4"></path>
+      <path d="M1 1 L4 -4"></path>
+      <path d="M1 1 L6 1"></path>
+      <path d="M1 1 L4 6"></path>
+      <path d="M1 1 L-2 6"></path>
+      <path d="M1 1 L-5 1"></path>
+
+    </g>
+
+  </g>
+
+  <!-- Root crown -->
+  <path d="M48 108
+       C53 104 58 102 63 102
+       C69 102 75 104 80 108
+       C76 113 70 116 63 116
+       C57 116 52 113 48 108Z" fill="#78604b" stroke="#504137" stroke-width="1.3"></path>
+
+  <!-- Roots -->
+  <g fill="none" stroke="#6a5545" stroke-linecap="round">
+
+    <path d="M55 112 C53 117 50 121 47 124" stroke-width="1.25"></path>
+    <path d="M62 113 C61 118 60 121 60 125" stroke-width="1.15"></path>
+    <path d="M69 112 C71 117 73 121 76 124" stroke-width="1.15"></path>
+
+  </g>
+
+</svg>
