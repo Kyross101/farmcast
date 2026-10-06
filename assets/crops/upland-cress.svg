@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Upland Cress</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of upland cress with a low rosette of deeply lobed green leaves,
+    branching stems, small yellow four-petaled flowers, slender seed pods, and a compact root crown.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bddb91"></stop>
+      <stop offset="0.52" stop-color="#70a45b"></stop>
+      <stop offset="1" stop-color="#3c7047"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#95bf70"></stop>
+      <stop offset="1" stop-color="#355f40"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9fbc76"></stop>
+      <stop offset="1" stop-color="#516f48"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerYellow" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#fff3a0"></stop>
+      <stop offset="0.55" stop-color="#e7c94e"></stop>
+      <stop offset="1" stop-color="#b58c2e"></stop>
+    </radialGradient>
+
+    <linearGradient id="podGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a8bc75"></stop>
+      <stop offset="1" stop-color="#63784e"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#283128" flood-opacity="0.2"></feDropShadow>
+
+    </filter>
+
+  </defs>
+
+  <ellipse cx="64" cy="119" rx="44" ry="5" fill="#4e5149" opacity="0.15"></ellipse>
+
+  <!-- Rosette stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M63 108
+         C62 91 62 74 63 57
+         C64 42 64 29 61 16" stroke-width="4"></path>
+
+    <path d="M58 107
+         C51 96 44 88 35 82" stroke-width="2.8"></path>
+
+    <path d="M54 106
+         C45 100 36 97 26 96" stroke-width="2.5"></path>
+
+    <path d="M70 107
+         C77 96 84 88 93 82" stroke-width="2.8"></path>
+
+    <path d="M74 106
+         C83 100 92 97 102 96" stroke-width="2.5"></path>
+
+    <path d="M60 89
+         C52 80 45 73 37 68" stroke-width="2.1"></path>
+
+    <path d="M67 89
+         C75 80 82 73 90 68" stroke-width="2.1"></path>
+
+  </g>
+
+  <!-- Deeply lobed rosette leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M56 103
+         C48 102 40 100 34 96
+         C29 93 24 89 21 84
+         C27 85 32 85 36 82
+         C31 79 28 75 27 71
+         C33 72 38 74 42 73
+         C39 68 39 64 41 60
+         C47 65 52 71 55 77
+         C59 85 60 95 56 103Z" fill="url(#leafGreen)" stroke="#345e3e" stroke-width="1.7"></path>
+
+    <path d="M71 103
+         C79 102 87 100 93 96
+         C98 93 103 89 106 84
+         C100 85 95 85 91 82
+         C96 79 99 75 100 71
+         C94 72 89 74 85 73
+         C88 68 88 64 86 60
+         C80 65 75 71 72 77
+         C68 85 67 95 71 103Z" fill="url(#leafGreen)" stroke="#345e3e" stroke-width="1.7"></path>
+
+    <path d="M59 83
+         C52 81 46 77 42 72
+         C38 68 36 63 36 58
+         C41 60 46 60 49 58
+         C46 54 46 50 47 46
+         C52 49 56 54 59 59
+         C62 65 63 74 59 83Z" fill="url(#leafDark)" stroke="#345e3e" stroke-width="1.5"></path>
+
+    <path d="M68 83
+         C75 81 81 77 85 72
+         C89 68 91 63 91 58
+         C86 60 81 60 78 58
+         C81 54 81 50 80 46
+         C75 49 71 54 68 59
+         C65 65 64 74 68 83Z" fill="url(#leafDark)" stroke="#345e3e" stroke-width="1.5"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#d2e2bc" stroke-linecap="round" opacity="0.78">
+
+    <path d="M55 100
+         C47 91 38 83 29 76" stroke-width="0.95"></path>
+
+    <path d="M72 100
+         C80 91 89 83 98 76" stroke-width="0.95"></path>
+
+    <path d="M59 80
+         C53 72 47 65 41 59" stroke-width="0.8"></path>
+
+    <path d="M68 80
+         C74 72 80 65 86 59" stroke-width="0.8"></path>
+
+  </g>
+
+  <!-- Flowering branches -->
+  <g fill="none" stroke="#65794d" stroke-linecap="round">
+
+    <path d="M63 57 L52 46" stroke-width="1.5"></path>
+    <path d="M63 49 L65 37" stroke-width="1.4"></path>
+    <path d="M64 50 L76 42" stroke-width="1.4"></path>
+    <path d="M52 46 L45 38" stroke-width="1.15"></path>
+    <path d="M65 37 L61 28" stroke-width="1.15"></path>
+    <path d="M76 42 L83 34" stroke-width="1.15"></path>
+    <path d="M61 28 L58 20" stroke-width="1"></path>
+    <path d="M83 34 L88 26" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Yellow four-petaled flowers -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(45 37)">
+
+      <ellipse cx="0" cy="-3.5" rx="2.2" ry="3.5" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.55"></ellipse>
+
+      <ellipse cx="3.5" cy="0" rx="3.5" ry="2.2" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.55"></ellipse>
+
+      <ellipse cx="0" cy="3.5" rx="2.2" ry="3.5" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.55"></ellipse>
+
+      <ellipse cx="-3.5" cy="0" rx="3.5" ry="2.2" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.55"></ellipse>
+
+      <circle cx="0" cy="0" r="1.25" fill="#946f27"></circle>
+
+    </g>
+
+    <g transform="translate(58 19)">
+
+      <ellipse cx="0" cy="-3.3" rx="2" ry="3.3" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.5"></ellipse>
+
+      <ellipse cx="3.3" cy="0" rx="3.3" ry="2" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.5"></ellipse>
+
+      <ellipse cx="0" cy="3.3" rx="2" ry="3.3" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.5"></ellipse>
+
+      <ellipse cx="-3.3" cy="0" rx="3.3" ry="2" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.5"></ellipse>
+
+      <circle cx="0" cy="0" r="1.15" fill="#946f27"></circle>
+
+    </g>
+
+    <g transform="translate(89 25)">
+
+      <ellipse cx="0" cy="-3.3" rx="2" ry="3.3" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.5"></ellipse>
+
+      <ellipse cx="3.3" cy="0" rx="3.3" ry="2" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.5"></ellipse>
+
+      <ellipse cx="0" cy="3.3" rx="2" ry="3.3" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.5"></ellipse>
+
+      <ellipse cx="-3.3" cy="0" rx="3.3" ry="2" fill="url(#flowerYellow)" stroke="#aa842c" stroke-width="0.5"></ellipse>
+
+      <circle cx="0" cy="0" r="1.15" fill="#946f27"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- Slender seed pods -->
+  <g fill="none" stroke="url(#podGreen)" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="M80 43
+         C89 49 96 56 101 65" stroke-width="1.4"></path>
+
+    <path d="M91 51 L100 58" stroke-width="1.1"></path>
+    <path d="M95 56 L105 64" stroke-width="1.1"></path>
+    <path d="M88 48 L96 53" stroke-width="1.1"></path>
+
+  </g>
+
+  <g fill="url(#podGreen)" stroke="#596b47" stroke-width="0.65">
+
+    <path d="M98 56
+         C101 55 105 58 106 61
+         C103 63 99 61 98 56Z"></path>
+
+    <path d="M103 63
+         C106 62 110 65 111 68
+         C108 70 104 68 103 63Z"></path>
+
+    <path d="M94 51
+         C97 50 100 52 101 55
+         C98 57 95 55 94 51Z"></path>
+
+  </g>
+
+  <!-- Root crown -->
+  <path d="M49 107
+       C54 103 59 101 64 101
+       C70 101 76 103 80 107
+       C76 112 70 115 64 115
+       C58 115 53 112 49 107Z" fill="#78614b" stroke="#514238" stroke-width="1.3"></path>
+
+  <g fill="none" stroke="#6c5645" stroke-linecap="round">
+
+    <path d="M56 111
+         C54 116 52 120 49 123" stroke-width="1.3"></path>
+
+    <path d="M63 112
+         C62 117 62 121 61 124" stroke-width="1.2"></path>
+
+    <path d="M70 111
+         C72 116 74 120 77 123" stroke-width="1.2"></path>
+
+  </g>
+
+</svg>

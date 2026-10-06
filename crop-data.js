@@ -12078,6 +12078,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Upland Cress',
+      scientificName: 'Barbarea verna (Mill.) Asch.',
+      category: 'vegetable',
+      icon: 'assets/crops/upland-cress.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Upland Cress—Barbarea verna (Mill.) Aschers.',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/es/archived-publications'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool-season conditions. University of Florida IFAS Extension recommends growing Upland Cress during the coolest months, while Kentucky State University reports a preferred seed-germination temperature range of about 10–22°C. FarmCast does not treat the germination range as a universal crop-growth temperature requirement.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of Florida IFAS Extension recommends sowing into moist soil, while Kentucky State University describes rich, moist, well-drained soil as preferred. FarmCast therefore keeps moisture guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Ideal pH 6.0–7.0.',
+
+      soilNote:
+        'Upland Cress can be grown on ordinary garden soils but performs best where moisture is maintained without waterlogging. Kentucky State University recommends rich, moist, well-drained soil, while University of Florida IFAS Extension notes that it does not require the aquatic conditions needed by Watercress.',
+
+      plantingNote:
+        'Upland Cress is an edible cool-season leafy green established from seed. University of Florida IFAS Extension recommends shallow sowing directly into moist, prepared soil followed by thinning, so FarmCast uses direct-seeded as the supported establishment method. It is distinct from Garden Cress (Lepidium sativum) and Watercress (Nasturtium officinale).',
+
+      harvestNote:
+        'Upland Cress is harvested for its edible peppery leaves, which may be eaten raw or cooked. University of Florida IFAS Extension recommends beginning leaf harvest once plants are well established at about 4 inches tall, leaving the stem and roots intact for repeated picking; the entire plant may also be harvested. Because harvest is based on plant size and establishment rather than one exact sowing-to-harvest interval, FarmCast keeps Upland Cress as guidance-only.',
+
+      source: {
+        agency:
+          'Kentucky State University Cooperative Extension',
+
+        office:
+          'Urban Agriculture',
+
+        title:
+          'Upland Cress — Cooperative Fact Sheet',
+
+        url:
+          [
+            'https://',
+            'www.kysu.edu/documents/college-of-agriculture-communities-the-sciences/urban-ag/2025-05-Factsheet-Upland%20Cress.pdf'
+          ].join('')
+      }
+    },
+
 
   
 ];
