@@ -1,0 +1,248 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">New Zealand Spinach</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of New Zealand spinach with fleshy triangular green leaves,
+    sprawling succulent stems, small yellow-green axillary flowers, and a horned seed fruit.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9ebf78"></stop>
+      <stop offset="0.55" stop-color="#6e965e"></stop>
+      <stop offset="1" stop-color="#476d4d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c1da98"></stop>
+      <stop offset="0.5" stop-color="#78a965"></stop>
+      <stop offset="1" stop-color="#3f744d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8e7b1"></stop>
+      <stop offset="1" stop-color="#65985c"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerYellow" cx="42%" cy="38%" r="68%">
+      <stop offset="0" stop-color="#f4e990"></stop>
+      <stop offset="0.55" stop-color="#c9b54e"></stop>
+      <stop offset="1" stop-color="#88743b"></stop>
+    </radialGradient>
+
+    <linearGradient id="fruitGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b1bd78"></stop>
+      <stop offset="1" stop-color="#65754c"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#283129" flood-opacity="0.2"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <ellipse cx="64" cy="118" rx="46" ry="5" fill="#4e5149" opacity="0.15"></ellipse>
+
+  <!-- Sprawling succulent stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="M20 105
+         C35 99 48 91 59 80
+         C70 69 80 56 88 40" stroke-width="4.8"></path>
+
+    <path d="M39 108
+         C51 98 59 87 65 75
+         C71 63 74 51 75 38" stroke-width="3.8"></path>
+
+    <path d="M58 108
+         C72 99 85 93 99 90
+         C107 88 114 88 120 89" stroke-width="3.5"></path>
+
+    <path d="M63 86
+         C53 78 44 69 37 58" stroke-width="2.8"></path>
+
+    <path d="M70 76
+         C82 70 94 62 104 52" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- Stem highlights -->
+  <g fill="none" stroke="#c9daa6" stroke-linecap="round" opacity="0.62">
+
+    <path d="M25 102
+         C40 95 52 87 62 76" stroke-width="0.9"></path>
+
+    <path d="M62 104
+         C76 96 88 92 102 89" stroke-width="0.75"></path>
+
+  </g>
+
+  <!-- Fleshy triangular leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M31 97
+         C25 93 21 87 20 81
+         C26 78 34 79 40 82
+         C45 85 47 90 45 95
+         C41 99 36 100 31 97Z" fill="url(#leafGreen)" stroke="#356341" stroke-width="1.6"></path>
+
+    <path d="M43 82
+         C38 76 37 68 40 61
+         C47 61 54 65 58 71
+         C60 76 58 81 54 84
+         C50 86 46 85 43 82Z" fill="url(#leafLight)" stroke="#356341" stroke-width="1.6"></path>
+
+    <path d="M53 99
+         C49 92 50 84 55 78
+         C62 80 67 85 69 91
+         C69 97 65 101 60 102
+         C57 102 55 101 53 99Z" fill="url(#leafGreen)" stroke="#356341" stroke-width="1.6"></path>
+
+    <path d="M64 72
+         C58 67 56 59 59 52
+         C66 51 73 55 77 61
+         C79 66 77 71 73 74
+         C70 76 67 75 64 72Z" fill="url(#leafGreen)" stroke="#356341" stroke-width="1.5"></path>
+
+    <path d="M73 96
+         C70 89 73 82 79 77
+         C86 79 91 84 92 90
+         C91 96 87 100 82 100
+         C78 100 75 99 73 96Z" fill="url(#leafLight)" stroke="#356341" stroke-width="1.6"></path>
+
+    <path d="M88 83
+         C84 77 85 69 90 63
+         C97 64 103 68 105 74
+         C105 80 101 84 96 86
+         C93 86 90 85 88 83Z" fill="url(#leafGreen)" stroke="#356341" stroke-width="1.5"></path>
+
+    <path d="M97 63
+         C93 57 94 50 99 44
+         C106 45 111 49 113 55
+         C112 60 109 64 104 66
+         C101 66 99 65 97 63Z" fill="url(#leafLight)" stroke="#356341" stroke-width="1.5"></path>
+
+    <path d="M30 68
+         C25 62 24 55 28 49
+         C35 50 41 54 44 60
+         C44 65 41 69 36 71
+         C34 71 32 70 30 68Z" fill="url(#leafGreen)" stroke="#356341" stroke-width="1.5"></path>
+
+    <path d="M72 53
+         C67 47 67 40 71 34
+         C78 35 84 39 87 45
+         C87 50 84 54 79 56
+         C76 56 74 55 72 53Z" fill="url(#leafLight)" stroke="#356341" stroke-width="1.5"></path>
+
+  </g>
+
+  <!-- Leaf midribs -->
+  <g fill="none" stroke="#d8e5bf" stroke-linecap="round" opacity="0.76">
+
+    <path d="M24 84 C31 87 37 91 43 94" stroke-width="0.85"></path>
+    <path d="M42 64 C47 70 51 76 54 82" stroke-width="0.85"></path>
+    <path d="M57 81 C59 88 60 95 60 100" stroke-width="0.8"></path>
+    <path d="M62 54 C67 60 70 66 72 73" stroke-width="0.8"></path>
+    <path d="M80 79 C82 87 82 94 82 99" stroke-width="0.8"></path>
+    <path d="M92 65 C96 72 97 79 96 85" stroke-width="0.8"></path>
+    <path d="M101 46 C104 52 105 58 104 64" stroke-width="0.75"></path>
+    <path d="M29 51 C33 58 35 64 36 69" stroke-width="0.75"></path>
+    <path d="M73 36 C77 42 79 49 79 55" stroke-width="0.75"></path>
+
+  </g>
+
+  <!-- Axillary flower stems -->
+  <g fill="none" stroke="#718253" stroke-width="1.2" stroke-linecap="round">
+
+    <path d="M66 74 L59 67"></path>
+    <path d="M88 83 L83 75"></path>
+    <path d="M98 63 L94 56"></path>
+    <path d="M43 82 L37 75"></path>
+
+  </g>
+
+  <!-- Small yellow-green flowers -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(58 65)">
+      <circle cx="0" cy="0" r="4.3" fill="url(#flowerYellow)" stroke="#80723d" stroke-width="0.7"></circle>
+
+      <circle cx="-2.6" cy="0" r="1.5" fill="#d8c967"></circle>
+      <circle cx="2.6" cy="0" r="1.5" fill="#d8c967"></circle>
+      <circle cx="0" cy="-2.6" r="1.5" fill="#d8c967"></circle>
+      <circle cx="0" cy="2.6" r="1.5" fill="#d8c967"></circle>
+    </g>
+
+    <g transform="translate(82 73)">
+      <circle cx="0" cy="0" r="3.8" fill="url(#flowerYellow)" stroke="#80723d" stroke-width="0.65"></circle>
+
+      <circle cx="0" cy="0" r="1.2" fill="#9a843b"></circle>
+    </g>
+
+    <g transform="translate(93 54)">
+      <circle cx="0" cy="0" r="3.6" fill="url(#flowerYellow)" stroke="#80723d" stroke-width="0.65"></circle>
+
+      <circle cx="0" cy="0" r="1.15" fill="#9a843b"></circle>
+    </g>
+
+    <g transform="translate(36 73)">
+      <circle cx="0" cy="0" r="3.5" fill="url(#flowerYellow)" stroke="#80723d" stroke-width="0.65"></circle>
+
+      <circle cx="0" cy="0" r="1.1" fill="#9a843b"></circle>
+    </g>
+
+  </g>
+
+  <!-- Horned fruit stalk -->
+  <path d="M101 89
+       C104 80 106 72 106 64" fill="none" stroke="#6c7c51" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- Characteristic horned fruit -->
+  <g transform="translate(106 62)" filter="url(#softShadow)">
+
+    <path d="M0 10
+         C-6 7 -8 2 -6 -3
+         C-3 -7 3 -8 7 -4
+         C10 0 9 6 5 10Z" fill="url(#fruitGreen)" stroke="#596947" stroke-width="1.2"></path>
+
+    <g fill="none" stroke="#586847" stroke-width="1.35" stroke-linecap="round">
+
+      <path d="M-5 -2 L-10 -7"></path>
+      <path d="M-2 -5 L-4 -12"></path>
+      <path d="M2 -6 L3 -13"></path>
+      <path d="M5 -4 L10 -9"></path>
+
+    </g>
+
+    <g fill="none" stroke="#7e8c62" stroke-width="0.65" opacity="0.8">
+
+      <path d="M0 9 C0 4 0 -1 0 -6"></path>
+      <path d="M-3 8 C-4 3 -4 -1 -3 -5"></path>
+      <path d="M3 8 C5 3 5 -1 4 -5"></path>
+
+    </g>
+
+  </g>
+
+  <!-- Root crown -->
+  <path d="M18 104
+       C25 100 34 100 41 104
+       C38 111 31 115 24 115
+       C20 112 18 108 18 104Z" fill="#78624c" stroke="#514339" stroke-width="1.3"></path>
+
+  <g fill="none" stroke="#6b5747" stroke-linecap="round">
+
+    <path d="M24 112
+         C22 117 19 121 16 124" stroke-width="1.25"></path>
+
+    <path d="M29 112
+         C29 117 28 121 27 124" stroke-width="1.15"></path>
+
+    <path d="M34 111
+         C37 116 39 120 42 122" stroke-width="1.15"></path>
+
+  </g>
+
+</svg>

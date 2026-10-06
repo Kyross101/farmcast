@@ -7307,6 +7307,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'New Zealand Spinach': {
+    'direct-seeded': {
+      minDays: 50,
+      maxDays: 70,
+      basis:
+        'after seeding',
+      derived: false,
+
+      note:
+        'Utah State University Extension reports that New Zealand Spinach takes about 50–70 days from seed to harvest. This FarmCast automatic estimate applies only to direct-seeded plants. The same source allows seedlings to be started indoors about 3–4 weeks before transplanting, but it does not provide a separate transplant-to-harvest interval.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow New Zealand Spinach in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/new-zealand-spinach-in-the-garden'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };

@@ -12144,6 +12144,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'New Zealand Spinach',
+      scientificName: 'Tetragonia tetragonoides (Pall.) Kuntze',
+      category: 'vegetable',
+      icon: 'assets/crops/new-zealand-spinach.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow New Zealand Spinach in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/new-zealand-spinach-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm-season conditions. Utah State University Extension describes New Zealand Spinach as a warm-season vegetable that grows well in hot, dry conditions and recommends outdoor planting only after danger of frost has passed. FarmCast keeps temperature guidance descriptive because the source does not provide one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Utah State University Extension describes New Zealand Spinach as drought tolerant but recommends consistent watering for the best leaf quality and flavor. FarmCast therefore keeps moisture guidance descriptive rather than converting irrigation advice into an annual rainfall value.',
+
+      soilPH:
+        'Recommended pH 6.8–7.0.',
+
+      soilNote:
+        'New Zealand Spinach prefers well-drained sandy soil that is rich in organic matter. Utah State University Extension recommends incorporating organic matter before planting and notes that the crop can also grow successfully in more alkaline soils.',
+
+      plantingNote:
+        'New Zealand Spinach may be established either by direct seeding after danger of frost has passed or by starting seed indoors about 3–4 weeks before the last frost and transplanting outdoors afterward. Utah State University Extension also recommends soaking the slow-germinating seed in water for about 24 hours before planting.',
+
+      harvestNote:
+        'New Zealand Spinach is harvested for its tender young leaves and growing tips. Utah State University Extension reports about 50–70 days from seed to harvest and recommends regular trimming to encourage continued tender growth. FarmCast uses that 50–70 day source-backed interval only for direct-seeded plants. For transplanted plants, the published countdown begins from seed rather than from the transplanting date, so no transplant-specific automatic harvest estimate is assigned.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow New Zealand Spinach in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/new-zealand-spinach-in-the-garden'
+          ].join('')
+      }
+    },
+
 
   
 ];
