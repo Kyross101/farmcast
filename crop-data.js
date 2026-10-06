@@ -12012,6 +12012,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Garden Cress',
+      scientificName: 'Lepidium sativum L.',
+      category: 'vegetable',
+      icon: 'assets/crops/garden-cress.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia',
+
+        office:
+          'PROSEA',
+
+        title:
+          'Lepidium sativum — Garden Cress',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/Lepidium_sativum_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool-season conditions. PROSEA reports that Garden Cress grows best in the cool season in tropical regions and can be grown in full sun or partial shade; University of Arkansas Extension likewise classifies it as a cool-season annual.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. PROSEA describes Garden Cress as thriving on rich, light, moisture-retentive soils and growing best on moist loams, while University of Arkansas Extension lists its moisture requirement as moist. FarmCast therefore keeps rainfall guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Recommended pH 6.0–7.5.',
+
+      soilNote:
+        'Garden Cress prefers loamy, moisture-retentive soil. University of Arkansas Extension lists loam and moist conditions, while PROSEA describes rich, light, moisture-retentive soils and moist loams as especially suitable.',
+
+      plantingNote:
+        'Garden Cress is an annual leafy vegetable propagated by seed. PROSEA reports direct sowing for culinary production, with seed sown thickly in rows, while University of Arkansas Extension recommends shallow seed sowing. FarmCast therefore uses direct-seeded as the supported establishment method.',
+
+      harvestNote:
+        'Garden Cress is eaten as sprouts, young leaves, and leafy shoots. PROSEA recommends harvesting culinary leaves before flowering and notes that sprouts are harvested only a few days after germination, while University of Arkansas Extension recommends picking leaves when they are about 3–5 inches long or cutting the entire plant before seedstalks form. Because harvest timing changes with the intended stage and no single universal field sowing-to-harvest interval is given by these sources, FarmCast keeps Garden Cress as guidance-only.',
+
+      source: {
+        agency:
+          'University of Arkansas Division of Agriculture Research & Extension',
+
+        title:
+          'Garden Cress — Home Gardening Series FSA6084',
+
+        url:
+          [
+            'https://',
+            'www.uaex.uada.edu/publications/pdf/FSA-6084.pdf'
+          ].join('')
+      }
+    },
+
 
   
 ];
