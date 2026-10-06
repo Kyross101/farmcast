@@ -12281,6 +12281,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Corn Salad',
+      scientificName: 'Valeriana locusta L.',
+      category: 'vegetable',
+      icon: 'assets/crops/corn-salad.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Lamb\'s Lettuce in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/lambs-lettuce-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool-season conditions. Utah State University Extension recommends direct seeding when soil temperatures are about 5–20°C (41–68°F) and reports that Lamb\'s Lettuce grows best when air temperatures do not exceed about 24°C (75°F). Because the first range refers specifically to seed-germination soil temperature rather than a universal crop-growth range, FarmCast keeps minTemp and maxTemp unset.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Utah State University Extension recommends regular watering of about 1–2 inches per week, adjusted for soil type and temperature, and warns that moisture fluctuations reduce leaf quality. FarmCast does not convert irrigation guidance into an invented annual rainfall requirement.',
+
+      soilPH:
+        'Recommended pH 6.0–7.0.',
+
+      soilNote:
+        'Corn Salad prefers fertile, well-drained soil rich in organic matter. Utah State University Extension recommends maintaining consistent soil moisture while avoiding conditions that interfere with healthy establishment and leaf development.',
+
+      plantingNote:
+        'Corn Salad is a cool-season leafy vegetable that may be direct-seeded or grown from transplants. Utah State University Extension supports both establishment methods. Many horticultural references use the scientific name Valerianella locusta, but current Kew taxonomy accepts Valeriana locusta L. and treats Valerianella locusta as a synonym.',
+
+      harvestNote:
+        'Corn Salad is harvested for its tender edible leaf rosettes. Utah State University Extension reports that harvest can begin about 2–3 weeks after emergence or transplanting and that individual leaves or the entire small rosette may be harvested. Washington State University Extension lists direct-seeded Corn Salad at about 45–55 days to harvest. FarmCast therefore uses a 45–55 day direct-seeded estimate and a separate 14–21 day estimate after transplanting.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Lamb\'s Lettuce in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/lambs-lettuce-in-the-garden'
+          ].join('')
+      }
+    },
+
 
   
 ];

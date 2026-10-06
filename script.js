@@ -7361,6 +7361,61 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Corn Salad': {
+    'direct-seeded': {
+      minDays: 45,
+      maxDays: 55,
+      basis:
+        'after seeding',
+      derived: false,
+
+      note:
+        'Washington State University Extension lists Corn Salad (Mâche/Feldsalat) as a direct-seeded vegetable with approximately 45–55 days to harvest.',
+
+      source: {
+        agency:
+          'Washington State University Extension',
+
+        title:
+          'Home Vegetable Gardening in Washington',
+
+        url:
+          [
+            'https://',
+            'pubs.extension.wsu.edu/product/home-vegetable-gardening-in-washington-home-garden-series/'
+          ].join('')
+      }
+    },
+
+    transplanted: {
+      minDays: 14,
+      maxDays: 21,
+      basis:
+        'after transplanting',
+      derived: true,
+
+      derivationNote:
+        'Derived directly from Utah State University Extension guidance that harvest can begin about 2–3 weeks after transplanting: 2 × 7 = 14 days and 3 × 7 = 21 days.',
+
+      note:
+        'This estimate applies to established transplants. Harvest stage may vary because individual leaves or the entire young rosette can be collected.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Lamb\'s Lettuce in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/lambs-lettuce-in-the-garden'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };
