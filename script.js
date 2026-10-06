@@ -7416,6 +7416,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Salsify: {
+    'direct-seeded': {
+      minDays: 110,
+      maxDays: 150,
+      basis:
+        'after seeding',
+      derived: false,
+
+      note:
+        'Washington State University Extension lists Salsify as a direct-seeded cool-season vegetable with approximately 110–150 days to harvest. Utah State University Extension independently describes regular Salsify as requiring about a 120-day growing period.',
+
+      source: {
+        agency:
+          'Washington State University Extension',
+
+        title:
+          'Chapter 7: Vegetable Gardening — The Pacific Northwest Gardener’s Handbook',
+
+        url:
+          [
+            'https://',
+            'extension.wsu.edu/pnw-gardeners-handbook/chapter-7-vegetable-gardening/'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };

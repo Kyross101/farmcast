@@ -12421,6 +12421,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Salsify',
+      scientificName: 'Tragopogon porrifolius L.',
+      category: 'root-crop',
+      icon: 'assets/crops/salsify.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Black Salsify in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/black-salsify-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool-season conditions. Utah State University Extension classifies Salsify as a cool-season crop and recommends sowing as soon as the soil can be worked. FarmCast does not assign a universal numeric crop-growth temperature range because the cited source does not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Utah State University Extension recommends maintaining consistently moist but not wet soil and supplying about 1–2 inches of water per week. FarmCast does not convert irrigation guidance into an invented annual rainfall range.',
+
+      soilPH:
+        'Recommended pH 6.0–8.0.',
+
+      soilNote:
+        'Salsify prefers deep, fine-textured, well-drained soil with good water-holding capacity. Utah State University Extension recommends deeply prepared, loose soil with stones and other obstructions removed so the edible taproot can develop straight with minimal deformity.',
+
+      plantingNote:
+        'Salsify is a cool-season root vegetable established by direct seeding. Utah State University Extension recommends sowing seed directly into workable soil and notes that transplants are unnecessary. Current Kew taxonomy accepts Tragopogon porrifolius L. as the species name.',
+
+      harvestNote:
+        'Salsify is cultivated primarily for its edible pale taproot, while young leaves may also be eaten. Washington State University Extension lists direct-seeded Salsify at about 110–150 days to harvest, while Utah State University Extension describes regular Salsify as requiring roughly a 120-day growing period. FarmCast therefore uses the broader 110–150 day source-backed harvest window after seeding.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Black Salsify in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/black-salsify-in-the-garden'
+          ].join('')
+      }
+    },
+
 
   
 ];
