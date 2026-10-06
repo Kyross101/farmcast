@@ -12484,6 +12484,70 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Black Salsify',
+      scientificName:
+        'Pseudopodospermum hispanicum (L.) Zaika, Sukhor. & N.Kilian',
+      category: 'root-crop',
+      icon: 'assets/crops/black-salsify.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Black Salsify in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/black-salsify-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool-season conditions. Utah State University Extension describes Black Salsify as a cool-season root vegetable and recommends sowing as soon as the soil can be worked. FarmCast keeps the temperature guidance descriptive because the source does not provide one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Utah State University Extension recommends maintaining evenly moist soil with about 1–2 inches of water per week. FarmCast does not convert irrigation guidance into an invented annual rainfall value.',
+
+      soilPH:
+        'Recommended pH 6.0–8.0.',
+
+      soilNote:
+        'Black Salsify prefers deep, fine-textured, well-drained soil with good water-holding capacity. Utah State University Extension recommends deeply prepared loose soil and removal of stones or other obstructions so the long edible taproot can develop straight with fewer deformities.',
+
+      plantingNote:
+        'Black Salsify is established by direct seeding; Utah State University Extension specifically states that there is no need to grow transplants. Many horticultural references still use the traditional name Scorzonera hispanica, but current Kew taxonomy accepts Pseudopodospermum hispanicum (L.) Zaika, Sukhor. & N.Kilian and treats Scorzonera hispanica L. as a synonym.',
+
+      harvestNote:
+        'Black Salsify is grown primarily for its long dark edible taproot, while young leaves can also be eaten. Utah State University Extension reports that the crop requires about a 120-day cool-season growing period and is harvested in fall or early spring. FarmCast therefore uses a 120-day automatic harvest estimate after direct seeding.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Black Salsify in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/black-salsify-in-the-garden'
+          ].join('')
+      }
+    },
+
 
   
 ];

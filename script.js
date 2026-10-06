@@ -7443,6 +7443,33 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Black Salsify': {
+    'direct-seeded': {
+      minDays: 120,
+      maxDays: 120,
+      basis:
+        'after seeding',
+      derived: false,
+
+      note:
+        'Utah State University Extension reports that Black Salsify requires about a 120-day cool-season growing period and recommends direct seeding rather than transplanting.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Black Salsify in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/black-salsify-in-the-garden'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };
