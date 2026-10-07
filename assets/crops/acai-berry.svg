@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Acai Berry</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of an acai palm with arching tropical
+    fronds, slender clustered stems, and hanging bunches of ripe
+    dark-purple acai berries with natural highlights and shadows.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="trunkGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b8c68"></stop>
+      <stop offset="0.45" stop-color="#6e7254"></stop>
+      <stop offset="1" stop-color="#404a3a"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#17492f"></stop>
+      <stop offset="0.5" stop-color="#397d42"></stop>
+      <stop offset="1" stop-color="#8abb62"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#103824"></stop>
+      <stop offset="1" stop-color="#548b48"></stop>
+    </linearGradient>
+
+    <radialGradient id="berryPurple" cx="30%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#a48ab8"></stop>
+      <stop offset="0.25" stop-color="#655079"></stop>
+      <stop offset="0.6" stop-color="#352943"></stop>
+      <stop offset="0.85" stop-color="#211a2e"></stop>
+      <stop offset="1" stop-color="#14111c"></stop>
+    </radialGradient>
+
+    <radialGradient id="berryDark" cx="30%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#806b96"></stop>
+      <stop offset="0.3" stop-color="#4a385b"></stop>
+      <stop offset="0.7" stop-color="#281e34"></stop>
+      <stop offset="1" stop-color="#121018"></stop>
+    </radialGradient>
+
+    <linearGradient id="fruitStem" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8c7747"></stop>
+      <stop offset="1" stop-color="#4e6037"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#1e271f" flood-opacity="0.27"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="117" rx="40" ry="6" fill="#273128" opacity="0.16"></ellipse>
+
+  <!-- clustered palm stems -->
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M53 113
+      C55 92 56 73 57 57
+      C58 43 59 32 61 24
+      C63 21 67 21 69 24
+      C70 36 70 48 69 60
+      C68 77 68 94 70 113Z" fill="url(#trunkGradient)" stroke="#3d4936" stroke-width="1.5"></path>
+
+    <path d="
+      M40 113
+      C43 93 45 76 47 60
+      C49 48 51 38 54 30
+      C56 28 59 29 60 32
+      C58 47 57 63 57 78
+      C56 92 56 103 57 113Z" fill="url(#trunkGradient)" stroke="#3d4936" stroke-width="1.2" opacity="0.95"></path>
+
+    <path d="
+      M73 113
+      C74 94 75 77 75 62
+      C76 48 76 39 75 31
+      C77 28 80 28 82 31
+      C84 46 84 61 83 77
+      C82 93 82 104 84 113Z" fill="url(#trunkGradient)" stroke="#3d4936" stroke-width="1.2" opacity="0.92"></path>
+
+  </g>
+
+  <!-- stem rings -->
+  <g fill="none" stroke="#b1aa7a" stroke-width="0.8" opacity="0.58">
+
+    <path d="M56 94 C60 96 65 96 69 94"></path>
+    <path d="M56 82 C60 84 65 84 69 82"></path>
+    <path d="M57 70 C61 72 65 72 69 70"></path>
+    <path d="M58 58 C61 60 65 60 69 58"></path>
+    <path d="M59 46 C62 48 66 48 69 46"></path>
+
+    <path d="M44 91 C48 93 52 93 56 91"></path>
+    <path d="M46 76 C50 78 54 78 57 76"></path>
+
+    <path d="M76 91 C79 93 82 93 84 91"></path>
+    <path d="M76 75 C79 77 82 77 84 75"></path>
+
+  </g>
+
+  <!-- crown bases -->
+  <g fill="#355c38" stroke="#24442e" stroke-width="1">
+
+    <ellipse cx="65" cy="25" rx="8" ry="6"></ellipse>
+
+    <ellipse cx="57" cy="31" rx="6" ry="5"></ellipse>
+
+    <ellipse cx="79" cy="31" rx="6" ry="5"></ellipse>
+
+  </g>
+
+  <!-- main frond stems -->
+  <g fill="none" stroke="#547346" stroke-width="2.2" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="M64 25 C46 17 28 17 12 23"></path>
+    <path d="M64 24 C50 10 36 6 22 7"></path>
+    <path d="M65 24 C58 9 53 5 47 3"></path>
+
+    <path d="M66 24 C74 9 81 5 89 3"></path>
+    <path d="M66 24 C83 11 98 8 114 10"></path>
+    <path d="M67 25 C86 18 104 19 121 26"></path>
+
+    <path d="M63 27 C46 27 30 34 16 45"></path>
+    <path d="M68 27 C85 28 101 35 116 46"></path>
+
+  </g>
+
+  <!-- left leaflets -->
+  <g fill="url(#leafGreen)" stroke="#234b31" stroke-width="0.5">
+
+    <path d="M57 22 C48 16 40 14 32 15 C40 19 48 22 58 24Z"></path>
+    <path d="M47 18 C39 12 31 11 24 12 C31 16 39 19 48 20Z"></path>
+    <path d="M38 16 C30 11 22 12 15 15 C22 18 30 19 39 18Z"></path>
+
+    <path d="M58 18 C54 11 50 6 45 3 C48 10 52 16 59 21Z"></path>
+    <path d="M51 13 C47 8 42 5 38 4 C41 9 45 13 52 16Z"></path>
+
+    <path d="M57 28 C47 27 38 29 30 34 C39 33 48 32 58 30Z"></path>
+    <path d="M46 33 C36 33 27 36 19 42 C29 39 38 37 47 35Z"></path>
+
+  </g>
+
+  <!-- darker left leaflets -->
+  <g fill="url(#leafDark)" stroke="#1f432d" stroke-width="0.5">
+
+    <path d="M57 25 C48 24 39 25 31 28 C40 28 49 28 58 27Z"></path>
+    <path d="M44 28 C35 28 26 30 18 35 C27 33 36 32 45 30Z"></path>
+
+  </g>
+
+  <!-- right leaflets -->
+  <g fill="url(#leafGreen)" stroke="#234b31" stroke-width="0.5">
+
+    <path d="M74 22 C83 16 92 14 100 16 C93 20 85 22 74 24Z"></path>
+    <path d="M84 18 C93 12 101 11 108 13 C102 17 94 19 84 20Z"></path>
+    <path d="M94 17 C102 12 111 13 119 16 C111 19 103 20 94 19Z"></path>
+
+    <path d="M73 18 C78 11 83 6 89 3 C86 10 82 16 73 21Z"></path>
+    <path d="M82 13 C87 8 92 5 97 4 C94 9 90 14 83 16Z"></path>
+
+    <path d="M74 28 C84 27 94 30 102 34 C93 34 84 32 74 30Z"></path>
+    <path d="M87 33 C97 33 106 36 115 42 C105 39 96 37 87 35Z"></path>
+
+  </g>
+
+  <!-- darker right leaflets -->
+  <g fill="url(#leafDark)" stroke="#1f432d" stroke-width="0.5">
+
+    <path d="M74 25 C83 24 92 25 100 28 C91 28 83 28 74 27Z"></path>
+    <path d="M88 28 C97 28 106 30 115 35 C106 33 97 32 88 30Z"></path>
+
+  </g>
+
+  <!-- hanging fruit rachises -->
+  <g fill="none" stroke="url(#fruitStem)" stroke-width="1.5" stroke-linecap="round">
+
+    <path d="
+      M61 29
+      C55 38 52 48 52 60"></path>
+
+    <path d="
+      M66 29
+      C65 40 66 51 68 62"></path>
+
+    <path d="
+      M70 29
+      C79 38 84 48 86 60"></path>
+
+    <path d="M53 43 C47 48 43 54 42 60"></path>
+    <path d="M53 49 C59 54 61 59 61 65"></path>
+
+    <path d="M68 45 C61 51 59 57 59 63"></path>
+    <path d="M69 50 C76 55 79 61 79 66"></path>
+
+    <path d="M84 45 C91 50 95 56 96 62"></path>
+
+  </g>
+
+  <!-- left acai bunch -->
+  <g stroke="#17121d" stroke-width="0.8" filter="url(#softShadow)">
+
+    <circle cx="41" cy="65" r="5.8" fill="url(#berryPurple)"></circle>
+
+    <circle cx="50" cy="63" r="5.8" fill="url(#berryDark)"></circle>
+
+    <circle cx="46" cy="73" r="6" fill="url(#berryDark)"></circle>
+
+    <circle cx="56" cy="72" r="5.8" fill="url(#berryPurple)"></circle>
+
+    <circle cx="51" cy="82" r="6" fill="url(#berryPurple)"></circle>
+
+    <circle cx="60" cy="81" r="5.7" fill="url(#berryDark)"></circle>
+
+    <circle cx="45" cy="86" r="5.6" fill="url(#berryDark)"></circle>
+
+  </g>
+
+  <!-- center bunch -->
+  <g stroke="#17121d" stroke-width="0.8" filter="url(#softShadow)">
+
+    <circle cx="64" cy="66" r="5.9" fill="url(#berryPurple)"></circle>
+
+    <circle cx="72" cy="65" r="5.8" fill="url(#berryDark)"></circle>
+
+    <circle cx="66" cy="75" r="6" fill="url(#berryDark)"></circle>
+
+    <circle cx="75" cy="76" r="6" fill="url(#berryPurple)"></circle>
+
+    <circle cx="69" cy="85" r="5.9" fill="url(#berryPurple)"></circle>
+
+    <circle cx="78" cy="86" r="5.6" fill="url(#berryDark)"></circle>
+
+  </g>
+
+  <!-- right bunch -->
+  <g stroke="#17121d" stroke-width="0.8" filter="url(#softShadow)">
+
+    <circle cx="87" cy="64" r="5.8" fill="url(#berryPurple)"></circle>
+
+    <circle cx="96" cy="66" r="5.9" fill="url(#berryDark)"></circle>
+
+    <circle cx="91" cy="75" r="6" fill="url(#berryDark)"></circle>
+
+    <circle cx="100" cy="77" r="5.8" fill="url(#berryPurple)"></circle>
+
+    <circle cx="94" cy="85" r="5.8" fill="url(#berryPurple)"></circle>
+
+  </g>
+
+  <!-- berry highlights -->
+  <g fill="#e4d9eb" opacity="0.54">
+
+    <ellipse cx="39" cy="62" rx="1.6" ry="2.1" transform="rotate(-25 39 62)"></ellipse>
+
+    <ellipse cx="62" cy="63" rx="1.6" ry="2.1" transform="rotate(-25 62 63)"></ellipse>
+
+    <ellipse cx="85" cy="61" rx="1.6" ry="2.1" transform="rotate(-25 85 61)"></ellipse>
+
+    <ellipse cx="44" cy="70" rx="1.4" ry="1.9" transform="rotate(-25 44 70)"></ellipse>
+
+    <ellipse cx="64" cy="72" rx="1.4" ry="1.9" transform="rotate(-25 64 72)"></ellipse>
+
+    <ellipse cx="89" cy="72" rx="1.4" ry="1.9" transform="rotate(-25 89 72)"></ellipse>
+
+  </g>
+
+  <!-- tiny blossom scars -->
+  <g fill="#756875" stroke="#241d29" stroke-width="0.4">
+
+    <path d="M38 68 L41 66 L44 68 L42 70 L41 68 L39 70Z"></path>
+    <path d="M63 69 L66 67 L69 69 L67 71 L66 69 L64 71Z"></path>
+    <path d="M84 68 L87 66 L90 68 L88 70 L87 68 L85 70Z"></path>
+
+  </g>
+
+</svg>

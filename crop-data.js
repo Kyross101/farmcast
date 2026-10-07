@@ -15843,6 +15843,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Acai Berry',
+      localName: 'Açaí',
+      scientificName: 'Euterpe oleracea Mart.',
+      category: 'fruit',
+      icon: 'assets/crops/acai-berry.svg',
+
+      plantingMethods: [
+        {
+          value: 'nursery-raised-seedlings',
+          label: 'Nursery-Raised Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Embrapa Amapá',
+
+        title:
+          'Produção de mudas de açaí',
+
+        url:
+          [
+            'https://',
+            'www.embrapa.br/en/busca-de-publicacoes/-/',
+            'publicacao/347321/',
+            'producao-de-mudas-de-acai'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm, humid tropical growing conditions. Kew identifies Acai as a palm primarily associated with the wet tropical biome. Growth, flowering and fruit production vary with rainfall pattern, site moisture, cultivar or population, and local Amazonian conditions, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Acai naturally occurs in humid tropical environments, including Amazonian floodplain forests and moist upland areas. Embrapa guidance shows that water availability and local site conditions strongly influence production, so FarmCast keeps moisture guidance descriptive rather than inventing one universal rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows source guidance emphasizing locally suitable tropical soils, adequate moisture, and appropriate field establishment rather than assigning an unsupported universal pH range.',
+
+      soilNote:
+        'Acai is naturally associated with moist tropical environments and can occur in seasonally flooded Amazonian floodplains as well as humid upland sites. Field establishment should therefore match soil moisture, rooting conditions and water management to the local production environment rather than assume that one drainage regime is suitable everywhere.',
+
+      plantingNote:
+        'Acai Berry in this FarmCast entry refers specifically to Euterpe oleracea Mart., the familiar Amazonian palm whose dark purple fruits are processed into acai pulp and beverages. Embrapa guidance describes production of nursery seedlings from selected fruits and seeds, including seed preparation, nursery substrate management, irrigation and acclimatization before field planting. Current Kew taxonomy accepts Euterpe oleracea Mart.; its five scientific synonyms are Catis martiana, Euterpe badiocarpa, Euterpe beardii, Euterpe brasiliana and Euterpe cuatrecasasiana.',
+
+      harvestNote:
+        'Acai fruits are harvested as mature fruit bunches, but production season varies substantially with region and growing environment. Embrapa reports that fruit production in Amazonian floodplain stands can occur throughout the year with strong monthly peaks, while cultivated Euterpe oleracea near Manaus showed mature bunch production concentrated more strongly during particular months. Because Acai is a perennial palm with region-dependent seasonal fruiting rather than one universal planting-to-harvest interval, FarmCast keeps Acai Berry as guidance-only.',
+
+      source: {
+        agency:
+          'Embrapa Amapá',
+
+        title:
+          'Guia prático de manejo de açaizais para produção de frutos',
+
+        url:
+          [
+            'https://',
+            'www.embrapa.br/en/web/agroindustria-de-alimentos/',
+            'busca-de-publicacoes/-/publicacao/964364/',
+            'guia-pratico-de-manejo-de-acaizais-',
+            'para-producao-de-frutos'
+          ].join('')
+      }
+    },
+
   
 ];
 
