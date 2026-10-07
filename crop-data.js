@@ -17248,6 +17248,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Siniguelas',
+      localName: 'Siniguwelas / Spanish Plum',
+      scientificName: 'Spondias purpurea L.',
+      category: 'fruit',
+      icon: 'assets/crops/siniguelas.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'World Agroforestry Centre',
+
+        title:
+          'Agroforestree Database — Spondias purpurea',
+
+        url:
+          [
+            'https://',
+            'apps.worldagroforestry.org/',
+            'treedb2/speciesprofile.php/?Spid=1755'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical growing conditions with abundant sunlight. Kew identifies Spondias purpurea as a tree primarily associated with the seasonally dry tropical biome, while World Agroforestry describes it as a light-demanding species that can grow in relatively dry areas. Because cultivar, rainfall, soil moisture and local seasonal conditions influence growth and fruiting, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No universal annual rainfall range is stored for Siniguelas. World Agroforestry describes Spondias purpurea as capable of growing in relatively dry tropical environments. Water requirements vary with tree establishment, soil depth and local rainfall distribution, so FarmCast keeps rainfall guidance descriptive rather than inventing one fixed annual requirement.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'World Agroforestry describes Spondias purpurea as a light-demanding fruit tree capable of growing in dry areas with relatively shallow soils. The species is adaptable, but young trees still benefit from adequate moisture during establishment. Because the cited production guidance does not provide one defensible universal soil-pH interval, FarmCast keeps soilPH unset.',
+
+      plantingNote:
+        'Siniguelas in this FarmCast entry refers specifically to Spondias purpurea L., known in DOST-FNRI records as Spanish Plum or Siniguwelas. It is botanically distinct from the existing Ambarella entry, which is Spondias dulcis Parkinson. World Agroforestry reports that Spondias purpurea is easily propagated from both seeds and stem cuttings. Current Kew taxonomy accepts Spondias purpurea L. and lists historical names including Monbin purpureum, Spondias myrobalanus, Spondias mexicana, Spondias negrosensis and Warmingia pauciflora among its synonyms.',
+
+      harvestNote:
+        'Siniguelas fruits mature from green toward yellow, orange-red or purplish-red depending on the fruit form and cultivar. World Agroforestry describes the edible fruit as juicy and plum-like and reports seasonal flowering and fruiting patterns that vary with location. Because planting material, climate and tree establishment strongly influence first bearing and no single reliable seed-or-cutting-to-first-harvest interval is available, FarmCast keeps Siniguelas as guidance-only rather than assigning one automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Spanish Plum — Spondias purpurea',
+
+        url:
+          [
+            'https://',
+            'i.fnri.dost.gov.ph/',
+            'fct/library/report/3666'
+          ].join('')
+      }
+    },
+
+
   
 ];
 
