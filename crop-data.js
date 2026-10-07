@@ -18668,6 +18668,89 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Curry Leaf',
+      localName: 'Curry Leaf Tree / Curry Tree',
+      scientificName:
+        'Bergera koenigii L.',
+      category: 'herb',
+      icon: 'assets/crops/curry-leaf.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'root-suckers',
+          label: 'Root Suckers'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Master Gardeners of Santa Clara County',
+
+        title:
+          'Curry Leaf',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/',
+            'site/uc-master-gardeners-santa-clara-county/',
+            'curry-leaf'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Curry Leaf is a warm-climate perennial that performs best under frost-free tropical to subtropical conditions. UC Master Gardeners recommends full sun to partial shade and protection from frost, while NParks lists full sun and moderate water requirements. Because the cited cultivation sources do not establish one universal numeric optimum temperature interval or absolute physiological minimum and maximum limits, FarmCast keeps temperature guidance descriptive rather than assigning unsupported thresholds.',
+
+      rainfallRange:
+        'Curry Leaf requires regular but moderate moisture and should not remain continuously waterlogged. UC Master Gardeners recommends allowing the soil to dry somewhat between waterings, while NParks lists moderate water requirements. Because these recommendations describe soil-moisture management rather than one universal annual rainfall requirement, FarmCast keeps rainfall guidance descriptive.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Curry Leaf grows well in fertile, well-drained soil. UC Master Gardeners and NParks both emphasize good drainage, while NParks describes suitable cultivation under tropical conditions. Because the species-specific references used for this entry do not establish one universal numeric soil-pH interval for Bergera koenigii production, FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Curry Leaf in this FarmCast entry refers specifically to Bergera koenigii L., the culinary species historically and widely known as Murraya koenigii. UC Master Gardeners reports propagation from fresh ripe seeds, root suckers and cuttings, while NParks likewise supports seed propagation. Current Kew taxonomy accepts Bergera koenigii L. and lists eight synonyms: Camunium koenigii, Chalcas koenigii, Murraya koenigii, Bergera siamensis, Chalcas siamensis, Murraya foetidissima, Murraya siamensis and Nimbo melioides. Major common-name variants and all eight current Kew synonyms were checked against the FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Curry Leaf is grown primarily for its aromatic edible leaves, which are used to flavor curries, dal, soups, snacks and other dishes. UC Master Gardeners states that leaves may be harvested at any time for fresh use, while drying is less desirable because much of the aroma and flavor is lost. Because the cited cultivation guidance does not provide one exact seed-, sucker- or cutting-to-first-harvest interval, FarmCast keeps Curry Leaf as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Master Gardeners of Santa Clara County',
+
+        title:
+          'Curry Leaf',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/',
+            'site/uc-master-gardeners-santa-clara-county/',
+            'curry-leaf'
+          ].join('')
+      }
+    },
+
 
   
 ];
