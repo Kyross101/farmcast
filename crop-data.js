@@ -18909,6 +18909,82 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Tomatillo',
+      localName: 'Mexican Husk Tomato / Husk Tomato',
+      scientificName:
+        'Physalis philadelphica Lam.',
+      category: 'vegetable',
+      icon: 'assets/crops/tomatillo.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Tomatillos in Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/',
+            'yardandgarden/research/',
+            'tomatillos-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Tomatillo is a warm-season annual crop that grows best in full sun after cold or frost conditions have passed. Utah State University Extension provides specific temperatures for seed germination, transplant production and field establishment, but these represent particular production stages rather than one universal optimum temperature interval or absolute physiological minimum and maximum range. FarmCast therefore keeps the main temperature fields descriptive rather than converting stage-specific recommendations into unsupported crop-wide thresholds.',
+
+      rainfallRange:
+        'Tomatillo is moderately drought tolerant after establishment but benefits from regular, deep watering during active growth and fruit production. Utah State University Extension recommends managing irrigation according to weather, soil and plant condition rather than relying on rainfall alone. Because irrigation and local rainfall contribute together to available soil moisture, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Tomatillo performs best in fertile, well-drained soil and performs poorly where heavy soil remains continuously wet. Utah State University Extension recommends raised beds where drainage is inadequate, while North Carolina State University Extension likewise emphasizes moist but well-drained garden soil. Because the species-specific sources used here do not establish one universal numeric soil-pH interval that should be applied to all Physalis philadelphica production, FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Tomatillo in this FarmCast entry refers specifically to Physalis philadelphica Lam., an accepted species in the current Kew Plants of the World Online taxonomy. Utah State University Extension supports both direct seeding and establishment through transplants. North Carolina State University Extension also identifies Physalis philadelphica specifically as Tomatillo and Mexican Husk Tomato. Current Kew taxonomy lists fourteen synonyms for Physalis philadelphica, including historical names such as Physalis angulata var. philadelphica, Physalis mexicana, Physalis ovata, Physalis violacea and Saracha geniculata. All fourteen current Kew synonyms and major common-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared. Physalis ixocarpa is also commonly called tomatillo but is currently treated by Kew as a separate accepted species and is not being combined with this FarmCast entry.',
+
+      harvestNote:
+        'Tomatillo fruits are harvested when they are firm and have expanded enough to fill their surrounding papery husks. North Carolina State University Extension reports that Physalis philadelphica fruits are generally ready about 60–75 days after transplanting. This provides a sufficiently clear planting-method-specific interval for FarmCast to calculate an automatic estimate for transplanted seedlings. Direct-seeded tomatillos remain guidance-only because the species-specific sources used here do not provide an equally clear direct-seeding-to-harvest interval that should be treated as universal.',
+
+      source: {
+        agency:
+          'North Carolina State University Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Physalis philadelphica — Tomatillo',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/',
+            'plants/physalis-philadelphica/',
+            'common-name/jamberries/'
+          ].join('')
+      }
+    },
+
 
   
 ];

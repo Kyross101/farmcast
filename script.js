@@ -7554,6 +7554,38 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Tomatillo: {
+    transplanted: {
+      minDays: 60,
+      maxDays: 75,
+      basis:
+        'after transplanting',
+      derived: false,
+
+      note:
+        'North Carolina State University Extension reports that Physalis philadelphica fruits are generally ready for harvest about 60–75 days after transplanting. This automatic FarmCast estimate therefore applies only to transplanted Tomatillo plants; direct-seeded plants remain guidance-only.',
+
+      source: {
+        agency:
+          'North Carolina State University Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Physalis philadelphica — Tomatillo',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/',
+            'plants/physalis-philadelphica/',
+            'common-name/jamberries/'
+          ].join('')
+      }
+    }
+  },
+
 
 
 
