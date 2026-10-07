@@ -19210,6 +19210,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Yacon',
+      localName: 'Earth Apple',
+      scientificName:
+        'Smallanthus sonchifolius (Poepp.) H.Rob.',
+      category: 'vegetable',
+      icon: 'assets/crops/yacon.svg',
+
+      plantingMethods: [
+        {
+          value: 'rhizome-crown-divisions',
+          label: 'Rhizome / Crown Divisions'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Smallanthus sonchifolius — Earth Apple',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/',
+            'plants/318367/',
+            'smallanthus-sonchifolius/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Yacon is a frost-sensitive perennial root crop commonly grown as an annual for its edible storage roots. The Royal Horticultural Society recommends growing it in full sun and planting outside after the risk of frost has passed. Because the cited guidance describes seasonal establishment and hardiness rather than one universal optimum temperature interval or absolute physiological minimum and maximum range for production, FarmCast keeps temperature guidance descriptive rather than assigning unsupported numeric thresholds.',
+
+      rainfallRange:
+        'Yacon performs best with consistent moisture during active growth while still requiring good drainage. The Royal Horticultural Society recommends moist but well-drained soil, while Garden Organic advises keeping plants well watered for good yields. Because rainfall distribution, soil type and supplemental irrigation all affect root-zone moisture, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'The Royal Horticultural Society reports that Yacon can grow in clay, loam or sandy soils and tolerates acidic, neutral or alkaline conditions, provided the soil remains fertile, moist and well drained. Because this guidance gives broad pH classes rather than one precise numeric production range, FarmCast keeps soilPH unset rather than inventing numerical limits.',
+
+      plantingNote:
+        'Yacon in this FarmCast entry refers specifically to Smallanthus sonchifolius (Poepp.) H.Rob., also commonly known as Earth Apple. The Royal Horticultural Society lists propagation by division of rhizomes and by cuttings. Garden Organic further explains that plants are commonly started from pieces of the crown containing small propagative tubers or growing points; the large edible storage roots themselves should not be treated as ordinary seed tubers because they do not normally produce a new plant without attached crown tissue. Current Kew taxonomy accepts Smallanthus sonchifolius and lists three synonyms: Polymnia sonchifolia Poepp., Polymnia edulis Wedd. and Silphium edule Baill. All three synonyms and major common-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Yacon is harvested for its crisp, mildly sweet storage roots. Garden Organic recommends lifting the crop late in the growing season after frost has killed the foliage and reports an approximate five-month average growing period under its cultivation system. Because that figure is an average tied to a particular seasonal production schedule rather than a universal planting-method-specific interval suitable across climates, FarmCast keeps Yacon as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Smallanthus sonchifolius — Earth Apple',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/',
+            'plants/318367/',
+            'smallanthus-sonchifolius/details'
+          ].join('')
+      }
+    },
+
 
   
 ];

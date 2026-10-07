@@ -1,0 +1,261 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="yaconTitle yaconDesc">
+  <title id="yaconTitle">Yacon</title>
+  <desc id="yaconDesc">
+    Detailed yacon plant with broad green leaves,
+    small yellow flowers and sweet edible underground roots.
+  </desc>
+
+  <defs>
+    <linearGradient id="yaconStem" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#65a158"></stop>
+      <stop offset="55%" stop-color="#3e7e45"></stop>
+      <stop offset="100%" stop-color="#255f38"></stop>
+    </linearGradient>
+
+    <linearGradient id="yaconLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#95cf70"></stop>
+      <stop offset="45%" stop-color="#58a95a"></stop>
+      <stop offset="100%" stop-color="#267341"></stop>
+    </linearGradient>
+
+    <linearGradient id="yaconLeafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6db760"></stop>
+      <stop offset="100%" stop-color="#1d6038"></stop>
+    </linearGradient>
+
+    <radialGradient id="yaconFlower" cx="38%" cy="30%" r="72%">
+      <stop offset="0%" stop-color="#fff69b"></stop>
+      <stop offset="50%" stop-color="#f2d449"></stop>
+      <stop offset="100%" stop-color="#ce9c27"></stop>
+    </radialGradient>
+
+    <radialGradient id="yaconRoot" cx="32%" cy="24%" r="78%">
+      <stop offset="0%" stop-color="#efc899"></stop>
+      <stop offset="38%" stop-color="#d59a68"></stop>
+      <stop offset="72%" stop-color="#ad684a"></stop>
+      <stop offset="100%" stop-color="#7c4739"></stop>
+    </radialGradient>
+
+    <linearGradient id="yaconRootDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dca875"></stop>
+      <stop offset="100%" stop-color="#874b39"></stop>
+    </linearGradient>
+
+    <filter id="yaconShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#173720" flood-opacity="0.22"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="108" rx="43" ry="7" fill="#513b2b" opacity="0.13"></ellipse>
+
+  <!-- Main stems -->
+  <g fill="none" stroke="url(#yaconStem)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M63 91
+         C63 73 64 55 67 39
+         C69 29 72 21 76 14" stroke-width="5"></path>
+
+    <path d="M64 73
+         C51 66 41 57 34 47" stroke-width="3.4"></path>
+
+    <path d="M66 62
+         C79 58 91 50 100 40" stroke-width="3.3"></path>
+
+    <path d="M63 82
+         C50 80 39 73 30 65" stroke-width="3"></path>
+
+    <path d="M64 78
+         C78 74 89 68 98 59" stroke-width="3"></path>
+  </g>
+
+  <!-- Stem highlight -->
+  <path d="M61 89
+       C61 71 62 55 65 39
+       C67 29 70 21 73 15" fill="none" stroke="#9bcc7f" stroke-width="1.1" stroke-linecap="round" opacity="0.5"></path>
+
+  <!-- Broad left leaf -->
+  <g filter="url(#yaconShadow)">
+    <path d="M39 51
+         C28 52 18 47 15 38
+         C22 29 34 28 44 35
+         C51 41 47 48 39 51Z" fill="url(#yaconLeaf)"></path>
+
+    <path d="M43 43
+         C35 40 26 39 17 39" fill="none" stroke="#dcf0c9" stroke-width="1.35" stroke-linecap="round" opacity="0.72"></path>
+
+    <g fill="none" stroke="#b9dc9f" stroke-width="0.9" opacity="0.62">
+      <path d="M35 40 L31 34"></path>
+      <path d="M39 42 L40 35"></path>
+      <path d="M30 39 L25 34"></path>
+    </g>
+  </g>
+
+  <!-- Upper right leaf -->
+  <g filter="url(#yaconShadow)">
+    <path d="M92 45
+         C92 34 99 26 108 26
+         C115 33 113 44 105 50
+         C99 54 93 51 92 45Z" fill="url(#yaconLeafDark)"></path>
+
+    <path d="M98 48
+         C102 40 105 33 108 27" fill="none" stroke="#d4ebbd" stroke-width="1.3" opacity="0.7"></path>
+  </g>
+
+  <!-- Center leaf -->
+  <g filter="url(#yaconShadow)">
+    <path d="M57 66
+         C48 60 47 50 54 43
+         C65 43 72 51 70 61
+         C68 68 62 71 57 66Z" fill="url(#yaconLeaf)"></path>
+
+    <path d="M62 64
+         C61 57 58 50 55 44" fill="none" stroke="#d9efc4" stroke-width="1.3" opacity="0.7"></path>
+  </g>
+
+  <!-- Lower left leaf -->
+  <g filter="url(#yaconShadow)">
+    <path d="M38 73
+         C27 69 17 73 14 82
+         C21 92 34 94 44 86
+         C48 80 45 75 38 73Z" fill="url(#yaconLeafDark)"></path>
+
+    <path d="M42 81
+         C33 81 24 82 16 83" fill="none" stroke="#d1e9ba" stroke-width="1.3" opacity="0.68"></path>
+  </g>
+
+  <!-- Lower right leaf -->
+  <g filter="url(#yaconShadow)">
+    <path d="M88 70
+         C96 61 107 60 115 67
+         C115 77 106 85 96 83
+         C89 82 85 76 88 70Z" fill="url(#yaconLeaf)"></path>
+
+    <path d="M93 77
+         C101 73 108 70 114 68" fill="none" stroke="#d8efc4" stroke-width="1.3" opacity="0.7"></path>
+  </g>
+
+  <!-- Flower stalk -->
+  <path d="M76 20 C82 19 88 20 94 24" fill="none" stroke="#4f8348" stroke-width="2.4" stroke-linecap="round"></path>
+
+  <!-- Main flower -->
+  <g filter="url(#yaconShadow)">
+    <g fill="url(#yaconFlower)">
+      <ellipse cx="98" cy="22" rx="4" ry="9"></ellipse>
+      <ellipse cx="105" cy="25" rx="4" ry="9" transform="rotate(48 105 25)"></ellipse>
+      <ellipse cx="108" cy="32" rx="4" ry="9" transform="rotate(92 108 32)"></ellipse>
+      <ellipse cx="104" cy="39" rx="4" ry="9" transform="rotate(140 104 39)"></ellipse>
+      <ellipse cx="97" cy="41" rx="4" ry="9" transform="rotate(180 97 41)"></ellipse>
+      <ellipse cx="90" cy="38" rx="4" ry="9" transform="rotate(225 90 38)"></ellipse>
+      <ellipse cx="87" cy="31" rx="4" ry="9" transform="rotate(270 87 31)"></ellipse>
+      <ellipse cx="91" cy="25" rx="4" ry="9" transform="rotate(315 91 25)"></ellipse>
+    </g>
+
+    <circle cx="98" cy="32" r="8" fill="#875721"></circle>
+
+    <g fill="#d9ae45">
+      <circle cx="95" cy="29" r="1.2"></circle>
+      <circle cx="99" cy="28" r="1.2"></circle>
+      <circle cx="102" cy="31" r="1.2"></circle>
+      <circle cx="95" cy="34" r="1.2"></circle>
+      <circle cx="99" cy="34" r="1.2"></circle>
+      <circle cx="102" cy="36" r="1.2"></circle>
+    </g>
+  </g>
+
+  <!-- Small secondary flower -->
+  <g filter="url(#yaconShadow)">
+    <path d="M36 47 C31 42 29 37 29 32" fill="none" stroke="#4f8248" stroke-width="2" stroke-linecap="round"></path>
+
+    <g fill="url(#yaconFlower)">
+      <ellipse cx="28" cy="27" rx="3" ry="6"></ellipse>
+      <ellipse cx="33" cy="29" rx="3" ry="6" transform="rotate(60 33 29)"></ellipse>
+      <ellipse cx="33" cy="34" rx="3" ry="6" transform="rotate(120 33 34)"></ellipse>
+      <ellipse cx="28" cy="36" rx="3" ry="6" transform="rotate(180 28 36)"></ellipse>
+      <ellipse cx="23" cy="33" rx="3" ry="6" transform="rotate(240 23 33)"></ellipse>
+      <ellipse cx="23" cy="29" rx="3" ry="6" transform="rotate(300 23 29)"></ellipse>
+    </g>
+
+    <circle cx="28" cy="32" r="5" fill="#855720"></circle>
+    <circle cx="27" cy="31" r="1" fill="#dfb54a"></circle>
+    <circle cx="30" cy="33" r="1" fill="#dfb54a"></circle>
+  </g>
+
+  <!-- Underground crown -->
+  <g filter="url(#yaconShadow)">
+    <path d="M55 91
+         C57 86 61 84 65 85
+         C70 85 74 89 74 94
+         C71 98 58 99 54 95
+         C53 94 54 92 55 91Z" fill="#9a704b" stroke="#714d37" stroke-width="1.3"></path>
+
+    <circle cx="59" cy="90" r="2.2" fill="#c39567"></circle>
+    <circle cx="66" cy="89" r="2" fill="#c99c6b"></circle>
+    <circle cx="70" cy="93" r="1.8" fill="#bb875c"></circle>
+  </g>
+
+  <!-- Root connectors -->
+  <g fill="none" stroke="#84603f" stroke-width="2.4" stroke-linecap="round">
+    <path d="M60 95 C53 98 47 101 43 105"></path>
+    <path d="M64 96 C63 101 61 104 59 107"></path>
+    <path d="M69 95 C77 98 83 102 87 106"></path>
+    <path d="M57 94 C48 94 40 93 33 96"></path>
+  </g>
+
+  <!-- Storage root left -->
+  <g filter="url(#yaconShadow)">
+    <path d="M24 97
+         C25 91 30 88 35 90
+         C39 92 40 97 38 101
+         C37 106 33 112 28 114
+         C23 113 21 108 22 104
+         C22 101 23 99 24 97Z" fill="url(#yaconRoot)" stroke="#82503d" stroke-width="1.3"></path>
+
+    <ellipse cx="29" cy="95" rx="4" ry="2.5" fill="#f5d4a7" opacity="0.58" transform="rotate(-24 29 95)"></ellipse>
+
+    <path d="M25 105 C29 107 33 107 36 104" fill="none" stroke="#925742" stroke-width="1" opacity="0.5"></path>
+  </g>
+
+  <!-- Center large root -->
+  <g filter="url(#yaconShadow)">
+    <path d="M49 101
+         C51 95 56 92 61 94
+         C67 96 68 101 66 106
+         C64 113 60 119 55 121
+         C50 120 47 116 47 111
+         C47 107 48 104 49 101Z" fill="url(#yaconRootDark)" stroke="#804c3a" stroke-width="1.3"></path>
+
+    <ellipse cx="55" cy="99" rx="4.5" ry="2.5" fill="#f0c99b" opacity="0.52" transform="rotate(-20 55 99)"></ellipse>
+
+    <path d="M50 111 C54 114 59 114 63 110" fill="none" stroke="#915441" stroke-width="1" opacity="0.5"></path>
+  </g>
+
+  <!-- Right large root -->
+  <g filter="url(#yaconShadow)">
+    <path d="M79 99
+         C82 94 88 92 93 95
+         C98 98 98 103 95 108
+         C92 114 87 118 82 118
+         C78 115 76 111 77 107
+         C77 104 78 101 79 99Z" fill="url(#yaconRoot)" stroke="#824f3c" stroke-width="1.3"></path>
+
+    <ellipse cx="86" cy="98" rx="4.2" ry="2.4" fill="#f4d2a4" opacity="0.55" transform="rotate(-20 86 98)"></ellipse>
+
+    <path d="M80 108 C85 111 90 111 94 107" fill="none" stroke="#925742" stroke-width="1" opacity="0.5"></path>
+  </g>
+
+  <!-- Small side root -->
+  <g filter="url(#yaconShadow)">
+    <path d="M99 101
+         C101 97 105 96 109 98
+         C113 101 112 106 109 109
+         C106 113 101 114 98 111
+         C96 108 97 104 99 101Z" fill="url(#yaconRootDark)" stroke="#7d4b39" stroke-width="1.2"></path>
+
+    <ellipse cx="104" cy="101" rx="3" ry="1.8" fill="#edc496" opacity="0.5"></ellipse>
+  </g>
+
+  <!-- Soil hint -->
+  <path d="M15 107
+       C29 104 42 107 55 107
+       C71 108 91 104 113 107" fill="none" stroke="#8a6646" stroke-width="1.4" stroke-linecap="round" opacity="0.4"></path>
+</svg>
