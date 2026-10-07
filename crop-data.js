@@ -16731,6 +16731,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Tamarillo',
+      localName: 'Tree Tomato',
+      scientificName: 'Solanum betaceum Cav.',
+      category: 'fruit',
+      icon: 'assets/crops/tamarillo.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Solanum betaceum — Tamarillo',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Solanum_betaceum_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'FAO guidance for Tamarillo reports best growth in regions with temperatures around 18–22°C. Kew identifies Solanum betaceum as a tree of primarily seasonally dry tropical environments. Because elevation, cultivar, night temperature and local frost exposure strongly affect flowering and production, FarmCast keeps minTemp and maxTemp unset rather than treating the FAO optimum as universal survival limits.',
+
+      rainfallRange:
+        'FAO reports about 600–800 mm annual precipitation for favorable traditional Tamarillo-growing environments in the Andes. This is stored as ecological guidance rather than a universal requirement because irrigation, elevation, soil moisture and regional rainfall distribution can substantially change crop performance.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA describes Tamarillo as performing best in well-drained soils rich in organic matter with ample moisture. The crop cannot tolerate prolonged waterlogging and has a relatively shallow root system, so sheltered sites and good drainage are important. FarmCast does not assign an unsupported universal numeric soil-pH range.',
+
+      plantingNote:
+        'Tamarillo, also called Tree Tomato, refers specifically to Solanum betaceum Cav. and is botanically distinct from the ordinary Tomato crop Solanum lycopersicum. PROSEA documents propagation from seed and from stem cuttings. Seed-grown plants may vary from the parent, while cuttings produce lower-branched, bushier plants. Current Kew taxonomy accepts Solanum betaceum Cav. and lists historical names including Cyphomandra betacea, Pionandra betacea, Cyphomandra crassifolia and Cyphomandra procera as synonyms.',
+
+      harvestNote:
+        'Tamarillo fruits should be harvested at full commercial maturity because fruit quality does not improve substantially after picking. UC Davis reports horticultural maturity at about 21–24 weeks after anthesis depending on cultivar and production area, with full cultivar-appropriate red or yellow coloration as the primary maturity indicator. PROSEA also notes that flowering and ripening are prolonged, requiring repeated harvests. Because this timing is measured from flowering rather than from sowing or transplanting, FarmCast keeps Tamarillo as guidance-only instead of creating an automatic planting-to-harvest date.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        title:
+          'Neglected Crops: 1492 from a Different Perspective — Tree Tomato',
+
+        url:
+          [
+            'https://',
+            'www.fao.org/docrep/018/',
+            't0646e/t0646e.pdf'
+          ].join('')
+      }
+    },
+
   
 ];
 

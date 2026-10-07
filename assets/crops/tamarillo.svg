@@ -1,0 +1,374 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Tamarillo</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a tamarillo or tree tomato
+    with broad green leaves, small pink-purple flowers, clusters
+    of ripe red-orange oval fruits, woody stems, highlights,
+    shadows, and natural botanical depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#987258"></stop>
+      <stop offset="0.48" stop-color="#694f40"></stop>
+      <stop offset="1" stop-color="#40342e"></stop>
+    </linearGradient>
+
+    <linearGradient id="youngStem" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#4c6a45"></stop>
+      <stop offset="0.52" stop-color="#718d54"></stop>
+      <stop offset="1" stop-color="#a8b76d"></stop>
+    </linearGradient>
+
+    <radialGradient id="leafGreen" cx="38%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#aecb76"></stop>
+      <stop offset="0.34" stop-color="#729c59"></stop>
+      <stop offset="0.7" stop-color="#437847"></stop>
+      <stop offset="1" stop-color="#1f4a36"></stop>
+    </radialGradient>
+
+    <radialGradient id="leafDark" cx="38%" cy="28%" r="76%">
+      <stop offset="0" stop-color="#91b463"></stop>
+      <stop offset="0.44" stop-color="#557f4e"></stop>
+      <stop offset="1" stop-color="#203f32"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitRed" cx="34%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#ffb17b"></stop>
+      <stop offset="0.25" stop-color="#f07a51"></stop>
+      <stop offset="0.58" stop-color="#d84d43"></stop>
+      <stop offset="1" stop-color="#8c3039"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitDark" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#ef9464"></stop>
+      <stop offset="0.32" stop-color="#d85f48"></stop>
+      <stop offset="0.7" stop-color="#ad383d"></stop>
+      <stop offset="1" stop-color="#702d38"></stop>
+    </radialGradient>
+
+    <linearGradient id="calyxGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a1ae69"></stop>
+      <stop offset="0.5" stop-color="#697c4b"></stop>
+      <stop offset="1" stop-color="#384d38"></stop>
+    </linearGradient>
+
+    <linearGradient id="flowerPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0d9ed"></stop>
+      <stop offset="0.45" stop-color="#c28ebd"></stop>
+      <stop offset="0.78" stop-color="#8f6097"></stop>
+      <stop offset="1" stop-color="#62436d"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#ffe58c"></stop>
+      <stop offset="0.58" stop-color="#d5b34a"></stop>
+      <stop offset="1" stop-color="#8c6b30"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#16231b" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.1" flood-color="#46262b" flood-opacity="0.33"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- main woody stem -->
+
+  <path d="
+    M24 119
+    C35 99 46 82 58 65
+    C71 47 84 29 99 10" fill="none" stroke="url(#stemBrown)" stroke-width="5.5" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- stem highlight -->
+
+  <path d="
+    M27 115
+    C39 96 49 79 61 63
+    C74 45 87 28 97 13" fill="none" stroke="#c4a083" stroke-width="0.9" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- branches -->
+
+  <g fill="none" stroke="url(#youngStem)" stroke-linecap="round">
+
+    <path d="
+      M48 82
+      C37 73 27 62 18 48" stroke-width="3"></path>
+
+    <path d="
+      M60 63
+      C48 52 40 39 36 26" stroke-width="2.8"></path>
+
+    <path d="
+      M73 46
+      C86 45 99 40 111 31" stroke-width="2.7"></path>
+
+    <path d="
+      M85 30
+      C77 21 71 13 68 7" stroke-width="2.4"></path>
+
+    <path d="
+      M55 69
+      C69 76 82 84 94 96" stroke-width="2.4"></path>
+
+  </g>
+
+  <!-- broad left leaf -->
+
+  <g transform="translate(38 69)" filter="url(#softShadow)">
+
+    <path d="
+      M0 7
+      C-14 10 -29 4 -34 -8
+      C-39 -20 -31 -31 -20 -35
+      C-10 -38 -3 -32 1 -25
+      C7 -34 17 -38 27 -34
+      C37 -30 41 -19 37 -10
+      C33 -1 22 3 13 5
+      C8 6 4 7 0 7Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="1.2"></path>
+
+    <path d="
+      M1 7
+      C1 -4 1 -15 1 -28" fill="none" stroke="#bad18e" stroke-width="1.4" stroke-linecap="round"></path>
+
+    <g fill="none" stroke="#9fc17c" stroke-width="0.7" opacity="0.72">
+
+      <path d="M0 -3 C-10 -9 -20 -14 -30 -17"></path>
+      <path d="M0 -10 C-8 -18 -14 -25 -19 -31"></path>
+      <path d="M0 1 C-11 1 -21 -2 -30 -7"></path>
+
+      <path d="M2 -3 C12 -9 21 -13 31 -16"></path>
+      <path d="M2 -10 C11 -17 18 -24 23 -30"></path>
+      <path d="M2 1 C13 1 23 -2 32 -7"></path>
+
+    </g>
+
+    <path d="
+      M-19 -29
+      C-10 -34 -2 -31 2 -25" fill="none" stroke="#dce9ad" stroke-width="1.3" opacity="0.32"></path>
+
+  </g>
+
+  <!-- broad right leaf -->
+
+  <g transform="translate(84 48) scale(0.92)" filter="url(#softShadow)">
+
+    <path d="
+      M0 7
+      C-14 10 -29 4 -34 -8
+      C-39 -20 -31 -31 -20 -35
+      C-10 -38 -3 -32 1 -25
+      C7 -34 17 -38 27 -34
+      C37 -30 41 -19 37 -10
+      C33 -1 22 3 13 5
+      C8 6 4 7 0 7Z" fill="url(#leafDark)" stroke="#254d37" stroke-width="1.2"></path>
+
+    <path d="
+      M1 7
+      C1 -4 1 -15 1 -28" fill="none" stroke="#b5cd89" stroke-width="1.4" stroke-linecap="round"></path>
+
+    <g fill="none" stroke="#98b976" stroke-width="0.7" opacity="0.7">
+
+      <path d="M0 -3 C-10 -9 -20 -14 -30 -17"></path>
+      <path d="M0 -10 C-8 -18 -14 -25 -19 -31"></path>
+      <path d="M0 1 C-11 1 -21 -2 -30 -7"></path>
+
+      <path d="M2 -3 C12 -9 21 -13 31 -16"></path>
+      <path d="M2 -10 C11 -17 18 -24 23 -30"></path>
+      <path d="M2 1 C13 1 23 -2 32 -7"></path>
+
+    </g>
+
+  </g>
+
+  <!-- upper leaf -->
+
+  <g transform="translate(67 28) scale(0.72)" filter="url(#softShadow)">
+
+    <path d="
+      M0 7
+      C-14 10 -29 4 -34 -8
+      C-39 -20 -31 -31 -20 -35
+      C-10 -38 -3 -32 1 -25
+      C7 -34 17 -38 27 -34
+      C37 -30 41 -19 37 -10
+      C33 -1 22 3 13 5
+      C8 6 4 7 0 7Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="1.4"></path>
+
+    <path d="
+      M1 7
+      C1 -5 1 -16 1 -28" fill="none" stroke="#bad18e" stroke-width="1.6"></path>
+
+  </g>
+
+  <!-- fruit stems -->
+
+  <g fill="none" stroke="#617446" stroke-width="1.5" stroke-linecap="round">
+
+    <path d="M58 69 C63 77 67 85 68 92"></path>
+    <path d="M61 66 C69 72 76 79 80 86"></path>
+    <path d="M65 62 C75 67 84 73 91 81"></path>
+    <path d="M69 58 C80 62 91 67 101 73"></path>
+
+  </g>
+
+  <!-- hanging tamarillo cluster -->
+
+  <g filter="url(#fruitShadow)">
+
+    <g transform="translate(68 98) rotate(-6)">
+
+      <path d="
+        M0 -14
+        C8 -14 13 -8 13 0
+        C13 11 7 20 0 23
+        C-8 20 -14 11 -13 0
+        C-13 -8 -8 -14 0 -14Z" fill="url(#fruitRed)" stroke="#8c3038" stroke-width="1.1"></path>
+
+      <path d="
+        M-7 -12
+        L-1 -17
+        L2 -12
+        L7 -16
+        L6 -10
+        L11 -8
+        C5 -6 -4 -6 -10 -8Z" fill="url(#calyxGreen)" stroke="#46583a" stroke-width="0.7"></path>
+
+      <ellipse cx="-4" cy="-4" rx="2.7" ry="5.3" fill="#ffd1aa" opacity="0.35"></ellipse>
+
+    </g>
+
+    <g transform="translate(81 91) rotate(-11)">
+
+      <path d="
+        M0 -13
+        C8 -13 13 -7 13 1
+        C13 11 7 19 0 22
+        C-8 19 -13 11 -13 1
+        C-13 -7 -8 -13 0 -13Z" fill="url(#fruitDark)" stroke="#832e38" stroke-width="1.1"></path>
+
+      <path d="
+        M-7 -11
+        L-1 -16
+        L2 -11
+        L7 -15
+        L6 -9
+        L11 -7
+        C5 -5 -4 -5 -10 -7Z" fill="url(#calyxGreen)" stroke="#46583a" stroke-width="0.7"></path>
+
+      <ellipse cx="-4" cy="-4" rx="2.6" ry="5" fill="#ffc3a2" opacity="0.32"></ellipse>
+
+    </g>
+
+    <g transform="translate(94 84) rotate(-15)">
+
+      <path d="
+        M0 -12
+        C7 -12 12 -7 12 1
+        C12 10 7 18 0 21
+        C-7 18 -12 10 -12 1
+        C-12 -7 -7 -12 0 -12Z" fill="url(#fruitRed)" stroke="#8a3038" stroke-width="1"></path>
+
+      <path d="
+        M-6 -10
+        L-1 -15
+        L2 -10
+        L6 -14
+        L5 -8
+        L10 -6
+        C5 -4 -4 -4 -9 -6Z" fill="url(#calyxGreen)" stroke="#46583a" stroke-width="0.7"></path>
+
+      <ellipse cx="-4" cy="-3" rx="2.4" ry="4.6" fill="#ffd0aa" opacity="0.34"></ellipse>
+
+    </g>
+
+    <g transform="translate(105 76) rotate(-18) scale(0.9)">
+
+      <path d="
+        M0 -12
+        C7 -12 12 -7 12 1
+        C12 10 7 18 0 21
+        C-7 18 -12 10 -12 1
+        C-12 -7 -7 -12 0 -12Z" fill="url(#fruitDark)" stroke="#812d37" stroke-width="1"></path>
+
+      <path d="
+        M-6 -10
+        L-1 -15
+        L2 -10
+        L6 -14
+        L5 -8
+        L10 -6
+        C5 -4 -4 -4 -9 -6Z" fill="url(#calyxGreen)" stroke="#46583a" stroke-width="0.7"></path>
+
+    </g>
+
+  </g>
+
+  <!-- small flower branch -->
+
+  <path d="
+    M51 58
+    C44 54 38 49 33 43" fill="none" stroke="#657848" stroke-width="1.4" stroke-linecap="round"></path>
+
+  <!-- tamarillo flowers -->
+
+  <g transform="translate(31 40)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-5 -5 -6 -10 -3 -13
+      C1 -11 2 -7 2 -3
+      C5 -8 9 -9 12 -6
+      C10 -2 6 1 2 2
+      C7 3 9 7 7 10
+      C3 9 0 6 -1 3
+      C-3 8 -7 9 -10 6
+      C-8 2 -5 0 -2 -1
+      C-7 -2 -9 -6 -7 -9
+      C-3 -8 -1 -4 0 0Z" fill="url(#flowerPurple)" stroke="#74517f" stroke-width="0.7"></path>
+
+    <circle cx="0" cy="0" r="2.4" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <g transform="translate(42 51) scale(0.76)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-5 -5 -6 -10 -3 -13
+      C1 -11 2 -7 2 -3
+      C5 -8 9 -9 12 -6
+      C10 -2 6 1 2 2
+      C7 3 9 7 7 10
+      C3 9 0 6 -1 3
+      C-3 8 -7 9 -10 6
+      C-8 2 -5 0 -2 -1
+      C-7 -2 -9 -6 -7 -9
+      C-3 -8 -1 -4 0 0Z" fill="url(#flowerPurple)" stroke="#74517f" stroke-width="0.7"></path>
+
+    <circle cx="0" cy="0" r="2.4" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <!-- foreground leaf -->
+
+  <path d="
+    M32 111
+    C19 104 9 105 4 114
+    C12 122 24 121 34 114Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M7 115
+    L30 112" fill="none" stroke="#c4d999" stroke-width="0.7" opacity="0.7"></path>
+
+  <!-- base shadow -->
+
+  <ellipse cx="59" cy="121" rx="35" ry="4" fill="#293a2c" opacity="0.16"></ellipse>
+
+</svg>
