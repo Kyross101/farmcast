@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Chamomile</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of German Chamomile with
+    white daisy-like flowers, golden raised centers, finely divided
+    green foliage, highlights, shadows and natural botanical depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#87aa59"></stop>
+      <stop offset="0.5" stop-color="#58763f"></stop>
+      <stop offset="1" stop-color="#304f33"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a6cf68"></stop>
+      <stop offset="0.45" stop-color="#5a9850"></stop>
+      <stop offset="1" stop-color="#265c39"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6ba453"></stop>
+      <stop offset="0.5" stop-color="#387745"></stop>
+      <stop offset="1" stop-color="#19482f"></stop>
+    </linearGradient>
+
+    <radialGradient id="petalWhite" cx="35%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.56" stop-color="#f4f1df"></stop>
+      <stop offset="1" stop-color="#d6d1ba"></stop>
+    </radialGradient>
+
+    <radialGradient id="flowerGold" cx="36%" cy="28%" r="74%">
+      <stop offset="0" stop-color="#ffe58b"></stop>
+      <stop offset="0.38" stop-color="#e9be46"></stop>
+      <stop offset="0.72" stop-color="#c18a2f"></stop>
+      <stop offset="1" stop-color="#855925"></stop>
+    </radialGradient>
+
+    <linearGradient id="budGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#91b65d"></stop>
+      <stop offset="1" stop-color="#4d713d"></stop>
+    </linearGradient>
+
+    <filter id="mainShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#1e3428" flood-opacity="0.30"></feDropShadow>
+    </filter>
+
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5"></feGaussianBlur>
+    </filter>
+
+  </defs>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="64" cy="112" rx="38" ry="6" fill="#20392a" opacity="0.15" filter="url(#softBlur)"></ellipse>
+
+  <g filter="url(#mainShadow)">
+
+    <!-- main stems -->
+    <path d="M58 108
+             C57 88 58 68 62 51
+             C65 37 69 26 74 18" fill="none" stroke="url(#stemGreen)" stroke-width="4.6" stroke-linecap="round"></path>
+
+    <path d="M63 106
+             C66 88 72 71 80 57
+             C87 44 93 35 99 29" fill="none" stroke="url(#stemGreen)" stroke-width="3.7" stroke-linecap="round"></path>
+
+    <path d="M54 101
+             C48 83 41 68 31 56" fill="none" stroke="url(#stemGreen)" stroke-width="3.5" stroke-linecap="round"></path>
+
+    <!-- ferny foliage left -->
+    <path d="M53 80
+             C45 76 38 71 31 64" fill="none" stroke="#4e743e" stroke-width="2.2" stroke-linecap="round"></path>
+
+    <path d="M47 75 L39 67" stroke="#568245" stroke-width="1.7" stroke-linecap="round"></path>
+
+    <path d="M43 72 L34 72" stroke="#568245" stroke-width="1.7" stroke-linecap="round"></path>
+
+    <path d="M39 68 L34 60" stroke="#568245" stroke-width="1.7" stroke-linecap="round"></path>
+
+    <path d="M39 67
+             C35 63 31 61 27 61
+             C30 66 34 69 39 70Z" fill="url(#leafGreen)"></path>
+
+    <path d="M42 71
+             C37 72 33 75 30 79
+             C35 78 40 76 44 73Z" fill="url(#leafDark)"></path>
+
+    <path d="M45 74
+             C42 69 40 65 40 61
+             C45 65 48 69 49 74Z" fill="url(#leafGreen)"></path>
+
+    <path d="M35 65
+             C31 61 27 59 23 59
+             C26 64 30 67 35 68Z" fill="url(#leafDark)"></path>
+
+    <!-- foliage right -->
+    <path d="M66 83
+             C76 77 84 70 91 61" fill="none" stroke="#527941" stroke-width="2.2" stroke-linecap="round"></path>
+
+    <path d="M72 79 L80 70" stroke="#5a8647" stroke-width="1.7" stroke-linecap="round"></path>
+
+    <path d="M77 75 L87 75" stroke="#5a8647" stroke-width="1.7" stroke-linecap="round"></path>
+
+    <path d="M82 70 L87 63" stroke="#5a8647" stroke-width="1.7" stroke-linecap="round"></path>
+
+    <path d="M76 75
+             C79 70 82 67 87 65
+             C85 71 82 75 77 78Z" fill="url(#leafGreen)"></path>
+
+    <path d="M78 76
+             C84 76 89 78 92 81
+             C86 82 81 80 77 78Z" fill="url(#leafDark)"></path>
+
+    <path d="M84 69
+             C87 64 91 61 95 60
+             C93 65 90 69 85 72Z" fill="url(#leafGreen)"></path>
+
+    <!-- lower feathery foliage -->
+    <path d="M58 95
+             C47 91 39 88 31 82" fill="none" stroke="#4f783f" stroke-width="2" stroke-linecap="round"></path>
+
+    <path d="M48 91
+             C44 86 39 84 35 84
+             C38 89 42 92 48 94Z" fill="url(#leafDark)"></path>
+
+    <path d="M43 88
+             C38 89 34 92 31 96
+             C36 95 41 93 45 90Z" fill="url(#leafGreen)"></path>
+
+    <!-- left flower stalk -->
+    <path d="M31 57
+             C29 48 27 40 27 32" fill="none" stroke="#648448" stroke-width="2.8" stroke-linecap="round"></path>
+
+    <!-- main flower -->
+    <g transform="translate(74 20)">
+
+      <ellipse cx="0" cy="-12" rx="4.2" ry="10" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="8.5" cy="-8" rx="4.2" ry="10" transform="rotate(44 8.5 -8)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="12" cy="0" rx="4.2" ry="10" transform="rotate(88 12 0)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="8.5" cy="8" rx="4.2" ry="10" transform="rotate(133 8.5 8)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="0" cy="11" rx="4.2" ry="10" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-8.5" cy="8" rx="4.2" ry="10" transform="rotate(-133 -8.5 8)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-12" cy="0" rx="4.2" ry="10" transform="rotate(-88 -12 0)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-8.5" cy="-8" rx="4.2" ry="10" transform="rotate(-44 -8.5 -8)" fill="url(#petalWhite)"></ellipse>
+
+      <!-- raised yellow cone -->
+      <ellipse cx="0" cy="0" rx="7.5" ry="8.2" fill="url(#flowerGold)"></ellipse>
+
+      <!-- disk florets -->
+      <g fill="#f3cf65" opacity="0.75">
+        <circle cx="-2.8" cy="-3" r="0.9"></circle>
+        <circle cx="1" cy="-3.8" r="0.85"></circle>
+        <circle cx="3.6" cy="-1.2" r="0.9"></circle>
+        <circle cx="-3.5" cy="0.7" r="0.85"></circle>
+        <circle cx="0" cy="0" r="0.95"></circle>
+        <circle cx="2.6" cy="2.4" r="0.85"></circle>
+        <circle cx="-1.7" cy="3.4" r="0.9"></circle>
+      </g>
+
+    </g>
+
+    <!-- left flower -->
+    <g transform="translate(27 29)">
+
+      <ellipse cx="0" cy="-9" rx="3.4" ry="7.7" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="7" cy="-5" rx="3.4" ry="7.7" transform="rotate(55 7 -5)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="8" cy="3" rx="3.4" ry="7.7" transform="rotate(105 8 3)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="2" cy="8" rx="3.4" ry="7.7" transform="rotate(165 2 8)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-6" cy="6" rx="3.4" ry="7.7" transform="rotate(-125 -6 6)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-8" cy="-2" rx="3.4" ry="7.7" transform="rotate(-75 -8 -2)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-5" cy="-7" rx="3.4" ry="7.7" transform="rotate(-30 -5 -7)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="0" cy="0" rx="5.8" ry="6.2" fill="url(#flowerGold)"></ellipse>
+
+    </g>
+
+    <!-- right flower -->
+    <g transform="translate(99 29)">
+
+      <ellipse cx="0" cy="-9" rx="3.4" ry="7.7" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="7" cy="-5" rx="3.4" ry="7.7" transform="rotate(55 7 -5)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="8" cy="3" rx="3.4" ry="7.7" transform="rotate(105 8 3)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="2" cy="8" rx="3.4" ry="7.7" transform="rotate(165 2 8)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-6" cy="6" rx="3.4" ry="7.7" transform="rotate(-125 -6 6)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-8" cy="-2" rx="3.4" ry="7.7" transform="rotate(-75 -8 -2)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="-5" cy="-7" rx="3.4" ry="7.7" transform="rotate(-30 -5 -7)" fill="url(#petalWhite)"></ellipse>
+
+      <ellipse cx="0" cy="0" rx="5.8" ry="6.2" fill="url(#flowerGold)"></ellipse>
+
+    </g>
+
+    <!-- unopened bud -->
+    <path d="M91 53
+             C88 48 89 44 93 41
+             C98 44 99 49 96 54Z" fill="url(#budGreen)"></path>
+
+    <path d="M93 42
+             C94 38 96 35 99 33" fill="none" stroke="#69884b" stroke-width="1.8" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- flower highlights -->
+  <path d="M69 13
+           C72 10 76 10 79 13" fill="none" stroke="#fffdf2" stroke-width="1.5" stroke-linecap="round" opacity="0.72"></path>
+
+  <!-- stems highlight -->
+  <path d="M60 104
+           C59 84 60 65 63 49" fill="none" stroke="#a9bd78" stroke-width="1.2" stroke-linecap="round" opacity="0.42"></path>
+
+</svg>

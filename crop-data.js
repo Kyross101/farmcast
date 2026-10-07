@@ -18595,6 +18595,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Chamomile',
+      localName: 'German Chamomile / Camomile',
+      scientificName:
+        'Matricaria chamomilla L.',
+      category: 'herb',
+      icon: 'assets/crops/chamomile.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Wisconsin-Madison Extension',
+
+        title:
+          'German Chamomile — Matricaria chamomilla',
+
+        url:
+          [
+            'https://',
+            'hort.extension.wisc.edu/',
+            'articles/',
+            'chamomile-matricaria-chamomilla/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'German Chamomile is a cool-season annual herb that performs best with good sunlight and moderate growing conditions. University of Wisconsin-Madison Extension recommends full sun and notes that the plant grows quickly from seed. Because the cited cultivation guidance does not establish one universal numeric optimum temperature interval or absolute physiological minimum and maximum limits, FarmCast keeps temperature guidance descriptive rather than assigning unsupported threshold values.',
+
+      rainfallRange:
+        'Chamomile has relatively shallow roots and benefits from adequate moisture during establishment and active growth. University of Wisconsin-Madison Extension recommends irrigation as needed to keep the upper soil moist but not wet. Because this guidance is based on soil moisture rather than one universal annual rainfall requirement, FarmCast keeps rainfall guidance descriptive instead of assigning an unsupported numeric range.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'German Chamomile performs well in well-drained soil and can grow successfully even in relatively poor soils. Excessively wet soil should be avoided. The species-specific cultivation source used for this entry does not establish one universal numeric soil-pH interval that should be applied across all production conditions, so FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Chamomile in this FarmCast entry refers specifically to German Chamomile, Matricaria chamomilla L., the annual species commonly grown for chamomile tea. It should not be confused with Roman Chamomile, Chamaemelum nobile, which is a different species. University of Wisconsin-Madison Extension reports that German Chamomile is propagated from tiny seeds that may be direct-sown in the garden or started indoors and transplanted while the seedlings are still small. Current Kew taxonomy accepts Matricaria chamomilla L. and lists 54 synonyms. Major historical names include Matricaria recutita L., Chamomilla recutita (L.) Rauschert, Chamomilla officinalis K.Koch, Chamaemelum chamomilla (L.) E.H.L.Krause and Chrysanthemum chamomilla (L.) Bernh. All 54 current Kew synonyms were checked against the FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Chamomile is grown primarily for its aromatic flower heads, which may be used fresh or dried to prepare chamomile tea. University of Wisconsin-Madison Extension recommends harvesting individual flower heads when they are near full bloom for best quality. Flowering begins seasonally after establishment and repeated picking can encourage additional blooms. Because the cited source identifies the proper developmental harvest stage rather than one exact direct-seeding- or transplanting-to-harvest day interval, FarmCast keeps Chamomile as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'University of Wisconsin-Madison Extension',
+
+        title:
+          'German Chamomile — Matricaria chamomilla',
+
+        url:
+          [
+            'https://',
+            'hort.extension.wisc.edu/',
+            'articles/',
+            'chamomile-matricaria-chamomilla/'
+          ].join('')
+      }
+    },
+
 
   
 ];
