@@ -14821,6 +14821,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Cranberry',
+      scientificName: 'Vaccinium macrocarpon Aiton',
+      category: 'fruit',
+      icon: 'assets/crops/cranberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'unrooted-cuttings',
+          label: 'Unrooted Vine Cuttings'
+        },
+        {
+          value: 'rooted-plugs',
+          label: 'Rooted Plugs'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Maine Cooperative Extension',
+
+        title:
+          'How to Grow Cranberries',
+
+        url:
+          [
+            'https://',
+            'extension.umaine.edu/cranberries/',
+            'growing-cranberries/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool temperate growing conditions. Kew identifies American Cranberry as a subshrub primarily associated with the temperate biome. University of Maine Cooperative Extension notes that cranberries require cool winters and perform best under temperate growing conditions. FarmCast therefore keeps general temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Cranberries require consistently moist growing conditions, but University of Maine Cooperative Extension emphasizes that the root zone should remain aerated rather than continuously saturated. New plantings require regular irrigation while avoiding persistent puddling or prolonged waterlogging. FarmCast therefore keeps moisture guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'University of Maine Cooperative Extension recommends strongly acidic growing conditions of about pH 4.0–5.5 for home cranberry production.',
+
+      soilNote:
+        'Cranberries perform best in acidic, moist but well-aerated growing media such as sand, peat, or suitable combinations of these materials. Good drainage remains important even though the crop is naturally associated with wetland habitats. Full sun supports stronger growth and fruit production.',
+
+      plantingNote:
+        'Cranberry in this FarmCast entry refers specifically to the familiar American or Large Cranberry that is commonly cultivated for food. University of Maine Cooperative Extension identifies unrooted vine cuttings as standard planting material and notes that rooted cuttings or plugs may also be used effectively. Current Kew taxonomy accepts Vaccinium macrocarpon Aiton and lists historical synonyms including Oxycoccus macrocarpos, Oxycoca macrocarpa, Schollera macrocarpon, Vaccinium propinquum and Vaccinium oblongifolium.',
+
+      harvestNote:
+        'Cranberries develop their familiar red fruit in autumn. Royal Horticultural Society guidance notes that plants generally begin fruiting prolifically from about their third year and that berries are harvested from early autumn before the first frost. University of Maine Cooperative Extension similarly notes that a new bed may produce some crop by the fall of its third year. Because first bearing depends on establishment and annual harvest timing is seasonal rather than based on one exact planting-to-harvest interval, FarmCast keeps Cranberry as guidance-only.',
+
+      source: {
+        agency:
+          'University of Maine Cooperative Extension',
+
+        title:
+          'How to Grow Cranberries',
+
+        url:
+          [
+            'https://',
+            'extension.umaine.edu/cranberries/',
+            'growing-cranberries/'
+          ].join('')
+      }
+    },
+
   
 ];
 
