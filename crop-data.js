@@ -12611,6 +12611,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Sea Kale',
+      scientificName: 'Crambe maritima L.',
+      category: 'vegetable',
+      icon: 'assets/crops/sea-kale.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'root-cuttings',
+          label: 'Root Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Crambe maritima — Sea Kale',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/4710/crambe-maritima/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate perennial conditions. Kew identifies Sea Kale as a perennial species primarily associated with the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cultivation sources do not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of Vermont guidance describes established Sea Kale as drought-tolerant and notes that supplemental irrigation is mainly needed during establishment or extended dry periods. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Sea Kale prefers well-drained soil and is particularly suited to sandy or sandy-loam conditions. University of Vermont emphasizes that good drainage is important, while the Royal Horticultural Society notes that the plant naturally occurs in coastal shingle and sand and performs well in well-drained soil.',
+
+      plantingNote:
+        'Sea Kale is an edible perennial vegetable that can be propagated from seed or root cuttings. Royal Horticultural Society guidance supports sowing seed in spring or autumn and taking root cuttings in winter. University of Vermont also documents root-cutting propagation, including direct planting into beds or potting for later transplanting.',
+
+      harvestNote:
+        'Sea Kale is harvested mainly for its tender young spring shoots, flower buds, and young leaves. University of Vermont describes harvesting from established plants, while Royal Horticultural Society guidance notes that young shoots and leaves are edible. Because productive harvest depends on perennial establishment, shoot stage, and repeated seasonal cutting rather than one universal sowing-to-harvest interval, FarmCast keeps Sea Kale as guidance-only.',
+
+      source: {
+        agency:
+          'University of Vermont Extension',
+
+        office:
+          'Center for Sustainable Agriculture',
+
+        title:
+          'Sea Kale — Crambe maritima Perennial Vegetable Grow Guide',
+
+        url:
+          [
+            'https://',
+            'www.uvm.edu/sites/default/files/The-Center-for-Sustainable-Agriculture/resources/seakale_grow_guide.pdf'
+          ].join('')
+      }
+    },
+
 
   
 ];

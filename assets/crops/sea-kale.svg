@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Sea Kale</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of sea kale with broad blue-green wavy leaves,
+    pale edible spring shoots, branching stems, clusters of small white flowers,
+    and a thick perennial root crown.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafBlueGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c1d5c3"></stop>
+      <stop offset="0.45" stop-color="#7fa497"></stop>
+      <stop offset="1" stop-color="#486f68"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#91b3a6"></stop>
+      <stop offset="1" stop-color="#3d635d"></stop>
+    </linearGradient>
+
+    <linearGradient id="shootCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2eccb"></stop>
+      <stop offset="0.55" stop-color="#c8d09a"></stop>
+      <stop offset="1" stop-color="#8ca06e"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b4c7a3"></stop>
+      <stop offset="1" stop-color="#607d67"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerWhite" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.7" stop-color="#f0efe4"></stop>
+      <stop offset="1" stop-color="#c9d2c4"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#28312d" flood-opacity="0.2"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <ellipse cx="63" cy="119" rx="44" ry="5" fill="#4d5350" opacity="0.15"></ellipse>
+
+  <!-- Main perennial crown -->
+  <path d="M45 106
+       C50 100 56 97 63 97
+       C70 97 77 100 82 106
+       C78 113 71 116 63 116
+       C55 116 49 113 45 106Z" fill="#75634d" stroke="#4c4137" stroke-width="1.4"></path>
+
+  <!-- Broad outer leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M55 105
+         C43 107 31 103 23 96
+         C17 91 14 84 16 78
+         C19 72 25 70 31 72
+         C28 67 29 61 33 57
+         C39 53 45 56 49 61
+         C52 56 58 54 62 57
+         C64 66 64 77 61 88
+         C59 96 57 102 55 105Z" fill="url(#leafBlueGreen)" stroke="#3d645e" stroke-width="1.7"></path>
+
+    <path d="M71 105
+         C83 107 95 103 103 96
+         C109 91 112 84 110 78
+         C107 72 101 70 95 72
+         C98 67 97 61 93 57
+         C87 53 81 56 77 61
+         C74 56 68 54 64 57
+         C62 66 62 77 65 88
+         C67 96 69 102 71 105Z" fill="url(#leafBlueGreen)" stroke="#3d645e" stroke-width="1.7"></path>
+
+    <path d="M58 98
+         C49 96 42 90 39 83
+         C36 76 38 69 44 66
+         C49 63 54 66 57 71
+         C59 65 63 61 67 62
+         C69 72 68 82 65 90
+         C63 95 61 98 58 98Z" fill="url(#leafDark)" stroke="#416961" stroke-width="1.4"></path>
+
+    <path d="M68 98
+         C77 96 84 90 87 83
+         C90 76 88 69 82 66
+         C77 63 72 66 69 71
+         C67 65 63 61 59 62
+         C57 72 58 82 61 90
+         C63 95 65 98 68 98Z" fill="url(#leafDark)" stroke="#416961" stroke-width="1.4"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#d4e0d2" stroke-linecap="round" opacity="0.72">
+
+    <path d="M55 101 C47 92 38 83 24 76" stroke-width="1"></path>
+    <path d="M71 101 C79 92 88 83 102 76" stroke-width="1"></path>
+
+    <path d="M51 92 C44 88 36 86 28 85" stroke-width="0.8"></path>
+    <path d="M75 92 C82 88 90 86 98 85" stroke-width="0.8"></path>
+
+    <path d="M59 94 C57 84 57 75 59 66" stroke-width="0.8"></path>
+    <path d="M67 94 C69 84 69 75 67 66" stroke-width="0.8"></path>
+
+  </g>
+
+  <!-- Pale edible spring shoots -->
+  <g filter="url(#softShadow)">
+
+    <path d="M51 102
+         C49 93 50 84 54 77
+         C56 73 59 70 62 69
+         C64 77 63 87 60 96
+         C58 100 55 102 51 102Z" fill="url(#shootCream)" stroke="#728560" stroke-width="1.3"></path>
+
+    <path d="M75 102
+         C77 93 76 84 72 77
+         C70 73 67 70 64 69
+         C62 77 63 87 66 96
+         C68 100 71 102 75 102Z" fill="url(#shootCream)" stroke="#728560" stroke-width="1.3"></path>
+
+    <path d="M60 99
+         C58 91 59 83 63 76
+         C67 83 68 91 66 99Z" fill="#dce2b5" stroke="#829268" stroke-width="1.1"></path>
+
+  </g>
+
+  <!-- Flowering stalk -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M64 71
+         C66 58 67 46 66 35
+         C66 25 65 18 64 11" stroke-width="2.8"></path>
+
+    <path d="M66 51 C75 46 82 40 87 33" stroke-width="1.5"></path>
+
+    <path d="M65 45 C56 40 50 34 46 27" stroke-width="1.5"></path>
+
+    <path d="M66 34 C73 29 77 24 80 19" stroke-width="1.15"></path>
+
+    <path d="M64 32 C57 28 53 23 51 18" stroke-width="1.15"></path>
+
+  </g>
+
+  <!-- Small upper leaves -->
+  <g fill="url(#leafBlueGreen)" stroke="#486d65" stroke-width="0.9">
+
+    <path d="M63 55
+         C57 53 53 49 52 44
+         C58 43 63 46 66 51Z"></path>
+
+    <path d="M68 48
+         C74 44 80 45 84 48
+         C80 52 74 54 68 52Z"></path>
+
+  </g>
+
+  <!-- White flower clusters -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(46 26)">
+      <circle cx="0" cy="0" r="1.2" fill="#d2bf66"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#aab7ab" stroke-width="0.45">
+
+        <ellipse cx="0" cy="-3" rx="1.6" ry="2.7"></ellipse>
+        <ellipse cx="3" cy="0" rx="2.7" ry="1.6"></ellipse>
+        <ellipse cx="0" cy="3" rx="1.6" ry="2.7"></ellipse>
+        <ellipse cx="-3" cy="0" rx="2.7" ry="1.6"></ellipse>
+
+      </g>
+    </g>
+
+    <g transform="translate(51 17)">
+      <circle cx="0" cy="0" r="1.1" fill="#d2bf66"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#aab7ab" stroke-width="0.4">
+
+        <ellipse cx="0" cy="-2.8" rx="1.5" ry="2.5"></ellipse>
+        <ellipse cx="2.8" cy="0" rx="2.5" ry="1.5"></ellipse>
+        <ellipse cx="0" cy="2.8" rx="1.5" ry="2.5"></ellipse>
+        <ellipse cx="-2.8" cy="0" rx="2.5" ry="1.5"></ellipse>
+
+      </g>
+    </g>
+
+    <g transform="translate(80 18)">
+      <circle cx="0" cy="0" r="1.1" fill="#d2bf66"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#aab7ab" stroke-width="0.4">
+
+        <ellipse cx="0" cy="-2.8" rx="1.5" ry="2.5"></ellipse>
+        <ellipse cx="2.8" cy="0" rx="2.5" ry="1.5"></ellipse>
+        <ellipse cx="0" cy="2.8" rx="1.5" ry="2.5"></ellipse>
+        <ellipse cx="-2.8" cy="0" rx="2.5" ry="1.5"></ellipse>
+
+      </g>
+    </g>
+
+    <g transform="translate(87 31)">
+      <circle cx="0" cy="0" r="1.2" fill="#d2bf66"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#aab7ab" stroke-width="0.45">
+
+        <ellipse cx="0" cy="-3" rx="1.6" ry="2.7"></ellipse>
+        <ellipse cx="3" cy="0" rx="2.7" ry="1.6"></ellipse>
+        <ellipse cx="0" cy="3" rx="1.6" ry="2.7"></ellipse>
+        <ellipse cx="-3" cy="0" rx="2.7" ry="1.6"></ellipse>
+
+      </g>
+    </g>
+
+    <g transform="translate(64 10)">
+      <circle cx="0" cy="0" r="1.15" fill="#d2bf66"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#aab7ab" stroke-width="0.42">
+
+        <ellipse cx="0" cy="-3" rx="1.5" ry="2.6"></ellipse>
+        <ellipse cx="3" cy="0" rx="2.6" ry="1.5"></ellipse>
+        <ellipse cx="0" cy="3" rx="1.5" ry="2.6"></ellipse>
+        <ellipse cx="-3" cy="0" rx="2.6" ry="1.5"></ellipse>
+
+      </g>
+    </g>
+
+  </g>
+
+  <!-- Thick perennial roots -->
+  <g fill="none" stroke="#665443" stroke-linecap="round">
+
+    <path d="M53 111 C49 116 46 120 41 124" stroke-width="1.4"></path>
+
+    <path d="M60 113 C58 118 57 122 56 125" stroke-width="1.25"></path>
+
+    <path d="M67 113 C69 118 70 122 71 125" stroke-width="1.25"></path>
+
+    <path d="M74 111 C78 116 81 120 85 123" stroke-width="1.4"></path>
+
+  </g>
+
+</svg>
