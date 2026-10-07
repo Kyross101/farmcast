@@ -13133,6 +13133,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Salad Burnet',
+      scientificName: 'Sanguisorba minor Scop.',
+      category: 'herb',
+      icon: 'assets/crops/salad-burnet.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'divisions',
+          label: 'Clump Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Sanguisorba minor — Salad Burnet',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/24957/sanguisorba-minor/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate perennial conditions. Kew identifies Salad Burnet as a perennial species primarily associated with the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cited cultivation guidance does not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends well-drained growing conditions, while North Carolina Extension notes that the plant does not tolerate prolonged drought well. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Prefers neutral to alkaline soil.',
+
+      soilNote:
+        'Salad Burnet tolerates a range of soil textures including chalk, clay, loam, and sand, but performs best where drainage is good. Royal Horticultural Society guidance recommends full sun and well-drained soil.',
+
+      plantingNote:
+        'Salad Burnet is an edible perennial culinary herb that may be propagated from seed or by division. Current Kew taxonomy accepts Sanguisorba minor Scop.; older names including Poterium sanguisorba, Pimpinella sanguisorba, Poterium minus, and Sanguisorba sanguisorba are treated as synonyms.',
+
+      harvestNote:
+        'Salad Burnet is harvested mainly for its edible young leaves, which have a mild cucumber-like flavour and are traditionally used in salads and as a culinary herb. North Carolina Extension notes that the youngest leaves are the tastiest and recommends cutting plants back to encourage fresh growth. Because harvest is repeated and based on young leaf stage rather than one universal sowing-to-harvest interval, FarmCast keeps Salad Burnet as guidance-only.',
+
+      source: {
+        agency:
+          'North Carolina Cooperative Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Sanguisorba minor — Salad Burnet',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/plants/sanguisorba-minor/'
+          ].join('')
+      }
+    },
+
 
   
 ];
