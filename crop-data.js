@@ -13989,6 +13989,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Pear',
+      scientificName: 'Pyrus communis L.',
+      category: 'fruit',
+      icon: 'assets/crops/pear.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Pear Tree'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Pear Tree'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Pyrus communis — common pear',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/14227/pyrus-communis-f/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate growing conditions. Kew identifies Pear as a tree primarily associated with the temperate biome. Royal Horticultural Society guidance recommends a warm, sunny and sheltered growing position protected from damaging late frosts. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moisture-retentive but well-drained soil and adequate watering while young trees establish and fruits develop. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'Prefers fairly neutral soil. FarmCast does not assign an unsupported universal numeric soil-pH target.',
+
+      soilNote:
+        'Pear trees perform best in deep, fertile, moisture-retentive but well-drained soil in a sunny and sheltered position. Royal Horticultural Society guidance notes that very acidic soil, shallow chalky soil, prolonged shade, and waterlogged conditions are unsuitable.',
+
+      plantingNote:
+        'Pear is a familiar edible tree fruit. Named fruiting cultivars are normally propagated by grafting or budding onto a clonal rootstock rather than grown from seed, because seedlings do not reliably reproduce the characteristics of the parent cultivar. Current Kew taxonomy accepts Pyrus communis L.; Malus communis and Sorbus pyrus are treated as scientific synonyms.',
+
+      harvestNote:
+        'Pears are generally harvested from late summer into autumn depending on cultivar and local growing conditions. Royal Horticultural Society guidance recommends picking the fruit shortly before it becomes fully ripe on the tree and allowing it to finish ripening after harvest. Because harvest timing differs among cultivars, rootstocks, climate, and tree age, FarmCast keeps Pear as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Pears',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/pears/grow-your-own'
+          ].join('')
+      }
+    },
+
 
   
 ];
