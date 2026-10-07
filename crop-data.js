@@ -19131,6 +19131,85 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Carob',
+      localName: 'St. John\'s Bread / Locust Bean',
+      scientificName:
+        'Ceratonia siliqua L.',
+      category: 'legume',
+      icon: 'assets/crops/carob.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'layered-plants',
+          label: 'Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'North Carolina State University Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Ceratonia siliqua — Carob',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/',
+            'plants/ceratonia-siliqua/',
+            'common-name/algaroba/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Carob is an evergreen subtropical tree adapted to warm, sunny and comparatively dry growing environments. North Carolina State University Extension describes Ceratonia siliqua as frost tender, drought tolerant and best suited to full sun. Because these recommendations describe climatic adaptation rather than one universal numeric optimum temperature interval or absolute physiological minimum and maximum range for all production environments, FarmCast keeps the temperature fields descriptive rather than assigning unsupported thresholds.',
+
+      rainfallRange:
+        'Established Carob trees tolerate comparatively dry conditions and can withstand drought, although adequate moisture is still important during establishment. North Carolina State University Extension describes the species as capable of growing in dry or moist soils provided suitable drainage is maintained. Because rainfall distribution, irrigation, soil texture and tree age affect actual water availability, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall range.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'North Carolina State University Extension reports that Carob grows in sandy and loamy soils, prefers good drainage and tolerates acidic, neutral and alkaline soil conditions. Because this species-specific guidance describes broad pH classes rather than one precise numerical production range, FarmCast keeps soilPH unset rather than inventing numeric limits.',
+
+      plantingNote:
+        'Carob in this FarmCast entry refers specifically to Ceratonia siliqua L., also commonly known as St. John\'s Bread, Locust Bean, Algaroba and Sugar Pod. North Carolina State University Extension recommends propagation by seed or layering. Current Kew Plants of the World Online taxonomy accepts Ceratonia siliqua L. and lists six synonyms: Ceratonia coriacea Salisb., Ceratonia inermis Stokes, Ceratonia siliqua var. latissima Risso, Ceratonia siliqua var. siccata Risso, Ceratonia siliqua var. sterilis Risso and Ceratonia siliqua var. vulgaris Risso. These scientific synonyms and major common-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Carob is grown for its edible elongated pods, whose pulp and seeds have food uses. North Carolina State University Extension recommends harvesting when the pods have matured to a glossy brown color and notes that pod development extends over a long seasonal cycle. Because this is a maturity-stage recommendation rather than one universal seed- or layering-to-first-harvest interval, Carob remains guidance-only with no automatic FarmCast harvest date.',
+
+      source: {
+        agency:
+          'North Carolina State University Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Ceratonia siliqua — Carob',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/',
+            'plants/ceratonia-siliqua/',
+            'common-name/algaroba/'
+          ].join('')
+      }
+    },
+
 
   
 ];

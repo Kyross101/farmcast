@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="carobTitle carobDesc">
+  <title id="carobTitle">Carob</title>
+  <desc id="carobDesc">
+    Detailed carob branch with glossy compound green leaves,
+    mature dark brown edible pods and a younger green pod.
+  </desc>
+
+  <defs>
+    <linearGradient id="carobStem" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8a6849"></stop>
+      <stop offset="48%" stop-color="#62472f"></stop>
+      <stop offset="100%" stop-color="#3d2d23"></stop>
+    </linearGradient>
+
+    <linearGradient id="carobLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8ac768"></stop>
+      <stop offset="45%" stop-color="#4d9d51"></stop>
+      <stop offset="100%" stop-color="#1f6639"></stop>
+    </linearGradient>
+
+    <linearGradient id="carobLeafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#63ae58"></stop>
+      <stop offset="100%" stop-color="#174f31"></stop>
+    </linearGradient>
+
+    <linearGradient id="carobPod" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9e673f"></stop>
+      <stop offset="36%" stop-color="#78432d"></stop>
+      <stop offset="72%" stop-color="#512c25"></stop>
+      <stop offset="100%" stop-color="#35231f"></stop>
+    </linearGradient>
+
+    <linearGradient id="carobPodLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#bd8351"></stop>
+      <stop offset="60%" stop-color="#75452e"></stop>
+      <stop offset="100%" stop-color="#482a23"></stop>
+    </linearGradient>
+
+    <linearGradient id="carobGreenPod" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a8ca6e"></stop>
+      <stop offset="50%" stop-color="#789a4d"></stop>
+      <stop offset="100%" stop-color="#506f3d"></stop>
+    </linearGradient>
+
+    <filter id="carobShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#152d1e" flood-opacity="0.23"></feDropShadow>
+    </filter>
+  </defs>
+
+  <ellipse cx="64" cy="111" rx="39" ry="6" fill="#203225" opacity="0.12"></ellipse>
+
+  <!-- Main woody branch -->
+  <g fill="none" stroke="url(#carobStem)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 103
+         C37 91 50 79 61 63
+         C72 48 81 31 88 14" stroke-width="6"></path>
+
+    <path d="M47 81
+         C38 70 30 61 24 49" stroke-width="3.4"></path>
+
+    <path d="M60 65
+         C74 64 88 58 101 48" stroke-width="3.4"></path>
+
+    <path d="M36 91
+         C49 95 63 95 77 90" stroke-width="3"></path>
+
+    <path d="M72 47
+         C68 37 68 28 71 19" stroke-width="2.8"></path>
+  </g>
+
+  <!-- Bark highlight -->
+  <path d="M24 100
+       C39 88 51 77 60 63
+       C71 47 79 31 86 15" fill="none" stroke="#b38a61" stroke-width="1.15" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- Compound leaf stem left -->
+  <g fill="none" stroke="#4d763d" stroke-width="2" stroke-linecap="round">
+    <path d="M39 69 C30 62 24 54 19 45"></path>
+  </g>
+
+  <!-- Left compound leaves -->
+  <g filter="url(#carobShadow)">
+    <path d="M25 54
+         C16 55 10 50 10 43
+         C15 37 24 37 30 42
+         C34 46 31 52 25 54Z" fill="url(#carobLeaf)"></path>
+
+    <path d="M29 47 C23 45 17 44 11 44" fill="none" stroke="#d4eabb" stroke-width="1.2" opacity="0.7"></path>
+
+    <path d="M34 62
+         C25 63 19 59 18 52
+         C23 46 32 46 39 51
+         C42 56 40 60 34 62Z" fill="url(#carobLeafDark)"></path>
+
+    <path d="M39 55 C32 54 26 53 20 53" fill="none" stroke="#cee6b5" stroke-width="1.2" opacity="0.68"></path>
+
+    <path d="M21 44
+         C15 38 16 31 22 27
+         C30 29 34 35 31 42
+         C29 47 24 48 21 44Z" fill="url(#carobLeaf)"></path>
+
+    <path d="M25 43 C25 37 24 32 23 28" fill="none" stroke="#d5ebbe" stroke-width="1.15" opacity="0.68"></path>
+  </g>
+
+  <!-- Upper compound leaf -->
+  <g fill="none" stroke="#50783f" stroke-width="2" stroke-linecap="round">
+    <path d="M73 43 C72 33 74 25 77 18"></path>
+  </g>
+
+  <g filter="url(#carobShadow)">
+    <path d="M69 31
+         C62 25 62 18 68 14
+         C75 15 80 21 78 28
+         C76 33 72 34 69 31Z" fill="url(#carobLeafDark)"></path>
+
+    <path d="M74 29 C73 24 71 19 69 15" fill="none" stroke="#d0e7b8" stroke-width="1.15" opacity="0.7"></path>
+
+    <path d="M81 36
+         C82 27 88 21 95 22
+         C100 28 97 37 90 41
+         C86 43 82 41 81 36Z" fill="url(#carobLeaf)"></path>
+
+    <path d="M86 38 C90 33 93 28 95 23" fill="none" stroke="#d8edc1" stroke-width="1.15" opacity="0.7"></path>
+  </g>
+
+  <!-- Right compound leaves -->
+  <g fill="none" stroke="#50783e" stroke-width="2" stroke-linecap="round">
+    <path d="M80 59 C91 58 101 54 109 48"></path>
+  </g>
+
+  <g filter="url(#carobShadow)">
+    <path d="M93 54
+         C94 44 102 38 111 41
+         C115 49 110 58 102 61
+         C97 62 93 59 93 54Z" fill="url(#carobLeafDark)"></path>
+
+    <path d="M99 57 C103 51 107 46 111 42" fill="none" stroke="#d0e8b7" stroke-width="1.2" opacity="0.68"></path>
+
+    <path d="M102 67
+         C106 58 115 55 121 61
+         C122 70 115 77 106 76
+         C100 74 99 70 102 67Z" fill="url(#carobLeaf)"></path>
+
+    <path d="M106 72 C112 68 116 64 120 62" fill="none" stroke="#d7ecc0" stroke-width="1.15" opacity="0.7"></path>
+  </g>
+
+  <!-- Lower leaf -->
+  <g filter="url(#carobShadow)">
+    <path d="M43 83
+         C33 79 24 83 22 91
+         C29 99 40 100 48 93
+         C52 88 49 84 43 83Z" fill="url(#carobLeafDark)"></path>
+
+    <path d="M46 89 C38 89 31 90 24 91" fill="none" stroke="#cee6b5" stroke-width="1.25" opacity="0.7"></path>
+
+    <path d="M75 90
+         C82 81 93 79 100 85
+         C101 95 93 103 83 102
+         C76 100 72 95 75 90Z" fill="url(#carobLeaf)"></path>
+
+    <path d="M80 96 C87 92 94 88 99 86" fill="none" stroke="#d8edc0" stroke-width="1.25" opacity="0.68"></path>
+  </g>
+
+  <!-- Pod stems -->
+  <g fill="none" stroke="#5f6c3d" stroke-width="2.4" stroke-linecap="round">
+    <path d="M55 72 C54 79 53 84 53 89"></path>
+    <path d="M70 60 C75 65 78 70 80 75"></path>
+    <path d="M87 55 C92 60 96 65 98 71"></path>
+  </g>
+
+  <!-- Large mature pod -->
+  <g filter="url(#carobShadow)">
+    <path d="M45 87
+         C44 94 46 103 51 108
+         C57 113 65 113 69 108
+         C72 104 69 100 66 96
+         C62 91 59 86 58 81
+         C55 78 48 81 45 87Z" fill="url(#carobPod)" stroke="#46271f" stroke-width="1.4"></path>
+
+    <path d="M50 85
+         C49 92 52 101 58 106
+         C61 108 64 108 66 106" fill="none" stroke="#cb8b5a" stroke-width="1.4" stroke-linecap="round" opacity="0.56"></path>
+
+    <path d="M50 94
+         C54 95 59 95 64 93" fill="none" stroke="#3d251f" stroke-width="1" opacity="0.45"></path>
+
+    <circle cx="53" cy="98" r="1.2" fill="#d39a69" opacity="0.5"></circle>
+    <circle cx="59" cy="102" r="1.1" fill="#d39a69" opacity="0.45"></circle>
+  </g>
+
+  <!-- Curved mature pod -->
+  <g filter="url(#carobShadow)">
+    <path d="M77 72
+         C83 74 89 79 92 85
+         C96 93 96 101 91 105
+         C87 108 82 106 80 102
+         C78 98 82 95 84 91
+         C86 87 84 82 80 79
+         C75 76 73 74 77 72Z" fill="url(#carobPodLight)" stroke="#4c2b22" stroke-width="1.35"></path>
+
+    <path d="M80 76
+         C86 80 90 86 90 92
+         C91 98 88 102 85 104" fill="none" stroke="#daa06d" stroke-width="1.3" stroke-linecap="round" opacity="0.52"></path>
+  </g>
+
+  <!-- Younger green pod -->
+  <g filter="url(#carobShadow)">
+    <path d="M96 68
+         C101 71 106 77 108 83
+         C110 89 108 95 104 97
+         C100 98 97 94 98 90
+         C99 85 100 81 97 77
+         C94 73 92 70 96 68Z" fill="url(#carobGreenPod)" stroke="#506d3c" stroke-width="1.25"></path>
+
+    <path d="M99 72
+         C104 77 106 84 104 91" fill="none" stroke="#d7e6a3" stroke-width="1.15" stroke-linecap="round" opacity="0.6"></path>
+  </g>
+
+  <!-- Small flower cluster -->
+  <g filter="url(#carobShadow)">
+    <path d="M83 48 C89 46 94 44 98 40" fill="none" stroke="#667343" stroke-width="2" stroke-linecap="round"></path>
+
+    <g fill="#a5574b">
+      <circle cx="91" cy="44" r="2.1"></circle>
+      <circle cx="95" cy="41" r="2"></circle>
+      <circle cx="98" cy="38" r="1.8"></circle>
+      <circle cx="88" cy="46" r="1.8"></circle>
+    </g>
+
+    <g fill="#e1bd78">
+      <circle cx="91" cy="43.5" r="0.7"></circle>
+      <circle cx="95" cy="40.5" r="0.7"></circle>
+      <circle cx="98" cy="37.5" r="0.65"></circle>
+    </g>
+  </g>
+</svg>
