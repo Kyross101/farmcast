@@ -16573,6 +16573,85 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Prickly Pear',
+      localName: 'Cactus Pear / Indian Fig',
+      scientificName:
+        'Opuntia ficus-indica (L.) Mill.',
+      category: 'fruit',
+      icon: 'assets/crops/prickly-pear.svg',
+
+      plantingMethods: [
+        {
+          value: 'pad-cuttings',
+          label: 'Pad Cuttings'
+        },
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Small Farms Network',
+
+        title:
+          'Prickly Pear Cactus',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/program/',
+            'uc-small-farms-network/',
+            'prickly-pear-cactus'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm-season, dry tropical to subtropical growing conditions. Kew identifies Opuntia ficus-indica as a succulent shrub or tree primarily associated with the seasonally dry tropical biome. University of California guidance also describes Prickly Pear as a warm-season crop that performs best in sunny conditions. Because cultivar, rainfall, humidity and local winter conditions influence growth, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric range.',
+
+      rainfallRange:
+        'Prickly Pear is adapted to relatively dry growing conditions and established plants generally require much less water than conventional fruit crops. University of California guidance warns that excessive moisture can encourage root rot. Because irrigation needs depend strongly on climate, soil drainage and plant establishment, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall range.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Prickly Pear performs best in a sunny site with very well-drained soil. University of California guidance recommends a freely draining soil mixture for establishing pad cuttings and warns against excessive moisture because newly planted pads can rot before roots develop. FarmCast therefore emphasizes drainage rather than inventing an unsupported universal numeric soil-pH target.',
+
+      plantingNote:
+        'Prickly Pear in this FarmCast entry refers specifically to Opuntia ficus-indica (L.) Mill., also known as Cactus Pear and Indian Fig. The crop may be propagated from seed, but University of California guidance notes that seed-grown plants develop slowly. Pad cuttings provide a simpler and faster vegetative method: mature pads are allowed to form a dry callus before establishment in well-drained soil. Current Kew taxonomy accepts Opuntia ficus-indica and lists historical names including Cactus ficus-indica, Cactus opuntia, Opuntia chinensis, Opuntia vulgaris and Platyopuntia ficus-indica among its synonyms.',
+
+      harvestNote:
+        'Both the fruit and young pads of Prickly Pear are edible. University of California guidance reports that seed-grown plants may require about three to four years before flowering and fruiting, while plants propagated from established pads can flower sooner depending on maturity. Fruits are harvested when fully ripe; University of Arizona Extension notes that ripe fruit develops full color and does not continue ripening after harvest. Because seed-grown and pad-grown plants have very different establishment and first-bearing times, FarmCast keeps Prickly Pear as guidance-only rather than assigning one automatic planting-to-harvest date.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Small Farms Network',
+
+        title:
+          'Prickly Pear Cactus',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/program/',
+            'uc-small-farms-network/',
+            'prickly-pear-cactus'
+          ].join('')
+      }
+    },
+
   
 ];
 

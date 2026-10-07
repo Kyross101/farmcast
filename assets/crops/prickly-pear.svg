@@ -1,0 +1,363 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Prickly Pear</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Indian fig prickly pear with
+    layered green cactus pads, yellow flowers, ripe magenta-red fruits,
+    subtle glochid clusters, highlights, shadows, and desert soil.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="padGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9cc76"></stop>
+      <stop offset="0.3" stop-color="#779b58"></stop>
+      <stop offset="0.67" stop-color="#497949"></stop>
+      <stop offset="1" stop-color="#28563c"></stop>
+    </linearGradient>
+
+    <linearGradient id="padDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#91af62"></stop>
+      <stop offset="0.5" stop-color="#557d4d"></stop>
+      <stop offset="1" stop-color="#244636"></stop>
+    </linearGradient>
+
+    <linearGradient id="padLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d2dd88"></stop>
+      <stop offset="0.38" stop-color="#91b05e"></stop>
+      <stop offset="1" stop-color="#467346"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitRed" cx="35%" cy="25%" r="74%">
+      <stop offset="0" stop-color="#ff9a83"></stop>
+      <stop offset="0.28" stop-color="#e7555f"></stop>
+      <stop offset="0.65" stop-color="#b52d51"></stop>
+      <stop offset="1" stop-color="#702943"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitDark" cx="34%" cy="24%" r="75%">
+      <stop offset="0" stop-color="#e87973"></stop>
+      <stop offset="0.38" stop-color="#c63c58"></stop>
+      <stop offset="0.75" stop-color="#8d2a48"></stop>
+      <stop offset="1" stop-color="#54273b"></stop>
+    </radialGradient>
+
+    <linearGradient id="petalYellow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ae"></stop>
+      <stop offset="0.45" stop-color="#f1d65b"></stop>
+      <stop offset="1" stop-color="#d39c34"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#f8d949"></stop>
+      <stop offset="0.58" stop-color="#c88d2c"></stop>
+      <stop offset="1" stop-color="#8a582c"></stop>
+    </radialGradient>
+
+    <linearGradient id="soilGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c29b70"></stop>
+      <stop offset="0.55" stop-color="#8e6c50"></stop>
+      <stop offset="1" stop-color="#5c493b"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#18251b" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#41242e" flood-opacity="0.32"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- soil -->
+
+  <path d="
+    M4 108
+    C24 103 43 108 62 105
+    C82 102 104 108 124 103
+    L124 128
+    L4 128Z" fill="url(#soilGradient)"></path>
+
+  <!-- soil texture -->
+
+  <g fill="none" stroke="#dec099" stroke-linecap="round" opacity="0.32">
+
+    <path d="M10 115 C23 112 36 115 48 112"></path>
+    <path d="M69 113 C84 109 100 113 116 109"></path>
+    <path d="M22 123 C35 120 46 122 57 120"></path>
+
+  </g>
+
+  <!-- rear left pad -->
+
+  <g transform="translate(31 72) rotate(-20)" filter="url(#softShadow)">
+
+    <path d="
+      M0 33
+      C-13 30 -20 18 -19 2
+      C-18 -15 -10 -31 1 -35
+      C12 -32 20 -17 20 0
+      C21 18 13 30 0 33Z" fill="url(#padDark)" stroke="#315b3d" stroke-width="1.3"></path>
+
+    <ellipse cx="-6" cy="-8" rx="5" ry="12" fill="#d7e39e" opacity="0.16"></ellipse>
+
+    <g fill="#d8d2a8" opacity="0.74">
+      <circle cx="-8" cy="-20" r="1"></circle>
+      <circle cx="7" cy="-16" r="1"></circle>
+      <circle cx="-10" cy="-5" r="1"></circle>
+      <circle cx="8" cy="1" r="1"></circle>
+      <circle cx="-6" cy="12" r="1"></circle>
+      <circle cx="7" cy="19" r="1"></circle>
+    </g>
+
+  </g>
+
+  <!-- rear right pad -->
+
+  <g transform="translate(96 75) rotate(21)" filter="url(#softShadow)">
+
+    <path d="
+      M0 31
+      C-12 28 -18 16 -18 2
+      C-17 -14 -9 -28 1 -32
+      C12 -29 19 -15 19 1
+      C20 17 12 28 0 31Z" fill="url(#padDark)" stroke="#315b3d" stroke-width="1.3"></path>
+
+    <ellipse cx="-5" cy="-8" rx="4.5" ry="11" fill="#d4e19a" opacity="0.15"></ellipse>
+
+    <g fill="#ddd6a9" opacity="0.72">
+      <circle cx="-7" cy="-18" r="0.9"></circle>
+      <circle cx="7" cy="-13" r="0.9"></circle>
+      <circle cx="-8" cy="-2" r="0.9"></circle>
+      <circle cx="7" cy="5" r="0.9"></circle>
+      <circle cx="-5" cy="15" r="0.9"></circle>
+    </g>
+
+  </g>
+
+  <!-- central lower pad -->
+
+  <g transform="translate(63 80)" filter="url(#softShadow)">
+
+    <path d="
+      M0 38
+      C-15 35 -24 22 -23 3
+      C-22 -17 -13 -35 1 -39
+      C15 -35 24 -18 24 2
+      C25 22 16 35 0 38Z" fill="url(#padGreen)" stroke="#2b583b" stroke-width="1.5"></path>
+
+    <ellipse cx="-7" cy="-11" rx="6" ry="15" fill="#e0e9a9" opacity="0.18"></ellipse>
+
+    <!-- areoles -->
+
+    <g fill="#ddd6ac" stroke="#8d895f" stroke-width="0.35">
+
+      <circle cx="-10" cy="-26" r="1.3"></circle>
+      <circle cx="8" cy="-24" r="1.3"></circle>
+      <circle cx="-13" cy="-10" r="1.3"></circle>
+      <circle cx="7" cy="-7" r="1.3"></circle>
+      <circle cx="-8" cy="7" r="1.3"></circle>
+      <circle cx="11" cy="10" r="1.3"></circle>
+      <circle cx="-10" cy="23" r="1.3"></circle>
+      <circle cx="6" cy="26" r="1.3"></circle>
+
+    </g>
+
+    <!-- tiny decorative glochid marks -->
+
+    <g fill="none" stroke="#786f50" stroke-width="0.45" stroke-linecap="round" opacity="0.5">
+
+      <path d="M-10 -26 l-2 -2"></path>
+      <path d="M-10 -26 l2 -2"></path>
+
+      <path d="M8 -24 l-2 -2"></path>
+      <path d="M8 -24 l2 -2"></path>
+
+      <path d="M-13 -10 l-2 -1"></path>
+      <path d="M-13 -10 l1 -2"></path>
+
+      <path d="M7 -7 l-2 -2"></path>
+      <path d="M7 -7 l2 -1"></path>
+
+    </g>
+
+  </g>
+
+  <!-- upper central pad -->
+
+  <g transform="translate(62 39) rotate(-4)" filter="url(#softShadow)">
+
+    <path d="
+      M0 31
+      C-13 29 -20 17 -19 1
+      C-18 -16 -10 -30 1 -34
+      C13 -31 20 -16 20 0
+      C21 17 13 29 0 31Z" fill="url(#padLight)" stroke="#315d3e" stroke-width="1.4"></path>
+
+    <ellipse cx="-6" cy="-9" rx="5" ry="12" fill="#eef0b4" opacity="0.2"></ellipse>
+
+    <g fill="#ddd6aa" stroke="#91885e" stroke-width="0.3">
+
+      <circle cx="-8" cy="-21" r="1.1"></circle>
+      <circle cx="7" cy="-18" r="1.1"></circle>
+      <circle cx="-9" cy="-5" r="1.1"></circle>
+      <circle cx="8" cy="1" r="1.1"></circle>
+      <circle cx="-6" cy="12" r="1.1"></circle>
+      <circle cx="7" cy="18" r="1.1"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- left upper pad -->
+
+  <g transform="translate(41 46) rotate(-32)" filter="url(#softShadow)">
+
+    <path d="
+      M0 25
+      C-10 23 -16 13 -15 1
+      C-14 -12 -8 -24 1 -27
+      C10 -24 16 -12 16 0
+      C17 14 11 23 0 25Z" fill="url(#padGreen)" stroke="#315b3d" stroke-width="1.2"></path>
+
+    <g fill="#ddd6aa" opacity="0.74">
+      <circle cx="-6" cy="-15" r="0.9"></circle>
+      <circle cx="6" cy="-11" r="0.9"></circle>
+      <circle cx="-6" cy="0" r="0.9"></circle>
+      <circle cx="6" cy="6" r="0.9"></circle>
+      <circle cx="-3" cy="14" r="0.9"></circle>
+    </g>
+
+  </g>
+
+  <!-- right upper pad -->
+
+  <g transform="translate(84 45) rotate(30)" filter="url(#softShadow)">
+
+    <path d="
+      M0 25
+      C-10 23 -16 13 -15 1
+      C-14 -12 -8 -24 1 -27
+      C10 -24 16 -12 16 0
+      C17 14 11 23 0 25Z" fill="url(#padGreen)" stroke="#315b3d" stroke-width="1.2"></path>
+
+    <g fill="#ddd6aa" opacity="0.74">
+      <circle cx="-6" cy="-15" r="0.9"></circle>
+      <circle cx="6" cy="-11" r="0.9"></circle>
+      <circle cx="-6" cy="0" r="0.9"></circle>
+      <circle cx="6" cy="6" r="0.9"></circle>
+      <circle cx="-3" cy="14" r="0.9"></circle>
+    </g>
+
+  </g>
+
+  <!-- fruit bases -->
+
+  <g fill="url(#padGreen)" stroke="#31573c" stroke-width="0.8">
+
+    <ellipse cx="38" cy="26" rx="6" ry="5"></ellipse>
+
+    <ellipse cx="63" cy="10" rx="6" ry="5"></ellipse>
+
+    <ellipse cx="88" cy="25" rx="6" ry="5"></ellipse>
+
+  </g>
+
+  <!-- ripe fruits -->
+
+  <g filter="url(#fruitShadow)">
+
+    <g transform="translate(36 19) rotate(-11)">
+
+      <path d="
+        M0 -11
+        C8 -12 13 -6 13 2
+        C13 11 8 17 0 18
+        C-8 17 -13 11 -13 2
+        C-13 -6 -8 -11 0 -11Z" fill="url(#fruitRed)" stroke="#7e2b43" stroke-width="1"></path>
+
+      <ellipse cx="-4" cy="-4" rx="2.4" ry="4.5" fill="#ffd0b6" opacity="0.34"></ellipse>
+
+      <g fill="#ebc19f" opacity="0.55">
+        <circle cx="-6" cy="4" r="0.7"></circle>
+        <circle cx="4" cy="-2" r="0.7"></circle>
+        <circle cx="6" cy="7" r="0.7"></circle>
+        <circle cx="-2" cy="11" r="0.7"></circle>
+      </g>
+
+    </g>
+
+    <g transform="translate(63 4)">
+
+      <path d="
+        M0 -11
+        C8 -12 13 -6 13 2
+        C13 11 8 17 0 18
+        C-8 17 -13 11 -13 2
+        C-13 -6 -8 -11 0 -11Z" fill="url(#fruitDark)" stroke="#76283f" stroke-width="1"></path>
+
+      <ellipse cx="-4" cy="-4" rx="2.5" ry="4.5" fill="#ffc0af" opacity="0.32"></ellipse>
+
+      <g fill="#e6b69b" opacity="0.52">
+        <circle cx="-6" cy="3" r="0.7"></circle>
+        <circle cx="4" cy="-2" r="0.7"></circle>
+        <circle cx="6" cy="7" r="0.7"></circle>
+        <circle cx="-2" cy="11" r="0.7"></circle>
+      </g>
+
+    </g>
+
+    <g transform="translate(90 18) rotate(12)">
+
+      <path d="
+        M0 -11
+        C8 -12 13 -6 13 2
+        C13 11 8 17 0 18
+        C-8 17 -13 11 -13 2
+        C-13 -6 -8 -11 0 -11Z" fill="url(#fruitRed)" stroke="#7e2b43" stroke-width="1"></path>
+
+      <ellipse cx="-4" cy="-4" rx="2.4" ry="4.5" fill="#ffd0b6" opacity="0.34"></ellipse>
+
+      <g fill="#ebc19f" opacity="0.55">
+        <circle cx="-6" cy="4" r="0.7"></circle>
+        <circle cx="4" cy="-2" r="0.7"></circle>
+        <circle cx="6" cy="7" r="0.7"></circle>
+      </g>
+
+    </g>
+
+  </g>
+
+  <!-- yellow flower on right pad -->
+
+  <g transform="translate(104 42)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="-7" rx="4.3" ry="7" fill="url(#petalYellow)"></ellipse>
+
+    <ellipse cx="7" cy="-2" rx="7" ry="4.3" fill="url(#petalYellow)" transform="rotate(20 7 -2)"></ellipse>
+
+    <ellipse cx="5" cy="6" rx="4.2" ry="7" fill="url(#petalYellow)" transform="rotate(-25 5 6)"></ellipse>
+
+    <ellipse cx="-5" cy="6" rx="4.2" ry="7" fill="url(#petalYellow)" transform="rotate(25 -5 6)"></ellipse>
+
+    <ellipse cx="-7" cy="-2" rx="7" ry="4.3" fill="url(#petalYellow)" transform="rotate(-20 -7 -2)"></ellipse>
+
+    <circle cx="0" cy="0" r="4" fill="url(#flowerCenter)"></circle>
+
+    <g fill="#765324">
+      <circle cx="-2" cy="-1" r="0.6"></circle>
+      <circle cx="2" cy="-1" r="0.6"></circle>
+      <circle cx="0" cy="2" r="0.6"></circle>
+      <circle cx="3" cy="2" r="0.5"></circle>
+      <circle cx="-3" cy="2" r="0.5"></circle>
+    </g>
+
+  </g>
+
+  <!-- subtle base shadow -->
+
+  <ellipse cx="64" cy="115" rx="46" ry="5" fill="#3a4838" opacity="0.16"></ellipse>
+
+</svg>
