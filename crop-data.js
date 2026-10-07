@@ -15235,6 +15235,71 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Rye',
+      scientificName: 'Secale cereale L.',
+      category: 'grain',
+      icon: 'assets/crops/rye.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Cereal Rye as a Cover Crop',
+
+        url:
+          [
+            'https://',
+            'extension.psu.edu/',
+            'cereal-rye-as-a-cover-crop'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool temperate growing conditions. Kew identifies Rye as an annual or biennial cereal primarily associated with the temperate biome. Cereal Rye is notably winter hardy and may be grown as a winter annual where local conditions and varieties are suitable. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Cereal Rye is adaptable to a wide range of production environments, but crop establishment and grain development still depend on adequate soil moisture. FarmCast therefore keeps water guidance descriptive rather than inventing one universal rainfall requirement.',
+
+      soilPH:
+        'Penn State Extension recommends well-drained soil with about pH 6.0–7.0.',
+
+      soilNote:
+        'Cereal Rye is adaptable but performs best in well-drained soil with good seed-to-soil contact. Penn State Extension notes that it establishes rapidly and develops an extensive root system. Field fertility and lime requirements should be guided by local soil testing and the intended production system.',
+
+      plantingNote:
+        'Rye in this FarmCast entry refers specifically to Cereal Rye, Secale cereale L., an edible grain crop used for foods such as rye flour and bread. It is established directly from seed by drilling or other suitable seeding methods. Cereal Rye should not be confused with annual or perennial ryegrass, which belong to the genus Lolium and are different crops. Current Kew taxonomy accepts Secale cereale L.; important historical names include Triticum cereale and Triticum secale.',
+
+      harvestNote:
+        'Cereal Rye is one of the earliest-maturing common small grains, but maturity varies among cultivars and environments. Grain harvest should follow actual crop maturity and grain dry-down rather than one universal number of days after sowing. University of Minnesota guidance for winter annual grain systems also shows that harvest season depends on the production region and cultivar. FarmCast therefore keeps Rye as guidance-only rather than assigning one universal sowing-to-harvest interval.',
+
+      source: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Cereal Rye as a Cover Crop',
+
+        url:
+          [
+            'https://',
+            'extension.psu.edu/',
+            'cereal-rye-as-a-cover-crop'
+          ].join('')
+      }
+    },
+
   
 ];
 

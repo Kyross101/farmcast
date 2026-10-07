@@ -1,0 +1,271 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Rye</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of cereal rye with slender green stems,
+    narrow leaves, mature golden-green grain spikes, long awns,
+    highlights, shadows, and natural field depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#416b38"></stop>
+      <stop offset="0.55" stop-color="#73964c"></stop>
+      <stop offset="1" stop-color="#b7c976"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#2d5b35"></stop>
+      <stop offset="0.5" stop-color="#648a45"></stop>
+      <stop offset="1" stop-color="#a8be68"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#23492f"></stop>
+      <stop offset="1" stop-color="#688b49"></stop>
+    </linearGradient>
+
+    <linearGradient id="grainGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e7d58b"></stop>
+      <stop offset="0.48" stop-color="#c5ae62"></stop>
+      <stop offset="1" stop-color="#88733d"></stop>
+    </linearGradient>
+
+    <linearGradient id="grainGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c8cf7b"></stop>
+      <stop offset="0.5" stop-color="#9ba75c"></stop>
+      <stop offset="1" stop-color="#6c7840"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#1f291f" flood-opacity="0.23"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="117" rx="40" ry="6" fill="#2b3329" opacity="0.15"></ellipse>
+
+  <!-- stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="M39 112 C42 90 44 67 45 42" stroke-width="4"></path>
+
+    <path d="M59 113 C60 89 60 63 60 34" stroke-width="4.3"></path>
+
+    <path d="M78 113 C76 87 76 61 78 36" stroke-width="4"></path>
+
+    <path d="M94 113 C90 91 88 70 89 48" stroke-width="3.5"></path>
+
+  </g>
+
+  <!-- stem highlights -->
+  <g fill="none" stroke="#d2dc97" stroke-width="0.8" stroke-linecap="round" opacity="0.58">
+
+    <path d="M41 108 C43 86 45 65 46 44"></path>
+    <path d="M61 109 C62 84 62 61 61 36"></path>
+    <path d="M79 109 C78 85 78 60 79 38"></path>
+
+  </g>
+
+  <!-- narrow rye leaves -->
+  <g stroke="#315636" stroke-width="0.9" filter="url(#softShadow)">
+
+    <path d="
+      M44 76
+      C31 67 20 66 10 70
+      C20 74 31 78 44 80Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M45 61
+      C33 51 24 48 16 50
+      C24 56 34 62 45 65Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M60 83
+      C48 73 38 70 29 73
+      C38 79 48 84 60 87Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M60 67
+      C73 57 84 56 94 60
+      C84 64 73 69 60 71Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M77 80
+      C89 69 100 66 111 69
+      C102 75 90 81 77 84Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M78 62
+      C90 52 100 50 110 53
+      C101 59 91 63 78 66Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M89 88
+      C99 80 109 79 118 82
+      C110 87 100 91 90 92Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- leaf midribs -->
+  <g fill="none" stroke="#c2d28c" stroke-width="0.6" stroke-linecap="round" opacity="0.68">
+
+    <path d="M13 71 C25 73 34 76 43 78"></path>
+    <path d="M18 51 C28 55 36 60 44 63"></path>
+    <path d="M31 74 C41 78 50 82 59 85"></path>
+
+    <path d="M62 69 C73 65 83 62 92 61"></path>
+    <path d="M79 83 C90 77 101 72 109 70"></path>
+    <path d="M80 64 C91 60 100 56 108 54"></path>
+
+  </g>
+
+  <!-- left rye head -->
+  <g transform="translate(45 42)" filter="url(#softShadow)">
+
+    <path d="M0 3 L0 -31" stroke="#71804a" stroke-width="1.8" stroke-linecap="round"></path>
+
+    <g fill="url(#grainGreen)" stroke="#6d7443" stroke-width="0.55">
+
+      <path d="M-1 -2 C-8 -5 -10 -10 -6 -13 C-1 -12 1 -8 -1 -2Z"></path>
+      <path d="M1 -5 C8 -8 10 -13 6 -16 C1 -15 -1 -11 1 -5Z"></path>
+
+      <path d="M-1 -10 C-8 -13 -9 -18 -5 -21 C-1 -20 1 -16 -1 -10Z"></path>
+      <path d="M1 -13 C8 -16 9 -21 5 -24 C1 -23 -1 -19 1 -13Z"></path>
+
+      <path d="M-1 -18 C-7 -21 -8 -26 -4 -29 C0 -28 1 -24 -1 -18Z"></path>
+      <path d="M1 -21 C7 -24 8 -29 4 -31 C0 -30 -1 -27 1 -21Z"></path>
+
+    </g>
+
+    <!-- long awns -->
+    <g stroke="#9a9659" stroke-width="0.7" stroke-linecap="round">
+
+      <path d="M-6 -11 L-17 -23"></path>
+      <path d="M6 -14 L17 -27"></path>
+
+      <path d="M-5 -19 L-15 -32"></path>
+      <path d="M5 -22 L14 -36"></path>
+
+      <path d="M-4 -27 L-11 -40"></path>
+      <path d="M4 -29 L10 -43"></path>
+
+    </g>
+
+  </g>
+
+  <!-- center mature rye head -->
+  <g transform="translate(60 35)" filter="url(#softShadow)">
+
+    <path d="M0 4 L0 -34" stroke="#756b3d" stroke-width="2" stroke-linecap="round"></path>
+
+    <g fill="url(#grainGold)" stroke="#756437" stroke-width="0.6">
+
+      <path d="M-1 0 C-8 -3 -10 -8 -6 -12 C-1 -11 1 -7 -1 0Z"></path>
+      <path d="M1 -3 C8 -6 10 -11 6 -15 C1 -14 -1 -10 1 -3Z"></path>
+
+      <path d="M-1 -8 C-9 -11 -10 -16 -6 -20 C-1 -19 1 -15 -1 -8Z"></path>
+      <path d="M1 -11 C9 -14 10 -19 6 -23 C1 -22 -1 -18 1 -11Z"></path>
+
+      <path d="M-1 -16 C-8 -19 -9 -24 -5 -28 C0 -27 1 -23 -1 -16Z"></path>
+      <path d="M1 -19 C8 -22 9 -27 5 -31 C0 -30 -1 -26 1 -19Z"></path>
+
+      <path d="M-1 -25 C-7 -28 -8 -32 -4 -35 C0 -34 1 -31 -1 -25Z"></path>
+      <path d="M1 -27 C7 -30 8 -34 4 -37 C0 -36 -1 -33 1 -27Z"></path>
+
+    </g>
+
+    <g stroke="#9a8648" stroke-width="0.72" stroke-linecap="round">
+
+      <path d="M-6 -9 L-18 -23"></path>
+      <path d="M6 -12 L18 -27"></path>
+
+      <path d="M-6 -17 L-17 -32"></path>
+      <path d="M6 -20 L17 -36"></path>
+
+      <path d="M-5 -26 L-15 -42"></path>
+      <path d="M5 -29 L14 -45"></path>
+
+      <path d="M-4 -34 L-10 -48"></path>
+      <path d="M4 -36 L10 -50"></path>
+
+    </g>
+
+  </g>
+
+  <!-- right rye head -->
+  <g transform="translate(78 38)" filter="url(#softShadow)">
+
+    <path d="M0 3 L1 -32" stroke="#727b46" stroke-width="1.9" stroke-linecap="round"></path>
+
+    <g fill="url(#grainGold)" stroke="#70633a" stroke-width="0.55">
+
+      <path d="M0 -1 C-7 -4 -9 -9 -5 -12 C0 -11 2 -7 0 -1Z"></path>
+      <path d="M2 -4 C9 -7 11 -12 7 -15 C2 -14 0 -10 2 -4Z"></path>
+
+      <path d="M0 -9 C-7 -12 -9 -17 -5 -20 C0 -19 2 -15 0 -9Z"></path>
+      <path d="M2 -12 C9 -15 10 -20 6 -23 C2 -22 0 -18 2 -12Z"></path>
+
+      <path d="M0 -17 C-6 -20 -8 -25 -4 -28 C0 -27 2 -23 0 -17Z"></path>
+      <path d="M2 -20 C8 -23 9 -28 5 -31 C1 -30 0 -26 2 -20Z"></path>
+
+    </g>
+
+    <g stroke="#9a874b" stroke-width="0.7" stroke-linecap="round">
+
+      <path d="M-5 -10 L-16 -23"></path>
+      <path d="M7 -13 L18 -27"></path>
+
+      <path d="M-5 -18 L-15 -32"></path>
+      <path d="M6 -21 L16 -36"></path>
+
+      <path d="M-4 -26 L-12 -40"></path>
+      <path d="M5 -29 L13 -43"></path>
+
+    </g>
+
+  </g>
+
+  <!-- background smaller head -->
+  <g transform="translate(90 49)" opacity="0.82">
+
+    <path d="M0 0 L2 -25" stroke="#687746" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <g fill="#a4a85d" stroke="#687044" stroke-width="0.5">
+
+      <ellipse cx="-2" cy="-7" rx="3" ry="5" transform="rotate(-24 -2 -7)"></ellipse>
+
+      <ellipse cx="4" cy="-11" rx="3" ry="5" transform="rotate(24 4 -11)"></ellipse>
+
+      <ellipse cx="-1" cy="-15" rx="3" ry="5" transform="rotate(-24 -1 -15)"></ellipse>
+
+      <ellipse cx="4" cy="-20" rx="3" ry="5" transform="rotate(24 4 -20)"></ellipse>
+
+    </g>
+
+    <g stroke="#8c8c52" stroke-width="0.6">
+
+      <path d="M-3 -10 L-10 -20"></path>
+      <path d="M5 -14 L12 -25"></path>
+      <path d="M-2 -18 L-8 -29"></path>
+      <path d="M5 -23 L11 -34"></path>
+
+    </g>
+
+  </g>
+
+  <!-- grain highlights -->
+  <g fill="#f1e4ad" opacity="0.5">
+
+    <ellipse cx="56" cy="23" rx="1" ry="2.1" transform="rotate(-25 56 23)"></ellipse>
+
+    <ellipse cx="63" cy="17" rx="1" ry="2.1" transform="rotate(25 63 17)"></ellipse>
+
+    <ellipse cx="74" cy="26" rx="1" ry="2" transform="rotate(-25 74 26)"></ellipse>
+
+  </g>
+
+</svg>
