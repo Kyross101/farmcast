@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Date Palm</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a date palm with arching green
+    fronds, textured trunk, and hanging clusters of ripe golden-brown
+    dates with natural highlights, shadows, and depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="trunkBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a77a52"></stop>
+      <stop offset="0.5" stop-color="#755038"></stop>
+      <stop offset="1" stop-color="#493329"></stop>
+    </linearGradient>
+
+    <linearGradient id="frondGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#24563a"></stop>
+      <stop offset="0.5" stop-color="#4c8748"></stop>
+      <stop offset="1" stop-color="#9cbd68"></stop>
+    </linearGradient>
+
+    <linearGradient id="frondDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#193f2d"></stop>
+      <stop offset="1" stop-color="#608c4f"></stop>
+    </linearGradient>
+
+    <radialGradient id="dateGold" cx="30%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#f1cc76"></stop>
+      <stop offset="0.4" stop-color="#c79043"></stop>
+      <stop offset="0.75" stop-color="#8a5c30"></stop>
+      <stop offset="1" stop-color="#5b3b28"></stop>
+    </radialGradient>
+
+    <radialGradient id="dateDark" cx="30%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#d9a65f"></stop>
+      <stop offset="0.45" stop-color="#a56e39"></stop>
+      <stop offset="1" stop-color="#5a3828"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#222920" flood-opacity="0.27"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="117" rx="35" ry="6" fill="#293128" opacity="0.17"></ellipse>
+
+  <!-- palm trunk -->
+  <path d="
+    M55 111
+    C57 95 58 80 59 66
+    C60 52 61 39 63 25
+    C65 22 69 22 71 25
+    C73 39 74 52 73 66
+    C72 81 72 96 75 111Z" fill="url(#trunkBrown)" stroke="#4a352b" stroke-width="1.6" filter="url(#softShadow)"></path>
+
+  <!-- trunk rings -->
+  <g fill="none" stroke="#c39467" stroke-width="1" opacity="0.58">
+
+    <path d="M58 96 C63 99 69 99 73 96"></path>
+    <path d="M59 86 C64 89 69 89 73 86"></path>
+    <path d="M59 76 C64 79 69 79 73 76"></path>
+    <path d="M60 66 C65 69 69 69 72 66"></path>
+    <path d="M61 56 C65 59 69 59 72 56"></path>
+    <path d="M62 46 C65 49 69 49 72 46"></path>
+    <path d="M63 36 C66 39 69 39 71 36"></path>
+
+  </g>
+
+  <!-- rough old leaf-base texture -->
+  <g fill="#51392d" opacity="0.55">
+
+    <path d="M58 91 L64 95 L59 98Z"></path>
+    <path d="M72 81 L67 85 L73 88Z"></path>
+    <path d="M59 71 L65 75 L60 78Z"></path>
+    <path d="M72 61 L67 65 L72 68Z"></path>
+    <path d="M61 51 L66 54 L61 58Z"></path>
+
+  </g>
+
+  <!-- central crown -->
+  <ellipse cx="67" cy="27" rx="8" ry="7" fill="#365e39" stroke="#24462f" stroke-width="1.2"></ellipse>
+
+  <!-- main frond stems -->
+  <g fill="none" stroke="#507343" stroke-width="2.4" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="M66 28 C48 20 31 19 15 24"></path>
+    <path d="M66 27 C50 13 36 9 22 9"></path>
+    <path d="M67 27 C59 10 53 5 46 3"></path>
+
+    <path d="M68 27 C76 10 83 5 91 3"></path>
+    <path d="M68 27 C84 13 98 9 113 10"></path>
+    <path d="M69 28 C87 20 104 20 120 25"></path>
+
+    <path d="M65 29 C48 29 32 35 18 45"></path>
+    <path d="M69 29 C86 29 102 35 116 45"></path>
+
+  </g>
+
+  <!-- left frond leaflets -->
+  <g fill="url(#frondGreen)" stroke="#285138" stroke-width="0.55">
+
+    <path d="M58 24 C49 17 41 15 33 16 C40 20 48 23 58 26Z"></path>
+    <path d="M49 20 C40 13 32 12 25 13 C31 17 39 20 49 22Z"></path>
+    <path d="M39 18 C31 13 22 14 15 17 C23 19 30 20 39 20Z"></path>
+
+    <path d="M59 20 C54 12 49 7 44 4 C47 11 51 17 59 23Z"></path>
+    <path d="M51 14 C47 8 42 5 37 4 C40 9 44 13 51 17Z"></path>
+
+    <path d="M58 30 C48 29 39 31 31 35 C40 35 49 34 59 32Z"></path>
+    <path d="M47 34 C37 34 28 37 20 42 C30 40 39 38 48 36Z"></path>
+
+  </g>
+
+  <!-- darker lower left leaflets -->
+  <g fill="url(#frondDark)" stroke="#23482f" stroke-width="0.55">
+
+    <path d="M58 26 C49 25 41 26 33 29 C42 29 50 29 59 28Z"></path>
+    <path d="M45 29 C36 28 27 30 19 34 C28 33 37 32 46 31Z"></path>
+
+    <path d="M56 18 C51 10 47 6 42 3 C45 10 49 16 56 20Z"></path>
+
+  </g>
+
+  <!-- right frond leaflets -->
+  <g fill="url(#frondGreen)" stroke="#285138" stroke-width="0.55">
+
+    <path d="M76 24 C85 17 93 15 101 16 C94 20 86 23 76 26Z"></path>
+    <path d="M85 20 C94 13 102 12 109 13 C103 17 95 20 85 22Z"></path>
+    <path d="M95 18 C103 13 112 14 120 17 C112 19 104 20 95 20Z"></path>
+
+    <path d="M75 20 C80 12 85 7 91 4 C88 11 84 17 75 23Z"></path>
+    <path d="M84 14 C88 8 93 5 98 4 C95 9 91 13 84 17Z"></path>
+
+    <path d="M76 30 C86 29 95 31 103 35 C94 35 85 34 75 32Z"></path>
+    <path d="M88 34 C98 34 107 37 115 42 C105 40 96 38 87 36Z"></path>
+
+  </g>
+
+  <!-- darker right leaflets -->
+  <g fill="url(#frondDark)" stroke="#23482f" stroke-width="0.55">
+
+    <path d="M76 26 C85 25 93 26 101 29 C92 29 84 29 75 28Z"></path>
+    <path d="M89 29 C98 28 107 30 115 34 C106 33 97 32 88 31Z"></path>
+
+    <path d="M78 18 C83 10 87 6 92 3 C89 10 85 16 78 20Z"></path>
+
+  </g>
+
+  <!-- hanging fruit stalks -->
+  <g fill="none" stroke="#846637" stroke-width="1.5" stroke-linecap="round">
+
+    <path d="M62 29 C54 39 52 49 53 60"></path>
+    <path d="M66 30 C62 42 62 53 63 66"></path>
+    <path d="M70 30 C77 41 81 51 81 62"></path>
+
+    <path d="M53 47 C47 51 44 56 42 61"></path>
+    <path d="M64 48 C58 53 56 59 55 64"></path>
+    <path d="M79 47 C86 51 90 56 92 61"></path>
+
+  </g>
+
+  <!-- left date bunch -->
+  <g stroke="#5c3c2a" stroke-width="0.9" filter="url(#softShadow)">
+
+    <ellipse cx="42" cy="65" rx="5" ry="8" fill="url(#dateGold)" transform="rotate(-12 42 65)"></ellipse>
+
+    <ellipse cx="50" cy="63" rx="5" ry="8" fill="url(#dateDark)" transform="rotate(-5 50 63)"></ellipse>
+
+    <ellipse cx="47" cy="74" rx="5" ry="8" fill="url(#dateGold)" transform="rotate(-9 47 74)"></ellipse>
+
+    <ellipse cx="56" cy="72" rx="5" ry="8" fill="url(#dateDark)" transform="rotate(5 56 72)"></ellipse>
+
+    <ellipse cx="52" cy="83" rx="5" ry="8" fill="url(#dateGold)" transform="rotate(-3 52 83)"></ellipse>
+
+  </g>
+
+  <!-- centre date bunch -->
+  <g stroke="#5c3c2a" stroke-width="0.9" filter="url(#softShadow)">
+
+    <ellipse cx="62" cy="67" rx="5" ry="8" fill="url(#dateGold)"></ellipse>
+
+    <ellipse cx="70" cy="66" rx="5" ry="8" fill="url(#dateDark)" transform="rotate(5 70 66)"></ellipse>
+
+    <ellipse cx="64" cy="77" rx="5" ry="8" fill="url(#dateDark)" transform="rotate(-4 64 77)"></ellipse>
+
+    <ellipse cx="72" cy="77" rx="5" ry="8" fill="url(#dateGold)" transform="rotate(5 72 77)"></ellipse>
+
+    <ellipse cx="68" cy="88" rx="5" ry="8" fill="url(#dateDark)" transform="rotate(2 68 88)"></ellipse>
+
+  </g>
+
+  <!-- right date bunch -->
+  <g stroke="#5c3c2a" stroke-width="0.9" filter="url(#softShadow)">
+
+    <ellipse cx="84" cy="64" rx="5" ry="8" fill="url(#dateGold)" transform="rotate(10 84 64)"></ellipse>
+
+    <ellipse cx="92" cy="66" rx="5" ry="8" fill="url(#dateDark)" transform="rotate(13 92 66)"></ellipse>
+
+    <ellipse cx="87" cy="75" rx="5" ry="8" fill="url(#dateDark)" transform="rotate(8 87 75)"></ellipse>
+
+    <ellipse cx="95" cy="77" rx="5" ry="8" fill="url(#dateGold)" transform="rotate(12 95 77)"></ellipse>
+
+  </g>
+
+  <!-- date highlights -->
+  <g fill="#f9dfa0" opacity="0.55">
+
+    <ellipse cx="40" cy="61" rx="1.5" ry="2.8" transform="rotate(-20 40 61)"></ellipse>
+
+    <ellipse cx="60" cy="63" rx="1.5" ry="2.8" transform="rotate(-20 60 63)"></ellipse>
+
+    <ellipse cx="82" cy="60" rx="1.5" ry="2.8" transform="rotate(-20 82 60)"></ellipse>
+
+    <ellipse cx="45" cy="70" rx="1.4" ry="2.5" transform="rotate(-20 45 70)"></ellipse>
+
+    <ellipse cx="70" cy="73" rx="1.4" ry="2.5" transform="rotate(-20 70 73)"></ellipse>
+
+  </g>
+
+  <!-- small fruit calyxes -->
+  <g fill="#6d7440">
+
+    <path d="M38 58 L42 56 L46 59 L42 60Z"></path>
+    <path d="M58 59 L62 57 L66 59 L62 61Z"></path>
+    <path d="M80 57 L84 55 L88 58 L84 60Z"></path>
+
+  </g>
+
+</svg>

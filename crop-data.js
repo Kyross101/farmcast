@@ -14890,6 +14890,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Date Palm',
+      scientificName: 'Phoenix dactylifera L.',
+      category: 'fruit',
+      icon: 'assets/crops/date-palm.svg',
+
+      plantingMethods: [
+        {
+          value: 'offshoot-transplants',
+          label: 'Rooted Offshoots'
+        },
+        {
+          value: 'tissue-culture-plantlets',
+          label: 'Tissue-Culture Plantlets'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        title:
+          'Date Palm Propagation',
+
+        url:
+          [
+            'https://',
+            'www.fao.org/4/Y4360E/y4360e09.htm'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Hot subtropical growing conditions with a long warm season for fruit development. Kew identifies Date Palm as a tree primarily associated with the subtropical biome. Successful fruit production depends strongly on local heat, season length, cultivar and orchard conditions, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Date Palm is strongly associated with dry subtropical production regions but productive palms still require an adequate water supply, especially during establishment and fruit development. Rain near fruit ripening can reduce fruit quality. FarmCast therefore keeps water guidance descriptive rather than inventing one universal annual rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows source guidance emphasizing a suitable, well-drained root zone and adequate irrigation management.',
+
+      soilNote:
+        'Date Palms require substantial rooting space and suitable drainage. They are widely cultivated under dry subtropical conditions where irrigation provides dependable water. Orchard conditions should avoid prolonged waterlogging while maintaining adequate soil moisture for establishment and fruit production.',
+
+      plantingNote:
+        'Date Palm is the familiar fruit-producing palm cultivated for edible dates. FAO identifies seed propagation, offshoot propagation and tissue culture as the principal propagation approaches, but explains that seed-grown plants are not true-to-type and therefore are unsuitable for reliably reproducing named cultivars. Rooted offshoots remain a traditional clonal method, while tissue-culture plantlets allow large-scale multiplication of selected cultivars. Current Kew taxonomy accepts Phoenix dactylifera L.; historical synonyms include Palma dactylifera, Phoenix excelsior, Phoenix iberica and several named varieties of Phoenix dactylifera.',
+
+      harvestNote:
+        'Date fruits may be harvested at different maturity stages depending on cultivar and intended use. FAO recognizes Khalal as the firm physiologically mature stage, Rutab as the softened partially browned stage and Tamar as the fully ripe lower-moisture stage. Harvest season and preferred maturity stage vary by cultivar, climate and market requirements. Because even the approximately 200-day fruit-development guidance begins at pollination rather than planting, FarmCast keeps Date Palm as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Food and Agriculture Organization of the United Nations',
+
+        title:
+          'Date Palm Propagation',
+
+        url:
+          [
+            'https://',
+            'www.fao.org/4/Y4360E/y4360e09.htm'
+          ].join('')
+      }
+    },
+
   
 ];
 
