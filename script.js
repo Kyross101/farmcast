@@ -7470,6 +7470,34 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Spinach: {
+    'direct-seeded': {
+      minDays: 30,
+      maxDays: 40,
+      basis:
+        'after seeding',
+      derived: false,
+
+      note:
+        'University of Minnesota Extension lists approximately 30–40 days to maturity for direct-seeded Spinach. Individual tender leaves may be harvested as they reach usable size, and repeated leaf harvests are also possible.',
+
+      source: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Crop and Field Planning Tools for Vegetable Farmers',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/vegetable-growing-guides-farmers/',
+            'crop-and-field-planning-tools-vegetable-farmers'
+          ].join('')
+      }
+    }
+  },
+
 
 
 };

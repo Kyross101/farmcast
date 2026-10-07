@@ -13924,6 +13924,71 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Spinach',
+      scientificName: 'Spinacia oleracea L.',
+      category: 'vegetable',
+      icon: 'assets/crops/spinach.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Spinach and Swiss Chard in Home Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/garden-and-home/yard-and-garden/',
+            'gardening-in-minnesota/growing-spinach-and-swiss-chard'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool-season growing conditions. Kew identifies Spinach as an annual or biennial species primarily associated with the temperate biome. University of Minnesota Extension notes that increasing day length, high temperatures, and drought can accelerate bolting. FarmCast therefore keeps the general temperature guidance descriptive rather than converting regional growing guidance into one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of Minnesota Extension recommends maintaining adequate and consistent soil moisture for good leaf quality and yield and to help delay bolting. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'University of Minnesota Extension recommends soil pH 6.5–8.0 for Spinach.',
+
+      soilNote:
+        'Spinach performs well in fertile soil improved with organic matter and requires adequate moisture for high-quality leafy growth. Good drainage is important, while full sun is suitable during cool conditions and some shade may be beneficial as conditions become warmer.',
+
+      plantingNote:
+        'Spinach is a familiar edible leafy vegetable normally established by direct seeding. University of Minnesota Extension recommends sowing seed directly into workable soil for spring production and sowing again for fall production. Current Kew taxonomy accepts Spinacia oleracea L. Chenopodium oleraceum is treated as a species-level synonym, while several older Spinacia names are listed under the cultivated Spinacia oleracea subsp. oleracea.',
+
+      harvestNote:
+        'Spinach is harvested for its tender edible leaves, which may be collected individually or as a whole plant. University of Minnesota Extension notes that new leaves can develop after an initial harvest, allowing repeated picking. Its 2026-reviewed commercial vegetable planning guide lists approximately 30–40 days to maturity for direct-seeded Spinach, so FarmCast can use that source-backed interval for the automatic Estimated Harvest.',
+
+      source: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Spinach and Swiss Chard in Home Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/garden-and-home/yard-and-garden/',
+            'gardening-in-minnesota/growing-spinach-and-swiss-chard'
+          ].join('')
+      }
+    },
+
 
   
 ];
