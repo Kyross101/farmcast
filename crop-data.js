@@ -16424,6 +16424,77 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Asian Pear',
+      localName: 'Nashi Pear / Apple Pear',
+      scientificName:
+        'Pyrus pyrifolia (Burm.f.) Nakai',
+      category: 'fruit',
+      icon: 'assets/crops/asian-pear.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Pear Tree'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Small Farms Network',
+
+        title:
+          'Asian Pears',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/program/',
+            'uc-small-farms-network/',
+            'asian-pears'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Asian Pear is a temperate fruit tree. Kew identifies Pyrus pyrifolia as a tree growing primarily in the temperate biome. Local winter chilling, cultivar and spring-frost conditions strongly influence flowering and fruit production, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No universal annual rainfall requirement is stored. Asian Pear requires consistent moisture during active growth and fruit development, but irrigation needs vary with climate, soil and rootstock. FarmCast therefore keeps water guidance descriptive rather than inventing a fixed annual rainfall range.',
+
+      soilPH:
+        '5.9–6.5',
+
+      soilNote:
+        'Asian Pear performs best in fertile, well-drained soil and full sun. Oregon State University Extension describes consistent and uniform soil moisture as desirable and gives a preferred soil-pH range of about 5.9–6.5. Sites with persistent waterlogging or poor air drainage should be avoided.',
+
+      plantingNote:
+        'Asian Pear in this FarmCast entry refers specifically to Pyrus pyrifolia (Burm.f.) Nakai, commonly called Nashi Pear, Japanese Pear, Sand Pear or Apple Pear. It is botanically distinct from the European Pear entry already in FarmCast, which is Pyrus communis L. Asian pear cultivars are commonly propagated by grafting onto suitable pear rootstocks; University of California guidance discusses Pyrus betulifolia, Pyrus calleryana and other pear rootstocks used for Asian pear production. Current Kew taxonomy accepts Pyrus pyrifolia and lists historical names including Pyrus serotina, Pyrus sinensis, Pyrus autumnalis and Pyrus pyrifolia var. culta among its synonyms.',
+
+      harvestNote:
+        'Asian Pear differs from European Pear because the fruit is normally allowed to ripen on the tree. Penn State Extension recommends harvesting when mature fruit separates readily from the spur or branch with a slight lift and twist, with taste and crisp texture used as additional maturity indicators. Cultivars mature at different points in the season. Because tree establishment age, cultivar and local climate determine first bearing and there is no single reliable planting-to-first-harvest interval, FarmCast keeps Asian Pear as guidance-only.',
+
+      source: {
+        agency:
+          'Penn State Extension',
+
+        title:
+          'Asian Pears in the Home Orchard - Variety Selection',
+
+        url:
+          [
+            'https://',
+            'extension.psu.edu/',
+            'asian-pears-in-the-home-orchard-variety-selection'
+          ].join('')
+      }
+    },
+
   
 ];
 

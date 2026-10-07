@@ -1,0 +1,341 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Asian Pear</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of an Asian pear branch with
+    round golden-russet fruits, glossy green leaves, blossoms,
+    highlights, shadows, and natural botanical depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a47a55"></stop>
+      <stop offset="0.5" stop-color="#71503b"></stop>
+      <stop offset="1" stop-color="#43362e"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bed47c"></stop>
+      <stop offset="0.32" stop-color="#759d55"></stop>
+      <stop offset="0.7" stop-color="#3d7246"></stop>
+      <stop offset="1" stop-color="#1d4937"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#93b662"></stop>
+      <stop offset="0.45" stop-color="#527d4b"></stop>
+      <stop offset="1" stop-color="#203f32"></stop>
+    </linearGradient>
+
+    <radialGradient id="pearGold" cx="34%" cy="27%" r="75%">
+      <stop offset="0" stop-color="#f4dea0"></stop>
+      <stop offset="0.32" stop-color="#d7b663"></stop>
+      <stop offset="0.7" stop-color="#b88942"></stop>
+      <stop offset="1" stop-color="#815d36"></stop>
+    </radialGradient>
+
+    <radialGradient id="pearLight" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#fff0b5"></stop>
+      <stop offset="0.32" stop-color="#e4c870"></stop>
+      <stop offset="0.72" stop-color="#bb9047"></stop>
+      <stop offset="1" stop-color="#80603a"></stop>
+    </radialGradient>
+
+    <linearGradient id="petalWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.62" stop-color="#f3eee5"></stop>
+      <stop offset="1" stop-color="#d8d0c5"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#ffe99a"></stop>
+      <stop offset="0.58" stop-color="#d8bd55"></stop>
+      <stop offset="1" stop-color="#957b35"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#16241b" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.4" flood-color="#493827" flood-opacity="0.3"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- main branch -->
+
+  <path d="
+    M13 114
+    C31 99 45 84 59 67
+    C74 48 88 31 108 12" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- branch highlight -->
+
+  <path d="
+    M16 111
+    C34 95 47 81 61 64
+    C76 46 90 29 105 15" fill="none" stroke="#c5a27d" stroke-width="1" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- secondary branches -->
+
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="
+      M43 87
+      C34 73 25 61 16 50" stroke-width="3"></path>
+
+    <path d="
+      M60 67
+      C48 56 40 44 34 29" stroke-width="3"></path>
+
+    <path d="
+      M75 48
+      C89 47 101 42 114 33" stroke-width="2.8"></path>
+
+    <path d="
+      M88 31
+      C79 22 73 14 70 7" stroke-width="2.5"></path>
+
+  </g>
+
+  <!-- left leaves -->
+
+  <g fill="url(#leafGreen)" stroke="#28523a" stroke-width="0.9" filter="url(#softShadow)">
+
+    <path d="
+      M39 87
+      C25 82 15 85 10 94
+      C20 98 31 96 39 87Z"></path>
+
+    <path d="
+      M39 74
+      C24 66 15 67 9 75
+      C18 82 30 82 39 74Z"></path>
+
+    <path d="
+      M36 57
+      C24 46 15 44 8 49
+      C14 59 25 64 36 57Z"></path>
+
+    <path d="
+      M42 45
+      C29 35 20 34 13 40
+      C21 49 32 52 42 45Z"></path>
+
+  </g>
+
+  <!-- upper leaves -->
+
+  <g fill="url(#leafDark)" stroke="#244d37" stroke-width="0.9" filter="url(#softShadow)">
+
+    <path d="
+      M62 59
+      C75 51 86 52 93 60
+      C84 66 73 66 62 59Z"></path>
+
+    <path d="
+      M72 46
+      C84 38 95 38 102 44
+      C94 52 83 54 72 46Z"></path>
+
+    <path d="
+      M83 34
+      C95 26 106 27 113 33
+      C105 40 94 41 83 34Z"></path>
+
+    <path d="
+      M93 22
+      C104 15 113 15 120 20
+      C113 27 103 29 93 22Z"></path>
+
+    <path d="
+      M77 28
+      C67 19 59 17 52 22
+      C58 30 68 34 77 28Z"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+
+  <g fill="none" stroke="#c4da9a" stroke-width="0.6" stroke-linecap="round" opacity="0.72">
+
+    <path d="M13 93 L36 87"></path>
+    <path d="M12 75 L36 74"></path>
+    <path d="M11 50 L33 57"></path>
+    <path d="M16 40 L39 45"></path>
+
+    <path d="M65 59 L90 60"></path>
+    <path d="M75 46 L99 44"></path>
+    <path d="M86 34 L110 33"></path>
+    <path d="M96 22 L117 20"></path>
+
+  </g>
+
+  <!-- fruit stems -->
+
+  <g fill="none" stroke="#65523d" stroke-linecap="round">
+
+    <path d="
+      M54 73
+      C57 80 57 87 56 92" stroke-width="2"></path>
+
+    <path d="
+      M69 55
+      C75 61 78 68 79 74" stroke-width="2"></path>
+
+    <path d="
+      M83 40
+      C89 45 93 51 94 57" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- main Asian pear fruit -->
+
+  <g transform="translate(55 101)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -15
+      C11 -16 20 -10 23 1
+      C26 14 18 25 3 27
+      C-12 28 -23 19 -23 6
+      C-24 -7 -14 -14 0 -15Z" fill="url(#pearGold)" stroke="#80603b" stroke-width="1.3"></path>
+
+    <!-- russet speckles -->
+
+    <g fill="#805d36" opacity="0.55">
+
+      <circle cx="-11" cy="-3" r="0.8"></circle>
+      <circle cx="-5" cy="6" r="0.7"></circle>
+      <circle cx="4" cy="-6" r="0.8"></circle>
+      <circle cx="11" cy="3" r="0.7"></circle>
+      <circle cx="14" cy="11" r="0.7"></circle>
+      <circle cx="-14" cy="12" r="0.7"></circle>
+      <circle cx="-5" cy="18" r="0.6"></circle>
+      <circle cx="7" cy="19" r="0.7"></circle>
+      <circle cx="1" cy="10" r="0.6"></circle>
+
+    </g>
+
+    <ellipse cx="-8" cy="-4" rx="5" ry="8" fill="#fff1b6" opacity="0.3"></ellipse>
+
+    <path d="
+      M-4 -15
+      C-2 -19 1 -21 4 -22" fill="none" stroke="#604532" stroke-width="2.5" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- second fruit -->
+
+  <g transform="translate(81 81)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -13
+      C10 -14 18 -8 20 1
+      C22 12 15 21 2 23
+      C-11 24 -20 16 -20 5
+      C-21 -6 -12 -12 0 -13Z" fill="url(#pearLight)" stroke="#85623c" stroke-width="1.2"></path>
+
+    <g fill="#846139" opacity="0.5">
+
+      <circle cx="-9" cy="1" r="0.7"></circle>
+      <circle cx="-2" cy="-5" r="0.7"></circle>
+      <circle cx="8" cy="-3" r="0.7"></circle>
+      <circle cx="12" cy="7" r="0.7"></circle>
+      <circle cx="3" cy="15" r="0.6"></circle>
+      <circle cx="-11" cy="11" r="0.6"></circle>
+
+    </g>
+
+    <ellipse cx="-7" cy="-3" rx="4.3" ry="6.5" fill="#fff3bf" opacity="0.3"></ellipse>
+
+    <path d="
+      M-3 -13
+      C-1 -17 1 -19 3 -21" fill="none" stroke="#624732" stroke-width="2.2" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- third smaller fruit -->
+
+  <g transform="translate(98 62)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -10
+      C8 -11 14 -6 16 1
+      C18 10 12 17 2 19
+      C-9 19 -16 13 -16 4
+      C-17 -5 -10 -10 0 -10Z" fill="url(#pearGold)" stroke="#805f3b" stroke-width="1.1"></path>
+
+    <ellipse cx="-5" cy="-2" rx="3.4" ry="5.3" fill="#fff1b7" opacity="0.28"></ellipse>
+
+    <g fill="#795936" opacity="0.5">
+      <circle cx="-7" cy="5" r="0.6"></circle>
+      <circle cx="3" cy="-4" r="0.6"></circle>
+      <circle cx="8" cy="5" r="0.6"></circle>
+      <circle cx="0" cy="11" r="0.6"></circle>
+    </g>
+
+  </g>
+
+  <!-- blossom branch -->
+
+  <path d="
+    M44 55
+    C38 52 32 48 27 43" fill="none" stroke="#66503a" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- pear blossoms -->
+
+  <g transform="translate(24 40)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="-6" rx="4" ry="6" fill="url(#petalWhite)" stroke="#d7cbc1" stroke-width="0.6"></ellipse>
+
+    <ellipse cx="6" cy="-2" rx="6" ry="4" fill="url(#petalWhite)" stroke="#d7cbc1" stroke-width="0.6" transform="rotate(25 6 -2)"></ellipse>
+
+    <ellipse cx="4" cy="5" rx="4" ry="6" fill="url(#petalWhite)" stroke="#d7cbc1" stroke-width="0.6" transform="rotate(-30 4 5)"></ellipse>
+
+    <ellipse cx="-4" cy="5" rx="4" ry="6" fill="url(#petalWhite)" stroke="#d7cbc1" stroke-width="0.6" transform="rotate(30 -4 5)"></ellipse>
+
+    <ellipse cx="-6" cy="-2" rx="6" ry="4" fill="url(#petalWhite)" stroke="#d7cbc1" stroke-width="0.6" transform="rotate(-25 -6 -2)"></ellipse>
+
+    <circle cx="0" cy="0" r="3" fill="url(#flowerCenter)"></circle>
+
+    <g fill="#795b42">
+      <circle cx="-2" cy="-1" r="0.6"></circle>
+      <circle cx="2" cy="-1" r="0.6"></circle>
+      <circle cx="0" cy="2" r="0.6"></circle>
+    </g>
+
+  </g>
+
+  <!-- second small blossom -->
+
+  <g transform="translate(36 52) scale(0.72)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="-6" rx="4" ry="6" fill="url(#petalWhite)"></ellipse>
+
+    <ellipse cx="6" cy="-2" rx="6" ry="4" fill="url(#petalWhite)"></ellipse>
+
+    <ellipse cx="4" cy="5" rx="4" ry="6" fill="url(#petalWhite)"></ellipse>
+
+    <ellipse cx="-4" cy="5" rx="4" ry="6" fill="url(#petalWhite)"></ellipse>
+
+    <ellipse cx="-6" cy="-2" rx="6" ry="4" fill="url(#petalWhite)"></ellipse>
+
+    <circle cx="0" cy="0" r="3" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <!-- foreground leaf -->
+
+  <path d="
+    M25 111
+    C11 105 5 108 3 117
+    C12 122 22 120 29 114Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M6 117
+    L26 113" fill="none" stroke="#c4da99" stroke-width="0.7" opacity="0.7"></path>
+
+</svg>
