@@ -14747,6 +14747,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Pecan',
+      scientificName:
+        'Carya illinoinensis (Wangenh.) K.Koch',
+      category: 'tree-nut',
+      icon: 'assets/crops/pecan.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-trees',
+          label: 'Grafted Pecan Tree'
+        },
+        {
+          value: 'bare-root-trees',
+          label: 'Bare-Root Trees'
+        },
+        {
+          value: 'container-grown-trees',
+          label: 'Container-Grown Trees'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Oklahoma State University Extension',
+
+        title:
+          'Managing Pecans in the Home Landscape',
+
+        url:
+          [
+            'https://',
+            'extension.okstate.edu/fact-sheets/',
+            'managing-pecans-in-the-home-landscape'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate to warm-temperate orchard conditions. Kew identifies Pecan as a tree primarily associated with the temperate biome. Oklahoma State University Extension emphasizes selecting cultivars adapted to the local climate and providing abundant sunlight. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Oklahoma State University Extension emphasizes adequate water during establishment, spring shoot growth, nut sizing and especially kernel filling. Drought stress can reduce nut size and kernel quality. FarmCast therefore keeps moisture guidance descriptive rather than inventing one universal annual rainfall requirement.',
+
+      soilPH:
+        'University of Georgia Cooperative Extension recommends about pH 6.0–6.5 for good nutrient availability in Pecan orchards.',
+
+      soilNote:
+        'Pecan trees require abundant sunlight, substantial growing space and soil that supports a large root system. Good soil moisture is important, particularly for young trees and during nut development, while orchard fertility should be guided by soil and leaf analysis.',
+
+      plantingNote:
+        'Pecan is a familiar edible tree-nut crop. Improved cultivars are normally propagated by grafting desirable cultivar wood onto seedling rootstocks so the resulting tree retains the characteristics of the selected variety. Oklahoma State University Extension also describes establishment using bare-root or container-grown trees. Two compatible cultivars are generally recommended to improve wind pollination and nut production. Current Kew taxonomy accepts Carya illinoinensis (Wangenh.) K.Koch and lists historical synonyms including Juglans illinoinensis, Carya pecan, Carya oliviformis, Hicorius pecan and Juglans pecan.',
+
+      harvestNote:
+        'Pecans are ready for harvest when the outer shucks split and mature nuts begin releasing from them. Oklahoma State University Extension notes that early cultivars may begin ripening in early autumn while later cultivars mature later in the season. Seedling trees may take many years before their nut characteristics can be evaluated, while improved grafted cultivars differ substantially in bearing age and maturity season. Because first bearing and annual harvest timing depend on cultivar, propagation, tree age and climate, FarmCast keeps Pecan as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Oklahoma State University Extension',
+
+        title:
+          'Managing Pecans in the Home Landscape',
+
+        url:
+          [
+            'https://',
+            'extension.okstate.edu/fact-sheets/',
+            'managing-pecans-in-the-home-landscape'
+          ].join('')
+      }
+    },
+
   
 ];
 

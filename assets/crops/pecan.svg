@@ -1,0 +1,295 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Pecan</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a pecan branch with compound green
+    leaves, green four-part shucks, a naturally split mature shuck,
+    and elongated brown pecan nuts with highlights and shadows.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b775c"></stop>
+      <stop offset="0.55" stop-color="#6d5040"></stop>
+      <stop offset="1" stop-color="#44352d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#275a38"></stop>
+      <stop offset="0.5" stop-color="#55934f"></stop>
+      <stop offset="1" stop-color="#9bc679"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#204831"></stop>
+      <stop offset="1" stop-color="#679d58"></stop>
+    </linearGradient>
+
+    <radialGradient id="shuckGreen" cx="32%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#cad57b"></stop>
+      <stop offset="0.42" stop-color="#8da552"></stop>
+      <stop offset="0.78" stop-color="#607941"></stop>
+      <stop offset="1" stop-color="#405834"></stop>
+    </radialGradient>
+
+    <radialGradient id="pecanBrown" cx="32%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#e1b97e"></stop>
+      <stop offset="0.45" stop-color="#bd8352"></stop>
+      <stop offset="0.8" stop-color="#7f5137"></stop>
+      <stop offset="1" stop-color="#51372c"></stop>
+    </radialGradient>
+
+    <linearGradient id="splitShuck" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aab96a"></stop>
+      <stop offset="0.55" stop-color="#718746"></stop>
+      <stop offset="1" stop-color="#4b6037"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#222a22" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="116" rx="40" ry="6" fill="#273128" opacity="0.16"></ellipse>
+
+  <!-- main branch -->
+  <path d="
+    M18 105
+    C34 91 47 76 58 60
+    C71 42 85 28 106 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- side branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M47 77 C39 64 33 52 31 40" stroke-width="3.4"></path>
+
+    <path d="M61 56 C55 44 52 32 53 20" stroke-width="3.1"></path>
+
+    <path d="M76 39 C88 41 100 37 112 29" stroke-width="3"></path>
+
+    <path d="M38 90 C30 86 23 81 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- bark highlight -->
+  <path d="
+    M22 101
+    C38 87 50 73 61 57
+    C74 41 88 28 103 18" fill="none" stroke="#bd9879" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- pecan leaflets -->
+  <g stroke="#285138" stroke-width="1.05" filter="url(#softShadow)">
+
+    <path d="
+      M29 42
+      C20 34 11 36 8 44
+      C16 51 25 51 32 47
+      C35 45 33 43 29 42Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M39 57
+      C29 49 20 53 18 61
+      C26 69 36 67 43 62
+      C46 60 43 58 39 57Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M52 22
+      C43 14 34 17 31 25
+      C39 33 49 32 56 27
+      C59 25 56 23 52 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M70 46
+      C79 36 90 36 97 43
+      C91 53 81 56 71 52
+      C68 51 68 48 70 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M92 30
+      C101 20 112 21 118 29
+      C111 38 101 40 92 35
+      C89 34 89 31 92 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 49
+      C106 40 116 43 120 51
+      C113 59 103 60 95 55
+      C92 53 93 51 96 49Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M24 78
+      C15 71 7 74 6 82
+      C14 89 24 87 31 82
+      C34 80 30 78 24 78Z" fill="url(#leafDark)"></path>
+
+  </g>
+
+  <!-- leaflet veins -->
+  <g fill="none" stroke="#bfd7a1" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M10 44 C18 44 25 44 31 45"></path>
+    <path d="M20 61 C28 61 35 60 41 60"></path>
+    <path d="M34 25 C42 25 49 25 54 25"></path>
+
+    <path d="M94 44 C85 47 78 49 72 50"></path>
+    <path d="M115 29 C107 31 100 33 93 34"></path>
+    <path d="M117 51 C109 52 102 53 96 53"></path>
+
+  </g>
+
+  <!-- nut stems -->
+  <g fill="none" stroke="#615f3d" stroke-width="1.8" stroke-linecap="round">
+
+    <path d="M52 65 C51 72 51 78 52 83"></path>
+    <path d="M69 55 C72 62 74 67 75 73"></path>
+    <path d="M40 77 C39 84 39 89 40 94"></path>
+
+  </g>
+
+  <!-- green pecan shuck 1 -->
+  <path d="
+    M52 79
+    C44 80 39 87 39 96
+    C39 105 45 113 52 115
+
+    C60 113 66 105 66 96
+    C66 87 60 80 52 79Z" fill="url(#shuckGreen)" stroke="#425b35" stroke-width="1.5" filter="url(#softShadow)"></path>
+
+  <!-- four shuck seams -->
+  <g fill="none" stroke="#6d884b" stroke-width="0.85" opacity="0.8">
+
+    <path d="M52 82 C50 91 50 104 52 112"></path>
+    <path d="M42 91 C48 95 56 95 63 91"></path>
+
+  </g>
+
+  <!-- green pecan shuck 2 -->
+  <path d="
+    M76 69
+    C69 70 64 77 64 85
+    C64 94 70 101 77 102
+
+    C84 101 90 94 90 85
+    C90 77 84 70 76 69Z" fill="url(#shuckGreen)" stroke="#425b35" stroke-width="1.5" filter="url(#softShadow)"></path>
+
+  <g fill="none" stroke="#6d884b" stroke-width="0.8" opacity="0.8">
+
+    <path d="M77 72 C75 80 75 92 77 99"></path>
+    <path d="M67 82 C73 86 81 86 87 82"></path>
+
+  </g>
+
+  <!-- shuck highlights -->
+  <g fill="#e3e9a2" opacity="0.55">
+
+    <ellipse cx="47" cy="87" rx="2.4" ry="4.2" transform="rotate(-25 47 87)"></ellipse>
+
+    <ellipse cx="72" cy="77" rx="2.2" ry="3.8" transform="rotate(-25 72 77)"></ellipse>
+
+  </g>
+
+  <!-- naturally split shuck -->
+  <g transform="translate(38 102)" filter="url(#softShadow)">
+
+    <!-- upper-left section -->
+    <path d="
+      M-1 -8
+      C-9 -10 -15 -5 -17 2
+      C-11 1 -7 3 -4 7
+      C-1 3 0 -2 -1 -8Z" fill="url(#splitShuck)" stroke="#475d37" stroke-width="1.1"></path>
+
+    <!-- upper-right section -->
+    <path d="
+      M1 -8
+      C9 -10 15 -5 17 2
+      C11 1 7 3 4 7
+      C1 3 0 -2 1 -8Z" fill="url(#splitShuck)" stroke="#475d37" stroke-width="1.1"></path>
+
+    <!-- lower-left section -->
+    <path d="
+      M-4 7
+      C-10 5 -15 9 -16 15
+      C-9 15 -4 13 0 9
+      C-1 8 -2 7 -4 7Z" fill="url(#splitShuck)" stroke="#475d37" stroke-width="1.1"></path>
+
+    <!-- lower-right section -->
+    <path d="
+      M4 7
+      C10 5 15 9 16 15
+      C9 15 4 13 0 9
+      C1 8 2 7 4 7Z" fill="url(#splitShuck)" stroke="#475d37" stroke-width="1.1"></path>
+
+    <!-- mature elongated pecan -->
+    <path d="
+      M0 -5
+      C-7 -3 -10 4 -9 11
+      C-8 19 -4 24 0 26
+
+      C4 24 8 19 9 11
+      C10 4 7 -3 0 -5Z" fill="url(#pecanBrown)" stroke="#66432f" stroke-width="1.35"></path>
+
+    <!-- longitudinal pecan grooves -->
+    <g fill="none" stroke="#80553a" stroke-width="0.72" stroke-linecap="round" opacity="0.88">
+
+      <path d="M0 -2 C-2 6 -2 16 0 23"></path>
+      <path d="M-4 0 C-6 7 -5 15 -3 20"></path>
+      <path d="M4 0 C6 7 5 15 3 20"></path>
+
+      <path d="M-6 6 C-2 8 2 8 6 6"></path>
+      <path d="M-6 13 C-2 15 2 15 6 13"></path>
+      <path d="M-5 19 C-2 18 2 18 5 19"></path>
+
+    </g>
+
+    <!-- pecan highlight -->
+    <path d="
+      M-4 0
+      C-6 5 -6 9 -5 12" fill="none" stroke="#efd09e" stroke-width="1.1" stroke-linecap="round" opacity="0.56"></path>
+
+  </g>
+
+  <!-- second exposed nut -->
+  <path d="
+    M82 91
+    C76 93 73 99 74 106
+    C75 113 79 117 83 119
+
+    C87 117 91 113 92 106
+    C93 99 89 93 82 91Z" fill="url(#pecanBrown)" stroke="#65432e" stroke-width="1.3" filter="url(#softShadow)"></path>
+
+  <!-- exposed nut grooves -->
+  <g fill="none" stroke="#80553a" stroke-width="0.7" stroke-linecap="round" opacity="0.85">
+
+    <path d="M83 94 C81 101 81 109 83 116"></path>
+    <path d="M78 99 C82 101 86 101 90 99"></path>
+    <path d="M77 106 C81 108 87 108 91 106"></path>
+
+  </g>
+
+  <!-- small catkin detail -->
+  <path d="
+    M77 39
+    C80 31 83 25 87 19" fill="none" stroke="#66764b" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M87 18
+      C85 25 86 32 89 39" fill="none" stroke="#a79e61" stroke-width="3.6" stroke-linecap="round"></path>
+
+    <g fill="#c8bb73" stroke="#746c48" stroke-width="0.45">
+
+      <circle cx="87" cy="22" r="1.7"></circle>
+      <circle cx="86" cy="27" r="1.7"></circle>
+      <circle cx="87" cy="32" r="1.7"></circle>
+      <circle cx="89" cy="37" r="1.7"></circle>
+
+    </g>
+
+  </g>
+
+</svg>
