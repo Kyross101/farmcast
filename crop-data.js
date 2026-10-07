@@ -18826,6 +18826,89 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Capers',
+      localName: 'Caper Bush / Common Caper',
+      scientificName:
+        'Capparis spinosa L.',
+      category: 'herb',
+      icon: 'assets/crops/capers.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'root-propagated',
+          label: 'Root Propagated'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Small Farms Network',
+
+        title:
+          'Capers',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/',
+            'program/uc-small-farms-network/',
+            'capers'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Caper is a drought-tolerant perennial shrub adapted to warm and comparatively dry growing environments. University of California Agriculture and Natural Resources describes established caper plants as highly drought resistant while emphasizing successful establishment of young plants under appropriate seasonal conditions. Because regional climate, plant age and establishment method affect performance and the cultivation source does not define one universal optimum temperature interval or absolute physiological minimum and maximum limits for all production areas, FarmCast keeps temperature guidance descriptive rather than assigning unsupported numeric thresholds.',
+
+      rainfallRange:
+        'Established caper plants tolerate relatively dry conditions, while young plants require supplemental moisture during establishment. University of California Agriculture and Natural Resources reports that newly planted capers need irrigation during their first years but mature plants require substantially less water. Because rainfall distribution, soil drainage, irrigation and plant age determine actual moisture needs, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Caper requires well-drained soil and is particularly sensitive to prolonged waterlogging. University of California Agriculture and Natural Resources repeatedly emphasizes adequate drainage during establishment and cultivation. Because the species-specific cultivation source used for this entry does not establish one universal numeric soil-pH interval for Capparis spinosa production, FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Capers in this FarmCast entry refers specifically to Capparis spinosa L., commonly called Caper, Common Caper or Caper Bush. University of California Agriculture and Natural Resources reports propagation by seed as well as vegetative propagation through cuttings or roots, with vegetative propagation generally preferred because seedlings can be variable. Current Kew taxonomy accepts Capparis spinosa L. and lists three species-level synonyms: Capparis vulgaris Gruvez, Capparis vulgaris acutifolia Gruvez and Capparis vulgaris inermis Gruvez. These common-name and scientific-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Capers are produced primarily for their unopened flower buds, which are harvested by hand and preserved before culinary use. University of California Agriculture and Natural Resources reports seasonal bud picking and notes that young plants begin producing only limited quantities before becoming more productive as they mature. The edible shoots and fruits may also be used. Because these sources describe seasonal harvest and plant-bearing age rather than one exact seed-, cutting- or root-propagation-to-first-harvest interval suitable for every production system, FarmCast keeps Capers as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Small Farms Network',
+
+        title:
+          'Capers',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/',
+            'program/uc-small-farms-network/',
+            'capers'
+          ].join('')
+      }
+    },
+
 
   
 ];
