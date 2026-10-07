@@ -13070,6 +13070,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Common Scurvygrass',
+      scientificName: 'Cochlearia officinalis L.',
+      category: 'vegetable',
+      icon: 'assets/crops/common-scurvygrass.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Cochlearia officinalis — Common Scurvygrass',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/4056/cochlearia-officinalis/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate biennial or perennial conditions. Kew identifies Common Scurvygrass as a biennial or perennial species primarily associated with the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cited cultivation guidance does not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moist but well-drained growing conditions and notes that Common Scurvygrass thrives in saline environments when adequate moisture is available. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Prefers neutral to alkaline soil.',
+
+      soilNote:
+        'Common Scurvygrass grows well in moist but well-drained loam or sandy soil under full sun or partial shade. Royal Horticultural Society guidance also notes its adaptation to saline coastal environments.',
+
+      plantingNote:
+        'Common Scurvygrass is an edible temperate herb propagated by sowing seed outdoors. Current Kew taxonomy accepts Cochlearia officinalis L.; Cochlearia officinalis var. typica, Cochlearia rotundifolia, and Crucifera cochlearia var. officinalis are treated as synonyms.',
+
+      harvestNote:
+        'Common Scurvygrass is harvested for its edible succulent leaves. Grand Valley State University recommends harvesting young leaves in early spring, when they are less bitter than older summer leaves, and notes that the leaves may be eaten raw or boiled. Because harvest is based on young leaf stage and seasonal quality rather than one universal sowing-to-harvest interval, FarmCast keeps Common Scurvygrass as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Cochlearia officinalis — Common Scurvygrass',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/4056/cochlearia-officinalis/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
