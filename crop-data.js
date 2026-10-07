@@ -16064,6 +16064,82 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Rhubarb',
+      localName: 'Pie Plant',
+      scientificName: 'Rheum rhabarbarum L.',
+      category: 'vegetable',
+      icon: 'assets/crops/rhubarb.svg',
+
+      plantingMethods: [
+        {
+          value: 'crown-divisions',
+          label: 'Crown Divisions'
+        },
+        {
+          value: 'bare-root-crowns',
+          label: 'Bare-Root Crowns'
+        },
+        {
+          value: 'seed-started-transplants',
+          label: 'Seed-Started Transplants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Rhubarb in Home Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/garden-and-home/',
+            'yard-and-garden/gardening-in-minnesota/',
+            'growing-rhubarb'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Rhubarb is a cool-season perennial vegetable primarily adapted to temperate growing conditions. Kew identifies Rheum rhabarbarum as a perennial of the temperate biome, while University of Minnesota Extension describes it as a hardy perennial crop. Because successful growth and dormancy depend strongly on local seasonal conditions, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric range.',
+
+      rainfallRange:
+        'No universal annual rainfall range is stored for Rhubarb. University of Minnesota Extension emphasizes consistent soil moisture during active growth and supplemental watering when needed rather than a fixed annual rainfall requirement. FarmCast therefore keeps rainfall guidance descriptive.',
+
+      soilPH:
+        'University of Minnesota Extension notes that Rhubarb can grow successfully across a broad range of ordinary garden-soil reactions and does not require one narrowly defined pH target, so FarmCast does not assign an unnecessary universal numeric range.',
+
+      soilNote:
+        'Rhubarb performs best in fertile, well-drained soil. University of Minnesota Extension notes that loamy soil is particularly suitable because it retains moisture and nutrients while still providing drainage. A sunny growing site is recommended, and poorly drained locations should be avoided because persistent wetness can encourage crown and root problems.',
+
+      plantingNote:
+        'Rhubarb is a long-lived perennial vegetable grown for its edible leaf stalks. University of Minnesota Extension describes establishment from seedlings, crown divisions, nursery-grown plants and bare-root crowns. Dividing established crowns is a common vegetative propagation method, while seed-grown plants require a longer establishment period before normal harvesting. Current Kew taxonomy accepts Rheum rhabarbarum L. and lists historical synonyms including Rheum franzenbachii, Rheum macropterum, Rheum muricatum, Rheum sanguineum and Rheum undulatum.',
+
+      harvestNote:
+        'The edible portion of Rhubarb is the thick leaf stalk. University of Minnesota Extension recommends allowing newly established plants to develop before regular harvest: plants established vegetatively should not be harvested during their first growing season, while seed-grown plants require an even longer establishment period. Mature stalks are harvested by pulling and twisting them from the crown. Rhubarb leaves are not edible and should be discarded. Because the guidance is expressed in growing seasons and differs between seed-grown and vegetatively established plants, FarmCast keeps Rhubarb as guidance-only rather than converting it into one universal automatic harvest date.',
+
+      source: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Rhubarb in Home Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/garden-and-home/',
+            'yard-and-garden/gardening-in-minnesota/',
+            'growing-rhubarb'
+          ].join('')
+      }
+    },
+
   
 ];
 
