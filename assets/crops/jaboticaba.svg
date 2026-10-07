@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Jaboticaba</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of jaboticaba with glossy green leaves,
+    a branching brown trunk, small white flowers, and clusters of ripe
+    dark-purple fruits growing directly from the trunk and branches.
+  </desc>
+
+  <defs>
+    <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a27958"></stop>
+      <stop offset="0.5" stop-color="#76513e"></stop>
+      <stop offset="1" stop-color="#49362f"></stop>
+    </linearGradient>
+
+    <linearGradient id="leaf" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#285b39"></stop>
+      <stop offset="0.5" stop-color="#559050"></stop>
+      <stop offset="1" stop-color="#9ac675"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#214a32"></stop>
+      <stop offset="1" stop-color="#669d59"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruit" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#9b6caa"></stop>
+      <stop offset="0.4" stop-color="#633a79"></stop>
+      <stop offset="0.78" stop-color="#382548"></stop>
+      <stop offset="1" stop-color="#21192d"></stop>
+    </radialGradient>
+
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#1c2920" flood-opacity="0.26"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="116" rx="37" ry="6" fill="#273229" opacity="0.17"></ellipse>
+
+  <!-- main trunk -->
+  <path d="
+    M57 111
+    C57 91 58 73 57 57
+    C56 40 54 26 51 15
+
+    C56 17 62 17 67 14
+    C66 28 66 42 67 56
+    C68 75 69 92 71 111Z" fill="url(#trunk)" stroke="#49352d" stroke-width="2" filter="url(#shadow)"></path>
+
+  <!-- branches -->
+  <g fill="none" stroke="url(#trunk)" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="M61 46
+             C49 39 39 31 31 21" stroke-width="6"></path>
+
+    <path d="M64 40
+             C75 34 85 25 94 16" stroke-width="5.5"></path>
+
+    <path d="M63 65
+             C76 59 88 52 99 43" stroke-width="4"></path>
+
+    <path d="M59 71
+             C47 67 35 59 25 50" stroke-width="4"></path>
+  </g>
+
+  <!-- bark highlights -->
+  <g fill="none" stroke="#bc9470" stroke-linecap="round" opacity="0.55">
+
+    <path d="M61 105 C60 82 61 58 60 36" stroke-width="1.2"></path>
+
+    <path d="M34 23 C43 31 51 37 58 41" stroke-width="1"></path>
+
+    <path d="M69 39 C78 33 87 25 92 19" stroke-width="1"></path>
+  </g>
+
+  <!-- leaves -->
+  <g stroke="#285438" stroke-width="1.1" filter="url(#shadow)">
+
+    <path d="
+      M29 21
+      C19 13 10 16 8 25
+      C17 31 26 29 32 24Z" fill="url(#leaf)"></path>
+
+    <path d="
+      M39 31
+      C29 25 21 28 20 36
+      C29 42 38 39 43 34Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M24 50
+      C13 44 6 49 7 57
+      C17 62 26 59 31 53Z" fill="url(#leaf)"></path>
+
+    <path d="
+      M94 16
+      C101 7 111 8 116 15
+      C111 24 102 26 95 22Z" fill="url(#leaf)"></path>
+
+    <path d="
+      M83 28
+      C91 19 101 21 105 29
+      C99 37 90 38 83 33Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M99 43
+      C108 35 117 38 120 46
+      C113 54 105 54 98 49Z" fill="url(#leaf)"></path>
+
+    <path d="
+      M88 55
+      C97 48 106 51 109 59
+      C102 66 93 66 87 61Z" fill="url(#leafDark)"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+  <g fill="none" stroke="#bdd59d" stroke-width="0.8" stroke-linecap="round" opacity="0.7">
+
+    <path d="M11 24 C18 24 25 23 30 22"></path>
+    <path d="M22 35 C29 35 36 34 41 33"></path>
+    <path d="M9 56 C17 55 24 54 29 52"></path>
+
+    <path d="M114 15 C107 17 101 19 96 21"></path>
+    <path d="M103 29 C96 30 90 31 84 32"></path>
+    <path d="M117 46 C110 47 104 48 99 48"></path>
+  </g>
+
+  <!-- white flowers directly on trunk -->
+  <g fill="#faf7e9" stroke="#d9d7c9" stroke-width="0.6">
+
+    <circle cx="55" cy="38" r="2.5"></circle>
+    <circle cx="68" cy="48" r="2.2"></circle>
+    <circle cx="55" cy="61" r="2.5"></circle>
+    <circle cx="70" cy="72" r="2.3"></circle>
+    <circle cx="56" cy="86" r="2.3"></circle>
+  </g>
+
+  <g fill="#d1ad4f">
+    <circle cx="55" cy="38" r="0.7"></circle>
+    <circle cx="68" cy="48" r="0.7"></circle>
+    <circle cx="55" cy="61" r="0.7"></circle>
+    <circle cx="70" cy="72" r="0.7"></circle>
+    <circle cx="56" cy="86" r="0.7"></circle>
+  </g>
+
+  <!-- ripe cauliflorous fruits -->
+  <g fill="url(#fruit)" stroke="#281d31" stroke-width="1.2" filter="url(#shadow)">
+
+    <circle cx="50" cy="48" r="8"></circle>
+    <circle cx="70" cy="58" r="8.5"></circle>
+    <circle cx="53" cy="70" r="8.2"></circle>
+    <circle cx="72" cy="82" r="8.5"></circle>
+    <circle cx="52" cy="94" r="8"></circle>
+
+    <circle cx="42" cy="39" r="6.3"></circle>
+    <circle cx="80" cy="49" r="6.5"></circle>
+    <circle cx="44" cy="82" r="6.2"></circle>
+    <circle cx="79" cy="96" r="6.5"></circle>
+  </g>
+
+  <!-- fruit highlights -->
+  <g fill="#c99fd1" opacity="0.67">
+
+    <ellipse cx="47" cy="45" rx="2.2" ry="3" transform="rotate(-25 47 45)"></ellipse>
+
+    <ellipse cx="67" cy="54" rx="2.4" ry="3.2" transform="rotate(-25 67 54)"></ellipse>
+
+    <ellipse cx="50" cy="67" rx="2.3" ry="3" transform="rotate(-25 50 67)"></ellipse>
+
+    <ellipse cx="69" cy="78" rx="2.4" ry="3.2" transform="rotate(-25 69 78)"></ellipse>
+
+    <ellipse cx="49" cy="91" rx="2.2" ry="3" transform="rotate(-25 49 91)"></ellipse>
+  </g>
+
+  <!-- small fruit scars / blossom ends -->
+  <g fill="#b9a1bc">
+    <circle cx="53" cy="55" r="0.8"></circle>
+    <circle cx="73" cy="65" r="0.8"></circle>
+    <circle cx="56" cy="77" r="0.8"></circle>
+    <circle cx="75" cy="89" r="0.8"></circle>
+  </g>
+
+  <!-- new growth -->
+  <path d="
+    M51 15
+    C48 9 49 5 53 3" fill="none" stroke="#7da35e" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <path d="
+    M52 7
+    C58 3 63 5 64 10
+    C59 13 55 12 52 9Z" fill="#a7ca7c" stroke="#416e46" stroke-width="0.9"></path>
+
+</svg>

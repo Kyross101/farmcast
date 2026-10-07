@@ -13727,6 +13727,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Jaboticaba',
+      scientificName: 'Plinia cauliflora (Mart.) Kausel',
+      category: 'fruit',
+      icon: 'assets/crops/jaboticaba.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Jaboticaba: A Unique Fruit Tree for Florida Home Gardeners',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/HS1519'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Tropical to subtropical growing conditions. Kew identifies Jaboticaba as a tree primarily associated with the seasonally dry tropical biome. University of Florida IFAS Extension describes it as a fruit tree suited to warm subtropical conditions. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of Florida IFAS Extension notes that Jaboticaba has shallow feeder roots and benefits from regular watering, particularly when container-grown or during establishment. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Prefers acidic soil, with University of Florida IFAS Extension identifying about pH 5–6 as favorable.',
+
+      soilNote:
+        'Jaboticaba performs well in sandy or loamy soil with adequate organic matter and moisture. University of Florida IFAS Extension recommends maintaining adequate soil moisture and notes that the tree can also be grown successfully in containers because of its compact, fibrous root system.',
+
+      plantingNote:
+        'Jaboticaba is an edible tropical to subtropical fruit tree. Propagation is commonly from fresh seed, while grafting and air layering may also be used, particularly when earlier fruiting or preservation of selected plant characteristics is desired. Current Kew taxonomy accepts Plinia cauliflora (Mart.) Kausel. Myrciaria cauliflora, Eugenia cauliflora, Myrtus cauliflora, Myrcia jaboticaba, Myrciaria jaboticaba, and Plinia jaboticaba are among names treated as scientific synonyms.',
+
+      harvestNote:
+        'Jaboticaba produces round edible fruits directly on the trunk and older branches. Mature fruits develop a dark purple to nearly black skin around translucent edible pulp. Fruit-bearing age varies greatly with propagation method, cultivar, and growing conditions, with seed-grown trees generally taking substantially longer to bear than grafted or air-layered plants. Because no single universal planting-to-harvest interval applies across these propagation methods, FarmCast keeps Jaboticaba as guidance-only.',
+
+      source: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Jaboticaba: A Unique Fruit Tree for Florida Home Gardeners',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/HS1519'
+          ].join('')
+      }
+    },
 
   
 ];
