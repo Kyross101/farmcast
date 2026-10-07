@@ -18985,6 +18985,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Jerusalem Artichoke',
+      localName: 'Sunchoke / Sunroot',
+      scientificName:
+        'Helianthus tuberosus L.',
+      category: 'vegetable',
+      icon: 'assets/crops/jerusalem-artichoke.svg',
+
+      plantingMethods: [
+        {
+          value: 'tuber-pieces',
+          label: 'Tuber Pieces'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Missouri Extension',
+
+        title:
+          'North America\'s Nearly Forgotten Native Vegetable',
+
+        url:
+          [
+            'https://',
+            'extension.missouri.edu/',
+            'news/',
+            'north-americas-nearly-forgotten-native-vegetable'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Jerusalem Artichoke is a hardy perennial vegetable whose underground tubers develop during the growing season and enlarge particularly late in the season as conditions cool. University Extension guidance describes the crop as broadly adaptable across temperate growing regions, but does not establish one universal numeric optimum temperature interval or absolute physiological minimum and maximum range that should be applied to all production environments. FarmCast therefore keeps temperature guidance descriptive rather than assigning unsupported thresholds.',
+
+      rainfallRange:
+        'Established Jerusalem Artichoke plants are relatively vigorous and adaptable, but tuber production still depends on adequate soil moisture and suitable drainage. University Extension guidance emphasizes local soil and seasonal growing conditions rather than one universal annual rainfall requirement. Because rainfall distribution, soil texture and supplemental irrigation can all affect available moisture, FarmCast keeps rainfall guidance descriptive rather than assigning an unsupported numeric range.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Jerusalem Artichoke is adaptable to a broad range of soil types, although loose, fertile and well-drained soil makes tuber development and harvesting easier. University of Missouri Extension notes that the crop can grow even in comparatively heavy soils, while University of Georgia Extension likewise recommends well-drained soil and warns that standing water can promote tuber rot. Because the cultivation sources used for this entry do not establish one universal numeric soil-pH interval for Helianthus tuberosus production, FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Jerusalem Artichoke in this FarmCast entry refers specifically to Helianthus tuberosus L., also widely known as Sunchoke and Sunroot. It is a perennial sunflower grown for its edible underground tubers and should not be confused with Globe Artichoke, which is harvested for its flower buds, or with the existing FarmCast Sunflower crop, Helianthus annuus. University of Missouri Extension describes propagation by planting sections of tubers containing viable eyes. Current Kew taxonomy accepts Helianthus tuberosus L. and lists twenty-two synonyms. All twenty-two current Kew synonyms and major common-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Jerusalem Artichoke is harvested for its edible underground tubers. University of Missouri Extension recommends harvesting after killing frosts have wilted the above-ground growth, while University of Wisconsin Extension similarly recommends digging tubers after fall frosts or before new growth begins in early spring. Later cold-season harvest can also improve sweetness. Because these recommendations use seasonal conditions and plant maturity rather than one exact tuber-piece-to-harvest interval that applies across climates, FarmCast keeps Jerusalem Artichoke as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'University of Missouri Extension',
+
+        title:
+          'North America\'s Nearly Forgotten Native Vegetable',
+
+        url:
+          [
+            'https://',
+            'extension.missouri.edu/',
+            'news/',
+            'north-americas-nearly-forgotten-native-vegetable'
+          ].join('')
+      }
+    },
+
 
   
 ];
