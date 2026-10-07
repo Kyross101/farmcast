@@ -18751,6 +18751,81 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Alfalfa',
+      localName: 'Lucerne / Purple Medic',
+      scientificName:
+        'Medicago sativa L.',
+      category: 'legume',
+      icon: 'assets/crops/alfalfa.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Statewide Integrated Pest Management Program',
+
+        title:
+          'Alfalfa — Planting and Establishing a Stand',
+
+        url:
+          [
+            'https://',
+            'ipm.ucanr.edu/',
+            'agriculture/alfalfa/',
+            'planting-and-establishing-a-stand-stand-establishment/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Alfalfa is a widely cultivated perennial legume whose establishment and growth depend strongly on locally suitable planting season, soil moisture and variety adaptation. UC Agriculture and Natural Resources recommends planting at the proper regional time and emphasizes rapid establishment under suitable soil and moisture conditions. Because these recommendations vary by production region and do not define one universal numeric optimum temperature interval or absolute physiological minimum and maximum limits for all alfalfa production, FarmCast keeps temperature guidance descriptive rather than assigning unsupported threshold values.',
+
+      rainfallRange:
+        'Alfalfa requires adequate moisture during germination and stand establishment but also requires good drainage. UC Agriculture and Natural Resources recommends timely irrigation for germinating seedlings while warning against overirrigation and waterlogging. Because irrigation, rainfall distribution, soil texture and climate differ substantially among production areas, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        '6.2–7.5',
+
+      soilNote:
+        'UC Agriculture and Natural Resources reports that alfalfa grows successfully across a range of soil textures, performs particularly well in sandy-loam to clay-loam soils and requires proper drainage. Its field-preparation guidance identifies a soil-pH range of 6.2–7.5 as favorable for nitrogen-fixing Rhizobium bacteria associated with productive alfalfa stands.',
+
+      plantingNote:
+        'Alfalfa in this FarmCast entry refers specifically to Medicago sativa L., also widely known as Lucerne and Purple Medic. UC Agriculture and Natural Resources establishes alfalfa directly from seed into a prepared seedbed. Current Kew taxonomy accepts Medicago sativa L. and lists four species-level synonyms: Medica sativa (L.) Mill., Medicago sativa var. vulgaris Alef., Medicago sativa subsp. vulgaris (Alef.) Arcang. and Medicago vera Kirschl. The common names and all four Kew species-level synonyms were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Alfalfa is a multipurpose food-producing legume. Kew records Medicago sativa as being used for food, including human consumption as sprouts, in addition to its major agricultural use as forage. Established alfalfa may also be cut repeatedly during its productive life. Because harvest timing depends strongly on intended use, growth stage, climate and management system, and the cited establishment guidance does not provide one universal direct-seeding-to-human-food harvest interval suitable for FarmCast, Alfalfa remains guidance-only with no automatic harvest date.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Statewide Integrated Pest Management Program',
+
+        title:
+          'Alfalfa — Planting and Establishing a Stand',
+
+        url:
+          [
+            'https://',
+            'ipm.ucanr.edu/',
+            'agriculture/alfalfa/',
+            'planting-and-establishing-a-stand-stand-establishment/'
+          ].join('')
+      }
+    },
+
 
   
 ];
