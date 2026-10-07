@@ -15573,6 +15573,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Saffron',
+      scientificName: 'Crocus sativus L.',
+      category: 'spice',
+      icon: 'assets/crops/saffron.svg',
+
+      plantingMethods: [
+        {
+          value: 'corm-planted',
+          label: 'Planted Corms'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Saffron',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/herbs/saffron'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Subtropical to temperate seasonal growing conditions with a dry dormant period and suitable autumn flowering conditions. Kew identifies Saffron as a tuberous geophyte primarily associated with the subtropical biome. Flowering performance varies with local climate, corm condition and seasonal timing, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Saffron requires adequate moisture after planting and during active growth but performs poorly in persistently wet or waterlogged soil. FarmCast therefore keeps moisture guidance descriptive rather than inventing one universal annual rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows Royal Horticultural Society guidance emphasizing rich but well-drained soil rather than assigning an unsupported numeric range.',
+
+      soilNote:
+        'Saffron performs best in a bright, sunny site with rich but well-drained soil. Good drainage is especially important around the underground corms because persistent wetness can reduce plant health and flowering performance.',
+
+      plantingNote:
+        'Saffron is the familiar culinary spice obtained from the bright red stigmas of Crocus sativus flowers. Royal Horticultural Society guidance recommends planting dormant corms in late summer, with the corms placed into well-drained soil before autumn flowering. Crocus sativus is sterile and does not produce seed, so the crop is maintained vegetatively through corms and daughter cormlets. Current Kew taxonomy accepts Crocus sativus L.; historical synonyms include Crocus officinalis, Crocus orsinii, Crocus pendulus, Crocus setifolius, Geanthus autumnalis and Safran officinarum.',
+
+      harvestNote:
+        'Saffron is harvested from newly opened autumn flowers by removing the three bright red stigmas and drying them carefully for culinary use. Royal Horticultural Society guidance notes that corms planted in late summer generally flower in October, although flowering may occur later in the first year. Because harvest timing is tied to seasonal flowering rather than one universal number of days after planting, FarmCast keeps Saffron as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Saffron',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/herbs/saffron'
+          ].join('')
+      }
+    },
+
   
 ];
 

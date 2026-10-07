@@ -1,0 +1,308 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Saffron</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of saffron crocus with slender green
+    leaves, violet flowers, bright red saffron stigmas, golden stamens,
+    and a partially visible underground corm with natural highlights,
+    shadows, and botanical depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#245337"></stop>
+      <stop offset="0.5" stop-color="#5e8b4b"></stop>
+      <stop offset="1" stop-color="#a7bf6e"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#193e2c"></stop>
+      <stop offset="1" stop-color="#688d50"></stop>
+    </linearGradient>
+
+    <linearGradient id="petalPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eee5ff"></stop>
+      <stop offset="0.35" stop-color="#baa5e4"></stop>
+      <stop offset="0.7" stop-color="#8068bd"></stop>
+      <stop offset="1" stop-color="#55458e"></stop>
+    </linearGradient>
+
+    <linearGradient id="petalLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#faf5ff"></stop>
+      <stop offset="0.5" stop-color="#c9b8ea"></stop>
+      <stop offset="1" stop-color="#8370bc"></stop>
+    </linearGradient>
+
+    <linearGradient id="stigmaRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff735e"></stop>
+      <stop offset="0.45" stop-color="#d72e31"></stop>
+      <stop offset="1" stop-color="#911b27"></stop>
+    </linearGradient>
+
+    <linearGradient id="stamenGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4cf58"></stop>
+      <stop offset="0.6" stop-color="#cf922a"></stop>
+      <stop offset="1" stop-color="#98601f"></stop>
+    </linearGradient>
+
+    <radialGradient id="cormBrown" cx="35%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#dfb677"></stop>
+      <stop offset="0.45" stop-color="#aa7845"></stop>
+      <stop offset="0.78" stop-color="#6e4c35"></stop>
+      <stop offset="1" stop-color="#49352b"></stop>
+    </radialGradient>
+
+    <linearGradient id="cormSkin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c39a65"></stop>
+      <stop offset="0.55" stop-color="#8e6748"></stop>
+      <stop offset="1" stop-color="#5d4535"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#20251f" flood-opacity="0.25"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="115" rx="39" ry="6" fill="#2b3028" opacity="0.16"></ellipse>
+
+  <!-- underground corm -->
+  <g transform="translate(63 103)" filter="url(#softShadow)">
+
+    <path d="
+      M0 -14
+      C-13 -12 -19 -3 -17 7
+      C-15 17 -7 23 0 24
+
+      C8 23 16 17 18 7
+      C20 -3 13 -12 0 -14Z" fill="url(#cormBrown)" stroke="#5b4131" stroke-width="1.4"></path>
+
+    <!-- papery tunic -->
+    <g fill="none" stroke="url(#cormSkin)" stroke-width="1.1" stroke-linecap="round" opacity="0.88">
+
+      <path d="M-10 -8 C-5 -2 -5 10 -9 17"></path>
+      <path d="M-4 -12 C0 -3 0 11 -3 21"></path>
+      <path d="M4 -12 C1 -2 2 11 5 20"></path>
+      <path d="M10 -8 C6 1 7 11 10 16"></path>
+
+    </g>
+
+    <!-- corm highlight -->
+    <path d="
+      M-10 -7
+      C-13 -1 -12 5 -10 8" fill="none" stroke="#efd09b" stroke-width="1.1" stroke-linecap="round" opacity="0.55"></path>
+
+    <!-- roots -->
+    <g fill="none" stroke="#8b745d" stroke-width="0.9" stroke-linecap="round">
+
+      <path d="M-8 20 C-12 25 -14 29 -14 33"></path>
+      <path d="M-3 22 C-5 27 -5 31 -4 35"></path>
+      <path d="M3 22 C5 27 6 31 6 35"></path>
+      <path d="M8 20 C12 25 14 29 15 33"></path>
+
+    </g>
+
+  </g>
+
+  <!-- narrow saffron leaves -->
+  <g fill="none" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="
+      M58 101
+      C45 78 42 53 49 27" stroke="url(#leafGreen)" stroke-width="4"></path>
+
+    <path d="
+      M62 101
+      C57 75 58 48 61 20" stroke="url(#leafDark)" stroke-width="3.8"></path>
+
+    <path d="
+      M67 101
+      C74 76 76 52 72 29" stroke="url(#leafGreen)" stroke-width="4"></path>
+
+    <path d="
+      M71 102
+      C86 82 91 59 88 39" stroke="url(#leafDark)" stroke-width="3.5"></path>
+
+    <path d="
+      M54 102
+      C38 86 29 65 32 46" stroke="url(#leafDark)" stroke-width="3.4"></path>
+
+  </g>
+
+  <!-- characteristic pale leaf stripes -->
+  <g fill="none" stroke="#d4dfa0" stroke-width="0.65" stroke-linecap="round" opacity="0.66">
+
+    <path d="M58 98 C47 76 45 54 50 31"></path>
+    <path d="M63 97 C60 74 61 49 62 24"></path>
+    <path d="M67 98 C73 75 74 53 72 33"></path>
+    <path d="M71 99 C84 80 88 60 87 43"></path>
+
+  </g>
+
+  <!-- central flower stem -->
+  <path d="
+    M63 98
+    C63 80 63 65 64 52" fill="none" stroke="#68854c" stroke-width="3.2" stroke-linecap="round"></path>
+
+  <!-- main saffron flower -->
+  <g transform="translate(64 48)" filter="url(#softShadow)">
+
+    <!-- rear petals -->
+    <path d="
+      M0 1
+      C-18 -5 -24 -19 -15 -29
+      C-5 -35 4 -24 5 -10Z" fill="url(#petalPurple)" stroke="#65519b" stroke-width="1"></path>
+
+    <path d="
+      M0 1
+      C18 -5 24 -19 15 -29
+      C5 -35 -4 -24 -5 -10Z" fill="url(#petalLight)" stroke="#65519b" stroke-width="1"></path>
+
+    <!-- side petals -->
+    <path d="
+      M0 2
+      C-20 2 -28 -8 -24 -19
+      C-17 -29 -5 -20 0 -9Z" fill="url(#petalLight)" stroke="#65519b" stroke-width="1"></path>
+
+    <path d="
+      M0 2
+      C20 2 28 -8 24 -19
+      C17 -29 5 -20 0 -9Z" fill="url(#petalPurple)" stroke="#65519b" stroke-width="1"></path>
+
+    <!-- lower-front petals -->
+    <path d="
+      M0 2
+      C-13 11 -14 23 -5 27
+      C4 25 6 13 3 4Z" fill="url(#petalPurple)" stroke="#65519b" stroke-width="1"></path>
+
+    <path d="
+      M0 2
+      C13 11 14 23 5 27
+      C-4 25 -6 13 -3 4Z" fill="url(#petalLight)" stroke="#65519b" stroke-width="1"></path>
+
+    <!-- petal veins -->
+    <g fill="none" stroke="#8c75be" stroke-width="0.7" stroke-linecap="round" opacity="0.65">
+
+      <path d="M0 -1 C-8 -10 -12 -19 -13 -27"></path>
+      <path d="M0 -1 C8 -10 12 -19 13 -27"></path>
+
+      <path d="M-2 1 C-10 -6 -17 -12 -22 -17"></path>
+      <path d="M2 1 C10 -6 17 -12 22 -17"></path>
+
+      <path d="M-1 4 C-5 12 -6 19 -5 24"></path>
+      <path d="M1 4 C5 12 6 19 5 24"></path>
+
+    </g>
+
+    <!-- golden stamens -->
+    <g stroke="url(#stamenGold)" stroke-width="2.1" stroke-linecap="round">
+
+      <path d="M-4 2 C-7 -4 -7 -10 -5 -15"></path>
+      <path d="M3 2 C5 -4 5 -10 4 -15"></path>
+      <path d="M0 2 C0 -5 1 -10 1 -17"></path>
+
+    </g>
+
+    <g fill="#e4a52e" stroke="#9a681f" stroke-width="0.6">
+
+      <ellipse cx="-5" cy="-15" rx="2" ry="4"></ellipse>
+
+      <ellipse cx="4" cy="-15" rx="2" ry="4"></ellipse>
+
+      <ellipse cx="1" cy="-17" rx="2" ry="4"></ellipse>
+
+    </g>
+
+    <!-- saffron stigmas -->
+    <g fill="none" stroke="url(#stigmaRed)" stroke-width="3.2" stroke-linecap="round">
+
+      <path d="
+        M0 4
+        C-2 -4 -5 -12 -11 -20
+        C-13 -23 -15 -25 -18 -26"></path>
+
+      <path d="
+        M0 4
+        C1 -5 2 -13 1 -22
+        C1 -25 0 -27 -1 -29"></path>
+
+      <path d="
+        M0 4
+        C4 -4 8 -11 14 -18
+        C16 -21 18 -23 21 -23"></path>
+
+    </g>
+
+    <!-- stigma flared tips -->
+    <g fill="#ca2631" stroke="#941c27" stroke-width="0.5">
+
+      <ellipse cx="-18" cy="-26" rx="3" ry="1.7" transform="rotate(25 -18 -26)"></ellipse>
+
+      <ellipse cx="-1" cy="-29" rx="3" ry="1.7" transform="rotate(88 -1 -29)"></ellipse>
+
+      <ellipse cx="21" cy="-23" rx="3" ry="1.7" transform="rotate(-25 21 -23)"></ellipse>
+
+    </g>
+
+  </g>
+
+  <!-- smaller side flower -->
+  <path d="
+    M82 94
+    C83 80 86 68 89 58" fill="none" stroke="#65834c" stroke-width="2.5" stroke-linecap="round"></path>
+
+  <g transform="translate(91 55) scale(.58)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-18 -5 -24 -19 -15 -29
+      C-5 -35 4 -24 5 -10Z" fill="url(#petalPurple)" stroke="#65519b" stroke-width="1.3"></path>
+
+    <path d="
+      M0 0
+      C18 -5 24 -19 15 -29
+      C5 -35 -4 -24 -5 -10Z" fill="url(#petalLight)" stroke="#65519b" stroke-width="1.3"></path>
+
+    <path d="
+      M0 1
+      C-17 4 -23 -6 -20 -17
+      C-13 -25 -4 -18 0 -8Z" fill="url(#petalLight)" stroke="#65519b" stroke-width="1.3"></path>
+
+    <path d="
+      M0 1
+      C17 4 23 -6 20 -17
+      C13 -25 4 -18 0 -8Z" fill="url(#petalPurple)" stroke="#65519b" stroke-width="1.3"></path>
+
+    <g fill="none" stroke="url(#stigmaRed)" stroke-width="4.3" stroke-linecap="round">
+
+      <path d="M0 2 C-3 -7 -8 -15 -14 -21"></path>
+      <path d="M0 2 C1 -8 1 -16 0 -24"></path>
+      <path d="M0 2 C4 -7 9 -14 15 -19"></path>
+
+    </g>
+
+  </g>
+
+  <!-- loose dried saffron threads -->
+  <g fill="none" stroke="url(#stigmaRed)" stroke-width="2.2" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="
+      M91 105
+      C97 99 103 102 108 108
+      C111 111 114 111 117 108"></path>
+
+    <path d="
+      M87 112
+      C94 107 99 110 103 115
+      C106 118 110 118 114 115"></path>
+
+    <path d="
+      M97 97
+      C103 94 108 96 112 101"></path>
+
+  </g>
+
+</svg>
