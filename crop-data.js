@@ -16495,6 +16495,84 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Mabolo',
+      localName: 'Mabolo / Kamagong',
+      scientificName: 'Diospyros blancoi A.DC.',
+      category: 'fruit',
+      icon: 'assets/crops/mabolo.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        },
+        {
+          value: 'marcotted-plants',
+          label: 'Marcotted / Air-Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Diospyros blancoi A.DC.',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=1499'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm, humid tropical growing conditions. Kew identifies Diospyros blancoi as a tree primarily associated with the wet tropical biome and records it as native to the Philippines. PROSEA reports that Mabolo grows well under monsoon conditions from low to medium elevations. Because local rainfall pattern, elevation and site conditions influence tree growth and fruiting, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric range.',
+
+      rainfallRange:
+        'No universal annual rainfall range is stored for Mabolo. PROSEA describes the species as well adapted to monsoon climates in the Philippines but does not provide one universal annual rainfall requirement for fruit production. FarmCast therefore keeps rainfall guidance descriptive rather than inventing a numeric range.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports that Mabolo can grow on almost any soil under suitable tropical conditions. FarmCast therefore avoids assigning a narrow universal soil type or numeric pH requirement that is not supported by the cited production guidance. Good drainage and appropriate orchard establishment remain important for healthy tree development.',
+
+      plantingNote:
+        'Mabolo is a Philippine native fruit tree botanically identified as Diospyros blancoi A.DC. It is also widely known as Velvet Apple, while Kamagong commonly refers to the same tree and especially its dark hardwood. PROSEA documents propagation from seed as well as vegetative propagation through marcotting, budding and grafting, with grafting commercially practiced in the Philippines. Current Kew taxonomy accepts Diospyros blancoi A.DC. and treats historical names including Diospyros discolor, Diospyros mabolo, Diospyros philippensis and Cavanillea mabolo as synonyms.',
+
+      harvestNote:
+        'Mabolo fruit is considered mature when its skin changes from greenish-brown toward dull red. PROSEA reports that seedling trees may begin bearing about 6–7 years after planting, while grafted trees may begin bearing about 3–4 years after planting. In the Philippines, flowering commonly occurs during the dry season and fruiting generally occurs around June to September. Because first bearing differs substantially between propagation methods and tree development, FarmCast keeps Mabolo as guidance-only rather than assigning one automatic harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Diospyros blancoi A.DC.',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=1499'
+          ].join('')
+      }
+    },
+
   
 ];
 
