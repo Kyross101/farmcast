@@ -15025,6 +15025,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Macadamia',
+      scientificName:
+        'Macadamia integrifolia Maiden & Betche',
+      category: 'tree-nut',
+      icon: 'assets/crops/macadamia.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-trees',
+          label: 'Grafted Macadamia Trees'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Hawaiʻi at Mānoa',
+
+        office:
+          'College of Tropical Agriculture and Human Resources',
+
+        title:
+          'Macadamia General Information',
+
+        url:
+          [
+            'https://',
+            'cms.ctahr.hawaii.edu/ckm/Home/Crops/',
+            'Fruits-and-Nuts/Macadamia/',
+            'Macadamia-General-Information'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm subtropical to tropical growing conditions. Kew identifies Macadamia integrifolia as a tree associated primarily with the wet tropical biome, while University of Hawaiʻi guidance identifies the crop as originating from subtropical eastern Australia. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'University of Hawaiʻi CTAHR reports successful Macadamia production under substantial annual rainfall, while orchard water requirements still vary with soil, elevation, season and local climate. FarmCast therefore keeps the general water guidance descriptive rather than converting one production-region figure into a universal requirement.',
+
+      soilPH:
+        'University of Hawaiʻi CTAHR recommends well-drained soil with about pH 5.0–6.5.',
+
+      soilNote:
+        'Macadamia performs best in deep, well-drained soil and requires adequate rooting space. University of Hawaiʻi CTAHR also emphasizes protection from damaging strong winds, which can cause substantial tree loss in exposed orchards.',
+
+      plantingNote:
+        'Macadamia in this FarmCast entry refers specifically to the familiar smooth-shell Macadamia commonly grown commercially for edible nuts. University of Hawaiʻi CTAHR states that commercial orchards are planted with grafted seedlings because named cultivars should be clonally propagated to maintain desirable nut quality and productivity. Current Kew taxonomy accepts Macadamia integrifolia Maiden & Betche; Macadamia ternifolia var. integrifolia is its species-level scientific synonym.',
+
+      harvestNote:
+        'Macadamia trees may begin producing a small crop several years after planting, with production increasing as trees mature. University of Hawaiʻi CTAHR states that ripe nuts naturally fall from the tree and are collected from the ground, with harvest season varying by cultivar, location and weather. Because first bearing age and annual nut drop vary with orchard conditions rather than one universal planting-to-harvest interval, FarmCast keeps Macadamia as guidance-only.',
+
+      source: {
+        agency:
+          'University of Hawaiʻi at Mānoa',
+
+        office:
+          'College of Tropical Agriculture and Human Resources',
+
+        title:
+          'Macadamia General Information',
+
+        url:
+          [
+            'https://',
+            'cms.ctahr.hawaii.edu/ckm/Home/Crops/',
+            'Fruits-and-Nuts/Macadamia/',
+            'Macadamia-General-Information'
+          ].join('')
+      }
+    },
+
   
 ];
 

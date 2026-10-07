@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Macadamia</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a macadamia branch with glossy green
+    leaves, cascading cream flowers, green nut husks, and ripe brown
+    macadamia shells with natural highlights and shadows.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9a755a"></stop>
+      <stop offset="0.55" stop-color="#6a4d3d"></stop>
+      <stop offset="1" stop-color="#42342c"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#235536"></stop>
+      <stop offset="0.5" stop-color="#4f8d48"></stop>
+      <stop offset="1" stop-color="#98c276"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#193f2c"></stop>
+      <stop offset="1" stop-color="#609653"></stop>
+    </linearGradient>
+
+    <radialGradient id="huskGreen" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#cfda80"></stop>
+      <stop offset="0.42" stop-color="#8fa954"></stop>
+      <stop offset="0.78" stop-color="#617b41"></stop>
+      <stop offset="1" stop-color="#405734"></stop>
+    </radialGradient>
+
+    <radialGradient id="shellBrown" cx="32%" cy="25%" r="76%">
+      <stop offset="0" stop-color="#e0b47a"></stop>
+      <stop offset="0.45" stop-color="#b47a49"></stop>
+      <stop offset="0.8" stop-color="#79503a"></stop>
+      <stop offset="1" stop-color="#4c352c"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffce8"></stop>
+      <stop offset="0.6" stop-color="#eee2b9"></stop>
+      <stop offset="1" stop-color="#cdbb83"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#202920" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="116" rx="39" ry="6" fill="#273128" opacity="0.16"></ellipse>
+
+  <!-- main branch -->
+  <path d="
+    M18 105
+    C34 91 47 76 58 60
+    C71 42 85 28 106 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- side branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M47 77 C39 64 33 52 31 40" stroke-width="3.4"></path>
+
+    <path d="M61 56 C55 44 52 32 53 20" stroke-width="3.1"></path>
+
+    <path d="M76 39 C88 41 100 37 112 29" stroke-width="3"></path>
+
+    <path d="M38 90 C30 86 23 81 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- bark highlight -->
+  <path d="
+    M22 101
+    C38 87 50 73 61 57
+    C74 41 88 28 103 18" fill="none" stroke="#bc9676" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- macadamia leaves -->
+  <g stroke="#244c34" stroke-width="1.1" filter="url(#softShadow)">
+
+    <path d="
+      M30 41
+      C19 31 9 34 6 43
+      C14 53 26 54 35 47
+      C38 45 35 42 30 41Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M41 58
+      C29 49 19 53 17 63
+      C26 72 38 69 46 62
+      C49 60 46 58 41 58Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M53 22
+      C42 13 33 16 30 26
+      C38 35 50 34 57 27
+      C60 25 57 23 53 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M70 46
+      C79 35 91 35 98 43
+      C92 54 81 57 71 52
+      C68 51 68 48 70 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M92 30
+      C101 19 113 21 119 29
+      C112 39 101 41 92 35
+      C89 34 89 31 92 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 49
+      C106 39 117 42 121 51
+      C114 60 103 61 95 55
+      C92 53 93 51 96 49Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+  <g fill="none" stroke="#bdd59e" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M9 43 C18 44 26 44 33 45"></path>
+    <path d="M20 63 C29 62 37 61 44 60"></path>
+    <path d="M33 26 C42 25 49 25 55 25"></path>
+
+    <path d="M95 44 C86 47 78 49 72 50"></path>
+    <path d="M116 29 C108 31 100 33 93 34"></path>
+    <path d="M118 51 C110 52 102 53 96 53"></path>
+
+  </g>
+
+  <!-- nut stems -->
+  <g fill="none" stroke="#625f3d" stroke-width="1.8" stroke-linecap="round">
+
+    <path d="M52 65 C51 72 51 78 52 84"></path>
+    <path d="M69 55 C72 62 74 68 75 74"></path>
+    <path d="M40 77 C39 84 39 89 40 95"></path>
+
+  </g>
+
+  <!-- green husk 1 -->
+  <circle cx="52" cy="95" r="15" fill="url(#huskGreen)" stroke="#435c36" stroke-width="1.5" filter="url(#softShadow)"></circle>
+
+  <!-- green husk 2 -->
+  <circle cx="77" cy="84" r="14" fill="url(#huskGreen)" stroke="#435c36" stroke-width="1.5" filter="url(#softShadow)"></circle>
+
+  <!-- husk seams -->
+  <g fill="none" stroke="#718a4b" stroke-width="0.8" opacity="0.72">
+
+    <path d="M44 84 C52 93 55 103 53 109"></path>
+    <path d="M69 74 C77 82 80 91 78 97"></path>
+
+  </g>
+
+  <!-- husk highlights -->
+  <g fill="#e6eba4" opacity="0.55">
+
+    <ellipse cx="47" cy="88" rx="3" ry="4.5" transform="rotate(-27 47 88)"></ellipse>
+
+    <ellipse cx="72" cy="77" rx="2.7" ry="4" transform="rotate(-27 72 77)"></ellipse>
+
+  </g>
+
+  <!-- exposed macadamia shell -->
+  <circle cx="38" cy="104" r="12" fill="url(#shellBrown)" stroke="#65442f" stroke-width="1.4" filter="url(#softShadow)"></circle>
+
+  <!-- shell texture -->
+  <g fill="none" stroke="#835b3f" stroke-width="0.7" stroke-linecap="round" opacity="0.82">
+
+    <path d="M31 99 C36 101 41 101 46 98"></path>
+    <path d="M30 105 C35 108 41 108 46 105"></path>
+    <path d="M33 94 C31 100 31 107 34 113"></path>
+    <path d="M42 94 C45 100 45 107 42 113"></path>
+
+  </g>
+
+  <!-- shell highlight -->
+  <path d="
+    M32 98
+    C31 101 31 104 32 106" fill="none" stroke="#f0d09d" stroke-width="1.1" stroke-linecap="round" opacity="0.56"></path>
+
+  <!-- split green husk around second exposed nut -->
+  <g transform="translate(83 104)" filter="url(#softShadow)">
+
+    <path d="
+      M-3 -12
+      C-11 -12 -16 -6 -16 1
+      C-12 2 -8 5 -6 9
+      C-2 5 0 -2 -3 -12Z" fill="#728b49" stroke="#475d38" stroke-width="1.1"></path>
+
+    <path d="
+      M3 -12
+      C11 -12 16 -6 16 1
+      C12 2 8 5 6 9
+      C2 5 0 -2 3 -12Z" fill="#728b49" stroke="#475d38" stroke-width="1.1"></path>
+
+    <circle cx="0" cy="3" r="10" fill="url(#shellBrown)" stroke="#65442f" stroke-width="1.3"></circle>
+
+    <path d="
+      M-5 -1
+      C-6 2 -6 5 -5 8" fill="none" stroke="#efd09d" stroke-width="1" stroke-linecap="round" opacity="0.55"></path>
+
+  </g>
+
+  <!-- flowering raceme stem -->
+  <path d="
+    M76 39
+    C79 31 83 24 88 18
+    C90 23 91 29 91 35
+    C91 41 90 47 91 52" fill="none" stroke="#657047" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- macadamia flower raceme -->
+  <g filter="url(#softShadow)">
+
+    <g fill="url(#flowerCream)" stroke="#a99769" stroke-width="0.55">
+
+      <circle cx="88" cy="21" r="2.1"></circle>
+      <circle cx="91" cy="25" r="2.1"></circle>
+      <circle cx="89" cy="29" r="2.1"></circle>
+      <circle cx="92" cy="33" r="2.1"></circle>
+
+      <circle cx="90" cy="37" r="2.1"></circle>
+      <circle cx="92" cy="41" r="2.1"></circle>
+      <circle cx="90" cy="45" r="2.1"></circle>
+      <circle cx="92" cy="49" r="2.1"></circle>
+
+    </g>
+
+    <!-- tiny projecting styles -->
+    <g stroke="#806a3d" stroke-width="0.6" stroke-linecap="round">
+
+      <path d="M88 21 L85 19"></path>
+      <path d="M91 25 L95 23"></path>
+      <path d="M89 29 L85 28"></path>
+      <path d="M92 33 L96 32"></path>
+
+      <path d="M90 37 L86 36"></path>
+      <path d="M92 41 L96 40"></path>
+      <path d="M90 45 L86 45"></path>
+      <path d="M92 49 L96 50"></path>
+
+    </g>
+
+  </g>
+
+</svg>
