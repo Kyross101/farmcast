@@ -17618,6 +17618,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Nipa',
+      localName: 'Nipa Palm / Sasa / Lasa',
+      scientificName:
+        'Nypa fruticans Wurmb',
+      category: 'fruit',
+      icon: 'assets/crops/nipa.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed (Fruit) Sown'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Nursery-Raised Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Nypa fruticans (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Nypa_fruticans_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Nipa is a tropical palm adapted to warm, humid estuarine environments. PROSEA reports that its natural growing areas have an average minimum temperature around 20°C and maximum temperatures around 32–35°C. Because these figures describe the climate of established growing areas rather than universal physiological minimum and maximum crop thresholds, FarmCast keeps minTemp and maxTemp unset instead of treating them as hard limits.',
+
+      rainfallRange:
+        'PROSEA describes the optimum climate for Nipa as subhumid to humid with more than 100 mm of rainfall per month throughout the year. Reliable water availability is especially important because the species naturally occupies tidal estuarine environments where its rhizomes are regularly influenced by brackish water.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Nipa naturally grows in muddy estuarine soils rich in alluvial silt, clay, humus and inorganic salts. PROSEA reports that typical nipa-swamp soils may have a pH around 5, but this is a description of natural habitat rather than a universal recommended agricultural soil-pH interval. FarmCast therefore keeps soilPH unset rather than converting one habitat observation into a general crop requirement.',
+
+      plantingNote:
+        'Nipa in this FarmCast entry refers specifically to Nypa fruticans Wurmb, commonly called Nipa Palm or Mangrove Palm. PROSEA records Nipa as the Filipino name and Lasa and Sasa among Philippine vernacular names. Generative propagation is by seed or fruit. In the Philippines, PROSEA reports that seedlings may first be raised in a seed-bed and later transplanted to suitable pockets in wet estuarine sites. Current Kew taxonomy accepts Nypa fruticans Wurmb and lists Nipa fruticans, Cocos nypa, Nipa arborescens, Nipa litoralis and Nypa fruticans var. neameana among its synonyms.',
+
+      harvestNote:
+        'Nipa provides several edible products. PROSEA reports that the white endosperm of immature seeds is sweet and jelly-like and can be eaten as a snack, while sap from the inflorescence stalk is used for sugar and vinegar. Philippine Department of Agriculture materials also document the soft flesh of nipa fruit for food processing. PROSEA reports first flowering about three to four years after germination, fruit maturation roughly five to nine months after flowering, and sap tapping from approximately the second inflorescence when plants are around five years old. Because these timings begin at germination, flowering or plant age rather than giving one exact planting-to-first-harvest interval for each FarmCast planting method, Nipa remains guidance-only.',
+
+      source: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Adaptation and Mitigation Initiative in Agriculture Program',
+
+        title:
+          'Nipa Palm Products Potential Unveiled',
+
+        url:
+          [
+            'https://',
+            'amia.da.gov.ph/',
+            'rfo2-nipa-palm-products-potential-unveiled/'
+          ].join('')
+      }
+    },
+
 
   
 ];
