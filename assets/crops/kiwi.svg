@@ -1,0 +1,278 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Kiwi</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a kiwi vine with broad green leaves,
+    creamy white flowers, fuzzy brown kiwifruits and one cut fruit showing
+    bright green flesh, pale centre and black seeds.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="vineBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9a7456"></stop>
+      <stop offset="0.55" stop-color="#6c4d3a"></stop>
+      <stop offset="1" stop-color="#43332b"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#28583a"></stop>
+      <stop offset="0.5" stop-color="#55934f"></stop>
+      <stop offset="1" stop-color="#9fc97a"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#214931"></stop>
+      <stop offset="1" stop-color="#689e5a"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitBrown" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#c69b6a"></stop>
+      <stop offset="0.48" stop-color="#98704e"></stop>
+      <stop offset="0.8" stop-color="#694b38"></stop>
+      <stop offset="1" stop-color="#45342c"></stop>
+    </radialGradient>
+
+    <radialGradient id="kiwiGreen" cx="42%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#d9ea74"></stop>
+      <stop offset="0.42" stop-color="#8cc94e"></stop>
+      <stop offset="0.78" stop-color="#59a33d"></stop>
+      <stop offset="1" stop-color="#3d7f35"></stop>
+    </radialGradient>
+
+    <linearGradient id="petalCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf3"></stop>
+      <stop offset="1" stop-color="#ded9c7"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.3" flood-color="#202a21" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="65" cy="116" rx="40" ry="6" fill="#273229" opacity="0.17"></ellipse>
+
+  <!-- Main vine -->
+  <path d="
+    M17 103
+    C35 91 47 74 58 58
+    C71 40 86 27 108 16" fill="none" stroke="url(#vineBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- Side vines -->
+  <g fill="none" stroke="url(#vineBrown)" stroke-linecap="round">
+
+    <path d="
+      M48 75
+      C38 63 31 51 29 39" stroke-width="3.5"></path>
+
+    <path d="
+      M62 54
+      C56 42 54 30 55 18" stroke-width="3.2"></path>
+
+    <path d="
+      M76 38
+      C90 40 101 36 113 28" stroke-width="3.1"></path>
+
+  </g>
+
+  <!-- Vine highlight -->
+  <path d="
+    M21 100
+    C38 87 50 72 61 56
+    C74 40 88 28 105 19" fill="none" stroke="#ba9270" stroke-width="1" stroke-linecap="round" opacity="0.6"></path>
+
+  <!-- Broad kiwi leaves -->
+  <g stroke="#285338" stroke-width="1.2" filter="url(#softShadow)">
+
+    <path d="
+      M29 40
+      C17 29 7 32 5 42
+      C12 53 24 56 34 49
+
+      C38 46 35 42 29 40Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M42 59
+      C29 48 18 53 17 63
+      C25 74 37 75 47 66
+
+      C50 63 47 60 42 59Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M55 20
+      C44 10 34 13 31 23
+      C38 34 50 36 59 28
+
+      C62 25 60 22 55 20Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M72 46
+      C82 34 94 34 102 42
+      C97 54 85 58 74 52
+
+      C70 51 69 48 72 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M93 29
+      C103 18 114 20 120 29
+      C113 40 102 42 93 36
+
+      C89 34 90 31 93 29Z" fill="url(#leafDark)"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#bfd8a0" stroke-width="0.85" stroke-linecap="round" opacity="0.72">
+
+    <path d="M8 42 C16 44 25 45 32 46"></path>
+    <path d="M20 63 C29 63 38 63 45 63"></path>
+    <path d="M34 24 C43 25 51 25 57 25"></path>
+
+    <path d="M99 43 C89 47 81 49 74 50"></path>
+    <path d="M117 29 C108 32 101 34 94 35"></path>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <g fill="none" stroke="#5d5839" stroke-width="2" stroke-linecap="round">
+
+    <path d="M52 65 C51 72 51 77 52 83"></path>
+    <path d="M68 54 C71 61 73 66 74 72"></path>
+    <path d="M82 44 C87 50 89 55 90 61"></path>
+
+  </g>
+
+  <!-- Whole kiwi fruit 1 -->
+  <ellipse cx="51" cy="93" rx="12" ry="17" fill="url(#fruitBrown)" stroke="#513b30" stroke-width="1.5" filter="url(#softShadow)" transform="rotate(-10 51 93)"></ellipse>
+
+  <!-- Whole kiwi fruit 2 -->
+  <ellipse cx="76" cy="82" rx="12" ry="17" fill="url(#fruitBrown)" stroke="#513b30" stroke-width="1.5" filter="url(#softShadow)" transform="rotate(8 76 82)"></ellipse>
+
+  <!-- Kiwi fuzz -->
+  <g stroke="#4e392e" stroke-width="0.65" stroke-linecap="round" opacity="0.65">
+
+    <path d="M42 82 L39 80"></path>
+    <path d="M47 78 L46 74"></path>
+    <path d="M55 78 L57 75"></path>
+    <path d="M61 84 L64 82"></path>
+    <path d="M40 91 L36 91"></path>
+    <path d="M62 94 L66 95"></path>
+    <path d="M45 106 L43 110"></path>
+    <path d="M56 106 L58 110"></path>
+
+    <path d="M68 70 L66 67"></path>
+    <path d="M75 66 L75 62"></path>
+    <path d="M82 68 L85 64"></path>
+    <path d="M87 76 L91 75"></path>
+    <path d="M88 86 L92 88"></path>
+    <path d="M79 97 L81 101"></path>
+    <path d="M69 94 L66 98"></path>
+
+  </g>
+
+  <!-- Brown fruit highlights -->
+  <g fill="#ddb786" opacity="0.55">
+
+    <ellipse cx="46" cy="85" rx="3" ry="5" transform="rotate(-20 46 85)"></ellipse>
+
+    <ellipse cx="71" cy="74" rx="3" ry="5" transform="rotate(-20 71 74)"></ellipse>
+
+  </g>
+
+  <!-- Cut kiwi -->
+  <circle cx="93" cy="101" r="19" fill="#765139" stroke="#49352d" stroke-width="1.7" filter="url(#softShadow)"></circle>
+
+  <circle cx="93" cy="101" r="16.2" fill="url(#kiwiGreen)" stroke="#3e7c37" stroke-width="1.1"></circle>
+
+  <!-- Pale central core -->
+  <ellipse cx="93" cy="101" rx="5.5" ry="7" fill="#e3e6a8" opacity="0.95"></ellipse>
+
+  <!-- Kiwi seed rays -->
+  <g fill="#202521">
+
+    <ellipse cx="93" cy="90" rx="1" ry="2" transform="rotate(0 93 90)"></ellipse>
+
+    <ellipse cx="99" cy="92" rx="1" ry="2" transform="rotate(35 99 92)"></ellipse>
+
+    <ellipse cx="104" cy="96" rx="1" ry="2" transform="rotate(65 104 96)"></ellipse>
+
+    <ellipse cx="105" cy="102" rx="1" ry="2" transform="rotate(90 105 102)"></ellipse>
+
+    <ellipse cx="102" cy="108" rx="1" ry="2" transform="rotate(120 102 108)"></ellipse>
+
+    <ellipse cx="97" cy="111" rx="1" ry="2" transform="rotate(150 97 111)"></ellipse>
+
+    <ellipse cx="90" cy="111" rx="1" ry="2" transform="rotate(-150 90 111)"></ellipse>
+
+    <ellipse cx="84" cy="108" rx="1" ry="2" transform="rotate(-120 84 108)"></ellipse>
+
+    <ellipse cx="81" cy="102" rx="1" ry="2" transform="rotate(-90 81 102)"></ellipse>
+
+    <ellipse cx="83" cy="96" rx="1" ry="2" transform="rotate(-60 83 96)"></ellipse>
+
+    <ellipse cx="87" cy="92" rx="1" ry="2" transform="rotate(-30 87 92)"></ellipse>
+
+  </g>
+
+  <!-- Green flesh radial details -->
+  <g fill="none" stroke="#c8dd72" stroke-width="0.8" opacity="0.72">
+
+    <path d="M93 95 L93 87"></path>
+    <path d="M97 96 L102 89"></path>
+    <path d="M99 100 L108 98"></path>
+    <path d="M99 104 L106 110"></path>
+    <path d="M95 107 L97 116"></path>
+
+    <path d="M90 107 L88 116"></path>
+    <path d="M87 104 L80 109"></path>
+    <path d="M87 100 L78 98"></path>
+    <path d="M89 96 L84 89"></path>
+
+  </g>
+
+  <!-- White kiwi flower -->
+  <path d="
+    M78 37
+    C80 30 84 25 88 20" fill="none" stroke="#65794b" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <g transform="translate(89 18)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-7 -1 -10 -6 -7 -10
+      C-3 -13 2 -10 2 -4Z" fill="url(#petalCream)" stroke="#cbc5b7" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C2 -7 7 -10 11 -7
+      C14 -3 10 2 5 2Z" fill="url(#petalCream)" stroke="#cbc5b7" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C7 2 9 7 6 11
+      C2 14 -2 9 -2 4Z" fill="url(#petalCream)" stroke="#cbc5b7" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C-2 7 -7 10 -11 6
+      C-14 2 -10 -2 -4 -2Z" fill="url(#petalCream)" stroke="#cbc5b7" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C-4 -5 -2 -10 2 -11
+      C7 -10 8 -5 4 -2Z" fill="url(#petalCream)" stroke="#cbc5b7" stroke-width="0.7"></path>
+
+    <circle cx="0" cy="0" r="3.4" fill="#dfbd4c"></circle>
+
+    <g fill="#856a2c">
+      <circle cx="-1.4" cy="-1" r="0.55"></circle>
+      <circle cx="1.5" cy="-1" r="0.55"></circle>
+      <circle cx="0" cy="1.4" r="0.55"></circle>
+    </g>
+
+  </g>
+
+</svg>

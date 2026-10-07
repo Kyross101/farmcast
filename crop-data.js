@@ -14187,6 +14187,70 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Kiwi',
+      scientificName:
+        'Actinidia chinensis var. deliciosa (A.Chev.) A.Chev.',
+      category: 'fruit',
+      icon: 'assets/crops/kiwi.svg',
+
+      plantingMethods: [
+        {
+          value: 'container-grown-plants',
+          label: 'Container-Grown Kiwi Vine'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Kiwi Fruit',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/kiwi/grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate growing conditions with a warm, long growing season for successful fruit development. Kew identifies Actinidia chinensis var. deliciosa as a woody liana primarily associated with the temperate biome. Royal Horticultural Society guidance recommends a warm, sunny, sheltered location and notes that young shoots are vulnerable to late frost. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends watering newly planted Kiwi vines during establishment and providing additional water during prolonged dry periods while fruits are swelling. Waterlogged soil should be avoided. FarmCast therefore keeps moisture guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'Prefers fertile, well-drained, slightly acidic soil.',
+
+      soilNote:
+        'Kiwi vines perform best in fertile, well-drained soil rich in organic matter, in a warm, sunny and sheltered position. They are vigorous climbers and require a strong permanent support such as wires, a pergola, arch or sturdy fence.',
+
+      plantingNote:
+        'Kiwi is a familiar edible climbing fruit crop. Royal Horticultural Society guidance notes that Kiwi plants are commonly available as young container-grown vines. Most cultivars are either male or female, so female plants normally require a compatible male pollinator nearby unless a self-fertile cultivar is grown. Current Kew taxonomy accepts Actinidia chinensis var. deliciosa (A.Chev.) A.Chev. Actinidia deliciosa, Actinidia latifolia var. deliciosa, Actinidia chinensis f. chlorocarpa, Actinidia chinensis var. hispida, Actinidia chinensis f. longipila, Actinidia deliciosa var. chlorocarpa, Actinidia deliciosa var. coloris and Actinidia deliciosa var. longipila are treated as synonyms.',
+
+      harvestNote:
+        'Kiwi vines generally begin fruiting about three to four years after planting. Fruits develop through summer and into autumn and may be harvested before the first hard frost, then allowed to finish ripening indoors when necessary. Because first fruiting age and harvest timing depend strongly on cultivar, pollination, climate and establishment conditions, FarmCast keeps Kiwi as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Kiwi Fruit',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/kiwi/grow-your-own'
+          ].join('')
+      }
+    },
+
 
 
   
