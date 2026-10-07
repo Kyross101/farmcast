@@ -15773,6 +15773,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'European Gooseberry',
+      localName: 'Gooseberry',
+      scientificName: 'Ribes uva-crispa L.',
+      category: 'fruit',
+      icon: 'assets/crops/european-gooseberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'bare-root-plants',
+          label: 'Bare-Root Plants'
+        },
+        {
+          value: 'container-grown-plants',
+          label: 'Container-Grown Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Gooseberries',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/gooseberries/',
+            'grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool temperate growing conditions. Kew identifies European Gooseberry as a shrub primarily associated with the temperate biome. Royal Horticultural Society guidance notes that gooseberries are hardy and can crop in sun or light shade, while flowers may be damaged by late frost. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Newly planted gooseberries should receive regular water during dry periods while establishing, and container-grown plants require a steady moisture supply during the growing season. The root zone should remain suitably drained rather than persistently waterlogged. FarmCast therefore keeps moisture guidance descriptive rather than inventing one universal rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows Royal Horticultural Society guidance emphasizing moist, well-drained soil rather than assigning an unsupported numeric range.',
+
+      soilNote:
+        'European Gooseberry is adaptable to many soil conditions but performs best in moist, well-drained ground. A sunny position generally produces sweeter fruit, although light shade is tolerated. Sheltered sites are useful because fruit-laden stems can be damaged by strong winds.',
+
+      plantingNote:
+        'European Gooseberry in this FarmCast entry refers specifically to Ribes uva-crispa L., the familiar edible gooseberry grown as a fruiting shrub. Royal Horticultural Society guidance supports planting either dormant bare-root bushes or container-grown plants; healthy hardwood cuttings can also be rooted for propagation. Current Kew taxonomy accepts Ribes uva-crispa L.; its species-level synonyms include Grossularia uva, Grossularia uva-crispa, Oxyacanthus uva-crispa, Ribes crispum, Ribes grossularia var. uva-crispa and Ribes uva-crispa var. sylvestre. This crop is botanically distinct from FarmCast Indian Gooseberry and Cape Gooseberry.',
+
+      harvestNote:
+        'European Gooseberries may be picked at two different stages depending on intended use. Royal Horticultural Society guidance recommends an early picking of firm under-ripe fruit for cooking, followed later by harvesting fully ripe fruit for maximum sweetness and flavour. Varieties ripen at different times through summer. Because European Gooseberry is a perennial shrub with seasonal and cultivar-dependent harvests rather than one universal planting-to-harvest interval, FarmCast keeps European Gooseberry as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Gooseberries',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/gooseberries/',
+            'grow-your-own'
+          ].join('')
+      }
+    },
+
   
 ];
 
