@@ -13007,6 +13007,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Garden Orach',
+      scientificName: 'Atriplex hortensis L.',
+      category: 'vegetable',
+      icon: 'assets/crops/garden-orach.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Atriplex hortensis — Garden Orache',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/84645/atriplex-hortensis/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate annual conditions. Kew identifies Garden Orach as an annual species primarily associated with the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cited cultivation guidance does not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends watering freely during dry weather to reduce stress and premature bolting. FarmCast therefore keeps water guidance descriptive rather than converting irrigation advice into an invented annual rainfall range.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Garden Orach performs well in well-drained soil under full sun. Royal Horticultural Society guidance lists loam and sandy soils as suitable and recommends maintaining adequate moisture during dry weather.',
+
+      plantingNote:
+        'Garden Orach is an annual leafy vegetable propagated from seed. Current Kew taxonomy accepts Atriplex hortensis L.; older names including Chenopodium hortense, Atriplex atrosanguinea, Atriplex purpurea, Atriplex ruberrima, and Atriplex virgata are treated as synonyms.',
+
+      harvestNote:
+        'Garden Orach is grown for its tender young leaves, which may be eaten as a spinach-like leafy vegetable. Leaves can be collected while young and tender, with repeated picking possible as the plant continues producing foliage. Because harvest depends on leaf stage and repeated picking rather than one universal sowing-to-harvest interval, FarmCast keeps Garden Orach as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Atriplex hortensis — Garden Orache',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/84645/atriplex-hortensis/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
