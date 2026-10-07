@@ -14406,6 +14406,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Blackberry',
+      scientificName: 'Rubus fruticosus L.',
+      category: 'fruit',
+      icon: 'assets/crops/blackberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'container-grown-plants',
+          label: 'Container-Grown Plants'
+        },
+        {
+          value: 'bare-root-plants',
+          label: 'Bare-Root Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Blackberries and Hybrid Berries',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/blackberries-and-hybrid-berries/',
+            'grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate growing conditions. Kew identifies Blackberry as a scrambling shrub primarily associated with the temperate biome. Royal Horticultural Society guidance recommends a sunny, sheltered position for the best fruit production, although plants can also fruit in light shade. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends watering newly planted Blackberries well and providing water during prolonged dry periods in the first growing season. Established plants generally require less supplemental watering. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'No universal numeric soil-pH requirement is stored. FarmCast follows source guidance emphasizing fertile, moisture-retentive but well-drained soil.',
+
+      soilNote:
+        'Blackberries perform best in fertile soil with good drainage and should not be planted where the root zone becomes waterlogged. Vigorous varieties benefit from strong horizontal wires or another support system for training their long canes.',
+
+      plantingNote:
+        'Blackberry is a familiar edible soft-fruit crop. Royal Horticultural Society guidance notes that Blackberry plants are normally sold as container-grown plants, with bare-root plants also available while dormant. Current Kew taxonomy accepts Rubus fruticosus L. This FarmCast entry refers specifically to the accepted Blackberry species rather than Raspberry hybrids such as Loganberry, Tayberry, or Boysenberry.',
+
+      harvestNote:
+        'Blackberries are harvested when the fruits are fully coloured, plump and juicy. Royal Horticultural Society guidance states that fruits generally ripen from mid-summer to early autumn depending on species and cultivar and should be picked when ripe because they do not continue ripening after harvest. Newly planted canes generally do not fruit in their first growing season, with fruit produced on older canes. Because fruiting depends on cane age, cultivar and local season, FarmCast keeps Blackberry as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Blackberries and Hybrid Berries',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/blackberries-and-hybrid-berries/',
+            'grow-your-own'
+          ].join('')
+      }
+    },
+
   
 ];
 

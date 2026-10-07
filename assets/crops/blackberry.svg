@@ -1,0 +1,312 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Blackberry</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of blackberry with serrated green leaves,
+    arching bramble canes, a white flower, clusters of ripe dark-purple
+    blackberries, highlights, shadows, and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="caneBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#94705a"></stop>
+      <stop offset="0.55" stop-color="#684d40"></stop>
+      <stop offset="1" stop-color="#43332d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#275b38"></stop>
+      <stop offset="0.5" stop-color="#548f4c"></stop>
+      <stop offset="1" stop-color="#9ac577"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#204731"></stop>
+      <stop offset="1" stop-color="#659b57"></stop>
+    </linearGradient>
+
+    <radialGradient id="berryDark" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#805b91"></stop>
+      <stop offset="0.38" stop-color="#51365f"></stop>
+      <stop offset="0.72" stop-color="#30233d"></stop>
+      <stop offset="1" stop-color="#191521"></stop>
+    </radialGradient>
+
+    <radialGradient id="berryPurple" cx="30%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#956a9c"></stop>
+      <stop offset="0.42" stop-color="#603c6d"></stop>
+      <stop offset="1" stop-color="#211927"></stop>
+    </radialGradient>
+
+    <linearGradient id="petalWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf8"></stop>
+      <stop offset="1" stop-color="#dedbd1"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#1d2920" flood-opacity="0.27"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="116" rx="39" ry="6" fill="#263128" opacity="0.17"></ellipse>
+
+  <!-- Main cane -->
+  <path d="
+    M25 108
+    C37 91 47 75 57 60
+    C69 42 82 28 101 15" fill="none" stroke="url(#caneBrown)" stroke-width="5.7" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- Side canes -->
+  <g fill="none" stroke="url(#caneBrown)" stroke-linecap="round">
+
+    <path d="M48 75 C38 64 31 53 28 41" stroke-width="3.3"></path>
+
+    <path d="M61 55 C55 43 52 31 52 20" stroke-width="3"></path>
+
+    <path d="M75 38 C87 40 99 36 109 29" stroke-width="3"></path>
+
+    <path d="M38 90 C30 86 22 81 17 76" stroke-width="2.8"></path>
+
+  </g>
+
+  <!-- Cane thorns -->
+  <g fill="#553c32" stroke="#3a2c27" stroke-width="0.5">
+
+    <path d="M42 82 L36 78 L41 85Z"></path>
+    <path d="M56 62 L50 57 L55 65Z"></path>
+    <path d="M68 45 L63 40 L68 49Z"></path>
+    <path d="M84 29 L80 23 L85 32Z"></path>
+
+  </g>
+
+  <!-- Leaves -->
+  <g stroke="#285238" stroke-width="1.1" filter="url(#softShadow)">
+
+    <path d="
+      M28 42
+      C18 33 9 36 7 45
+      C15 53 24 53 31 48
+      C34 46 32 43 28 42Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M39 58
+      C28 50 19 54 17 63
+      C26 70 36 68 43 62
+      C46 60 43 58 39 58Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M52 21
+      C42 13 33 16 31 25
+      C39 32 49 31 56 25
+      C58 23 56 21 52 21Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M69 43
+      C78 34 89 34 96 41
+      C90 51 80 54 70 50
+      C67 49 67 45 69 43Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M91 28
+      C100 19 111 20 117 28
+      C110 37 100 39 91 34
+      C88 33 88 30 91 28Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 48
+      C106 40 116 43 120 51
+      C113 59 103 60 95 55
+      C92 53 93 50 96 48Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- Serrated details -->
+  <g fill="none" stroke="#1f4730" stroke-width="0.7" opacity="0.7">
+
+    <path d="M9 45 L14 42 L17 47 L22 44 L26 48 L30 45"></path>
+    <path d="M19 63 L24 60 L28 64 L33 61 L38 64"></path>
+    <path d="M33 24 L38 21 L42 25 L47 22 L52 25"></path>
+
+    <path d="M72 48 L77 44 L81 48 L86 44 L91 45"></path>
+    <path d="M93 33 L98 29 L102 32 L107 29 L112 30"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#bed69f" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M10 46 C17 46 24 46 30 46"></path>
+    <path d="M20 63 C28 62 35 61 41 60"></path>
+    <path d="M33 25 C41 24 48 24 54 23"></path>
+
+    <path d="M93 42 C84 45 77 48 71 49"></path>
+    <path d="M114 28 C106 30 99 32 92 33"></path>
+
+  </g>
+
+  <!-- Berry stems -->
+  <g fill="none" stroke="#637645" stroke-width="1.7" stroke-linecap="round">
+
+    <path d="M51 66 C49 73 48 79 48 84"></path>
+    <path d="M67 54 C71 61 73 67 74 73"></path>
+    <path d="M36 78 C34 84 33 89 34 95"></path>
+
+  </g>
+
+  <!-- Main blackberry -->
+  <g transform="translate(48 91)" filter="url(#softShadow)">
+
+    <g fill="url(#berryDark)" stroke="#18131d" stroke-width="0.7">
+
+      <circle cx="0" cy="-9" r="4.1"></circle>
+      <circle cx="-5" cy="-6" r="4.2"></circle>
+      <circle cx="5" cy="-6" r="4.2"></circle>
+
+      <circle cx="-7" cy="0" r="4.2"></circle>
+      <circle cx="0" cy="0" r="4.5"></circle>
+      <circle cx="7" cy="0" r="4.2"></circle>
+
+      <circle cx="-6" cy="6" r="4.2"></circle>
+      <circle cx="0" cy="6" r="4.5"></circle>
+      <circle cx="6" cy="6" r="4.2"></circle>
+
+      <circle cx="-3" cy="11" r="3.8"></circle>
+      <circle cx="3" cy="11" r="3.8"></circle>
+
+    </g>
+
+    <g fill="#c3a0cb" opacity="0.5">
+      <circle cx="-1.5" cy="-10" r="1"></circle>
+      <circle cx="-5" cy="-1" r="0.9"></circle>
+      <circle cx="0" cy="-1" r="1"></circle>
+      <circle cx="-4" cy="5" r="0.8"></circle>
+    </g>
+
+  </g>
+
+  <!-- Second blackberry -->
+  <g transform="translate(76 80)" filter="url(#softShadow)">
+
+    <g fill="url(#berryPurple)" stroke="#18131d" stroke-width="0.7">
+
+      <circle cx="0" cy="-9" r="4.1"></circle>
+      <circle cx="-5" cy="-6" r="4.2"></circle>
+      <circle cx="5" cy="-6" r="4.2"></circle>
+
+      <circle cx="-7" cy="0" r="4.2"></circle>
+      <circle cx="0" cy="0" r="4.5"></circle>
+      <circle cx="7" cy="0" r="4.2"></circle>
+
+      <circle cx="-6" cy="6" r="4.2"></circle>
+      <circle cx="0" cy="6" r="4.5"></circle>
+      <circle cx="6" cy="6" r="4.2"></circle>
+
+      <circle cx="-3" cy="11" r="3.8"></circle>
+      <circle cx="3" cy="11" r="3.8"></circle>
+
+    </g>
+
+    <g fill="#cbb0d2" opacity="0.48">
+      <circle cx="-1" cy="-10" r="1"></circle>
+      <circle cx="-5" cy="-1" r="0.9"></circle>
+      <circle cx="0" cy="-1" r="1"></circle>
+    </g>
+
+  </g>
+
+  <!-- Smaller blackberry -->
+  <g transform="translate(34 101) scale(.82)" filter="url(#softShadow)">
+
+    <g fill="url(#berryDark)" stroke="#18131d" stroke-width="0.8">
+
+      <circle cx="0" cy="-8" r="4"></circle>
+      <circle cx="-4" cy="-5" r="4"></circle>
+      <circle cx="4" cy="-5" r="4"></circle>
+
+      <circle cx="-6" cy="0" r="4"></circle>
+      <circle cx="0" cy="0" r="4.3"></circle>
+      <circle cx="6" cy="0" r="4"></circle>
+
+      <circle cx="-4" cy="5" r="4"></circle>
+      <circle cx="2" cy="5" r="4"></circle>
+      <circle cx="-1" cy="9" r="3.5"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- Green calyxes -->
+  <g fill="#5d7c45" stroke="#3d5d38" stroke-width="0.6">
+
+    <path d="
+      M42 82
+      L48 78
+      L54 82
+      L51 85
+      L48 83
+      L45 85Z"></path>
+
+    <path d="
+      M70 71
+      L76 67
+      L82 71
+      L79 74
+      L76 72
+      L73 74Z"></path>
+
+  </g>
+
+  <!-- Flower stem -->
+  <path d="
+    M75 38
+    C77 31 80 25 85 20" fill="none" stroke="#657a47" stroke-width="1.6" stroke-linecap="round"></path>
+
+  <!-- White blackberry flower -->
+  <g transform="translate(86 18)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-7 -1 -10 -6 -7 -10
+      C-3 -13 2 -10 2 -4Z" fill="url(#petalWhite)" stroke="#cbc8bd" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C2 -7 7 -10 11 -7
+      C14 -3 10 2 5 2Z" fill="url(#petalWhite)" stroke="#cbc8bd" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C7 2 9 7 6 11
+      C2 14 -2 9 -2 4Z" fill="url(#petalWhite)" stroke="#cbc8bd" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C-2 7 -7 10 -11 6
+      C-14 2 -10 -2 -4 -2Z" fill="url(#petalWhite)" stroke="#cbc8bd" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C-4 -5 -2 -10 2 -11
+      C7 -10 8 -5 4 -2Z" fill="url(#petalWhite)" stroke="#cbc8bd" stroke-width="0.7"></path>
+
+    <circle cx="0" cy="0" r="3.3" fill="#d1b13e"></circle>
+
+    <g fill="#776129">
+      <circle cx="-1.5" cy="-1" r="0.55"></circle>
+      <circle cx="1.5" cy="-1" r="0.55"></circle>
+      <circle cx="0" cy="1.4" r="0.55"></circle>
+    </g>
+
+  </g>
+
+  <!-- Cane highlight -->
+  <path d="
+    M29 104
+    C41 87 51 72 61 58
+    C72 41 85 28 99 18" fill="none" stroke="#b38d70" stroke-width="0.9" stroke-linecap="round" opacity="0.6"></path>
+
+</svg>
