@@ -17104,6 +17104,77 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Batuan',
+      localName: 'Batwan / Binukaw',
+      scientificName:
+        'Garcinia binucao (Blanco) Choisy',
+      category: 'fruit',
+      icon: 'assets/crops/batuan.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'cleft-grafted-plants',
+          label: 'Cleft-Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of the Philippines College of Agriculture',
+
+        title:
+          'Native Fruits — Binukaw / Batuan',
+
+        url:
+          [
+            'https://',
+            'studyres.com/doc/8144648/',
+            'a.-native-fruit---site-of-the-upca-2010-golden-jubilarians'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm and humid tropical growing conditions. Kew identifies Garcinia binucao as a Philippine-native tree of the wet tropical biome, while PROSEA records it from low-altitude forest environments. Because local elevation, rainfall, shade and tree establishment can strongly affect growth and fruiting, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No universal annual rainfall range is stored for Batuan. The species is naturally associated with wet tropical environments, but reliable crop guidance does not provide one defensible annual rainfall interval that should be applied universally. FarmCast therefore keeps rainfall guidance descriptive.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Batuan is naturally associated with low-altitude tropical environments. Available Philippine forestry guidance describes Binukaw as occurring in primary and secondary lowland forests and recommends well-drained growing conditions. Because no reliable universal numeric soil-pH range is available for this crop, FarmCast keeps soil-pH guidance unset.',
+
+      plantingNote:
+        'Batuan in this FarmCast entry refers specifically to Garcinia binucao (Blanco) Choisy, a Philippine-native fruit tree also known as Batwan, Binukaw or Binucao. Philippine native-fruit guidance describes propagation mainly from seed and also by cleft grafting. Current Kew taxonomy accepts Garcinia binucao and recognizes Cambogia binucao and Garcinia duodecandra as synonyms.',
+
+      harvestNote:
+        'Batuan produces strongly sour fruits commonly used as a souring ingredient in Philippine cooking. Philippine fruit references report that seedling trees may begin bearing at about six to seven years while grafted trees may begin bearing at about three to four years. Research from Visayas State University describes immature fruit as light green and firm, mature fruit as green and firm, and ripe fruit as light yellow with softer pulp and a noticeable fruity aroma. Because first bearing depends greatly on propagation method and long-term tree establishment, FarmCast keeps Batuan as guidance-only rather than assigning one automatic harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Garcinia binucao (Blanco) Choisy',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=1669'
+          ].join('')
+      }
+    },
+
   
 ];
 

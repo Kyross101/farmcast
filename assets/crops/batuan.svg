@@ -1,0 +1,304 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Batuan</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Philippine Batuan or Binukaw
+    with glossy tropical leaves, small reddish flowers, green to
+    yellow rounded sour fruits, woody branches, highlights and shadows.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9c7658"></stop>
+      <stop offset="0.5" stop-color="#684d3c"></stop>
+      <stop offset="1" stop-color="#3c312b"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bed17b"></stop>
+      <stop offset="0.3" stop-color="#799c58"></stop>
+      <stop offset="0.67" stop-color="#447647"></stop>
+      <stop offset="1" stop-color="#1e4936"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#95b563"></stop>
+      <stop offset="0.5" stop-color="#547d4b"></stop>
+      <stop offset="1" stop-color="#1f4032"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitGreen" cx="34%" cy="25%" r="74%">
+      <stop offset="0" stop-color="#e0df8e"></stop>
+      <stop offset="0.28" stop-color="#bbc66e"></stop>
+      <stop offset="0.65" stop-color="#879e53"></stop>
+      <stop offset="1" stop-color="#587342"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitRipe" cx="34%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#fff0a3"></stop>
+      <stop offset="0.3" stop-color="#e3cf69"></stop>
+      <stop offset="0.68" stop-color="#b29b4d"></stop>
+      <stop offset="1" stop-color="#746b3d"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e6a08c"></stop>
+      <stop offset="0.45" stop-color="#bd645e"></stop>
+      <stop offset="1" stop-color="#7c4147"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#17241b" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.1" flood-color="#34402d" flood-opacity="0.32"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- main branch -->
+
+  <path d="
+    M16 116
+    C31 101 45 84 58 67
+    C72 48 87 30 107 12" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- branch highlight -->
+
+  <path d="
+    M19 112
+    C34 97 48 81 61 64
+    C75 46 89 29 104 15" fill="none" stroke="#c6a383" stroke-width="0.9" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- side branches -->
+
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="
+      M44 88
+      C34 75 25 62 15 51" stroke-width="3"></path>
+
+    <path d="
+      M60 67
+      C49 57 40 44 35 30" stroke-width="3"></path>
+
+    <path d="
+      M75 48
+      C89 48 101 43 115 34" stroke-width="2.8"></path>
+
+    <path d="
+      M89 31
+      C81 22 75 14 72 7" stroke-width="2.5"></path>
+
+  </g>
+
+  <!-- leaves left -->
+
+  <g fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)">
+
+    <path d="
+      M40 88
+      C26 81 16 84 10 93
+      C20 98 32 96 40 88Z"></path>
+
+    <path d="
+      M40 74
+      C27 65 17 65 10 73
+      C18 81 30 82 40 74Z"></path>
+
+    <path d="
+      M37 58
+      C25 48 16 45 9 50
+      C15 60 26 64 37 58Z"></path>
+
+    <path d="
+      M43 45
+      C30 35 21 34 14 40
+      C22 49 33 52 43 45Z"></path>
+
+  </g>
+
+  <!-- leaves right -->
+
+  <g fill="url(#leafDark)" stroke="#244d37" stroke-width="0.9" filter="url(#softShadow)">
+
+    <path d="
+      M64 60
+      C77 52 88 52 95 59
+      C86 66 75 67 64 60Z"></path>
+
+    <path d="
+      M73 47
+      C85 39 96 39 103 45
+      C95 53 84 54 73 47Z"></path>
+
+    <path d="
+      M84 34
+      C96 27 106 27 114 33
+      C106 40 95 42 84 34Z"></path>
+
+    <path d="
+      M94 22
+      C105 15 114 15 121 20
+      C114 28 104 29 94 22Z"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+
+  <g fill="none" stroke="#c5d99b" stroke-width="0.6" stroke-linecap="round" opacity="0.72">
+
+    <path d="M13 93 L37 88"></path>
+    <path d="M13 73 L37 74"></path>
+    <path d="M12 50 L34 58"></path>
+    <path d="M17 40 L40 45"></path>
+
+    <path d="M67 60 L92 59"></path>
+    <path d="M76 47 L100 45"></path>
+    <path d="M87 34 L111 33"></path>
+    <path d="M97 22 L118 20"></path>
+
+  </g>
+
+  <!-- fruit stems -->
+
+  <g fill="none" stroke="#66513c" stroke-linecap="round">
+
+    <path d="
+      M55 73
+      C59 80 60 87 60 93" stroke-width="2"></path>
+
+    <path d="
+      M70 55
+      C76 62 79 69 80 75" stroke-width="2"></path>
+
+    <path d="
+      M84 40
+      C90 45 94 51 95 57" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- large green Batuan -->
+
+  <g transform="translate(59 101)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -19
+      C13 -20 23 -12 25 1
+      C27 14 19 25 4 28
+      C-11 29 -23 21 -24 8
+      C-25 -6 -15 -17 0 -19Z" fill="url(#fruitGreen)" stroke="#536d3e" stroke-width="1.3"></path>
+
+    <!-- subtle fruit ridges -->
+
+    <g fill="none" stroke="#75884b" stroke-width="0.8" opacity="0.6">
+
+      <path d="M0 -17 C-4 -7 -5 10 -2 25"></path>
+      <path d="M0 -17 C5 -7 7 10 4 25"></path>
+      <path d="M-2 -17 C-11 -5 -13 11 -9 22"></path>
+      <path d="M3 -17 C12 -5 14 10 10 21"></path>
+
+    </g>
+
+    <ellipse cx="-8" cy="-7" rx="5" ry="8" fill="#f0efad" opacity="0.25"></ellipse>
+
+    <circle cx="2" cy="-18" r="3" fill="#526343"></circle>
+
+  </g>
+
+  <!-- ripe yellow Batuan -->
+
+  <g transform="translate(82 81)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -16
+      C11 -17 20 -10 22 1
+      C24 13 16 23 3 25
+      C-10 26 -21 18 -21 6
+      C-22 -6 -13 -15 0 -16Z" fill="url(#fruitRipe)" stroke="#746b3c" stroke-width="1.2"></path>
+
+    <g fill="none" stroke="#9c8946" stroke-width="0.75" opacity="0.56">
+
+      <path d="M0 -14 C-4 -5 -5 9 -2 22"></path>
+      <path d="M1 -14 C6 -5 7 9 4 22"></path>
+      <path d="M-2 -14 C-10 -4 -11 10 -8 19"></path>
+      <path d="M3 -14 C11 -3 12 9 9 19"></path>
+
+    </g>
+
+    <ellipse cx="-7" cy="-5" rx="4" ry="6.5" fill="#fff5ba" opacity="0.28"></ellipse>
+
+    <circle cx="1" cy="-15" r="2.6" fill="#636044"></circle>
+
+  </g>
+
+  <!-- small developing fruit -->
+
+  <g transform="translate(98 62) scale(0.75)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -16
+      C11 -17 20 -10 22 1
+      C24 13 16 23 3 25
+      C-10 26 -21 18 -21 6
+      C-22 -6 -13 -15 0 -16Z" fill="url(#fruitGreen)" stroke="#536d3e" stroke-width="1.4"></path>
+
+    <circle cx="1" cy="-15" r="2.7" fill="#526343"></circle>
+
+  </g>
+
+  <!-- flower branch -->
+
+  <path d="
+    M45 56
+    C38 52 32 47 27 42" fill="none" stroke="#66513b" stroke-width="1.4" stroke-linecap="round"></path>
+
+  <!-- reddish Batuan flowers -->
+
+  <g transform="translate(24 40)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="-5" rx="3.5" ry="5.5" fill="url(#flowerRed)"></ellipse>
+
+    <ellipse cx="5" cy="0" rx="5.5" ry="3.5" fill="url(#flowerRed)"></ellipse>
+
+    <ellipse cx="0" cy="5" rx="3.5" ry="5.5" fill="url(#flowerRed)"></ellipse>
+
+    <ellipse cx="-5" cy="0" rx="5.5" ry="3.5" fill="url(#flowerRed)"></ellipse>
+
+    <circle cx="0" cy="0" r="2.3" fill="#e2c358"></circle>
+
+  </g>
+
+  <g transform="translate(37 52) scale(0.72)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="-5" rx="3.5" ry="5.5" fill="url(#flowerRed)"></ellipse>
+
+    <ellipse cx="5" cy="0" rx="5.5" ry="3.5" fill="url(#flowerRed)"></ellipse>
+
+    <ellipse cx="0" cy="5" rx="3.5" ry="5.5" fill="url(#flowerRed)"></ellipse>
+
+    <ellipse cx="-5" cy="0" rx="5.5" ry="3.5" fill="url(#flowerRed)"></ellipse>
+
+    <circle cx="0" cy="0" r="2.3" fill="#e2c358"></circle>
+
+  </g>
+
+  <!-- foreground leaf -->
+
+  <path d="
+    M29 111
+    C16 104 6 106 3 115
+    C12 122 23 120 31 113Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M6 115
+    L27 112" fill="none" stroke="#c5d99b" stroke-width="0.7" opacity="0.7"></path>
+
+  <!-- base shadow -->
+
+  <ellipse cx="59" cy="121" rx="36" ry="4" fill="#29392c" opacity="0.16"></ellipse>
+
+</svg>
