@@ -13664,6 +13664,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Oca',
+      scientificName: 'Oxalis tuberosa Molina',
+      category: 'vegetable',
+      icon: 'assets/crops/oca.svg',
+
+      plantingMethods: [
+        {
+          value: 'tubers',
+          label: 'Replanted Tubers'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Oxalis tuberosa — oca',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/77011/oxalis-tuberosa/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Subtropical growing conditions. Kew identifies Oca as a tuberous geophyte primarily associated with the subtropical biome, while Royal Horticultural Society guidance recommends frost-free cultivation conditions. FarmCast therefore keeps temperature guidance descriptive rather than assigning an unsupported universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance emphasizes well-drained growing conditions rather than specifying an annual rainfall requirement. FarmCast therefore keeps water guidance descriptive.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Oca grows in loam or sandy soil with good drainage and can be positioned in full sun or partial shade. Royal Horticultural Society guidance also recommends a sheltered growing position.',
+
+      plantingNote:
+        'Oca is an edible tuber vegetable propagated vegetatively by separating and replanting tubers. Royal Horticultural Society guidance recommends replanting tubers in autumn or spring. Current Kew taxonomy accepts Oxalis tuberosa Molina; Acetosella tuberosa and Xanthoxalis tuberosa are treated as scientific synonyms.',
+
+      harvestNote:
+        'Oca is cultivated for its edible fleshy underground tubers, which may occur in red or yellow forms. Because authoritative guidance used by FarmCast does not provide one universal tuber-planting-to-harvest day interval applicable across growing regions and conditions, Oca remains guidance-only rather than receiving an automatic Estimated Harvest rule.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Oxalis tuberosa — oca',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/77011/oxalis-tuberosa/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
