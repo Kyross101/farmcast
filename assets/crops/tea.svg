@@ -1,0 +1,305 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Tea</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a tea plant branch with glossy
+    serrated green leaves, tender young shoots, white Camellia-like
+    flowers, buds, highlights, shadows, and natural botanical depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#967257"></stop>
+      <stop offset="0.55" stop-color="#694d3d"></stop>
+      <stop offset="1" stop-color="#42342c"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#174b31"></stop>
+      <stop offset="0.45" stop-color="#347a3f"></stop>
+      <stop offset="1" stop-color="#87bd6a"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#103a29"></stop>
+      <stop offset="1" stop-color="#4f8b4c"></stop>
+    </linearGradient>
+
+    <linearGradient id="youngLeaf" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#6da24f"></stop>
+      <stop offset="0.55" stop-color="#9ac766"></stop>
+      <stop offset="1" stop-color="#d0e58b"></stop>
+    </linearGradient>
+
+    <linearGradient id="petalWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffefa"></stop>
+      <stop offset="0.7" stop-color="#eee9dc"></stop>
+      <stop offset="1" stop-color="#d6d0bf"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#f5d564"></stop>
+      <stop offset="0.7" stop-color="#d4aa35"></stop>
+      <stop offset="1" stop-color="#9b7428"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#1d291f" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="116" rx="39" ry="6" fill="#253129" opacity="0.16"></ellipse>
+
+  <!-- Main woody stem -->
+  <path d="
+    M18 106
+    C34 91 47 76 58 60
+    C71 42 85 28 106 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- Secondary branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="
+      M47 77
+      C39 64 33 52 31 40" stroke-width="3.4"></path>
+
+    <path d="
+      M61 56
+      C55 44 52 32 53 20" stroke-width="3.1"></path>
+
+    <path d="
+      M76 39
+      C88 41 100 37 112 29" stroke-width="3"></path>
+
+    <path d="
+      M38 90
+      C30 86 23 81 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- Bark highlight -->
+  <path d="
+    M22 102
+    C38 87 50 73 61 57
+    C74 41 88 28 103 18" fill="none" stroke="#b99374" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- Mature tea leaves -->
+  <g stroke="#19462f" stroke-width="1.1" filter="url(#softShadow)">
+
+    <path d="
+      M31 41
+      C19 30 9 34 6 43
+      C14 54 26 55 35 47
+      C38 45 35 42 31 41Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M41 58
+      C29 48 19 53 17 63
+      C26 73 38 70 46 62
+      C49 60 46 58 41 58Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M53 22
+      C42 13 33 16 30 26
+      C38 35 50 34 57 27
+      C60 25 57 23 53 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M70 46
+      C79 35 91 35 98 43
+      C92 54 81 57 71 52
+      C68 51 68 48 70 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M92 30
+      C101 19 113 21 119 29
+      C112 39 101 41 92 35
+      C89 34 89 31 92 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 49
+      C106 39 117 42 121 51
+      C114 60 103 61 95 55
+      C92 53 93 51 96 49Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M25 78
+      C15 70 7 74 6 82
+      C14 90 24 88 31 82
+      C34 80 30 78 25 78Z" fill="url(#leafDark)"></path>
+
+  </g>
+
+  <!-- Serrated leaf margins -->
+  <g fill="none" stroke="#123c29" stroke-width="0.7" opacity="0.78">
+
+    <path d="
+      M8 43
+      L13 40
+      L17 45
+      L22 41
+      L26 46
+      L31 42
+      L34 46"></path>
+
+    <path d="
+      M19 63
+      L24 59
+      L28 64
+      L33 60
+      L38 64
+      L43 60"></path>
+
+    <path d="
+      M32 26
+      L37 22
+      L42 27
+      L47 23
+      L52 27
+      L56 24"></path>
+
+    <path d="
+      M72 50
+      L77 46
+      L82 50
+      L87 46
+      L92 49"></path>
+
+    <path d="
+      M94 34
+      L99 30
+      L103 34
+      L108 30
+      L113 32"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#aad292" stroke-width="0.8" stroke-linecap="round" opacity="0.75">
+
+    <path d="M8 43 C17 44 26 44 33 45"></path>
+    <path d="M20 63 C29 62 37 61 44 60"></path>
+    <path d="M33 26 C42 25 49 25 55 25"></path>
+
+    <path d="M95 44 C86 47 78 49 72 50"></path>
+    <path d="M116 29 C108 31 100 33 93 34"></path>
+    <path d="M118 51 C110 52 102 53 96 53"></path>
+
+  </g>
+
+  <!-- Tender harvest shoot -->
+  <path d="
+    M72 39
+    C73 31 75 24 79 17" fill="none" stroke="#628346" stroke-width="1.7" stroke-linecap="round"></path>
+
+  <!-- Young tea leaves -->
+  <g stroke="#527840" stroke-width="0.9" filter="url(#softShadow)">
+
+    <path d="
+      M77 20
+      C71 14 66 15 64 20
+      C68 26 74 26 79 23
+      C81 22 80 21 77 20Z" fill="url(#youngLeaf)"></path>
+
+    <path d="
+      M80 17
+      C84 10 90 9 94 13
+      C91 20 86 22 81 20
+      C79 19 79 18 80 17Z" fill="url(#youngLeaf)"></path>
+
+    <!-- terminal bud -->
+    <path d="
+      M79 17
+      C77 11 79 6 82 4
+      C86 7 86 12 82 17Z" fill="#c2dc7e" stroke="#6c8d4b" stroke-width="0.9"></path>
+
+  </g>
+
+  <!-- Flower stem -->
+  <path d="
+    M56 61
+    C61 66 65 70 70 72" fill="none" stroke="#5f7443" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- White tea flower -->
+  <g transform="translate(75 76)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-9 -1 -13 -7 -9 -12
+      C-5 -17 2 -13 3 -6Z" fill="url(#petalWhite)" stroke="#cec8ba" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C1 -9 7 -13 12 -9
+      C17 -5 13 2 6 3Z" fill="url(#petalWhite)" stroke="#cec8ba" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C9 1 13 7 9 12
+      C5 17 -2 13 -3 6Z" fill="url(#petalWhite)" stroke="#cec8ba" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C-1 9 -7 13 -12 9
+      C-17 5 -13 -2 -6 -3Z" fill="url(#petalWhite)" stroke="#cec8ba" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C-6 -6 -4 -12 1 -14
+      C7 -12 8 -6 4 -2Z" fill="url(#petalWhite)" stroke="#cec8ba" stroke-width="0.8"></path>
+
+    <!-- Golden stamen cluster -->
+    <circle cx="0" cy="0" r="5" fill="url(#flowerCenter)"></circle>
+
+    <g stroke="#a87d2d" stroke-width="0.7" stroke-linecap="round">
+
+      <path d="M0 0 L-6 -2"></path>
+      <path d="M0 0 L6 -2"></path>
+      <path d="M0 0 L-5 4"></path>
+      <path d="M0 0 L5 4"></path>
+      <path d="M0 0 L0 -7"></path>
+      <path d="M0 0 L0 7"></path>
+
+    </g>
+
+    <g fill="#7a5923">
+
+      <circle cx="-6" cy="-2" r="0.9"></circle>
+      <circle cx="6" cy="-2" r="0.9"></circle>
+      <circle cx="-5" cy="4" r="0.9"></circle>
+      <circle cx="5" cy="4" r="0.9"></circle>
+      <circle cx="0" cy="-7" r="0.9"></circle>
+      <circle cx="0" cy="7" r="0.9"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- Flower bud -->
+  <g transform="translate(98 68)" filter="url(#softShadow)">
+
+    <path d="
+      M0 -7
+      C-6 -6 -9 -1 -7 5
+      C-4 10 4 10 7 5
+      C9 -1 6 -6 0 -7Z" fill="url(#petalWhite)" stroke="#c9c3b6" stroke-width="0.8"></path>
+
+    <path d="
+      M-6 5
+      L0 9
+      L6 5
+      L3 10
+      L-3 10Z" fill="#597742" stroke="#3e6037" stroke-width="0.7"></path>
+
+  </g>
+
+  <!-- Young harvested leaf highlight -->
+  <path d="
+    M67 20
+    C71 21 75 21 78 21" fill="none" stroke="#e1edab" stroke-width="0.7" stroke-linecap="round" opacity="0.78"></path>
+
+</svg>

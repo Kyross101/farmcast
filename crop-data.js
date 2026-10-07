@@ -15169,6 +15169,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Tea',
+      scientificName:
+        'Camellia sinensis (L.) Kuntze',
+      category: 'tree-crop',
+      icon: 'assets/crops/tea.svg',
+
+      plantingMethods: [
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Tea Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Washington State University Extension',
+
+        title:
+          'Tea Plant Propagation',
+
+        url:
+          [
+            'https://',
+            'vegetables.wsu.edu/',
+            'tea-plant-propagation/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate to subtropical growing conditions. Kew identifies Tea as a shrub or tree primarily associated with the subtropical biome. Different Tea types and cultivars vary in their response to heat, cold, shade and local climate, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Tea requires dependable moisture during active shoot growth, particularly while plants are establishing, but the soil should remain well drained. Water requirements vary by climate, soil, season and production system, so FarmCast keeps moisture guidance descriptive rather than inventing one universal rainfall requirement.',
+
+      soilPH:
+        'Washington State University Extension recommends acidic soil of about pH 4.5–5.5.',
+
+      soilNote:
+        'Tea performs best in deep, light, well-drained acidic soil. Washington State University Extension also notes that excessive wind can increase water stress and cold injury, so suitable wind protection may benefit production sites.',
+
+      plantingNote:
+        'Tea is the familiar crop used to produce true black, green, white and oolong teas; these beverages come from the same plant species and differ primarily through cultivar, harvest and processing. Commercial Tea is commonly propagated vegetatively from cuttings so desirable plant characteristics are retained. Current Kew taxonomy accepts Camellia sinensis (L.) Kuntze; Camellia thea and Thea sinensis are its two species-level scientific synonyms.',
+
+      harvestNote:
+        'Tea is harvested repeatedly for tender new shoots and young leaves rather than through one final crop maturity date. University of Arkansas Extension notes that leaves may be harvested every few weeks during periods of active summer growth, while commercial plucking schedules vary with cultivar, climate, pruning cycle and desired tea style. Because Tea is a perennial crop with repeated flush harvests after establishment, FarmCast keeps Tea as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Washington State University Extension',
+
+        title:
+          'Tea (Camellia sinensis) Production',
+
+        url:
+          [
+            'https://',
+            'wpcdn.web.wsu.edu/extension/uploads/sites/25/',
+            '2025/04/Tea-production-extension-guide.pdf'
+          ].join('')
+      }
+    },
+
   
 ];
 
