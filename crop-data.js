@@ -14542,6 +14542,77 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Almond',
+      scientificName: 'Prunus amygdalus Batsch',
+      category: 'tree-nut',
+      icon: 'assets/crops/almond.svg',
+
+      plantingMethods: [
+        {
+          value: 'bare-root-grafted-trees',
+          label: 'Bare-Root Grafted Trees'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Statewide Integrated Pest Management Program',
+
+        title:
+          'Cultural Tips for Growing Almond',
+
+        url:
+          [
+            'https://',
+            'ipm.ucanr.edu/home-and-landscape/',
+            'cultural-tips-for-growing-almond/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate orchard conditions with sufficient winter chilling and protection from damaging late spring frost. Kew identifies Almond as a tree primarily associated with the temperate biome, while University of California guidance notes that Almond blooms early and requires suitable winter chilling. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of California guidance emphasizes consistent soil moisture for young trees and adequate irrigation during active growth and nut development while warning against prolonged soil saturation. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows source guidance emphasizing deep, fertile and well-drained soil.',
+
+      soilNote:
+        'Almond performs best in full sun and deep, well-drained soil. University of California guidance identifies fertile sandy loam as particularly suitable and recommends avoiding shallow, frequently flooded, soggy or poorly drained sites.',
+
+      plantingNote:
+        'Almond is a familiar edible tree-nut crop. University of California guidance recommends establishing orchard trees during dormancy using bare-root nursery trees and refers to maintaining the graft union above the soil surface during planting. Current Kew taxonomy accepts Prunus amygdalus Batsch. The widely used name Prunus dulcis is currently treated by Kew as a synonym, together with historical names including Amygdalus communis and Amygdalus dulcis.',
+
+      harvestNote:
+        'Almonds are harvested when the outer hulls begin to split and the nuts are sufficiently mature for removal from the tree. University of California guidance recommends harvesting promptly once hull split begins to reduce exposure to pests and autumn rain. Because Almond is a perennial orchard tree and first bearing age varies with cultivar, rootstock, climate and establishment conditions, FarmCast keeps Almond as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Statewide Integrated Pest Management Program',
+
+        title:
+          'Cultural Tips for Growing Almond',
+
+        url:
+          [
+            'https://',
+            'ipm.ucanr.edu/home-and-landscape/',
+            'cultural-tips-for-growing-almond/'
+          ].join('')
+      }
+    },
+
   
 ];
 
