@@ -17400,6 +17400,81 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Kaong',
+      localName: 'Sugar Palm',
+      scientificName:
+        'Arenga pinnata (Wurmb) Merr.',
+      category: 'fruit',
+      icon: 'assets/crops/kaong.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Nursery-Raised Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Arenga pinnata (Wurmb) Merrill',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=3218'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm and humid tropical growing conditions with abundant light after establishment. Kew identifies Arenga pinnata as a tree of the wet tropical biome and records it as native to the Philippines. PROSEA reports that Sugar Palm grows best under warm conditions with abundant water and fertile soil, although it can survive under a broad range of tropical environments. Because altitude, light, moisture and local site conditions strongly influence growth and age at flowering, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'Sugar Palm grows best where water is abundant but can occur under both equatorial and seasonal tropical conditions. PROSEA reports that the species tolerates a wide range of environments, so FarmCast does not assign one universal annual rainfall interval that could incorrectly represent all suitable growing areas.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports that Sugar Palm can grow on many soil types, ranging from heavy loam to loamy sand and lateritic soils, provided sites are not regularly inundated. Growth is strongest under fertile conditions with good access to moisture. Because the cited crop guidance does not provide one universal numeric soil-pH range, FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Kaong in this FarmCast entry refers specifically to Arenga pinnata (Wurmb) Merr., commonly known as Sugar Palm or Areng Palm. PROSEA lists Kaong as its Philippine Tagalog name and reports that the species is normally propagated from seed. Seed may be established directly or germinated in a nursery and transplanted after suitable seedling development. Current Kew taxonomy accepts Arenga pinnata and lists historical names including Arenga saccharifera, Arenga gamuto, Saguerus pinnatus, Gomutus rumphii and Borassus gomutus among its synonyms.',
+
+      harvestNote:
+        'Kaong provides several edible products. DOST-FNRI identifies the edible Sugar Palm product as Kaong, while PROSEA describes sweetmeat prepared from the immature seed endosperm and sugar, syrup or vinegar produced from the sugary sap of flowering palms. PROSEA reports that first flowering can occur at roughly five to seven years near sea level but may take about twelve to fifteen years at higher elevations, and untapped fruit requires about twelve months from flowering to maturity. Because harvestable products occur at different developmental stages and age at flowering varies strongly with environment, FarmCast keeps Kaong as guidance-only rather than assigning one automatic planting-to-harvest date.',
+
+      source: {
+        agency:
+          'Department of Environment and Natural Resources',
+
+        office:
+          'Ecosystems Research and Development Bureau',
+
+        title:
+          'Sugar Palm [Arenga pinnata (Wurmb) Merr.]',
+
+        url:
+          [
+            'https://',
+            'erdbservices.denr.gov.ph/',
+            'eskris/iec_for_guest.php?',
+            'operation=view&pk0=80'
+          ].join('')
+      }
+    },
+
 
   
 ];

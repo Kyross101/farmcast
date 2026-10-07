@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Kaong</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Philippine Kaong or Sugar Palm
+    with a fibrous trunk, arching pinnate leaves, hanging fruit clusters,
+    immature green fruits, dark mature fruits, highlights and shadows.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="trunkBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9a7659"></stop>
+      <stop offset="0.48" stop-color="#665044"></stop>
+      <stop offset="1" stop-color="#342f2c"></stop>
+    </linearGradient>
+
+    <linearGradient id="fiberDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5e554a"></stop>
+      <stop offset="0.55" stop-color="#3e3b36"></stop>
+      <stop offset="1" stop-color="#242728"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#214936"></stop>
+      <stop offset="0.35" stop-color="#447746"></stop>
+      <stop offset="0.68" stop-color="#769b55"></stop>
+      <stop offset="1" stop-color="#b9cd76"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#183c30"></stop>
+      <stop offset="0.5" stop-color="#376641"></stop>
+      <stop offset="1" stop-color="#789a57"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitGreen" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#d6dc8d"></stop>
+      <stop offset="0.3" stop-color="#a2b765"></stop>
+      <stop offset="0.68" stop-color="#698c4e"></stop>
+      <stop offset="1" stop-color="#3c6040"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitDark" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#786f59"></stop>
+      <stop offset="0.35" stop-color="#514b42"></stop>
+      <stop offset="0.72" stop-color="#343538"></stop>
+      <stop offset="1" stop-color="#1f2529"></stop>
+    </radialGradient>
+
+    <linearGradient id="seedCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff2c5"></stop>
+      <stop offset="0.52" stop-color="#dcc797"></stop>
+      <stop offset="1" stop-color="#aa8d65"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#16231b" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#242927" flood-opacity="0.34"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- fibrous palm trunk -->
+
+  <path d="
+    M48 124
+    C50 105 52 89 56 72
+    C59 59 63 49 67 41
+    L82 41
+    C78 52 76 64 76 78
+    C75 95 78 110 82 124Z" fill="url(#trunkBrown)" stroke="#43372f" stroke-width="1.3" filter="url(#softShadow)"></path>
+
+  <!-- characteristic black fibres -->
+
+  <g fill="none" stroke="url(#fiberDark)" stroke-linecap="round" opacity="0.9">
+
+    <path d="
+      M51 119
+      C60 108 51 99 61 89
+      C68 81 57 72 66 61
+      C72 54 65 47 71 41" stroke-width="2.2"></path>
+
+    <path d="
+      M56 124
+      C65 113 57 104 67 94
+      C73 87 63 77 72 68
+      C78 61 71 51 76 42" stroke-width="1.8"></path>
+
+    <path d="
+      M64 124
+      C55 112 68 104 59 94
+      C53 86 66 78 59 69
+      C54 61 68 53 63 44" stroke-width="1.6"></path>
+
+    <path d="
+      M72 123
+      C80 111 69 102 78 92
+      C83 85 73 77 81 67
+      C86 59 76 51 80 43" stroke-width="1.5"></path>
+
+  </g>
+
+  <!-- crown base -->
+
+  <ellipse cx="73" cy="42" rx="14" ry="8" fill="#4e593f" opacity="0.88"></ellipse>
+
+  <!-- left palm frond -->
+
+  <path d="
+    M71 43
+    C54 31 35 24 10 21" fill="none" stroke="url(#leafDark)" stroke-width="4" stroke-linecap="round"></path>
+
+  <g fill="url(#leafGreen)" stroke="#244d37" stroke-width="0.55">
+
+    <path d="M59 36 C48 26 40 23 33 25 C40 32 48 36 59 36Z"></path>
+    <path d="M49 31 C39 21 31 19 24 21 C31 28 39 31 49 31Z"></path>
+    <path d="M39 27 C30 18 21 16 15 19 C22 25 30 28 39 27Z"></path>
+
+    <path d="M58 39 C47 42 39 47 34 54 C44 53 52 48 58 39Z"></path>
+    <path d="M48 34 C38 37 30 42 25 49 C35 48 42 43 48 34Z"></path>
+    <path d="M38 29 C28 32 20 37 16 43 C25 42 32 37 38 29Z"></path>
+
+  </g>
+
+  <!-- right palm frond -->
+
+  <path d="
+    M76 42
+    C91 30 106 24 122 22" fill="none" stroke="url(#leafDark)" stroke-width="4" stroke-linecap="round"></path>
+
+  <g fill="url(#leafGreen)" stroke="#244d37" stroke-width="0.55">
+
+    <path d="M86 35 C94 25 103 22 110 24 C104 31 96 35 86 35Z"></path>
+    <path d="M96 30 C104 21 111 19 118 21 C113 27 106 31 96 30Z"></path>
+
+    <path d="M87 38 C98 41 106 46 111 53 C101 52 93 47 87 38Z"></path>
+    <path d="M97 33 C107 36 115 41 120 48 C110 47 103 42 97 33Z"></path>
+
+  </g>
+
+  <!-- upright frond -->
+
+  <path d="
+    M73 41
+    C70 27 70 15 74 4" fill="none" stroke="url(#leafDark)" stroke-width="4" stroke-linecap="round"></path>
+
+  <g fill="url(#leafGreen)" stroke="#244d37" stroke-width="0.55">
+
+    <path d="
+      M71 31
+      C61 24 57 17 58 11
+      C66 15 71 22 71 31Z"></path>
+
+    <path d="
+      M71 22
+      C64 16 62 10 63 6
+      C69 9 72 15 71 22Z"></path>
+
+    <path d="
+      M72 31
+      C82 24 87 18 88 12
+      C80 15 75 22 72 31Z"></path>
+
+    <path d="
+      M72 22
+      C80 16 83 10 83 6
+      C77 9 74 15 72 22Z"></path>
+
+  </g>
+
+  <!-- rear downward frond -->
+
+  <path d="
+    M69 45
+    C54 50 41 58 31 69" fill="none" stroke="url(#leafDark)" stroke-width="3" stroke-linecap="round"></path>
+
+  <g fill="url(#leafGreen)" stroke="#244d37" stroke-width="0.5">
+
+    <path d="
+      M59 49
+      C48 47 41 50 36 55
+      C44 58 52 56 59 49Z"></path>
+
+    <path d="
+      M50 54
+      C40 53 33 57 29 62
+      C37 65 44 62 50 54Z"></path>
+
+    <path d="
+      M43 59
+      C33 59 26 63 22 69
+      C30 71 37 68 43 59Z"></path>
+
+  </g>
+
+  <!-- inflorescence stem -->
+
+  <path d="
+    M75 48
+    C84 58 90 70 92 83" fill="none" stroke="#6b523d" stroke-width="3" stroke-linecap="round"></path>
+
+  <!-- hanging fruit cluster branches -->
+
+  <g fill="none" stroke="#6a523d" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="M88 69 C82 76 78 83 76 91"></path>
+    <path d="M90 72 C87 81 87 90 87 98"></path>
+    <path d="M91 74 C95 82 99 90 102 97"></path>
+    <path d="M91 68 C98 74 105 80 110 87"></path>
+    <path d="M87 65 C80 69 72 73 66 79"></path>
+
+  </g>
+
+  <!-- green immature fruits -->
+
+  <g filter="url(#fruitShadow)">
+
+    <ellipse cx="75" cy="96" rx="8" ry="10" fill="url(#fruitGreen)" stroke="#405e3d" stroke-width="1"></ellipse>
+
+    <ellipse cx="87" cy="102" rx="8" ry="10" fill="url(#fruitGreen)" stroke="#405e3d" stroke-width="1"></ellipse>
+
+    <ellipse cx="102" cy="101" rx="8" ry="10" fill="url(#fruitGreen)" stroke="#405e3d" stroke-width="1"></ellipse>
+
+    <ellipse cx="111" cy="90" rx="7" ry="9" fill="url(#fruitGreen)" stroke="#405e3d" stroke-width="1"></ellipse>
+
+    <ellipse cx="65" cy="83" rx="7" ry="9" fill="url(#fruitGreen)" stroke="#405e3d" stroke-width="1"></ellipse>
+
+  </g>
+
+  <!-- fruit highlights -->
+
+  <g fill="#eef0ac" opacity="0.3">
+
+    <ellipse cx="72" cy="92" rx="2.5" ry="4"></ellipse>
+
+    <ellipse cx="84" cy="98" rx="2.5" ry="4"></ellipse>
+
+    <ellipse cx="99" cy="97" rx="2.5" ry="4"></ellipse>
+
+    <ellipse cx="108" cy="87" rx="2.2" ry="3.5"></ellipse>
+
+  </g>
+
+  <!-- a few mature dark fruits -->
+
+  <g filter="url(#fruitShadow)">
+
+    <ellipse cx="64" cy="101" rx="7" ry="9" fill="url(#fruitDark)" stroke="#292d2d" stroke-width="1"></ellipse>
+
+    <ellipse cx="113" cy="105" rx="7" ry="9" fill="url(#fruitDark)" stroke="#292d2d" stroke-width="1"></ellipse>
+
+  </g>
+
+  <!-- cut processed young seed -->
+
+  <g transform="translate(35 103)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="0" rx="13" ry="10" fill="#d7d6a0" stroke="#77774f" stroke-width="1"></ellipse>
+
+    <ellipse cx="0" cy="0" rx="8" ry="6" fill="url(#seedCream)" stroke="#967d59" stroke-width="0.8"></ellipse>
+
+    <ellipse cx="-2" cy="-2" rx="3" ry="2" fill="#fff8d5" opacity="0.6"></ellipse>
+
+  </g>
+
+  <!-- ground -->
+
+  <path d="
+    M6 119
+    C25 114 43 118 61 115
+    C82 112 103 118 123 114
+    L123 128
+    L6 128Z" fill="#74594a" opacity="0.55"></path>
+
+  <!-- base shadow -->
+
+  <ellipse cx="66" cy="120" rx="45" ry="5" fill="#26382b" opacity="0.18"></ellipse>
+
+</svg>
