@@ -17475,6 +17475,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Pako',
+      localName: 'Vegetable Fern / Fiddlehead Fern',
+      scientificName:
+        'Diplazium esculentum (Retz.) Sw.',
+      category: 'vegetable',
+      icon: 'assets/crops/pako.svg',
+
+      plantingMethods: [
+        {
+          value: 'spores',
+          label: 'Spores'
+        },
+        {
+          value: 'runner-division',
+          label: 'Runner Division'
+        },
+        {
+          value: 'rhizome-pieces',
+          label: 'Rhizome Pieces with Buds'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Diplazium (PROSEA)',
+
+        url:
+          'https://prosea.prota4u.org/view.aspx?id=3177'
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm, humid tropical to subtropical growing conditions with reliable moisture and partial shade. Kew identifies Diplazium esculentum as a perennial species primarily associated with the wet tropical biome, while PROSEA reports that the plant requires wet conditions and shade during dry periods. Because field temperature requirements vary with local humidity, shade and water availability and the cited crop guidance does not provide one universal numeric growing-temperature range, FarmCast keeps temperature guidance descriptive rather than assigning invented values.',
+
+      rainfallRange:
+        'Pako is associated with consistently moist to wet habitats and benefits from dependable soil moisture. It commonly occurs near streams, wet ground and other humid sites. Because suitable growth depends more directly on continuous moisture availability than on one universal annual rainfall total, FarmCast keeps rainfall guidance descriptive rather than assigning an unsupported numeric rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Pako performs best where the root zone remains moist and the plant receives partial shade. PROSEA describes wet growing conditions as important for Diplazium esculentum and notes that shade should be maintained during dry periods. Because the cited cultivation guidance does not establish one reliable universal soil-pH interval for field production, FarmCast keeps soilPH unset.',
+
+      plantingNote:
+        'Pako in this FarmCast entry refers specifically to Diplazium esculentum (Retz.) Sw., an edible fern listed by DOST-FNRI as Pako fern leaves and also known as Fiddlehead Fern or Vegetable Fern. PROSEA reports that the species can be propagated from spores and vegetatively through runners or rhizome pieces bearing buds. Current Kew taxonomy accepts Diplazium esculentum and lists 41 historical synonyms, including Athyrium esculentum, Asplenium esculentum, Diplazium manilense and Hemionitis incisa. All currently listed Kew synonyms were checked against the FarmCast crop dataset before adding this entry.',
+
+      harvestNote:
+        'The edible portion of Pako is the tender young frond or fiddlehead. PROSEA reports that plants raised from spores may become harvestable when about two to three years old, while plants established from runners may begin producing harvestable growth after about six months. Because these source intervals are expressed in years or months rather than an exact day-based planting-to-harvest range, and the runner timing is presented as an approximate possible starting point, FarmCast keeps Pako as guidance-only rather than assigning one automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Pako Fern Leaves — Diplazium esculentum',
+
+        url:
+          'https://i.fnri.dost.gov.ph/fct/library/report/3428'
+      }
+    },
+
 
   
 ];

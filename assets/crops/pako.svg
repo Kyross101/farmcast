@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Pako</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Philippine Pako or Vegetable Fern
+    with layered mature fronds, tender curled fiddleheads, bright green
+    stems, highlights, shadows and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a8d86f"></stop>
+      <stop offset="0.45" stop-color="#569b42"></stop>
+      <stop offset="1" stop-color="#286532"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#83ca55"></stop>
+      <stop offset="0.48" stop-color="#3f9641"></stop>
+      <stop offset="1" stop-color="#17602f"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4aa348"></stop>
+      <stop offset="0.55" stop-color="#27783a"></stop>
+      <stop offset="1" stop-color="#154f2d"></stop>
+    </linearGradient>
+
+    <linearGradient id="youngGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d0eb75"></stop>
+      <stop offset="0.45" stop-color="#79bd4b"></stop>
+      <stop offset="1" stop-color="#377f39"></stop>
+    </linearGradient>
+
+    <radialGradient id="curlGlow" cx="38%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#e5f69a"></stop>
+      <stop offset="0.35" stop-color="#91ce57"></stop>
+      <stop offset="1" stop-color="#347b38"></stop>
+    </radialGradient>
+
+    <filter id="fernShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#173b26" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5"></feGaussianBlur>
+    </filter>
+
+  </defs>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="64" cy="111" rx="34" ry="7" fill="#1d442b" opacity="0.16" filter="url(#softShadow)"></ellipse>
+
+  <g filter="url(#fernShadow)">
+
+    <!-- left mature frond -->
+    <path d="M58 108
+             C53 88 45 64 31 31" fill="none" stroke="url(#stemGreen)" stroke-width="4" stroke-linecap="round"></path>
+
+    <path d="M48 80
+             C38 80 31 76 25 70
+             C34 69 42 71 50 75
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M45 72
+             C34 71 27 66 21 60
+             C31 60 39 63 47 67
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M42 63
+             C31 62 25 57 19 51
+             C30 51 37 54 44 59
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M38 54
+             C29 52 24 47 20 42
+             C29 43 35 46 41 50
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M35 46
+             C28 43 24 39 22 34
+             C29 36 34 39 37 42
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M49 80
+             C56 74 60 69 62 63
+             C54 65 49 69 45 74
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M46 70
+             C53 65 57 60 59 54
+             C51 56 46 60 42 65
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M42 61
+             C49 56 52 51 54 46
+             C47 48 42 51 39 56
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M38 52
+             C44 48 47 43 48 39
+             C42 40 38 44 35 48
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M34 43
+             C39 40 41 36 42 32
+             C37 34 34 36 32 40
+             Z" fill="url(#leafDark)"></path>
+
+
+    <!-- right mature frond -->
+    <path d="M69 108
+             C73 84 82 59 97 32" fill="none" stroke="url(#stemGreen)" stroke-width="4" stroke-linecap="round"></path>
+
+    <path d="M78 80
+             C87 80 96 76 103 70
+             C94 69 86 71 77 75
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M81 71
+             C92 71 100 66 106 60
+             C96 60 88 62 79 67
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M85 62
+             C96 61 103 56 109 50
+             C99 50 91 53 83 58
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M89 53
+             C98 51 104 46 108 41
+             C99 42 93 45 87 49
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M93 45
+             C100 42 104 38 106 33
+             C99 35 95 38 91 41
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M78 80
+             C70 74 67 69 65 63
+             C73 65 78 69 82 74
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M81 70
+             C74 65 70 60 68 54
+             C76 56 81 60 85 65
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M85 61
+             C78 56 75 51 73 46
+             C80 48 85 51 88 56
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M89 52
+             C83 48 80 43 79 39
+             C85 40 89 44 92 48
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M94 43
+             C89 40 87 36 86 32
+             C91 34 94 36 96 40
+             Z" fill="url(#leafDark)"></path>
+
+
+    <!-- rear center frond -->
+    <path d="M64 108
+             C64 82 63 56 64 26" fill="none" stroke="url(#stemGreen)" stroke-width="4.2" stroke-linecap="round"></path>
+
+    <path d="M63 78
+             C53 74 48 69 44 63
+             C53 65 59 68 64 72
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M64 78
+             C74 74 80 69 84 63
+             C75 65 69 68 63 72
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M63 67
+             C54 63 49 58 46 53
+             C55 55 60 58 64 62
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M64 67
+             C73 63 78 58 82 53
+             C73 55 68 58 63 62
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M63 56
+             C56 52 52 48 49 43
+             C57 45 61 48 64 51
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M64 56
+             C72 52 76 48 79 43
+             C71 45 67 48 63 51
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M63 45
+             C57 42 54 38 52 34
+             C59 36 62 38 64 41
+             Z" fill="url(#leafDark)"></path>
+
+    <path d="M64 45
+             C70 42 74 38 76 34
+             C69 36 66 38 63 41
+             Z" fill="url(#leafGreen)"></path>
+
+
+    <!-- left young fiddlehead -->
+    <path d="M50 108
+             C48 94 47 80 50 67
+             C52 59 57 54 62 53" fill="none" stroke="url(#youngGreen)" stroke-width="5" stroke-linecap="round"></path>
+
+    <path d="M62 53
+             C70 52 73 45 69 40
+             C65 35 57 37 56 43
+             C55 48 60 50 63 47
+             C66 44 64 41 61 42" fill="none" stroke="url(#curlGlow)" stroke-width="5.2" stroke-linecap="round"></path>
+
+    <path d="M48 78
+             C42 75 39 71 37 67
+             C43 68 47 70 51 73
+             Z" fill="url(#youngGreen)"></path>
+
+    <path d="M49 87
+             C43 85 39 81 36 77
+             C43 78 47 80 50 82
+             Z" fill="url(#leafGreen)"></path>
+
+
+    <!-- right young fiddlehead -->
+    <path d="M77 108
+             C79 95 80 83 77 72
+             C75 65 71 61 67 60" fill="none" stroke="url(#youngGreen)" stroke-width="5" stroke-linecap="round"></path>
+
+    <path d="M67 60
+             C60 58 58 52 61 48
+             C64 44 70 45 71 50
+             C72 54 68 56 65 54
+             C63 52 64 50 66 50" fill="none" stroke="url(#curlGlow)" stroke-width="4.7" stroke-linecap="round"></path>
+
+    <path d="M79 84
+             C85 81 89 77 91 73
+             C85 74 81 76 77 79
+             Z" fill="url(#leafGreen)"></path>
+
+    <path d="M78 93
+             C84 91 88 87 91 83
+             C84 84 80 86 77 88
+             Z" fill="url(#youngGreen)"></path>
+
+
+    <!-- foreground tender shoot -->
+    <path d="M64 111
+             C61 99 60 89 62 81
+             C64 73 69 69 73 69" fill="none" stroke="url(#youngGreen)" stroke-width="5.5" stroke-linecap="round"></path>
+
+    <path d="M73 69
+             C80 69 83 63 80 58
+             C77 53 70 54 69 59
+             C68 63 72 65 75 63
+             C77 61 76 59 74 59" fill="none" stroke="url(#curlGlow)" stroke-width="5" stroke-linecap="round"></path>
+
+  </g>
+
+
+  <!-- stem highlights -->
+  <path d="M59 103
+           C56 87 51 69 43 52" fill="none" stroke="#d9ef9b" stroke-width="1.3" stroke-linecap="round" opacity="0.55"></path>
+
+  <path d="M69 103
+           C72 86 78 67 87 49" fill="none" stroke="#d9ef9b" stroke-width="1.3" stroke-linecap="round" opacity="0.5"></path>
+
+  <path d="M64 103
+           C64 87 64 69 64 52" fill="none" stroke="#e5f3ac" stroke-width="1.2" stroke-linecap="round" opacity="0.48"></path>
+
+
+  <!-- small foreground leaflets -->
+  <path d="M57 99
+           C49 97 44 93 41 88
+           C49 89 54 91 59 95
+           Z" fill="url(#leafDark)"></path>
+
+  <path d="M70 100
+           C78 97 83 93 86 88
+           C78 89 73 92 68 95
+           Z" fill="url(#leafGreen)"></path>
+
+  <path d="M61 107
+           C55 105 51 102 48 98
+           C55 99 59 101 63 104
+           Z" fill="url(#leafGreen)"></path>
+
+  <path d="M67 107
+           C73 105 77 102 80 98
+           C73 99 69 101 65 104
+           Z" fill="url(#leafDark)"></path>
+
+
+  <!-- fiddlehead highlights -->
+  <path d="M60 39
+           C57 40 57 44 59 46" fill="none" stroke="#eff8ad" stroke-width="1.6" stroke-linecap="round" opacity="0.8"></path>
+
+  <path d="M72 56
+           C69 57 69 60 71 61" fill="none" stroke="#eff8ad" stroke-width="1.4" stroke-linecap="round" opacity="0.75"></path>
+
+  <path d="M75 56
+           C78 57 79 60 78 62" fill="none" stroke="#eff8ad" stroke-width="1.2" stroke-linecap="round" opacity="0.65"></path>
+
+</svg>
