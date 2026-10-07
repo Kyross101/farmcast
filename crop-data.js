@@ -15984,6 +15984,86 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Bay Leaf',
+      localName: 'Laurel',
+      scientificName: 'Laurus nobilis L.',
+      category: 'herb',
+      icon: 'assets/crops/bay-leaf.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted-young-plants',
+          label: 'Transplanted Young Plants'
+        },
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Master Gardeners of Santa Clara County',
+
+        title:
+          'Bay Laurel',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/site/uc-master-gardeners-santa-clara-county/',
+            'bay-laurel'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Bay Laurel is an evergreen woody herb of primarily subtropical origin. Kew identifies Laurus nobilis as a tree associated mainly with the subtropical biome, while UC Agriculture and Natural Resources recommends a sunny growing site with protection from damaging frost. Because site, container culture and local climate strongly affect growth, FarmCast keeps temperature guidance descriptive rather than assigning an unsupported universal numeric range.',
+
+      rainfallRange:
+        'No universal annual rainfall range is stored for Bay Leaf. UC Agriculture and Natural Resources describes established Bay Laurel as a relatively low-water-use plant and emphasizes appropriate irrigation rather than a fixed annual rainfall total. FarmCast therefore keeps water guidance descriptive.',
+
+      soilPH:
+        'UC Agriculture and Natural Resources recommends well-drained, slightly acidic soil but does not provide one universal numeric pH target on its Bay Laurel growing guide, so FarmCast does not invent a numeric range.',
+
+      soilNote:
+        'Bay Laurel grows best in well-drained soil and a sunny position, with some light afternoon shade also suitable. The plant is naturally woody and evergreen and may be maintained as a smaller container specimen or allowed to develop into a larger shrub or tree. Persistently poorly drained growing conditions should be avoided.',
+
+      plantingNote:
+        'Bay Leaf in this FarmCast entry refers specifically to Laurus nobilis L., commonly called Bay Laurel, Sweet Bay or Laurel. UC Agriculture and Natural Resources lists transplants, seed and cuttings as establishment options. Seed germination can be poor and stem cuttings may take months to root, making an established young transplant a practical option. Current Kew taxonomy accepts Laurus nobilis L. and treats historical names including Laurus angusta, Laurus salicifolia, Laurus tenuifolia and Laurus undulata as synonyms.',
+
+      harvestNote:
+        'The aromatic leaves are the culinary portion harvested from Bay Laurel. UC Agriculture and Natural Resources states that leaves may be harvested year-round and notes that larger, older leaves generally provide stronger flavor. Because the plant is a perennial woody herb and the guidance does not provide one reliable planting-to-first-harvest interval, FarmCast keeps Bay Leaf as guidance-only rather than creating an automatic harvest date.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Master Gardeners of Santa Clara County',
+
+        title:
+          'Bay Laurel',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/site/uc-master-gardeners-santa-clara-county/',
+            'bay-laurel'
+          ].join('')
+      }
+    },
+
   
 ];
 

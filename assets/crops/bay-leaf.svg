@@ -1,0 +1,354 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Bay Leaf</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Bay Laurel with glossy aromatic
+    leaves, branching stems, small yellow-green flowers, and dark ripe fruits.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemGradient" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#8b6745"></stop>
+
+      <stop offset="0.48" stop-color="#67452f"></stop>
+
+      <stop offset="1" stop-color="#3f2b24"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#b6ce72"></stop>
+
+      <stop offset="0.22" stop-color="#71984f"></stop>
+
+      <stop offset="0.58" stop-color="#3d7543"></stop>
+
+      <stop offset="1" stop-color="#174c36"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#8faf5e"></stop>
+
+      <stop offset="0.45" stop-color="#416e42"></stop>
+
+      <stop offset="1" stop-color="#183d31"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#d5df8b"></stop>
+
+      <stop offset="0.42" stop-color="#779b51"></stop>
+
+      <stop offset="1" stop-color="#285b3b"></stop>
+
+    </linearGradient>
+
+    <radialGradient id="fruitGradient" cx="35%" cy="28%" r="72%">
+
+      <stop offset="0" stop-color="#77727b"></stop>
+
+      <stop offset="0.3" stop-color="#413f4c"></stop>
+
+      <stop offset="0.72" stop-color="#252432"></stop>
+
+      <stop offset="1" stop-color="#151821"></stop>
+
+    </radialGradient>
+
+    <radialGradient id="flowerCenter" cx="42%" cy="35%" r="70%">
+
+      <stop offset="0" stop-color="#fff6a0"></stop>
+
+      <stop offset="0.55" stop-color="#d4c44d"></stop>
+
+      <stop offset="1" stop-color="#92872c"></stop>
+
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#17261c" flood-opacity="0.28"></feDropShadow>
+
+    </filter>
+
+    <filter id="leafShadow" x="-25%" y="-25%" width="150%" height="160%">
+
+      <feDropShadow dx="0.8" dy="2" stdDeviation="1.4" flood-color="#17291d" flood-opacity="0.23"></feDropShadow>
+
+    </filter>
+
+    <g id="bayLeaf">
+
+      <path d="
+        M0 0
+        C7 -13 19 -22 34 -21
+        C39 -10 37 3 28 12
+        C19 20 8 18 0 0Z" fill="url(#leafGreen)" stroke="#244d37" stroke-width="1.1"></path>
+
+      <path d="
+        M1 0
+        C11 -4 20 -9 31 -17" fill="none" stroke="#bdd08d" stroke-width="1" stroke-linecap="round" opacity="0.75"></path>
+
+      <g fill="none" stroke="#9dbb74" stroke-width="0.55" stroke-linecap="round" opacity="0.63">
+
+        <path d="M9 -4 L7 -11"></path>
+        <path d="M14 -7 L13 -15"></path>
+        <path d="M19 -10 L20 -18"></path>
+        <path d="M23 -12 L27 -18"></path>
+
+        <path d="M10 -3 L13 4"></path>
+        <path d="M16 -6 L20 1"></path>
+        <path d="M22 -9 L27 -3"></path>
+
+      </g>
+
+      <path d="
+        M6 -5
+        C14 -12 21 -16 29 -17" fill="none" stroke="#e0e9ad" stroke-width="1.2" stroke-linecap="round" opacity="0.28"></path>
+
+    </g>
+
+  </defs>
+
+  <!-- main woody stem -->
+
+  <path d="
+    M22 116
+    C34 99 44 86 54 73
+    C65 59 77 47 87 33
+    C94 24 100 17 106 10" fill="none" stroke="url(#stemGradient)" stroke-width="5.2" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- stem highlight -->
+
+  <path d="
+    M24 113
+    C39 92 51 76 65 60
+    C81 42 92 25 103 13" fill="none" stroke="#af8960" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- secondary branches -->
+
+  <g fill="none" stroke="url(#stemGradient)" stroke-linecap="round">
+
+    <path d="
+      M48 82
+      C36 70 27 62 18 51" stroke-width="3"></path>
+
+    <path d="
+      M61 65
+      C48 53 40 42 35 29" stroke-width="3"></path>
+
+    <path d="
+      M73 51
+      C86 48 98 44 111 36" stroke-width="2.8"></path>
+
+    <path d="
+      M84 36
+      C75 26 70 18 68 10" stroke-width="2.6"></path>
+
+    <path d="
+      M39 94
+      C28 91 17 86 9 78" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- leaves -->
+
+  <g filter="url(#leafShadow)">
+
+    <g transform="translate(26 102) rotate(160) scale(0.95)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(37 91) rotate(203) scale(1.02)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(47 81) rotate(142) scale(0.92)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(57 70) rotate(195) scale(1.02)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(67 57) rotate(143) scale(0.95)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(78 44) rotate(196) scale(0.9)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(90 29) rotate(150) scale(0.78)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <!-- left branch leaves -->
+
+    <g transform="translate(35 69) rotate(215) scale(0.84)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(25 58) rotate(164) scale(0.83)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(18 50) rotate(216) scale(0.72)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <!-- upper-left leaves -->
+
+    <g transform="translate(51 52) rotate(225) scale(0.86)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(42 40) rotate(173) scale(0.8)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(36 29) rotate(220) scale(0.68)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <!-- right branch leaves -->
+
+    <g transform="translate(86 48) rotate(122) scale(0.88)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(99 43) rotate(81) scale(0.78)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(109 36) rotate(116) scale(0.65)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <!-- top leaves -->
+
+    <g transform="translate(77 27) rotate(230) scale(0.72)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(70 15) rotate(182) scale(0.68)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+    <g transform="translate(102 18) rotate(105) scale(0.72)">
+      <use href="#bayLeaf"></use>
+    </g>
+
+  </g>
+
+  <!-- fruit stems -->
+
+  <g fill="none" stroke="#566841" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="
+      M61 66
+      C68 72 73 78 76 84"></path>
+
+    <path d="
+      M66 62
+      C74 66 81 69 85 75"></path>
+
+    <path d="
+      M50 80
+      C53 86 57 91 61 96"></path>
+
+  </g>
+
+  <!-- ripe bay fruits -->
+
+  <g filter="url(#softShadow)">
+
+    <ellipse cx="77" cy="86" rx="6" ry="7.5" fill="url(#fruitGradient)" stroke="#1b2524" stroke-width="1"></ellipse>
+
+    <ellipse cx="86" cy="77" rx="5.8" ry="7.2" fill="url(#fruitGradient)" stroke="#1b2524" stroke-width="1"></ellipse>
+
+    <ellipse cx="62" cy="98" rx="5.5" ry="7" fill="url(#fruitGradient)" stroke="#1b2524" stroke-width="1"></ellipse>
+
+    <ellipse cx="75" cy="83" rx="1.7" ry="2.6" fill="#c2bac0" opacity="0.37"></ellipse>
+
+    <ellipse cx="84" cy="74" rx="1.5" ry="2.3" fill="#c2bac0" opacity="0.34"></ellipse>
+
+    <ellipse cx="60" cy="95" rx="1.4" ry="2.2" fill="#c2bac0" opacity="0.34"></ellipse>
+
+  </g>
+
+  <!-- flower stems -->
+
+  <g fill="none" stroke="#657746" stroke-width="1.2" stroke-linecap="round">
+
+    <path d="
+      M88 34
+      C95 31 100 28 105 24"></path>
+
+    <path d="
+      M91 34
+      C98 36 104 37 110 35"></path>
+
+  </g>
+
+  <!-- small yellow-green bay flowers -->
+
+  <g filter="url(#leafShadow)">
+
+    <g transform="translate(106 23)">
+
+      <ellipse cx="0" cy="-4" rx="2.4" ry="4" fill="#d9d778"></ellipse>
+
+      <ellipse cx="4" cy="0" rx="4" ry="2.4" fill="#c8cd67"></ellipse>
+
+      <ellipse cx="0" cy="4" rx="2.4" ry="4" fill="#e0dc7c"></ellipse>
+
+      <ellipse cx="-4" cy="0" rx="4" ry="2.4" fill="#c8cd67"></ellipse>
+
+      <circle cx="0" cy="0" r="2.2" fill="url(#flowerCenter)"></circle>
+
+    </g>
+
+    <g transform="translate(111 35) scale(0.88)">
+
+      <ellipse cx="0" cy="-4" rx="2.4" ry="4" fill="#d9d778"></ellipse>
+
+      <ellipse cx="4" cy="0" rx="4" ry="2.4" fill="#c8cd67"></ellipse>
+
+      <ellipse cx="0" cy="4" rx="2.4" ry="4" fill="#e0dc7c"></ellipse>
+
+      <ellipse cx="-4" cy="0" rx="4" ry="2.4" fill="#c8cd67"></ellipse>
+
+      <circle cx="0" cy="0" r="2.2" fill="url(#flowerCenter)"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- subtle leaf-edge highlights -->
+
+  <g fill="none" stroke="#e6edbd" stroke-width="0.8" stroke-linecap="round" opacity="0.35">
+
+    <path d="
+      M14 84
+      C20 91 28 94 35 93"></path>
+
+    <path d="
+      M41 44
+      C46 48 51 50 57 49"></path>
+
+    <path d="
+      M91 21
+      C97 24 102 24 108 21"></path>
+
+  </g>
+
+</svg>
