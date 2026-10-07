@@ -1,0 +1,360 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Elderberry</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of elderberry with compound green leaves,
+    branching stems, white flower clusters and hanging clusters of ripe
+    dark purple berries with highlights, shadows and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b7659"></stop>
+      <stop offset="0.48" stop-color="#6c5140"></stop>
+      <stop offset="1" stop-color="#3b332d"></stop>
+    </linearGradient>
+
+    <linearGradient id="youngStem" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#506945"></stop>
+      <stop offset="0.55" stop-color="#789257"></stop>
+      <stop offset="1" stop-color="#adb970"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bdd27a"></stop>
+      <stop offset="0.3" stop-color="#799e59"></stop>
+      <stop offset="0.68" stop-color="#437746"></stop>
+      <stop offset="1" stop-color="#1d4935"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#96b762"></stop>
+      <stop offset="0.48" stop-color="#547f4a"></stop>
+      <stop offset="1" stop-color="#203f32"></stop>
+    </linearGradient>
+
+    <radialGradient id="berryPurple" cx="34%" cy="26%" r="74%">
+      <stop offset="0" stop-color="#817091"></stop>
+      <stop offset="0.25" stop-color="#54465f"></stop>
+      <stop offset="0.63" stop-color="#322f43"></stop>
+      <stop offset="1" stop-color="#171d2b"></stop>
+    </radialGradient>
+
+    <radialGradient id="berryDark" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#685a79"></stop>
+      <stop offset="0.35" stop-color="#40374e"></stop>
+      <stop offset="0.72" stop-color="#252638"></stop>
+      <stop offset="1" stop-color="#141925"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.6" stop-color="#f4f0dc"></stop>
+      <stop offset="1" stop-color="#d6cfad"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#fff2a5"></stop>
+      <stop offset="0.58" stop-color="#d8bd55"></stop>
+      <stop offset="1" stop-color="#917536"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#16241a" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="berryShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="1.8" flood-color="#181826" flood-opacity="0.34"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- main branch -->
+
+  <path d="
+    M21 119
+    C33 100 46 83 57 66
+    C70 48 84 30 101 11" fill="none" stroke="url(#stemBrown)" stroke-width="5.5" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- branch highlight -->
+
+  <path d="
+    M24 115
+    C37 97 49 80 60 64
+    C73 46 86 29 98 14" fill="none" stroke="#c4a080" stroke-width="0.9" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- secondary stems -->
+
+  <g fill="none" stroke="url(#youngStem)" stroke-linecap="round">
+
+    <path d="
+      M48 81
+      C36 72 27 61 19 48" stroke-width="2.8"></path>
+
+    <path d="
+      M61 61
+      C50 50 42 38 38 26" stroke-width="2.7"></path>
+
+    <path d="
+      M74 45
+      C87 44 99 39 111 31" stroke-width="2.6"></path>
+
+    <path d="
+      M86 31
+      C77 21 71 14 68 7" stroke-width="2.3"></path>
+
+    <path d="
+      M55 70
+      C68 76 79 84 90 95" stroke-width="2.3"></path>
+
+  </g>
+
+  <!-- compound leaf left -->
+
+  <g transform="translate(40 73)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-10 -8 -20 -15 -31 -22" fill="none" stroke="#506b43" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <g fill="url(#leafGreen)" stroke="#28523a" stroke-width="0.75">
+
+      <path d="
+        M-5 -4
+        C-15 -12 -23 -11 -28 -5
+        C-21 1 -13 2 -5 -4Z"></path>
+
+      <path d="
+        M-12 -10
+        C-20 -20 -27 -21 -33 -16
+        C-28 -8 -20 -5 -12 -10Z"></path>
+
+      <path d="
+        M-20 -16
+        C-26 -27 -33 -29 -39 -25
+        C-35 -16 -28 -12 -20 -16Z"></path>
+
+      <path d="
+        M-9 -8
+        C-8 -19 -3 -25 4 -25
+        C5 -16 1 -10 -9 -8Z"></path>
+
+      <path d="
+        M-18 -14
+        C-17 -25 -12 -31 -5 -31
+        C-4 -22 -8 -16 -18 -14Z"></path>
+
+    </g>
+
+  </g>
+
+  <!-- compound leaf right -->
+
+  <g transform="translate(73 48)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C10 -7 21 -14 33 -20" fill="none" stroke="#506b43" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <g fill="url(#leafDark)" stroke="#244e37" stroke-width="0.75">
+
+      <path d="
+        M6 -4
+        C15 -12 23 -11 29 -5
+        C22 1 14 2 6 -4Z"></path>
+
+      <path d="
+        M14 -9
+        C22 -19 29 -20 35 -15
+        C30 -7 22 -4 14 -9Z"></path>
+
+      <path d="
+        M22 -15
+        C28 -26 36 -28 42 -24
+        C38 -15 30 -11 22 -15Z"></path>
+
+      <path d="
+        M9 -7
+        C8 -18 3 -24 -4 -24
+        C-5 -15 -1 -9 9 -7Z"></path>
+
+      <path d="
+        M18 -13
+        C17 -24 12 -30 5 -30
+        C4 -21 8 -15 18 -13Z"></path>
+
+    </g>
+
+  </g>
+
+  <!-- upper compound leaf -->
+
+  <g transform="translate(73 31) scale(0.85)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-7 -10 -13 -19 -18 -28" fill="none" stroke="#536d43" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <g fill="url(#leafGreen)" stroke="#29513a" stroke-width="0.75">
+
+      <path d="
+        M-5 -7
+        C-14 -13 -21 -11 -24 -5
+        C-17 0 -11 -1 -5 -7Z"></path>
+
+      <path d="
+        M-10 -15
+        C-18 -22 -24 -21 -28 -15
+        C-22 -9 -16 -9 -10 -15Z"></path>
+
+      <path d="
+        M-5 -8
+        C1 -17 7 -20 13 -16
+        C10 -8 3 -5 -5 -8Z"></path>
+
+      <path d="
+        M-11 -17
+        C-5 -26 1 -29 7 -25
+        C4 -17 -3 -13 -11 -17Z"></path>
+
+    </g>
+
+  </g>
+
+  <!-- berry cluster stems -->
+
+  <g fill="none" stroke="#617547" stroke-width="1.2" stroke-linecap="round">
+
+    <path d="M58 69 C63 77 68 84 73 91"></path>
+    <path d="M61 67 C69 72 76 79 82 86"></path>
+    <path d="M63 65 C72 68 81 72 89 79"></path>
+    <path d="M57 71 C58 80 59 89 59 97"></path>
+    <path d="M55 72 C52 81 49 90 47 98"></path>
+
+  </g>
+
+  <!-- ripe elderberry cluster -->
+
+  <g filter="url(#berryShadow)">
+
+    <circle cx="73" cy="94" r="6" fill="url(#berryPurple)" stroke="#191d29" stroke-width="0.8"></circle>
+
+    <circle cx="82" cy="89" r="5.8" fill="url(#berryDark)" stroke="#181c28" stroke-width="0.8"></circle>
+
+    <circle cx="91" cy="82" r="5.5" fill="url(#berryPurple)" stroke="#191d29" stroke-width="0.8"></circle>
+
+    <circle cx="59" cy="99" r="5.8" fill="url(#berryDark)" stroke="#181c28" stroke-width="0.8"></circle>
+
+    <circle cx="47" cy="101" r="5.5" fill="url(#berryPurple)" stroke="#191d29" stroke-width="0.8"></circle>
+
+    <circle cx="70" cy="106" r="5.6" fill="url(#berryDark)" stroke="#181c28" stroke-width="0.8"></circle>
+
+    <circle cx="83" cy="101" r="5.3" fill="url(#berryPurple)" stroke="#191d29" stroke-width="0.8"></circle>
+
+    <circle cx="95" cy="94" r="5.2" fill="url(#berryDark)" stroke="#181c28" stroke-width="0.8"></circle>
+
+    <circle cx="55" cy="111" r="5.1" fill="url(#berryPurple)" stroke="#191d29" stroke-width="0.8"></circle>
+
+  </g>
+
+  <!-- berry highlights -->
+
+  <g fill="#bab1c6" opacity="0.38">
+
+    <circle cx="71" cy="92" r="1.5"></circle>
+
+    <circle cx="80" cy="87" r="1.4"></circle>
+
+    <circle cx="89" cy="80" r="1.3"></circle>
+
+    <circle cx="57" cy="97" r="1.4"></circle>
+
+    <circle cx="45" cy="99" r="1.3"></circle>
+
+    <circle cx="68" cy="104" r="1.3"></circle>
+
+  </g>
+
+  <!-- flower branch -->
+
+  <path d="
+    M73 45
+    C81 49 89 53 97 58" fill="none" stroke="#607649" stroke-width="1.4" stroke-linecap="round"></path>
+
+  <!-- flat-topped elderflower cluster -->
+
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(98 58)">
+
+      <g fill="none" stroke="#778553" stroke-width="0.7">
+
+        <path d="M0 0 L-12 -7"></path>
+        <path d="M0 0 L-5 -11"></path>
+        <path d="M0 0 L4 -11"></path>
+        <path d="M0 0 L12 -7"></path>
+        <path d="M0 0 L14 1"></path>
+        <path d="M0 0 L8 8"></path>
+        <path d="M0 0 L-7 8"></path>
+        <path d="M0 0 L-14 2"></path>
+
+      </g>
+
+      <g fill="url(#flowerWhite)" stroke="#d2c9a9" stroke-width="0.35">
+
+        <circle cx="-12" cy="-7" r="3.2"></circle>
+
+        <circle cx="-5" cy="-11" r="3.1"></circle>
+
+        <circle cx="4" cy="-11" r="3.2"></circle>
+
+        <circle cx="12" cy="-7" r="3.1"></circle>
+
+        <circle cx="14" cy="1" r="3.1"></circle>
+
+        <circle cx="8" cy="8" r="3.1"></circle>
+
+        <circle cx="-7" cy="8" r="3.1"></circle>
+
+        <circle cx="-14" cy="2" r="3.1"></circle>
+
+        <circle cx="0" cy="-2" r="3.3"></circle>
+
+      </g>
+
+      <g fill="url(#flowerCenter)">
+
+        <circle cx="-12" cy="-7" r="1"></circle>
+        <circle cx="-5" cy="-11" r="1"></circle>
+        <circle cx="4" cy="-11" r="1"></circle>
+        <circle cx="12" cy="-7" r="1"></circle>
+        <circle cx="14" cy="1" r="1"></circle>
+        <circle cx="8" cy="8" r="1"></circle>
+        <circle cx="-7" cy="8" r="1"></circle>
+        <circle cx="-14" cy="2" r="1"></circle>
+        <circle cx="0" cy="-2" r="1.1"></circle>
+
+      </g>
+
+    </g>
+
+  </g>
+
+  <!-- foreground leaf -->
+
+  <path d="
+    M30 111
+    C18 103 8 104 3 112
+    C10 121 22 121 32 114Z" fill="url(#leafGreen)" stroke="#29513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M6 113
+    L28 112" fill="none" stroke="#c7d99b" stroke-width="0.7" opacity="0.7"></path>
+
+  <!-- ground shadow -->
+
+  <ellipse cx="57" cy="121" rx="35" ry="4" fill="#29392c" opacity="0.16"></ellipse>
+
+</svg>

@@ -16652,6 +16652,85 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Elderberry',
+      localName: 'Black Elder / European Elderberry',
+      scientificName: 'Sambucus nigra L.',
+      category: 'fruit',
+      icon: 'assets/crops/elderberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'hardwood-cuttings',
+          label: 'Hardwood Cuttings'
+        },
+        {
+          value: 'softwood-cuttings',
+          label: 'Softwood Cuttings'
+        },
+        {
+          value: 'transplanted',
+          label: 'Nursery-Grown Transplants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Botanic Gardens, Kew',
+
+        title:
+          'Sambucus nigra L. — General Information',
+
+        url:
+          [
+            'https://',
+            'powo.science.kew.org/taxon/',
+            'urn:lsid:ipni.org:names:30122169-2/',
+            'general-information'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Elderberry is primarily a temperate fruiting shrub or small tree. Kew identifies Sambucus nigra as a species associated mainly with the temperate biome. Flowering, dormancy and fruit-ripening periods vary substantially with cultivar and local climate, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric growing range.',
+
+      rainfallRange:
+        'No universal annual rainfall range is stored for Elderberry. Established elderberry plants tolerate varying moisture conditions, while regular irrigation can support fruit production during dry periods. Local soil, rainfall and seasonal heat strongly affect water demand, so FarmCast keeps rainfall guidance descriptive.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Elderberry can grow in a range of soil types. Kew reports that Sambucus nigra grows successfully in most soils, while extension guidance recommends soil with good organic matter and adequate drainage. Heavy or persistently waterlogged soil should be managed carefully, and FarmCast avoids assigning an unsupported universal numeric soil-pH target.',
+
+      plantingNote:
+        'Elderberry in this FarmCast entry refers specifically to Sambucus nigra L., commonly called European Elderberry, Black Elder or Elder. Kew documents propagation from seed and from cuttings. Nursery-grown plants may also be transplanted for establishment. Current Kew taxonomy accepts Sambucus nigra L. and lists historical names including Sambucus florida, Sambucus alba, Sambucus laciniata, Sambucus vulgaris and numerous cultivated botanical forms as synonyms.',
+
+      harvestNote:
+        'Elderberry produces clusters of dark berries that should be harvested only after the fruit is fully ripe. Harvest timing varies with location and cultivar, and not every berry cluster ripens at the same time. The ripe berries are normally cooked or processed before eating; leaves, stems and unripe fruit should not be eaten. Because FarmCast does not have one reliable planting-method-specific planting-to-first-harvest interval for Sambucus nigra, Elderberry remains guidance-only rather than receiving an automatic harvest date.',
+
+      source: {
+        agency:
+          'Royal Botanic Gardens, Kew',
+
+        title:
+          'Sambucus nigra L.',
+
+        url:
+          [
+            'https://',
+            'powo.science.kew.org/taxon/',
+            'urn:lsid:ipni.org:names:30122169-2'
+          ].join('')
+      }
+    },
+
   
 ];
 
