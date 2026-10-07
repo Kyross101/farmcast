@@ -14323,7 +14323,88 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Orange',
+      localName: 'Sweet Orange',
+      scientificName:
+        'Citrus × aurantium L. var. sinensis L.',
+      category: 'fruit',
+      icon: 'assets/crops/orange.svg',
 
+      plantingMethods: [
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'Regional Field Office - Cordillera Administrative Region',
+
+        title:
+          'Technoguide in Citrus Production',
+
+        url:
+          [
+            'https://',
+            'hvcdp.da.gov.ph/wp-content/uploads/2022/05/',
+            'DA-CAR-TECHNOGUIDE-IN-CITRUS-PRODUCTION.pdf'
+          ].join('')
+      },
+
+      varieties: [
+        'Washington Navel',
+        'Valencia',
+        'Hamlin',
+        'Trovita'
+      ],
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Tropical to subtropical citrus-growing conditions. Philippine Department of Agriculture guidance documents successful orange production in suitable irrigated subtropical areas such as the Cordillera. FarmCast therefore keeps the general temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'Areas with adequate and well-distributed rainfall are favorable for citrus production. Where rainfall is insufficient or prolonged dry periods occur, regular and timely irrigation is important. FarmCast therefore keeps water guidance descriptive rather than inventing one universal annual rainfall range.',
+
+      soilPH:
+        '5.0–7.5',
+
+      soilNote:
+        'Orange trees perform best in a sunny location with suitable drainage and good orchard water management. Citrus can be grown in several soil types within an appropriate soil-pH range, provided the root zone is not persistently waterlogged.',
+
+      plantingNote:
+        'Orange in this FarmCast entry refers specifically to the familiar Sweet Orange group, including Navel, Valencia, Hamlin and related cultivars. Philippine citrus production guidance uses vegetatively propagated planting materials such as budded and grafted plants for orchard establishment. USDA GRIN currently recognizes the Sweet Orange Group as Citrus × aurantium L. var. sinensis L.; Citrus × sinensis (L.) Osbeck is treated as its homotypic synonym. This crop is distinct from FarmCast Mandarin Orange, which is Citrus reticulata Blanco.',
+
+      harvestNote:
+        'Sweet oranges are harvested when fruits have reached cultivar-appropriate maturity, color and juice quality. Philippine citrus production guidance reports that citrus fruit maturity may occur about five to nine months after flowering depending on variety, environment and cultural management. Because that interval begins at flowering rather than at planting, and young trees require an establishment period before flowering, FarmCast keeps Orange as guidance-only rather than generating an automatic planting-date harvest estimate.',
+
+      source: {
+        agency:
+          'Department of Agriculture',
+
+        office:
+          'High Value Crops Development Program',
+
+        title:
+          'DA-CAR Technoguide in Citrus Production',
+
+        url:
+          [
+            'https://',
+            'hvcdp.da.gov.ph/production-manuals/'
+          ].join('')
+      }
+    },
 
   
 ];
