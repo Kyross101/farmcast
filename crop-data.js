@@ -18227,6 +18227,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Kabuyaw',
+      localName: 'Makrut Lime / Thai Lime',
+      scientificName:
+        'Citrus hystrix DC.',
+      category: 'fruit',
+      icon: 'assets/crops/kabuyaw.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'National Parks Board Singapore',
+
+        title:
+          'Citrus hystrix',
+
+        url:
+          [
+            'https://',
+            'www.nparks.gov.sg/',
+            'florafaunaweb/flora/3/6/3670'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical growing conditions with full sun to partial shade. NParks describes Citrus hystrix as suitable for full sun or semi-shade and as a fast- to moderate-growing tropical citrus. Because the cited species-specific cultivation guidance does not establish one universal numeric optimum temperature interval or hard physiological minimum and maximum limits, FarmCast keeps temperature guidance descriptive rather than assigning unsupported values.',
+
+      rainfallRange:
+        'Kabuyaw benefits from regular moisture but should not be treated as requiring one universal annual rainfall interval. NParks lists moderate water requirements and moist root-zone conditions for Citrus hystrix. Because suitable performance depends on soil drainage, irrigation and local climate rather than one fixed rainfall total, FarmCast keeps rainfall guidance descriptive.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'NParks reports that Citrus hystrix performs well in moist, fertile and well-drained loamy soils. Because the cited species-specific cultivation source does not establish one reliable universal soil-pH interval for Kabuyaw production, FarmCast keeps soilPH unset rather than assigning an unsupported numeric value.',
+
+      plantingNote:
+        'Kabuyaw in this FarmCast entry refers specifically to Citrus hystrix DC., the citrus species widely called Makrut Lime or Thai Lime. DOST-FNRI records Kabuyaw as the Philippine alternate name for this food. It is botanically distinct from the existing FarmCast Lime or Dayap, Citrus × aurantiifolia, as well as Lemon, Calamansi, Mandarin Orange, Sweet Orange and Pummelo. NParks lists seed and stem cuttings as propagation methods for Citrus hystrix. Current Kew taxonomy accepts Citrus hystrix DC. and lists 47 synonyms. All 47 current Kew synonyms were checked against the FarmCast crop dataset and script before this entry was prepared; representative historical names include Citrus macroptera, Citrus micrantha, Citrus torosa, Citrus latipes, Citrus papeda, Citrus boholensis and Citrus × aurantium hystrix.',
+
+      harvestNote:
+        'Kabuyaw is grown for culinary use of its aromatic leaves and its strongly textured fruit, especially the rind. DOST-FNRI records the fruit as an edible Philippine food, while NParks identifies both the leaves and fruits as edible and notes the use of the leaves and rind as food flavouring. The reliable cultivation references used for this entry do not provide one exact seed- or cutting-to-first-harvest interval applicable across growing conditions. FarmCast therefore keeps Kabuyaw as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Kaffir Lime — Citrus hystrix',
+
+        url:
+          [
+            'https://',
+            'i.fnri.dost.gov.ph/',
+            'fct/library/report/3619'
+          ].join('')
+      }
+    },
+
 
   
 ];

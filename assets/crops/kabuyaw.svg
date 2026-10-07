@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Kabuyaw</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Kabuyaw or Makrut Lime
+    with distinctive double-lobed citrus leaves, a textured
+    bumpy green fruit, highlights, shadows and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9e7657"></stop>
+      <stop offset="0.5" stop-color="#684b39"></stop>
+      <stop offset="1" stop-color="#392e27"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9dd36d"></stop>
+      <stop offset="0.42" stop-color="#55994e"></stop>
+      <stop offset="1" stop-color="#245f3a"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6bac56"></stop>
+      <stop offset="0.5" stop-color="#397c48"></stop>
+      <stop offset="1" stop-color="#194a31"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitGreen" cx="31%" cy="23%" r="80%">
+      <stop offset="0" stop-color="#d8e887"></stop>
+      <stop offset="0.33" stop-color="#a9c75b"></stop>
+      <stop offset="0.7" stop-color="#6d943e"></stop>
+      <stop offset="1" stop-color="#42652f"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitShadow" cx="35%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#8eae4c"></stop>
+      <stop offset="0.6" stop-color="#5e8137"></stop>
+      <stop offset="1" stop-color="#35552d"></stop>
+    </radialGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#78984b"></stop>
+      <stop offset="0.5" stop-color="#526f3b"></stop>
+      <stop offset="1" stop-color="#2c4b30"></stop>
+    </linearGradient>
+
+    <filter id="mainShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#203328" flood-opacity="0.30"></feDropShadow>
+    </filter>
+
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5"></feGaussianBlur>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="65" cy="111" rx="36" ry="7" fill="#1e3929" opacity="0.15" filter="url(#softBlur)"></ellipse>
+
+  <g filter="url(#mainShadow)">
+
+    <!-- main branch -->
+    <path d="M28 105
+             C40 86 51 68 63 52
+             C74 38 87 29 101 24" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round"></path>
+
+    <!-- secondary branch -->
+    <path d="M57 65
+             C47 51 37 42 24 36" fill="none" stroke="url(#branchBrown)" stroke-width="4" stroke-linecap="round"></path>
+
+    <!-- upper double-lobed leaf -->
+    <path d="M64 51
+             C55 47 49 40 48 32
+             C56 33 62 37 66 43
+             C67 35 72 28 79 24
+             C81 32 79 40 73 47
+             C70 51 67 52 64 51Z" fill="url(#leafGreen)"></path>
+
+    <!-- petiole waist -->
+    <path d="M65 47
+             C65 44 66 41 67 39" fill="none" stroke="#456c39" stroke-width="2" stroke-linecap="round"></path>
+
+    <path d="M64 48
+             C59 42 55 37 51 34" fill="none" stroke="#d6e9a8" stroke-width="1.2" stroke-linecap="round" opacity="0.46"></path>
+
+    <path d="M68 45
+             C72 37 75 31 78 27" fill="none" stroke="#d6e9a8" stroke-width="1.2" stroke-linecap="round" opacity="0.46"></path>
+
+    <!-- left double-lobed leaf -->
+    <path d="M49 64
+             C38 63 29 58 24 51
+             C34 50 42 53 49 58
+             C48 49 51 42 57 36
+             C61 44 60 53 55 60
+             C53 63 51 64 49 64Z" fill="url(#leafDark)"></path>
+
+    <path d="M50 61
+             C42 57 34 54 27 53" fill="none" stroke="#d2e6a3" stroke-width="1.1" stroke-linecap="round" opacity="0.44"></path>
+
+    <path d="M52 59
+             C55 50 56 44 57 39" fill="none" stroke="#cce19e" stroke-width="1.1" stroke-linecap="round" opacity="0.42"></path>
+
+    <!-- upper-right double-lobed leaf -->
+    <path d="M76 57
+             C83 46 93 40 104 40
+             C99 49 92 55 84 59
+             C94 59 103 63 109 70
+             C99 72 90 69 82 64
+             C78 62 76 60 76 57Z" fill="url(#leafGreen)"></path>
+
+    <path d="M81 58
+             C90 51 97 46 102 43" fill="none" stroke="#dbeaae" stroke-width="1.2" stroke-linecap="round" opacity="0.45"></path>
+
+    <path d="M83 62
+             C92 64 100 67 105 69" fill="none" stroke="#dbeaae" stroke-width="1.1" stroke-linecap="round" opacity="0.42"></path>
+
+    <!-- lower-left double-lobed leaf -->
+    <path d="M49 79
+             C38 81 28 78 21 72
+             C31 68 41 70 49 74
+             C46 66 47 58 51 52
+             C57 59 58 68 54 75
+             C53 77 51 79 49 79Z" fill="url(#leafGreen)"></path>
+
+    <!-- lower-right leaf -->
+    <path d="M82 78
+             C93 71 104 71 113 76
+             C105 83 96 86 86 84
+             C93 89 98 95 99 101
+             C90 98 84 93 80 86
+             C79 83 80 80 82 78Z" fill="url(#leafDark)"></path>
+
+    <!-- fruiting stem -->
+    <path d="M64 58
+             C65 67 67 75 71 82" fill="none" stroke="url(#stemGreen)" stroke-width="4" stroke-linecap="round"></path>
+
+    <!-- fruit main body -->
+    <path d="M68 78
+             C56 77 48 85 48 96
+             C48 107 57 115 69 115
+             C81 114 90 106 90 95
+             C90 84 81 77 68 78Z" fill="url(#fruitGreen)"></path>
+
+    <!-- darker lower depth -->
+    <path d="M69 79
+             C80 80 87 86 87 95
+             C87 104 80 111 70 113
+             C76 104 77 91 69 79Z" fill="url(#fruitShadow)" opacity="0.48"></path>
+
+    <!-- bumpy rind -->
+    <g fill="#789a43" opacity="0.42">
+
+      <circle cx="58" cy="86" r="1.8"></circle>
+      <circle cx="66" cy="84" r="1.6"></circle>
+      <circle cx="75" cy="85" r="1.9"></circle>
+      <circle cx="82" cy="90" r="1.5"></circle>
+
+      <circle cx="54" cy="94" r="1.5"></circle>
+      <circle cx="62" cy="92" r="1.9"></circle>
+      <circle cx="71" cy="93" r="1.5"></circle>
+      <circle cx="79" cy="96" r="1.8"></circle>
+
+      <circle cx="56" cy="102" r="1.8"></circle>
+      <circle cx="65" cy="101" r="1.5"></circle>
+      <circle cx="74" cy="104" r="1.9"></circle>
+      <circle cx="82" cy="103" r="1.4"></circle>
+
+      <circle cx="61" cy="109" r="1.5"></circle>
+      <circle cx="70" cy="109" r="1.7"></circle>
+
+    </g>
+
+    <!-- small raised rind highlights -->
+    <g fill="#c7d86d" opacity="0.55">
+
+      <circle cx="57.5" cy="85.5" r="0.7"></circle>
+      <circle cx="65.5" cy="83.5" r="0.65"></circle>
+      <circle cx="74.5" cy="84.5" r="0.7"></circle>
+      <circle cx="53.5" cy="93.5" r="0.65"></circle>
+      <circle cx="61.5" cy="91.5" r="0.7"></circle>
+      <circle cx="78.5" cy="95.5" r="0.65"></circle>
+      <circle cx="55.5" cy="101.5" r="0.7"></circle>
+      <circle cx="73.5" cy="103.5" r="0.7"></circle>
+
+    </g>
+
+    <!-- fruit stem cap -->
+    <path d="M62 80
+             C65 76 69 75 73 79" fill="none" stroke="#4f6836" stroke-width="3" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- fruit highlight -->
+  <path d="M54 88
+           C57 82 62 80 67 80" fill="none" stroke="#eef4a9" stroke-width="2.1" stroke-linecap="round" opacity="0.67"></path>
+
+  <ellipse cx="56" cy="92" rx="3" ry="6" transform="rotate(-25 56 92)" fill="#f1f6b7" opacity="0.18"></ellipse>
+
+  <!-- leaf shine -->
+  <path d="M51 34
+           C57 35 62 39 65 43" fill="none" stroke="#eef5cc" stroke-width="1.3" stroke-linecap="round" opacity="0.35"></path>
+
+  <path d="M101 43
+           C94 45 88 50 83 55" fill="none" stroke="#eef5cc" stroke-width="1.3" stroke-linecap="round" opacity="0.34"></path>
+
+  <!-- branch highlight -->
+  <path d="M31 102
+           C43 84 53 68 64 53" fill="none" stroke="#c59a74" stroke-width="1.4" stroke-linecap="round" opacity="0.48"></path>
+
+</svg>
