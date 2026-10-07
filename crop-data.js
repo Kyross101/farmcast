@@ -18081,6 +18081,77 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Talisay',
+      localName: 'Tropical Almond / Indian Almond',
+      scientificName:
+        'Terminalia catappa L.',
+      category: 'fruit',
+      icon: 'assets/crops/talisay.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed (Whole Fruit) Sown'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Nursery-Raised Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Terminalia catappa (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=1422'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical to near-tropical growing conditions with good sunlight and reliable moisture. PROSEA describes Terminalia catappa as adapted to tropical and near-tropical regions with a generally humid climate and reports that it prefers full sun or medium shade. Because the cited cultivation source does not establish one universal numeric optimum temperature interval for Talisay production, FarmCast keeps temperature guidance descriptive rather than assigning unsupported minimum and maximum values.',
+
+      rainfallRange:
+        'Talisay is naturally associated with humid tropical coastal environments and grows rapidly where moisture is adequate. PROSEA reports high rainfall in some natural habitats, but this habitat observation should not be treated as one universal production requirement. FarmCast therefore keeps rainfall guidance descriptive rather than assigning a single numeric interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports that Talisay naturally occurs on sandy or rocky beaches, tolerates saline soils and ocean spray, and grows well on many soil types provided drainage is good. Because the cited cultivation guidance does not establish one universal soil-pH interval specifically for Terminalia catappa production, FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Talisay in this FarmCast entry refers specifically to Terminalia catappa L., also widely known as Tropical Almond, Indian Almond or Singapore Almond. PROSEA records talisai as a Philippine Tagalog and Bisaya name, dalinsi in Bicol and other regional names. The species is botanically distinct from the existing Almond crop, Prunus amygdalus. PROSEA reports that fresh entire fruits are commonly planted in nursery beds and the resulting seedlings are later transplanted to the field during the rainy season. Current Kew taxonomy accepts Terminalia catappa L. and lists 21 synonyms: Buceras catappa, Myrobalanus catappa, Juglans catappa, Myrobalanus commersonii, Myrobalanus rubrigemmis, Terminalia burmanica, Terminalia catappa var. chlorocarpa, Terminalia catappa var. macrocarpa, Terminalia catappa var. pubescens, Terminalia catappa var. rhodocarpa, Terminalia catappa var. subcordata, Terminalia intermedia, Terminalia kydiana, Terminalia latifolia, Terminalia mauritiana, Terminalia moluccana, Terminalia ovatifolia, Terminalia paraensis, Terminalia rubrigemmis, Terminalia subcordata and Phytolacca javanica.',
+
+      harvestNote:
+        'Talisay produces an ovoid to ellipsoid drupe whose flesh can be edible, while the kernel inside the stone is also edible and may be eaten like a nut after the fruit is dried and opened. PROSEA reports that, depending on climate and location, trees may produce one or two fruit crops per year or fruit more continuously, with ripe fruits commonly gathered after they fall. Because the reliable source does not provide one exact seed-sowing or seedling-transplanting-to-first-edible-harvest interval, Talisay remains guidance-only rather than receiving an automatic harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Terminalia catappa L.',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=1422'
+          ].join('')
+      }
+    },
+
 
   
 ];
