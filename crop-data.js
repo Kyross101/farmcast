@@ -16207,6 +16207,78 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Green Onion',
+      localName: 'Scallion / Bunching Onion',
+      scientificName: 'Allium fistulosum L.',
+      category: 'vegetable',
+      icon: 'assets/crops/green-onion.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Scallions in Home Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/garden-and-home/',
+            'yard-and-garden/gardening-in-minnesota/',
+            'growing-scallions-in-home-gardens'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Green Onion is a cool-season Allium crop. Kew identifies Allium fistulosum as a bulbous geophyte primarily associated with the temperate biome, while extension guidance shows that planting and harvest timing vary substantially with local season and climate. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric growing range.',
+
+      rainfallRange:
+        'Green Onion requires consistent soil moisture during active growth. University of Minnesota Extension recommends supplemental watering when natural rainfall is insufficient rather than relying on a fixed annual rainfall total, so FarmCast keeps rainfall guidance descriptive.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Green Onion performs best in fertile, well-drained soil. Oregon State University Extension recommends full sun or partial shade and consistently moist soil for bunching onions. Good drainage remains important because prolonged saturated conditions can encourage root and basal problems.',
+
+      plantingNote:
+        'Green Onion in this FarmCast entry refers specifically to Allium fistulosum L., commonly called Scallion, Bunching Onion or Welsh Onion. It is botanically distinct from the ordinary bulbing Onion entry in FarmCast, which is Allium cepa. University of Minnesota Extension recommends either direct seeding or starting seedlings and transplanting them outdoors. Current Kew taxonomy accepts Allium fistulosum L. and lists historical synonyms including Cepa fistulosa, Kepa fistulosa, Porrum fistulosum, Allium bouddae and Allium kashgaricum.',
+
+      harvestNote:
+        'The edible green and white stalks may be harvested once the plants have reached a usable size. University of Minnesota Extension recommends pulling scallions when they are large enough for use, while Utah State University Extension notes that green onions may be harvested as early as about 50 days after seeding. Because usable harvest size varies by cultivar, planting density and desired market stage, and the available guidance does not give one universal sowing-to-harvest interval, FarmCast keeps Green Onion as guidance-only rather than creating an automatic harvest date.',
+
+      source: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Scallions in Home Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/garden-and-home/',
+            'yard-and-garden/gardening-in-minnesota/',
+            'growing-scallions-in-home-gardens'
+          ].join('')
+      }
+    },
+
   
 ];
 

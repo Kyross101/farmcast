@@ -1,0 +1,310 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Green Onion</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of green onions with upright hollow
+    green leaves, pale white pseudostems, small basal bulbs, fibrous roots,
+    highlights, shadows, and layered depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+
+      <stop offset="0" stop-color="#24573c"></stop>
+
+      <stop offset="0.38" stop-color="#3f7e48"></stop>
+
+      <stop offset="0.72" stop-color="#6ca657"></stop>
+
+      <stop offset="1" stop-color="#add177"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+
+      <stop offset="0" stop-color="#193f30"></stop>
+
+      <stop offset="0.5" stop-color="#316b40"></stop>
+
+      <stop offset="1" stop-color="#77aa5c"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="1" x2="1" y2="0">
+
+      <stop offset="0" stop-color="#39704a"></stop>
+
+      <stop offset="0.45" stop-color="#65a057"></stop>
+
+      <stop offset="1" stop-color="#c0dc82"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="whiteStem" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#fffdf0"></stop>
+
+      <stop offset="0.32" stop-color="#edf0cf"></stop>
+
+      <stop offset="0.7" stop-color="#cdd8a8"></stop>
+
+      <stop offset="1" stop-color="#9fb278"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="stemShade" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#e8edd0"></stop>
+
+      <stop offset="0.55" stop-color="#b9c895"></stop>
+
+      <stop offset="1" stop-color="#809568"></stop>
+
+    </linearGradient>
+
+    <radialGradient id="bulbWhite" cx="36%" cy="28%" r="74%">
+
+      <stop offset="0" stop-color="#fffef0"></stop>
+
+      <stop offset="0.5" stop-color="#e7e9c9"></stop>
+
+      <stop offset="1" stop-color="#a9b989"></stop>
+
+    </radialGradient>
+
+    <linearGradient id="rootTan" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#eee0ba"></stop>
+
+      <stop offset="0.5" stop-color="#c8ad82"></stop>
+
+      <stop offset="1" stop-color="#8e745c"></stop>
+
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#17271d" flood-opacity="0.27"></feDropShadow>
+
+    </filter>
+
+    <filter id="rootShadow" x="-30%" y="-30%" width="170%" height="180%">
+
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.1" flood-color="#493c2f" flood-opacity="0.25"></feDropShadow>
+
+    </filter>
+
+  </defs>
+
+  <!-- rear leaves -->
+
+  <g fill="none" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="
+      M43 87
+      C38 70 32 48 27 20" stroke="url(#leafDark)" stroke-width="7"></path>
+
+    <path d="
+      M49 88
+      C49 67 47 43 48 13" stroke="url(#leafGreen)" stroke-width="7.5"></path>
+
+    <path d="
+      M57 88
+      C61 66 65 43 68 12" stroke="url(#leafLight)" stroke-width="7.2"></path>
+
+    <path d="
+      M65 89
+      C71 68 79 48 87 24" stroke="url(#leafGreen)" stroke-width="7"></path>
+
+    <path d="
+      M72 90
+      C82 74 93 57 103 38" stroke="url(#leafDark)" stroke-width="6.4"></path>
+
+  </g>
+
+  <!-- secondary leaves -->
+
+  <g fill="none" stroke-linecap="round" opacity="0.96">
+
+    <path d="
+      M36 91
+      C31 76 22 62 16 44" stroke="url(#leafLight)" stroke-width="5.7"></path>
+
+    <path d="
+      M80 91
+      C91 79 104 68 113 54" stroke="url(#leafGreen)" stroke-width="5.8"></path>
+
+    <path d="
+      M53 89
+      C54 67 55 49 57 29" stroke="url(#leafDark)" stroke-width="5.5"></path>
+
+  </g>
+
+  <!-- leaf highlights -->
+
+  <g fill="none" stroke="#d8ecaa" stroke-linecap="round" opacity="0.48">
+
+    <path d="M29 20 C34 45 39 67 43 82" stroke-width="1.1"></path>
+
+    <path d="M49 15 C49 40 50 63 50 82" stroke-width="1.2"></path>
+
+    <path d="M69 14 C66 40 62 63 59 82" stroke-width="1.1"></path>
+
+    <path d="M87 27 C80 49 73 68 67 84" stroke-width="1"></path>
+
+  </g>
+
+  <!-- central transition from green leaf to white stem -->
+
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M36 71
+      C37 82 39 94 42 105
+      C46 108 51 108 55 104
+      C55 94 54 83 52 72Z" fill="url(#whiteStem)" stroke="#829268" stroke-width="1"></path>
+
+    <path d="
+      M48 70
+      C49 83 50 95 51 107
+      C55 110 61 110 64 106
+      C64 94 63 82 62 69Z" fill="url(#whiteStem)" stroke="#839469" stroke-width="1"></path>
+
+    <path d="
+      M59 71
+      C61 84 62 96 63 108
+      C67 111 73 110 76 106
+      C76 95 75 83 73 72Z" fill="url(#stemShade)" stroke="#778a63" stroke-width="1"></path>
+
+    <path d="
+      M70 75
+      C72 87 74 98 76 108
+      C80 110 85 109 88 105
+      C86 94 84 84 81 75Z" fill="url(#whiteStem)" stroke="#809167" stroke-width="1"></path>
+
+  </g>
+
+  <!-- layered stem lines -->
+
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" opacity="0.55">
+
+    <path d="M42 78 C44 88 45 96 46 102"></path>
+    <path d="M53 77 C54 88 55 97 56 104"></path>
+    <path d="M65 78 C67 89 68 98 69 105"></path>
+    <path d="M77 81 C79 90 81 98 81 104"></path>
+
+  </g>
+
+  <!-- small green sheath marks -->
+
+  <g fill="none" stroke="#6e9a64" stroke-width="1" stroke-linecap="round" opacity="0.68">
+
+    <path d="M39 76 C44 79 48 79 53 76"></path>
+    <path d="M50 76 C55 79 59 79 63 75"></path>
+    <path d="M62 77 C67 80 71 80 74 76"></path>
+    <path d="M73 80 C78 82 81 82 84 79"></path>
+
+  </g>
+
+  <!-- basal bulbs -->
+
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M40 102
+      C36 107 36 114 41 118
+      C46 122 54 121 57 116
+      C60 111 57 105 53 102Z" fill="url(#bulbWhite)" stroke="#8b9972" stroke-width="1.1"></path>
+
+    <path d="
+      M51 104
+      C47 109 48 116 53 120
+      C58 123 65 122 68 117
+      C71 111 68 106 64 103Z" fill="url(#bulbWhite)" stroke="#8c9b72" stroke-width="1.1"></path>
+
+    <path d="
+      M63 104
+      C59 109 60 116 65 120
+      C70 123 77 122 80 117
+      C83 112 80 107 76 104Z" fill="url(#bulbWhite)" stroke="#87966e" stroke-width="1.1"></path>
+
+    <path d="
+      M76 103
+      C72 108 73 115 78 118
+      C83 121 89 120 92 115
+      C94 110 91 105 87 102Z" fill="url(#bulbWhite)" stroke="#86956d" stroke-width="1.1"></path>
+
+  </g>
+
+  <!-- bulb highlights -->
+
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" opacity="0.65">
+
+    <path d="M42 106 C40 110 41 114 44 116"></path>
+    <path d="M54 108 C52 112 53 116 56 118"></path>
+    <path d="M66 108 C64 112 65 116 68 118"></path>
+    <path d="M79 107 C77 111 79 114 81 116"></path>
+
+  </g>
+
+  <!-- root crowns -->
+
+  <g fill="#a68d6c" stroke="#796450" stroke-width="0.7">
+
+    <ellipse cx="48" cy="118" rx="6" ry="2.3"></ellipse>
+
+    <ellipse cx="59" cy="120" rx="6" ry="2.3"></ellipse>
+
+    <ellipse cx="71" cy="120" rx="6" ry="2.3"></ellipse>
+
+    <ellipse cx="84" cy="117" rx="5.7" ry="2.2"></ellipse>
+
+  </g>
+
+  <!-- fibrous roots -->
+
+  <g fill="none" stroke="url(#rootTan)" stroke-linecap="round" filter="url(#rootShadow)">
+
+    <path d="M44 119 C40 123 37 125 34 127" stroke-width="1.2"></path>
+
+    <path d="M47 119 C46 123 45 125 44 127" stroke-width="1"></path>
+
+    <path d="M50 119 C51 123 53 125 54 127" stroke-width="1.1"></path>
+
+    <path d="M56 121 C53 124 51 126 50 128" stroke-width="1"></path>
+
+    <path d="M59 121 C59 124 59 126 60 128" stroke-width="1.1"></path>
+
+    <path d="M62 121 C65 124 67 126 68 128" stroke-width="1"></path>
+
+    <path d="M68 121 C66 124 65 126 65 128" stroke-width="1"></path>
+
+    <path d="M72 121 C73 124 75 126 76 128" stroke-width="1.1"></path>
+
+    <path d="M75 120 C79 123 81 125 83 127" stroke-width="1"></path>
+
+    <path d="M81 118 C79 122 78 125 78 127" stroke-width="1"></path>
+
+    <path d="M85 118 C87 122 89 125 91 127" stroke-width="1.1"></path>
+
+    <path d="M88 117 C92 120 95 123 98 125" stroke-width="1"></path>
+
+  </g>
+
+  <!-- foreground crossing leaf for depth -->
+
+  <path d="
+    M39 94
+    C29 81 21 72 13 62" fill="none" stroke="url(#leafDark)" stroke-width="5.5" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <path d="
+    M39 92
+    C31 82 23 73 16 65" fill="none" stroke="#b8d88c" stroke-width="0.8" stroke-linecap="round" opacity="0.42"></path>
+
+  <!-- subtle basal shadow -->
+
+  <ellipse cx="65" cy="122" rx="37" ry="4.3" fill="#394936" opacity="0.16"></ellipse>
+
+</svg>
