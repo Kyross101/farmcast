@@ -18524,6 +18524,77 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Kumquat',
+      localName: 'Round Kumquat / Marumi Kumquat',
+      scientificName:
+        'Citrus japonica Thunb.',
+      category: 'fruit',
+      icon: 'assets/crops/kumquat.svg',
+
+      plantingMethods: [
+        {
+          value: 'shield-budded-plants',
+          label: 'Shield-Budded Plants'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Fortunella — Kumquat',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=1506'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Kumquat is primarily suited to cool subtropical to warm temperate conditions. PROSEA reports approximately 26–37°C as a favorable temperature range for active growth in kumquats. Because these figures describe favorable growth conditions for the crop group rather than absolute physiological minimum and maximum thresholds specifically for every Citrus japonica cultivar and production system, FarmCast keeps minTemp and maxTemp unset while preserving the source-backed descriptive guidance.',
+
+      rainfallRange:
+        'PROSEA reports approximately 1100–1500 mm of rainfall during the growing season for kumquat production and notes that the plants do not tolerate either prolonged drought or flooding. Because rainfall distribution, soil drainage and irrigation affect actual water availability, FarmCast presents this as source-backed production guidance rather than as a rigid universal rainfall threshold.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Kumquat requires good drainage and should not remain waterlogged. PROSEA notes sensitivity to both drought and flooding but does not establish one reliable universal numeric soil-pH interval specifically for Citrus japonica cultivation. FarmCast therefore keeps soilPH unset rather than assigning an unsupported value.',
+
+      plantingNote:
+        'Kumquat in this FarmCast entry refers to Citrus japonica Thunb., the currently accepted Kew species encompassing several historically separated kumquat taxa. Kew records common names including kumquat, round cumquat and oval kumquat. PROSEA historically treats Fortunella japonica as the round or Marumi kumquat and Fortunella margarita as the oval or Nagami kumquat, but these names are included within the synonymy of Citrus japonica in the current Kew taxonomy. PROSEA reports that kumquats are rarely established from seed because seedlings often perform poorly; shield budding on suitable citrus rootstock is the preferred propagation method, while air layering is also possible. Current Kew taxonomy lists 27 synonyms, all of which were checked against the existing FarmCast crop dataset before this entry was prepared.',
+
+      harvestNote:
+        'Kumquat produces small orange to golden citrus fruits whose pulp and aromatic rind are both edible, allowing ripe fruits to be eaten whole. PROSEA reports seasonal ripe-fruit harvests that vary by location, including October to January in some subtropical production areas and separate seasonal harvests in Vietnam. UF/IFAS likewise notes that mature kumquat fruit develops its characteristic orange coloration and is eaten with both peel and pulp. Because these sources describe seasonal fruit maturity rather than one exact shield-budding- or air-layering-to-first-harvest interval, FarmCast keeps Kumquat as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Fortunella — Kumquat',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=1506'
+          ].join('')
+      }
+    },
+
 
   
 ];
