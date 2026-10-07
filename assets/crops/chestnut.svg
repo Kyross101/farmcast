@@ -1,0 +1,353 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Chestnut</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a sweet chestnut branch with
+    glossy serrated leaves, yellow catkins, green spiny burrs,
+    an opened burr, and shiny brown edible chestnuts.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b7659"></stop>
+      <stop offset="0.55" stop-color="#6c4e3d"></stop>
+      <stop offset="1" stop-color="#42342c"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#235436"></stop>
+      <stop offset="0.5" stop-color="#4e8b48"></stop>
+      <stop offset="1" stop-color="#99c374"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#193f2c"></stop>
+      <stop offset="1" stop-color="#609652"></stop>
+    </linearGradient>
+
+    <radialGradient id="burrGreen" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#d0d67e"></stop>
+      <stop offset="0.42" stop-color="#8ca54f"></stop>
+      <stop offset="0.76" stop-color="#607a3e"></stop>
+      <stop offset="1" stop-color="#3f5632"></stop>
+    </radialGradient>
+
+    <radialGradient id="nutBrown" cx="32%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#e7b779"></stop>
+      <stop offset="0.4" stop-color="#b77345"></stop>
+      <stop offset="0.75" stop-color="#783f2c"></stop>
+      <stop offset="1" stop-color="#472820"></stop>
+    </radialGradient>
+
+    <linearGradient id="catkinGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2cd77"></stop>
+      <stop offset="0.55" stop-color="#b4a356"></stop>
+      <stop offset="1" stop-color="#7e7445"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#202920" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="116" rx="40" ry="6" fill="#273128" opacity="0.16"></ellipse>
+
+  <!-- Main branch -->
+  <path d="
+    M18 105
+    C34 91 47 76 58 60
+    C71 42 85 28 106 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- Side branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M47 77 C39 64 33 52 31 40" stroke-width="3.4"></path>
+
+    <path d="M61 56 C55 44 52 32 53 20" stroke-width="3.1"></path>
+
+    <path d="M76 39 C88 41 100 37 112 29" stroke-width="3"></path>
+
+    <path d="M38 90 C30 86 23 81 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- Bark highlight -->
+  <path d="
+    M22 101
+    C38 87 50 73 61 57
+    C74 41 88 28 103 18" fill="none" stroke="#bc9676" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- Chestnut leaves -->
+  <g stroke="#244d34" stroke-width="1.1" filter="url(#softShadow)">
+
+    <path d="
+      M30 41
+      C18 31 8 34 5 43
+      C14 53 26 54 35 47
+      C38 45 35 42 30 41Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M41 58
+      C29 49 19 53 17 63
+      C26 72 38 69 46 62
+      C49 60 46 58 41 58Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M53 22
+      C42 13 33 16 30 26
+      C38 35 50 34 57 27
+      C60 25 57 23 53 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M70 46
+      C79 35 91 35 98 43
+      C92 54 81 57 71 52
+      C68 51 68 48 70 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M92 30
+      C101 19 113 21 119 29
+      C112 39 101 41 92 35
+      C89 34 89 31 92 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 49
+      C106 39 117 42 121 51
+      C114 60 103 61 95 55
+      C92 53 93 51 96 49Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- Serrated leaf margins -->
+  <g fill="none" stroke="#1d452e" stroke-width="0.7" opacity="0.8">
+
+    <path d="
+      M7 43
+      L12 40
+      L16 45
+      L21 41
+      L25 46
+      L30 42
+      L34 46"></path>
+
+    <path d="
+      M19 63
+      L24 59
+      L28 64
+      L33 60
+      L38 64
+      L43 60"></path>
+
+    <path d="
+      M32 26
+      L37 22
+      L42 27
+      L47 23
+      L52 27
+      L56 24"></path>
+
+    <path d="
+      M72 50
+      L77 46
+      L82 50
+      L87 46
+      L92 49"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#bdd69d" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M8 43 C17 44 26 44 33 45"></path>
+    <path d="M20 63 C29 62 37 61 44 60"></path>
+    <path d="M33 26 C42 25 49 25 55 25"></path>
+
+    <path d="M95 44 C86 47 78 49 72 50"></path>
+    <path d="M116 29 C108 31 100 33 93 34"></path>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <g fill="none" stroke="#625e3c" stroke-width="1.8" stroke-linecap="round">
+
+    <path d="M52 65 C51 72 51 78 52 84"></path>
+    <path d="M69 55 C72 62 74 68 75 74"></path>
+
+  </g>
+
+  <!-- Spiny burr 1 -->
+  <g transform="translate(52 96)" filter="url(#softShadow)">
+
+    <circle cx="0" cy="0" r="15" fill="url(#burrGreen)" stroke="#405733" stroke-width="1.4"></circle>
+
+    <!-- Burr spines -->
+    <g stroke="#54713d" stroke-width="1.2" stroke-linecap="round">
+
+      <path d="M0 -13 L0 -21"></path>
+      <path d="M5 -12 L9 -20"></path>
+      <path d="M10 -9 L16 -15"></path>
+      <path d="M13 -4 L21 -6"></path>
+
+      <path d="M13 3 L21 5"></path>
+      <path d="M10 9 L16 15"></path>
+      <path d="M5 12 L9 20"></path>
+      <path d="M0 13 L0 21"></path>
+
+      <path d="M-5 12 L-9 20"></path>
+      <path d="M-10 9 L-16 15"></path>
+      <path d="M-13 3 L-21 5"></path>
+      <path d="M-13 -4 L-21 -6"></path>
+
+      <path d="M-10 -9 L-16 -15"></path>
+      <path d="M-5 -12 L-9 -20"></path>
+
+      <path d="M4 -7 L7 -13"></path>
+      <path d="M8 -3 L14 -6"></path>
+      <path d="M8 4 L14 8"></path>
+      <path d="M4 8 L7 14"></path>
+
+      <path d="M-4 8 L-7 14"></path>
+      <path d="M-8 4 L-14 8"></path>
+      <path d="M-8 -3 L-14 -6"></path>
+      <path d="M-4 -7 L-7 -13"></path>
+
+    </g>
+
+  </g>
+
+  <!-- Spiny burr 2 -->
+  <g transform="translate(78 84)" filter="url(#softShadow)">
+
+    <circle cx="0" cy="0" r="13" fill="url(#burrGreen)" stroke="#405733" stroke-width="1.3"></circle>
+
+    <g stroke="#55723e" stroke-width="1.1" stroke-linecap="round">
+
+      <path d="M0 -11 L0 -18"></path>
+      <path d="M5 -10 L9 -17"></path>
+      <path d="M9 -7 L15 -12"></path>
+      <path d="M11 -2 L18 -3"></path>
+
+      <path d="M11 4 L18 7"></path>
+      <path d="M8 8 L13 14"></path>
+      <path d="M3 11 L5 18"></path>
+      <path d="M-3 11 L-5 18"></path>
+
+      <path d="M-8 8 L-13 14"></path>
+      <path d="M-11 4 L-18 7"></path>
+      <path d="M-11 -2 L-18 -3"></path>
+      <path d="M-9 -7 L-15 -12"></path>
+
+      <path d="M-5 -10 L-9 -17"></path>
+
+    </g>
+
+  </g>
+
+  <!-- Open burr -->
+  <g transform="translate(39 104)" filter="url(#softShadow)">
+
+    <!-- Left husk half -->
+    <path d="
+      M-2 -10
+      C-12 -12 -18 -5 -18 4
+      C-13 2 -8 4 -4 9
+      C0 4 1 -3 -2 -10Z" fill="#718c48" stroke="#465d37" stroke-width="1.2"></path>
+
+    <!-- Right husk half -->
+    <path d="
+      M2 -10
+      C12 -12 18 -5 18 4
+      C13 2 8 4 4 9
+      C0 4 -1 -3 2 -10Z" fill="#718c48" stroke="#465d37" stroke-width="1.2"></path>
+
+    <!-- Spines on open burr -->
+    <g stroke="#536f3c" stroke-width="1" stroke-linecap="round">
+
+      <path d="M-11 -7 L-16 -13"></path>
+      <path d="M-15 -2 L-22 -4"></path>
+      <path d="M-13 4 L-20 9"></path>
+
+      <path d="M11 -7 L16 -13"></path>
+      <path d="M15 -2 L22 -4"></path>
+      <path d="M13 4 L20 9"></path>
+
+    </g>
+
+    <!-- Mature chestnut -->
+    <path d="
+      M0 -8
+      C-8 -6 -11 1 -10 8
+      C-9 15 -5 20 0 22
+
+      C5 20 9 15 10 8
+      C11 1 8 -6 0 -8Z" fill="url(#nutBrown)" stroke="#613a29" stroke-width="1.3"></path>
+
+    <!-- Pale base -->
+    <path d="
+      M-5 14
+      C-2 17 2 17 5 14
+      C4 18 2 20 0 21
+      C-2 20 -4 18 -5 14Z" fill="#d5ab79" stroke="#855d40" stroke-width="0.6"></path>
+
+    <!-- Nut highlight -->
+    <path d="
+      M-4 -3
+      C-7 2 -7 7 -5 10" fill="none" stroke="#f0c899" stroke-width="1.2" stroke-linecap="round" opacity="0.65"></path>
+
+  </g>
+
+  <!-- Loose chestnut -->
+  <g transform="translate(86 104)" filter="url(#softShadow)">
+
+    <path d="
+      M0 -11
+      C-8 -8 -12 -1 -11 7
+      C-10 15 -5 20 0 22
+
+      C6 20 10 15 11 7
+      C12 -1 8 -8 0 -11Z" fill="url(#nutBrown)" stroke="#613a29" stroke-width="1.4"></path>
+
+    <path d="
+      M-6 14
+      C-2 18 2 18 6 14
+      C5 19 2 21 0 22
+      C-3 21 -5 19 -6 14Z" fill="#d7af7a" stroke="#855d40" stroke-width="0.65"></path>
+
+    <path d="
+      M-4 -5
+      C-7 0 -7 5 -5 9" fill="none" stroke="#f0c99a" stroke-width="1.2" stroke-linecap="round" opacity="0.65"></path>
+
+  </g>
+
+  <!-- Chestnut flower catkin -->
+  <path d="
+    M76 39
+    C80 31 84 25 89 19" fill="none" stroke="#66754b" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M89 18
+      C87 25 88 33 92 41
+      C95 47 97 51 98 55" fill="none" stroke="url(#catkinGold)" stroke-width="3.7" stroke-linecap="round"></path>
+
+    <g fill="#d4c375" stroke="#766d45" stroke-width="0.45">
+
+      <circle cx="89" cy="22" r="1.7"></circle>
+      <circle cx="89" cy="27" r="1.7"></circle>
+      <circle cx="90" cy="32" r="1.7"></circle>
+      <circle cx="92" cy="37" r="1.7"></circle>
+
+      <circle cx="94" cy="42" r="1.7"></circle>
+      <circle cx="96" cy="47" r="1.7"></circle>
+      <circle cx="97" cy="52" r="1.7"></circle>
+
+    </g>
+
+  </g>
+
+</svg>

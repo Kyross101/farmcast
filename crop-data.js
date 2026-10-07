@@ -15099,6 +15099,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Chestnut',
+      localName: 'Sweet Chestnut',
+      scientificName: 'Castanea sativa Mill.',
+      category: 'tree-nut',
+      icon: 'assets/crops/chestnut.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-trees',
+          label: 'Grafted Chestnut Trees'
+        },
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Castanea sativa — Sweet Chestnut',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/3191/',
+            'castanea-sativa/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate growing conditions. Kew identifies Sweet Chestnut as a tree primarily associated with the temperate biome. Successful nut production depends on cultivar, growing season, pollination and local climatic conditions. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Young Chestnut trees require adequate moisture while establishing, but the root zone should remain well drained. Water needs vary with soil, tree age, season and local climate, so FarmCast keeps moisture guidance descriptive rather than inventing one universal annual rainfall requirement.',
+
+      soilPH:
+        'Royal Horticultural Society lists acid or neutral soil as suitable for Sweet Chestnut.',
+
+      soilNote:
+        'Sweet Chestnut grows best in full sun and well-drained soil. Royal Horticultural Society guidance lists loam and sandy soils as suitable and notes that the species can tolerate relatively dry sandy conditions once established.',
+
+      plantingNote:
+        'Chestnut in this FarmCast entry refers specifically to the familiar edible Sweet or European Chestnut, not Horse Chestnut. Royal Horticultural Society guidance supports propagation from seed or by grafting. Seed-grown trees do not reliably reproduce named cultivars, so grafted planting material is preferable when a specific fruiting cultivar is required. Current Kew taxonomy accepts Castanea sativa Mill.; historical names include Castanea castanea, Castanea vesca, Castanea vulgaris, Fagus castanea and Fagus procera.',
+
+      harvestNote:
+        'Sweet Chestnuts mature in autumn inside densely spiny burrs. Mature nuts become ready for collection as the burrs open and the nuts begin to fall naturally. Harvest timing varies with cultivar, tree maturity and local climate. Because Chestnut is a perennial tree and first bearing age cannot be represented by one universal number of days after planting, FarmCast keeps Chestnut as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Castanea sativa — Sweet Chestnut',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/3191/',
+            'castanea-sativa/details'
+          ].join('')
+      }
+    },
+
   
 ];
 
