@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Miner's Lettuce</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Miner's Lettuce with succulent green basal leaves,
+    distinctive circular perfoliate leaves surrounding slender stems,
+    tiny white flowers, and a shallow fibrous root system.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c5dda5"></stop>
+      <stop offset="0.48" stop-color="#7faf69"></stop>
+      <stop offset="1" stop-color="#477753"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dce9be"></stop>
+      <stop offset="1" stop-color="#7ca366"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a9c78a"></stop>
+      <stop offset="1" stop-color="#5e805b"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerWhite" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.7" stop-color="#f2f2e8"></stop>
+      <stop offset="1" stop-color="#c7d2c4"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#273128" flood-opacity="0.2"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <ellipse cx="64" cy="119" rx="43" ry="5" fill="#4e554c" opacity="0.15"></ellipse>
+
+  <!-- Basal petioles -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M63 107 C53 98 44 92 32 88" stroke-width="2.1"></path>
+
+    <path d="M64 107 C75 98 85 92 97 88" stroke-width="2.1"></path>
+
+    <path d="M63 106 C51 105 39 105 27 108" stroke-width="1.9"></path>
+
+    <path d="M65 106 C77 105 89 105 101 108" stroke-width="1.9"></path>
+
+  </g>
+
+  <!-- Basal succulent leaves -->
+  <g filter="url(#softShadow)">
+
+    <path d="M55 104
+         C46 104 37 101 31 96
+         C25 91 22 85 24 80
+         C26 75 31 73 37 75
+         C44 78 50 85 54 92
+         C56 97 57 101 55 104Z" fill="url(#leafGreen)" stroke="#3d6948" stroke-width="1.5"></path>
+
+    <path d="M73 104
+         C82 104 91 101 97 96
+         C103 91 106 85 104 80
+         C102 75 97 73 91 75
+         C84 78 78 85 74 92
+         C72 97 71 101 73 104Z" fill="url(#leafGreen)" stroke="#3d6948" stroke-width="1.5"></path>
+
+    <path d="M52 106
+         C43 110 34 112 27 110
+         C20 108 16 104 17 99
+         C18 94 23 91 29 91
+         C37 91 44 96 50 101
+         C52 103 53 105 52 106Z" fill="url(#leafLight)" stroke="#456f4d" stroke-width="1.35"></path>
+
+    <path d="M76 106
+         C85 110 94 112 101 110
+         C108 108 112 104 111 99
+         C110 94 105 91 99 91
+         C91 91 84 96 78 101
+         C76 103 75 105 76 106Z" fill="url(#leafLight)" stroke="#456f4d" stroke-width="1.35"></path>
+
+  </g>
+
+  <!-- Main flowering stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M63 105
+         C62 88 62 72 64 57
+         C65 46 65 36 64 25" stroke-width="2.4"></path>
+
+    <path d="M64 73
+         C76 66 84 57 89 48" stroke-width="1.4"></path>
+
+    <path d="M63 67
+         C52 61 45 53 40 45" stroke-width="1.4"></path>
+
+  </g>
+
+  <!-- Signature round perfoliate leaf -->
+  <g filter="url(#softShadow)">
+
+    <path d="M43 59
+         C45 49 53 42 63 41
+         C74 40 83 47 86 57
+         C88 66 82 74 72 77
+         C63 80 52 77 47 70
+         C44 67 42 63 43 59Z" fill="url(#leafGreen)" stroke="#3f6b4a" stroke-width="1.7"></path>
+
+    <!-- central opening around stem -->
+    <ellipse cx="64" cy="58" rx="3.3" ry="2.4" fill="#6b925e" stroke="#446949" stroke-width="0.8"></ellipse>
+
+  </g>
+
+  <!-- Perfoliate leaf veins -->
+  <g fill="none" stroke="#d4e3bd" stroke-linecap="round" opacity="0.75">
+
+    <path d="M64 58 C55 55 50 51 46 47" stroke-width="0.8"></path>
+
+    <path d="M64 58 C73 54 79 51 83 48" stroke-width="0.8"></path>
+
+    <path d="M64 58 C55 63 50 68 48 72" stroke-width="0.8"></path>
+
+    <path d="M64 58 C73 63 79 68 81 72" stroke-width="0.8"></path>
+
+  </g>
+
+  <!-- Smaller upper perfoliate leaf -->
+  <path d="M52 39
+       C54 32 59 28 65 28
+       C72 28 77 33 78 39
+       C79 45 75 49 68 51
+       C61 52 55 49 53 45
+       C52 43 51 41 52 39Z" fill="url(#leafLight)" stroke="#47704e" stroke-width="1.2"></path>
+
+  <!-- Flower branches -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M64 31 C58 27 55 22 53 17" stroke-width="1"></path>
+
+    <path d="M65 30 C72 26 76 21 78 16" stroke-width="1"></path>
+
+    <path d="M64 25 C64 20 64 16 63 12" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Tiny white flowers -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(53 16)">
+      <circle cx="0" cy="0" r="1.1" fill="#d9bd68"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#aab7ab" stroke-width="0.4">
+
+        <ellipse cx="0" cy="-2.7" rx="1.4" ry="2.4"></ellipse>
+        <ellipse cx="2.5" cy="-0.7" rx="2.2" ry="1.3"></ellipse>
+        <ellipse cx="1.5" cy="2" rx="1.3" ry="2.1"></ellipse>
+        <ellipse cx="-1.5" cy="2" rx="1.3" ry="2.1"></ellipse>
+        <ellipse cx="-2.5" cy="-0.7" rx="2.2" ry="1.3"></ellipse>
+
+      </g>
+    </g>
+
+    <g transform="translate(78 15)">
+      <circle cx="0" cy="0" r="1.1" fill="#d9bd68"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#aab7ab" stroke-width="0.4">
+
+        <ellipse cx="0" cy="-2.7" rx="1.4" ry="2.4"></ellipse>
+        <ellipse cx="2.5" cy="-0.7" rx="2.2" ry="1.3"></ellipse>
+        <ellipse cx="1.5" cy="2" rx="1.3" ry="2.1"></ellipse>
+        <ellipse cx="-1.5" cy="2" rx="1.3" ry="2.1"></ellipse>
+        <ellipse cx="-2.5" cy="-0.7" rx="2.2" ry="1.3"></ellipse>
+
+      </g>
+    </g>
+
+    <g transform="translate(63 10)">
+      <circle cx="0" cy="0" r="1.15" fill="#d9bd68"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#aab7ab" stroke-width="0.42">
+
+        <ellipse cx="0" cy="-2.8" rx="1.5" ry="2.5"></ellipse>
+        <ellipse cx="2.6" cy="-0.8" rx="2.3" ry="1.4"></ellipse>
+        <ellipse cx="1.6" cy="2.1" rx="1.4" ry="2.2"></ellipse>
+        <ellipse cx="-1.6" cy="2.1" rx="1.4" ry="2.2"></ellipse>
+        <ellipse cx="-2.6" cy="-0.8" rx="2.3" ry="1.4"></ellipse>
+
+      </g>
+    </g>
+
+  </g>
+
+  <!-- Crown -->
+  <path d="M49 107
+       C53 103 58 101 64 101
+       C70 101 75 103 79 107
+       C75 112 70 115 64 115
+       C58 115 53 112 49 107Z" fill="#78654f" stroke="#504237" stroke-width="1.2"></path>
+
+  <!-- Shallow fibrous roots -->
+  <g fill="none" stroke="#6a5848" stroke-linecap="round">
+
+    <path d="M55 112 C51 116 47 119 42 121" stroke-width="1.1"></path>
+
+    <path d="M60 113 C57 118 55 121 53 124" stroke-width="1"></path>
+
+    <path d="M66 113 C68 118 70 121 72 124" stroke-width="1"></path>
+
+    <path d="M72 112 C77 116 81 119 86 121" stroke-width="1.1"></path>
+
+  </g>
+
+</svg>

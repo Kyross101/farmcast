@@ -12681,6 +12681,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Miner\'s Lettuce',
+      scientificName: 'Claytonia perfoliata Donn ex Willd.',
+      category: 'vegetable',
+      icon: 'assets/crops/miners-lettuce.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Johnny\'s Selected Seeds',
+
+        title:
+          'Claytonia — Key Growing Information',
+
+        url:
+          [
+            'https://',
+            'www.johnnyseeds.com/growers-library/vegetables/greens/claytonia-key-growing-information.html'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool-season conditions. University of California IPM describes Miner\'s Lettuce as a winter annual that prefers cool, damp conditions and declines as hot spring weather arrives. FarmCast therefore keeps the crop-growth temperature guidance descriptive rather than assigning an unsupported universal numeric range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of California IPM associates Miner\'s Lettuce with cool, damp habitats, while cultivation guidance recommends maintaining consistent moisture. FarmCast does not convert watering guidance into an invented annual rainfall range.',
+
+      soilPH:
+        'No exact source-backed numeric pH range used.',
+
+      soilNote:
+        'Miner\'s Lettuce performs best in moist, well-drained soil under cool conditions. It naturally occurs in woodland, forest, garden, agricultural, and other damp habitats and tolerates partial shade.',
+
+      plantingNote:
+        'Miner\'s Lettuce is a cool-season annual leafy vegetable. Direct seeding is recommended, although carefully raised seedlings may also be transplanted once their roots have filled the container. Current Kew taxonomy accepts Claytonia perfoliata Donn ex Willd.; Limnia perfoliata and Montia perfoliata are treated as synonyms.',
+
+      harvestNote:
+        'Miner\'s Lettuce is harvested for its tender edible leaves and young rosettes. Baby leaves may be cut above the basal plate for repeated harvest, while whole rosettes may be harvested below the basal plate. Because harvest timing depends on whether the crop is grown for baby leaves or mature rosettes rather than one universal sowing-to-harvest interval, FarmCast keeps Miner\'s Lettuce as guidance-only.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Statewide Integrated Pest Management Program',
+
+        title:
+          'Miner\'s Lettuce — Weeds Identification Gallery',
+
+        url:
+          [
+            'https://',
+            'ipm.ucanr.edu/weeds-identification-gallery/miners-lettuce/'
+          ].join('')
+      }
+    },
+
 
   
 ];
