@@ -14475,6 +14475,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Olive',
+      scientificName: 'Olea europaea L.',
+      category: 'fruit',
+      icon: 'assets/crops/olive.svg',
+
+      plantingMethods: [
+        {
+          value: 'container-grown-plants',
+          label: 'Container-Grown Olive Tree'
+        },
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Olives',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/olives/grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm subtropical growing conditions. Kew identifies Olive as a shrub or tree primarily associated with the subtropical biome. Royal Horticultural Society guidance recommends a warm, sunny and sheltered position and notes that severe frost can damage branches. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Established Olive trees are relatively drought tolerant, while young or container-grown plants require adequate watering during active growth. Good drainage remains important because persistently wet soil is unsuitable. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows source guidance emphasizing freely draining growing conditions.',
+
+      soilNote:
+        'Olive trees perform best in a warm, sunny and sheltered position with well-drained soil. Royal Horticultural Society guidance also supports container cultivation using a free-draining loam-based growing medium where in-ground conditions are unsuitable.',
+
+      plantingNote:
+        'Olive is a familiar edible fruit and oil crop. Young Olive trees may be established as container-grown plants, while Royal Horticultural Society guidance states that Olea europaea can also be propagated from semi-ripe cuttings. Current Kew taxonomy accepts Olea europaea L.; Olea pallida and Olea sativa are treated as species-level scientific synonyms.',
+
+      harvestNote:
+        'Olive fruits are harvested according to intended use and maturity. Royal Horticultural Society guidance places harvest in autumn, with green fruits becoming darker as they mature. Fresh olives require appropriate curing or processing before they are eaten. Because harvest depends on cultivar, tree maturity, climate and desired fruit stage rather than one universal planting-to-harvest interval, FarmCast keeps Olive as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Olives',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/olives/grow-your-own'
+          ].join('')
+      }
+    },
+
   
 ];
 

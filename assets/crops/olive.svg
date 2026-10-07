@@ -1,0 +1,271 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Olive</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of an olive branch with narrow
+    silvery-green leaves, small creamy flowers, and clusters of green
+    and ripe dark olives with highlights, shadows, and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a08061"></stop>
+      <stop offset="0.5" stop-color="#705744"></stop>
+      <stop offset="1" stop-color="#43372f"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafSilver" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#526d58"></stop>
+      <stop offset="0.45" stop-color="#839783"></stop>
+      <stop offset="1" stop-color="#c2cbb4"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#354f3d"></stop>
+      <stop offset="0.5" stop-color="#617861"></stop>
+      <stop offset="1" stop-color="#a9b69d"></stop>
+    </linearGradient>
+
+    <radialGradient id="greenOlive" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#c5d078"></stop>
+      <stop offset="0.42" stop-color="#879c49"></stop>
+      <stop offset="0.78" stop-color="#65793b"></stop>
+      <stop offset="1" stop-color="#455a33"></stop>
+    </radialGradient>
+
+    <radialGradient id="darkOlive" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#796f86"></stop>
+      <stop offset="0.42" stop-color="#51495f"></stop>
+      <stop offset="0.78" stop-color="#34313e"></stop>
+      <stop offset="1" stop-color="#211f29"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf0"></stop>
+      <stop offset="1" stop-color="#dedbc7"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#222922" flood-opacity="0.25"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="116" rx="39" ry="6" fill="#30352e" opacity="0.16"></ellipse>
+
+  <!-- Main woody branch -->
+  <path d="
+    M17 105
+    C33 91 47 76 59 60
+    C72 43 87 28 108 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- Side branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M47 77 C38 65 31 54 28 42" stroke-width="3.2"></path>
+
+    <path d="M61 57 C55 45 52 33 53 21" stroke-width="3"></path>
+
+    <path d="M76 40 C89 42 100 38 112 30" stroke-width="3"></path>
+
+    <path d="M38 90 C30 86 23 81 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- Bark highlight -->
+  <path d="
+    M21 101
+    C37 88 50 73 62 58
+    C75 41 89 29 105 18" fill="none" stroke="#c0a07e" stroke-width="1" stroke-linecap="round" opacity="0.6"></path>
+
+  <!-- Olive leaves -->
+  <g stroke="#405848" stroke-width="1" filter="url(#softShadow)">
+
+    <path d="
+      M29 42
+      C20 35 10 37 7 43
+      C15 49 25 49 33 45
+      C36 43 34 42 29 42Z" fill="url(#leafSilver)"></path>
+
+    <path d="
+      M38 58
+      C28 51 19 54 17 61
+      C25 68 35 67 43 62
+      C46 60 43 58 38 58Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M52 22
+      C43 15 34 17 31 24
+      C39 31 49 30 56 26
+      C59 24 56 22 52 22Z" fill="url(#leafSilver)"></path>
+
+    <path d="
+      M70 46
+      C78 37 89 37 97 43
+      C91 51 81 54 71 51
+      C68 50 68 48 70 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M91 30
+      C100 21 111 22 117 29
+      C110 37 100 39 91 35
+      C88 34 88 31 91 30Z" fill="url(#leafSilver)"></path>
+
+    <path d="
+      M96 49
+      C105 41 116 43 120 50
+      C113 58 103 59 95 55
+      C92 53 93 51 96 49Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M25 78
+      C15 71 7 74 6 81
+      C14 88 24 87 31 82
+      C34 80 30 78 25 78Z" fill="url(#leafSilver)"></path>
+
+  </g>
+
+  <!-- Narrow leaf midribs -->
+  <g fill="none" stroke="#d0d6c5" stroke-width="0.7" stroke-linecap="round" opacity="0.76">
+
+    <path d="M10 43 C18 44 26 44 32 44"></path>
+    <path d="M20 61 C28 61 36 60 41 60"></path>
+    <path d="M34 24 C42 24 49 24 54 24"></path>
+
+    <path d="M94 43 C85 46 78 48 72 49"></path>
+    <path d="M114 29 C106 31 99 33 92 34"></path>
+    <path d="M117 50 C109 52 102 53 96 53"></path>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <g fill="none" stroke="#64704a" stroke-width="1.7" stroke-linecap="round">
+
+    <path d="M51 67 C50 73 49 79 49 84"></path>
+    <path d="M64 58 C68 64 70 69 71 74"></path>
+    <path d="M75 52 C81 58 84 63 85 69"></path>
+    <path d="M39 78 C37 84 36 89 36 94"></path>
+
+  </g>
+
+  <!-- Green olive cluster -->
+  <g stroke="#455936" stroke-width="1.2" filter="url(#softShadow)">
+
+    <ellipse cx="48" cy="91" rx="8" ry="12" fill="url(#greenOlive)" transform="rotate(-9 48 91)"></ellipse>
+
+    <ellipse cx="69" cy="82" rx="8" ry="12" fill="url(#greenOlive)" transform="rotate(8 69 82)"></ellipse>
+
+    <ellipse cx="36" cy="101" rx="7" ry="10.5" fill="url(#greenOlive)" transform="rotate(-12 36 101)"></ellipse>
+
+  </g>
+
+  <!-- Dark ripe olive cluster -->
+  <g stroke="#292630" stroke-width="1.2" filter="url(#softShadow)">
+
+    <ellipse cx="84" cy="78" rx="8" ry="12" fill="url(#darkOlive)" transform="rotate(10 84 78)"></ellipse>
+
+    <ellipse cx="59" cy="102" rx="8" ry="12" fill="url(#darkOlive)" transform="rotate(-7 59 102)"></ellipse>
+
+    <ellipse cx="81" cy="101" rx="7.5" ry="11" fill="url(#darkOlive)" transform="rotate(10 81 101)"></ellipse>
+
+  </g>
+
+  <!-- Olive highlights -->
+  <g fill="#edf0c0" opacity="0.58">
+
+    <ellipse cx="45" cy="86" rx="2" ry="3.6" transform="rotate(-22 45 86)"></ellipse>
+
+    <ellipse cx="66" cy="77" rx="2" ry="3.6" transform="rotate(-22 66 77)"></ellipse>
+
+    <ellipse cx="33" cy="97" rx="1.7" ry="3" transform="rotate(-22 33 97)"></ellipse>
+
+  </g>
+
+  <g fill="#b7a9bd" opacity="0.48">
+
+    <ellipse cx="81" cy="73" rx="1.9" ry="3.5" transform="rotate(-22 81 73)"></ellipse>
+
+    <ellipse cx="56" cy="97" rx="1.9" ry="3.5" transform="rotate(-22 56 97)"></ellipse>
+
+    <ellipse cx="78" cy="97" rx="1.7" ry="3" transform="rotate(-22 78 97)"></ellipse>
+
+  </g>
+
+  <!-- Small fruit attachment scars -->
+  <g fill="#536140">
+
+    <circle cx="48" cy="80" r="1.2"></circle>
+
+    <circle cx="69" cy="76" r="1.2"></circle>
+
+    <circle cx="84" cy="72" r="1.2"></circle>
+
+  </g>
+
+  <!-- Flowering twig -->
+  <path d="
+    M76 40
+    C78 32 82 26 87 20" fill="none" stroke="#64744b" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- Olive flower cluster -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(87 18)">
+      <path d="
+        M0 0
+        C-5 -1 -7 -5 -4 -8
+        C0 -9 2 -5 2 -2Z" fill="url(#flowerCream)" stroke="#c4c1ae" stroke-width="0.6"></path>
+
+      <path d="
+        M0 0
+        C2 -5 6 -7 9 -4
+        C9 0 5 2 2 2Z" fill="url(#flowerCream)" stroke="#c4c1ae" stroke-width="0.6"></path>
+
+      <path d="
+        M0 0
+        C5 2 7 6 4 9
+        C0 9 -2 5 -2 2Z" fill="url(#flowerCream)" stroke="#c4c1ae" stroke-width="0.6"></path>
+
+      <path d="
+        M0 0
+        C-2 5 -6 7 -9 4
+        C-9 0 -5 -2 -2 -2Z" fill="url(#flowerCream)" stroke="#c4c1ae" stroke-width="0.6"></path>
+
+      <circle cx="0" cy="0" r="2.1" fill="#d1ae43"></circle>
+    </g>
+
+    <g transform="translate(98 23) scale(.72)">
+      <path d="
+        M0 0
+        C-5 -1 -7 -5 -4 -8
+        C0 -9 2 -5 2 -2Z" fill="url(#flowerCream)" stroke="#c4c1ae" stroke-width="0.7"></path>
+
+      <path d="
+        M0 0
+        C2 -5 6 -7 9 -4
+        C9 0 5 2 2 2Z" fill="url(#flowerCream)" stroke="#c4c1ae" stroke-width="0.7"></path>
+
+      <path d="
+        M0 0
+        C5 2 7 6 4 9
+        C0 9 -2 5 -2 2Z" fill="url(#flowerCream)" stroke="#c4c1ae" stroke-width="0.7"></path>
+
+      <path d="
+        M0 0
+        C-2 5 -6 7 -9 4
+        C-9 0 -5 -2 -2 -2Z" fill="url(#flowerCream)" stroke="#c4c1ae" stroke-width="0.7"></path>
+
+      <circle cx="0" cy="0" r="2.1" fill="#d1ae43"></circle>
+    </g>
+
+  </g>
+
+  <!-- Silvery leaf underside accent -->
+  <path d="
+    M97 48
+    C104 45 111 45 116 49" fill="none" stroke="#d6dccd" stroke-width="1" stroke-linecap="round" opacity="0.68"></path>
+
+</svg>
