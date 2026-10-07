@@ -18003,6 +18003,84 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Karmay',
+      localName: 'Iba / Bangkiling / Malay Gooseberry',
+      scientificName:
+        'Phyllanthus acidus (L.) Skeels',
+      category: 'fruit',
+      icon: 'assets/crops/karmay.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Phyllanthus acidus (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=361'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm and humid tropical growing conditions. Kew records Phyllanthus acidus as primarily associated with the wet tropical biome, while PROSEA reports cultivation on humid sites in South-East Asia. Because the cited crop references do not establish one universal numeric optimum temperature interval for cultivated Karmay, FarmCast keeps temperature guidance descriptive rather than assigning unsupported minimum and maximum values.',
+
+      rainfallRange:
+        'Karmay is associated with humid tropical sites and benefits from dependable moisture. PROSEA describes the species as cultivated on humid sites rather than giving one universal annual rainfall requirement. FarmCast therefore keeps rainfall guidance descriptive instead of assigning an unsupported numeric interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Karmay is cultivated in humid tropical environments and can grow as a small fruit tree under suitable moisture and drainage conditions. The reliable references used for this entry do not establish one universal soil-pH interval specifically for Phyllanthus acidus production, so FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Karmay in this FarmCast entry refers specifically to Phyllanthus acidus (L.) Skeels. DOST-FNRI records the fruit as Malay gooseberry and lists Iba, Karmay, Bangkiling and Tahitian gooseberry as alternate names. PROSEA records iba as a Philippine Tagalog name, bangkiling in Bisaya and Tagalog, and karmay in Ilokano. The species is distinct from the existing Indian Gooseberry, Phyllanthus emblica. PROSEA reports that Karmay is usually propagated from seed, while budding and stem cuttings may also be used. Current Kew taxonomy accepts Phyllanthus acidus and lists 17 synonyms: Averrhoa acida, Cicca acida, Averrhoa frondosa, Cicca acidissima, Cicca disticha, Cicca nodiflora, Cicca racemosa, Diasperus acidissimus, Phyllanthus acidissimus, Phyllanthus argentatus, Phyllanthus cicca, Phyllanthus cicca var. bracteosa, Phyllanthus cochinchinensis, Phyllanthus distichus, Phyllanthus distichus f. nodiflorus, Phyllanthus longifolius and Tricarium cochinchinense.',
+
+      harvestNote:
+        'Karmay produces small ribbed greenish-yellow to creamy fruits with strongly sour edible flesh. DOST-FNRI records Malay gooseberry or Karmay as a Philippine food with a high edible portion. PROSEA reports that the acidic fruits may be eaten raw with sugar or cooked and that, in the Philippines, the juice is used for cold drinks and the fruit for vinegar. Because the reliable cultivation references used for this entry do not provide one exact seed-, budding- or cutting-to-first-harvest interval, Karmay remains guidance-only rather than receiving an automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Malay Gooseberry — Phyllanthus acidus',
+
+        url:
+          [
+            'https://',
+            'i.fnri.dost.gov.ph/',
+            'fct/library/report/3630'
+          ].join('')
+      }
+    },
+
 
   
 ];
