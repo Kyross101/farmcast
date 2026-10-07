@@ -12944,6 +12944,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Rampion',
+      scientificName: 'Campanula rapunculus L.',
+      category: 'root-crop',
+      icon: 'assets/crops/rampion.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Campanula rapunculus — Rampion',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/41753/campanula-rapunculus/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate biennial conditions. Kew identifies Rampion as a biennial species primarily associated with the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cited cultivation sources do not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends well-drained soil and protection from excessive winter wet. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Prefers neutral to alkaline soil.',
+
+      soilNote:
+        'Rampion performs well in well-drained soil under full sun or partial shade. Royal Horticultural Society guidance lists chalk, loam, and sandy soils as suitable and advises avoiding excessive winter wet.',
+
+      plantingNote:
+        'Rampion is a biennial edible vegetable propagated from seed. University of Florida IFAS describes it as a biennial that has historically been cultivated as an annual vegetable, with cultivation practices similar to radish. Current Kew taxonomy accepts Campanula rapunculus L.; Campanula esculenta, Campanula patula var. rapunculus, Campanula racemosa var. paniculiformis, and Neocodon rapunculus are treated as synonyms.',
+
+      harvestNote:
+        'Rampion is cultivated for its edible fleshy roots and leaves. University of Florida IFAS describes the white roots as edible raw or cooked, while ethnobotanical literature documents both roots and leaves as traditional foods. Because the sources do not provide one universal sowing-to-harvest interval and harvest stage differs between leaves and roots, FarmCast keeps Rampion as guidance-only.',
+
+      source: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Rampion — Campanula rapunculus L.',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/archived-publications'
+          ].join('')
+      }
+    },
+
 
   
 ];
