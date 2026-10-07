@@ -13402,6 +13402,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Sweet Cicely',
+      scientificName: 'Myrrhis odorata (L.) Scop.',
+      category: 'herb',
+      icon: 'assets/crops/sweet-cicely.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'divisions',
+          label: 'Clump Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Myrrhis odorata — sweet cicely',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/11303/myrrhis-odorata/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate perennial growing conditions. Kew identifies Sweet Cicely as a perennial species primarily associated with the temperate biome, while Royal Horticultural Society guidance describes it as a hardy herbaceous perennial. FarmCast therefore keeps temperature guidance descriptive rather than converting biome or hardiness information into an unsupported universal crop-growth temperature range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moist but well-drained growing conditions. FarmCast therefore keeps water guidance descriptive rather than converting soil-moisture guidance into an invented annual rainfall range.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Sweet Cicely grows well in moderately fertile, moist but well-drained loam and is particularly suited to partial or dappled shade. Royal Horticultural Society guidance also recommends a sheltered position.',
+
+      plantingNote:
+        'Sweet Cicely is an edible perennial culinary herb that can be propagated from seed or by division in spring or autumn. Current Kew taxonomy accepts Myrrhis odorata (L.) Scop. Older botanical names including Scandix odorata, Chaerophyllum odoratum, Lindera odorata, and Selinum myrrhis are treated as synonyms.',
+
+      harvestNote:
+        'Sweet Cicely is grown for its aromatic edible young leaves, aniseed-flavoured seeds, and roots, which may be eaten raw or cooked and used in sweet or savoury dishes. Royal Horticultural Society guidance recommends removing developing flower stalks when the plant is being grown primarily for culinary leaves to help maintain leaf quality. Because usable parts can be harvested at different growth stages and no single universal sowing-to-harvest interval is provided, FarmCast keeps Sweet Cicely as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Myrrhis odorata — sweet cicely',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/11303/myrrhis-odorata/details'
+          ].join('')
+      }
+    },
+
 
   
 ];

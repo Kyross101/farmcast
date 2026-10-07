@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Sweet Cicely</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of sweet cicely with soft fern-like
+    green leaves, branching stems, delicate white flower umbels,
+    developing dark elongated seeds, highlights, shadows, and depth.
+  </desc>
+
+  <defs>
+    <linearGradient id="stemGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#315f32"></stop>
+      <stop offset="0.55" stop-color="#4d8742"></stop>
+      <stop offset="1" stop-color="#78ac5e"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#2b6537"></stop>
+      <stop offset="0.5" stop-color="#55954d"></stop>
+      <stop offset="1" stop-color="#8abe69"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafLight" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#5d9d50"></stop>
+      <stop offset="1" stop-color="#a7cf7b"></stop>
+    </linearGradient>
+
+    <linearGradient id="seedGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#61743e"></stop>
+      <stop offset="0.5" stop-color="#3d522e"></stop>
+      <stop offset="1" stop-color="#263721"></stop>
+    </linearGradient>
+
+    <radialGradient id="baseGradient" cx="50%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#698c47"></stop>
+      <stop offset="1" stop-color="#35552e"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#17331d" flood-opacity="0.26"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="113" rx="34" ry="6" fill="#183c23" opacity="0.18"></ellipse>
+
+  <!-- Root crown -->
+  <path d="
+    M47 106
+    C51 98 56 94 64 93
+    C72 94 78 98 81 106
+    C75 111 70 113 64 113
+    C57 113 51 111 47 106Z" fill="url(#baseGradient)" filter="url(#softShadow)"></path>
+
+  <!-- Main stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round" stroke-linejoin="round" filter="url(#softShadow)">
+
+    <path d="M62 103
+             C62 85 62 67 61 50
+             C60 35 59 24 57 15" stroke-width="3.4"></path>
+
+    <path d="M68 103
+             C69 87 72 71 76 57
+             C80 43 83 31 85 19" stroke-width="3"></path>
+
+    <path d="M55 104
+             C51 88 47 74 42 61
+             C38 50 34 40 29 32" stroke-width="2.8"></path>
+  </g>
+
+  <!-- Flowering branches -->
+  <g fill="none" stroke="#5b9250" stroke-width="2" stroke-linecap="round">
+
+    <path d="M60 48 C53 39 48 34 41 29"></path>
+    <path d="M61 45 C67 36 71 30 75 24"></path>
+
+    <path d="M77 56 C86 48 91 42 95 35"></path>
+    <path d="M76 53 C71 45 68 39 67 32"></path>
+
+    <path d="M42 61 C34 55 28 51 22 48"></path>
+  </g>
+
+  <!-- Left fern-like leaf -->
+  <g fill="url(#leafGreen)" stroke="#285c35" stroke-width="0.7" stroke-linejoin="round">
+
+    <path d="
+      M54 82
+      C48 77 44 72 41 67
+      C43 68 46 69 48 69
+      C45 65 43 61 42 57
+      C45 59 48 61 50 63
+      C49 58 50 54 51 51
+      C53 56 55 62 56 68
+      Z"></path>
+
+    <path d="
+      M48 88
+      C41 85 35 81 30 76
+      C34 77 37 77 40 76
+      C36 73 33 69 31 65
+      C35 68 39 70 42 71
+      C40 66 40 62 41 58
+      C44 64 47 71 49 78
+      Z"></path>
+
+    <path d="
+      M44 96
+      C37 94 30 91 24 87
+      C28 87 32 87 35 85
+      C31 83 28 79 26 76
+      C30 78 34 80 38 80
+      C36 76 36 72 37 68
+      C40 75 42 82 45 89
+      Z"></path>
+  </g>
+
+  <!-- Right fern-like leaf -->
+  <g fill="url(#leafGreen)" stroke="#285c35" stroke-width="0.7" stroke-linejoin="round">
+
+    <path d="
+      M69 83
+      C75 77 80 72 84 66
+      C81 68 78 68 76 68
+      C80 64 82 60 83 56
+      C80 59 77 61 75 63
+      C76 58 75 54 74 50
+      C72 57 70 63 68 69
+      Z"></path>
+
+    <path d="
+      M74 91
+      C81 86 88 82 94 76
+      C90 78 86 78 83 77
+      C87 73 90 69 92 65
+      C88 68 84 70 80 71
+      C82 66 82 61 81 57
+      C78 64 76 72 73 79
+      Z"></path>
+
+    <path d="
+      M78 99
+      C86 96 94 91 101 86
+      C96 87 92 86 89 84
+      C94 81 97 77 99 73
+      C95 76 90 79 86 79
+      C88 74 88 70 87 66
+      C84 74 81 82 78 90
+      Z"></path>
+  </g>
+
+  <!-- Central younger foliage -->
+  <g fill="url(#leafLight)" stroke="#39733c" stroke-width="0.65">
+
+    <path d="
+      M61 90
+      C57 84 55 78 55 72
+      C58 75 60 77 62 79
+      C62 74 63 70 65 66
+      C66 72 66 78 64 84
+      Z"></path>
+
+    <path d="
+      M64 98
+      C60 94 58 90 58 86
+      C61 88 63 90 64 91
+      C65 87 67 84 69 82
+      C68 88 67 93 65 97
+      Z"></path>
+  </g>
+
+  <!-- Fine leaf veins -->
+  <g fill="none" stroke="#b3d38c" stroke-width="0.8" stroke-linecap="round" opacity="0.75">
+
+    <path d="M53 82 C47 75 44 68 43 61"></path>
+    <path d="M47 89 C40 82 35 75 32 68"></path>
+    <path d="M44 96 C36 90 31 84 28 78"></path>
+
+    <path d="M70 83 C77 76 81 69 82 60"></path>
+    <path d="M74 91 C82 84 87 76 90 68"></path>
+    <path d="M78 99 C87 92 93 84 97 76"></path>
+  </g>
+
+  <!-- Left flower umbel rays -->
+  <g fill="none" stroke="#709c58" stroke-width="1.25" stroke-linecap="round">
+
+    <path d="M41 29 L31 19"></path>
+    <path d="M41 29 L36 16"></path>
+    <path d="M41 29 L42 15"></path>
+    <path d="M41 29 L48 17"></path>
+    <path d="M41 29 L53 21"></path>
+    <path d="M41 29 L29 25"></path>
+  </g>
+
+  <!-- Right flower umbel rays -->
+  <g fill="none" stroke="#709c58" stroke-width="1.3" stroke-linecap="round">
+
+    <path d="M85 19 L76 10"></path>
+    <path d="M85 19 L82 7"></path>
+    <path d="M85 19 L88 7"></path>
+    <path d="M85 19 L94 9"></path>
+    <path d="M85 19 L100 14"></path>
+    <path d="M85 19 L99 21"></path>
+  </g>
+
+  <!-- White flowers -->
+  <g fill="#f7f5e8" stroke="#d6ddc4" stroke-width="0.55">
+
+    <circle cx="30" cy="18" r="2.2"></circle>
+    <circle cx="36" cy="15" r="2.1"></circle>
+    <circle cx="42" cy="14" r="2.2"></circle>
+    <circle cx="48" cy="17" r="2.1"></circle>
+    <circle cx="53" cy="21" r="2.2"></circle>
+    <circle cx="28" cy="25" r="1.9"></circle>
+
+    <circle cx="76" cy="9" r="2.1"></circle>
+    <circle cx="82" cy="7" r="2.2"></circle>
+    <circle cx="88" cy="7" r="2.2"></circle>
+    <circle cx="94" cy="9" r="2.1"></circle>
+    <circle cx="100" cy="14" r="2.2"></circle>
+    <circle cx="99" cy="21" r="2"></circle>
+  </g>
+
+  <!-- Flower centres -->
+  <g fill="#d8c866">
+    <circle cx="30" cy="18" r="0.65"></circle>
+    <circle cx="36" cy="15" r="0.65"></circle>
+    <circle cx="42" cy="14" r="0.65"></circle>
+    <circle cx="48" cy="17" r="0.65"></circle>
+    <circle cx="53" cy="21" r="0.65"></circle>
+
+    <circle cx="76" cy="9" r="0.65"></circle>
+    <circle cx="82" cy="7" r="0.65"></circle>
+    <circle cx="88" cy="7" r="0.65"></circle>
+    <circle cx="94" cy="9" r="0.65"></circle>
+    <circle cx="100" cy="14" r="0.65"></circle>
+  </g>
+
+  <!-- Developing elongated seeds -->
+  <g fill="url(#seedGradient)" stroke="#263821" stroke-width="0.7" filter="url(#softShadow)">
+
+    <path d="
+      M93 36
+      C91 31 92 27 94 24
+      C97 28 98 32 96 37
+      C95 39 94 39 93 36Z"></path>
+
+    <path d="
+      M99 39
+      C97 34 98 30 101 27
+      C103 31 104 35 102 40
+      C101 42 100 42 99 39Z"></path>
+
+    <path d="
+      M87 38
+      C85 33 86 29 88 26
+      C91 30 92 34 90 39
+      C89 41 88 41 87 38Z"></path>
+  </g>
+
+  <!-- Stem highlights -->
+  <g fill="none" stroke="#acd080" stroke-width="0.9" stroke-linecap="round" opacity="0.7">
+
+    <path d="M63 98 C63 80 63 63 62 48"></path>
+    <path d="M69 98 C71 82 74 69 77 57"></path>
+    <path d="M56 99 C52 85 48 72 44 61"></path>
+  </g>
+
+  <!-- Crown highlight -->
+  <path d="
+    M52 105
+    C57 101 61 100 66 100
+    C71 100 75 102 78 105" fill="none" stroke="#91b867" stroke-width="2" stroke-linecap="round" opacity="0.75"></path>
+
+</svg>
