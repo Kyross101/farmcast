@@ -14680,6 +14680,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Hazelnut',
+      scientificName: 'Corylus avellana L.',
+      category: 'tree-nut',
+      icon: 'assets/crops/hazelnut.svg',
+
+      plantingMethods: [
+        {
+          value: 'young-whips',
+          label: 'One-Year-Old Whips'
+        },
+        {
+          value: 'rooted-suckers',
+          label: 'Rooted Suckers'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Cobnuts and Filberts',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/nuts/cobnuts-filberts'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate growing conditions. Kew identifies Hazelnut as a shrub or tree primarily associated with the temperate biome. Royal Horticultural Society guidance recommends a sheltered site in full sun or light shade and notes that severe winter cold can reduce successful pollination and cropping. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends watering young Hazelnut plants during dry spells in spring and summer and using mulch to help conserve soil moisture during establishment. FarmCast therefore keeps moisture guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'Royal Horticultural Society recommends about pH 6.5–7.5.',
+
+      soilNote:
+        'Hazelnuts tolerate several soil types but perform particularly well in light, sandy, well-drained soil. A sheltered position in full sun or light shade supports good cropping, while persistently waterlogged conditions should be avoided.',
+
+      plantingNote:
+        'Hazelnut is a familiar edible tree-nut crop. Royal Horticultural Society guidance notes that Hazelnuts are commonly bought as one-year-old whips and planted while dormant. Rooted suckers may also be separated and replanted, while layering and stooling are additional propagation methods. Current Kew taxonomy accepts Corylus avellana L.; Corylus avellana var. sylvestris, Corylus avellana subsp. sylvestris and Corylus sylvestris are listed as species-level synonyms. Planting more than one compatible cultivar improves pollination and nut set.',
+
+      harvestNote:
+        'Hazelnuts generally begin producing nuts after about three to four years. Royal Horticultural Society guidance recommends harvesting when the husks begin turning yellow, typically around early autumn in temperate growing regions. Because first bearing and annual harvest timing depend on plant age, cultivar, pollination and local climate, FarmCast keeps Hazelnut as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Cobnuts and Filberts',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/nuts/cobnuts-filberts'
+          ].join('')
+      }
+    },
+
   
 ];
 

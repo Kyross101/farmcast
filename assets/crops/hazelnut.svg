@@ -1,0 +1,299 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Hazelnut</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a hazelnut branch with broad serrated
+    green leaves, hanging catkins, clusters of green husks, and ripe brown
+    hazelnuts with highlights, shadows, and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#98735a"></stop>
+      <stop offset="0.55" stop-color="#6a4e3f"></stop>
+      <stop offset="1" stop-color="#43352e"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#275b38"></stop>
+      <stop offset="0.5" stop-color="#55924e"></stop>
+      <stop offset="1" stop-color="#9bc779"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#204831"></stop>
+      <stop offset="1" stop-color="#669d58"></stop>
+    </linearGradient>
+
+    <linearGradient id="huskGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#4d743e"></stop>
+      <stop offset="0.55" stop-color="#7e9f55"></stop>
+      <stop offset="1" stop-color="#b8cc7d"></stop>
+    </linearGradient>
+
+    <radialGradient id="nutBrown" cx="32%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#e0b477"></stop>
+      <stop offset="0.45" stop-color="#b77a47"></stop>
+      <stop offset="0.8" stop-color="#7b4c32"></stop>
+      <stop offset="1" stop-color="#50352a"></stop>
+    </radialGradient>
+
+    <linearGradient id="catkinGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d5c17a"></stop>
+      <stop offset="0.5" stop-color="#aa995c"></stop>
+      <stop offset="1" stop-color="#796f48"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#222a22" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="116" rx="39" ry="6" fill="#273128" opacity="0.16"></ellipse>
+
+  <!-- main woody branch -->
+  <path d="
+    M18 105
+    C34 91 47 76 58 60
+    C71 42 85 28 106 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- side branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M47 77 C39 64 33 52 31 40" stroke-width="3.4"></path>
+
+    <path d="M61 56 C55 44 52 32 53 20" stroke-width="3.1"></path>
+
+    <path d="M76 39 C88 41 100 37 112 29" stroke-width="3"></path>
+
+    <path d="M38 90 C30 86 23 81 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- bark highlight -->
+  <path d="
+    M22 101
+    C38 87 50 73 61 57
+    C74 41 88 28 103 18" fill="none" stroke="#bc9678" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- broad hazel leaves -->
+  <g stroke="#285138" stroke-width="1.1" filter="url(#softShadow)">
+
+    <path d="
+      M30 41
+      C18 31 8 35 6 44
+      C14 54 26 54 35 47
+      C38 44 35 42 30 41Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M41 58
+      C29 49 19 54 17 63
+      C26 72 38 69 46 62
+      C49 60 46 58 41 58Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M53 22
+      C42 13 33 16 30 26
+      C38 35 50 34 57 27
+      C60 25 57 23 53 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M70 46
+      C79 35 91 35 98 43
+      C92 54 81 57 71 52
+      C68 51 68 48 70 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M92 30
+      C101 19 113 21 119 29
+      C112 39 101 41 92 35
+      C89 34 89 31 92 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 49
+      C106 39 117 42 121 51
+      C114 60 103 61 95 55
+      C92 53 93 51 96 49Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- serrated edges -->
+  <g fill="none" stroke="#1f4730" stroke-width="0.7" opacity="0.72">
+
+    <path d="
+      M8 44
+      L13 41
+      L17 46
+      L22 42
+      L26 47
+      L31 44"></path>
+
+    <path d="
+      M19 63
+      L24 59
+      L28 64
+      L33 60
+      L38 64
+      L43 61"></path>
+
+    <path d="
+      M32 25
+      L37 21
+      L42 26
+      L47 22
+      L52 26
+      L56 24"></path>
+
+    <path d="
+      M73 50
+      L78 46
+      L82 50
+      L87 46
+      L92 48"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+  <g fill="none" stroke="#bfd7a1" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M9 44 C18 44 26 44 33 45"></path>
+    <path d="M20 63 C29 62 37 61 44 60"></path>
+    <path d="M33 26 C42 25 49 25 55 25"></path>
+
+    <path d="M95 44 C86 47 78 49 72 50"></path>
+    <path d="M116 29 C108 31 100 33 93 34"></path>
+
+  </g>
+
+  <!-- nut stems -->
+  <g fill="none" stroke="#625f3d" stroke-width="1.8" stroke-linecap="round">
+
+    <path d="M51 66 C50 72 50 78 51 84"></path>
+    <path d="M68 55 C72 62 74 67 75 73"></path>
+    <path d="M40 77 C38 84 37 89 38 95"></path>
+
+  </g>
+
+  <!-- green leafy husk 1 -->
+  <path d="
+    M50 80
+    C42 79 36 83 34 89
+    C39 89 42 91 43 94
+
+    C38 98 38 104 42 109
+    C46 106 49 106 52 108
+
+    C55 106 59 107 62 110
+    C66 104 65 98 61 94
+
+    C64 91 67 89 71 89
+    C68 82 60 79 52 80Z" fill="url(#huskGreen)" stroke="#48623b" stroke-width="1.3" filter="url(#softShadow)"></path>
+
+  <!-- nut 1 -->
+  <path d="
+    M52 85
+    C45 87 42 94 43 101
+    C44 109 48 114 52 115
+
+    C57 114 61 109 62 101
+    C63 94 59 87 52 85Z" fill="url(#nutBrown)" stroke="#65422e" stroke-width="1.3"></path>
+
+  <!-- green husk 2 -->
+  <path d="
+    M74 69
+    C67 68 61 72 59 78
+    C64 78 67 80 68 83
+
+    C64 87 64 92 68 97
+    C71 94 74 94 77 96
+
+    C80 94 83 95 86 98
+    C90 92 89 87 85 83
+
+    C88 80 91 78 95 78
+    C92 72 84 68 76 69Z" fill="url(#huskGreen)" stroke="#48623b" stroke-width="1.3" filter="url(#softShadow)"></path>
+
+  <!-- nut 2 -->
+  <path d="
+    M77 74
+    C70 76 67 83 68 90
+    C69 97 73 102 77 103
+
+    C82 102 86 97 87 90
+    C88 83 84 76 77 74Z" fill="url(#nutBrown)" stroke="#65422e" stroke-width="1.3"></path>
+
+  <!-- smaller ripe nut -->
+  <path d="
+    M37 93
+    C31 95 28 101 29 107
+    C30 113 34 117 38 118
+
+    C42 117 46 113 47 107
+    C48 101 44 95 37 93Z" fill="url(#nutBrown)" stroke="#65422e" stroke-width="1.3" filter="url(#softShadow)"></path>
+
+  <!-- nut highlights -->
+  <g fill="#f0d19a" opacity="0.56">
+
+    <ellipse cx="48" cy="94" rx="2" ry="3.6" transform="rotate(-20 48 94)"></ellipse>
+
+    <ellipse cx="73" cy="83" rx="2" ry="3.5" transform="rotate(-20 73 83)"></ellipse>
+
+    <ellipse cx="34" cy="102" rx="1.7" ry="3" transform="rotate(-20 34 102)"></ellipse>
+
+  </g>
+
+  <!-- shell markings -->
+  <g fill="none" stroke="#855a3c" stroke-width="0.7" stroke-linecap="round" opacity="0.8">
+
+    <path d="M52 88 C50 95 50 104 52 111"></path>
+    <path d="M77 77 C75 84 75 92 77 99"></path>
+    <path d="M37 96 C35 102 35 109 37 114"></path>
+
+  </g>
+
+  <!-- hanging male catkins -->
+  <path d="
+    M78 39
+    C82 31 85 25 89 19" fill="none" stroke="#65754b" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M87 18
+      C85 25 85 32 88 39" fill="none" stroke="url(#catkinGold)" stroke-width="4" stroke-linecap="round"></path>
+
+    <path d="
+      M97 21
+      C95 28 96 35 99 41" fill="none" stroke="url(#catkinGold)" stroke-width="3.8" stroke-linecap="round"></path>
+
+    <g fill="#d2bf79" stroke="#786e49" stroke-width="0.45">
+
+      <circle cx="87" cy="22" r="1.8"></circle>
+      <circle cx="86" cy="27" r="1.8"></circle>
+      <circle cx="87" cy="32" r="1.8"></circle>
+      <circle cx="88" cy="37" r="1.8"></circle>
+
+      <circle cx="97" cy="25" r="1.7"></circle>
+      <circle cx="96" cy="30" r="1.7"></circle>
+      <circle cx="97" cy="35" r="1.7"></circle>
+      <circle cx="99" cy="39" r="1.7"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- tiny red female flower -->
+  <g transform="translate(105 34)" stroke="#9c3947" stroke-width="1.1" stroke-linecap="round">
+
+    <path d="M0 0 L-3 -4"></path>
+    <path d="M0 0 L0 -5"></path>
+    <path d="M0 0 L3 -4"></path>
+    <path d="M0 0 L4 -1"></path>
+
+  </g>
+
+</svg>
