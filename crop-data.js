@@ -16354,6 +16354,76 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Goji Berry',
+      localName: 'Wolfberry',
+      scientificName: 'Lycium barbarum L.',
+      category: 'fruit',
+      icon: 'assets/crops/goji-berry.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'transplanted',
+          label: 'Transplanted Young Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Goji Berries In Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/',
+            'goji-in-the-garden'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Goji Berry is a perennial fruiting shrub primarily associated with temperate growing conditions. Kew identifies Lycium barbarum as a shrub of the temperate biome, while Utah State University Extension notes that fruit quality is best under sunny conditions and may decline during cool, humid weather. Because cultivar, winter conditions and local climate strongly influence growth, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric growing range.',
+
+      rainfallRange:
+        'No universal annual rainfall range is stored for Goji Berry. Utah State University Extension describes established plants as relatively drought tolerant but recommends more frequent irrigation while new transplants establish their root systems. Irrigation demand varies with soil type and local weather, so FarmCast keeps rainfall guidance descriptive.',
+
+      soilPH:
+        '7.0–8.0',
+
+      soilNote:
+        'Utah State University Extension reports that Goji Berry tolerates a range of soil types but prefers a light loam and naturally performs well in slightly alkaline soil around pH 7–8. Consistently wet or waterlogged soil should be avoided, particularly where drainage is poor.',
+
+      plantingNote:
+        'Goji Berry in this FarmCast entry refers specifically to Lycium barbarum L., commonly called Goji, Wolfberry, Matrimony Vine or Boxthorn. Utah State University Extension states that plants can readily be propagated from seed and also provides establishment guidance for nursery transplants. Named cultivars are preferred when consistent fruit quality and production are important. Current Kew taxonomy accepts Lycium barbarum L. and lists historical names including Lycium vulgare, Lycium halimifolium, Lycium cochinchinense, Lycium turbinatum and Jasminoides flaccidum as synonyms.',
+
+      harvestNote:
+        'Goji plants are perennial shrubs rather than annual fruit crops. Utah State University Extension reports that plants generally begin producing fruit at about two years of age, while selected cultivars may begin bearing roughly one to two years after planting and reach full production later. Individual berries should be harvested when fully colored; ripe fruit develops approximately 35 days after full bloom. Because first bearing is establishment- and cultivar-dependent rather than one universal planting-to-harvest interval, FarmCast keeps Goji Berry as guidance-only.',
+
+      source: {
+        agency:
+          'Utah State University Extension',
+
+        title:
+          'How to Grow Goji Berries In Your Garden',
+
+        url:
+          [
+            'https://',
+            'extension.usu.edu/yardandgarden/research/',
+            'goji-in-the-garden'
+          ].join('')
+      }
+    },
+
   
 ];
 

@@ -1,0 +1,393 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Goji Berry</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a goji berry shrub with slender
+    green leaves, purple flowers, clusters of ripe orange-red berries,
+    branching stems, highlights, shadows, and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemBrown" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#9a7755"></stop>
+
+      <stop offset="0.48" stop-color="#6d503c"></stop>
+
+      <stop offset="1" stop-color="#3f342c"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="youngStem" x1="0" y1="1" x2="1" y2="0">
+
+      <stop offset="0" stop-color="#456a42"></stop>
+
+      <stop offset="0.55" stop-color="#718e4d"></stop>
+
+      <stop offset="1" stop-color="#a9b96b"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#b4cc73"></stop>
+
+      <stop offset="0.35" stop-color="#719b54"></stop>
+
+      <stop offset="0.68" stop-color="#407645"></stop>
+
+      <stop offset="1" stop-color="#1d4a36"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#8eb15e"></stop>
+
+      <stop offset="0.5" stop-color="#4c7e49"></stop>
+
+      <stop offset="1" stop-color="#1d4232"></stop>
+
+    </linearGradient>
+
+    <radialGradient id="berryRed" cx="34%" cy="26%" r="72%">
+
+      <stop offset="0" stop-color="#ffb078"></stop>
+
+      <stop offset="0.25" stop-color="#ef6f4e"></stop>
+
+      <stop offset="0.63" stop-color="#cf403b"></stop>
+
+      <stop offset="1" stop-color="#8e2e35"></stop>
+
+    </radialGradient>
+
+    <radialGradient id="berryDark" cx="34%" cy="25%" r="74%">
+
+      <stop offset="0" stop-color="#f18a59"></stop>
+
+      <stop offset="0.35" stop-color="#d64f3e"></stop>
+
+      <stop offset="0.72" stop-color="#a83237"></stop>
+
+      <stop offset="1" stop-color="#702932"></stop>
+
+    </radialGradient>
+
+    <linearGradient id="flowerPurple" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#eee1fb"></stop>
+
+      <stop offset="0.42" stop-color="#b58bd1"></stop>
+
+      <stop offset="0.76" stop-color="#805da8"></stop>
+
+      <stop offset="1" stop-color="#55417b"></stop>
+
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+
+      <stop offset="0" stop-color="#ffe991"></stop>
+
+      <stop offset="0.6" stop-color="#d8b94a"></stop>
+
+      <stop offset="1" stop-color="#98752f"></stop>
+
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#15251a" flood-opacity="0.27"></feDropShadow>
+
+    </filter>
+
+    <filter id="berryShadow" x="-35%" y="-35%" width="180%" height="190%">
+
+      <feDropShadow dx="1" dy="2.5" stdDeviation="1.8" flood-color="#432229" flood-opacity="0.3"></feDropShadow>
+
+    </filter>
+
+  </defs>
+
+  <!-- main woody branches -->
+
+  <g fill="none" stroke="url(#stemBrown)" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="
+      M35 119
+      C44 98 52 80 61 63
+      C71 45 81 28 92 11" stroke-width="5"></path>
+
+    <path d="
+      M55 76
+      C43 64 32 52 21 37" stroke-width="3"></path>
+
+    <path d="
+      M68 52
+      C80 49 94 43 108 32" stroke-width="3"></path>
+
+    <path d="
+      M47 92
+      C34 87 22 80 12 68" stroke-width="2.7"></path>
+
+    <path d="
+      M78 37
+      C69 27 64 18 61 8" stroke-width="2.6"></path>
+
+  </g>
+
+  <!-- younger branches -->
+
+  <g fill="none" stroke="url(#youngStem)" stroke-linecap="round">
+
+    <path d="
+      M61 65
+      C76 70 89 78 102 90" stroke-width="2.4"></path>
+
+    <path d="
+      M71 49
+      C60 43 52 35 46 26" stroke-width="2.3"></path>
+
+    <path d="
+      M84 28
+      C96 23 106 18 116 10" stroke-width="2.1"></path>
+
+  </g>
+
+  <!-- leaves left -->
+
+  <g fill="url(#leafGreen)" stroke="#28543b" stroke-width="0.8" filter="url(#softShadow)">
+
+    <path d="
+      M44 87
+      C31 81 23 83 18 91
+      C26 95 36 94 44 87Z"></path>
+
+    <path d="
+      M49 77
+      C36 68 27 68 20 75
+      C28 82 39 83 49 77Z"></path>
+
+    <path d="
+      M52 67
+      C39 58 31 56 24 61
+      C31 70 42 72 52 67Z"></path>
+
+    <path d="
+      M45 57
+      C34 45 26 42 18 46
+      C24 56 34 61 45 57Z"></path>
+
+    <path d="
+      M40 48
+      C30 36 22 32 14 35
+      C19 46 29 51 40 48Z"></path>
+
+  </g>
+
+  <!-- leaves right -->
+
+  <g fill="url(#leafDark)" stroke="#244f38" stroke-width="0.8" filter="url(#softShadow)">
+
+    <path d="
+      M65 67
+      C78 60 88 61 94 69
+      C85 74 75 74 65 67Z"></path>
+
+    <path d="
+      M72 56
+      C84 48 94 48 101 54
+      C94 62 83 64 72 56Z"></path>
+
+    <path d="
+      M79 44
+      C91 37 101 37 108 43
+      C101 50 90 52 79 44Z"></path>
+
+    <path d="
+      M87 31
+      C99 24 108 24 115 29
+      C109 37 98 39 87 31Z"></path>
+
+    <path d="
+      M94 20
+      C104 13 113 13 120 18
+      C114 25 104 27 94 20Z"></path>
+
+  </g>
+
+  <!-- upper left leaves -->
+
+  <g fill="url(#leafGreen)" stroke="#28543b" stroke-width="0.75">
+
+    <path d="
+      M68 40
+      C57 32 49 31 43 37
+      C50 44 59 46 68 40Z"></path>
+
+    <path d="
+      M63 29
+      C54 19 47 17 40 21
+      C45 30 54 34 63 29Z"></path>
+
+    <path d="
+      M59 19
+      C52 10 45 8 39 11
+      C43 19 51 23 59 19Z"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+
+  <g fill="none" stroke="#c4d999" stroke-width="0.55" stroke-linecap="round" opacity="0.72">
+
+    <path d="M20 91 L41 87"></path>
+    <path d="M23 75 L46 77"></path>
+    <path d="M27 61 L49 67"></path>
+    <path d="M21 47 L42 56"></path>
+    <path d="M17 36 L37 47"></path>
+
+    <path d="M68 67 L91 69"></path>
+    <path d="M75 56 L98 54"></path>
+    <path d="M82 44 L105 43"></path>
+    <path d="M90 31 L112 29"></path>
+    <path d="M97 20 L117 18"></path>
+
+  </g>
+
+  <!-- berry stems -->
+
+  <g fill="none" stroke="#5f7847" stroke-width="1.3" stroke-linecap="round">
+
+    <path d="M55 74 C60 80 63 87 64 93"></path>
+    <path d="M59 68 C66 72 71 78 74 84"></path>
+    <path d="M67 56 C72 62 77 68 80 74"></path>
+    <path d="M75 46 C82 50 88 56 91 62"></path>
+    <path d="M49 84 C47 91 47 97 49 102"></path>
+    <path d="M83 35 C90 39 96 44 100 50"></path>
+
+  </g>
+
+  <!-- ripe goji berries -->
+
+  <g filter="url(#berryShadow)">
+
+    <ellipse cx="65" cy="96" rx="5.7" ry="9" fill="url(#berryRed)" stroke="#8c3032" stroke-width="0.9" transform="rotate(-8 65 96)"></ellipse>
+
+    <ellipse cx="75" cy="87" rx="5.5" ry="8.7" fill="url(#berryDark)" stroke="#842d31" stroke-width="0.9" transform="rotate(-17 75 87)"></ellipse>
+
+    <ellipse cx="81" cy="77" rx="5.4" ry="8.5" fill="url(#berryRed)" stroke="#8c3032" stroke-width="0.9" transform="rotate(-13 81 77)"></ellipse>
+
+    <ellipse cx="92" cy="65" rx="5.6" ry="8.8" fill="url(#berryDark)" stroke="#842d31" stroke-width="0.9" transform="rotate(-20 92 65)"></ellipse>
+
+    <ellipse cx="49" cy="105" rx="5.4" ry="8.4" fill="url(#berryDark)" stroke="#822c30" stroke-width="0.9" transform="rotate(8 49 105)"></ellipse>
+
+    <ellipse cx="101" cy="53" rx="5.2" ry="8" fill="url(#berryRed)" stroke="#8d3033" stroke-width="0.9" transform="rotate(-19 101 53)"></ellipse>
+
+  </g>
+
+  <!-- berry highlights -->
+
+  <g fill="#ffd2ad" opacity="0.58">
+
+    <ellipse cx="63" cy="92" rx="1.5" ry="3"></ellipse>
+
+    <ellipse cx="73" cy="83" rx="1.4" ry="2.8"></ellipse>
+
+    <ellipse cx="79" cy="73" rx="1.4" ry="2.7"></ellipse>
+
+    <ellipse cx="90" cy="61" rx="1.4" ry="2.8"></ellipse>
+
+    <ellipse cx="47" cy="101" rx="1.3" ry="2.6"></ellipse>
+
+    <ellipse cx="99" cy="49" rx="1.3" ry="2.5"></ellipse>
+
+  </g>
+
+  <!-- calyx marks -->
+
+  <g fill="#4d643d">
+
+    <path d="M61 88 l4 3 l4 -3 l-2 5 h-5Z"></path>
+    <path d="M71 79 l4 3 l4 -3 l-2 5 h-5Z"></path>
+    <path d="M77 69 l4 3 l4 -3 l-2 5 h-5Z"></path>
+    <path d="M88 57 l4 3 l4 -3 l-2 5 h-5Z"></path>
+    <path d="M45 97 l4 3 l4 -3 l-2 5 h-5Z"></path>
+    <path d="M97 45 l4 3 l4 -3 l-2 5 h-5Z"></path>
+
+  </g>
+
+  <!-- flower stems -->
+
+  <g fill="none" stroke="#667c49" stroke-width="1.1" stroke-linecap="round">
+
+    <path d="M44 56 C39 60 36 64 34 68"></path>
+    <path d="M69 42 C73 38 77 35 81 33"></path>
+
+  </g>
+
+  <!-- purple goji flowers -->
+
+  <g transform="translate(33 70)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-5 -5 -6 -10 -2 -13
+      C1 -10 2 -6 2 -3
+      C4 -8 8 -10 11 -7
+      C9 -2 5 1 2 2
+      C7 3 9 7 7 10
+      C2 9 -1 6 -2 3
+      C-3 8 -7 10 -10 7
+      C-9 3 -6 0 -2 -1
+      C-7 -2 -9 -6 -7 -9
+      C-3 -8 -1 -4 0 0Z" fill="url(#flowerPurple)" stroke="#72558e" stroke-width="0.7"></path>
+
+    <circle cx="0" cy="0" r="2.3" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <g transform="translate(82 32) scale(0.84)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-5 -5 -6 -10 -2 -13
+      C1 -10 2 -6 2 -3
+      C4 -8 8 -10 11 -7
+      C9 -2 5 1 2 2
+      C7 3 9 7 7 10
+      C2 9 -1 6 -2 3
+      C-3 8 -7 10 -10 7
+      C-9 3 -6 0 -2 -1
+      C-7 -2 -9 -6 -7 -9
+      C-3 -8 -1 -4 0 0Z" fill="url(#flowerPurple)" stroke="#72558e" stroke-width="0.7"></path>
+
+    <circle cx="0" cy="0" r="2.3" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <!-- small thorns -->
+
+  <g fill="#664d3a">
+
+    <path d="M54 75 l-8 2 l7 2Z"></path>
+    <path d="M68 53 l-7 -1 l6 4Z"></path>
+    <path d="M78 37 l-7 -2 l6 5Z"></path>
+
+  </g>
+
+  <!-- branch highlight -->
+
+  <path d="
+    M38 114
+    C48 94 56 77 64 62
+    C74 45 82 29 91 14" fill="none" stroke="#c3a17a" stroke-width="0.8" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- ground shadow -->
+
+  <ellipse cx="55" cy="120" rx="32" ry="4" fill="#273b2b" opacity="0.16"></ellipse>
+
+</svg>
