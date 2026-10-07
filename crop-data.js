@@ -17545,6 +17545,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Custard Apple',
+      localName: 'Anonas / Bullock\'s Heart',
+      scientificName:
+        'Annona reticulata L.',
+      category: 'fruit',
+      icon: 'assets/crops/custard-apple.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'cleft-grafted-plants',
+          label: 'Cleft-Grafted Plants'
+        },
+        {
+          value: 'veneer-grafted-plants',
+          label: 'Veneer-Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida - Institute of Food and Agricultural Sciences',
+
+        office:
+          'UF/IFAS Extension',
+
+        title:
+          'Tropical and Subtropical Fruit Propagation',
+
+        url:
+          'https://edis.ifas.ufl.edu/publication/HS1349'
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical growing conditions with a humid atmosphere. PROSEA describes Annona reticulata as a tropical fruit tree that prefers more humid conditions and is less drought-tolerant than Sugar Apple. Because survival limits are not equivalent to an ideal production range and reliable crop performance varies with site conditions, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric growing-temperature range.',
+
+      rainfallRange:
+        'Custard Apple benefits from dependable moisture and a humid tropical environment. PROSEA describes the species as less drought-tolerant than Sugar Apple, but the cited production guidance does not establish one universal annual rainfall interval applicable to all growing locations. FarmCast therefore keeps rainfall guidance descriptive rather than assigning an unsupported numeric range.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Custard Apple can be grown under tropical conditions where soil drainage and moisture are suitable for tree establishment. Because the cited crop references used for this FarmCast entry do not establish one reliable universal soil-pH interval for Annona reticulata production, soilPH remains unset rather than assigning an unsupported value.',
+
+      plantingNote:
+        'Custard Apple in this FarmCast entry refers specifically to Annona reticulata L., identified by DOST-FNRI as Custard Apple and also called Anonas or Bullock\'s Heart. It is botanically distinct from the existing Sugar Apple or Atis, Annona squamosa, the existing Guyabano or Soursop, Annona muricata, and the existing Cherimoya, Annona cherimola. UF/IFAS lists seed, cleft grafting and veneer grafting as recommended propagation methods for Annona reticulata, while PROSEA reports seed propagation as the normal method. PROSEA also records Sarikaya as a Philippine vernacular name used in Sulu. Current Kew taxonomy accepts Annona reticulata L. and lists Annona excelsa, Annona humboldtiana, Annona humboldtii, Annona laevis, Annona longifolia, Annona lutescens, Annona primigenia, Annona reticulata var. primigenia and Annona riparia as synonyms.',
+
+      harvestNote:
+        'Custard Apple produces an edible, usually heart-shaped to rounded fruit with creamy flesh. PROSEA describes mature fruit as yellow-brown and notes that the ripe flesh is eaten fresh or used in juices, puddings and similar foods. Because the reliable sources used for this entry do not provide one defensible planting- or grafting-to-first-harvest interval applicable across propagation methods and growing conditions, FarmCast keeps Custard Apple as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Custard Apple — Annona reticulata',
+
+        url:
+          'https://i.fnri.dost.gov.ph/fct/library/report/3609'
+      }
+    },
+
 
   
 ];
