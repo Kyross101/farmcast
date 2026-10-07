@@ -13469,6 +13469,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Acerola',
+      scientificName: 'Malpighia emarginata DC.',
+      category: 'fruit',
+      icon: 'assets/crops/acerola.svg',
+
+      plantingMethods: [
+        {
+          value: 'rooted-cuttings',
+          label: 'Rooted Cuttings'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Growing Barbados Cherry in Florida',
+
+        url:
+          [
+            'https://',
+            'blogs.ifas.ufl.edu/stlucieco/2025/08/20/',
+            'growing-barbados-cherry-in-florida/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Tropical to subtropical growing conditions. Kew identifies Acerola as a shrub or small tree primarily associated with the seasonally dry tropical biome. University of Florida IFAS Extension describes Barbados cherry as a tropical and subtropical fruit crop. FarmCast therefore keeps temperature guidance descriptive rather than assigning an unsupported universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of Florida IFAS Extension recommends consistent irrigation while young plants establish, with watering reduced as the plant becomes established. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'Prefers slightly acidic to neutral, well-drained soil.',
+
+      soilNote:
+        'Acerola performs best in a sunny location with well-drained soil. University of Florida IFAS Extension notes that it can grow in sandy soils when drainage is good and that organic matter can improve soil structure and moisture retention.',
+
+      plantingNote:
+        'Acerola, also widely known as Barbados cherry, is an edible tropical fruit shrub or small tree. University of Florida IFAS Extension notes that plants can be propagated from seed but that cuttings or air layering are preferred when desirable fruit characteristics need to be preserved. Current Kew taxonomy accepts Malpighia emarginata DC.',
+
+      harvestNote:
+        'Acerola produces bright red edible fruits that are harvested as they ripen. University of Florida guidance notes that established plants can produce multiple fruit crops during a growing season, with production influenced by climate and growing conditions. Because fruiting occurs in repeated flushes and no single universal planting-to-harvest interval applies across propagation methods and plant ages, FarmCast keeps Acerola as guidance-only.',
+
+      source: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Growing Barbados Cherry in Florida',
+
+        url:
+          [
+            'https://',
+            'blogs.ifas.ufl.edu/stlucieco/2025/08/20/',
+            'growing-barbados-cherry-in-florida/'
+          ].join('')
+      }
+    },
+
 
   
 ];
