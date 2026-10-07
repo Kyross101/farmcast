@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Alexanders</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Alexanders with dark green divided leaves,
+    thick celery-like stems, greenish-yellow flower umbels,
+    dark developing fruits, and a stout edible taproot.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b4cf83"></stop>
+      <stop offset="0.48" stop-color="#719553"></stop>
+      <stop offset="1" stop-color="#365e42"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#789a58"></stop>
+      <stop offset="1" stop-color="#304f3b"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#abc081"></stop>
+      <stop offset="0.55" stop-color="#768654"></stop>
+      <stop offset="1" stop-color="#535d45"></stop>
+    </linearGradient>
+
+    <linearGradient id="rootTan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d6bd92"></stop>
+      <stop offset="0.55" stop-color="#a98b69"></stop>
+      <stop offset="1" stop-color="#735d4a"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerYellowGreen" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#e7e49a"></stop>
+      <stop offset="0.6" stop-color="#b5b65f"></stop>
+      <stop offset="1" stop-color="#747843"></stop>
+    </radialGradient>
+
+    <linearGradient id="fruitDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6a6550"></stop>
+      <stop offset="1" stop-color="#34362f"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#273028" flood-opacity="0.2"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="119" rx="44" ry="5" fill="#4d5048" opacity="0.15"></ellipse>
+
+  <!-- Taproot -->
+  <g filter="url(#softShadow)">
+
+    <path d="M56 91
+         C53 99 53 107 56 114
+         C58 120 61 124 64 127
+         C68 121 70 114 70 106
+         C70 99 68 94 65 90
+         C62 88 59 88 56 91Z" fill="url(#rootTan)" stroke="#6e5948" stroke-width="1.5"></path>
+
+    <path d="M60 94
+         C58 104 60 115 63 121" fill="none" stroke="#ead7af" stroke-width="0.9" stroke-linecap="round" opacity="0.68"></path>
+
+  </g>
+
+  <!-- Side roots -->
+  <g fill="none" stroke="#7b6550" stroke-linecap="round">
+
+    <path d="M56 103 C50 107 47 111 44 116" stroke-width="0.9"></path>
+
+    <path d="M69 104 C75 108 78 112 80 117" stroke-width="0.85"></path>
+
+    <path d="M59 113 C55 117 53 121 52 124" stroke-width="0.75"></path>
+
+  </g>
+
+  <!-- Root crown -->
+  <path d="M48 91
+       C52 85 58 82 64 82
+       C71 82 77 85 81 91
+       C77 97 71 100 64 100
+       C57 100 52 97 48 91Z" fill="#706047" stroke="#4b4035" stroke-width="1.4"></path>
+
+  <!-- Main thick stem -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M63 87
+         C61 69 62 52 64 38
+         C66 26 67 17 66 8" stroke-width="4"></path>
+
+    <path d="M63 72
+         C51 63 43 53 38 43" stroke-width="2"></path>
+
+    <path d="M65 64
+         C77 56 86 47 91 37" stroke-width="2"></path>
+
+    <path d="M65 44
+         C55 39 49 32 45 24" stroke-width="1.5"></path>
+
+    <path d="M66 39
+         C76 34 83 27 87 20" stroke-width="1.5"></path>
+
+  </g>
+
+  <!-- Purplish stem shading -->
+  <path d="M64 82
+       C63 66 64 51 65 38" fill="none" stroke="#766059" stroke-width="1" stroke-linecap="round" opacity="0.55"></path>
+
+  <!-- Large lower compound leaves -->
+  <g fill="url(#leafGreen)" stroke="#345b3e" stroke-width="1.25" filter="url(#softShadow)">
+
+    <path d="M54 84
+         C45 85 36 81 30 75
+         C25 70 24 64 27 59
+         C33 58 39 61 44 66
+         C50 72 53 78 54 84Z"></path>
+
+    <path d="M47 72
+         C39 72 33 68 30 63
+         C28 58 29 53 33 50
+         C39 52 44 57 47 62
+         C49 66 49 69 47 72Z"></path>
+
+    <path d="M57 69
+         C51 66 48 61 48 56
+         C48 52 51 48 55 47
+         C59 51 61 56 61 61
+         C61 65 59 68 57 69Z"></path>
+
+    <path d="M73 81
+         C82 82 91 78 97 72
+         C102 67 103 61 100 56
+         C94 55 88 58 83 63
+         C77 69 74 75 73 81Z"></path>
+
+    <path d="M80 69
+         C88 69 94 65 97 60
+         C99 55 98 50 94 47
+         C88 49 83 54 80 59
+         C78 63 78 66 80 69Z"></path>
+
+    <path d="M70 66
+         C76 63 79 58 79 53
+         C79 49 76 45 72 44
+         C68 48 66 53 66 58
+         C66 62 68 65 70 66Z"></path>
+
+  </g>
+
+  <!-- Upper leaves -->
+  <g fill="url(#leafDark)" stroke="#304f39" stroke-width="1">
+
+    <path d="M59 51
+         C53 49 49 45 48 40
+         C48 36 50 33 54 31
+         C59 36 62 43 59 51Z"></path>
+
+    <path d="M72 48
+         C78 46 82 42 83 37
+         C83 33 81 30 77 28
+         C72 33 69 40 72 48Z"></path>
+
+    <path d="M61 34
+         C56 31 54 27 55 23
+         C56 20 59 18 62 18
+         C65 24 65 29 61 34Z"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#c8d9a9" stroke-linecap="round" opacity="0.7">
+
+    <path d="M53 80 C44 72 36 66 29 62" stroke-width="0.8"></path>
+
+    <path d="M74 77 C83 69 91 63 98 59" stroke-width="0.8"></path>
+
+    <path d="M47 68 C41 61 36 56 33 53" stroke-width="0.7"></path>
+
+    <path d="M80 65 C86 58 91 53 94 50" stroke-width="0.7"></path>
+
+  </g>
+
+  <!-- Main umbel branches -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M66 18 L52 10" stroke-width="1.1"></path>
+    <path d="M66 18 L58 6" stroke-width="1.1"></path>
+    <path d="M66 18 L66 5" stroke-width="1.1"></path>
+    <path d="M66 18 L75 7" stroke-width="1.1"></path>
+    <path d="M66 18 L83 11" stroke-width="1.1"></path>
+
+    <path d="M91 37 L98 27" stroke-width="0.9"></path>
+    <path d="M91 37 L104 33" stroke-width="0.9"></path>
+
+    <path d="M38 43 L29 34" stroke-width="0.9"></path>
+    <path d="M38 43 L25 40" stroke-width="0.9"></path>
+
+  </g>
+
+  <!-- Greenish-yellow umbels -->
+  <g filter="url(#softShadow)">
+
+    <g fill="url(#flowerYellowGreen)" stroke="#6e7141" stroke-width="0.4">
+
+      <circle cx="52" cy="9" r="2.3"></circle>
+      <circle cx="58" cy="6" r="2.2"></circle>
+      <circle cx="66" cy="5" r="2.4"></circle>
+      <circle cx="75" cy="7" r="2.2"></circle>
+      <circle cx="83" cy="11" r="2.3"></circle>
+
+      <circle cx="49" cy="12" r="1.8"></circle>
+      <circle cx="55" cy="12" r="1.8"></circle>
+      <circle cx="62" cy="10" r="1.9"></circle>
+      <circle cx="70" cy="11" r="1.8"></circle>
+      <circle cx="78" cy="14" r="1.8"></circle>
+
+      <circle cx="98" cy="27" r="2"></circle>
+      <circle cx="104" cy="32" r="2"></circle>
+
+      <circle cx="29" cy="34" r="2"></circle>
+      <circle cx="25" cy="40" r="2"></circle>
+
+    </g>
+
+    <g fill="#e8dd82" opacity="0.82">
+
+      <circle cx="52" cy="9" r="0.55"></circle>
+      <circle cx="58" cy="6" r="0.55"></circle>
+      <circle cx="66" cy="5" r="0.6"></circle>
+      <circle cx="75" cy="7" r="0.55"></circle>
+      <circle cx="83" cy="11" r="0.55"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- Developing dark fruits -->
+  <g fill="url(#fruitDark)" stroke="#30332d" stroke-width="0.5">
+
+    <ellipse cx="101" cy="38" rx="2.1" ry="2.7" transform="rotate(16 101 38)"></ellipse>
+
+    <ellipse cx="106" cy="41" rx="2" ry="2.5" transform="rotate(-12 106 41)"></ellipse>
+
+    <ellipse cx="34" cy="48" rx="2.1" ry="2.7" transform="rotate(-18 34 48)"></ellipse>
+
+  </g>
+
+</svg>

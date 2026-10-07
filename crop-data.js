@@ -12818,6 +12818,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Alexanders',
+      scientificName: 'Smyrnium olusatrum L.',
+      category: 'vegetable',
+      icon: 'assets/crops/alexanders.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Smyrnium olusatrum — Alexanders',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/17434/smyrnium-olusatrum/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate biennial or perennial conditions. Kew identifies Alexanders as a biennial or perennial species primarily associated with the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cited cultivation guidance does not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moist but well-drained or well-drained growing conditions. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Alexanders performs best in free-draining soil and full sun. Royal Horticultural Society guidance lists chalk, clay, loam, and sandy soils as suitable and notes that the plant performs well in coastal conditions.',
+
+      plantingNote:
+        'Alexanders is an edible biennial or short-lived perennial vegetable propagated from seed. Current Kew taxonomy accepts Smyrnium olusatrum L.; Smyrnium maritimum Salisb. and Smyrnium vulgare Gray are treated as synonyms.',
+
+      harvestNote:
+        'Alexanders has historically been cultivated as a pot-herb, and its tender leaves, young shoots, stems, and other young parts have been eaten as vegetables. Harvest is based on the tender vegetative stage and season rather than one universal sowing-to-harvest interval. FarmCast therefore keeps Alexanders as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Smyrnium olusatrum — Alexanders',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/17434/smyrnium-olusatrum/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
