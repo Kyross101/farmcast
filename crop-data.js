@@ -16279,6 +16279,81 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Bamboo Shoot',
+      localName: 'Labong / Bukawe',
+      scientificName:
+        'Dendrocalamus asper (Schult. & Schult.f.) Backer',
+      category: 'vegetable',
+      icon: 'assets/crops/bamboo-shoot.svg',
+
+      plantingMethods: [
+        {
+          value: 'rhizome-propagules',
+          label: 'Rhizome Propagules'
+        },
+        {
+          value: 'culm-cuttings',
+          label: 'Culm Cuttings'
+        },
+        {
+          value: 'branch-cuttings',
+          label: 'Branch Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Dendrocalamus asper',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=2073'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm, humid tropical growing conditions. Kew identifies Dendrocalamus asper as a bamboo primarily associated with the wet tropical biome and records the species as native to the Philippines. Because local altitude, rainfall pattern, soil moisture and management strongly affect bamboo growth and shoot production, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'PROSEA reports that Dendrocalamus asper thrives particularly well in locations receiving about 2400 mm of average annual rainfall. This is treated as source-based ecological guidance rather than a universal requirement because the species is cultivated across a wider range of tropical environments.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports that Dendrocalamus asper can grow in many soil types but performs better on heavier soils with good drainage. Sandy and somewhat acidic soils are also used successfully in parts of its cultivated range. FarmCast does not assign a numeric pH because the cited production guidance does not provide one defensible universal soil-pH interval.',
+
+      plantingNote:
+        'Bamboo Shoot in this FarmCast entry refers specifically to the edible young shoots of Dendrocalamus asper, a large tropical bamboo also known as Giant Bamboo and locally recorded in the Philippines as Bukawe, Botong or Butong. PROSEA documents propagation by rhizomes, culm cuttings and branch cuttings. Propagules are normally rooted in a nursery before being planted in the field before or during the first half of the rainy season. Current Kew taxonomy accepts Dendrocalamus asper (Schult. & Schult.f.) Backer and lists historical synonyms including Bambusa aspera, Gigantochloa aspera, Dendrocalamus flagellifer, Bambusa bitung and Schizostachyum bitung.',
+
+      harvestNote:
+        'The edible crop is the young tender bamboo shoot that emerges from the established clump. PROSEA reports that shoots normally emerge and are harvested during the rainy season and that healthy established clumps may produce several shoots each year. The source does not provide one reliable planting-to-first-edible-shoot interval because production depends strongly on establishment age, clump development, rainfall and management. FarmCast therefore keeps Bamboo Shoot as guidance-only rather than creating an automatic harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Dendrocalamus asper',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=2073'
+          ].join('')
+      }
+    },
+
   
 ];
 

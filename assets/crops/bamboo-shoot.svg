@@ -1,0 +1,436 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Bamboo Shoot</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of edible bamboo shoots emerging
+    beside mature tropical bamboo culms, with leafy branches, segmented
+    sheaths, underground rhizome, soil, highlights, shadows, and depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="culmGreen" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#b6ca73"></stop>
+
+      <stop offset="0.28" stop-color="#7fa05d"></stop>
+
+      <stop offset="0.64" stop-color="#4f7549"></stop>
+
+      <stop offset="1" stop-color="#294e39"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="culmDark" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#8da75d"></stop>
+
+      <stop offset="0.48" stop-color="#517344"></stop>
+
+      <stop offset="1" stop-color="#263f32"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#b7cf78"></stop>
+
+      <stop offset="0.38" stop-color="#6e9953"></stop>
+
+      <stop offset="0.72" stop-color="#3e7344"></stop>
+
+      <stop offset="1" stop-color="#1c4935"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="shootSheath" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#d3b370"></stop>
+
+      <stop offset="0.3" stop-color="#a87d4c"></stop>
+
+      <stop offset="0.65" stop-color="#76553d"></stop>
+
+      <stop offset="1" stop-color="#48362d"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="shootLight" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#ead397"></stop>
+
+      <stop offset="0.42" stop-color="#bc925a"></stop>
+
+      <stop offset="1" stop-color="#6b4b39"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="soilGradient" x1="0" y1="0" x2="0" y2="1">
+
+      <stop offset="0" stop-color="#9b7658"></stop>
+
+      <stop offset="0.5" stop-color="#725641"></stop>
+
+      <stop offset="1" stop-color="#44362e"></stop>
+
+    </linearGradient>
+
+    <linearGradient id="rhizomeGradient" x1="0" y1="0" x2="1" y2="1">
+
+      <stop offset="0" stop-color="#c09266"></stop>
+
+      <stop offset="0.48" stop-color="#8a6348"></stop>
+
+      <stop offset="1" stop-color="#594236"></stop>
+
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#17231a" flood-opacity="0.28"></feDropShadow>
+
+    </filter>
+
+    <filter id="shootShadow" x="-35%" y="-35%" width="180%" height="190%">
+
+      <feDropShadow dx="1" dy="3" stdDeviation="2.3" flood-color="#30271f" flood-opacity="0.34"></feDropShadow>
+
+    </filter>
+
+  </defs>
+
+  <!-- mature bamboo culms -->
+
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M28 93
+      C27 67 28 40 31 5
+      L43 5
+      C42 37 42 65 44 94Z" fill="url(#culmDark)" stroke="#294635" stroke-width="1.2"></path>
+
+    <path d="
+      M67 93
+      C66 65 67 35 70 2
+      L82 2
+      C81 35 82 65 84 94Z" fill="url(#culmGreen)" stroke="#2e4e37" stroke-width="1.2"></path>
+
+    <path d="
+      M100 94
+      C99 72 100 47 101 21
+      L111 21
+      C111 48 112 72 114 94Z" fill="url(#culmDark)" stroke="#294635" stroke-width="1.1"></path>
+
+  </g>
+
+  <!-- bamboo nodes -->
+
+  <g fill="#344f38" opacity="0.72">
+
+    <rect x="28" y="29" width="15" height="2.5" rx="1.2"></rect>
+
+    <rect x="28" y="58" width="16" height="2.7" rx="1.2"></rect>
+
+    <rect x="67" y="25" width="16" height="2.7" rx="1.2"></rect>
+
+    <rect x="67" y="54" width="17" height="2.8" rx="1.2"></rect>
+
+    <rect x="100" y="47" width="12" height="2.4" rx="1.2"></rect>
+
+    <rect x="100" y="72" width="13" height="2.4" rx="1.2"></rect>
+
+  </g>
+
+  <!-- culm highlights -->
+
+  <g fill="none" stroke="#d2df99" stroke-linecap="round" opacity="0.35">
+
+    <path d="M34 8 C32 33 32 64 35 88" stroke-width="1.3"></path>
+
+    <path d="M75 5 C73 33 73 64 76 88" stroke-width="1.4"></path>
+
+    <path d="M105 25 C104 48 104 70 107 89" stroke-width="1.1"></path>
+
+  </g>
+
+  <!-- branches -->
+
+  <g fill="none" stroke="#435e3c" stroke-linecap="round">
+
+    <path d="
+      M42 38
+      C51 33 57 28 63 21" stroke-width="2.2"></path>
+
+    <path d="
+      M81 33
+      C91 29 99 25 107 16" stroke-width="2.1"></path>
+
+    <path d="
+      M101 57
+      C94 52 88 47 83 41" stroke-width="1.9"></path>
+
+  </g>
+
+  <!-- bamboo leaves -->
+
+  <g fill="url(#leafGreen)" stroke="#28563a" stroke-width="0.7" filter="url(#softShadow)">
+
+    <path d="
+      M53 29
+      C58 20 67 17 73 19
+      C68 25 61 30 53 29Z"></path>
+
+    <path d="
+      M58 23
+      C59 14 67 9 74 10
+      C70 17 65 22 58 23Z"></path>
+
+    <path d="
+      M62 20
+      C69 14 78 14 83 18
+      C76 22 69 23 62 20Z"></path>
+
+    <path d="
+      M91 28
+      C94 19 102 14 110 15
+      C106 22 100 27 91 28Z"></path>
+
+    <path d="
+      M97 22
+      C100 13 108 9 116 11
+      C112 18 106 22 97 22Z"></path>
+
+    <path d="
+      M87 47
+      C80 40 72 38 67 41
+      C72 47 79 50 87 47Z"></path>
+
+    <path d="
+      M92 52
+      C85 48 77 49 72 53
+      C78 57 85 57 92 52Z"></path>
+
+  </g>
+
+  <!-- leaf midribs -->
+
+  <g fill="none" stroke="#c7d895" stroke-width="0.55" opacity="0.7">
+
+    <path d="M55 27 L70 20"></path>
+    <path d="M60 21 L72 12"></path>
+    <path d="M64 20 L80 18"></path>
+    <path d="M93 26 L107 17"></path>
+    <path d="M99 20 L113 12"></path>
+    <path d="M85 46 L70 42"></path>
+    <path d="M90 52 L75 54"></path>
+
+  </g>
+
+  <!-- ground -->
+
+  <path d="
+    M4 91
+    C24 86 43 91 62 88
+    C81 85 102 91 124 87
+    L124 128
+    L4 128Z" fill="url(#soilGradient)"></path>
+
+  <!-- soil texture -->
+
+  <g fill="none" stroke="#c0a080" stroke-linecap="round" opacity="0.27">
+
+    <path d="M8 101 C20 98 34 101 44 98"></path>
+    <path d="M67 99 C82 95 98 99 116 95"></path>
+    <path d="M13 116 C26 112 40 116 51 112"></path>
+    <path d="M75 117 C90 113 104 115 121 111"></path>
+
+  </g>
+
+  <!-- underground rhizome -->
+
+  <path d="
+    M19 116
+    C37 108 52 110 65 114
+    C78 117 92 113 108 107" fill="none" stroke="url(#rhizomeGradient)" stroke-width="7" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- rhizome nodes -->
+
+  <g fill="#6b4f3d" opacity="0.8">
+
+    <ellipse cx="42" cy="111" rx="3" ry="4"></ellipse>
+
+    <ellipse cx="66" cy="114" rx="3" ry="4"></ellipse>
+
+    <ellipse cx="91" cy="112" rx="3" ry="4"></ellipse>
+
+  </g>
+
+  <!-- left edible bamboo shoot -->
+
+  <g transform="translate(36 94)" filter="url(#shootShadow)">
+
+    <path d="
+      M0 23
+      C-9 21 -14 14 -12 4
+      C-10 -10 -5 -23 2 -34
+      C8 -23 13 -10 15 4
+      C17 14 11 21 0 23Z" fill="url(#shootSheath)" stroke="#49362d" stroke-width="1.2"></path>
+
+    <!-- layered sheaths -->
+
+    <path d="
+      M-10 9
+      C-4 5 6 5 14 9
+      C11 15 6 18 0 19
+      C-5 18 -8 15 -10 9Z" fill="#6c4937" opacity="0.82"></path>
+
+    <path d="
+      M-8 -1
+      C-2 -5 6 -5 12 -1
+      C9 5 5 8 0 9
+      C-4 7 -7 4 -8 -1Z" fill="url(#shootLight)" stroke="#624533" stroke-width="0.7"></path>
+
+    <path d="
+      M-5 -12
+      C0 -16 5 -15 9 -12
+      C7 -7 4 -4 0 -3
+      C-3 -5 -5 -8 -5 -12Z" fill="#9f754b" stroke="#624533" stroke-width="0.7"></path>
+
+    <path d="
+      M-2 -22
+      C1 -25 4 -24 6 -21
+      C5 -17 3 -15 1 -14
+      C-1 -16 -2 -19 -2 -22Z" fill="#bea061" stroke="#66503a" stroke-width="0.6"></path>
+
+    <!-- shoot tip -->
+
+    <path d="
+      M2 -34
+      C0 -30 -1 -27 0 -24
+      C3 -25 5 -28 6 -31Z" fill="#6d7640"></path>
+
+    <!-- highlights -->
+
+    <path d="
+      M-7 5
+      C-5 -7 -2 -18 2 -28" fill="none" stroke="#f0d69b" stroke-width="1.3" stroke-linecap="round" opacity="0.52"></path>
+
+  </g>
+
+  <!-- large foreground edible shoot -->
+
+  <g transform="translate(76 91)" filter="url(#shootShadow)">
+
+    <path d="
+      M0 31
+      C-13 29 -20 20 -18 8
+      C-16 -10 -9 -29 2 -45
+      C11 -29 19 -10 21 8
+      C23 21 15 29 0 31Z" fill="url(#shootSheath)" stroke="#45332b" stroke-width="1.4"></path>
+
+    <path d="
+      M-16 16
+      C-8 10 9 10 19 15
+      C16 23 9 27 1 28
+      C-8 27 -13 23 -16 16Z" fill="#614535" opacity="0.88"></path>
+
+    <path d="
+      M-14 4
+      C-7 -2 8 -2 17 3
+      C14 11 8 15 1 16
+      C-6 14 -11 10 -14 4Z" fill="url(#shootLight)" stroke="#614434" stroke-width="0.8"></path>
+
+    <path d="
+      M-10 -9
+      C-4 -14 7 -14 13 -9
+      C11 -2 6 2 1 3
+      C-4 1 -8 -3 -10 -9Z" fill="#a67b4e" stroke="#624735" stroke-width="0.8"></path>
+
+    <path d="
+      M-6 -21
+      C-1 -26 6 -25 10 -20
+      C8 -14 5 -11 1 -10
+      C-3 -12 -5 -16 -6 -21Z" fill="#b9995d" stroke="#65503a" stroke-width="0.7"></path>
+
+    <path d="
+      M-2 -33
+      C1 -38 5 -37 8 -32
+      C7 -27 4 -24 2 -23
+      C0 -25 -2 -29 -2 -33Z" fill="#c4ad68" stroke="#66533d" stroke-width="0.7"></path>
+
+    <!-- pointed leafy tip -->
+
+    <path d="
+      M2 -45
+      C0 -40 0 -37 2 -34
+      C5 -36 7 -39 7 -43Z" fill="#657941" stroke="#415637" stroke-width="0.6"></path>
+
+    <!-- sheath ridges -->
+
+    <g fill="none" stroke="#3f3029" stroke-width="0.8" opacity="0.55">
+
+      <path d="M-14 10 C-5 7 9 7 18 11"></path>
+      <path d="M-11 -3 C-4 -6 7 -6 14 -3"></path>
+      <path d="M-7 -15 C-2 -18 6 -18 11 -15"></path>
+      <path d="M-3 -27 C1 -29 5 -29 8 -27"></path>
+
+    </g>
+
+    <!-- strong highlight -->
+
+    <path d="
+      M-12 13
+      C-9 -5 -4 -24 2 -39" fill="none" stroke="#f2d99d" stroke-width="1.7" stroke-linecap="round" opacity="0.5"></path>
+
+  </g>
+
+  <!-- small emerging shoot -->
+
+  <g transform="translate(108 103)" filter="url(#softShadow)">
+
+    <path d="
+      M0 16
+      C-7 15 -10 10 -9 3
+      C-8 -6 -4 -15 1 -22
+      C6 -14 9 -5 10 3
+      C11 10 7 15 0 16Z" fill="url(#shootLight)" stroke="#4d392e" stroke-width="1"></path>
+
+    <path d="
+      M-7 5
+      C-2 2 5 2 9 5" fill="none" stroke="#5f4433" stroke-width="1"></path>
+
+    <path d="
+      M-4 -5
+      C0 -8 4 -8 7 -5" fill="none" stroke="#624735" stroke-width="0.8"></path>
+
+    <path d="
+      M1 -22
+      L5 -16
+      L1 -13Z" fill="#647741"></path>
+
+  </g>
+
+  <!-- surface roots -->
+
+  <g fill="none" stroke="#9e7958" stroke-linecap="round" opacity="0.72">
+
+    <path d="M42 112 C34 116 28 120 23 126" stroke-width="1.3"></path>
+
+    <path d="M65 115 C61 120 58 123 55 128" stroke-width="1.2"></path>
+
+    <path d="M90 112 C98 116 104 121 108 126" stroke-width="1.2"></path>
+
+  </g>
+
+  <!-- foreground soil shadow -->
+
+  <path d="
+    M5 122
+    C21 118 38 122 52 119
+    C70 116 87 122 103 118
+    C111 116 118 116 124 115
+    L124 128
+    L5 128Z" fill="#3e332c" opacity="0.45"></path>
+
+</svg>
