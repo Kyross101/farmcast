@@ -17692,6 +17692,85 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Water Apple',
+      localName: 'Tambis / Bell Fruit',
+      scientificName:
+        'Syzygium aqueum (Burm.f.) Alston',
+      category: 'fruit',
+      icon: 'assets/crops/water-apple.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Syzygium aqueum (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Syzygium_aqueum_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm and moist tropical lowland growing conditions. PROSEA describes Water Apple as suited to fairly moist tropical lowlands and notes that it can perform in areas with a fairly long dry season when reliable water remains available. Because the cited production guidance does not establish one universal numeric optimum temperature interval for Water Apple, FarmCast keeps temperature guidance descriptive rather than assigning unsupported minimum and maximum values.',
+
+      rainfallRange:
+        'Water Apple requires dependable access to moisture and is not considered drought-resistant. PROSEA notes that the trees are often grown near streams or ponds and can perform under seasonal tropical conditions provided water remains reliably available. Because rainfall amount alone does not describe this moisture requirement and no single universal annual rainfall interval is given, FarmCast keeps rainfall guidance descriptive.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports that Water Apple and related cultivated Syzygium fruit trees prefer heavier soils with easy access to water rather than deep light soils where roots must search for moisture. Because the cited production guidance does not provide one reliable universal soil-pH interval specifically for Syzygium aqueum, FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Water Apple in this FarmCast entry refers specifically to Syzygium aqueum (Burm.f.) Alston, known in the Philippines as Tambis, particularly in Bisaya-speaking areas. It is botanically distinct from the existing Wax Apple or Makopa, Syzygium samarangense, and Rose Apple or Yambo, Syzygium jambos. PROSEA reports that propagation from seed is common and that clonal propagation through air layering, cuttings and budding is also used. Current Kew taxonomy accepts Syzygium aqueum and lists Cerocarpus aqueus, Eugenia aquea, Jambosa aquea, Malidra aquea, Eugenia callophylla, Eugenia javanica, Eugenia nodiflora, Eugenia obversa, Jambosa calophylla, Jambosa javanica, Jambosa madagascariensis, Jambosa subsessilis, Myrtus javanica, Syzygium javanicum and Syzygium obversum among its synonyms.',
+
+      harvestNote:
+        'Water Apple produces small glossy white-to-red fruits with very juicy, watery flesh that is commonly eaten fresh. PROSEA reports a juvenile period of roughly three to seven years for the cultivated Syzygium group, with Water Apple generally among the first to come into bearing, while clonal trees may begin bearing after roughly three to five years. Water Apple fruit ripens about thirty to forty days after anthesis. Because these figures describe juvenile age, clonal first bearing or flowering-to-fruit development rather than one exact planting-to-harvest interval for each FarmCast planting method, Water Apple remains guidance-only rather than receiving an automatic harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Syzygium aqueum (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Syzygium_aqueum_(PROSEA)'
+          ].join('')
+      }
+    },
+
 
   
 ];
