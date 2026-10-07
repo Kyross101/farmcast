@@ -13601,6 +13601,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Cape Gooseberry',
+      scientificName: 'Physalis peruviana L.',
+      category: 'fruit',
+      icon: 'assets/crops/cape-gooseberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Physalis peruviana — Cape gooseberry',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/87740/physalis-peruviana-f/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm growing conditions with a long growing season. Kew identifies Cape Gooseberry as a perennial species primarily associated with the seasonally dry tropical biome, while Royal Horticultural Society guidance treats it as a tender fruit crop that can be grown outdoors in suitably mild conditions. FarmCast therefore keeps temperature guidance descriptive rather than assigning an unsupported universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moist but well-drained or well-drained growing conditions. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Cape Gooseberry grows well in loam or sandy soil with good drainage and performs best in a sunny, sheltered position. The spreading branches may benefit from support as the plant develops.',
+
+      plantingNote:
+        'Cape Gooseberry is an edible fruit crop propagated from seed. Royal Horticultural Society guidance recommends sowing seed indoors and growing young plants on before moving them outdoors where conditions are suitable. Current Kew taxonomy accepts Physalis peruviana L. Historical names including Physalis edulis, Alkekengi pubescens, Boberella peruviana, Herschelia edulis, Physalis latifolia, and Physalis tomentosa are treated as synonyms.',
+
+      harvestNote:
+        'Cape Gooseberry produces edible orange berries enclosed individually in papery lantern-like husks. University of Minnesota Extension includes Physalis peruviana among cultivated ground cherries and advises harvesting this crop group when the husks have dried and the ripe fruit begins to drop. Because ripening depends on growing season, local conditions, and plant establishment rather than one universal sowing-to-harvest interval, FarmCast keeps Cape Gooseberry as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Physalis peruviana — Cape gooseberry',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/87740/physalis-peruviana-f/details'
+          ].join('')
+      }
+    },
+
 
   
 ];

@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Cape Gooseberry</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Cape gooseberry with green leaves,
+    a yellow flower with a dark centre, ripe golden-orange berries,
+    papery lantern-shaped husks, branching stems, highlights, and shadows.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9fc779"></stop>
+      <stop offset="0.48" stop-color="#5f9655"></stop>
+      <stop offset="1" stop-color="#315f3b"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#73a361"></stop>
+      <stop offset="1" stop-color="#285238"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#486942"></stop>
+      <stop offset="1" stop-color="#8baa65"></stop>
+    </linearGradient>
+
+    <radialGradient id="berryGold" cx="35%" cy="28%" r="72%">
+      <stop offset="0" stop-color="#ffe47c"></stop>
+      <stop offset="0.42" stop-color="#f7b832"></stop>
+      <stop offset="0.78" stop-color="#e08222"></stop>
+      <stop offset="1" stop-color="#a9571e"></stop>
+    </radialGradient>
+
+    <linearGradient id="huskGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2dda2"></stop>
+      <stop offset="0.5" stop-color="#c8a862"></stop>
+      <stop offset="1" stop-color="#8b703f"></stop>
+    </linearGradient>
+
+    <linearGradient id="huskLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f9edc2"></stop>
+      <stop offset="1" stop-color="#c7a96a"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#253528" flood-opacity="0.24"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="115" rx="39" ry="6" fill="#28382a" opacity="0.16"></ellipse>
+
+  <!-- Main branching stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="
+      M62 108
+      C62 92 61 76 59 61
+      C57 46 54 31 50 17" stroke-width="4.6"></path>
+
+    <path d="
+      M59 64
+      C48 56 38 48 29 38" stroke-width="3"></path>
+
+    <path d="
+      M62 73
+      C73 64 83 53 91 40" stroke-width="3.2"></path>
+
+    <path d="
+      M55 83
+      C43 82 33 78 23 72" stroke-width="2.7"></path>
+
+    <path d="
+      M67 87
+      C80 84 93 79 103 70" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- Leaves -->
+  <g stroke="#2d5939" stroke-width="1.2" stroke-linejoin="round" filter="url(#softShadow)">
+
+    <path d="
+      M45 31
+      C34 23 24 25 20 34
+      C28 42 39 42 48 36
+      C51 34 49 32 45 31Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M37 54
+      C25 47 16 51 14 60
+      C24 67 35 65 43 58
+      C45 55 42 53 37 54Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M41 79
+      C29 72 20 75 17 84
+      C27 91 38 89 47 83
+      C49 80 46 78 41 79Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M72 47
+      C81 36 92 34 101 40
+      C96 51 85 55 73 53
+      C69 52 69 49 72 47Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M79 66
+      C90 57 101 60 108 68
+      C100 77 89 79 79 73
+      C76 71 76 68 79 66Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M77 91
+      C88 82 99 84 106 93
+      C98 101 87 102 77 97
+      C74 95 74 93 77 91Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#bfd7a0" stroke-width="0.85" stroke-linecap="round" opacity="0.72">
+
+    <path d="M22 34 C31 34 39 35 46 35"></path>
+    <path d="M17 59 C26 58 35 57 41 57"></path>
+    <path d="M20 84 C29 83 38 82 45 82"></path>
+
+    <path d="M98 41 C89 44 81 48 74 51"></path>
+    <path d="M105 68 C96 69 87 71 80 72"></path>
+    <path d="M103 93 C94 93 85 95 78 96"></path>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <g fill="none" stroke="#64804a" stroke-width="1.7" stroke-linecap="round">
+
+    <path d="M58 62 C55 69 53 75 52 82"></path>
+    <path d="M68 72 C73 78 76 83 78 89"></path>
+    <path d="M53 83 C49 89 46 94 44 100"></path>
+
+  </g>
+
+  <!-- Closed papery husk -->
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M67 75
+      L79 69
+      L91 76
+      L94 91
+      L84 104
+      L71 98
+      L65 86Z" fill="url(#huskGold)" stroke="#856b3c" stroke-width="1.4"></path>
+
+    <!-- husk panels -->
+    <path d="M79 70 L78 99" fill="none" stroke="#ead49a" stroke-width="1"></path>
+
+    <path d="M68 77 L84 103" fill="none" stroke="#a9874c" stroke-width="0.9"></path>
+
+    <path d="M90 77 L72 98" fill="none" stroke="#a9874c" stroke-width="0.9"></path>
+
+    <path d="M66 86 L93 90" fill="none" stroke="#b19050" stroke-width="0.8"></path>
+
+    <!-- slightly translucent centre -->
+    <ellipse cx="80" cy="87" rx="8" ry="9" fill="#e5b952" opacity="0.35"></ellipse>
+
+  </g>
+
+  <!-- Open husk -->
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M40 82
+      C34 87 31 94 32 101
+      L42 97
+      L49 86Z" fill="url(#huskLight)" stroke="#967a48" stroke-width="1.2"></path>
+
+    <path d="
+      M50 85
+      C56 89 59 96 58 103
+      L48 98
+      L44 86Z" fill="url(#huskLight)" stroke="#967a48" stroke-width="1.2"></path>
+
+    <path d="
+      M44 84
+      C40 90 39 98 42 105
+      L48 98
+      L49 86Z" fill="#d2b46f" stroke="#8c7041" stroke-width="1.1"></path>
+
+  </g>
+
+  <!-- Exposed ripe berry -->
+  <circle cx="47" cy="93" r="10.5" fill="url(#berryGold)" stroke="#aa681c" stroke-width="1.5" filter="url(#softShadow)"></circle>
+
+  <!-- Berry highlight -->
+  <ellipse cx="43" cy="89" rx="3.4" ry="4.4" fill="#fff1a7" opacity="0.72" transform="rotate(-25 43 89)"></ellipse>
+
+  <!-- Small berry calyx -->
+  <path d="
+    M43 82
+    L47 78
+    L51 82
+    L49 85
+    L45 85Z" fill="#657e47" stroke="#455e39" stroke-width="0.8"></path>
+
+  <!-- Yellow flower branch -->
+  <path d="
+    M91 40
+    C99 34 105 29 110 23" fill="none" stroke="#66814d" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- Cape gooseberry flower -->
+  <g transform="translate(110 22)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-7 -1 -10 -6 -7 -10
+      C-3 -13 1 -9 2 -4Z" fill="#f3d563" stroke="#9c8533" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C2 -7 7 -10 11 -7
+      C14 -3 10 1 5 2Z" fill="#f3d563" stroke="#9c8533" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C7 2 9 7 6 11
+      C2 13 -2 9 -2 4Z" fill="#f3d563" stroke="#9c8533" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C-2 7 -7 9 -11 6
+      C-13 2 -9 -2 -4 -2Z" fill="#f3d563" stroke="#9c8533" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C-4 -5 -2 -10 2 -11
+      C7 -10 8 -5 4 -2Z" fill="#f3d563" stroke="#9c8533" stroke-width="0.8"></path>
+
+    <!-- characteristic dark centre -->
+    <circle cx="0" cy="0" r="4.1" fill="#5d4931"></circle>
+
+    <circle cx="0" cy="0" r="1.7" fill="#c99e3c"></circle>
+
+  </g>
+
+  <!-- Younger green husk -->
+  <g transform="translate(25 54)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      L8 -5
+      L15 1
+      L16 11
+      L8 19
+      L1 13
+      L-2 6Z" fill="#8fa75b" stroke="#547044" stroke-width="1"></path>
+
+    <path d="M8 -4 L8 18" fill="none" stroke="#c5d18c" stroke-width="0.75"></path>
+
+    <path d="M0 1 L14 12" fill="none" stroke="#667c46" stroke-width="0.7"></path>
+
+  </g>
+
+  <!-- Main stem highlights -->
+  <g fill="none" stroke="#b6cb8c" stroke-width="0.9" stroke-linecap="round" opacity="0.65">
+
+    <path d="
+      M64 104
+      C64 88 63 75 61 61
+      C60 46 57 32 53 20"></path>
+
+    <path d="
+      M63 71
+      C73 63 82 53 88 43"></path>
+
+  </g>
+
+</svg>
