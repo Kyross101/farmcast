@@ -17321,6 +17321,85 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Rose Apple',
+      localName: 'Yambo / Tampoy',
+      scientificName:
+        'Syzygium jambos (L.) Alston',
+      category: 'fruit',
+      icon: 'assets/crops/rose-apple.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Syzygium jambos (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Syzygium_jambos_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm and moist tropical to subtropical growing conditions. Kew identifies Syzygium jambos as a tree primarily associated with the wet tropical biome. PROSEA reports that young plants require a shady and moist environment, while established trees are more hardy and can also grow in monsoon climates. Because elevation, rainfall, seasonal dryness and local site conditions influence flowering and fruiting, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'Rose Apple generally prefers a wet climate and reliable access to soil moisture. PROSEA reports that established trees can also grow under monsoon conditions with a pronounced dry season, but the species is not considered strongly drought-resistant. Because rainfall distribution, groundwater access and soil moisture vary by site, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall requirement.',
+
+      soilPH:
+        '5.5–7.0',
+
+      soilNote:
+        'PROSEA describes Rose Apple as highly adaptable to soil conditions, including various soil types and even sites with poor drainage or occasional flooding. A recommended soil-pH range of approximately 5.5–7.0 is reported. Young plants benefit from a moist, partially shaded environment during establishment.',
+
+      plantingNote:
+        'Rose Apple in this FarmCast entry refers specifically to Syzygium jambos (L.) Alston, known in the Philippines as Yambo or Tampoy. It is botanically distinct from the existing Wax Apple or Makopa entry, Syzygium samarangense. PROSEA reports that Rose Apple is normally propagated from seed, while air layering, budding and grafting are also used for vegetative propagation. Current Kew taxonomy accepts Syzygium jambos and lists historical names including Eugenia jambos, Jambosa jambos, Myrtus jambos, Plinia jambos and Syzygium leptostachyum among its synonyms.',
+
+      harvestNote:
+        'PROSEA reports that Rose Apple fruit ripens about three months after bloom. Seed-grown trees have a juvenile phase of roughly four to five years, while air-layered trees may bear fruit within about four years. Mature fruit is whitish-yellow and may develop a pink blush, with a distinctive rose-like fragrance. Because the reliable fruit-development interval begins at bloom rather than at planting, and first-bearing age differs among propagation methods and growing conditions, FarmCast keeps Rose Apple as guidance-only rather than assigning one automatic planting-to-harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Syzygium jambos (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Syzygium_jambos_(PROSEA)'
+          ].join('')
+      }
+    },
+
 
   
 ];

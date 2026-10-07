@@ -1,0 +1,382 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Rose Apple</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Rose Apple or Yambo with
+    glossy lance-shaped leaves, pale yellow fruits with a soft
+    pink blush, white flowers with numerous stamens, branches,
+    highlights, shadows and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a17c5d"></stop>
+      <stop offset="0.48" stop-color="#6e5140"></stop>
+      <stop offset="1" stop-color="#3d322c"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bed17a"></stop>
+      <stop offset="0.3" stop-color="#789d57"></stop>
+      <stop offset="0.68" stop-color="#437746"></stop>
+      <stop offset="1" stop-color="#1d4935"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#98b864"></stop>
+      <stop offset="0.5" stop-color="#557e4b"></stop>
+      <stop offset="1" stop-color="#1f4032"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitCream" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#fff6c7"></stop>
+      <stop offset="0.28" stop-color="#e7dfa0"></stop>
+      <stop offset="0.65" stop-color="#c4bc79"></stop>
+      <stop offset="1" stop-color="#8e8b5c"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitBlush" cx="35%" cy="26%" r="76%">
+      <stop offset="0" stop-color="#fff0c3"></stop>
+      <stop offset="0.28" stop-color="#e9cf9c"></stop>
+      <stop offset="0.63" stop-color="#d79a82"></stop>
+      <stop offset="1" stop-color="#956b62"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.58" stop-color="#f8f3df"></stop>
+      <stop offset="1" stop-color="#d9cfab"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#fff1a0"></stop>
+      <stop offset="0.6" stop-color="#dfbd4c"></stop>
+      <stop offset="1" stop-color="#916f32"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#17241b" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.1" flood-color="#3e372c" flood-opacity="0.3"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- main branch -->
+
+  <path d="
+    M16 117
+    C31 101 45 84 58 67
+    C72 48 87 30 106 11" fill="none" stroke="url(#branchBrown)" stroke-width="5.8" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- branch highlight -->
+
+  <path d="
+    M19 113
+    C34 97 48 81 61 64
+    C75 46 89 29 103 14" fill="none" stroke="#c7a485" stroke-width="0.9" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- side branches -->
+
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="
+      M45 86
+      C34 75 25 63 16 50" stroke-width="2.9"></path>
+
+    <path d="
+      M60 66
+      C49 55 40 42 35 28" stroke-width="2.8"></path>
+
+    <path d="
+      M75 47
+      C88 47 101 42 114 33" stroke-width="2.7"></path>
+
+    <path d="
+      M88 30
+      C80 21 74 13 71 7" stroke-width="2.4"></path>
+
+  </g>
+
+  <!-- long left leaves -->
+
+  <g fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.85" filter="url(#softShadow)">
+
+    <path d="
+      M41 89
+      C27 85 16 88 9 97
+      C21 100 33 97 41 89Z"></path>
+
+    <path d="
+      M40 75
+      C25 69 14 71 7 79
+      C19 83 32 81 40 75Z"></path>
+
+    <path d="
+      M38 59
+      C24 51 14 51 7 58
+      C17 64 29 65 38 59Z"></path>
+
+    <path d="
+      M43 45
+      C29 37 18 37 11 44
+      C21 50 34 51 43 45Z"></path>
+
+  </g>
+
+  <!-- right leaves -->
+
+  <g fill="url(#leafDark)" stroke="#244d37" stroke-width="0.85" filter="url(#softShadow)">
+
+    <path d="
+      M64 61
+      C78 54 90 55 97 62
+      C87 68 75 68 64 61Z"></path>
+
+    <path d="
+      M73 48
+      C86 41 98 41 105 48
+      C96 54 84 55 73 48Z"></path>
+
+    <path d="
+      M84 35
+      C97 28 108 29 116 35
+      C107 41 95 42 84 35Z"></path>
+
+    <path d="
+      M94 23
+      C106 16 115 17 122 22
+      C114 29 104 29 94 23Z"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+
+  <g fill="none" stroke="#c7da9b" stroke-width="0.65" stroke-linecap="round" opacity="0.72">
+
+    <path d="M12 97 L38 89"></path>
+    <path d="M10 79 L37 75"></path>
+    <path d="M10 58 L35 59"></path>
+    <path d="M14 44 L40 45"></path>
+
+    <path d="M67 61 L94 62"></path>
+    <path d="M76 48 L102 48"></path>
+    <path d="M87 35 L113 35"></path>
+    <path d="M97 23 L119 22"></path>
+
+  </g>
+
+  <!-- fruit stems -->
+
+  <g fill="none" stroke="#63503b" stroke-linecap="round">
+
+    <path d="
+      M55 72
+      C59 80 60 87 60 93" stroke-width="2"></path>
+
+    <path d="
+      M70 55
+      C76 62 79 69 80 75" stroke-width="2"></path>
+
+    <path d="
+      M84 40
+      C90 46 94 52 95 58" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- large Rose Apple -->
+
+  <g transform="translate(59 101)" filter="url(#fruitShadow)">
+
+    <!-- persistent calyx -->
+
+    <path d="
+      M-8 -13
+      L-4 -20
+      L0 -14
+      L5 -20
+      L8 -13
+      C4 -10 -4 -10 -8 -13Z" fill="#596942" stroke="#42523a" stroke-width="0.7"></path>
+
+    <path d="
+      M0 -16
+      C13 -17 22 -10 23 1
+      C24 10 18 20 9 26
+      C4 29 -4 29 -9 26
+      C-18 20 -24 10 -23 1
+      C-22 -10 -13 -17 0 -16Z" fill="url(#fruitBlush)" stroke="#81735a" stroke-width="1.3"></path>
+
+    <ellipse cx="-7" cy="-5" rx="4.5" ry="7" fill="#fff8d7" opacity="0.38"></ellipse>
+
+    <!-- blossom-end depression -->
+
+    <ellipse cx="0" cy="25" rx="4" ry="2" fill="#776d4f" opacity="0.55"></ellipse>
+
+  </g>
+
+  <!-- second fruit -->
+
+  <g transform="translate(81 82)" filter="url(#fruitShadow)">
+
+    <path d="
+      M-7 -11
+      L-3 -17
+      L0 -12
+      L5 -17
+      L7 -11
+      C3 -8 -3 -8 -7 -11Z" fill="#586942" stroke="#42523a" stroke-width="0.7"></path>
+
+    <path d="
+      M0 -14
+      C11 -15 19 -9 20 1
+      C21 10 15 18 8 23
+      C3 26 -3 26 -8 23
+      C-16 18 -21 10 -20 1
+      C-19 -9 -11 -15 0 -14Z" fill="url(#fruitCream)" stroke="#7b7956" stroke-width="1.2"></path>
+
+    <ellipse cx="-6" cy="-4" rx="3.8" ry="6" fill="#fffbe1" opacity="0.37"></ellipse>
+
+    <ellipse cx="0" cy="22" rx="3.4" ry="1.8" fill="#716d4c" opacity="0.52"></ellipse>
+
+  </g>
+
+  <!-- smaller pink-blushed fruit -->
+
+  <g transform="translate(98 62) scale(0.82)" filter="url(#fruitShadow)">
+
+    <path d="
+      M-7 -11
+      L-3 -17
+      L0 -12
+      L5 -17
+      L7 -11
+      C3 -8 -3 -8 -7 -11Z" fill="#586942"></path>
+
+    <path d="
+      M0 -14
+      C11 -15 19 -9 20 1
+      C21 10 15 18 8 23
+      C3 26 -3 26 -8 23
+      C-16 18 -21 10 -20 1
+      C-19 -9 -11 -15 0 -14Z" fill="url(#fruitBlush)" stroke="#806d58" stroke-width="1.3"></path>
+
+    <ellipse cx="-6" cy="-4" rx="3.7" ry="5.8" fill="#fff8da" opacity="0.34"></ellipse>
+
+  </g>
+
+  <!-- flower branch -->
+
+  <path d="
+    M46 57
+    C39 53 33 48 28 42" fill="none" stroke="#62503a" stroke-width="1.4" stroke-linecap="round"></path>
+
+  <!-- rose apple flower -->
+
+  <g transform="translate(25 39)" filter="url(#softShadow)">
+
+    <!-- petals -->
+
+    <g fill="url(#flowerWhite)" stroke="#d5ccae" stroke-width="0.4">
+
+      <ellipse cx="0" cy="-5" rx="5" ry="7"></ellipse>
+
+      <ellipse cx="5" cy="0" rx="7" ry="5"></ellipse>
+
+      <ellipse cx="0" cy="5" rx="5" ry="7"></ellipse>
+
+      <ellipse cx="-5" cy="0" rx="7" ry="5"></ellipse>
+
+    </g>
+
+    <!-- many stamens -->
+
+    <g fill="none" stroke="#f3ead0" stroke-width="0.65" stroke-linecap="round">
+
+      <path d="M0 0 L0 -12"></path>
+      <path d="M0 0 L5 -11"></path>
+      <path d="M0 0 L9 -8"></path>
+      <path d="M0 0 L12 -3"></path>
+      <path d="M0 0 L12 3"></path>
+      <path d="M0 0 L9 8"></path>
+      <path d="M0 0 L5 11"></path>
+      <path d="M0 0 L0 12"></path>
+      <path d="M0 0 L-5 11"></path>
+      <path d="M0 0 L-9 8"></path>
+      <path d="M0 0 L-12 3"></path>
+      <path d="M0 0 L-12 -3"></path>
+      <path d="M0 0 L-9 -8"></path>
+      <path d="M0 0 L-5 -11"></path>
+
+    </g>
+
+    <g fill="#e4c157">
+
+      <circle cx="0" cy="-12" r="1"></circle>
+      <circle cx="5" cy="-11" r="1"></circle>
+      <circle cx="9" cy="-8" r="1"></circle>
+      <circle cx="12" cy="-3" r="1"></circle>
+      <circle cx="12" cy="3" r="1"></circle>
+      <circle cx="9" cy="8" r="1"></circle>
+      <circle cx="5" cy="11" r="1"></circle>
+      <circle cx="0" cy="12" r="1"></circle>
+      <circle cx="-5" cy="11" r="1"></circle>
+      <circle cx="-9" cy="8" r="1"></circle>
+      <circle cx="-12" cy="3" r="1"></circle>
+      <circle cx="-12" cy="-3" r="1"></circle>
+      <circle cx="-9" cy="-8" r="1"></circle>
+      <circle cx="-5" cy="-11" r="1"></circle>
+
+    </g>
+
+    <circle cx="0" cy="0" r="3" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <!-- smaller flower -->
+
+  <g transform="translate(39 53) scale(0.68)" filter="url(#softShadow)">
+
+    <g fill="url(#flowerWhite)">
+      <ellipse cx="0" cy="-5" rx="5" ry="7"></ellipse>
+      <ellipse cx="5" cy="0" rx="7" ry="5"></ellipse>
+      <ellipse cx="0" cy="5" rx="5" ry="7"></ellipse>
+      <ellipse cx="-5" cy="0" rx="7" ry="5"></ellipse>
+    </g>
+
+    <g fill="none" stroke="#f3ead0" stroke-width="0.8">
+
+      <path d="M0 0 L0 -12"></path>
+      <path d="M0 0 L8 -9"></path>
+      <path d="M0 0 L12 0"></path>
+      <path d="M0 0 L8 9"></path>
+      <path d="M0 0 L0 12"></path>
+      <path d="M0 0 L-8 9"></path>
+      <path d="M0 0 L-12 0"></path>
+      <path d="M0 0 L-8 -9"></path>
+
+    </g>
+
+    <circle cx="0" cy="0" r="3" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <!-- foreground leaf -->
+
+  <path d="
+    M30 111
+    C17 104 7 106 3 115
+    C12 122 24 121 33 114Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M6 115
+    L29 112" fill="none" stroke="#c5da9b" stroke-width="0.7" opacity="0.7"></path>
+
+  <!-- base shadow -->
+
+  <ellipse cx="59" cy="121" rx="36" ry="4" fill="#29392c" opacity="0.16"></ellipse>
+
+</svg>
