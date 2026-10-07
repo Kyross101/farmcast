@@ -15704,6 +15704,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Red Currant',
+      scientificName: 'Ribes rubrum L.',
+      category: 'fruit',
+      icon: 'assets/crops/red-currant.svg',
+
+      plantingMethods: [
+        {
+          value: 'bare-root-plants',
+          label: 'Bare-Root Plants'
+        },
+        {
+          value: 'container-grown-plants',
+          label: 'Container-Grown Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Redcurrants',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/redcurrants/',
+            'grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool temperate growing conditions. Kew identifies Red Currant as a shrub primarily associated with the temperate biome. Royal Horticultural Society guidance notes that Red Currants perform well in sun or partial shade, while flowering and fruit production still depend on cultivar and local seasonal conditions. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Red Currants require dependable soil moisture during establishment and fruit development, particularly during dry periods, but the root zone should remain suitably drained. FarmCast therefore keeps moisture guidance descriptive rather than inventing one universal rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows Royal Horticultural Society guidance emphasizing fertile, moisture-retentive but suitably drained soil rather than assigning an unsupported numeric range.',
+
+      soilNote:
+        'Red Currants grow well in fertile, moisture-retentive soil and can crop in either full sun or partial shade. Newly planted bushes should receive adequate water during establishment, while suitable drainage helps maintain healthy roots. Plants can also be trained into space-saving forms such as cordons or fans.',
+
+      plantingNote:
+        'Red Currant is the familiar edible berry crop that produces translucent red fruits in hanging clusters. Royal Horticultural Society guidance supports establishment using bare-root or container-grown plants, while healthy hardwood cuttings may also be used for propagation. Current Kew taxonomy accepts Ribes rubrum L. and lists historical synonyms including Grossularia rubra, Ribes vulgare, Ribes sativum, Ribes sylvestre and Ribesium rubrum. Red Currant is botanically distinct from FarmCast Blackcurrant, which is Ribes nigrum L.',
+
+      harvestNote:
+        'Red Currants ripen in summer, with early, mid-season and late cultivars maturing at different times. Royal Horticultural Society guidance recommends harvesting when the berries are richly coloured, firm and juicy, cutting the entire fruit truss rather than picking individual berries. Because Red Currant is a perennial shrub with cultivar- and season-dependent fruiting rather than one universal planting-to-harvest interval, FarmCast keeps Red Currant as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Redcurrants',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/redcurrants/',
+            'grow-your-own'
+          ].join('')
+      }
+    },
+
   
 ];
 
