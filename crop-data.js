@@ -15504,6 +15504,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Blackcurrant',
+      scientificName: 'Ribes nigrum L.',
+      category: 'fruit',
+      icon: 'assets/crops/blackcurrant.svg',
+
+      plantingMethods: [
+        {
+          value: 'bare-root-plants',
+          label: 'Bare-Root Plants'
+        },
+        {
+          value: 'container-grown-plants',
+          label: 'Container-Grown Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Blackcurrants',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/blackcurrants/',
+            'grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool temperate growing conditions. Kew identifies Blackcurrant as a shrub primarily associated with the temperate biome. Royal Horticultural Society guidance recommends a sunny site while noting that light shade is tolerated. Flowers can be damaged by late frost and cold winds, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Blackcurrants prefer moisture-retentive soil, and newly planted bushes should be watered during dry periods while they establish. Established plants still benefit from adequate soil moisture during active growth and fruit development. FarmCast therefore keeps water guidance descriptive rather than inventing one universal rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows Royal Horticultural Society guidance emphasizing moisture-retentive but well-drained soil rather than assigning an unsupported numeric range.',
+
+      soilNote:
+        'Blackcurrants grow best in moisture-retentive but well-drained soil. Full sun generally produces the best crops, although light shade is tolerated. Exposed locations prone to cold winds or late spring frost should be avoided because flowering and fruit set can be reduced.',
+
+      plantingNote:
+        'Blackcurrant is a familiar edible berry crop grown as a multi-stemmed deciduous shrub. Royal Horticultural Society guidance supports establishment using bare-root or container-grown plants, while new plants can also be propagated from hardwood cuttings taken from healthy young material. Current Kew taxonomy accepts Ribes nigrum L.; its species-level synonyms are Botrycarpum nigrum, Grossularia nigra, Ribes nigrum subsp. vulgare and Ribesium nigrum.',
+
+      harvestNote:
+        'Blackcurrants ripen from midsummer onward, with exact timing depending on cultivar and local climate. Modern varieties often ripen most berries in a cluster together, allowing the entire bunch to be harvested once the berries turn fully black, while older varieties may ripen less uniformly and require individual picking. Because Blackcurrant is a perennial shrub with seasonal repeated harvests rather than one universal planting-to-harvest interval, FarmCast keeps Blackcurrant as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Blackcurrants',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/blackcurrants/',
+            'grow-your-own'
+          ].join('')
+      }
+    },
+
   
 ];
 
