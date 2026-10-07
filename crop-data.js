@@ -14056,6 +14056,74 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Raspberry',
+      scientificName: 'Rubus idaeus L.',
+      category: 'fruit',
+      icon: 'assets/crops/raspberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'bare-root-canes',
+          label: 'Bare-Root Canes'
+        },
+        {
+          value: 'container-grown-plants',
+          label: 'Container-Grown Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Raspberries',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/raspberries/grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate growing conditions. Kew identifies Raspberry as a shrub primarily associated with the temperate biome, while Royal Horticultural Society guidance notes that raspberries grow particularly well in cooler regions. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends watering newly planted raspberries well during establishment and during prolonged dry spells, particularly while fruits are developing. FarmCast therefore keeps moisture guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'Royal Horticultural Society recommends slightly acidic soil, ideally about pH 6.0–6.7.',
+
+      soilNote:
+        'Raspberries prefer fertile, well-drained soil and do not tolerate waterlogged conditions. Royal Horticultural Society guidance recommends a sunny, sheltered position for the best crop, although plants can still fruit in light partial shade.',
+
+      plantingNote:
+        'Raspberry is a familiar edible soft-fruit crop. Royal Horticultural Society guidance notes that raspberry plants are commonly planted as dormant bare-root canes or as container-grown plants. Established raspberries also naturally produce suckers that may be dug up and replanted while dormant. Current Kew taxonomy accepts Rubus idaeus L.; Batidaea idaea and Rubus fragrans are treated as species-level scientific synonyms.',
+
+      harvestNote:
+        'Raspberries are harvested when the berries are richly coloured, plump, fully ripe, and pull away easily. Summer-fruiting cultivars generally crop from early to late summer, while autumn-fruiting cultivars crop from late summer into autumn. Royal Horticultural Society guidance notes that newly planted summer-fruiting raspberries usually begin fruiting from their second summer, whereas some autumn-fruiting plants can fruit in their first year. Because harvest timing depends strongly on fruiting type, cultivar, planting age, and climate, FarmCast keeps Raspberry as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Raspberries',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/raspberries/grow-your-own'
+          ].join('')
+      }
+    },
+
+
 
   
 ];
