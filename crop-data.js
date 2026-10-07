@@ -19054,6 +19054,83 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Chinese Jujube',
+      localName: 'Chinese Date / Red Date',
+      scientificName:
+        'Ziziphus jujuba Mill.',
+      category: 'fruit',
+      icon: 'assets/crops/chinese-jujube.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'whip-grafted-plants',
+          label: 'Whip-Grafted Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Texas A&M AgriLife Extension',
+
+        office:
+          'Fruit & Nut Resources',
+
+        title:
+          'Jujube',
+
+        url:
+          [
+            'https://',
+            'aggie-horticulture.tamu.edu/',
+            'fruit-nut/fact-sheets/jujube/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Chinese Jujube is a deciduous fruit tree well adapted to hot and comparatively dry growing conditions. Texas A&M AgriLife Extension reports that jujubes perform particularly well in the more arid parts of Texas and bloom late enough to avoid many spring-frost problems. Because this guidance describes regional adaptation rather than one universal optimum temperature interval or absolute physiological minimum and maximum range for Ziziphus jujuba, FarmCast keeps temperature guidance descriptive rather than assigning unsupported numeric thresholds.',
+
+      rainfallRange:
+        'Chinese Jujube is notably drought tolerant once established, although adequate moisture supports establishment and fruit development. Texas A&M AgriLife Extension reports strong tolerance of dry conditions while also noting that site and drainage remain important. Because rainfall distribution, irrigation, soil type and tree age affect actual water availability, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Texas A&M AgriLife Extension reports that Chinese Jujube tolerates a wide range of soils provided drainage is fair to good. The source notes that trees grown above approximately pH 7.8 may show minor-element deficiencies, but it does not define one complete universal lower-to-upper optimum pH interval. FarmCast therefore keeps soilPH unset rather than converting a one-sided caution value into an unsupported range.',
+
+      plantingNote:
+        'Chinese Jujube in this FarmCast entry refers specifically to Ziziphus jujuba Mill., also commonly called Chinese Date and Red Date. It is distinct from the existing FarmCast Indian Jujube, Ziziphus mauritiana Lam. Texas A&M AgriLife Extension documents seed-grown trees and recommends grafting desirable named cultivars, including whip-grafting onto suitable root sprouts or rootstock because named cultivars do not come true from seed. Current Kew taxonomy accepts Ziziphus jujuba Mill. and lists eight species-level synonyms: Girtanneria jujuba (Mill.) Neck., Rhamnus lucida Salisb., Rhamnus vulgaris Pers., Rhamnus zizyphus L., Ziziphus zizyphus (L.) H.Karst., Zizyphon jujubum (Mill.) St.-Lag., Jububa mediterranea Bubani and Ziziphus vulgaris Lam. All eight were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Chinese Jujube fruits mature from light green toward reddish or dark brown. Texas A&M AgriLife Extension recommends harvesting quality fruit at the appropriate mature stage before the skin becomes excessively wrinkled, while University of California sources likewise describe progressive color change during ripening. Because the cited production guidance gives seasonal fruit maturity rather than one universal seed- or graft-to-first-harvest interval, Chinese Jujube remains guidance-only with no automatic FarmCast harvest date.',
+
+      source: {
+        agency:
+          'Texas A&M AgriLife Extension',
+
+        office:
+          'Fruit & Nut Resources',
+
+        title:
+          'Jujube',
+
+        url:
+          [
+            'https://',
+            'aggie-horticulture.tamu.edu/',
+            'fruit-nut/fact-sheets/jujube/'
+          ].join('')
+      }
+    },
+
 
   
 ];
