@@ -13798,6 +13798,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Rutabaga',
+      scientificName: 'Brassica napus L.',
+      category: 'vegetable',
+      icon: 'assets/crops/rutabaga.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Swedes',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/vegetables/swede/grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool to temperate growing conditions. Kew identifies Brassica napus as an annual or biennial crop primarily associated with the temperate biome, while University of Minnesota Extension describes rutabagas as cold-hardy vegetables that produce their best quality in cool weather. FarmCast therefore keeps temperature guidance descriptive rather than assigning an unsupported universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of Minnesota Extension notes that drought stress can cause rutabaga roots to become bitter or woody. FarmCast therefore keeps moisture guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Prefers slightly acidic to neutral soil, with University of Minnesota Extension recommending about pH 6.0–7.0.',
+
+      soilNote:
+        'Rutabaga performs well in fertile soil with good drainage and adequate organic matter. Royal Horticultural Society guidance recommends firm, fertile soil in full sun, while University of Minnesota Extension emphasizes maintaining adequate moisture during root development.',
+
+      plantingNote:
+        'Rutabaga, also called swede or Swedish turnip, is an edible root vegetable grown directly from seed. Royal Horticultural Society guidance recommends sowing directly outdoors. Current Kew taxonomy accepts Brassica napus L. Historical names including Brassica rutabaga, Brassica oleracea var. napobrassica, and Brassica oleracea var. suecica are treated as synonyms. Rutabaga remains distinct from FarmCast Turnip, which belongs to Brassica rapa.',
+
+      harvestNote:
+        'Rutabaga is harvested for its large edible swollen root, usually with yellow flesh. Royal Horticultural Society guidance notes that swedes may take up to six months to mature and can be harvested from early autumn onward once roots are large enough to use. University of Minnesota Extension similarly recommends leaving rutabagas to mature through summer into autumn. Because maturity varies by cultivar, sowing season, and local conditions and no single exact universal sowing-to-harvest interval is provided, FarmCast keeps Rutabaga as guidance-only.',
+
+      source: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Turnips and Rutabagas in Home Gardens',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/vegetables/growing-turnips-and-rutabagas'
+          ].join('')
+      }
+    },
+
   
 ];
 
