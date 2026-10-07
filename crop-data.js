@@ -13276,6 +13276,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Caucasian Spinach',
+      scientificName: 'Hablitzia tamnoides M.Bieb.',
+      category: 'vegetable',
+      icon: 'assets/crops/caucasian-spinach.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Hablitzia tamnoides — Caucasian Spinach',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/114111/hablitzia-tamnoides/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Perennial growing conditions. Kew identifies Caucasian Spinach as a scrambling perennial primarily associated with the subtropical biome in its native range, while Royal Horticultural Society guidance documents successful cultivation as a hardy perennial. FarmCast does not convert biome or hardiness information into an unsupported universal crop-growth temperature range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moist but well-drained conditions and advises avoiding winter waterlogging. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Prefers neutral to alkaline soil.',
+
+      soilNote:
+        'Caucasian Spinach performs well in moist but well-drained loam under full sun or partial shade. Royal Horticultural Society guidance recommends a sheltered site and notes that the climbing stems can be supported by a trellis, pergola, wigwam, or nearby tree.',
+
+      plantingNote:
+        'Caucasian Spinach is an edible perennial climbing vegetable propagated from seed. Current Kew taxonomy accepts Hablitzia tamnoides M.Bieb., and Hablitzia is currently treated by Kew as a genus containing this single accepted species.',
+
+      harvestNote:
+        'Caucasian Spinach is harvested for its tender edible young shoots and heart-shaped leaves. Royal Horticultural Society guidance notes that the young shoots and leaves are best harvested in spring, with tender new foliage available for picking later in the growing season. Because harvest is repeated and based on tender growth stage rather than one universal sowing-to-harvest interval, FarmCast keeps Caucasian Spinach as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Hablitzia tamnoides — Caucasian Spinach',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/114111/hablitzia-tamnoides/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
