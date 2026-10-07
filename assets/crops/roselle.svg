@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Roselle</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Roselle with deep red fleshy
+    calyces, lobed green leaves, reddish stems, soft highlights,
+    shadows and natural botanical depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a85b58"></stop>
+      <stop offset="0.5" stop-color="#7d3944"></stop>
+      <stop offset="1" stop-color="#4f2734"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9dce69"></stop>
+      <stop offset="0.42" stop-color="#55964d"></stop>
+      <stop offset="1" stop-color="#245c39"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#68a653"></stop>
+      <stop offset="0.5" stop-color="#367845"></stop>
+      <stop offset="1" stop-color="#19492f"></stop>
+    </linearGradient>
+
+    <linearGradient id="calyxRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ee8274"></stop>
+      <stop offset="0.34" stop-color="#cc4d56"></stop>
+      <stop offset="0.7" stop-color="#982e45"></stop>
+      <stop offset="1" stop-color="#681f37"></stop>
+    </linearGradient>
+
+    <linearGradient id="calyxDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d45a5d"></stop>
+      <stop offset="0.5" stop-color="#a3324a"></stop>
+      <stop offset="1" stop-color="#641e36"></stop>
+    </linearGradient>
+
+    <radialGradient id="calyxGlow" cx="30%" cy="22%" r="75%">
+      <stop offset="0" stop-color="#ffc0a9" stop-opacity="0.72"></stop>
+      <stop offset="0.44" stop-color="#ee806e" stop-opacity="0.25"></stop>
+      <stop offset="1" stop-color="#7d2840" stop-opacity="0"></stop>
+    </radialGradient>
+
+    <filter id="mainShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.4" flood-color="#253228" flood-opacity="0.30"></feDropShadow>
+    </filter>
+
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5"></feGaussianBlur>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="112" rx="36" ry="6" fill="#20382a" opacity="0.15" filter="url(#softBlur)"></ellipse>
+
+  <g filter="url(#mainShadow)">
+
+    <!-- main reddish stem -->
+    <path d="M58 108
+             C59 91 60 73 62 56
+             C64 41 66 29 68 18" fill="none" stroke="url(#stemRed)" stroke-width="6" stroke-linecap="round"></path>
+
+    <!-- side stems -->
+    <path d="M61 66
+             C49 57 39 50 27 46" fill="none" stroke="url(#stemRed)" stroke-width="3.8" stroke-linecap="round"></path>
+
+    <path d="M63 57
+             C76 49 87 43 100 41" fill="none" stroke="url(#stemRed)" stroke-width="3.8" stroke-linecap="round"></path>
+
+    <path d="M60 81
+             C48 77 38 76 26 79" fill="none" stroke="url(#stemRed)" stroke-width="3.5" stroke-linecap="round"></path>
+
+    <path d="M61 76
+             C75 73 87 75 99 80" fill="none" stroke="url(#stemRed)" stroke-width="3.5" stroke-linecap="round"></path>
+
+    <!-- upper lobed leaf -->
+    <path d="M65 42
+             C57 37 51 31 49 24
+             C55 27 60 29 64 33
+             C65 26 68 20 72 16
+             C73 23 73 29 71 35
+             C77 31 84 29 90 30
+             C85 36 79 40 72 43
+             C70 44 67 44 65 42Z" fill="url(#leafGreen)"></path>
+
+    <path d="M67 41
+             L70 20" fill="none" stroke="#d9e9a9" stroke-width="1.2" stroke-linecap="round" opacity="0.48"></path>
+
+    <path d="M68 38
+             L53 27" fill="none" stroke="#cfe3a0" stroke-width="1" opacity="0.4"></path>
+
+    <path d="M69 38
+             L84 32" fill="none" stroke="#cfe3a0" stroke-width="1" opacity="0.4"></path>
+
+    <!-- left lobed leaf -->
+    <path d="M49 60
+             C39 58 30 54 23 48
+             C31 48 38 49 44 52
+             C40 45 39 39 40 34
+             C46 40 50 45 52 51
+             C55 45 59 41 64 38
+             C63 47 59 54 53 60
+             C52 61 50 61 49 60Z" fill="url(#leafDark)"></path>
+
+    <path d="M50 58
+             L42 38" fill="none" stroke="#d2e5a3" stroke-width="1.1" opacity="0.45"></path>
+
+    <path d="M48 57
+             L27 49" fill="none" stroke="#d2e5a3" stroke-width="1" opacity="0.4"></path>
+
+    <!-- right lobed leaf -->
+    <path d="M77 58
+             C83 50 90 45 98 43
+             C95 49 91 54 87 57
+             C94 57 101 60 106 64
+             C98 66 91 65 84 62
+             C84 69 82 75 78 80
+             C75 72 74 65 76 59Z" fill="url(#leafGreen)"></path>
+
+    <path d="M79 59
+             L97 46" fill="none" stroke="#d9e9aa" stroke-width="1.1" opacity="0.45"></path>
+
+    <path d="M81 60
+             L101 63" fill="none" stroke="#d9e9aa" stroke-width="1" opacity="0.4"></path>
+
+    <!-- lower-left leaf -->
+    <path d="M48 82
+             C38 82 29 80 21 75
+             C29 74 36 75 42 77
+             C38 71 36 65 37 60
+             C43 65 47 70 50 76
+             C54 71 59 68 64 66
+             C62 74 57 80 51 83Z" fill="url(#leafGreen)"></path>
+
+    <!-- lower-right leaf -->
+    <path d="M76 83
+             C84 77 92 75 101 77
+             C96 81 91 84 86 86
+             C93 89 98 93 101 98
+             C93 98 85 95 79 90
+             C77 88 76 85 76 83Z" fill="url(#leafDark)"></path>
+
+    <!-- upper roselle calyx -->
+    <path d="M60 48
+             C56 43 55 37 57 32
+             L62 36
+             L64 29
+             L68 36
+             L73 31
+             C75 38 73 45 69 49
+             C66 52 63 52 60 48Z" fill="url(#calyxRed)"></path>
+
+    <path d="M62 47
+             C60 42 60 38 62 35" fill="none" stroke="#ffb09d" stroke-width="1.5" stroke-linecap="round" opacity="0.55"></path>
+
+    <!-- left calyx -->
+    <path d="M40 67
+             C35 62 34 56 36 50
+             L41 55
+             L44 48
+             L48 55
+             L53 51
+             C54 58 52 64 48 68
+             C45 71 42 70 40 67Z" fill="url(#calyxDark)"></path>
+
+    <path d="M41 66
+             C39 61 39 57 41 53" fill="none" stroke="#f6a28f" stroke-width="1.4" stroke-linecap="round" opacity="0.52"></path>
+
+    <!-- right calyx -->
+    <path d="M82 68
+             C78 63 77 57 79 52
+             L84 56
+             L87 49
+             L91 56
+             L96 52
+             C98 59 96 65 92 69
+             C89 72 85 72 82 68Z" fill="url(#calyxRed)"></path>
+
+    <path d="M84 67
+             C82 62 82 58 84 54" fill="none" stroke="#ffb29e" stroke-width="1.4" stroke-linecap="round" opacity="0.55"></path>
+
+    <!-- lower central calyx -->
+    <path d="M56 91
+             C51 85 50 78 52 72
+             L57 77
+             L61 69
+             L65 77
+             L71 72
+             C73 80 70 88 66 92
+             C63 96 59 95 56 91Z" fill="url(#calyxDark)"></path>
+
+    <path d="M58 90
+             C55 84 56 79 58 75" fill="none" stroke="#f7a391" stroke-width="1.5" stroke-linecap="round" opacity="0.55"></path>
+
+    <!-- calyx glow shapes -->
+    <path d="M57 34
+             C59 38 61 41 64 43
+             C61 43 59 41 57 38Z" fill="url(#calyxGlow)"></path>
+
+    <path d="M80 54
+             C82 58 84 61 87 63
+             C84 63 82 61 80 58Z" fill="url(#calyxGlow)"></path>
+
+    <!-- small pointed bracts -->
+    <path d="M55 73 L48 69 L54 78Z" fill="#8f2c43"></path>
+
+    <path d="M70 73 L76 69 L71 79Z" fill="#8f2c43"></path>
+
+    <path d="M79 53 L73 50 L79 59Z" fill="#8d2c43"></path>
+
+    <path d="M96 53 L101 50 L96 59Z" fill="#8d2c43"></path>
+
+  </g>
+
+  <!-- stem highlights -->
+  <path d="M60 105
+           C61 88 62 71 64 55" fill="none" stroke="#c97b72" stroke-width="1.3" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- soft leaf highlights -->
+  <path d="M53 26
+           C59 29 63 34 65 38" fill="none" stroke="#eef4c9" stroke-width="1.3" stroke-linecap="round" opacity="0.32"></path>
+
+  <path d="M25 76
+           C33 76 41 78 47 80" fill="none" stroke="#edf3c7" stroke-width="1.2" stroke-linecap="round" opacity="0.32"></path>
+
+</svg>

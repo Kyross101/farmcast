@@ -18152,6 +18152,81 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Roselle',
+      localName: 'Red Sorrel / Kubab / Talingisag',
+      scientificName:
+        'Sabdariffa gossypiifolia (Mill.) M.M.Hanes & R.L.Barrett',
+      category: 'vegetable',
+      icon: 'assets/crops/roselle.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Nursery-Raised Seedlings'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Hibiscus sabdariffa (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=2173'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical growing conditions with high humidity. PROSEA reports mean monthly temperatures of about 25–30°C during the growing period for roselle. Because this range describes favorable growing-period climate rather than absolute physiological minimum and maximum temperature limits, FarmCast keeps minTemp and maxTemp unset while preserving the source-backed descriptive guidance.',
+
+      rainfallRange:
+        'PROSEA reports approximately 140–270 mm of rainfall per month during the roselle growing period together with high air humidity, while also noting that established plants can tolerate some drought. A somewhat drier period is beneficial for flowering and seed production. FarmCast therefore presents the rainfall figures as production guidance rather than as rigid universal thresholds.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Roselle can grow on many soil types provided the soil is deep, relatively light-textured and well drained. PROSEA reports tolerance from highly acidic to moderately alkaline soil conditions but does not provide one universal numeric soil-pH interval that should be treated as an exact crop requirement. FarmCast therefore keeps soilPH unset.',
+
+      plantingNote:
+        'Roselle in this FarmCast entry refers to the edible vegetable crop historically and widely known as Hibiscus sabdariffa L. Current Kew taxonomy treats Hibiscus sabdariffa as a synonym of the accepted name Sabdariffa gossypiifolia (Mill.) M.M.Hanes & R.L.Barrett. PROSEA records Roselle as the Philippine Tagalog name, Kubab in Ifugao and Talingisag in Subanon. The crop is usually propagated from seed, can also be propagated from stem cuttings, and commercial vegetable plantings may use seedlings raised in a nursery and transplanted when young. Current Kew taxonomy lists 16 synonyms: Hibiscus gossypiifolius, Abelmoschus cruentus, Furcaria sabdariffa, Hibiscus acetosus, Hibiscus cruentus, Hibiscus cuneatus, Hibiscus digitatus, Hibiscus digitatus var. kerrianus, Hibiscus fraternus, Hibiscus masuianus, Hibiscus palmatilobus, Hibiscus sabdariffa, Hibiscus sanguineus, Hibiscus subdariffa, Sabdariffa digitata and Sabdariffa rubra.',
+
+      harvestNote:
+        'Roselle is grown for edible leaves, young shoots and fleshy calyces. PROSEA reports that leaves or young shoots may be harvested from about the third month onward, while calyces are generally picked about fifteen to twenty days after flowering and a calyx crop may be obtained roughly four to five months after sowing. Because these timings refer to different edible products, developmental stages and month-based production schedules rather than one exact planting-method-specific day range, FarmCast keeps Roselle as guidance-only rather than assigning one automatic harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Hibiscus sabdariffa L. — Vegetables',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=2173'
+          ].join('')
+      }
+    },
+
 
   
 ];
