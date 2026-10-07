@@ -18375,6 +18375,82 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Stevia',
+      localName: 'Sweet Leaf / Sugar Leaf',
+      scientificName:
+        'Stevia rebaudiana (Bertoni) Bertoni',
+      category: 'herb',
+      icon: 'assets/crops/stevia.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'North Carolina State University Extension',
+
+        title:
+          'Sugar Leaf — Stevia rebaudiana',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/',
+            'plants/stevia-rebaudiana/',
+            'common-name/sugarleaf/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Stevia grows best under warm to moderate conditions with good humidity. North Carolina State University Extension describes Stevia rebaudiana as a tender perennial originating from warm, humid tropical climates and recommends full sun while noting that partial shade is tolerated. Because the source does not define one universal numeric optimum temperature interval or absolute physiological minimum and maximum limits, FarmCast keeps temperature guidance descriptive rather than assigning unsupported threshold values.',
+
+      rainfallRange:
+        'Stevia prefers consistent moisture but also requires good drainage. The species-specific cultivation guidance used for this entry describes moist growing conditions rather than one universal annual rainfall requirement. FarmCast therefore keeps rainfall guidance descriptive instead of assigning an unsupported numeric rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'North Carolina State University Extension describes Stevia as preferring moist, well-drained, organically rich loamy or sandy soil and indicates slightly acidic to neutral conditions. Because the source presents broad soil-pH categories rather than one precise universal production interval, FarmCast keeps soilPH unset rather than converting those categories into an artificial numeric range.',
+
+      plantingNote:
+        'Stevia in this FarmCast entry refers specifically to Stevia rebaudiana (Bertoni) Bertoni, the well-known sweet-leaf herb used as a natural sweetener. North Carolina State University Extension supports propagation from seeds and stem cuttings. A Philippine Journal of Science study conducted with Philippine agricultural institutions also evaluated successful vegetative propagation through stem-tip cuttings. Current Kew taxonomy accepts Stevia rebaudiana (Bertoni) Bertoni and lists only two synonyms: Eupatorium rebaudianum Bertoni and Stevia rebaudiana Hemsl. Major common-name variants including Sweet Leaf, Sweetleaf, Sugar Leaf, Sugar Plant, Candy Leaf, Sweet Herb of Paraguay and Sweet Honey Leaf were checked against the current FarmCast dataset before this entry was prepared.',
+
+      harvestNote:
+        'Stevia is harvested primarily for its intensely sweet edible leaves, which may be used fresh or dried and ground for use as a sweetener. North Carolina State University Extension reports that leaves may be harvested at about ninety days after planting and recommends harvesting near the beginning of flowering for good leaf quality. Because this timing is approximate and is not provided as separate exact planting-to-harvest intervals for seed-grown and cutting-grown plants, FarmCast keeps Stevia as guidance-only rather than assigning one automatic harvest date.',
+
+      source: {
+        agency:
+          'North Carolina State University Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Sugar Leaf — Stevia rebaudiana',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/',
+            'plants/stevia-rebaudiana/',
+            'common-name/sugarleaf/'
+          ].join('')
+      }
+    },
+
 
   
 ];
