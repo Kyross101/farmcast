@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Good King Henry</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Good King Henry with broad triangular green leaves,
+    reddish-green stems, dense clusters of tiny green flowers, and a perennial root crown.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b8d38a"></stop>
+      <stop offset="0.5" stop-color="#719b5b"></stop>
+      <stop offset="1" stop-color="#3d6848"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#86aa68"></stop>
+      <stop offset="1" stop-color="#375e43"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aaad73"></stop>
+      <stop offset="0.5" stop-color="#78834f"></stop>
+      <stop offset="1" stop-color="#5d5146"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerGreen" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#d5d98d"></stop>
+      <stop offset="0.55" stop-color="#9da85f"></stop>
+      <stop offset="1" stop-color="#677344"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#273027" flood-opacity="0.2"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <ellipse cx="63" cy="119" rx="43" ry="5" fill="#4d5047" opacity="0.15"></ellipse>
+
+  <!-- Main stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M62 108 C61 87 62 63 65 39 C66 27 66 18 65 10" stroke-width="3"></path>
+
+    <path d="M63 78 C51 67 43 56 37 44" stroke-width="2"></path>
+
+    <path d="M64 70 C77 60 87 49 94 37" stroke-width="2"></path>
+
+    <path d="M64 51 C54 43 49 35 46 27" stroke-width="1.5"></path>
+
+    <path d="M65 47 C76 40 83 31 87 23" stroke-width="1.5"></path>
+
+  </g>
+
+  <!-- Large triangular leaves -->
+  <g fill="url(#leafGreen)" stroke="#385f41" stroke-width="1.5" stroke-linejoin="round" filter="url(#softShadow)">
+
+    <path d="M58 100
+         C48 103 36 100 28 94
+         C21 89 17 81 18 74
+         C26 77 32 77 37 73
+         C31 67 29 59 31 52
+         C41 57 50 65 56 74
+         C61 83 62 93 58 100Z"></path>
+
+    <path d="M69 100
+         C79 103 91 100 99 94
+         C106 89 110 81 109 74
+         C101 77 95 77 90 73
+         C96 67 98 59 96 52
+         C86 57 77 65 71 74
+         C66 83 65 93 69 100Z"></path>
+
+    <path d="M58 80
+         C47 78 38 72 34 64
+         C30 58 29 51 31 46
+         C38 49 44 48 48 45
+         C46 40 46 35 49 31
+         C57 39 61 49 62 61
+         C63 69 61 76 58 80Z"></path>
+
+    <path d="M70 77
+         C80 75 89 69 94 61
+         C98 55 99 48 97 43
+         C90 46 84 45 80 42
+         C82 37 82 32 79 28
+         C72 36 68 46 67 57
+         C66 66 67 73 70 77Z"></path>
+
+  </g>
+
+  <!-- Younger central leaves -->
+  <g fill="url(#leafDark)" stroke="#35593e" stroke-width="1.25">
+
+    <path d="M61 105
+         C55 96 53 87 55 79
+         C57 72 60 67 63 64
+         C67 69 69 75 69 82
+         C69 91 66 99 61 105Z"></path>
+
+    <path d="M62 72
+         C55 66 52 59 53 53
+         C54 48 57 44 61 41
+         C65 47 67 54 66 61
+         C66 66 64 70 62 72Z"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#d0ddb1" stroke-linecap="round" opacity="0.72">
+
+    <path d="M57 96 C48 87 38 76 25 63" stroke-width="1"></path>
+
+    <path d="M70 96 C79 87 89 76 102 63" stroke-width="1"></path>
+
+    <path d="M58 76 C50 68 43 59 35 51" stroke-width="0.85"></path>
+
+    <path d="M69 73 C77 65 86 56 94 48" stroke-width="0.85"></path>
+
+    <path d="M61 100 C62 88 62 77 63 67" stroke-width="0.8"></path>
+
+  </g>
+
+  <!-- Flower panicle branches -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M65 38 C58 34 53 29 50 23" stroke-width="1.15"></path>
+
+    <path d="M66 34 C73 30 78 25 81 19" stroke-width="1.15"></path>
+
+    <path d="M65 27 C58 24 55 20 52 16" stroke-width="1"></path>
+
+    <path d="M66 25 C72 21 76 17 78 12" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Dense green flower clusters -->
+  <g fill="url(#flowerGreen)" stroke="#606c43" stroke-width="0.45" filter="url(#softShadow)">
+
+    <circle cx="65" cy="10" r="3"></circle>
+    <circle cx="61" cy="13" r="2.4"></circle>
+    <circle cx="69" cy="14" r="2.5"></circle>
+
+    <circle cx="52" cy="17" r="2.6"></circle>
+    <circle cx="48" cy="21" r="2.2"></circle>
+    <circle cx="54" cy="22" r="2.4"></circle>
+
+    <circle cx="78" cy="13" r="2.6"></circle>
+    <circle cx="82" cy="18" r="2.2"></circle>
+    <circle cx="76" cy="20" r="2.4"></circle>
+
+    <circle cx="50" cy="25" r="2.1"></circle>
+    <circle cx="55" cy="27" r="2.3"></circle>
+
+    <circle cx="80" cy="24" r="2.2"></circle>
+    <circle cx="75" cy="27" r="2.1"></circle>
+
+    <circle cx="62" cy="20" r="2.2"></circle>
+    <circle cx="68" cy="21" r="2.1"></circle>
+    <circle cx="64" cy="25" r="2.5"></circle>
+
+  </g>
+
+  <!-- Flower highlights -->
+  <g fill="#e3e5aa" opacity="0.78">
+
+    <circle cx="64" cy="9" r="0.8"></circle>
+    <circle cx="51" cy="16" r="0.7"></circle>
+    <circle cx="78" cy="12" r="0.7"></circle>
+    <circle cx="54" cy="26" r="0.7"></circle>
+    <circle cx="80" cy="23" r="0.7"></circle>
+    <circle cx="64" cy="24" r="0.8"></circle>
+
+  </g>
+
+  <!-- Root crown -->
+  <path d="M48 108
+       C53 103 58 101 63 101
+       C69 101 75 103 80 108
+       C76 113 70 116 63 116
+       C57 116 52 113 48 108Z" fill="#775f49" stroke="#504137" stroke-width="1.3"></path>
+
+  <!-- Perennial roots -->
+  <g fill="none" stroke="#695544" stroke-linecap="round">
+
+    <path d="M54 112 C51 117 48 121 44 124" stroke-width="1.25"></path>
+
+    <path d="M61 113 C60 118 59 122 59 125" stroke-width="1.15"></path>
+
+    <path d="M68 112 C70 117 72 121 76 124" stroke-width="1.15"></path>
+
+  </g>
+
+</svg>

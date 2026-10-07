@@ -12548,6 +12548,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Good King Henry',
+      scientificName: 'Blitum bonus-henricus (L.) Rchb.',
+      category: 'vegetable',
+      icon: 'assets/crops/good-king-henry.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Blitum bonus-henricus — Good King Henry',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/525046/blitum-bonus-henricus/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate perennial conditions. Kew identifies Good King Henry as a perennial species primarily associated with the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cited cultivation guidance does not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moist but well-drained or well-drained growing conditions. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Good King Henry grows in fertile, well-drained soil and can tolerate chalk, clay, loam, or sandy soil. The Royal Horticultural Society recommends a sunny or semi-shaded position and adequately drained fertile ground.',
+
+      plantingNote:
+        'Good King Henry is a perennial edible leafy vegetable that can be propagated from seed. Current Kew taxonomy accepts Blitum bonus-henricus (L.) Rchb.; the older name Chenopodium bonus-henricus L. is treated as a synonym.',
+
+      harvestNote:
+        'Good King Henry is grown for edible young leaves, shoots, and flower buds. The Royal Horticultural Society recommends harvesting leaves as required and picking only lightly during the first year so plants can establish. Because harvest is repeated, stage-based, and dependent on plant establishment rather than one exact sowing-to-harvest interval, FarmCast keeps this crop as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Blitum bonus-henricus — Good King Henry',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/525046/blitum-bonus-henricus/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
