@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Apple</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of an apple branch with glossy green leaves,
+    white-pink blossom, ripe red apples, stems, highlights, shadows, and depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b7659"></stop>
+      <stop offset="0.55" stop-color="#70503d"></stop>
+      <stop offset="1" stop-color="#45352d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#285b38"></stop>
+      <stop offset="0.5" stop-color="#55924d"></stop>
+      <stop offset="1" stop-color="#9cc676"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#214a31"></stop>
+      <stop offset="1" stop-color="#699e58"></stop>
+    </linearGradient>
+
+    <radialGradient id="appleRed" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#ff9680"></stop>
+      <stop offset="0.42" stop-color="#e44b45"></stop>
+      <stop offset="0.78" stop-color="#b52832"></stop>
+      <stop offset="1" stop-color="#761d29"></stop>
+    </radialGradient>
+
+    <radialGradient id="appleRedDark" cx="35%" cy="28%" r="75%">
+      <stop offset="0" stop-color="#ed7769"></stop>
+      <stop offset="0.5" stop-color="#c63a3b"></stop>
+      <stop offset="1" stop-color="#741e29"></stop>
+    </radialGradient>
+
+    <linearGradient id="petal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffaf6"></stop>
+      <stop offset="1" stop-color="#efc8d0"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.3" flood-color="#242d24" flood-opacity="0.25"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="65" cy="116" rx="38" ry="6" fill="#293329" opacity="0.16"></ellipse>
+
+  <!-- branch -->
+  <path d="
+    M19 102
+    C36 89 50 75 61 60
+    C75 42 88 27 106 14" fill="none" stroke="url(#branchBrown)" stroke-width="7" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- smaller branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M48 78 C39 64 33 50 31 36" stroke-width="4"></path>
+
+    <path d="M62 59 C55 46 50 34 49 21" stroke-width="3.8"></path>
+
+    <path d="M75 43 C88 44 99 41 110 34" stroke-width="3.5"></path>
+
+    <path d="M38 88 C31 84 25 80 19 75" stroke-width="3"></path>
+
+  </g>
+
+  <!-- branch highlight -->
+  <path d="
+    M23 99
+    C41 85 53 72 64 57
+    C78 39 91 26 103 17" fill="none" stroke="#bc9876" stroke-width="1.1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- leaves -->
+  <g stroke="#285438" stroke-width="1.2" filter="url(#softShadow)">
+
+    <path d="
+      M31 37
+      C20 28 10 31 7 40
+      C15 48 26 48 34 42
+      C37 40 35 38 31 37Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M40 55
+      C28 47 18 51 16 60
+      C25 67 36 65 44 59
+      C47 56 44 54 40 55Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M49 22
+      C39 14 30 17 28 26
+      C36 33 46 32 53 26
+      C55 24 53 22 49 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M67 46
+      C77 36 88 36 95 43
+      C89 53 79 56 68 52
+      C65 51 64 48 67 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M89 30
+      C98 20 109 21 115 29
+      C108 38 98 40 89 35
+      C86 34 86 31 89 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M91 49
+      C101 40 112 42 118 50
+      C111 59 101 60 92 55
+      C89 53 89 51 91 49Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M26 77
+      C16 69 7 73 6 82
+      C15 88 24 86 31 81
+      C33 79 31 77 26 77Z" fill="url(#leafDark)"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+  <g fill="none" stroke="#c1d8a4" stroke-width="0.85" stroke-linecap="round" opacity="0.72">
+
+    <path d="M10 40 C18 40 26 40 32 40"></path>
+    <path d="M19 59 C28 58 36 57 42 57"></path>
+    <path d="M31 26 C39 25 46 25 51 24"></path>
+
+    <path d="M92 44 C83 47 75 49 69 50"></path>
+    <path d="M112 29 C104 31 97 33 90 34"></path>
+    <path d="M115 50 C107 52 100 53 93 53"></path>
+
+  </g>
+
+  <!-- apple stems -->
+  <g fill="none" stroke="#5c5834" stroke-width="2" stroke-linecap="round">
+
+    <path d="M53 65 C52 72 52 77 54 82"></path>
+    <path d="M73 50 C76 58 78 63 80 69"></path>
+    <path d="M38 75 C38 82 39 87 41 92"></path>
+
+  </g>
+
+  <!-- apples -->
+  <g stroke="#7c202b" stroke-width="1.5" filter="url(#softShadow)">
+
+    <path d="
+      M40 81
+      C44 77 50 77 54 80
+      C58 77 65 78 68 83
+
+      C72 90 69 101 61 108
+      C56 112 50 112 44 108
+
+      C36 102 32 92 35 86
+      C36 83 38 82 40 81Z" fill="url(#appleRed)"></path>
+
+    <path d="
+      M69 68
+      C73 64 78 65 82 68
+      C86 65 92 66 95 71
+
+      C99 78 96 89 89 96
+      C84 100 78 100 73 96
+
+      C65 90 62 80 65 74
+      C66 71 67 69 69 68Z" fill="url(#appleRedDark)"></path>
+
+    <path d="
+      M30 90
+      C34 87 39 87 42 90
+      C46 87 52 89 54 93
+
+      C58 100 54 109 48 114
+      C43 118 38 118 33 114
+
+      C26 109 23 100 26 94
+      C27 92 28 91 30 90Z" fill="url(#appleRed)"></path>
+
+  </g>
+
+  <!-- apple dimples -->
+  <g fill="#5c342e" opacity="0.85">
+
+    <ellipse cx="54" cy="81" rx="3" ry="1.5"></ellipse>
+
+    <ellipse cx="81" cy="69" rx="2.8" ry="1.4"></ellipse>
+
+    <ellipse cx="41" cy="91" rx="2.7" ry="1.3"></ellipse>
+
+  </g>
+
+  <!-- fruit highlights -->
+  <g fill="#ffd0bb" opacity="0.73">
+
+    <ellipse cx="44" cy="87" rx="3.5" ry="5" transform="rotate(25 44 87)"></ellipse>
+
+    <ellipse cx="72" cy="74" rx="3.1" ry="4.5" transform="rotate(25 72 74)"></ellipse>
+
+    <ellipse cx="33" cy="96" rx="2.8" ry="4" transform="rotate(25 33 96)"></ellipse>
+
+  </g>
+
+  <!-- blossom branch -->
+  <path d="
+    M76 42
+    C75 33 76 26 80 19" fill="none" stroke="#75513e" stroke-width="1.8" stroke-linecap="round"></path>
+
+  <!-- apple blossom -->
+  <g transform="translate(80 18)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-7 -1 -10 -6 -7 -10
+      C-3 -14 2 -10 2 -4Z" fill="url(#petal)" stroke="#d69aa8" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C2 -7 7 -10 11 -7
+      C14 -3 10 2 5 2Z" fill="url(#petal)" stroke="#d69aa8" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C7 2 9 7 6 11
+      C2 14 -2 9 -2 4Z" fill="url(#petal)" stroke="#d69aa8" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C-2 7 -7 10 -11 6
+      C-14 2 -10 -2 -4 -2Z" fill="url(#petal)" stroke="#d69aa8" stroke-width="0.7"></path>
+
+    <path d="
+      M0 0
+      C-4 -5 -2 -10 2 -11
+      C7 -10 8 -5 4 -2Z" fill="url(#petal)" stroke="#d69aa8" stroke-width="0.7"></path>
+
+    <circle cx="0" cy="0" r="3.2" fill="#ddb747"></circle>
+
+    <g fill="#8b7031">
+      <circle cx="-1.5" cy="-1" r="0.55"></circle>
+      <circle cx="1.4" cy="-1" r="0.55"></circle>
+      <circle cx="0" cy="1.3" r="0.55"></circle>
+    </g>
+
+  </g>
+
+  <!-- small leaf near flower -->
+  <path d="
+    M83 26
+    C90 20 97 23 99 29
+    C94 35 87 35 82 31Z" fill="url(#leafGreen)" stroke="#285438" stroke-width="1"></path>
+
+</svg>

@@ -13861,6 +13861,70 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Apple',
+      scientificName: 'Malus domestica (Suckow) Borkh.',
+      category: 'fruit',
+      icon: 'assets/crops/apple.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Apple Tree'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Apples',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/apples/grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate growing conditions. Kew identifies Apple as a tree primarily associated with the temperate biome. Royal Horticultural Society guidance recommends a warm, sunny and sheltered planting position while avoiding sites prone to damaging late frosts. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends adequate moisture, particularly while trees establish and while fruits are developing, while also requiring soil that drains freely. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Prefers fertile, moisture-retentive but well-drained soil. FarmCast does not store an unsupported universal numeric soil-pH target.',
+
+      soilNote:
+        'Apple trees perform best in fertile soil that drains freely and does not become waterlogged. Royal Horticultural Society guidance recommends full sun and a warm, sheltered position. Rootstock choice strongly affects the eventual size and vigour of the tree.',
+
+      plantingNote:
+        'Apple is one of the most widely cultivated edible tree fruits. Named apple cultivars are normally grown as grafted trees, with a selected fruiting cultivar joined to a rootstock that influences tree size and vigour. Current Kew taxonomy accepts Malus domestica (Suckow) Borkh.; names including Malus pumila, Malus niedzwetzkyana, Malus chitralensis and Malus sieversii are included among synonyms in the current Kew record.',
+
+      harvestNote:
+        'Apples are harvested when fruits have reached the appropriate maturity for their cultivar, generally during the fruiting season from late summer into autumn in temperate growing regions. Harvest timing differs substantially among cultivars, rootstocks, climate and planting age. Because no single universal planting-to-harvest interval applies to Apple trees, FarmCast keeps Apple as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Apples',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/apples/grow-your-own'
+          ].join('')
+      }
+    },
+
+
   
 ];
 
