@@ -13339,6 +13339,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Agretti',
+      scientificName: 'Soda inermis Fourr.',
+      category: 'vegetable',
+      icon: 'assets/crops/agretti.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Salsola soda — agretti',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/161061/salsola-soda/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate annual growing conditions. Kew identifies Agretti under the accepted name Soda inermis Fourr. as an annual species primarily associated with the temperate biome. Royal Horticultural Society guidance also describes it as a tender annual crop. FarmCast therefore keeps temperature guidance descriptive rather than converting biome or hardiness information into an unsupported universal ideal temperature range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moist to moist but well-drained soil and advises keeping plants well watered during dry periods. FarmCast therefore keeps water guidance descriptive instead of inventing an annual rainfall range.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Agretti grows well in loam or sandy soil in a sunny, sheltered position. Royal Horticultural Society guidance recommends moist to moist but well-drained conditions and notes that the crop can tolerate wet soil but should not remain waterlogged.',
+
+      plantingNote:
+        'Agretti is an edible annual vegetable propagated from fresh seed. Royal Horticultural Society guidance recommends starting fresh seed under glass and planting seedlings out after establishment. Current Kew taxonomy accepts Soda inermis Fourr.; the widely used name Salsola soda L., along with Kali soda and Salsola longifolia, is treated as a synonym.',
+
+      harvestNote:
+        'Agretti is harvested for its tender green shoots and succulent needle-like leaves, which are eaten as a salad crop or cooked as a vegetable. Royal Horticultural Society guidance places harvest from late spring through early autumn and recommends cutting above the growth points to encourage bushier regrowth. Because this is a seasonal and growth-stage-based harvest rather than one universal planting-to-harvest interval, FarmCast keeps Agretti as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Salsola soda — agretti',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/161061/salsola-soda/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
