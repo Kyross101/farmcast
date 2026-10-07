@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="pepinoTitle pepinoDesc">
+  <title id="pepinoTitle">Pepino Melon</title>
+  <desc id="pepinoDesc">
+    Detailed pepino melon plant with green leaves,
+    purple-white flowers and ripe yellow fruits with purple stripes.
+  </desc>
+
+  <defs>
+    <linearGradient id="pepinoStem" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6aa05b"></stop>
+      <stop offset="55%" stop-color="#417d48"></stop>
+      <stop offset="100%" stop-color="#245e39"></stop>
+    </linearGradient>
+
+    <linearGradient id="pepinoLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#91ce70"></stop>
+      <stop offset="43%" stop-color="#58aa59"></stop>
+      <stop offset="100%" stop-color="#287340"></stop>
+    </linearGradient>
+
+    <linearGradient id="pepinoLeafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#69b45e"></stop>
+      <stop offset="100%" stop-color="#1c6038"></stop>
+    </linearGradient>
+
+    <radialGradient id="pepinoFruit" cx="32%" cy="24%" r="78%">
+      <stop offset="0%" stop-color="#fff4a8"></stop>
+      <stop offset="34%" stop-color="#f4df72"></stop>
+      <stop offset="72%" stop-color="#e3c550"></stop>
+      <stop offset="100%" stop-color="#c5a63b"></stop>
+    </radialGradient>
+
+    <radialGradient id="pepinoFruitGreen" cx="32%" cy="25%" r="75%">
+      <stop offset="0%" stop-color="#e3eda0"></stop>
+      <stop offset="45%" stop-color="#acc66b"></stop>
+      <stop offset="100%" stop-color="#718f4a"></stop>
+    </radialGradient>
+
+    <linearGradient id="pepinoStripe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a376bb"></stop>
+      <stop offset="55%" stop-color="#815395"></stop>
+      <stop offset="100%" stop-color="#60396f"></stop>
+    </linearGradient>
+
+    <linearGradient id="pepinoPetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f2fb"></stop>
+      <stop offset="55%" stop-color="#c9b3dc"></stop>
+      <stop offset="100%" stop-color="#9777b0"></stop>
+    </linearGradient>
+
+    <filter id="pepinoShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#153720" flood-opacity="0.22"></feDropShadow>
+    </filter>
+  </defs>
+
+  <ellipse cx="64" cy="112" rx="39" ry="6" fill="#183720" opacity="0.12"></ellipse>
+
+  <!-- Main stems -->
+  <g fill="none" stroke="url(#pepinoStem)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M57 108
+         C58 87 60 68 65 51
+         C69 37 74 25 80 15" stroke-width="5"></path>
+
+    <path d="M61 80
+         C48 72 39 63 32 52" stroke-width="3.5"></path>
+
+    <path d="M64 67
+         C78 63 90 55 100 45" stroke-width="3.4"></path>
+
+    <path d="M58 94
+         C46 91 36 85 28 77" stroke-width="3"></path>
+
+    <path d="M59 89
+         C75 87 88 81 99 72" stroke-width="3"></path>
+  </g>
+
+  <!-- Stem highlight -->
+  <path d="M55 106
+       C56 86 58 68 63 51
+       C67 36 71 25 77 16" fill="none" stroke="#9dca82" stroke-width="1.1" stroke-linecap="round" opacity="0.5"></path>
+
+  <!-- Upper left leaf -->
+  <g filter="url(#pepinoShadow)">
+    <path d="M38 55
+         C28 54 18 49 17 40
+         C24 32 35 32 44 39
+         C49 45 46 52 38 55Z" fill="url(#pepinoLeaf)"></path>
+
+    <path d="M42 47
+         C34 44 26 42 18 41" fill="none" stroke="#d9efc6" stroke-width="1.35" stroke-linecap="round" opacity="0.7"></path>
+
+    <path d="M33 44 L29 37
+         M38 46 L39 39
+         M28 43 L23 38" fill="none" stroke="#b9dc9e" stroke-width="0.9" opacity="0.62"></path>
+  </g>
+
+  <!-- Upper right leaf -->
+  <g filter="url(#pepinoShadow)">
+    <path d="M91 47
+         C93 36 101 29 110 31
+         C116 39 112 49 104 54
+         C97 57 92 53 91 47Z" fill="url(#pepinoLeafDark)"></path>
+
+    <path d="M97 51
+         C102 44 106 38 110 32" fill="none" stroke="#d2eabb" stroke-width="1.3" opacity="0.7"></path>
+  </g>
+
+  <!-- Center leaf -->
+  <g filter="url(#pepinoShadow)">
+    <path d="M55 70
+         C46 64 45 54 52 47
+         C62 47 69 55 68 64
+         C66 72 60 74 55 70Z" fill="url(#pepinoLeaf)"></path>
+
+    <path d="M60 68
+         C59 61 56 54 53 48" fill="none" stroke="#dbefc7" stroke-width="1.3" opacity="0.7"></path>
+  </g>
+
+  <!-- Lower left leaf -->
+  <g filter="url(#pepinoShadow)">
+    <path d="M37 81
+         C27 76 17 79 14 88
+         C20 98 33 101 43 93
+         C48 87 44 82 37 81Z" fill="url(#pepinoLeafDark)"></path>
+
+    <path d="M40 88
+         C32 88 24 89 16 89" fill="none" stroke="#d0e8b8" stroke-width="1.3" opacity="0.7"></path>
+  </g>
+
+  <!-- Lower right leaf -->
+  <g filter="url(#pepinoShadow)">
+    <path d="M89 77
+         C97 68 108 67 115 74
+         C115 84 107 92 96 90
+         C89 89 85 83 89 77Z" fill="url(#pepinoLeaf)"></path>
+
+    <path d="M94 84
+         C102 80 108 77 114 75" fill="none" stroke="#d9efc4" stroke-width="1.3" opacity="0.7"></path>
+  </g>
+
+  <!-- Flower stalk -->
+  <path d="M78 29 C84 27 90 28 95 32" fill="none" stroke="#4c8147" stroke-width="2.4" stroke-linecap="round"></path>
+
+  <!-- Pepino flower -->
+  <g filter="url(#pepinoShadow)">
+    <path d="M94 35
+         L88 27
+         C87 23 91 20 95 23
+         L98 29
+         L101 23
+         C104 20 108 22 108 26
+         L105 33
+         L113 33
+         C117 34 117 39 113 41
+         L105 42
+         L109 49
+         C110 53 106 55 103 52
+         L98 46
+         L94 52
+         C91 55 87 52 88 48
+         L91 41
+         L84 40
+         C80 38 81 34 85 33
+         Z" fill="url(#pepinoPetal)" stroke="#82639b" stroke-width="1" stroke-linejoin="round"></path>
+
+    <g fill="none" stroke="#ffffff" stroke-width="1.1" stroke-linecap="round" opacity="0.55">
+      <path d="M94 35 L92 26"></path>
+      <path d="M99 35 L104 25"></path>
+      <path d="M101 38 L112 37"></path>
+      <path d="M99 41 L105 49"></path>
+      <path d="M95 40 L91 49"></path>
+    </g>
+
+    <circle cx="98" cy="37" r="4.8" fill="#e6c542"></circle>
+
+    <g fill="#ba9131">
+      <ellipse cx="98" cy="33" rx="1.1" ry="2.4"></ellipse>
+      <ellipse cx="102" cy="36" rx="1.1" ry="2.4" transform="rotate(70 102 36)"></ellipse>
+      <ellipse cx="100" cy="41" rx="1.1" ry="2.4" transform="rotate(145 100 41)"></ellipse>
+      <ellipse cx="95" cy="40" rx="1.1" ry="2.4" transform="rotate(215 95 40)"></ellipse>
+      <ellipse cx="94" cy="35" rx="1.1" ry="2.4" transform="rotate(290 94 35)"></ellipse>
+    </g>
+  </g>
+
+  <!-- Fruit stems -->
+  <g fill="none" stroke="#567844" stroke-width="2.5" stroke-linecap="round">
+    <path d="M53 79 C50 84 49 89 49 94"></path>
+    <path d="M70 66 C75 70 79 75 81 80"></path>
+    <path d="M91 67 C95 71 98 76 99 81"></path>
+  </g>
+
+  <!-- Large ripe fruit -->
+  <g filter="url(#pepinoShadow)">
+    <ellipse cx="48" cy="100" rx="15" ry="18" transform="rotate(7 48 100)" fill="url(#pepinoFruit)" stroke="#b69b39" stroke-width="1.4"></ellipse>
+
+    <path d="M40 86
+         C43 91 42 99 41 108" fill="none" stroke="url(#pepinoStripe)" stroke-width="3.2" stroke-linecap="round" opacity="0.88"></path>
+
+    <path d="M49 83
+         C52 91 53 101 52 116" fill="none" stroke="url(#pepinoStripe)" stroke-width="3" stroke-linecap="round" opacity="0.82"></path>
+
+    <path d="M58 89
+         C55 97 57 105 58 109" fill="none" stroke="url(#pepinoStripe)" stroke-width="2.7" stroke-linecap="round" opacity="0.78"></path>
+
+    <ellipse cx="42" cy="92" rx="5" ry="3.5" transform="rotate(-25 42 92)" fill="#fff7c5" opacity="0.55"></ellipse>
+
+    <path d="M45 81 L48 77 L51 82" fill="none" stroke="#587440" stroke-width="1.5" stroke-linecap="round"></path>
+  </g>
+
+  <!-- Center ripe fruit -->
+  <g filter="url(#pepinoShadow)">
+    <ellipse cx="81" cy="89" rx="13" ry="16" transform="rotate(-7 81 89)" fill="url(#pepinoFruit)" stroke="#b89c3c" stroke-width="1.35"></ellipse>
+
+    <path d="M74 77
+         C77 82 77 91 76 101" fill="none" stroke="url(#pepinoStripe)" stroke-width="2.8" stroke-linecap="round" opacity="0.84"></path>
+
+    <path d="M83 73
+         C86 81 86 91 85 104" fill="none" stroke="url(#pepinoStripe)" stroke-width="2.8" stroke-linecap="round" opacity="0.85"></path>
+
+    <path d="M90 79
+         C88 86 90 94 90 98" fill="none" stroke="url(#pepinoStripe)" stroke-width="2.5" stroke-linecap="round" opacity="0.78"></path>
+
+    <ellipse cx="76" cy="82" rx="4" ry="3" fill="#fff7c6" opacity="0.5" transform="rotate(-20 76 82)"></ellipse>
+
+    <path d="M78 72 L81 68 L84 73" fill="none" stroke="#597642" stroke-width="1.5" stroke-linecap="round"></path>
+  </g>
+
+  <!-- Younger green fruit -->
+  <g filter="url(#pepinoShadow)">
+    <ellipse cx="101" cy="88" rx="10" ry="13" transform="rotate(9 101 88)" fill="url(#pepinoFruitGreen)" stroke="#728c49" stroke-width="1.25"></ellipse>
+
+    <path d="M96 79
+         C99 84 98 91 98 97" fill="none" stroke="#8c68a3" stroke-width="2" stroke-linecap="round" opacity="0.48"></path>
+
+    <ellipse cx="97" cy="83" rx="3" ry="2.2" fill="#edf3bd" opacity="0.5"></ellipse>
+
+    <path d="M98 76 L101 73 L104 77" fill="none" stroke="#577340" stroke-width="1.4" stroke-linecap="round"></path>
+  </g>
+</svg>

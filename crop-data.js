@@ -19283,6 +19283,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Pepino Melon',
+      localName: 'Pepino Dulce / Melon Pear',
+      scientificName:
+        'Solanum muricatum Aiton',
+      category: 'fruit',
+      icon: 'assets/crops/pepino-melon.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown',
+          label: 'Seed Grown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Solanum muricatum — Pepino',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/',
+            'plants/125512/',
+            'solanum-muricatum-f/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Pepino Melon is a tender perennial fruit crop that performs best in bright, warm and sheltered growing conditions. The Royal Horticultural Society recommends full sun and protection from cold conditions for Solanum muricatum. Because these recommendations describe cultivation and hardiness rather than one universal crop-wide optimum temperature interval or absolute physiological minimum and maximum range, FarmCast keeps the main temperature fields descriptive rather than assigning unsupported numeric thresholds.',
+
+      rainfallRange:
+        'Pepino Melon benefits from consistent soil moisture during active growth and fruit development while still requiring good drainage. The Royal Horticultural Society recommends moist but well-drained growing conditions and regular watering during cultivation. Because rainfall distribution, container or field conditions, soil characteristics and supplemental irrigation all affect actual moisture availability, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'The Royal Horticultural Society recommends well-drained loamy soil and identifies neutral soil conditions as suitable for Pepino. Because this guidance provides a soil-reaction class rather than a precise numeric pH interval specifically validated for all Solanum muricatum production systems, FarmCast keeps soilPH unset rather than inventing numerical lower and upper limits.',
+
+      plantingNote:
+        'Pepino Melon in this FarmCast entry refers specifically to Solanum muricatum Aiton, commonly known as Pepino, Pepino Dulce and Melon Pear. Despite its common name, it is not the same species as the existing FarmCast Melon crop. The Royal Horticultural Society lists propagation by seed for Solanum muricatum. Current Kew Plants of the World Online taxonomy accepts Solanum muricatum Aiton and lists seventeen synonyms: Solanum guatemalense, Solanum hebephorum, Solanum longifolium, Solanum melaniferum, Solanum muricatum var. dissectum, Solanum muricatum f. glaberrimum, Solanum muricatum var. papillosistylum, Solanum muricatum var. parvifolium, Solanum muricatum var. popayanum, Solanum muricatum var. praecedens, Solanum muricatum var. protogenum, Solanum muricatum var. teleutogenum, Solanum pedunculatum, Solanum saccianum, Solanum scabrum, Solanum variegatum and Solanum wallisii. All seventeen Kew synonyms and major common-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Pepino Melon is harvested as a ripe edible fruit. University of California Davis Postharvest Research and Extension Center recommends harvesting Pepino when ripe and yellow for best flavor quality, noting that the skin progresses from green through pale or cream shades to yellow, often with characteristic purple striping. Because this is a fruit-maturity indicator rather than one universal seed-to-harvest interval, Pepino Melon remains guidance-only with no automatic FarmCast harvest date.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Solanum muricatum — Pepino',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/',
+            'plants/125512/',
+            'solanum-muricatum-f/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
