@@ -14957,6 +14957,74 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Pistachio',
+      scientificName: 'Pistacia vera L.',
+      category: 'tree-nut',
+      icon: 'assets/crops/pistachio.svg',
+
+      plantingMethods: [
+        {
+          value: 'budded-trees',
+          label: 'Budded Pistachio Trees'
+        },
+        {
+          value: 'rootstock-transplants',
+          label: 'Rootstock Transplants for Field Budding'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        title:
+          'Pruning and Training Resources — Pistachio',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/node/139940/printable/print'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm temperate orchard conditions with sufficient winter chilling and a long, hot growing season for nut development. Kew identifies Pistachio as a tree primarily associated with the temperate biome. University of California guidance also shows that cultivar and rootstock performance varies with cold tolerance, heat and local orchard conditions. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Commercial Pistachio orchards rely on carefully managed soil moisture and irrigation, particularly during nut development. Water stress and excess moisture can both affect tree performance and nut quality, so FarmCast keeps water guidance descriptive rather than inventing one universal annual rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows source guidance emphasizing suitable orchard soil, drainage, irrigation management and locally appropriate rootstock selection.',
+
+      soilNote:
+        'Pistachio requires a sunny orchard site with sufficient rooting space and suitable drainage. Commercial production uses rootstocks selected for adaptation to local soil, salinity, disease and climatic conditions. Orchard establishment should therefore match the rootstock and cultivar to the specific site rather than rely on one universal soil prescription.',
+
+      plantingNote:
+        'Pistachio is a familiar edible tree-nut crop. University of California guidance describes planting young rootstocks into the orchard and budding Pistacia vera scions onto those rootstocks, with T-budding identified as the usual field-budding method. Commercial orchards also require compatible male pollinizer trees because Pistachio has separate male and female trees. Current Kew taxonomy accepts Pistacia vera L.; historical synonyms include Lentiscus vera, Pistacia narbonnensis, Pistacia nigricans, Pistacia officinarum, Pistacia reticulata, Pistacia trifolia and Terebinthus pistacia.',
+
+      harvestNote:
+        'Pistachio harvest maturity is determined from actual nut development rather than a universal number of days after planting. University of California guidance uses changes in hull appearance and hull slip, when the outer hull separates readily from the shell, as important harvest indicators. Cultivars differ in maturity timing, and Pistachio is a perennial orchard tree that requires several years of establishment before meaningful production. FarmCast therefore keeps Pistachio as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        title:
+          'California Pistachio Research — Climate and Cultivars',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/site/california-pistachio-research/',
+            'climate-cultivars'
+          ].join('')
+      }
+    },
+
   
 ];
 

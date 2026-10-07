@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Pistachio</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a pistachio branch with compound
+    green leaves, clustered fruits, pink-red outer hulls, naturally split
+    beige shells, and visible green pistachio kernels.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b7559"></stop>
+      <stop offset="0.55" stop-color="#6c4e3e"></stop>
+      <stop offset="1" stop-color="#42342d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#285b39"></stop>
+      <stop offset="0.5" stop-color="#57944f"></stop>
+      <stop offset="1" stop-color="#9bc77a"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#204832"></stop>
+      <stop offset="1" stop-color="#679d59"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitHull" cx="30%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#f0c29d"></stop>
+      <stop offset="0.4" stop-color="#d78378"></stop>
+      <stop offset="0.75" stop-color="#a84d58"></stop>
+      <stop offset="1" stop-color="#713541"></stop>
+    </radialGradient>
+
+    <linearGradient id="shellCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1dfb8"></stop>
+      <stop offset="0.55" stop-color="#d3b883"></stop>
+      <stop offset="1" stop-color="#a78962"></stop>
+    </linearGradient>
+
+    <radialGradient id="kernelGreen" cx="35%" cy="28%" r="75%">
+      <stop offset="0" stop-color="#e2e99a"></stop>
+      <stop offset="0.4" stop-color="#9fbb59"></stop>
+      <stop offset="0.78" stop-color="#65863d"></stop>
+      <stop offset="1" stop-color="#465f31"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#222a22" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="116" rx="39" ry="6" fill="#273128" opacity="0.16"></ellipse>
+
+  <!-- main woody branch -->
+  <path d="
+    M18 105
+    C34 91 47 76 58 60
+    C71 42 85 28 106 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- side branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M47 77 C39 64 33 52 31 40" stroke-width="3.4"></path>
+
+    <path d="M61 56 C55 44 52 32 53 20" stroke-width="3.1"></path>
+
+    <path d="M76 39 C88 41 100 37 112 29" stroke-width="3"></path>
+
+    <path d="M38 90 C30 86 23 81 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- bark highlight -->
+  <path d="
+    M22 101
+    C38 87 50 73 61 57
+    C74 41 88 28 103 18" fill="none" stroke="#bc9677" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- compound pistachio leaves -->
+  <g stroke="#285138" stroke-width="1.05" filter="url(#softShadow)">
+
+    <path d="
+      M29 42
+      C19 33 10 36 7 44
+      C15 52 25 52 33 47
+      C36 45 33 43 29 42Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M41 58
+      C30 49 20 53 18 62
+      C27 70 38 68 45 62
+      C48 60 45 58 41 58Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M53 22
+      C43 14 34 17 31 26
+      C39 34 49 33 56 27
+      C59 25 57 23 53 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M70 46
+      C79 36 90 36 97 43
+      C91 53 81 56 71 52
+      C68 51 68 48 70 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M92 30
+      C101 20 112 21 118 29
+      C111 38 101 40 92 35
+      C89 34 89 31 92 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 49
+      C106 40 116 43 120 51
+      C113 59 103 60 95 55
+      C92 53 93 51 96 49Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+  <g fill="none" stroke="#bfd8a0" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M10 44 C18 44 26 44 32 45"></path>
+    <path d="M21 62 C29 61 37 61 43 60"></path>
+    <path d="M34 26 C42 26 49 25 55 25"></path>
+
+    <path d="M94 44 C85 47 78 49 72 50"></path>
+    <path d="M115 29 C107 31 100 33 93 34"></path>
+    <path d="M117 51 C109 52 102 53 96 53"></path>
+
+  </g>
+
+  <!-- hanging cluster stems -->
+  <g fill="none" stroke="#6e6742" stroke-width="1.6" stroke-linecap="round">
+
+    <path d="M56 61 C55 68 54 74 55 81"></path>
+    <path d="M65 56 C67 65 68 72 68 80"></path>
+    <path d="M74 51 C78 59 80 67 80 75"></path>
+
+    <path d="M55 70 C49 75 47 81 47 86"></path>
+    <path d="M68 68 C62 75 61 81 61 87"></path>
+    <path d="M79 65 C85 70 88 76 88 82"></path>
+
+  </g>
+
+  <!-- whole pistachio fruits in reddish hull -->
+  <g stroke="#753743" stroke-width="1.1" filter="url(#softShadow)">
+
+    <ellipse cx="47" cy="91" rx="7" ry="11" fill="url(#fruitHull)" transform="rotate(-10 47 91)"></ellipse>
+
+    <ellipse cx="60" cy="88" rx="7" ry="11" fill="url(#fruitHull)" transform="rotate(4 60 88)"></ellipse>
+
+    <ellipse cx="73" cy="86" rx="7" ry="11" fill="url(#fruitHull)" transform="rotate(-5 73 86)"></ellipse>
+
+    <ellipse cx="87" cy="86" rx="7" ry="11" fill="url(#fruitHull)" transform="rotate(10 87 86)"></ellipse>
+
+    <ellipse cx="53" cy="103" rx="7" ry="10" fill="url(#fruitHull)" transform="rotate(-8 53 103)"></ellipse>
+
+  </g>
+
+  <!-- fruit highlights -->
+  <g fill="#ffd9bf" opacity="0.58">
+
+    <ellipse cx="44" cy="86" rx="1.9" ry="3.5" transform="rotate(-24 44 86)"></ellipse>
+
+    <ellipse cx="57" cy="83" rx="1.9" ry="3.5" transform="rotate(-24 57 83)"></ellipse>
+
+    <ellipse cx="70" cy="81" rx="1.9" ry="3.4" transform="rotate(-24 70 81)"></ellipse>
+
+  </g>
+
+  <!-- opened pistachio shell -->
+  <g transform="translate(82 103)" filter="url(#softShadow)">
+
+    <!-- left shell half -->
+    <path d="
+      M-2 -13
+      C-10 -12 -15 -5 -14 4
+      C-13 12 -8 18 -2 19
+
+      C-5 10 -5 2 -2 -13Z" fill="url(#shellCream)" stroke="#927753" stroke-width="1.2"></path>
+
+    <!-- right shell half -->
+    <path d="
+      M2 -13
+      C10 -12 15 -5 14 4
+      C13 12 8 18 2 19
+
+      C5 10 5 2 2 -13Z" fill="url(#shellCream)" stroke="#927753" stroke-width="1.2"></path>
+
+    <!-- exposed green kernel -->
+    <path d="
+      M0 -9
+      C-6 -7 -8 -1 -7 6
+      C-6 13 -3 17 0 18
+
+      C4 17 7 13 8 6
+      C9 -1 6 -7 0 -9Z" fill="url(#kernelGreen)" stroke="#536b36" stroke-width="1.1"></path>
+
+    <!-- kernel inner highlight -->
+    <path d="
+      M-2 -5
+      C-4 0 -4 6 -2 10" fill="none" stroke="#e1e9a0" stroke-width="1.1" stroke-linecap="round" opacity="0.7"></path>
+
+    <!-- shell texture -->
+    <g fill="none" stroke="#b29a71" stroke-width="0.55" opacity="0.8">
+
+      <path d="M-8 -7 C-11 0 -10 8 -7 13"></path>
+      <path d="M8 -7 C11 0 10 8 7 13"></path>
+
+    </g>
+
+  </g>
+
+  <!-- second partially opened shell -->
+  <g transform="translate(34 103) scale(.78)" filter="url(#softShadow)">
+
+    <path d="
+      M-2 -13
+      C-10 -12 -15 -5 -14 4
+      C-13 12 -8 18 -2 19
+      C-5 10 -5 2 -2 -13Z" fill="url(#shellCream)" stroke="#927753" stroke-width="1.4"></path>
+
+    <path d="
+      M2 -13
+      C10 -12 15 -5 14 4
+      C13 12 8 18 2 19
+      C5 10 5 2 2 -13Z" fill="url(#shellCream)" stroke="#927753" stroke-width="1.4"></path>
+
+    <path d="
+      M0 -9
+      C-6 -7 -8 -1 -7 6
+      C-6 13 -3 17 0 18
+      C4 17 7 13 8 6
+      C9 -1 6 -7 0 -9Z" fill="url(#kernelGreen)" stroke="#536b36" stroke-width="1.2"></path>
+
+  </g>
+
+  <!-- tiny fruit attachment caps -->
+  <g fill="#6a7543">
+
+    <path d="M43 81 L47 78 L51 81 L47 82Z"></path>
+    <path d="M56 78 L60 75 L64 78 L60 79Z"></path>
+    <path d="M69 76 L73 73 L77 76 L73 77Z"></path>
+    <path d="M83 76 L87 73 L91 76 L87 77Z"></path>
+
+  </g>
+
+</svg>
