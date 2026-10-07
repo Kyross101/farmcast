@@ -16140,6 +16140,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Water Chestnut',
+      localName: 'Chinese Water Chestnut',
+      scientificName:
+        'Eleocharis dulcis (Burm.f.) Trin. ex Hensch.',
+      category: 'vegetable',
+      icon: 'assets/crops/water-chestnut.svg',
+
+      plantingMethods: [
+        {
+          value: 'transplanted',
+          label: 'Transplanted Corm-Raised Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Eleocharis dulcis (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Eleocharis_dulcis_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical to subtropical wetland growing conditions. Kew identifies Eleocharis dulcis as a perennial or tuberous geophyte occurring primarily in tropical and subtropical biomes and records the species as native to the Philippines. Water Chestnut requires a long warm growing period, but FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'A conventional annual rainfall range is not appropriate for Water Chestnut because production depends primarily on controlled shallow-water or flooded-field conditions rather than rainfall totals alone. Water availability and water-level management are therefore more useful than a universal annual rainfall requirement.',
+
+      soilPH:
+        'PROSEA reports that Chinese Water Chestnut prefers rich clay or muck soils and cites a preferred soil pH of about 6.9–7.3. Local soil and water conditions should still be considered because the crop is grown under saturated or flooded conditions.',
+
+      soilNote:
+        'Water Chestnut is an aquatic vegetable grown for edible corms that develop underground at the ends of stolons. PROSEA describes rich clay or muck soils as suitable, while University of Florida IFAS Extension describes production in controlled flooded plots. The crop requires water-level management throughout active growth rather than ordinary dry-land vegetable culture.',
+
+      plantingNote:
+        'Water Chestnut in this FarmCast entry refers specifically to Eleocharis dulcis, commonly called Chinese Water Chestnut. It is not botanically related to the Chestnut tree already listed in FarmCast. PROSEA describes propagation using corms: corms are first established in nursery beds, the resulting young plants are developed further, and established plants are then transplanted into the permanent field. Kew currently accepts Eleocharis dulcis (Burm.f.) Trin. ex Hensch. and lists historical synonyms including Andropogon dulcis, Eleocharis esculenta, Eleocharis plantaginea, Eleocharis tuberosa and Scirpus tuberosus.',
+
+      harvestNote:
+        'The edible portion is the crisp underground corm. PROSEA reports that harvesting normally occurs about 7–9 months after transplanting to the field, or when the above-ground stems have turned brown and begun to die back. FarmCast therefore provides an automatic harvest estimate only for the transplanted planting method. Actual crop maturity and stem condition should still take priority over the calendar estimate.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Eleocharis dulcis (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Eleocharis_dulcis_(PROSEA)'
+          ].join('')
+      }
+    },
+
   
 ];
 

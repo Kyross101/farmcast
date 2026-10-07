@@ -7526,6 +7526,34 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  'Water Chestnut': {
+    transplanted: {
+      minMonths: 7,
+      maxMonths: 9,
+      basis:
+        'after transplanting',
+      derived: false,
+
+      note:
+        'PROSEA reports that Chinese Water Chestnut is normally harvested about 7–9 months after transplanting to the field. Browning and dieback of the stems are also important maturity indicators, so actual field maturity should take priority over the calendar estimate.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Eleocharis dulcis (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Eleocharis_dulcis_(PROSEA)'
+          ].join('')
+      }
+    }
+  },
+
 
 
 
