@@ -15365,6 +15365,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Chia',
+      scientificName: 'Salvia hispanica L.',
+      category: 'oilseed',
+      icon: 'assets/crops/chia.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        },
+        {
+          value: 'transplanted-seedlings',
+          label: 'Transplanted Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Master Gardeners of Santa Clara County',
+
+        title:
+          'Chia',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/node/137213/printable/print'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm subtropical growing conditions with a sufficiently suitable day length for flowering and seed development. Kew identifies Chia as an annual species primarily associated with the subtropical biome. Research also shows that flowering and maturity are strongly affected by sowing date and photoperiod, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Chia can perform under relatively low-water conditions once established, but seedling establishment and seed development still require suitable soil moisture. FarmCast therefore keeps water guidance descriptive rather than inventing one universal annual rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows source guidance emphasizing a well-drained growing site rather than assigning an unsupported numeric range.',
+
+      soilNote:
+        'Chia performs best in well-drained soil and full sun to partial shade. University of California Agriculture and Natural Resources describes the crop as relatively low-water once established, while prolonged wet soil should be avoided.',
+
+      plantingNote:
+        'Chia in this FarmCast entry refers specifically to Salvia hispanica L., the familiar food crop grown for edible chia seeds. University of California Agriculture and Natural Resources recommends direct seeding after frost where applicable or establishing seedlings before transplanting. Current Kew taxonomy accepts Salvia hispanica L.; its historical synonyms include Kiosmina hispanica, Salvia neohispanica, Salvia tetragona, Salvia chia, Salvia prysmatica and Salvia schiedeana. This crop should not be confused with Golden or California Chia, Salvia columbariae, which is a different species.',
+
+      harvestNote:
+        'Chia seed heads are harvested when they begin turning brown and are then dried before the seeds are separated from the chaff. Published field research shows that days to maturity can change substantially with sowing date, photoperiod and growing environment, with markedly different maturity periods reported across production systems. FarmCast therefore keeps Chia as guidance-only rather than assigning one universal sowing-to-harvest interval.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'UC Master Gardeners of Santa Clara County',
+
+        title:
+          'Chia',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/node/137213/printable/print'
+          ].join('')
+      }
+    },
+
   
 ];
 
