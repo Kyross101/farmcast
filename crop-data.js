@@ -17175,6 +17175,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Aratiles',
+      localName: 'Datiles / Jamaica Cherry',
+      scientificName: 'Muntingia calabura L.',
+      category: 'fruit',
+      icon: 'assets/crops/aratiles.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'USDA Forest Service',
+
+        title:
+          'Muntingia calabura L. — Capulin',
+
+        url:
+          [
+            'https://',
+            'www.srs.fs.usda.gov/',
+            'pubs/gtr/gtr_so057.pdf'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical growing conditions with abundant sunlight. Kew identifies Muntingia calabura as a tree primarily associated with the seasonally dry tropical biome, while USDA Forest Service guidance describes it as a fast-growing species suited to sunny sites. Because established trees occur across varying tropical moisture conditions, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'Aratiles can grow under relatively dry conditions but performs better where adequate moisture is available. USDA Forest Service guidance describes Muntingia calabura as adaptable to dry soils while growing better where moisture is available. FarmCast therefore keeps rainfall guidance descriptive rather than assigning one universal annual rainfall requirement.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Aratiles is a fast-growing pioneer tree capable of establishing in disturbed and open sites. USDA Forest Service guidance describes the species as adaptable to relatively dry soil while responding positively to available moisture. Because reliable crop guidance does not provide one universal numeric soil-pH requirement, FarmCast leaves soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Aratiles in this FarmCast entry refers specifically to Muntingia calabura L., the edible fruit known in the Philippines as Aratiles or Datiles and internationally as Jamaica Cherry. DOST-FNRI lists Muntingia calabura under Jamaica cherry with Datiles and Aratiles as Philippine alternate names. Seed propagation is documented in agricultural germination research, while USDA Forest Service guidance also documents propagation from stem cuttings. Current Kew taxonomy accepts Muntingia calabura L. and recognizes Muntingia calabura var. trinitensis, Muntingia glabra and Muntingia rosea as synonyms.',
+
+      harvestNote:
+        'Aratiles produces small fleshy fruits that become reddish to yellowish-red as they mature and may flower and fruit repeatedly under favorable tropical conditions. USDA Forest Service guidance reports flowering and fruiting throughout the year in suitable environments and describes the species as extremely fast growing. Research on Muntingia calabura also reports that young trees can begin flowering at less than two years of age. Because first fruiting varies with propagation method, climate and establishment conditions rather than following one reliable planting-to-harvest interval, FarmCast keeps Aratiles as guidance-only.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Jamaica Cherry — Muntingia calabura',
+
+        url:
+          [
+            'https://',
+            'i.fnri.dost.gov.ph/',
+            'fct/library/report/3617'
+          ].join('')
+      }
+    },
+
   
 ];
 

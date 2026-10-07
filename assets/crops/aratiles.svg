@@ -1,0 +1,342 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Aratiles</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Aratiles or Jamaica cherry
+    with serrated green leaves, small white flowers, and clusters
+    of ripe round red fruits on slender woody branches.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a17b5d"></stop>
+      <stop offset="0.5" stop-color="#6d5040"></stop>
+      <stop offset="1" stop-color="#3d322c"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bfd37c"></stop>
+      <stop offset="0.3" stop-color="#7ca05a"></stop>
+      <stop offset="0.68" stop-color="#477848"></stop>
+      <stop offset="1" stop-color="#204936"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#99b966"></stop>
+      <stop offset="0.5" stop-color="#56804d"></stop>
+      <stop offset="1" stop-color="#203f32"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitRed" cx="34%" cy="25%" r="74%">
+      <stop offset="0" stop-color="#ffb18e"></stop>
+      <stop offset="0.25" stop-color="#ef715e"></stop>
+      <stop offset="0.62" stop-color="#ce4148"></stop>
+      <stop offset="1" stop-color="#852d39"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitDark" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#ea8d73"></stop>
+      <stop offset="0.35" stop-color="#d15350"></stop>
+      <stop offset="0.72" stop-color="#a33240"></stop>
+      <stop offset="1" stop-color="#682838"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.6" stop-color="#f6f1df"></stop>
+      <stop offset="1" stop-color="#d9d0ae"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#fff29b"></stop>
+      <stop offset="0.6" stop-color="#e0bf4c"></stop>
+      <stop offset="1" stop-color="#957331"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#17241b" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="1.8" flood-color="#40252b" flood-opacity="0.32"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- main branch -->
+
+  <path d="
+    M18 117
+    C32 100 45 83 58 66
+    C72 47 86 29 104 10" fill="none" stroke="url(#branchBrown)" stroke-width="5.5" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- branch highlight -->
+
+  <path d="
+    M21 113
+    C35 96 48 80 61 63
+    C75 45 88 28 101 13" fill="none" stroke="#c7a384" stroke-width="0.9" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- side branches -->
+
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="
+      M46 84
+      C35 74 26 62 17 49" stroke-width="2.8"></path>
+
+    <path d="
+      M59 65
+      C48 54 40 42 35 28" stroke-width="2.7"></path>
+
+    <path d="
+      M74 46
+      C87 46 100 41 113 32" stroke-width="2.6"></path>
+
+    <path d="
+      M87 30
+      C79 21 73 13 70 7" stroke-width="2.3"></path>
+
+  </g>
+
+  <!-- serrated left leaves -->
+
+  <g fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.8" filter="url(#softShadow)">
+
+    <path d="
+      M42 88
+      C29 82 18 84 11 93
+      L17 94
+      L14 97
+      L22 97
+      L20 100
+      C29 100 37 96 42 88Z"></path>
+
+    <path d="
+      M41 74
+      C28 65 18 66 11 74
+      L17 75
+      L14 78
+      L22 79
+      L20 82
+      C29 83 37 80 41 74Z"></path>
+
+    <path d="
+      M38 59
+      C26 49 17 46 10 51
+      L15 54
+      L12 57
+      L20 59
+      L18 62
+      C27 65 34 63 38 59Z"></path>
+
+    <path d="
+      M43 45
+      C31 35 21 34 14 40
+      L20 42
+      L17 45
+      L25 47
+      L23 50
+      C31 52 39 49 43 45Z"></path>
+
+  </g>
+
+  <!-- right leaves -->
+
+  <g fill="url(#leafDark)" stroke="#244d37" stroke-width="0.8" filter="url(#softShadow)">
+
+    <path d="
+      M64 61
+      C77 53 88 53 95 60
+      L90 61
+      L94 64
+      L87 65
+      L90 68
+      C80 69 71 67 64 61Z"></path>
+
+    <path d="
+      M73 48
+      C85 40 96 40 103 46
+      L98 47
+      L102 50
+      L95 51
+      L98 54
+      C89 56 80 54 73 48Z"></path>
+
+    <path d="
+      M84 35
+      C96 28 106 28 114 34
+      L109 35
+      L113 38
+      L106 39
+      L109 42
+      C100 43 91 41 84 35Z"></path>
+
+    <path d="
+      M94 23
+      C105 16 114 16 121 21
+      L117 22
+      L120 25
+      L114 26
+      L117 29
+      C108 30 100 28 94 23Z"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+
+  <g fill="none" stroke="#c5da9b" stroke-width="0.6" stroke-linecap="round" opacity="0.72">
+
+    <path d="M14 94 L39 88"></path>
+    <path d="M14 75 L38 74"></path>
+    <path d="M13 52 L35 59"></path>
+    <path d="M17 41 L40 45"></path>
+
+    <path d="M67 61 L92 60"></path>
+    <path d="M76 48 L100 46"></path>
+    <path d="M87 35 L111 34"></path>
+    <path d="M97 23 L118 21"></path>
+
+  </g>
+
+  <!-- fruit stems -->
+
+  <g fill="none" stroke="#627445" stroke-width="1.3" stroke-linecap="round">
+
+    <path d="M55 72 C59 79 61 86 61 92"></path>
+    <path d="M60 68 C67 73 72 79 74 85"></path>
+    <path d="M67 58 C75 63 81 69 85 75"></path>
+    <path d="M76 45 C84 50 91 56 95 62"></path>
+
+  </g>
+
+  <!-- Aratiles fruits -->
+
+  <g filter="url(#fruitShadow)">
+
+    <circle cx="61" cy="98" r="8" fill="url(#fruitRed)" stroke="#7f2d38" stroke-width="1"></circle>
+
+    <circle cx="75" cy="90" r="7.5" fill="url(#fruitDark)" stroke="#792b37" stroke-width="1"></circle>
+
+    <circle cx="86" cy="79" r="7.2" fill="url(#fruitRed)" stroke="#7e2c38" stroke-width="1"></circle>
+
+    <circle cx="97" cy="66" r="6.8" fill="url(#fruitDark)" stroke="#782a36" stroke-width="1"></circle>
+
+  </g>
+
+  <!-- fruit highlights -->
+
+  <g fill="#ffd2b7" opacity="0.4">
+
+    <ellipse cx="58" cy="95" rx="2.2" ry="3"></ellipse>
+
+    <ellipse cx="72" cy="87" rx="2" ry="2.8"></ellipse>
+
+    <ellipse cx="83" cy="76" rx="2" ry="2.7"></ellipse>
+
+    <ellipse cx="94" cy="63" rx="1.8" ry="2.5"></ellipse>
+
+  </g>
+
+  <!-- star-like fruit calyxes -->
+
+  <g fill="#475e3c">
+
+    <path d="
+      M56 91
+      L61 88
+      L66 91
+      L64 94
+      L58 94Z"></path>
+
+    <path d="
+      M70 83
+      L75 80
+      L80 83
+      L78 86
+      L72 86Z"></path>
+
+    <path d="
+      M81 72
+      L86 69
+      L91 72
+      L89 75
+      L83 75Z"></path>
+
+    <path d="
+      M92 59
+      L97 56
+      L102 59
+      L100 62
+      L94 62Z"></path>
+
+  </g>
+
+  <!-- flower branch -->
+
+  <path d="
+    M46 57
+    C39 53 33 48 28 42" fill="none" stroke="#627345" stroke-width="1.4" stroke-linecap="round"></path>
+
+  <!-- white Aratiles flower -->
+
+  <g transform="translate(25 39)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="-6" rx="4" ry="6" fill="url(#flowerWhite)" stroke="#d2c9aa" stroke-width="0.5"></ellipse>
+
+    <ellipse cx="6" cy="-2" rx="6" ry="4" fill="url(#flowerWhite)" stroke="#d2c9aa" stroke-width="0.5"></ellipse>
+
+    <ellipse cx="4" cy="5" rx="4" ry="6" fill="url(#flowerWhite)" stroke="#d2c9aa" stroke-width="0.5"></ellipse>
+
+    <ellipse cx="-4" cy="5" rx="4" ry="6" fill="url(#flowerWhite)" stroke="#d2c9aa" stroke-width="0.5"></ellipse>
+
+    <ellipse cx="-6" cy="-2" rx="6" ry="4" fill="url(#flowerWhite)" stroke="#d2c9aa" stroke-width="0.5"></ellipse>
+
+    <circle cx="0" cy="0" r="3.2" fill="url(#flowerCenter)"></circle>
+
+    <g fill="#8a682b">
+      <circle cx="-2" cy="-1" r="0.55"></circle>
+      <circle cx="2" cy="-1" r="0.55"></circle>
+      <circle cx="-2" cy="2" r="0.55"></circle>
+      <circle cx="2" cy="2" r="0.55"></circle>
+      <circle cx="0" cy="0.5" r="0.55"></circle>
+    </g>
+
+  </g>
+
+  <!-- second blossom -->
+
+  <g transform="translate(38 52) scale(0.72)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="-6" rx="4" ry="6" fill="url(#flowerWhite)"></ellipse>
+
+    <ellipse cx="6" cy="-2" rx="6" ry="4" fill="url(#flowerWhite)"></ellipse>
+
+    <ellipse cx="4" cy="5" rx="4" ry="6" fill="url(#flowerWhite)"></ellipse>
+
+    <ellipse cx="-4" cy="5" rx="4" ry="6" fill="url(#flowerWhite)"></ellipse>
+
+    <ellipse cx="-6" cy="-2" rx="6" ry="4" fill="url(#flowerWhite)"></ellipse>
+
+    <circle cx="0" cy="0" r="3" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <!-- foreground leaf -->
+
+  <path d="
+    M30 111
+    C17 104 7 106 3 115
+    C12 122 24 121 33 114Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M6 115
+    L29 112" fill="none" stroke="#c5da9b" stroke-width="0.7" opacity="0.7"></path>
+
+  <!-- ground shadow -->
+
+  <ellipse cx="59" cy="121" rx="36" ry="4" fill="#29392c" opacity="0.16"></ellipse>
+
+</svg>
