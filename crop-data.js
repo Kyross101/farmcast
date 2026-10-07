@@ -17771,6 +17771,77 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Libas',
+      localName: 'Common Hog Plum',
+      scientificName:
+        'Spondias pinnata (L.f.) Kurz',
+      category: 'fruit',
+      icon: 'assets/crops/libas.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-sown-stones',
+          label: 'Direct-Sown Stones (Seeds)'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Spondias (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=6308'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical growing conditions. Kew records Spondias pinnata as a tree of the wet tropical biome, while PROSEA reports that the species can also occur in comparatively drier habitats such as savanna, teak forest and limestone areas. Because the cited references do not establish one reliable universal numeric optimum temperature interval for cultivated Libas, FarmCast keeps temperature guidance descriptive rather than assigning unsupported minimum and maximum values.',
+
+      rainfallRange:
+        'Libas occurs across a range of tropical moisture conditions. PROSEA reports Spondias species on well-drained sites and notes that Spondias pinnata can also occur in comparatively dry habitats. Because the species is not represented by one universal annual rainfall requirement across its range, FarmCast keeps rainfall guidance descriptive rather than assigning an unsupported numeric interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports Spondias pinnata on well-drained sites and also records the species in limestone and other relatively dry habitats. These observations indicate ecological adaptability, but the cited production references do not provide one defensible universal soil-pH range specifically for cultivated Libas. FarmCast therefore keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Libas in this FarmCast entry refers specifically to Spondias pinnata (L.f.) Kurz, an indigenous edible tree used in Philippine cuisine and known internationally as Common Hog Plum. PROSEA reports that the fruit stone of Spondias pinnata contains viable seeds and that direct sowing performs better than planting bare-rooted seedlings. Current Kew taxonomy accepts Spondias pinnata and lists Mangifera pinnata, Buchanania yunnanensis, Evia amara, Poupartia acuminata, Spondias acuminata, Spondias amara, Spondias bivenomarginalis, Spondias macrophylla, Spondias mangifera, Spondias mangifera var. javanica, Spondias paniculata, Spondias sinensis and Wirtgenia decandra among its synonyms.',
+
+      harvestNote:
+        'Libas is a Philippine food-producing tree whose young leaves are used as a souring ingredient, particularly in Bicolano cooking. DOST-FNRI also records Libas as a Philippine food under Spondias pinnata. The reliable cultivation references used for this entry do not provide one exact direct-sowing-to-first-food-harvest interval that can be applied consistently across sites and tree development. FarmCast therefore keeps Libas as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Environment and Natural Resources',
+
+        office:
+          'Ecosystems Research and Development Bureau',
+
+        title:
+          'RISE Volume 15 No. 3 - Lesser Known Edible Tree Species',
+
+        url:
+          [
+            'https://',
+            'erdbservices.denr.gov.ph/',
+            'eskris/iec_for_guest.php?',
+            'operation=view&pk0=81'
+          ].join('')
+      }
+    },
+
 
   
 ];

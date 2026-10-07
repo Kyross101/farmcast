@@ -1,0 +1,256 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Libas</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Philippine Libas or Common Hog Plum
+    with pinnate green leaves, yellow-green edible fruits, warm highlights,
+    layered shadows and natural botanical depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a47b59"></stop>
+      <stop offset="0.5" stop-color="#6b4c38"></stop>
+      <stop offset="1" stop-color="#3a2d27"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#859e50"></stop>
+      <stop offset="0.5" stop-color="#52733d"></stop>
+      <stop offset="1" stop-color="#2d4c31"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#91c85b"></stop>
+      <stop offset="0.43" stop-color="#4d9346"></stop>
+      <stop offset="1" stop-color="#225d35"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5fa14b"></stop>
+      <stop offset="0.5" stop-color="#327542"></stop>
+      <stop offset="1" stop-color="#18492f"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitYellow" cx="32%" cy="25%" r="78%">
+      <stop offset="0" stop-color="#f4e89a"></stop>
+      <stop offset="0.38" stop-color="#d6c766"></stop>
+      <stop offset="0.74" stop-color="#a79442"></stop>
+      <stop offset="1" stop-color="#6d6734"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitGreen" cx="32%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#dae58c"></stop>
+      <stop offset="0.4" stop-color="#abbc5c"></stop>
+      <stop offset="0.78" stop-color="#718343"></stop>
+      <stop offset="1" stop-color="#475a35"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitGlow" cx="30%" cy="22%" r="72%">
+      <stop offset="0" stop-color="#fff8c5" stop-opacity="0.9"></stop>
+      <stop offset="0.46" stop-color="#f0df89" stop-opacity="0.28"></stop>
+      <stop offset="1" stop-color="#81783b" stop-opacity="0"></stop>
+    </radialGradient>
+
+    <filter id="mainShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#1e3527" flood-opacity="0.30"></feDropShadow>
+    </filter>
+
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5"></feGaussianBlur>
+    </filter>
+
+  </defs>
+
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="111" rx="35" ry="7" fill="#203b29" opacity="0.15" filter="url(#softBlur)"></ellipse>
+
+
+  <g filter="url(#mainShadow)">
+
+    <!-- main woody branch -->
+    <path d="M31 105
+             C42 86 53 67 65 52
+             C76 39 88 30 101 24" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round"></path>
+
+    <!-- secondary branch -->
+    <path d="M57 65
+             C47 51 37 42 24 36" fill="none" stroke="url(#branchBrown)" stroke-width="4" stroke-linecap="round"></path>
+
+    <!-- leaf rachis -->
+    <path d="M58 66
+             C50 55 43 43 38 29" fill="none" stroke="url(#stemGreen)" stroke-width="3.2" stroke-linecap="round"></path>
+
+
+    <!-- left pinnate leaflets -->
+    <path d="M49 55
+             C38 55 30 50 25 44
+             C35 43 44 46 51 51Z" fill="url(#leafGreen)"></path>
+
+    <path d="M45 47
+             C35 46 28 42 23 36
+             C33 36 40 39 47 43Z" fill="url(#leafDark)"></path>
+
+    <path d="M42 39
+             C34 37 28 33 25 28
+             C33 29 39 32 44 36Z" fill="url(#leafGreen)"></path>
+
+    <path d="M51 55
+             C58 48 61 41 61 34
+             C54 38 49 44 47 51Z" fill="url(#leafDark)"></path>
+
+    <path d="M46 46
+             C52 40 54 34 53 28
+             C48 32 44 37 43 43Z" fill="url(#leafGreen)"></path>
+
+    <path d="M42 38
+             C46 33 47 28 46 23
+             C42 26 39 31 39 35Z" fill="url(#leafDark)"></path>
+
+
+    <!-- upper-right pinnate rachis -->
+    <path d="M69 51
+             C76 42 82 32 86 20" fill="none" stroke="url(#stemGreen)" stroke-width="3" stroke-linecap="round"></path>
+
+    <path d="M74 43
+             C65 40 59 36 56 31
+             C64 31 72 34 77 39Z" fill="url(#leafDark)"></path>
+
+    <path d="M79 35
+             C71 32 66 28 63 23
+             C71 24 77 27 81 31Z" fill="url(#leafGreen)"></path>
+
+    <path d="M75 44
+             C84 41 91 36 95 30
+             C86 31 79 34 72 39Z" fill="url(#leafGreen)"></path>
+
+    <path d="M80 35
+             C88 32 93 28 97 23
+             C89 24 83 27 78 31Z" fill="url(#leafDark)"></path>
+
+
+    <!-- middle-left leaf cluster -->
+    <path d="M52 72
+             C39 72 29 67 22 59
+             C35 58 46 62 55 67Z" fill="url(#leafDark)"></path>
+
+    <path d="M50 77
+             C38 81 28 78 21 72
+             C32 68 43 70 53 73Z" fill="url(#leafGreen)"></path>
+
+    <path d="M54 69
+             C51 59 52 51 56 45
+             C60 54 59 62 57 68Z" fill="url(#leafGreen)"></path>
+
+
+    <!-- right-side leaves -->
+    <path d="M78 58
+             C89 49 100 46 111 49
+             C103 58 93 63 81 64Z" fill="url(#leafGreen)"></path>
+
+    <path d="M81 68
+             C94 62 105 64 113 70
+             C103 77 92 79 81 75Z" fill="url(#leafDark)"></path>
+
+    <path d="M83 81
+             C96 77 107 80 113 87
+             C102 92 92 92 81 88Z" fill="url(#leafGreen)"></path>
+
+    <path d="M76 58
+             C77 48 74 41 70 35
+             C68 44 70 52 73 58Z" fill="url(#leafDark)"></path>
+
+
+    <!-- fruit stalk -->
+    <path d="M67 57
+             C67 68 69 76 73 84" fill="none" stroke="#65763d" stroke-width="3.8" stroke-linecap="round"></path>
+
+    <path d="M68 66
+             C60 70 56 76 54 82" fill="none" stroke="#65763d" stroke-width="3" stroke-linecap="round"></path>
+
+    <path d="M70 70
+             C79 72 86 77 90 83" fill="none" stroke="#65763d" stroke-width="3" stroke-linecap="round"></path>
+
+
+    <!-- left green fruit -->
+    <path d="M53 78
+             C46 77 42 83 43 90
+             C44 98 50 104 57 105
+             C63 102 66 95 65 88
+             C64 81 60 78 53 78Z" fill="url(#fruitGreen)"></path>
+
+    <path d="M46 86
+             C48 81 52 80 56 81
+             C52 87 51 94 54 101
+             C49 98 46 93 46 86Z" fill="url(#fruitGlow)"></path>
+
+
+    <!-- main golden fruit -->
+    <path d="M72 80
+             C64 79 59 85 60 93
+             C61 102 67 109 75 112
+             C83 108 88 100 88 92
+             C87 84 81 80 72 80Z" fill="url(#fruitYellow)"></path>
+
+    <path d="M63 90
+             C65 84 70 82 75 83
+             C70 89 69 97 72 106
+             C66 102 63 97 63 90Z" fill="url(#fruitGlow)"></path>
+
+
+    <!-- right fruit -->
+    <path d="M89 81
+             C82 80 78 85 79 91
+             C80 99 86 104 92 105
+             C98 101 101 95 100 89
+             C99 84 95 81 89 81Z" fill="url(#fruitYellow)"></path>
+
+    <path d="M82 88
+             C84 84 87 83 91 84
+             C87 89 86 95 89 100
+             C85 98 82 93 82 88Z" fill="url(#fruitGlow)"></path>
+
+
+    <!-- lower small fruit -->
+    <path d="M60 94
+             C54 94 51 98 52 103
+             C53 108 57 111 62 111
+             C66 108 68 104 67 100
+             C66 96 64 94 60 94Z" fill="url(#fruitGreen)"></path>
+
+  </g>
+
+
+  <!-- fine leaf veins -->
+  <path d="M28 46
+           C36 47 43 50 49 53" fill="none" stroke="#d8e9a8" stroke-width="1.1" stroke-linecap="round" opacity="0.45"></path>
+
+  <path d="M27 61
+           C36 62 45 66 51 69" fill="none" stroke="#d7e8a8" stroke-width="1.1" stroke-linecap="round" opacity="0.42"></path>
+
+  <path d="M106 51
+           C96 53 89 57 82 61" fill="none" stroke="#dcebae" stroke-width="1.1" stroke-linecap="round" opacity="0.4"></path>
+
+  <path d="M108 71
+           C98 70 91 72 84 74" fill="none" stroke="#cde29f" stroke-width="1.1" stroke-linecap="round" opacity="0.4"></path>
+
+
+  <!-- fruit shine -->
+  <path d="M47 84
+           C49 81 52 80 55 81" fill="none" stroke="#f2f6c6" stroke-width="1.8" stroke-linecap="round" opacity="0.68"></path>
+
+  <path d="M64 88
+           C67 84 70 83 74 84" fill="none" stroke="#fff5bd" stroke-width="2" stroke-linecap="round" opacity="0.72"></path>
+
+  <path d="M83 87
+           C85 84 88 84 91 85" fill="none" stroke="#fff1b2" stroke-width="1.7" stroke-linecap="round" opacity="0.68"></path>
+
+
+  <!-- branch highlight -->
+  <path d="M34 102
+           C45 83 55 67 66 53" fill="none" stroke="#c29570" stroke-width="1.4" stroke-linecap="round" opacity="0.48"></path>
+
+</svg>
