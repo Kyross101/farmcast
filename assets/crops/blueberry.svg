@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Blueberry</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of blueberry with woody stems,
+    glossy green leaves, white bell-shaped flowers, clusters of ripe
+    blue berries, highlights, shadows, and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#98755d"></stop>
+      <stop offset="0.55" stop-color="#6d5043"></stop>
+      <stop offset="1" stop-color="#41352f"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#28583a"></stop>
+      <stop offset="0.5" stop-color="#548e4d"></stop>
+      <stop offset="1" stop-color="#9bc577"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#204832"></stop>
+      <stop offset="1" stop-color="#669a58"></stop>
+    </linearGradient>
+
+    <radialGradient id="berryBlue" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#9cb7e0"></stop>
+      <stop offset="0.38" stop-color="#607fb9"></stop>
+      <stop offset="0.72" stop-color="#3f5790"></stop>
+      <stop offset="1" stop-color="#293866"></stop>
+    </radialGradient>
+
+    <radialGradient id="berryDark" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#829ed1"></stop>
+      <stop offset="0.45" stop-color="#506ca6"></stop>
+      <stop offset="1" stop-color="#26365e"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerWhite" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf7"></stop>
+      <stop offset="1" stop-color="#dadfd7"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#202a22" flood-opacity="0.25"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="116" rx="39" ry="6" fill="#273229" opacity="0.16"></ellipse>
+
+  <!-- Main woody stem -->
+  <path d="
+    M30 108
+    C41 89 51 72 61 57
+    C72 41 84 28 100 15" fill="none" stroke="url(#branchBrown)" stroke-width="5.5" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- Secondary branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M49 76 C40 64 34 52 32 40" stroke-width="3.2"></path>
+
+    <path d="M60 58 C54 46 51 34 52 22" stroke-width="3"></path>
+
+    <path d="M74 39 C86 41 98 37 108 30" stroke-width="3"></path>
+
+    <path d="M39 90 C31 86 23 82 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- Bark highlight -->
+  <path d="
+    M33 105
+    C44 87 54 71 64 56
+    C75 40 87 28 98 18" fill="none" stroke="#b69376" stroke-width="0.9" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- Leaves -->
+  <g stroke="#285238" stroke-width="1.1" filter="url(#softShadow)">
+
+    <path d="
+      M32 40
+      C22 32 13 35 10 43
+      C18 51 27 50 35 45
+      C38 43 36 41 32 40Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M41 57
+      C30 49 21 53 19 62
+      C28 69 38 67 45 61
+      C48 59 45 57 41 57Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M52 23
+      C42 15 33 18 31 27
+      C39 34 49 33 56 27
+      C58 25 56 23 52 23Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M70 45
+      C79 36 90 36 97 43
+      C91 53 81 55 71 51
+      C68 50 68 47 70 45Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M91 29
+      C100 20 111 21 117 29
+      C110 38 100 40 91 35
+      C88 34 88 31 91 29Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 48
+      C106 40 116 43 120 51
+      C113 59 103 60 95 55
+      C92 53 93 50 96 48Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M25 78
+      C15 70 7 74 7 83
+      C15 89 24 87 31 82
+      C33 80 30 78 25 78Z" fill="url(#leafDark)"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#bfd69f" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M13 43 C20 43 27 43 33 43"></path>
+    <path d="M22 62 C30 61 38 60 43 59"></path>
+    <path d="M34 27 C42 26 49 26 54 25"></path>
+
+    <path d="M94 44 C85 47 78 49 72 50"></path>
+    <path d="M114 29 C106 31 99 33 92 34"></path>
+    <path d="M117 51 C109 52 102 53 96 53"></path>
+
+  </g>
+
+  <!-- Fruit stems -->
+  <g fill="none" stroke="#617247" stroke-width="1.5" stroke-linecap="round">
+
+    <path d="M51 67 C50 73 49 78 48 83"></path>
+    <path d="M63 58 C67 63 70 69 71 74"></path>
+    <path d="M70 53 C76 58 80 63 82 69"></path>
+    <path d="M41 77 C39 82 38 87 38 91"></path>
+
+  </g>
+
+  <!-- Berry cluster -->
+  <g stroke="#29365e" stroke-width="1" filter="url(#softShadow)">
+
+    <circle cx="47" cy="88" r="9" fill="url(#berryBlue)"></circle>
+
+    <circle cx="63" cy="82" r="9.5" fill="url(#berryDark)"></circle>
+
+    <circle cx="79" cy="77" r="9" fill="url(#berryBlue)"></circle>
+
+    <circle cx="38" cy="98" r="8" fill="url(#berryDark)"></circle>
+
+    <circle cx="55" cy="101" r="9" fill="url(#berryBlue)"></circle>
+
+    <circle cx="72" cy="98" r="8.5" fill="url(#berryDark)"></circle>
+
+    <circle cx="88" cy="91" r="8" fill="url(#berryBlue)"></circle>
+
+  </g>
+
+  <!-- Characteristic blueberry crowns -->
+  <g fill="#26335b" stroke="#a3b2d0" stroke-width="0.55" opacity="0.95">
+
+    <path d="
+      M42 82
+      L47 79
+      L52 82
+      L50 86
+      L47 84
+      L44 86Z"></path>
+
+    <path d="
+      M58 76
+      L63 73
+      L68 76
+      L66 80
+      L63 78
+      L60 80Z"></path>
+
+    <path d="
+      M74 71
+      L79 68
+      L84 71
+      L82 75
+      L79 73
+      L76 75Z"></path>
+
+    <path d="
+      M33 92
+      L38 89
+      L43 92
+      L41 96
+      L38 94
+      L35 96Z"></path>
+
+    <path d="
+      M50 95
+      L55 92
+      L60 95
+      L58 99
+      L55 97
+      L52 99Z"></path>
+
+    <path d="
+      M67 92
+      L72 89
+      L77 92
+      L75 96
+      L72 94
+      L69 96Z"></path>
+
+    <path d="
+      M83 85
+      L88 82
+      L93 85
+      L91 89
+      L88 87
+      L85 89Z"></path>
+
+  </g>
+
+  <!-- Berry highlights -->
+  <g fill="#d5e1f1" opacity="0.62">
+
+    <ellipse cx="43" cy="85" rx="2.2" ry="3" transform="rotate(-28 43 85)"></ellipse>
+
+    <ellipse cx="59" cy="79" rx="2.3" ry="3.1" transform="rotate(-28 59 79)"></ellipse>
+
+    <ellipse cx="75" cy="74" rx="2.2" ry="3" transform="rotate(-28 75 74)"></ellipse>
+
+    <ellipse cx="51" cy="98" rx="2.1" ry="2.8" transform="rotate(-28 51 98)"></ellipse>
+
+  </g>
+
+  <!-- Flowering twig -->
+  <path d="
+    M74 39
+    C76 31 80 25 85 19" fill="none" stroke="#697a4c" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <!-- Bell-shaped flowers -->
+  <g filter="url(#softShadow)">
+
+    <path d="
+      M80 18
+      C77 20 76 24 78 28
+      C80 31 86 31 88 28
+      C90 24 88 20 85 18Z" fill="url(#flowerWhite)" stroke="#bbbfb7" stroke-width="0.8"></path>
+
+    <path d="
+      M91 22
+      C88 24 87 28 89 32
+      C91 35 97 35 99 32
+      C101 28 99 24 96 22Z" fill="url(#flowerWhite)" stroke="#bbbfb7" stroke-width="0.8"></path>
+
+    <!-- flower openings -->
+    <path d="M78 28 L80 26 L83 28 L86 26 L88 28" fill="none" stroke="#8e968b" stroke-width="0.7"></path>
+
+    <path d="M89 32 L91 30 L94 32 L97 30 L99 32" fill="none" stroke="#8e968b" stroke-width="0.7"></path>
+
+  </g>
+
+  <!-- Tiny flower stems -->
+  <g fill="none" stroke="#667748" stroke-width="1.1" stroke-linecap="round">
+
+    <path d="M84 19 L84 15"></path>
+    <path d="M95 23 L92 18"></path>
+
+  </g>
+
+</svg>

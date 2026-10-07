@@ -14123,6 +14123,70 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Blueberry',
+      scientificName: 'Vaccinium corymbosum L.',
+      category: 'fruit',
+      icon: 'assets/crops/blueberry.svg',
+
+      plantingMethods: [
+        {
+          value: 'container-grown-plants',
+          label: 'Container-Grown Blueberry Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Blueberries',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/fruit/blueberries/grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate growing conditions. Kew identifies Northern Highbush Blueberry as a shrub primarily associated with the temperate biome. Royal Horticultural Society guidance notes that varieties differ in hardiness and fruiting season. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Blueberries have shallow roots and require consistent moisture, particularly during establishment and fruit development, while waterlogged conditions should be avoided. FarmCast therefore keeps moisture guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'Requires acidic soil. University of Minnesota Extension recommends about pH 4.0–5.5, while commercial Highbush Blueberry guidance commonly targets approximately pH 4.5–5.0.',
+
+      soilNote:
+        'Blueberries perform best in full sun in loose, well-drained, acidic soil with high organic-matter content. Their shallow root system benefits from organic mulch that helps conserve moisture and maintain suitable soil conditions.',
+
+      plantingNote:
+        'Blueberry is a familiar edible berry crop. Royal Horticultural Society guidance notes that blueberry bushes are widely sold as young container-grown plants and may be grown either in suitably acidic garden soil or in containers filled with ericaceous growing medium. Current Kew taxonomy accepts Vaccinium corymbosum L. The Kew record contains numerous historical synonyms, including Cyanococcus corymbosus, Vaccinium australe, Vaccinium formosum, and Vaccinium simulatum.',
+
+      harvestNote:
+        'Blueberries are harvested when berries have turned completely blue and are fully ripe. University of Minnesota Extension notes that young bushes produce little fruit during their first two to three years and that harvest increases as plants mature. Royal Horticultural Society guidance shows that cultivar harvest seasons range broadly from mid-summer into early autumn. Because fruit-bearing age and harvest season depend on cultivar, climate, and plant maturity, FarmCast keeps Blueberry as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'University of Minnesota Extension',
+
+        title:
+          'Growing Blueberries in the Home Garden',
+
+        url:
+          [
+            'https://',
+            'extension.umn.edu/garden-and-home/yard-and-garden/',
+            'gardening-in-minnesota/growing-blueberries-in-the-home-garden'
+          ].join('')
+      }
+    },
+
 
 
   
