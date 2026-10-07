@@ -14613,6 +14613,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Walnut',
+      scientificName: 'Juglans regia L.',
+      category: 'tree-nut',
+      icon: 'assets/crops/walnut.svg',
+
+      plantingMethods: [
+        {
+          value: 'grafted-trees',
+          label: 'Grafted Walnut Tree'
+        },
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Walnuts',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/nuts/walnuts'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate orchard conditions. Kew identifies Walnut as a tree primarily associated with the temperate biome. Royal Horticultural Society guidance recommends full sun and avoiding exposed locations and frost pockets because strong winds and spring frost can damage foliage, flowers and subsequent nut set. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends watering newly planted Walnut trees during dry periods in spring and summer to support establishment, while established trees are less dependent on supplemental watering. FarmCast therefore keeps moisture guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'Prefers fertile, moisture-retentive but well-drained soil, with Royal Horticultural Society guidance identifying alkaline loam as particularly suitable.',
+
+      soilNote:
+        'Walnut trees tolerate several soil types but perform best in deep, fertile, moisture-retentive and well-drained soil. Full sun is ideal, and exposed sites or frost pockets should be avoided. Because Walnut develops a strong taproot, young trees should be established carefully without damaging or severely restricting the root system.',
+
+      plantingNote:
+        'Walnut in this FarmCast entry refers to the familiar Common or English Walnut. Royal Horticultural Society guidance notes that named cultivars are normally propagated by whip grafting or T-budding onto young Walnut rootstocks, while fresh nuts can also be grown from seed. Current Kew taxonomy accepts Juglans regia L. and lists numerous historical synonyms, including Juglans duclouxiana, Juglans fallax, Juglans sinensis and Regia maxima.',
+
+      harvestNote:
+        'Walnuts ripen in autumn when the fibrous outer casing begins to split and release the mature nut. Royal Horticultural Society guidance recommends checking that the kernel is fully formed and harvesting ripe nuts regularly before drying them for storage. Grafted trees may begin cropping after about four years, but first bearing and annual harvest timing vary by cultivar, tree establishment, pollination and local climate. FarmCast therefore keeps Walnut as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Walnuts',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/nuts/walnuts'
+          ].join('')
+      }
+    },
+
   
 ];
 

@@ -1,0 +1,261 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Walnut</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a walnut branch with compound green
+    leaves, green walnut husks, one split husk, and a mature textured brown
+    walnut shell with highlights, shadows, and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b765a"></stop>
+      <stop offset="0.55" stop-color="#6d5040"></stop>
+      <stop offset="1" stop-color="#44352d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#275a38"></stop>
+      <stop offset="0.5" stop-color="#55924e"></stop>
+      <stop offset="1" stop-color="#9bc679"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#204831"></stop>
+      <stop offset="1" stop-color="#669d58"></stop>
+    </linearGradient>
+
+    <radialGradient id="greenHusk" cx="32%" cy="24%" r="75%">
+      <stop offset="0" stop-color="#d0db80"></stop>
+      <stop offset="0.42" stop-color="#8eaa55"></stop>
+      <stop offset="0.78" stop-color="#617b42"></stop>
+      <stop offset="1" stop-color="#415a35"></stop>
+    </radialGradient>
+
+    <radialGradient id="walnutShell" cx="32%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#e2bd83"></stop>
+      <stop offset="0.45" stop-color="#bd8c5c"></stop>
+      <stop offset="0.8" stop-color="#825b41"></stop>
+      <stop offset="1" stop-color="#563d31"></stop>
+    </radialGradient>
+
+    <linearGradient id="splitHusk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aebd6d"></stop>
+      <stop offset="0.55" stop-color="#758b49"></stop>
+      <stop offset="1" stop-color="#4d6338"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#222a22" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="116" rx="39" ry="6" fill="#273128" opacity="0.16"></ellipse>
+
+  <!-- main branch -->
+  <path d="
+    M18 105
+    C34 91 47 76 58 60
+    C71 42 85 28 106 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- side branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="M47 77 C39 64 33 52 31 40" stroke-width="3.4"></path>
+
+    <path d="M61 56 C55 44 52 32 53 20" stroke-width="3.1"></path>
+
+    <path d="M76 39 C88 41 100 37 112 29" stroke-width="3"></path>
+
+    <path d="M38 90 C30 86 23 81 17 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- bark highlight -->
+  <path d="
+    M22 101
+    C38 87 50 73 61 57
+    C74 41 88 28 103 18" fill="none" stroke="#bd9879" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- compound walnut leaves -->
+  <g stroke="#285138" stroke-width="1.05" filter="url(#softShadow)">
+
+    <path d="
+      M29 42
+      C20 34 11 36 8 44
+      C16 51 25 51 32 47
+      C35 45 33 43 29 42Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M39 57
+      C29 49 20 53 18 61
+      C26 69 36 67 43 62
+      C46 60 43 58 39 57Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M52 22
+      C43 14 34 17 31 25
+      C39 33 49 32 56 27
+      C59 25 56 23 52 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M70 46
+      C79 36 90 36 97 43
+      C91 53 81 56 71 52
+      C68 51 68 48 70 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M92 30
+      C101 20 112 21 118 29
+      C111 38 101 40 92 35
+      C89 34 89 31 92 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M96 49
+      C106 40 116 43 120 51
+      C113 59 103 60 95 55
+      C92 53 93 51 96 49Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M24 78
+      C15 71 7 74 6 82
+      C14 89 24 87 31 82
+      C34 80 30 78 24 78Z" fill="url(#leafDark)"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+  <g fill="none" stroke="#bfd7a1" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M10 44 C18 44 25 44 31 45"></path>
+    <path d="M20 61 C28 61 35 60 41 60"></path>
+    <path d="M34 25 C42 25 49 25 54 25"></path>
+
+    <path d="M94 44 C85 47 78 49 72 50"></path>
+    <path d="M115 29 C107 31 100 33 93 34"></path>
+    <path d="M117 51 C109 52 102 53 96 53"></path>
+
+  </g>
+
+  <!-- fruit stems -->
+  <g fill="none" stroke="#625f3d" stroke-width="1.8" stroke-linecap="round">
+
+    <path d="M52 65 C51 72 51 78 52 84"></path>
+    <path d="M69 55 C72 62 74 68 75 74"></path>
+    <path d="M40 77 C39 84 39 89 40 95"></path>
+
+  </g>
+
+  <!-- green walnut husk 1 -->
+  <circle cx="52" cy="95" r="15" fill="url(#greenHusk)" stroke="#435d36" stroke-width="1.5" filter="url(#softShadow)"></circle>
+
+  <!-- green walnut husk 2 -->
+  <circle cx="77" cy="84" r="14" fill="url(#greenHusk)" stroke="#435d36" stroke-width="1.5" filter="url(#softShadow)"></circle>
+
+  <!-- husk details -->
+  <g fill="none" stroke="#789653" stroke-width="0.8" opacity="0.65">
+
+    <path d="M44 86 C51 92 55 100 55 108"></path>
+    <path d="M69 75 C76 81 80 89 79 96"></path>
+
+  </g>
+
+  <!-- green fruit highlights -->
+  <g fill="#e5eba6" opacity="0.58">
+
+    <ellipse cx="47" cy="88" rx="3" ry="4.5" transform="rotate(-28 47 88)"></ellipse>
+
+    <ellipse cx="72" cy="78" rx="2.7" ry="4" transform="rotate(-28 72 78)"></ellipse>
+
+  </g>
+
+  <!-- split husk and walnut -->
+  <g transform="translate(38 103)" filter="url(#softShadow)">
+
+    <!-- left split husk -->
+    <path d="
+      M-13 -10
+      C-19 -4 -18 9 -10 16
+      C-6 19 -2 18 1 14
+
+      C-2 7 -4 0 -2 -10
+      C-6 -12 -10 -12 -13 -10Z" fill="url(#splitHusk)" stroke="#485f38" stroke-width="1.2"></path>
+
+    <!-- right split husk -->
+    <path d="
+      M12 -10
+      C18 -4 17 9 9 16
+      C5 19 1 18 -2 14
+
+      C1 7 3 0 1 -10
+      C5 -12 9 -12 12 -10Z" fill="url(#splitHusk)" stroke="#485f38" stroke-width="1.2"></path>
+
+    <!-- walnut shell -->
+    <path d="
+      M0 -8
+      C-8 -7 -12 0 -11 8
+      C-10 16 -5 22 0 24
+
+      C5 22 10 16 11 8
+      C12 0 8 -7 0 -8Z" fill="url(#walnutShell)" stroke="#66472f" stroke-width="1.4"></path>
+
+    <!-- walnut characteristic centre seam -->
+    <path d="
+      M0 -6
+      C-2 0 -2 6 0 11
+      C-2 16 -2 20 0 22" fill="none" stroke="#704b32" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <!-- shell grooves -->
+    <g fill="none" stroke="#805a3b" stroke-width="0.75" stroke-linecap="round" opacity="0.88">
+
+      <path d="M-4 -3 C-8 2 -7 6 -4 9"></path>
+      <path d="M4 -3 C8 2 7 6 4 9"></path>
+
+      <path d="M-6 7 C-9 11 -7 16 -4 18"></path>
+      <path d="M6 7 C9 11 7 16 4 18"></path>
+
+      <path d="M-4 2 C-1 4 1 4 4 2"></path>
+      <path d="M-5 13 C-2 11 2 11 5 13"></path>
+
+    </g>
+
+    <!-- shell highlight -->
+    <path d="
+      M-5 -3
+      C-8 2 -8 6 -6 9" fill="none" stroke="#f0d19f" stroke-width="1.1" stroke-linecap="round" opacity="0.55"></path>
+
+  </g>
+
+  <!-- small male catkin suggestion -->
+  <path d="
+    M78 38
+    C80 31 82 25 85 19" fill="none" stroke="#67764b" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <g transform="translate(87 17)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C2 5 3 10 2 15
+      C1 19 -1 22 -2 24" fill="none" stroke="#7d8c55" stroke-width="2.7" stroke-linecap="round"></path>
+
+    <g fill="#b7b36d" stroke="#6c774c" stroke-width="0.5">
+
+      <circle cx="0" cy="4" r="2"></circle>
+
+      <circle cx="2" cy="8" r="2"></circle>
+
+      <circle cx="0" cy="12" r="2"></circle>
+
+      <circle cx="1" cy="16" r="2"></circle>
+
+      <circle cx="-1" cy="20" r="2"></circle>
+
+    </g>
+
+  </g>
+
+</svg>
