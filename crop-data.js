@@ -19352,6 +19352,75 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Shiso',
+      localName: 'Japanese Perilla / Perilla',
+      scientificName:
+        'Perilla frutescens var. crispa (Thunb.) H.Deane',
+      category: 'herb',
+      icon: 'assets/crops/shiso.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Perilla frutescens var. crispa — Curly Perilla',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/',
+            'plants/55889/',
+            'perilla-frutescens-var-crispa/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Shiso is an aromatic annual herb cultivated for its edible leaves. The Royal Horticultural Society recommends growing Perilla frutescens var. crispa in full sun or partial shade and describes it as suitable for outdoor summer cultivation. Because the cited horticultural guidance provides hardiness and seasonal cultivation information rather than one universal crop-wide optimum temperature interval or absolute physiological minimum and maximum range, FarmCast keeps the main temperature fields descriptive rather than assigning unsupported numeric thresholds.',
+
+      rainfallRange:
+        'Shiso benefits from regular moisture during active leafy growth while still requiring adequate drainage. The Royal Horticultural Society recommends fertile, moist but well-drained soil. Because rainfall distribution, soil characteristics and supplemental watering determine actual root-zone moisture, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'The Royal Horticultural Society reports that Perilla frutescens var. crispa can grow in chalk, clay, loam or sandy soils and tolerates acidic, neutral and alkaline soil reactions, provided suitable moisture and drainage are maintained. Because this guidance gives broad soil-reaction classes rather than one precise numeric pH interval specifically validated for Shiso production, FarmCast keeps soilPH unset rather than inventing numerical limits.',
+
+      plantingNote:
+        'Shiso in this FarmCast entry refers specifically to the accepted taxon Perilla frutescens var. crispa (Thunb.) H.Deane, an aromatic culinary form of Perilla. The Royal Horticultural Society recommends propagation by seed. North Carolina State University Extension also identifies Shiso as a common name associated with edible Perilla and records the leaves as being used as a salad herb and flavoring. Current Kew Plants of the World Online taxonomy accepts Perilla frutescens var. crispa and lists twenty-two synonyms, including historical names such as Acinos sido, Ocimum crispum, Perilla crispa, Dentidia nankinensis, Perilla acuta, Perilla arguta and Perilla nankinensis. All twenty-two current Kew synonyms and the major Shiso common-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Shiso is primarily harvested for its aromatic edible leaves and tender shoots. Leaves can be picked as the plant produces usable foliage, while repeated harvesting may continue during active vegetative growth. Because the cited cultivation sources do not establish one universal seed-sowing-to-first-harvest interval appropriate across cultivars, climates and desired leaf size, Shiso remains guidance-only with no automatic FarmCast harvest date.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Perilla frutescens var. crispa — Curly Perilla',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/',
+            'plants/55889/',
+            'perilla-frutescens-var-crispa/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
