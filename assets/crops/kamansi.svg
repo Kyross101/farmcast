@@ -1,0 +1,303 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Kamansi</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Kamansi or Breadnut with
+    large deeply lobed tropical leaves, green spiny fruits,
+    woody branches, visible edible seeds, highlights and shadows.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b7455"></stop>
+      <stop offset="0.48" stop-color="#684d3b"></stop>
+      <stop offset="1" stop-color="#3b3029"></stop>
+    </linearGradient>
+
+    <radialGradient id="leafGreen" cx="38%" cy="28%" r="76%">
+      <stop offset="0" stop-color="#b6ce78"></stop>
+      <stop offset="0.32" stop-color="#789d57"></stop>
+      <stop offset="0.68" stop-color="#447746"></stop>
+      <stop offset="1" stop-color="#1d4935"></stop>
+    </radialGradient>
+
+    <radialGradient id="leafDark" cx="38%" cy="28%" r="76%">
+      <stop offset="0" stop-color="#92b462"></stop>
+      <stop offset="0.45" stop-color="#557f4c"></stop>
+      <stop offset="1" stop-color="#203f31"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitGreen" cx="34%" cy="25%" r="76%">
+      <stop offset="0" stop-color="#d4db88"></stop>
+      <stop offset="0.3" stop-color="#9eb35f"></stop>
+      <stop offset="0.68" stop-color="#668b4d"></stop>
+      <stop offset="1" stop-color="#3b5f40"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitDark" cx="34%" cy="25%" r="76%">
+      <stop offset="0" stop-color="#bbc978"></stop>
+      <stop offset="0.38" stop-color="#839d57"></stop>
+      <stop offset="0.75" stop-color="#527545"></stop>
+      <stop offset="1" stop-color="#314c38"></stop>
+    </radialGradient>
+
+    <linearGradient id="seedCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7e2aa"></stop>
+      <stop offset="0.5" stop-color="#cfae70"></stop>
+      <stop offset="1" stop-color="#8e6948"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#17241a" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.2" flood-color="#293629" flood-opacity="0.33"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- main woody branch -->
+
+  <path d="
+    M15 116
+    C30 101 44 85 57 68
+    C71 49 86 31 107 12" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- side branches -->
+
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="
+      M43 89
+      C34 75 25 63 15 52" stroke-width="3"></path>
+
+    <path d="
+      M60 68
+      C48 57 40 44 35 29" stroke-width="3"></path>
+
+    <path d="
+      M76 48
+      C89 48 101 43 115 34" stroke-width="2.8"></path>
+
+    <path d="
+      M89 31
+      C81 22 75 14 72 7" stroke-width="2.5"></path>
+
+  </g>
+
+  <!-- large lobed left leaf -->
+
+  <g transform="translate(37 65)" filter="url(#softShadow)">
+
+    <path d="
+      M2 11
+      C-4 6 -8 2 -10 -4
+      C-18 2 -27 1 -33 -4
+      C-27 -9 -21 -12 -14 -12
+      C-23 -18 -27 -26 -25 -33
+      C-16 -30 -10 -25 -6 -19
+      C-8 -29 -5 -37 1 -42
+      C7 -34 8 -27 7 -19
+      C12 -27 20 -31 27 -29
+      C24 -20 19 -15 13 -11
+      C22 -13 30 -10 34 -4
+      C27 1 20 2 13 0
+      C17 6 16 12 12 17
+      C8 15 5 13 2 11Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="1.2"></path>
+
+    <path d="
+      M2 11
+      C2 -4 2 -19 1 -36" fill="none" stroke="#bed492" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <g fill="none" stroke="#9fbe7c" stroke-width="0.65" opacity="0.7">
+
+      <path d="M1 -7 L-26 -29"></path>
+      <path d="M1 -10 L-31 -5"></path>
+      <path d="M2 -11 L26 -27"></path>
+      <path d="M2 -7 L31 -4"></path>
+
+    </g>
+
+  </g>
+
+  <!-- right lobed leaf -->
+
+  <g transform="translate(91 43) scale(0.9)" filter="url(#softShadow)">
+
+    <path d="
+      M2 11
+      C-4 6 -8 2 -10 -4
+      C-18 2 -27 1 -33 -4
+      C-27 -9 -21 -12 -14 -12
+      C-23 -18 -27 -26 -25 -33
+      C-16 -30 -10 -25 -6 -19
+      C-8 -29 -5 -37 1 -42
+      C7 -34 8 -27 7 -19
+      C12 -27 20 -31 27 -29
+      C24 -20 19 -15 13 -11
+      C22 -13 30 -10 34 -4
+      C27 1 20 2 13 0
+      C17 6 16 12 12 17
+      C8 15 5 13 2 11Z" fill="url(#leafDark)" stroke="#254d37" stroke-width="1.2"></path>
+
+    <path d="
+      M2 11
+      C2 -4 2 -19 1 -36" fill="none" stroke="#b7ce89" stroke-width="1.5" stroke-linecap="round"></path>
+
+  </g>
+
+  <!-- upper young leaf -->
+
+  <g transform="translate(69 27) scale(0.64)" filter="url(#softShadow)">
+
+    <path d="
+      M2 11
+      C-4 6 -8 2 -10 -4
+      C-18 2 -27 1 -33 -4
+      C-27 -9 -21 -12 -14 -12
+      C-23 -18 -27 -26 -25 -33
+      C-16 -30 -10 -25 -6 -19
+      C-8 -29 -5 -37 1 -42
+      C7 -34 8 -27 7 -19
+      C12 -27 20 -31 27 -29
+      C24 -20 19 -15 13 -11
+      C22 -13 30 -10 34 -4
+      C27 1 20 2 13 0
+      C17 6 16 12 12 17
+      C8 15 5 13 2 11Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="1.5"></path>
+  </g>
+
+  <!-- fruit stems -->
+
+  <g fill="none" stroke="#655039" stroke-linecap="round">
+
+    <path d="M55 73 C59 80 61 86 61 92" stroke-width="2.2"></path>
+
+    <path d="M72 54 C78 60 82 67 83 74" stroke-width="2"></path>
+
+  </g>
+
+  <!-- large Kamansi fruit -->
+
+  <g transform="translate(61 101)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -23
+      C14 -23 24 -14 26 0
+      C28 15 19 27 3 30
+      C-13 30 -25 21 -25 7
+      C-26 -8 -16 -21 0 -23Z" fill="url(#fruitGreen)" stroke="#3d603f" stroke-width="1.4"></path>
+
+    <!-- spiny surface rows -->
+
+    <g fill="#78974f" stroke="#536d43" stroke-width="0.45">
+
+      <path d="M-17 -12 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M-7 -16 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M4 -16 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M14 -11 l4 -5 l4 5 l-4 4Z"></path>
+
+      <path d="M-21 -2 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M-11 -5 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M0 -5 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M11 -4 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M19 0 l4 -5 l3 5 l-4 4Z"></path>
+
+      <path d="M-20 9 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M-9 7 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M2 7 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M13 8 l4 -5 l4 5 l-4 4Z"></path>
+
+      <path d="M-14 18 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M-3 18 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M8 17 l4 -5 l4 5 l-4 4Z"></path>
+
+    </g>
+
+    <ellipse cx="-9" cy="-8" rx="5" ry="9" fill="#edf0ad" opacity="0.2"></ellipse>
+
+  </g>
+
+  <!-- smaller fruit -->
+
+  <g transform="translate(84 80) scale(0.82)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -22
+      C14 -22 24 -13 25 0
+      C27 14 18 26 3 28
+      C-12 29 -24 20 -24 7
+      C-25 -8 -15 -20 0 -22Z" fill="url(#fruitDark)" stroke="#3c5b3d" stroke-width="1.5"></path>
+
+    <g fill="#78924e" stroke="#4e6741" stroke-width="0.45">
+
+      <path d="M-15 -11 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M-4 -15 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M7 -14 l4 -5 l4 5 l-4 4Z"></path>
+
+      <path d="M-20 0 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M-9 -3 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M2 -3 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M13 -1 l4 -5 l4 5 l-4 4Z"></path>
+
+      <path d="M-14 10 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M-3 9 l4 -5 l4 5 l-4 4Z"></path>
+      <path d="M8 9 l4 -5 l4 5 l-4 4Z"></path>
+
+    </g>
+
+  </g>
+
+  <!-- cut fruit section showing edible seeds -->
+
+  <g transform="translate(101 101)" filter="url(#softShadow)">
+
+    <path d="
+      M0 -14
+      C10 -13 17 -7 17 2
+      C17 12 9 18 0 19
+      C-10 18 -17 12 -17 2
+      C-17 -7 -10 -13 0 -14Z" fill="#d5d49c" stroke="#637349" stroke-width="1.1"></path>
+
+    <g fill="url(#seedCream)" stroke="#75573d" stroke-width="0.6">
+
+      <ellipse cx="-7" cy="-3" rx="4.5" ry="6" transform="rotate(-20 -7 -3)"></ellipse>
+
+      <ellipse cx="5" cy="-5" rx="4.5" ry="6" transform="rotate(18 5 -5)"></ellipse>
+
+      <ellipse cx="-1" cy="8" rx="4.8" ry="6" transform="rotate(5 -1 8)"></ellipse>
+
+      <ellipse cx="10" cy="6" rx="3.8" ry="5" transform="rotate(24 10 6)"></ellipse>
+
+    </g>
+
+    <g fill="#f7e8ba" opacity="0.48">
+
+      <ellipse cx="-8" cy="-5" rx="1.3" ry="2"></ellipse>
+
+      <ellipse cx="4" cy="-7" rx="1.3" ry="2"></ellipse>
+
+      <ellipse cx="-2" cy="6" rx="1.4" ry="2"></ellipse>
+    </g>
+
+  </g>
+
+  <!-- foreground leaf -->
+
+  <path d="
+    M29 111
+    C16 104 6 106 3 115
+    C12 122 23 120 31 113Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M6 115
+    L27 112" fill="none" stroke="#c5d99b" stroke-width="0.7" opacity="0.7"></path>
+
+  <!-- ground shadow -->
+
+  <ellipse cx="61" cy="121" rx="39" ry="4" fill="#29392c" opacity="0.16"></ellipse>
+
+</svg>

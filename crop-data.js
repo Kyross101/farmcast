@@ -17030,6 +17030,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Kamansi',
+      localName: 'Breadnut',
+      scientificName: 'Artocarpus camansi Blanco',
+      category: 'fruit',
+      icon: 'assets/crops/kamansi.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'World Agroforestry Centre',
+
+        title:
+          'Agroforestree Database — Artocarpus camansi',
+
+        url:
+          [
+            'https://',
+            'apps.worldagroforestry.org/',
+            'treedb2/speciesprofile.php?Spid=18158'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Kamansi is a tropical tree associated primarily with warm, wet lowland environments. Kew identifies Artocarpus camansi as a tree of the wet tropical biome, while World Agroforestry describes established trees as preferring moist tropical conditions. Because local elevation, rainfall, soil moisture and tree establishment strongly affect growth, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric range.',
+
+      rainfallRange:
+        'Kamansi prefers moist tropical growing conditions. World Agroforestry reports that established trees can withstand a dry season of several months but perform best where adequate moisture is available. Young plants should receive reliable water during establishment. FarmCast therefore keeps rainfall guidance descriptive rather than assigning one universal annual rainfall requirement.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'World Agroforestry reports that Kamansi occurs naturally in moist lowland environments and can tolerate temporarily waterlogged soil and periodic flooding. Young plants perform well under partial shade but established trees prefer sunnier conditions. Because the cited guidance does not provide one universal numeric soil-pH range, FarmCast does not invent one.',
+
+      plantingNote:
+        'Kamansi in this FarmCast entry refers specifically to Artocarpus camansi Blanco, commonly called Breadnut. It is botanically distinct from the existing Breadfruit or Rimas entry, Artocarpus altilis. World Agroforestry reports that Kamansi is readily propagated from fresh seed and can also be propagated through grafting and budding. Seeds have little or no dormancy, lose viability when dried, and should therefore be planted fresh. Current Kew taxonomy accepts Artocarpus camansi Blanco and lists historical names including Artocarpus altilis var. seminifer, Artocarpus incisifolius var. seminifer, Artocarpus incisus var. muricatus, Artocarpus incisus var. seminifer, Artocarpus leeuwenii and Artocarpus papuanus as synonyms.',
+
+      harvestNote:
+        'Kamansi provides more than one edible stage. World Agroforestry reports that immature fruits can be sliced and cooked as a vegetable in soups or stews, while the numerous mature seeds can be roasted or otherwise processed as food. DOST-FNRI also lists Kamansi fruit in the Philippine Food Composition Table. Because reliable guidance does not provide one universal planting-to-first-harvest interval and trees require a multi-year establishment period, FarmCast keeps Kamansi as guidance-only rather than creating an automatic harvest date.',
+
+      source: {
+        agency:
+          'World Agroforestry Centre',
+
+        title:
+          'Agroforestree Database — Artocarpus camansi',
+
+        url:
+          [
+            'https://',
+            'apps.worldagroforestry.org/',
+            'treedb2/speciesprofile.php?Spid=18158'
+          ].join('')
+      }
+    },
+
   
 ];
 
