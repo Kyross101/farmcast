@@ -17842,6 +17842,88 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Camachile',
+      localName: 'Kamatsile / Manila Tamarind',
+      scientificName:
+        'Pithecellobium dulce (Roxb.) Benth.',
+      category: 'fruit',
+      icon: 'assets/crops/camachile.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'marcotted-plants',
+          label: 'Marcotted (Air-Layered) Plants'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Pithecellobium dulce (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=1534'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical growing conditions with good sunlight. PROSEA reports that Pithecellobium dulce grows well at low and medium elevations in both wet and dry tropical areas under full sunlight. Because the cited crop guidance does not establish one universal numeric optimum temperature interval for cultivated Camachile, FarmCast keeps temperature guidance descriptive rather than assigning unsupported minimum and maximum values.',
+
+      rainfallRange:
+        'Camachile is adaptable to both wet and relatively dry tropical environments. PROSEA describes the species as able to grow successfully in wet and dry areas rather than requiring one narrow rainfall regime. Because no single universal annual rainfall interval is established for production, FarmCast keeps rainfall guidance descriptive rather than assigning an unsupported numeric range.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports that well-drained soil is preferable for Camachile, although the tree can also grow successfully in heavy clay soils. Because the cited cultivation guidance does not establish one defensible universal soil-pH interval specifically for Pithecellobium dulce, FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Camachile in this FarmCast entry refers specifically to Pithecellobium dulce (Roxb.) Benth. DOST-FNRI records Camachile, Kamatsile and Manila tamarind as alternate names for this food, while PROSEA records Kamatsile in Tagalog, Kamanchilis in Bisaya and Damortis in Ilokano. PROSEA reports that the species is usually propagated from seed, while selected outstanding trees may be propagated vegetatively through marcotting, grafting or budding. Current Kew taxonomy accepts Pithecellobium dulce and lists Albizia dulcis, Feuilleea dulcis, Inga dulcis, Mimosa dulcis, Zygia dulcis, Acacia obliquifolia, Feuilleea bertolonii, Inga camatchili, Inga javana, Inga lanceolata, Inga leucantha, Inga nitens, Inga pungens, Mimosa monilifera, Mimosa pungens, Pithecellobium bertolonii and Pithecellobium littorale as synonyms.',
+
+      harvestNote:
+        'The edible portion of Camachile is primarily the fleshy aril surrounding the seeds inside the curled pod. DOST-FNRI lists the fruit as a Philippine food, while PROSEA reports that its aril is eaten fresh and that the fruits are sold in local Philippine markets. PROSEA reports that seedling trees may begin bearing fruits after roughly five to eight years and that Philippine trees commonly flower around October to November with abundant mature fruit around January to February. Because these figures describe juvenile first-bearing age and seasonal phenology rather than one exact planting-method-to-harvest interval, Camachile remains guidance-only rather than receiving an automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Madras Thorn — Pithecellobium dulce',
+
+        url:
+          [
+            'https://',
+            'i.fnri.dost.gov.ph/',
+            'fct/library/report/3628'
+          ].join('')
+      }
+    },
+
 
   
 ];
