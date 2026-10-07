@@ -7586,6 +7586,37 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Maca: {
+    'direct-seeded': {
+      minMonths: 8,
+      maxMonths: 9,
+      basis:
+        'after sowing botanical seed',
+      derived: false,
+
+      note:
+        'Peru\'s Ministry of Agriculture and Irrigation reports that Maca is established from botanical seed and that the vegetative phase producing the edible hypocotyl lasts approximately 8–9 months. Actual field maturity and crop condition should still take priority over the calendar estimate.',
+
+      source: {
+        agency:
+          'Ministry of Agriculture and Irrigation of Peru',
+
+        office:
+          'AgroRural',
+
+        title:
+          'Cultivo de Maca (Lepidium meyenii Walpers)',
+
+        url:
+          [
+            'https://',
+            'repositorio.midagri.gob.pe/',
+            'handle/20.500.13036/302'
+          ].join('')
+      }
+    }
+  },
+
 
 
 

@@ -19421,6 +19421,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Maca',
+      localName: 'Maca Root / Peruvian Maca',
+      scientificName:
+        'Lepidium meyenii Walp.',
+      category: 'vegetable',
+      icon: 'assets/crops/maca.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Ministry of Agriculture and Irrigation of Peru',
+
+        office:
+          'AgroRural',
+
+        title:
+          'Cultivo de Maca (Lepidium meyenii Walpers)',
+
+        url:
+          [
+            'https://',
+            'repositorio.midagri.gob.pe/',
+            'handle/20.500.13036/302'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Maca is a high-elevation Andean crop adapted to cool montane conditions and frequent frost. Peru\'s Ministry of Agriculture and Irrigation reports that the crop can grow from about 3300 metres above sea level, with particularly suitable production conditions at higher Andean elevations. Because elevation and frost adaptation do not define one universal optimum crop-wide temperature interval or absolute physiological minimum and maximum range, FarmCast keeps the main temperature fields descriptive rather than assigning unsupported thresholds.',
+
+      rainfallRange:
+        'Maca production is traditionally associated with the Andean rainy-season cropping cycle. Successful establishment depends on adequate soil moisture while the crop also requires suitable drainage and fertile soil. Because rainfall amount, seasonal distribution, elevation and soil condition interact strongly in Maca production, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Peru\'s Ministry of Agriculture and Irrigation describes Maca as requiring fertile soils rich in organic matter and reports a preference for slightly acidic soil conditions. Because the official cultivation summary describes the preferred soil reaction qualitatively rather than establishing one precise numeric lower-to-upper pH interval, FarmCast keeps soilPH unset rather than inventing numerical limits.',
+
+      plantingNote:
+        'Maca in this FarmCast entry refers specifically to Lepidium meyenii Walp. Peru\'s Ministry of Agriculture and Irrigation describes establishment using botanical seed. Current Kew Plants of the World Online taxonomy accepts Lepidium meyenii Walp. and lists nine synonyms: Lepidium affine Wedd., Lepidium gelidum Wedd., Lepidium meyenii var. affine Thell., Lepidium meyenii subsp. gelidum (Wedd.) Thell., Lepidium meyenii var. gelidum (Wedd.) Hosseus, Lepidium meyenii f. rhombicum Thell., Lepidium meyenii f. rotundatum Thell., Lepidium peruvianum G.Chacón and Lepidium weddellii O.E.Schulz. All nine current Kew synonyms and major Maca common-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Maca is cultivated for its enlarged edible hypocotyl and root system. Peru\'s Ministry of Agriculture and Irrigation states that botanical seed is planted and that the vegetative phase producing the hypocotyl lasts approximately eight to nine months. This provides a sufficiently clear seed-establishment-to-harvest basis for FarmCast to calculate an automatic estimate for direct-seeded Maca. Field maturity and actual crop condition should still take priority over the calendar estimate.',
+
+      source: {
+        agency:
+          'Ministry of Agriculture and Irrigation of Peru',
+
+        office:
+          'AgroRural',
+
+        title:
+          'Cultivo de Maca (Lepidium meyenii Walpers)',
+
+        url:
+          [
+            'https://',
+            'repositorio.midagri.gob.pe/',
+            'handle/20.500.13036/302'
+          ].join('')
+      }
+    },
+
 
   
 ];
