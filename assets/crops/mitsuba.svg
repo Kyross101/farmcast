@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Mitsuba</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of mitsuba with distinctive three-part green leaves,
+    slender edible stems, delicate white flower umbels, and a compact perennial root crown.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c1d99a"></stop>
+      <stop offset="0.48" stop-color="#76a25f"></stop>
+      <stop offset="1" stop-color="#3b6848"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#91b574"></stop>
+      <stop offset="1" stop-color="#345b43"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b3c98d"></stop>
+      <stop offset="0.55" stop-color="#779158"></stop>
+      <stop offset="1" stop-color="#526d4d"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerWhite" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.68" stop-color="#f2f1e8"></stop>
+      <stop offset="1" stop-color="#c8d2c5"></stop>
+    </radialGradient>
+
+    <linearGradient id="rootTan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9c49b"></stop>
+      <stop offset="1" stop-color="#80674f"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#273029" flood-opacity="0.2"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <ellipse cx="64" cy="119" rx="43" ry="5" fill="#4d514a" opacity="0.15"></ellipse>
+
+  <!-- Root crown -->
+  <path d="M48 105
+       C53 100 58 98 64 98
+       C70 98 76 100 80 105
+       C76 111 70 114 64 114
+       C58 114 53 111 48 105Z" fill="#756149" stroke="#4d4136" stroke-width="1.3"></path>
+
+  <!-- Thick edible roots -->
+  <g filter="url(#softShadow)">
+
+    <path d="M55 108
+         C52 113 51 119 53 125
+         C57 121 59 116 60 110Z" fill="url(#rootTan)" stroke="#735d49" stroke-width="1"></path>
+
+    <path d="M62 108
+         C61 115 62 121 64 127
+         C67 121 68 115 67 108Z" fill="url(#rootTan)" stroke="#735d49" stroke-width="1"></path>
+
+    <path d="M70 108
+         C74 113 76 118 75 124
+         C71 121 69 116 68 110Z" fill="url(#rootTan)" stroke="#735d49" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Main edible stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M61 101 C57 83 54 68 49 54" stroke-width="3"></path>
+
+    <path d="M64 101 C64 82 64 65 65 48" stroke-width="3.2"></path>
+
+    <path d="M68 101 C73 83 77 68 82 54" stroke-width="3"></path>
+
+  </g>
+
+  <!-- Left three-part leaf -->
+  <g filter="url(#softShadow)">
+
+    <path d="M49 56
+         C42 54 37 49 36 43
+         C35 38 38 34 43 33
+         C49 36 52 43 51 50
+         C51 53 50 55 49 56Z" fill="url(#leafGreen)" stroke="#386247" stroke-width="1.2"></path>
+
+    <path d="M46 51
+         C39 52 33 49 29 44
+         C26 40 27 35 31 32
+         C37 32 43 36 47 42
+         C49 46 49 49 46 51Z" fill="url(#leafGreen)" stroke="#386247" stroke-width="1.2"></path>
+
+    <path d="M52 51
+         C58 51 64 47 66 42
+         C68 37 66 33 62 31
+         C56 33 52 38 50 44
+         C49 47 50 50 52 51Z" fill="url(#leafGreen)" stroke="#386247" stroke-width="1.2"></path>
+
+  </g>
+
+  <!-- Central three-part leaf -->
+  <g filter="url(#softShadow)">
+
+    <path d="M65 49
+         C58 46 54 41 54 35
+         C54 30 57 26 62 25
+         C68 29 70 36 68 42
+         C68 45 67 48 65 49Z" fill="url(#leafDark)" stroke="#345a42" stroke-width="1.25"></path>
+
+    <path d="M61 44
+         C54 45 48 42 45 37
+         C42 33 43 28 47 25
+         C53 25 59 29 62 35
+         C64 39 63 42 61 44Z" fill="url(#leafDark)" stroke="#345a42" stroke-width="1.25"></path>
+
+    <path d="M69 44
+         C76 44 82 40 84 35
+         C86 30 84 26 80 24
+         C74 26 69 31 67 37
+         C66 40 67 43 69 44Z" fill="url(#leafDark)" stroke="#345a42" stroke-width="1.25"></path>
+
+  </g>
+
+  <!-- Right three-part leaf -->
+  <g filter="url(#softShadow)">
+
+    <path d="M82 56
+         C75 54 71 49 70 43
+         C70 38 73 34 78 33
+         C84 36 87 43 85 50
+         C85 53 84 55 82 56Z" fill="url(#leafGreen)" stroke="#386247" stroke-width="1.2"></path>
+
+    <path d="M79 51
+         C72 52 66 49 63 44
+         C60 40 61 35 65 32
+         C71 32 77 36 80 42
+         C82 46 82 49 79 51Z" fill="url(#leafGreen)" stroke="#386247" stroke-width="1.2"></path>
+
+    <path d="M85 51
+         C92 51 98 47 100 42
+         C102 37 100 33 96 31
+         C90 33 86 38 84 44
+         C83 47 83 50 85 51Z" fill="url(#leafGreen)" stroke="#386247" stroke-width="1.2"></path>
+
+  </g>
+
+  <!-- Lower young leaves -->
+  <g fill="url(#leafGreen)" stroke="#3a6448" stroke-width="1.05">
+
+    <path d="M57 85
+         C51 84 46 80 44 75
+         C43 71 45 67 49 65
+         C54 68 57 73 58 79
+         C59 82 58 84 57 85Z"></path>
+
+    <path d="M71 84
+         C77 83 82 79 84 74
+         C85 70 83 66 79 64
+         C74 67 71 72 70 78
+         C69 81 70 83 71 84Z"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#d4e2ba" stroke-linecap="round" opacity="0.75">
+
+    <path d="M49 53 L43 36" stroke-width="0.7"></path>
+    <path d="M46 49 L31 37" stroke-width="0.7"></path>
+    <path d="M52 49 L62 35" stroke-width="0.7"></path>
+
+    <path d="M65 46 L62 29" stroke-width="0.7"></path>
+    <path d="M61 42 L48 29" stroke-width="0.7"></path>
+    <path d="M69 42 L80 28" stroke-width="0.7"></path>
+
+    <path d="M82 53 L78 36" stroke-width="0.7"></path>
+    <path d="M79 49 L65 37" stroke-width="0.7"></path>
+    <path d="M85 49 L96 35" stroke-width="0.7"></path>
+
+  </g>
+
+  <!-- Flowering stalk -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M65 48
+         C66 37 67 27 66 15" stroke-width="1.9"></path>
+
+    <path d="M66 28 L55 20" stroke-width="0.95"></path>
+
+    <path d="M67 27 L78 19" stroke-width="0.95"></path>
+
+    <path d="M66 22 L66 13" stroke-width="0.9"></path>
+
+  </g>
+
+  <!-- Small white umbels -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(55 19)">
+      <circle cx="0" cy="0" r="0.9" fill="#d8be68"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#a7b4a8" stroke-width="0.35">
+
+        <ellipse cx="0" cy="-2.4" rx="1.2" ry="2"></ellipse>
+        <ellipse cx="2.2" cy="-0.7" rx="1.9" ry="1.1"></ellipse>
+        <ellipse cx="1.4" cy="1.9" rx="1.1" ry="1.8"></ellipse>
+        <ellipse cx="-1.4" cy="1.9" rx="1.1" ry="1.8"></ellipse>
+        <ellipse cx="-2.2" cy="-0.7" rx="1.9" ry="1.1"></ellipse>
+
+      </g>
+    </g>
+
+    <g transform="translate(66 12)">
+      <circle cx="0" cy="0" r="0.95" fill="#d8be68"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#a7b4a8" stroke-width="0.35">
+
+        <ellipse cx="0" cy="-2.5" rx="1.3" ry="2.1"></ellipse>
+        <ellipse cx="2.3" cy="-0.7" rx="2" ry="1.2"></ellipse>
+        <ellipse cx="1.5" cy="2" rx="1.2" ry="1.9"></ellipse>
+        <ellipse cx="-1.5" cy="2" rx="1.2" ry="1.9"></ellipse>
+        <ellipse cx="-2.3" cy="-0.7" rx="2" ry="1.2"></ellipse>
+
+      </g>
+    </g>
+
+    <g transform="translate(78 18)">
+      <circle cx="0" cy="0" r="0.9" fill="#d8be68"></circle>
+
+      <g fill="url(#flowerWhite)" stroke="#a7b4a8" stroke-width="0.35">
+
+        <ellipse cx="0" cy="-2.4" rx="1.2" ry="2"></ellipse>
+        <ellipse cx="2.2" cy="-0.7" rx="1.9" ry="1.1"></ellipse>
+        <ellipse cx="1.4" cy="1.9" rx="1.1" ry="1.8"></ellipse>
+        <ellipse cx="-1.4" cy="1.9" rx="1.1" ry="1.8"></ellipse>
+        <ellipse cx="-2.2" cy="-0.7" rx="1.9" ry="1.1"></ellipse>
+
+      </g>
+    </g>
+
+  </g>
+
+  <!-- Fine roots -->
+  <g fill="none" stroke="#6c5747" stroke-linecap="round">
+
+    <path d="M54 111 C49 115 46 119 43 123" stroke-width="0.9"></path>
+
+    <path d="M60 113 C57 118 55 121 54 125" stroke-width="0.85"></path>
+
+    <path d="M69 113 C72 118 74 121 75 125" stroke-width="0.85"></path>
+
+    <path d="M75 111 C80 115 83 119 86 123" stroke-width="0.9"></path>
+
+  </g>
+
+</svg>

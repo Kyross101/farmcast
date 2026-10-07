@@ -13203,6 +13203,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Mitsuba',
+      scientificName: 'Cryptotaenia japonica Hassk.',
+      category: 'herb',
+      icon: 'assets/crops/mitsuba.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'divisions',
+          label: 'Clump Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'North Carolina Cooperative Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Cryptotaenia japonica — Mitsuba',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/plants/cryptotaenia-japonica/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool to temperate growing conditions. Kew identifies Mitsuba as a perennial species primarily associated with the temperate biome. North Carolina Extension notes that it performs especially well in shaded conditions and that strong full sun can cause yellowing and a more bitter leaf flavor. FarmCast therefore keeps temperature guidance descriptive rather than assigning an unsupported universal numeric range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. North Carolina Extension describes Mitsuba as favoring moist growing conditions. FarmCast therefore keeps water guidance descriptive rather than converting soil-moisture requirements into an invented annual rainfall range.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Mitsuba grows in moist clay, loam, or sandy soil and is well suited to partial shade, dappled shade, or deeper shade. North Carolina Extension notes that plants grown in strong full sun may develop yellower and more bitter foliage.',
+
+      plantingNote:
+        'Mitsuba is an edible East Asian herb and vegetable that can be propagated from seed or by division. Current Kew taxonomy accepts Cryptotaenia japonica Hassk. Older names including Cryptotaenia canadensis var. japonica, Cryptotaenia canadensis subsp. japonica, and Deringa japonica are treated as synonyms.',
+
+      harvestNote:
+        'Mitsuba is harvested mainly for its tender edible leaves and stems, which are used as a culinary herb and salad green. The roots may also be cooked as a vegetable. Because harvest is based on tender vegetative growth and may be repeated as new rosettes develop rather than following one universal sowing-to-harvest interval, FarmCast keeps Mitsuba as guidance-only.',
+
+      source: {
+        agency:
+          'North Carolina Cooperative Extension',
+
+        office:
+          'Extension Gardener Plant Toolbox',
+
+        title:
+          'Cryptotaenia japonica — Mitsuba',
+
+        url:
+          [
+            'https://',
+            'plants.ces.ncsu.edu/plants/cryptotaenia-japonica/'
+          ].join('')
+      }
+    },
+
 
   
 ];
