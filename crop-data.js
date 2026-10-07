@@ -17924,6 +17924,85 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Katmon',
+      localName: 'Philippine Dillenia / Philippine Catmon',
+      scientificName:
+        'Dillenia philippinensis Rolfe',
+      category: 'fruit',
+      icon: 'assets/crops/katmon.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Forest Foundation Philippines',
+
+        title:
+          'Field Guidebook on the Native Trees within the Quirino Forest Landscape',
+
+        url:
+          [
+            'https://',
+            'www.forestfoundation.ph/',
+            'wp-content/uploads/2020/08/',
+            'Field-Guidebook-on-the-Native-Trees-within-the-Quirino-Forest-Landscape.pdf'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm and humid tropical growing conditions. Kew records Dillenia philippinensis as a tree of the wet tropical biome, while the National Parks Development Committee notes that Katmon performs well under full sunlight with moderate watering. Because the cited references do not establish one universal numeric optimum temperature interval for cultivated Katmon, FarmCast keeps temperature guidance descriptive rather than assigning unsupported minimum and maximum values.',
+
+      rainfallRange:
+        'Katmon is associated with wet tropical environments and benefits from dependable moisture. Philippine cultivation guidance describes moderate watering rather than one fixed annual rainfall requirement. Because the cited sources do not establish one universal rainfall interval for production across sites, FarmCast keeps rainfall guidance descriptive.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Katmon is naturally associated with low- to medium-elevation Philippine forests and can also be grown in landscaped environments. The reliable references used for this entry do not establish one universal soil-pH interval specifically for Dillenia philippinensis cultivation, so FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Katmon in this FarmCast entry refers specifically to Dillenia philippinensis Rolfe, an endemic Philippine tree also known as Philippine Catmon or Philippine Dillenia. Forest Foundation Philippines lists seed, grafts and air layers as propagation methods. Current Kew taxonomy accepts Dillenia philippinensis Rolfe and lists only two synonyms: Dillenia catmon Elmer and Dillenia philippinensis var. pubifolia Merr. These names and the major common-name variants were checked against the FarmCast crop dataset before this entry was added.',
+
+      harvestNote:
+        'Katmon produces a rounded green fruit with sour edible flesh. DOST-FNRI records Philippine Dillenia or Katmon as a food, while Philippine references describe the fruit as edible fresh and useful for sour dishes, sauces and jams. Philippine research on vegetatively propagated Katmon reported that trees established from mature stem cuttings could show early fruiting around fourteen months after planting. Because this is an early first-bearing observation from a specific propagation study rather than one universal planting-to-harvest interval for the FarmCast planting methods, Katmon remains guidance-only rather than receiving an automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Philippine Dillenia — Dillenia philippinensis',
+
+        url:
+          [
+            'https://',
+            'i.fnri.dost.gov.ph/',
+            'fct/library/report/3654'
+          ].join('')
+      }
+    },
+
 
   
 ];
