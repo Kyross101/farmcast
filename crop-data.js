@@ -12881,6 +12881,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Sculpit',
+      scientificName: 'Silene vulgaris (Moench) Garcke',
+      category: 'vegetable',
+      icon: 'assets/crops/sculpit.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Silene vulgaris — Bladder Campion',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/100957/silene-vulgaris/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate perennial conditions. Kew identifies Silene vulgaris as a perennial species primarily associated with the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cited cultivation guidance does not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Missouri Botanical Garden describes Silene vulgaris as growing well under dry-to-medium moisture conditions and emphasizes good drainage. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Prefers neutral to alkaline soil.',
+
+      soilNote:
+        'Sculpit grows well in moderately fertile soil under full sun or dappled shade. Royal Horticultural Society guidance recommends neutral to alkaline conditions, while Missouri Botanical Garden notes that sandy, gravelly, or light loam soils with good drainage are suitable.',
+
+      plantingNote:
+        'Sculpit is an edible perennial herb that can be propagated from seed. Royal Horticultural Society guidance recommends sowing seed in containers in a cold frame in autumn. Current Kew taxonomy accepts Silene vulgaris (Moench) Garcke; older names including Behen vulgaris, Cucubalus behen, Lychnis behen, Oberna behen, and Silene cucubalus are treated as synonyms.',
+
+      harvestNote:
+        'Sculpit is harvested for its tender edible leaves and young shoots, which have a long history of culinary use in parts of the Mediterranean. Because harvesting is based on young vegetative growth and repeated leaf or shoot collection rather than one universal sowing-to-harvest interval, FarmCast keeps Sculpit as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Silene vulgaris — Bladder Campion',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/100957/silene-vulgaris/details'
+          ].join('')
+      }
+    },
+
 
   
 ];

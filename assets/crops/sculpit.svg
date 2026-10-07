@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Sculpit</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of sculpit with blue-green edible leaves,
+    slender branching stems, white notched flowers,
+    and distinctive inflated bladder-like calyces.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bfd3a1"></stop>
+      <stop offset="0.48" stop-color="#769b68"></stop>
+      <stop offset="1" stop-color="#426951"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8cab77"></stop>
+      <stop offset="1" stop-color="#395d49"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9db88a"></stop>
+      <stop offset="1" stop-color="#55755a"></stop>
+    </linearGradient>
+
+    <radialGradient id="calyxGreen" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#d4d9af"></stop>
+      <stop offset="0.55" stop-color="#a5b785"></stop>
+      <stop offset="1" stop-color="#6f8564"></stop>
+    </radialGradient>
+
+    <radialGradient id="flowerWhite" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.65" stop-color="#f2f0e7"></stop>
+      <stop offset="1" stop-color="#c9d1c5"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#273028" flood-opacity="0.2"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <ellipse cx="64" cy="119" rx="43" ry="5" fill="#4c514b" opacity="0.15"></ellipse>
+
+  <!-- Root crown -->
+  <path d="M49 106
+       C53 102 58 100 64 100
+       C70 100 75 102 79 106
+       C75 112 70 115 64 115
+       C58 115 53 112 49 106Z" fill="#735f4b" stroke="#4d4036" stroke-width="1.3"></path>
+
+  <!-- Main stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M63 104
+         C62 84 63 64 65 48
+         C67 34 67 22 66 10" stroke-width="2.8"></path>
+
+    <path d="M64 75
+         C52 67 45 57 40 47" stroke-width="1.6"></path>
+
+    <path d="M65 67
+         C77 59 86 50 91 40" stroke-width="1.6"></path>
+
+    <path d="M66 47
+         C56 41 50 34 47 27" stroke-width="1.3"></path>
+
+    <path d="M66 42
+         C76 37 82 30 86 23" stroke-width="1.3"></path>
+
+  </g>
+
+  <!-- Lower edible leaves -->
+  <g fill="url(#leafGreen)" stroke="#385f48" stroke-width="1.3" filter="url(#softShadow)">
+
+    <path d="M57 100
+         C48 102 39 99 33 94
+         C27 89 25 83 28 78
+         C33 75 39 77 45 81
+         C51 86 55 93 57 100Z"></path>
+
+    <path d="M71 100
+         C80 102 89 99 95 94
+         C101 89 103 83 100 78
+         C95 75 89 77 83 81
+         C77 86 73 93 71 100Z"></path>
+
+    <path d="M58 85
+         C49 85 42 81 39 75
+         C36 70 37 65 41 62
+         C47 63 52 67 56 72
+         C59 77 60 82 58 85Z"></path>
+
+    <path d="M70 82
+         C79 82 86 78 89 72
+         C92 67 91 62 87 59
+         C81 60 76 64 72 69
+         C69 74 68 79 70 82Z"></path>
+
+  </g>
+
+  <!-- Upper clasping leaves -->
+  <g fill="url(#leafDark)" stroke="#345740" stroke-width="1">
+
+    <path d="M60 64
+         C54 61 51 56 52 51
+         C53 47 56 44 60 43
+         C64 48 65 55 60 64Z"></path>
+
+    <path d="M71 60
+         C77 57 80 52 79 47
+         C78 43 75 40 71 39
+         C67 44 66 51 71 60Z"></path>
+
+    <path d="M61 45
+         C56 42 54 38 55 34
+         C56 31 59 29 62 29
+         C65 34 65 40 61 45Z"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#d0ddbd" stroke-linecap="round" opacity="0.7">
+
+    <path d="M56 96 C48 89 40 84 31 81" stroke-width="0.8"></path>
+
+    <path d="M72 96 C80 89 88 84 97 81" stroke-width="0.8"></path>
+
+    <path d="M58 81 C51 75 46 69 42 65" stroke-width="0.7"></path>
+
+    <path d="M70 78 C77 72 82 66 86 62" stroke-width="0.7"></path>
+
+  </g>
+
+  <!-- Flowering branches -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M66 30 C57 26 51 21 47 15" stroke-width="1.1"></path>
+
+    <path d="M67 29 C76 25 82 20 86 14" stroke-width="1.1"></path>
+
+    <path d="M66 20 C65 16 65 12 66 8" stroke-width="1"></path>
+
+  </g>
+
+  <!-- Inflated calyx left -->
+  <g transform="translate(47 15)" filter="url(#softShadow)">
+
+    <path d="M-4 2
+         C-7 -3 -5 -9 0 -12
+         C5 -9 7 -3 4 2
+         C2 5 -2 5 -4 2Z" fill="url(#calyxGreen)" stroke="#60775a" stroke-width="1"></path>
+
+    <path d="M0 -10 C-1 -5 -1 0 0 4" fill="none" stroke="#849774" stroke-width="0.7"></path>
+
+    <path d="M-3 -7 C-1 -4 2 -4 4 -7" fill="none" stroke="#849774" stroke-width="0.6"></path>
+
+  </g>
+
+  <!-- Inflated calyx right -->
+  <g transform="translate(86 14)" filter="url(#softShadow)">
+
+    <path d="M-4 2
+         C-7 -3 -5 -9 0 -12
+         C5 -9 7 -3 4 2
+         C2 5 -2 5 -4 2Z" fill="url(#calyxGreen)" stroke="#60775a" stroke-width="1"></path>
+
+    <path d="M0 -10 C-1 -5 -1 0 0 4" fill="none" stroke="#849774" stroke-width="0.7"></path>
+
+    <path d="M-3 -7 C-1 -4 2 -4 4 -7" fill="none" stroke="#849774" stroke-width="0.6"></path>
+
+  </g>
+
+  <!-- White deeply notched flowers -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(47 3)">
+
+      <g fill="url(#flowerWhite)" stroke="#aab5aa" stroke-width="0.45">
+
+        <path d="M0 0 C-3 -4 -4 -8 -2 -11 L0 -8 L2 -11 C4 -8 3 -4 0 0Z"></path>
+
+        <path d="M1 1 C5 -2 8 -3 11 -1 L8 1 L11 3 C7 5 4 4 1 1Z"></path>
+
+        <path d="M0 2 C3 6 3 9 1 12 L-1 9 L-3 11 C-4 7 -3 4 0 2Z"></path>
+
+        <path d="M-1 1 C-5 4 -8 4 -11 2 L-8 0 L-11 -2 C-7 -4 -4 -3 -1 1Z"></path>
+
+        <path d="M0 0 C-2 -3 -1 -6 1 -8 C3 -5 3 -2 1 1Z"></path>
+
+      </g>
+
+      <circle cx="0" cy="1" r="2.2" fill="#d3bd69" stroke="#8c783e" stroke-width="0.45"></circle>
+
+    </g>
+
+    <g transform="translate(86 2)">
+
+      <g fill="url(#flowerWhite)" stroke="#aab5aa" stroke-width="0.45">
+
+        <path d="M0 0 C-3 -4 -4 -8 -2 -11 L0 -8 L2 -11 C4 -8 3 -4 0 0Z"></path>
+
+        <path d="M1 1 C5 -2 8 -3 11 -1 L8 1 L11 3 C7 5 4 4 1 1Z"></path>
+
+        <path d="M0 2 C3 6 3 9 1 12 L-1 9 L-3 11 C-4 7 -3 4 0 2Z"></path>
+
+        <path d="M-1 1 C-5 4 -8 4 -11 2 L-8 0 L-11 -2 C-7 -4 -4 -3 -1 1Z"></path>
+
+        <path d="M0 0 C-2 -3 -1 -6 1 -8 C3 -5 3 -2 1 1Z"></path>
+
+      </g>
+
+      <circle cx="0" cy="1" r="2.2" fill="#d3bd69" stroke="#8c783e" stroke-width="0.45"></circle>
+
+    </g>
+
+  </g>
+
+  <!-- Fine roots -->
+  <g fill="none" stroke="#695546" stroke-linecap="round">
+
+    <path d="M55 111 C51 116 48 120 44 123" stroke-width="1.1"></path>
+
+    <path d="M61 113 C59 118 58 121 57 125" stroke-width="1"></path>
+
+    <path d="M68 113 C70 118 71 121 72 125" stroke-width="1"></path>
+
+    <path d="M74 111 C78 116 81 119 85 122" stroke-width="1.1"></path>
+
+  </g>
+
+</svg>
