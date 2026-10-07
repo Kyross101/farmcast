@@ -18301,6 +18301,80 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Kutsay',
+      localName: 'Garlic Chives / Chinese Chives',
+      scientificName:
+        'Allium tuberosum Rottler ex Spreng.',
+      category: 'vegetable',
+      icon: 'assets/crops/kutsay.svg',
+
+      plantingMethods: [
+        {
+          value: 'clump-division',
+          label: 'Clump Division'
+        },
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Allium tuberosum Rottler ex Sprengel',
+
+        url:
+          [
+            'https://',
+            'prosea.prota4u.org/',
+            'view.aspx?id=2138'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'PROSEA reports an optimum temperature of about 20°C for Chinese chives. Under tropical conditions the plant can continue growing without a pronounced dormant period. Because the reported 20°C value is an optimum rather than an absolute physiological minimum or maximum, FarmCast keeps minTemp and maxTemp unset rather than converting it into unsupported threshold values.',
+
+      rainfallRange:
+        'The cited species-specific PROSEA record does not provide one universal numeric annual rainfall interval for Chinese chives. Because suitable water requirements depend on local climate, soil and cultivation conditions, FarmCast keeps rainfall guidance descriptive rather than assigning an unsupported numeric range.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports Chinese chives growing well on fertile and loose soils, including highland production in Indonesia. The cited cultivation record does not establish one universal numeric soil-pH interval specifically for Allium tuberosum, so FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Kutsay in this FarmCast entry refers specifically to Allium tuberosum Rottler ex Spreng., commonly known as Garlic Chives or Chinese Chives. PROSEA records kutsay as the Philippine Tagalog name, ganda in Bisaya and amput di imayyaw in Ifugao. DOST-FNRI likewise records Kutsay dahon as a Philippine food name. PROSEA reports that Chinese chives are normally propagated by division of clumps in tropical production, while propagation from seed is commonly used outside the tropics. Current Kew taxonomy accepts Allium tuberosum Rottler ex Spreng. and lists 12 synonyms: Allium angulosum, Allium argyi, Allium chinense, Allium clarkei, Allium roxburghii, Allium sulvia, Allium tricoccum, Allium tuberosum Roxb., Allium tuberosum f. yezoense, Allium uliginosum, Allium yesoense and Nothoscordum sulvia.',
+
+      harvestNote:
+        'The edible portions of Kutsay are primarily the leaves and young inflorescences, which are used for seasoning and may be eaten green or blanched. PROSEA reports that leaves can begin to be harvested about three to four months after planting and that established plants are ratooned, allowing repeated harvests throughout the year in tropical conditions. Because this source expresses first harvest in months and does not provide separate exact day-based intervals for clump division and seed establishment, FarmCast keeps Kutsay as guidance-only rather than assigning one automatic harvest date.',
+
+      source: {
+        agency:
+          'Department of Science and Technology - Food and Nutrition Research Institute',
+
+        office:
+          'Philippine Food Composition Table',
+
+        title:
+          'Chinese Leek Leaves — Allium tuberosum',
+
+        url:
+          [
+            'https://',
+            'i.fnri.dost.gov.ph/',
+            'fct/library/report/3392'
+          ].join('')
+      }
+    },
+
 
   
 ];
