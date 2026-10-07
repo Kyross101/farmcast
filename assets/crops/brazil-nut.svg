@@ -1,0 +1,321 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Brazil Nut</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a Brazil nut branch with broad
+    tropical leaves, cream flowers, a large round woody fruit capsule,
+    an opened fruit, and several brown Brazil nut seeds.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9d7657"></stop>
+      <stop offset="0.55" stop-color="#694d3b"></stop>
+      <stop offset="1" stop-color="#40322a"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d5134"></stop>
+      <stop offset="0.48" stop-color="#478847"></stop>
+      <stop offset="1" stop-color="#9cc576"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#173d2a"></stop>
+      <stop offset="1" stop-color="#609453"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitBrown" cx="32%" cy="24%" r="77%">
+      <stop offset="0" stop-color="#c99a64"></stop>
+      <stop offset="0.42" stop-color="#8d603e"></stop>
+      <stop offset="0.76" stop-color="#5d402f"></stop>
+      <stop offset="1" stop-color="#372a24"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitInside" cx="40%" cy="35%" r="72%">
+      <stop offset="0" stop-color="#d0a36d"></stop>
+      <stop offset="0.55" stop-color="#93623f"></stop>
+      <stop offset="1" stop-color="#60402e"></stop>
+    </radialGradient>
+
+    <linearGradient id="nutShell" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8b17c"></stop>
+      <stop offset="0.45" stop-color="#a57449"></stop>
+      <stop offset="1" stop-color="#65442e"></stop>
+    </linearGradient>
+
+    <linearGradient id="flowerCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffce9"></stop>
+      <stop offset="0.55" stop-color="#eadcae"></stop>
+      <stop offset="1" stop-color="#bca16b"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#202820" flood-opacity="0.26"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="116" rx="40" ry="6" fill="#293129" opacity="0.16"></ellipse>
+
+  <!-- Main woody branch -->
+  <path d="
+    M17 106
+    C31 93 44 80 56 63
+    C69 45 85 29 106 15" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- Side branches -->
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="
+      M46 78
+      C38 65 33 52 32 39" stroke-width="3.4"></path>
+
+    <path d="
+      M61 56
+      C55 43 53 31 55 19" stroke-width="3.1"></path>
+
+    <path d="
+      M77 39
+      C89 41 101 37 113 28" stroke-width="3"></path>
+
+    <path d="
+      M38 91
+      C29 87 22 82 16 76" stroke-width="2.7"></path>
+
+  </g>
+
+  <!-- Bark highlight -->
+  <path d="
+    M21 102
+    C36 88 49 74 60 58
+    C73 42 88 28 103 18" fill="none" stroke="#bc9676" stroke-width="1" stroke-linecap="round" opacity="0.58"></path>
+
+  <!-- Broad Brazil nut leaves -->
+  <g stroke="#214b32" stroke-width="1.05" filter="url(#softShadow)">
+
+    <path d="
+      M31 40
+      C18 30 8 34 6 43
+      C15 54 28 54 37 47
+      C40 44 36 41 31 40Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M42 59
+      C29 49 18 53 16 63
+      C26 74 39 70 48 62
+      C51 59 47 58 42 59Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M55 22
+      C43 12 33 16 30 26
+      C39 36 51 35 59 27
+      C62 24 59 23 55 22Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M72 46
+      C81 35 93 35 100 43
+      C94 54 82 58 72 52
+      C69 50 69 48 72 46Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M94 30
+      C103 19 114 21 120 29
+      C113 40 102 41 93 35
+      C90 33 90 31 94 30Z" fill="url(#leafDark)"></path>
+
+    <path d="
+      M98 50
+      C108 40 118 43 122 51
+      C115 60 104 62 96 56
+      C93 53 94 51 98 50Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#bdd69b" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M8 43 C18 44 28 44 35 45"></path>
+    <path d="M19 63 C30 62 39 61 46 60"></path>
+    <path d="M33 26 C43 25 51 25 57 25"></path>
+
+    <path d="M97 44 C88 47 80 49 73 50"></path>
+    <path d="M117 29 C109 31 101 33 94 34"></path>
+    <path d="M119 51 C111 52 103 54 97 54"></path>
+
+  </g>
+
+  <!-- Fruit stalk -->
+  <path d="
+    M62 59
+    C67 67 69 76 70 85" fill="none" stroke="#63563b" stroke-width="2.4" stroke-linecap="round"></path>
+
+  <!-- Large intact Brazil nut fruit -->
+  <g transform="translate(70 94)" filter="url(#softShadow)">
+
+    <circle cx="0" cy="0" r="21" fill="url(#fruitBrown)" stroke="#423126" stroke-width="1.6"></circle>
+
+    <!-- woody fruit texture -->
+    <g fill="none" stroke="#76513a" stroke-width="0.85" stroke-linecap="round" opacity="0.8">
+
+      <path d="
+        M-13 -12
+        C-6 -7 -5 -1 -8 5"></path>
+
+      <path d="
+        M5 -16
+        C10 -9 10 -2 7 4"></path>
+
+      <path d="
+        M-15 8
+        C-7 11 1 12 10 9"></path>
+
+      <path d="
+        M-8 16
+        C0 13 8 14 14 10"></path>
+
+      <path d="
+        M-18 -3
+        C-10 -1 -5 -3 0 -7"></path>
+
+    </g>
+
+    <!-- natural round lid/scar -->
+    <ellipse cx="0" cy="-16" rx="6" ry="3.2" fill="#725039" stroke="#3e3028" stroke-width="1"></ellipse>
+
+    <!-- highlight -->
+    <ellipse cx="-8" cy="-8" rx="4" ry="6" fill="#deb684" opacity="0.32" transform="rotate(-25 -8 -8)"></ellipse>
+
+  </g>
+
+  <!-- Open fruit section -->
+  <g transform="translate(37 100)" filter="url(#softShadow)">
+
+    <!-- thick outer shell -->
+    <path d="
+      M0 -17
+      C-14 -16 -21 -6 -20 6
+      C-18 17 -9 23 0 23
+
+      C9 23 18 17 20 6
+      C21 -6 14 -16 0 -17Z" fill="url(#fruitBrown)" stroke="#443128" stroke-width="1.5"></path>
+
+    <!-- cut interior -->
+    <ellipse cx="0" cy="4" rx="14.5" ry="13" fill="url(#fruitInside)" stroke="#5d412f" stroke-width="1.2"></ellipse>
+
+    <!-- visible packed nuts -->
+    <g fill="url(#nutShell)" stroke="#5e3e2c" stroke-width="0.8">
+
+      <path d="
+        M-6 -5
+        C-12 -2 -12 6 -7 10
+        C-3 9 0 4 -1 -2
+        C-2 -5 -4 -6 -6 -5Z"></path>
+
+      <path d="
+        M5 -5
+        C0 -2 0 5 4 10
+        C9 9 12 4 10 -2
+        C9 -5 7 -6 5 -5Z"></path>
+
+      <path d="
+        M0 5
+        C-5 8 -5 14 0 17
+        C5 15 6 10 3 6
+        C2 5 1 5 0 5Z"></path>
+
+    </g>
+
+    <!-- inner shell highlight -->
+    <ellipse cx="-4" cy="-1" rx="4" ry="3" fill="#e4bb80" opacity="0.35"></ellipse>
+
+  </g>
+
+  <!-- Loose Brazil nuts -->
+  <g stroke="#563826" stroke-width="1" filter="url(#softShadow)">
+
+    <path d="
+      M93 103
+      C87 100 84 104 84 109
+      C84 116 89 121 94 120
+      C99 117 100 110 97 105
+      C96 104 95 103 93 103Z" fill="url(#nutShell)"></path>
+
+    <path d="
+      M106 101
+      C100 99 97 103 98 109
+      C99 115 104 119 109 117
+      C113 113 113 107 110 103
+      C109 102 108 101 106 101Z" fill="url(#nutShell)"></path>
+
+    <path d="
+      M111 112
+      C106 110 103 114 104 119
+      C105 123 109 125 113 123
+      C116 120 116 116 114 113
+      C113 112 112 112 111 112Z" fill="url(#nutShell)"></path>
+
+  </g>
+
+  <!-- Nut highlights -->
+  <g fill="none" stroke="#edce9b" stroke-width="1" stroke-linecap="round" opacity="0.62">
+
+    <path d="M88 106 C87 110 89 114 91 116"></path>
+    <path d="M102 104 C101 108 103 112 105 114"></path>
+    <path d="M107 115 C107 118 109 120 111 121"></path>
+
+  </g>
+
+  <!-- Brazil nut flowers -->
+  <path d="
+    M80 39
+    C87 35 93 31 99 25" fill="none" stroke="#657346" stroke-width="1.5" stroke-linecap="round"></path>
+
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(100 24)">
+
+      <!-- curved cream petals -->
+      <path d="
+        M0 0
+        C-7 -6 -11 -2 -9 4
+        C-5 8 0 7 2 4Z" fill="url(#flowerCream)" stroke="#a58f65" stroke-width="0.7"></path>
+
+      <path d="
+        M1 1
+        C6 -7 11 -5 12 1
+        C10 7 5 9 1 5Z" fill="url(#flowerCream)" stroke="#a58f65" stroke-width="0.7"></path>
+
+      <!-- hood-like center -->
+      <path d="
+        M-2 1
+        C1 -3 6 -3 8 1
+        C6 5 2 6 -2 4Z" fill="#e1bd62" stroke="#a57d2c" stroke-width="0.6"></path>
+
+    </g>
+
+    <g transform="translate(108 33) scale(.82)">
+
+      <path d="
+        M0 0
+        C-7 -6 -11 -2 -9 4
+        C-5 8 0 7 2 4Z" fill="url(#flowerCream)" stroke="#a58f65" stroke-width="0.7"></path>
+
+      <path d="
+        M1 1
+        C6 -7 11 -5 12 1
+        C10 7 5 9 1 5Z" fill="url(#flowerCream)" stroke="#a58f65" stroke-width="0.7"></path>
+
+      <path d="
+        M-2 1
+        C1 -3 6 -3 8 1
+        C6 5 2 6 -2 4Z" fill="#e1bd62" stroke="#a57d2c" stroke-width="0.6"></path>
+
+    </g>
+
+  </g>
+
+</svg>

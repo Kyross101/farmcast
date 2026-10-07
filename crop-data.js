@@ -15636,6 +15636,74 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Brazil Nut',
+      scientificName:
+        'Bertholletia excelsa Bonpl.',
+      category: 'tree-nut',
+      icon: 'assets/crops/brazil-nut.svg',
+
+      plantingMethods: [
+        {
+          value: 'nursery-raised-seedlings',
+          label: 'Nursery-Raised Seedlings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Embrapa Eastern Amazon',
+
+        title:
+          'Propagation of Brazil Nut Seedlings Using Seeds in Mini-Greenhouses',
+
+        url:
+          [
+            'https://',
+            'www.embrapa.br/en/',
+            'busca-de-publicacoes/-/publicacao/1105944/',
+            'propagation-of-brazil-nut-humb-y-bonpl-',
+            'seedlings-using-seeds-in-mini-greenhouses'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Wet tropical growing conditions. Kew identifies Brazil Nut as a large tree native to tropical South America and primarily associated with the wet tropical biome. Growth, flowering and fruit production depend strongly on local rainforest climate, tree age and pollination conditions, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Brazil Nut is naturally associated with humid Amazonian forest environments where seasonal rainfall and soil moisture support tree growth. Water requirements vary substantially with soil, tree age and local tropical climate, so FarmCast keeps moisture guidance descriptive rather than inventing one universal rainfall range.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows Embrapa guidance emphasizing suitable site and soil preparation for established Brazil Nut seedlings rather than assigning an unsupported universal pH range.',
+
+      soilNote:
+        'Brazil Nut is a very large tropical tree that requires substantial rooting and canopy space. Embrapa research shows that soil physical properties can influence tree occurrence and fruit production, so suitable field establishment should consider local soil conditions, drainage, rooting depth and long-term tree spacing rather than rely on one universal soil prescription.',
+
+      plantingNote:
+        'Brazil Nut is the familiar edible seed produced by the Amazonian tree Bertholletia excelsa. Embrapa identifies seed propagation as one of the principal methods for producing Brazil Nut seedlings, although seed dormancy can make germination slow and uneven. Nursery-raised seedlings are therefore used for establishment before field planting. Current Kew taxonomy accepts Bertholletia excelsa Bonpl.; its two scientific synonyms are Barthollesia excelsa and Bertholletia nobilis.',
+
+      harvestNote:
+        'Brazil Nut fruits are large, hard woody capsules that mature high in the tree and fall naturally to the forest floor. Research on natural Brazil Nut stands shows that fruit fall occurs seasonally over an extended period and that collection is performed after fruits have fallen rather than by harvesting immature fruits from the canopy. Because Brazil Nut is a long-lived perennial tree and first bearing as well as annual fruit-fall timing vary greatly with tree age, site and climate, FarmCast keeps Brazil Nut as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'Embrapa Western Amazon',
+
+        title:
+          'Brazil Nut — Bertholletia excelsa',
+
+        url:
+          [
+            'https://',
+            'www.infoteca.cnptia.embrapa.br/',
+            'handle/doc/684044'
+          ].join('')
+      }
+    },
+
   
 ];
 
