@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Skirret</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of skirret with compound green leaves,
+    white umbel flowers, upright stems, and a cluster of long pale edible roots.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b6cf89"></stop>
+      <stop offset="0.5" stop-color="#739c5d"></stop>
+      <stop offset="1" stop-color="#3e6848"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a9bd7f"></stop>
+      <stop offset="1" stop-color="#55744f"></stop>
+    </linearGradient>
+
+    <linearGradient id="rootCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e4bd"></stop>
+      <stop offset="0.55" stop-color="#cfb98e"></stop>
+      <stop offset="1" stop-color="#9e8565"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerWhite" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.7" stop-color="#f2f2e8"></stop>
+      <stop offset="1" stop-color="#c8d1c4"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#283028" flood-opacity="0.2"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="64" cy="120" rx="44" ry="5" fill="#4e4e47" opacity="0.15"></ellipse>
+
+  <!-- Root crown -->
+  <path d="M49 91
+       C53 86 58 83 64 83
+       C70 83 76 86 80 91
+       C76 96 70 99 64 99
+       C57 99 52 96 49 91Z" fill="#78634c" stroke="#514137" stroke-width="1.4"></path>
+
+  <!-- Clustered edible roots -->
+  <g filter="url(#softShadow)">
+
+    <path d="M54 94
+         C50 100 48 107 48 114
+         C48 119 50 123 52 126
+         C55 122 57 117 58 111
+         C59 104 58 98 54 94Z" fill="url(#rootCream)" stroke="#8c755c" stroke-width="1.2"></path>
+
+    <path d="M60 95
+         C58 103 58 111 60 118
+         C61 122 63 125 64 127
+         C67 122 68 116 68 110
+         C68 103 66 98 60 95Z" fill="url(#rootCream)" stroke="#8c755c" stroke-width="1.2"></path>
+
+    <path d="M67 95
+         C69 102 70 110 70 116
+         C70 121 72 124 74 126
+         C77 120 78 114 77 108
+         C76 101 72 97 67 95Z" fill="url(#rootCream)" stroke="#8c755c" stroke-width="1.2"></path>
+
+    <path d="M73 93
+         C78 98 81 104 82 110
+         C83 115 82 120 81 124
+         C77 121 74 116 72 111
+         C70 104 70 98 73 93Z" fill="url(#rootCream)" stroke="#8c755c" stroke-width="1.2"></path>
+
+    <path d="M49 94
+         C44 100 41 106 40 112
+         C39 117 40 121 42 124
+         C46 121 49 116 50 110
+         C52 104 52 98 49 94Z" fill="url(#rootCream)" stroke="#8c755c" stroke-width="1.1"></path>
+
+  </g>
+
+  <!-- Root highlights -->
+  <g fill="none" stroke="#f6ebce" stroke-linecap="round" opacity="0.72">
+
+    <path d="M52 99 C51 108 51 116 52 121" stroke-width="0.8"></path>
+    <path d="M62 100 C61 108 62 116 64 122" stroke-width="0.8"></path>
+    <path d="M71 100 C73 108 74 115 74 120" stroke-width="0.8"></path>
+
+  </g>
+
+  <!-- Upright stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M63 87
+         C62 69 63 52 65 38
+         C66 27 66 18 65 10" stroke-width="2.8"></path>
+
+    <path d="M63 69
+         C52 61 45 52 40 43" stroke-width="1.6"></path>
+
+    <path d="M65 61
+         C76 54 85 45 90 36" stroke-width="1.6"></path>
+
+    <path d="M65 39
+         C57 34 52 28 49 22" stroke-width="1.2"></path>
+
+    <path d="M66 36
+         C74 31 80 25 83 19" stroke-width="1.2"></path>
+
+  </g>
+
+  <!-- Compound leaves -->
+  <g fill="url(#leafGreen)" stroke="#3a6242" stroke-width="1.1" filter="url(#softShadow)">
+
+    <path d="M55 82
+         C47 81 39 77 34 71
+         C30 67 29 62 31 58
+         C36 57 42 59 47 63
+         C52 68 55 75 55 82Z"></path>
+
+    <path d="M73 79
+         C81 78 89 74 94 68
+         C98 64 99 59 97 55
+         C92 54 86 56 81 60
+         C76 65 73 72 73 79Z"></path>
+
+    <path d="M58 67
+         C51 65 46 61 44 56
+         C43 52 44 48 47 46
+         C52 48 56 52 59 57
+         C61 61 61 65 58 67Z"></path>
+
+    <path d="M70 64
+         C77 62 82 58 84 53
+         C85 49 84 45 81 43
+         C76 45 72 49 69 54
+         C67 58 67 62 70 64Z"></path>
+
+    <path d="M60 51
+         C55 49 52 46 51 42
+         C51 39 53 36 55 35
+         C60 39 62 44 60 51Z"></path>
+
+    <path d="M69 49
+         C74 47 77 44 78 40
+         C78 37 76 34 74 33
+         C69 37 67 42 69 49Z"></path>
+
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#ceddb1" stroke-linecap="round" opacity="0.7">
+
+    <path d="M54 78 C46 70 39 65 33 62" stroke-width="0.8"></path>
+    <path d="M74 75 C82 67 89 62 95 59" stroke-width="0.8"></path>
+    <path d="M58 63 C53 57 49 52 47 49" stroke-width="0.7"></path>
+    <path d="M70 60 C75 54 79 49 81 46" stroke-width="0.7"></path>
+
+  </g>
+
+  <!-- Flowering umbel branches -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M65 18 L54 10" stroke-width="1"></path>
+    <path d="M65 18 L60 7" stroke-width="1"></path>
+    <path d="M65 18 L66 6" stroke-width="1"></path>
+    <path d="M65 18 L73 8" stroke-width="1"></path>
+    <path d="M65 18 L79 12" stroke-width="1"></path>
+
+    <path d="M90 36 L98 27" stroke-width="0.9"></path>
+    <path d="M90 36 L103 31" stroke-width="0.9"></path>
+    <path d="M40 43 L31 34" stroke-width="0.9"></path>
+    <path d="M40 43 L27 39" stroke-width="0.9"></path>
+
+  </g>
+
+  <!-- White umbel flowers -->
+  <g filter="url(#softShadow)">
+
+    <g fill="url(#flowerWhite)" stroke="#a9b5a8" stroke-width="0.35">
+
+      <circle cx="54" cy="9" r="2.3"></circle>
+      <circle cx="60" cy="6" r="2.2"></circle>
+      <circle cx="66" cy="5" r="2.3"></circle>
+      <circle cx="73" cy="7" r="2.2"></circle>
+      <circle cx="79" cy="11" r="2.3"></circle>
+
+      <circle cx="50" cy="12" r="1.8"></circle>
+      <circle cx="57" cy="11" r="1.8"></circle>
+      <circle cx="63" cy="10" r="1.9"></circle>
+      <circle cx="70" cy="11" r="1.8"></circle>
+      <circle cx="76" cy="14" r="1.8"></circle>
+
+      <circle cx="98" cy="26" r="2"></circle>
+      <circle cx="103" cy="30" r="2"></circle>
+      <circle cx="31" cy="33" r="2"></circle>
+      <circle cx="27" cy="38" r="2"></circle>
+
+    </g>
+
+    <g fill="#d7bd67">
+
+      <circle cx="54" cy="9" r="0.55"></circle>
+      <circle cx="60" cy="6" r="0.55"></circle>
+      <circle cx="66" cy="5" r="0.55"></circle>
+      <circle cx="73" cy="7" r="0.55"></circle>
+      <circle cx="79" cy="11" r="0.55"></circle>
+
+      <circle cx="98" cy="26" r="0.5"></circle>
+      <circle cx="103" cy="30" r="0.5"></circle>
+      <circle cx="31" cy="33" r="0.5"></circle>
+      <circle cx="27" cy="38" r="0.5"></circle>
+
+    </g>
+
+  </g>
+
+</svg>

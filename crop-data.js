@@ -12751,6 +12751,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Skirret',
+      scientificName: 'Sium sisarum L.',
+      category: 'root-crop',
+      icon: 'assets/crops/skirret.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'divisions',
+          label: 'Clump Divisions'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Sium sisarum — Skirret',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/82232/sium-sisarum/details'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Temperate perennial conditions. Kew identifies Skirret as a tuberous perennial species of the temperate biome. FarmCast does not assign a universal numeric crop-growth temperature range because the cultivation source does not provide one.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends moisture-retentive but well-drained soil and watering during dry spells when the roots are being grown for food. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'Tolerates acid, neutral, or alkaline soils.',
+
+      soilNote:
+        'Skirret prefers deep, fertile, moisture-retentive but well-drained soil in a sunny position. Royal Horticultural Society guidance lists chalk, clay, loam, and sandy soils as suitable when moisture and drainage are managed appropriately.',
+
+      plantingNote:
+        'Skirret is a perennial edible root vegetable that may be established from seed. Established clumps can also be lifted and divided while dormant, with selected sections replanted. Current Kew taxonomy accepts Sium sisarum L.; older names such as Apium sisarum, Carum sisarum, Pimpinella sisarum, Selinum sisarum, and Seseli sisarum are treated as synonyms.',
+
+      harvestNote:
+        'Skirret is harvested for its clusters of edible white roots. Royal Horticultural Society guidance recommends lifting roots while the plant is dormant, from autumn into early spring. Because harvest depends on perennial establishment, dormancy, and season rather than one universal sowing-to-harvest countdown, FarmCast keeps Skirret as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'Sium sisarum — Skirret',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/plants/82232/sium-sisarum/details'
+          ].join('')
+      }
+    },
+
 
   
 ];
