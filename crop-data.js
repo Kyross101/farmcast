@@ -14251,6 +14251,78 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Lime',
+      scientificName:
+        'Citrus × aurantiifolia (Christm.) Swingle',
+      category: 'fruit',
+      icon: 'assets/crops/lime.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'air-layered-plants',
+          label: 'Air-Layered Plants'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted or Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Key Lime Growing in the Florida Home Landscape',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/CH092'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm subtropical to tropical growing conditions. Kew identifies Lime as a tree primarily associated with the subtropical biome. University of Florida IFAS Extension notes that Key lime is highly sensitive to cold and performs best in warm, sunny locations protected from cold winds. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. University of Florida IFAS Extension recommends regular watering during establishment and supplemental irrigation for young trees during prolonged dry periods while warning against persistently wet conditions. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall requirement.',
+
+      soilPH:
+        'RHS lists acid or neutral soil as suitable for Lime.',
+
+      soilNote:
+        'Lime grows best in a sunny location with well-drained soil. University of Florida IFAS Extension notes that Key lime can grow in several soil types but should not be planted where the site remains flooded or persistently wet. RHS likewise recommends moist but well-drained or well-drained soil.',
+
+      plantingNote:
+        'Lime, including the Key or Mexican lime commonly known as Dayap in the Philippines, is a familiar edible citrus fruit. University of Florida IFAS Extension notes that Key lime is frequently propagated from seed because of its high degree of polyembryony, and may also be propagated by hardwood cuttings, air layering, budding, or grafting. Current Kew taxonomy accepts Citrus × aurantiifolia (Christm.) Swingle and lists numerous historical scientific synonyms, including Limonia × aurantiifolia, Citrus × acida, Citrus × lima, Citrus × javanica, Citrus × nipis, and Citrus × notissima.',
+
+      harvestNote:
+        'Lime fruits are commonly harvested while green to greenish-yellow depending on intended use and maturity. University of Florida IFAS Extension notes that some Key lime fruits can mature throughout the year, with stronger seasonal production in suitable climates. Trees propagated from cuttings or air layers may begin producing earlier than grafted, budded, or seed-grown trees. Because first fruiting age varies greatly by propagation method and local growing conditions, FarmCast keeps Lime as guidance-only rather than assigning one universal planting-to-harvest interval.',
+
+      source: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Key Lime Growing in the Florida Home Landscape',
+
+        url:
+          [
+            'https://',
+            'ask.ifas.ufl.edu/publication/CH092'
+          ].join('')
+      }
+    },
+
 
 
   
