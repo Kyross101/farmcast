@@ -16880,6 +16880,74 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Miracle Fruit',
+      localName: 'Miracle Berry',
+      scientificName:
+        'Synsepalum dulcificum (Schumach. & Thonn.) Daniell',
+      category: 'fruit',
+      icon: 'assets/crops/miracle-fruit.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of Florida Tropical Research and Education Center',
+
+        title:
+          'Optimization of Miracle Fruit Seed Germination and Mutagenesis',
+
+        url:
+          [
+            'https://',
+            'doi.org/10.14303/',
+            'ajfst.2018.231'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm tropical to subtropical growing conditions. Kew identifies Synsepalum dulcificum as a shrub or tree of the wet tropical biome, while University of Florida IFAS describes Miracle Fruit as a tropical evergreen shrub that is not frost tolerant. Because local humidity, shade, container culture and cold exposure strongly influence plant performance, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric growing range.',
+
+      rainfallRange:
+        'No universal annual rainfall requirement is stored for Miracle Fruit. University of Florida IFAS recommends supplemental irrigation during dry periods. Water demand depends on container size, soil mixture, humidity and local rainfall, so FarmCast keeps rainfall guidance descriptive.',
+
+      soilPH:
+        'Around 5.0',
+
+      soilNote:
+        'Miracle Fruit strongly prefers acidic growing conditions. University of Florida IFAS recommends slightly acidic soil around pH 5 and notes that pine-based potting mixes work well. The plant may be grown in containers or in the ground where naturally alkaline soil can be avoided. Good drainage should be maintained while keeping the root zone adequately moist.',
+
+      plantingNote:
+        'Miracle Fruit refers specifically to Synsepalum dulcificum (Schumach. & Thonn.) Daniell. Seed propagation is documented in University of Florida research on Miracle Fruit germination. Fresh seed viability and post-harvest handling strongly influence germination, while the species is naturally slow growing. Current Kew taxonomy accepts Synsepalum dulcificum and treats Bakeriella dulcifica, Bumelia dulcifica, Pouteria dulcifica, Richardella dulcifica, Sideroxylon dulcificum and Synsepalum glycydora as synonyms.',
+
+      harvestNote:
+        'The edible crop is the small red berry. University of Florida IFAS recommends beginning to watch for fruit once plants reach about three years of age and notes that production becomes heavier as plants mature, with strong production around five years of age. Fruit production can occur in multiple flushes under favorable warm conditions. Because first fruiting is expressed as plant age rather than one precise sowing-to-harvest interval and varies substantially among seedlings and growing environments, FarmCast keeps Miracle Fruit as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'University of Florida IFAS Extension',
+
+        title:
+          'Miracle Fruit',
+
+        url:
+          [
+            'https://',
+            'gardeningsolutions.ifas.ufl.edu/',
+            'plants/edibles/fruits/',
+            'miracle-fruit/'
+          ].join('')
+      }
+    },
+
   
 ];
 

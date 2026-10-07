@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Miracle Fruit</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of miracle fruit with glossy
+    evergreen leaves, small cream flowers, and ripe bright red
+    elongated berries growing on a tropical shrub branch.
+  </desc>
+
+  <defs>
+    <linearGradient id="branch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#967353"></stop>
+      <stop offset="0.5" stop-color="#654a3a"></stop>
+      <stop offset="1" stop-color="#392f29"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b3cb72"></stop>
+      <stop offset="0.32" stop-color="#719852"></stop>
+      <stop offset="0.68" stop-color="#407344"></stop>
+      <stop offset="1" stop-color="#1d4735"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8eac5d"></stop>
+      <stop offset="0.5" stop-color="#507947"></stop>
+      <stop offset="1" stop-color="#1d3e30"></stop>
+    </linearGradient>
+
+    <radialGradient id="berryRed" cx="34%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#ffad8b"></stop>
+      <stop offset="0.27" stop-color="#ec6658"></stop>
+      <stop offset="0.62" stop-color="#ca3e45"></stop>
+      <stop offset="1" stop-color="#812c39"></stop>
+    </radialGradient>
+
+    <radialGradient id="berryDark" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#ee8870"></stop>
+      <stop offset="0.34" stop-color="#d3524e"></stop>
+      <stop offset="0.72" stop-color="#a33240"></stop>
+      <stop offset="1" stop-color="#672939"></stop>
+    </radialGradient>
+
+    <linearGradient id="flower" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffce9"></stop>
+      <stop offset="0.55" stop-color="#eadfb8"></stop>
+      <stop offset="1" stop-color="#bda77b"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#16241a" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="2.5" stdDeviation="1.8" flood-color="#40242b" flood-opacity="0.32"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- main woody branch -->
+  <path d="
+    M19 117
+    C34 99 46 82 58 65
+    C71 47 84 29 102 10" fill="none" stroke="url(#branch)" stroke-width="5.5" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- side branches -->
+  <g fill="none" stroke="url(#branch)" stroke-linecap="round">
+
+    <path d="
+      M46 84
+      C34 74 25 63 16 50" stroke-width="2.8"></path>
+
+    <path d="
+      M59 65
+      C48 54 40 42 35 28" stroke-width="2.7"></path>
+
+    <path d="
+      M74 46
+      C87 46 99 41 113 32" stroke-width="2.6"></path>
+
+    <path d="
+      M87 29
+      C79 21 74 13 71 7" stroke-width="2.3"></path>
+  </g>
+
+  <!-- left leaves -->
+  <g fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.8" filter="url(#softShadow)">
+
+    <path d="
+      M42 88
+      C27 83 17 86 11 95
+      C21 99 33 97 42 88Z"></path>
+
+    <path d="
+      M41 75
+      C27 67 17 68 10 76
+      C19 83 31 83 41 75Z"></path>
+
+    <path d="
+      M38 60
+      C25 50 16 48 9 54
+      C16 63 27 67 38 60Z"></path>
+
+    <path d="
+      M43 46
+      C31 36 21 35 14 41
+      C22 50 33 53 43 46Z"></path>
+  </g>
+
+  <!-- right leaves -->
+  <g fill="url(#leafDark)" stroke="#244d37" stroke-width="0.8" filter="url(#softShadow)">
+
+    <path d="
+      M63 62
+      C77 55 88 56 95 63
+      C86 69 75 69 63 62Z"></path>
+
+    <path d="
+      M72 49
+      C85 41 96 42 103 48
+      C95 55 83 56 72 49Z"></path>
+
+    <path d="
+      M84 35
+      C96 28 106 28 114 34
+      C106 41 95 42 84 35Z"></path>
+
+    <path d="
+      M94 23
+      C105 16 114 16 121 21
+      C114 28 104 30 94 23Z"></path>
+  </g>
+
+  <!-- leaf veins -->
+  <g fill="none" stroke="#c3d899" stroke-width="0.6" stroke-linecap="round" opacity="0.72">
+
+    <path d="M14 95 L39 88"></path>
+    <path d="M13 76 L38 75"></path>
+    <path d="M12 54 L35 60"></path>
+    <path d="M17 41 L40 46"></path>
+
+    <path d="M66 62 L92 63"></path>
+    <path d="M75 49 L100 48"></path>
+    <path d="M87 35 L111 34"></path>
+    <path d="M97 23 L118 21"></path>
+  </g>
+
+  <!-- berry stems -->
+  <g fill="none" stroke="#627447" stroke-width="1.4" stroke-linecap="round">
+
+    <path d="M55 71 C58 79 60 86 60 92"></path>
+    <path d="M61 65 C66 72 70 79 72 85"></path>
+    <path d="M68 56 C75 62 81 68 84 75"></path>
+    <path d="M77 44 C84 49 91 55 95 61"></path>
+  </g>
+
+  <!-- miracle berries -->
+  <g filter="url(#fruitShadow)">
+
+    <g transform="translate(60 99) rotate(-5)">
+      <path d="
+        M0 -13
+        C7 -13 11 -8 11 0
+        C11 10 6 18 0 21
+        C-7 18 -11 10 -11 0
+        C-11 -8 -7 -13 0 -13Z" fill="url(#berryRed)" stroke="#7d2c38" stroke-width="1"></path>
+
+      <ellipse cx="-3.5" cy="-4" rx="2.2" ry="4.5" fill="#ffd2b5" opacity="0.4"></ellipse>
+    </g>
+
+    <g transform="translate(73 90) rotate(-11)">
+      <path d="
+        M0 -12
+        C7 -12 11 -7 11 1
+        C11 10 6 17 0 20
+        C-7 17 -11 10 -11 1
+        C-11 -7 -7 -12 0 -12Z" fill="url(#berryDark)" stroke="#792b37" stroke-width="1"></path>
+
+      <ellipse cx="-3.5" cy="-4" rx="2.1" ry="4.2" fill="#ffc3aa" opacity="0.36"></ellipse>
+    </g>
+
+    <g transform="translate(85 79) rotate(-15)">
+      <path d="
+        M0 -11
+        C6 -11 10 -6 10 1
+        C10 9 5 16 0 19
+        C-6 16 -10 9 -10 1
+        C-10 -6 -6 -11 0 -11Z" fill="url(#berryRed)" stroke="#7d2c38" stroke-width="1"></path>
+
+      <ellipse cx="-3" cy="-3" rx="2" ry="4" fill="#ffd0b0" opacity="0.38"></ellipse>
+    </g>
+
+    <g transform="translate(97 65) rotate(-17) scale(0.92)">
+      <path d="
+        M0 -11
+        C6 -11 10 -6 10 1
+        C10 9 5 16 0 19
+        C-6 16 -10 9 -10 1
+        C-10 -6 -6 -11 0 -11Z" fill="url(#berryDark)" stroke="#772a37" stroke-width="1"></path>
+
+      <ellipse cx="-3" cy="-3" rx="2" ry="4" fill="#ffc2a7" opacity="0.34"></ellipse>
+    </g>
+
+  </g>
+
+  <!-- tiny calyxes -->
+  <g fill="#4b613e">
+    <path d="M55 86 l5 3 l5 -3 l-2 6 h-6Z"></path>
+    <path d="M68 78 l5 3 l5 -3 l-2 6 h-6Z"></path>
+    <path d="M80 68 l5 3 l5 -3 l-2 6 h-6Z"></path>
+    <path d="M92 55 l5 3 l5 -3 l-2 6 h-6Z"></path>
+  </g>
+
+  <!-- flowers -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(31 49)">
+      <path d="
+        M0 -6
+        C4 -6 7 -3 7 1
+        C7 5 4 8 0 9
+        C-4 8 -7 5 -7 1
+        C-7 -3 -4 -6 0 -6Z" fill="url(#flower)" stroke="#ab996e" stroke-width="0.7"></path>
+
+      <circle cx="0" cy="1" r="1.8" fill="#d1ad49"></circle>
+    </g>
+
+    <g transform="translate(42 59) scale(0.8)">
+      <path d="
+        M0 -6
+        C4 -6 7 -3 7 1
+        C7 5 4 8 0 9
+        C-4 8 -7 5 -7 1
+        C-7 -3 -4 -6 0 -6Z" fill="url(#flower)" stroke="#ab996e" stroke-width="0.7"></path>
+
+      <circle cx="0" cy="1" r="1.8" fill="#d1ad49"></circle>
+    </g>
+
+  </g>
+
+  <!-- branch shine -->
+  <path d="
+    M23 113
+    C37 96 49 79 61 63
+    C74 45 87 28 99 13" fill="none" stroke="#c4a080" stroke-width="0.8" stroke-linecap="round" opacity="0.42"></path>
+
+  <!-- foreground leaf -->
+  <path d="
+    M31 111
+    C18 104 8 106 4 115
+    C12 122 24 121 34 114Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M7 115
+    L30 112" fill="none" stroke="#c5d99b" stroke-width="0.7" opacity="0.7"></path>
+
+  <!-- ground shadow -->
+  <ellipse cx="58" cy="121" rx="35" ry="4" fill="#29392b" opacity="0.16"></ellipse>
+
+</svg>
