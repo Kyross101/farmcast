@@ -13538,6 +13538,69 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Parsnip',
+      scientificName: 'Pastinaca sativa L.',
+      category: 'vegetable',
+      icon: 'assets/crops/parsnip.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Parsnips',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/vegetables/parsnips/grow-your-own'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool to temperate growing conditions. Kew identifies Parsnip as a biennial species primarily associated with the temperate biome. Royal Horticultural Society guidance recommends waiting until soil has warmed sufficiently for reliable spring germination rather than treating one temperature as a universal crop-growth range. FarmCast therefore keeps the general temperature guidance descriptive.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is used. Royal Horticultural Society guidance recommends watering young parsnips during dry spells and keeping the soil evenly moist as roots develop to reduce splitting. FarmCast therefore keeps water guidance descriptive rather than inventing an annual rainfall range.',
+
+      soilPH:
+        'RHS identifies an ideal soil pH of 6.5–7.0.',
+
+      soilNote:
+        'Parsnips perform best in an open, sunny position with deep, light, free-draining soil that allows the long taproot to develop without obstruction. Stones and compacted soil should be minimized because they can cause forked or distorted roots.',
+
+      plantingNote:
+        'Parsnip is an edible root vegetable grown directly from seed. Royal Horticultural Society guidance recommends sowing outdoors and specifically discourages indoor sowing because the developing taproot does not transplant well. Current Kew taxonomy accepts Pastinaca sativa L.; Anethum pastinaca, Elaphoboscum sativum, Peucedanum sativum, and Selinum pastinaca are treated as synonyms.',
+
+      harvestNote:
+        'Parsnips are harvested for their edible cream-coloured taproots. Royal Horticultural Society guidance states that roots are ready when foliage begins to die down in late summer or autumn and can remain in the ground into winter for harvesting as needed. Because readiness is seasonal and variety-dependent rather than based on one universal sowing-to-harvest day interval, FarmCast keeps Parsnip as guidance-only.',
+
+      source: {
+        agency:
+          'Royal Horticultural Society',
+
+        title:
+          'How to Grow Parsnips',
+
+        url:
+          [
+            'https://',
+            'www.rhs.org.uk/vegetables/parsnips/grow-your-own'
+          ].join('')
+      }
+    },
+
 
   
 ];

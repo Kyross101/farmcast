@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Parsnip</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of parsnip with a long cream-colored
+    edible taproot, leafy green rosette, fine side roots, highlights,
+    shadows, and natural depth.
+  </desc>
+
+  <defs>
+    <linearGradient id="rootCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff4cf"></stop>
+      <stop offset="0.48" stop-color="#e4cf9d"></stop>
+      <stop offset="1" stop-color="#a98b61"></stop>
+    </linearGradient>
+
+    <linearGradient id="rootShade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9c18e"></stop>
+      <stop offset="1" stop-color="#876a4d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#356a3b"></stop>
+      <stop offset="0.5" stop-color="#58934d"></stop>
+      <stop offset="1" stop-color="#9ac270"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#244d31"></stop>
+      <stop offset="1" stop-color="#689d54"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#526f3d"></stop>
+      <stop offset="1" stop-color="#91b765"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#40382c" flood-opacity="0.24"></feDropShadow>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="65" cy="116" rx="28" ry="5" fill="#504638" opacity="0.15"></ellipse>
+
+  <!-- Main taproot -->
+  <path d="
+    M52 54
+    C50 66 52 78 56 90
+    C59 100 61 111 64 124
+
+    C68 113 72 102 75 91
+    C79 77 80 65 76 54
+
+    C69 48 59 48 52 54Z" fill="url(#rootCream)" stroke="#8d7453" stroke-width="2" filter="url(#softShadow)"></path>
+
+  <!-- Root shoulder -->
+  <path d="
+    M50 57
+    C52 49 57 45 64 45
+    C72 45 77 49 79 57
+    C73 61 56 61 50 57Z" fill="#d9c08d" stroke="#856d50" stroke-width="1.6"></path>
+
+  <!-- Root shaded side -->
+  <path d="
+    M72 58
+    C75 71 72 87 68 100
+    C66 108 65 116 64 123
+    C69 113 74 101 77 89
+    C80 76 81 65 76 55Z" fill="url(#rootShade)" opacity="0.45"></path>
+
+  <!-- Root highlight -->
+  <path d="
+    M57 60
+    C56 75 59 89 62 101
+    C63 108 64 114 64 119" fill="none" stroke="#fff8dd" stroke-width="2.3" stroke-linecap="round" opacity="0.78"></path>
+
+  <!-- Fine root ridges -->
+  <g fill="none" stroke="#a99069" stroke-width="0.9" stroke-linecap="round" opacity="0.72">
+
+    <path d="M55 72 C61 74 68 74 75 72"></path>
+    <path d="M57 83 C63 85 69 84 73 82"></path>
+    <path d="M59 94 C64 95 68 94 71 92"></path>
+    <path d="M61 105 C64 106 67 105 69 103"></path>
+  </g>
+
+  <!-- Fine side roots -->
+  <g fill="none" stroke="#937651" stroke-width="1.15" stroke-linecap="round">
+
+    <path d="M56 78 C48 80 44 84 41 90"></path>
+    <path d="M57 90 C49 94 46 98 44 104"></path>
+    <path d="M60 103 C54 108 52 113 51 118"></path>
+
+    <path d="M73 76 C82 79 86 84 88 90"></path>
+    <path d="M71 89 C78 93 82 98 83 104"></path>
+    <path d="M68 103 C75 108 77 113 78 118"></path>
+  </g>
+
+  <!-- Leaf stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <path d="M61 52 C56 42 51 32 43 22"></path>
+    <path d="M63 51 C61 39 61 27 62 14"></path>
+    <path d="M66 51 C71 40 77 30 84 20"></path>
+    <path d="M58 52 C49 47 41 42 32 37"></path>
+    <path d="M68 52 C77 48 87 44 96 38"></path>
+  </g>
+
+  <!-- Left leaf cluster -->
+  <g fill="url(#leafGreen)" stroke="#2d5a37" stroke-width="1.2" stroke-linejoin="round" filter="url(#softShadow)">
+
+    <path d="
+      M43 24
+      C34 16 25 17 20 24
+      C26 32 35 34 44 30
+      C40 36 42 42 48 46
+      C54 38 53 31 47 26Z"></path>
+
+    <path d="
+      M33 38
+      C23 32 15 35 12 43
+      C20 49 29 49 36 44
+      C32 50 34 56 40 59
+      C46 52 44 45 38 41Z"></path>
+  </g>
+
+  <!-- Center leaf cluster -->
+  <g fill="url(#leafGreen)" stroke="#2d5a37" stroke-width="1.2" stroke-linejoin="round" filter="url(#softShadow)">
+
+    <path d="
+      M62 15
+      C54 8 46 10 43 17
+      C49 24 56 25 62 21
+      C60 28 64 33 70 35
+      C75 27 72 20 66 17Z"></path>
+
+    <path d="
+      M61 30
+      C53 24 46 26 43 33
+      C49 39 56 40 62 36
+      C60 43 64 47 70 49
+      C75 42 72 35 66 32Z"></path>
+  </g>
+
+  <!-- Right leaf cluster -->
+  <g fill="url(#leafDark)" stroke="#295436" stroke-width="1.2" stroke-linejoin="round" filter="url(#softShadow)">
+
+    <path d="
+      M84 21
+      C90 13 99 13 105 19
+      C101 28 93 31 85 28
+      C89 34 87 40 81 44
+      C75 37 76 30 81 25Z"></path>
+
+    <path d="
+      M96 38
+      C104 31 113 33 117 40
+      C111 48 103 50 95 46
+      C99 52 96 58 90 61
+      C84 54 87 46 92 42Z"></path>
+  </g>
+
+  <!-- Smaller leaflets -->
+  <g fill="#72a45b" stroke="#315e3a" stroke-width="1">
+
+    <path d="
+      M48 34
+      C41 29 35 31 33 36
+      C38 41 44 42 49 39Z"></path>
+
+    <path d="
+      M76 34
+      C83 29 89 31 91 36
+      C86 41 80 42 75 39Z"></path>
+
+    <path d="
+      M54 23
+      C49 18 44 19 42 24
+      C46 28 51 29 55 27Z"></path>
+
+    <path d="
+      M71 24
+      C76 18 81 19 84 24
+      C80 29 75 30 71 27Z"></path>
+  </g>
+
+  <!-- Leaf veins -->
+  <g fill="none" stroke="#bed79b" stroke-width="0.8" stroke-linecap="round" opacity="0.72">
+
+    <path d="M43 24 C38 27 31 28 24 25"></path>
+    <path d="M34 39 C28 42 21 43 16 42"></path>
+
+    <path d="M62 16 C58 20 52 20 47 18"></path>
+    <path d="M62 31 C57 34 51 34 46 33"></path>
+
+    <path d="M84 22 C90 24 97 23 102 20"></path>
+    <path d="M96 39 C102 42 109 42 114 40"></path>
+  </g>
+
+  <!-- Stem highlights -->
+  <g fill="none" stroke="#bed393" stroke-width="0.9" stroke-linecap="round" opacity="0.67">
+
+    <path d="M62 49 C58 39 53 30 46 23"></path>
+    <path d="M64 48 C63 37 63 26 63 17"></path>
+    <path d="M67 49 C72 39 77 30 82 23"></path>
+  </g>
+
+  <!-- Root crown detail -->
+  <path d="
+    M54 55
+    C58 52 70 52 75 55" fill="none" stroke="#f3dfae" stroke-width="2" stroke-linecap="round" opacity="0.75"></path>
+
+</svg>
