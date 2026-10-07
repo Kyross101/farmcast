@@ -1,0 +1,334 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Flax</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of a flax plant with slender green stems,
+    narrow leaves, blue five-petaled flowers, mature brown seed capsules,
+    and glossy flax seeds with natural highlights and shadows.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#355d39"></stop>
+      <stop offset="0.55" stop-color="#678b4b"></stop>
+      <stop offset="1" stop-color="#aec578"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#255335"></stop>
+      <stop offset="0.5" stop-color="#568749"></stop>
+      <stop offset="1" stop-color="#a1c374"></stop>
+    </linearGradient>
+
+    <linearGradient id="petalBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dcecff"></stop>
+      <stop offset="0.45" stop-color="#82afe7"></stop>
+      <stop offset="1" stop-color="#456cae"></stop>
+    </linearGradient>
+
+    <linearGradient id="petalDeep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bad5f8"></stop>
+      <stop offset="0.55" stop-color="#638fcf"></stop>
+      <stop offset="1" stop-color="#385b96"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerCenter" cx="45%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#fff3a8"></stop>
+      <stop offset="0.65" stop-color="#dfbf51"></stop>
+      <stop offset="1" stop-color="#94752d"></stop>
+    </radialGradient>
+
+    <radialGradient id="bollGreen" cx="32%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#cdd77b"></stop>
+      <stop offset="0.45" stop-color="#8da352"></stop>
+      <stop offset="1" stop-color="#566f3c"></stop>
+    </radialGradient>
+
+    <radialGradient id="bollBrown" cx="32%" cy="25%" r="78%">
+      <stop offset="0" stop-color="#d5ae6e"></stop>
+      <stop offset="0.45" stop-color="#a47a46"></stop>
+      <stop offset="1" stop-color="#654832"></stop>
+    </radialGradient>
+
+    <radialGradient id="seedBrown" cx="32%" cy="24%" r="78%">
+      <stop offset="0" stop-color="#e1b36d"></stop>
+      <stop offset="0.42" stop-color="#a86f38"></stop>
+      <stop offset="0.78" stop-color="#6d4328"></stop>
+      <stop offset="1" stop-color="#432b20"></stop>
+    </radialGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#1f2920" flood-opacity="0.24"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="117" rx="39" ry="6" fill="#293129" opacity="0.16"></ellipse>
+
+  <!-- main stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round" filter="url(#softShadow)">
+
+    <path d="
+      M54 113
+      C54 91 55 69 57 48
+      C58 34 60 22 62 12" stroke-width="4.5"></path>
+
+    <path d="
+      M69 113
+      C68 91 68 71 67 53
+      C66 37 68 25 72 15" stroke-width="4.2"></path>
+
+    <path d="
+      M39 113
+      C42 93 44 76 44 61
+      C44 47 42 36 39 25" stroke-width="3.7"></path>
+
+    <path d="
+      M83 113
+      C80 94 79 77 80 62
+      C81 49 84 37 88 27" stroke-width="3.7"></path>
+
+  </g>
+
+  <!-- stem highlights -->
+  <g fill="none" stroke="#cedc9b" stroke-width="0.8" stroke-linecap="round" opacity="0.55">
+
+    <path d="M56 109 C56 88 57 68 59 49"></path>
+    <path d="M70 109 C69 90 70 71 69 54"></path>
+    <path d="M41 109 C43 91 45 76 45 62"></path>
+
+  </g>
+
+  <!-- branching stems -->
+  <g fill="none" stroke="url(#stemGreen)" stroke-linecap="round">
+
+    <path d="M56 61 C48 54 43 47 40 39" stroke-width="2.5"></path>
+
+    <path d="M57 48 C50 42 47 35 47 28" stroke-width="2.4"></path>
+
+    <path d="M68 56 C76 49 82 42 85 34" stroke-width="2.5"></path>
+
+    <path d="M68 43 C75 37 79 30 80 23" stroke-width="2.3"></path>
+
+    <path d="M44 61 C35 57 29 51 25 44" stroke-width="2.2"></path>
+
+    <path d="M80 62 C90 56 97 49 101 41" stroke-width="2.2"></path>
+
+  </g>
+
+  <!-- narrow flax leaves -->
+  <g stroke="#2b5536" stroke-width="0.8" filter="url(#softShadow)">
+
+    <path d="
+      M53 84
+      C43 78 34 78 27 82
+      C35 86 44 88 54 87Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M57 73
+      C66 66 75 65 83 69
+      C76 74 67 77 57 76Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M44 74
+      C35 68 27 68 21 72
+      C28 76 36 78 45 77Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M68 83
+      C77 76 86 76 94 80
+      C87 85 78 87 68 86Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M56 62
+      C47 56 40 56 34 60
+      C41 64 48 66 57 65Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M68 67
+      C77 61 84 61 91 65
+      C84 69 77 71 68 70Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M45 56
+      C36 51 29 52 24 56
+      C31 59 38 60 45 59Z" fill="url(#leafGreen)"></path>
+
+    <path d="
+      M80 55
+      C89 49 97 50 102 54
+      C96 58 89 60 80 58Z" fill="url(#leafGreen)"></path>
+
+  </g>
+
+  <!-- leaf highlights -->
+  <g fill="none" stroke="#bed79c" stroke-width="0.55" stroke-linecap="round" opacity="0.7">
+
+    <path d="M29 83 C38 84 46 85 53 85"></path>
+    <path d="M59 74 C67 72 75 70 81 70"></path>
+    <path d="M23 73 C31 74 38 75 44 75"></path>
+    <path d="M70 84 C78 82 86 81 92 81"></path>
+
+  </g>
+
+  <!-- blue flower left -->
+  <g transform="translate(39 24)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-10 -3 -13 -11 -7 -15
+      C-1 -17 4 -10 3 -4Z" fill="url(#petalBlue)" stroke="#5377b0" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C3 -10 11 -13 15 -7
+      C17 -1 10 4 4 3Z" fill="url(#petalDeep)" stroke="#5377b0" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C10 3 13 11 7 15
+      C1 17 -4 10 -3 4Z" fill="url(#petalBlue)" stroke="#5377b0" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C-3 10 -11 13 -15 7
+      C-17 1 -10 -4 -4 -3Z" fill="url(#petalDeep)" stroke="#5377b0" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C-6 -7 -3 -14 3 -15
+      C9 -11 8 -4 3 0Z" fill="url(#petalBlue)" stroke="#5377b0" stroke-width="0.8"></path>
+
+    <circle cx="0" cy="0" r="4.5" fill="url(#flowerCenter)"></circle>
+
+    <g stroke="#8b6b27" stroke-width="0.7" stroke-linecap="round">
+
+      <path d="M0 0 L-5 -2"></path>
+      <path d="M0 0 L5 -2"></path>
+      <path d="M0 0 L-4 4"></path>
+      <path d="M0 0 L4 4"></path>
+      <path d="M0 0 L0 -6"></path>
+
+    </g>
+
+  </g>
+
+  <!-- blue flower right -->
+  <g transform="translate(89 26) scale(.86)" filter="url(#softShadow)">
+
+    <path d="
+      M0 0
+      C-10 -3 -13 -11 -7 -15
+      C-1 -17 4 -10 3 -4Z" fill="url(#petalDeep)" stroke="#5275ae" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C3 -10 11 -13 15 -7
+      C17 -1 10 4 4 3Z" fill="url(#petalBlue)" stroke="#5275ae" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C10 3 13 11 7 15
+      C1 17 -4 10 -3 4Z" fill="url(#petalDeep)" stroke="#5275ae" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C-3 10 -11 13 -15 7
+      C-17 1 -10 -4 -4 -3Z" fill="url(#petalBlue)" stroke="#5275ae" stroke-width="0.8"></path>
+
+    <path d="
+      M0 0
+      C-6 -7 -3 -14 3 -15
+      C9 -11 8 -4 3 0Z" fill="url(#petalBlue)" stroke="#5275ae" stroke-width="0.8"></path>
+
+    <circle cx="0" cy="0" r="4.5" fill="url(#flowerCenter)"></circle>
+
+  </g>
+
+  <!-- green developing boll -->
+  <g transform="translate(55 40)" filter="url(#softShadow)">
+
+    <circle cx="0" cy="0" r="8" fill="url(#bollGreen)" stroke="#536b3a" stroke-width="1"></circle>
+
+    <g fill="none" stroke="#6e8146" stroke-width="0.7">
+
+      <path d="M0 -7 L0 7"></path>
+      <path d="M-6 -4 L6 4"></path>
+      <path d="M6 -4 L-6 4"></path>
+
+    </g>
+
+  </g>
+
+  <!-- mature brown bolls -->
+  <g filter="url(#softShadow)">
+
+    <g transform="translate(29 45)">
+
+      <circle cx="0" cy="0" r="8" fill="url(#bollBrown)" stroke="#684c33" stroke-width="1"></circle>
+
+      <g fill="none" stroke="#765738" stroke-width="0.8">
+
+        <path d="M0 -7 L0 7"></path>
+        <path d="M-6 -4 L6 4"></path>
+        <path d="M6 -4 L-6 4"></path>
+
+      </g>
+
+    </g>
+
+    <g transform="translate(101 41)">
+
+      <circle cx="0" cy="0" r="8" fill="url(#bollBrown)" stroke="#684c33" stroke-width="1"></circle>
+
+      <g fill="none" stroke="#765738" stroke-width="0.8">
+
+        <path d="M0 -7 L0 7"></path>
+        <path d="M-6 -4 L6 4"></path>
+        <path d="M6 -4 L-6 4"></path>
+
+      </g>
+
+    </g>
+
+  </g>
+
+  <!-- boll highlights -->
+  <g fill="#ecd19a" opacity="0.5">
+
+    <ellipse cx="26" cy="42" rx="1.6" ry="2.5" transform="rotate(-25 26 42)"></ellipse>
+
+    <ellipse cx="98" cy="38" rx="1.6" ry="2.5" transform="rotate(-25 98 38)"></ellipse>
+
+  </g>
+
+  <!-- loose flax seeds -->
+  <g stroke="#50321f" stroke-width="0.45" filter="url(#softShadow)">
+
+    <ellipse cx="90" cy="105" rx="5" ry="2.8" fill="url(#seedBrown)" transform="rotate(22 90 105)"></ellipse>
+
+    <ellipse cx="100" cy="110" rx="5" ry="2.8" fill="url(#seedBrown)" transform="rotate(-18 100 110)"></ellipse>
+
+    <ellipse cx="108" cy="104" rx="4.8" ry="2.7" fill="url(#seedBrown)" transform="rotate(28 108 104)"></ellipse>
+
+    <ellipse cx="94" cy="116" rx="4.7" ry="2.6" fill="url(#seedBrown)" transform="rotate(8 94 116)"></ellipse>
+
+    <ellipse cx="111" cy="114" rx="4.6" ry="2.6" fill="url(#seedBrown)" transform="rotate(-10 111 114)"></ellipse>
+
+  </g>
+
+  <!-- seed highlights -->
+  <g fill="#f0cf93" opacity="0.58">
+
+    <ellipse cx="88" cy="104" rx="1.5" ry="0.65" transform="rotate(22 88 104)"></ellipse>
+
+    <ellipse cx="98" cy="109" rx="1.5" ry="0.65" transform="rotate(-18 98 109)"></ellipse>
+
+    <ellipse cx="106" cy="103" rx="1.4" ry="0.6" transform="rotate(28 106 103)"></ellipse>
+
+  </g>
+
+</svg>

@@ -15438,6 +15438,72 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Flax',
+      localName: 'Flaxseed / Linseed',
+      scientificName: 'Linum usitatissimum L.',
+      category: 'oilseed',
+      icon: 'assets/crops/flax.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'North Dakota State University Extension',
+
+        title:
+          'Flax Production in North Dakota',
+
+        url:
+          [
+            'https://',
+            'www.ndsu.edu/agriculture/sites/default/files/',
+            '2022-07/a1038.pdf'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool temperate growing conditions. Kew identifies Flax as an annual crop primarily associated with the temperate biome. North Dakota State University Extension notes that varieties differ in maturity and that early establishment generally supports better production. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Flax requires adequate soil moisture for germination, establishment, flowering and seed filling, while poorly drained or persistently saturated conditions can reduce crop performance. FarmCast therefore keeps water guidance descriptive rather than inventing one universal annual rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows source guidance emphasizing a suitable, firm seedbed and locally appropriate soil-fertility management.',
+
+      soilNote:
+        'Flax should be established in a firm, moist and well-prepared seedbed. North Dakota State University Extension recommends shallow seeding and warns that overly deep placement delays emergence and weakens seedlings. Flax is less competitive with weeds than many small grains, so a relatively clean field is important during establishment.',
+
+      plantingNote:
+        'Flax in this FarmCast entry refers to the familiar seed crop also called Flaxseed or Linseed, grown for edible seed and oil. North Dakota State University Extension recommends direct seeding into a firm, moist seedbed. Current Kew taxonomy accepts Linum usitatissimum L.; Linum angustifolium subsp. usitatissimum is its species-level scientific synonym. Seed Flax should not be confused with ornamental perennial flax species.',
+
+      harvestNote:
+        'Flax reaches physiological maturity when most seed bolls have changed from green toward brown. Manitoba Agriculture and North Dakota State University guidance use about 75% brown bolls as an important harvest-readiness indicator. Published regional guidance reports roughly 85–100 days to maturity, while modern variety trials show meaningful cultivar-to-cultivar differences. Because that broad maturity figure is not presented as one universal sowing-based interval across all environments and varieties, FarmCast keeps Flax as guidance-only rather than assigning one automatic harvest window.',
+
+      source: {
+        agency:
+          'North Dakota State University Extension',
+
+        title:
+          'Flax Production in North Dakota',
+
+        url:
+          [
+            'https://',
+            'www.ndsu.edu/agriculture/sites/default/files/',
+            '2022-07/a1038.pdf'
+          ].join('')
+      }
+    },
+
   
 ];
 
