@@ -1,0 +1,323 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Cherimoya</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of cherimoya with layered green
+    fruits, segmented skin, oval leaves, creamy flowers, woody
+    branches, highlights, shadows, and natural depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="branchBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9b7657"></stop>
+      <stop offset="0.5" stop-color="#684d3c"></stop>
+      <stop offset="1" stop-color="#3d322c"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bad07b"></stop>
+      <stop offset="0.32" stop-color="#789c59"></stop>
+      <stop offset="0.68" stop-color="#47784a"></stop>
+      <stop offset="1" stop-color="#204936"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#94b563"></stop>
+      <stop offset="0.48" stop-color="#557f4d"></stop>
+      <stop offset="1" stop-color="#203f32"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitGreen" cx="34%" cy="25%" r="75%">
+      <stop offset="0" stop-color="#d4dc8c"></stop>
+      <stop offset="0.3" stop-color="#9eb663"></stop>
+      <stop offset="0.66" stop-color="#688d50"></stop>
+      <stop offset="1" stop-color="#3b6041"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitDark" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#b9c978"></stop>
+      <stop offset="0.36" stop-color="#849f59"></stop>
+      <stop offset="0.72" stop-color="#557948"></stop>
+      <stop offset="1" stop-color="#344f3a"></stop>
+    </radialGradient>
+
+    <linearGradient id="flowerCream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff2b5"></stop>
+      <stop offset="0.5" stop-color="#d8c784"></stop>
+      <stop offset="1" stop-color="#9e8a57"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#17241b" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.3" flood-color="#29352a" flood-opacity="0.32"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- main woody branch -->
+
+  <path d="
+    M15 116
+    C31 101 44 85 57 68
+    C71 49 86 31 106 12" fill="none" stroke="url(#branchBrown)" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- branch highlight -->
+
+  <path d="
+    M18 112
+    C34 97 47 82 60 65
+    C74 47 89 29 103 15" fill="none" stroke="#c6a27e" stroke-width="0.9" stroke-linecap="round" opacity="0.45"></path>
+
+  <!-- side branches -->
+
+  <g fill="none" stroke="url(#branchBrown)" stroke-linecap="round">
+
+    <path d="
+      M44 88
+      C34 75 25 62 15 51" stroke-width="3"></path>
+
+    <path d="
+      M59 68
+      C48 57 39 44 34 30" stroke-width="3"></path>
+
+    <path d="
+      M76 47
+      C89 48 101 43 115 34" stroke-width="2.8"></path>
+
+    <path d="
+      M88 31
+      C80 22 74 14 71 7" stroke-width="2.5"></path>
+
+  </g>
+
+  <!-- left leaves -->
+
+  <g fill="url(#leafGreen)" stroke="#29523b" stroke-width="0.85" filter="url(#softShadow)">
+
+    <path d="
+      M40 88
+      C26 82 16 84 10 93
+      C20 98 32 96 40 88Z"></path>
+
+    <path d="
+      M40 74
+      C27 65 17 65 10 73
+      C18 81 30 82 40 74Z"></path>
+
+    <path d="
+      M37 58
+      C25 48 16 45 9 50
+      C15 60 26 64 37 58Z"></path>
+
+    <path d="
+      M43 45
+      C30 35 21 34 14 40
+      C22 49 33 52 43 45Z"></path>
+
+  </g>
+
+  <!-- right leaves -->
+
+  <g fill="url(#leafDark)" stroke="#254d37" stroke-width="0.85" filter="url(#softShadow)">
+
+    <path d="
+      M64 60
+      C77 52 88 52 95 59
+      C86 66 75 67 64 60Z"></path>
+
+    <path d="
+      M73 47
+      C85 39 96 39 103 45
+      C95 53 84 54 73 47Z"></path>
+
+    <path d="
+      M84 34
+      C96 27 106 27 114 33
+      C106 40 95 42 84 34Z"></path>
+
+    <path d="
+      M94 22
+      C105 15 114 15 121 20
+      C114 28 104 29 94 22Z"></path>
+
+  </g>
+
+  <!-- leaf veins -->
+
+  <g fill="none" stroke="#c5d99a" stroke-width="0.6" stroke-linecap="round" opacity="0.72">
+
+    <path d="M13 93 L37 88"></path>
+    <path d="M13 73 L37 74"></path>
+    <path d="M12 50 L34 58"></path>
+    <path d="M17 40 L40 45"></path>
+
+    <path d="M67 60 L92 59"></path>
+    <path d="M76 47 L100 45"></path>
+    <path d="M87 34 L111 33"></path>
+    <path d="M97 22 L118 20"></path>
+
+  </g>
+
+  <!-- fruit stems -->
+
+  <g fill="none" stroke="#645039" stroke-linecap="round">
+
+    <path d="M55 73 C59 80 60 87 60 92" stroke-width="2"></path>
+
+    <path d="M70 55 C76 62 79 69 80 75" stroke-width="2"></path>
+
+    <path d="M84 40 C90 45 94 51 95 57" stroke-width="1.8"></path>
+
+  </g>
+
+  <!-- large cherimoya -->
+
+  <g transform="translate(59 101)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -20
+      C13 -20 23 -12 25 1
+      C28 16 19 27 4 30
+      C-12 31 -24 22 -25 8
+      C-26 -6 -16 -18 0 -20Z" fill="url(#fruitGreen)" stroke="#3f6240" stroke-width="1.3"></path>
+
+    <!-- segmented skin -->
+
+    <g fill="none" stroke="#567a49" stroke-width="1.1" opacity="0.75">
+
+      <path d="M-17 -8 Q-11 -14 -5 -8 Q1 -14 7 -8 Q13 -14 19 -7"></path>
+
+      <path d="M-21 1 Q-15 -5 -9 1 Q-3 -5 3 1 Q9 -5 15 1 Q20 -4 23 1"></path>
+
+      <path d="M-20 10 Q-14 4 -8 10 Q-2 4 4 10 Q10 4 16 10 Q21 6 23 10"></path>
+
+      <path d="M-15 19 Q-9 13 -3 19 Q3 13 9 19 Q15 14 19 18"></path>
+
+    </g>
+
+    <!-- segment highlights -->
+
+    <g fill="none" stroke="#d8df99" stroke-width="0.7" opacity="0.48">
+
+      <path d="M-15 -9 Q-11 -12 -7 -9"></path>
+      <path d="M-6 -9 Q-2 -12 2 -9"></path>
+      <path d="M4 -9 Q8 -12 12 -9"></path>
+
+      <path d="M-17 1 Q-13 -2 -9 1"></path>
+      <path d="M-7 1 Q-3 -2 1 1"></path>
+      <path d="M3 1 Q7 -2 11 1"></path>
+
+    </g>
+
+    <ellipse cx="-9" cy="-7" rx="5" ry="8" fill="#eef0b1" opacity="0.23"></ellipse>
+
+  </g>
+
+  <!-- second fruit -->
+
+  <g transform="translate(82 82)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -17
+      C11 -17 20 -10 22 1
+      C24 13 16 23 3 25
+      C-10 26 -21 18 -21 6
+      C-22 -6 -13 -15 0 -17Z" fill="url(#fruitDark)" stroke="#3d5c3c" stroke-width="1.2"></path>
+
+    <g fill="none" stroke="#58794a" stroke-width="1" opacity="0.72">
+
+      <path d="M-15 -7 Q-10 -12 -5 -7 Q0 -12 5 -7 Q10 -12 16 -7"></path>
+
+      <path d="M-18 2 Q-13 -3 -8 2 Q-3 -3 2 2 Q7 -3 12 2 Q17 -2 20 2"></path>
+
+      <path d="M-16 11 Q-11 6 -6 11 Q-1 6 4 11 Q9 6 14 11"></path>
+
+      <path d="M-11 18 Q-6 13 -1 18 Q4 13 9 18"></path>
+
+    </g>
+
+    <ellipse cx="-7" cy="-6" rx="4" ry="6.5" fill="#dce59e" opacity="0.2"></ellipse>
+
+  </g>
+
+  <!-- small upper fruit -->
+
+  <g transform="translate(98 61) scale(0.78)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -17
+      C11 -17 20 -10 22 1
+      C24 13 16 23 3 25
+      C-10 26 -21 18 -21 6
+      C-22 -6 -13 -15 0 -17Z" fill="url(#fruitGreen)" stroke="#3d5f3e" stroke-width="1.4"></path>
+
+    <g fill="none" stroke="#57794a" stroke-width="1.1" opacity="0.75">
+
+      <path d="M-15 -7 Q-10 -12 -5 -7 Q0 -12 5 -7 Q10 -12 16 -7"></path>
+      <path d="M-18 2 Q-13 -3 -8 2 Q-3 -3 2 2 Q7 -3 12 2 Q17 -2 20 2"></path>
+      <path d="M-16 11 Q-11 6 -6 11 Q-1 6 4 11 Q9 6 14 11"></path>
+
+    </g>
+
+  </g>
+
+  <!-- flower stem -->
+
+  <path d="
+    M45 57
+    C38 53 33 48 28 43" fill="none" stroke="#66513b" stroke-width="1.4" stroke-linecap="round"></path>
+
+  <!-- cherimoya flower -->
+
+  <g transform="translate(26 40)" filter="url(#softShadow)">
+
+    <path d="
+      M0 -10
+      C4 -7 5 -1 3 6
+      C1 10 -1 10 -3 6
+      C-5 -1 -4 -7 0 -10Z" fill="url(#flowerCream)" stroke="#8f8156" stroke-width="0.7"></path>
+
+    <path d="
+      M-1 -7
+      C-7 -5 -10 0 -9 6
+      C-4 6 0 3 1 -1Z" fill="url(#flowerCream)" stroke="#8f8156" stroke-width="0.7"></path>
+
+    <path d="
+      M1 -7
+      C7 -5 10 0 9 6
+      C4 6 0 3 -1 -1Z" fill="url(#flowerCream)" stroke="#8f8156" stroke-width="0.7"></path>
+
+    <circle cx="0" cy="1" r="2.2" fill="#9d7940"></circle>
+
+  </g>
+
+  <!-- flower bud -->
+
+  <g transform="translate(38 52)" filter="url(#softShadow)">
+
+    <ellipse cx="0" cy="0" rx="3.3" ry="6" fill="url(#flowerCream)" stroke="#95845a" stroke-width="0.7"></ellipse>
+
+    <path d="M0 -6 L2 -10" fill="none" stroke="#536a42" stroke-width="1"></path>
+  </g>
+
+  <!-- foreground leaf -->
+
+  <path d="
+    M28 111
+    C15 104 6 106 3 115
+    C12 122 23 120 31 113Z" fill="url(#leafGreen)" stroke="#28513a" stroke-width="0.9" filter="url(#softShadow)"></path>
+
+  <path d="
+    M6 115
+    L27 112" fill="none" stroke="#c4d999" stroke-width="0.7" opacity="0.7"></path>
+
+  <!-- ground shadow -->
+
+  <ellipse cx="58" cy="121" rx="36" ry="4" fill="#29392c" opacity="0.16"></ellipse>
+
+</svg>

@@ -16948,6 +16948,88 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Cherimoya',
+      localName: 'Chirimoya',
+      scientificName: 'Annona cherimola Mill.',
+      category: 'fruit',
+      icon: 'assets/crops/cherimoya.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-grown-seedlings',
+          label: 'Seed-Grown Seedlings'
+        },
+        {
+          value: 'grafted-plants',
+          label: 'Grafted Plants'
+        },
+        {
+          value: 'budded-plants',
+          label: 'Budded Plants'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'Cooperative Extension Ventura County',
+
+        title:
+          'Cherimoya',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/county/',
+            'cooperative-extension-ventura-county/',
+            'cherimoya'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cherimoya performs best in relatively mild, frost-limited subtropical conditions with adequate sunshine. University of California Agriculture and Natural Resources notes that some winter chilling can be beneficial while prolonged freezing conditions can damage the crop. Because cultivar, tree age, elevation, humidity and local frost exposure strongly influence performance, FarmCast keeps minimum and maximum temperature values unset rather than treating one climatic observation as a universal limit.',
+
+      rainfallRange:
+        'No universal annual rainfall range is stored for Cherimoya. The crop requires adequate soil moisture during establishment and fruit development while also requiring excellent drainage. Irrigation demand varies with soil, season and local climate, so FarmCast keeps rainfall guidance descriptive rather than inventing a fixed annual rainfall requirement.',
+
+      soilPH:
+        '5.0–8.0',
+
+      soilNote:
+        'University of California Agriculture and Natural Resources identifies good drainage as the most important soil requirement for Cherimoya. Sandy loam or decomposed granite is preferred, although trees can succeed on many soil types. The same guidance reports successful growth across approximately pH 5–8. Prolonged waterlogging should be avoided because poorly drained conditions increase the risk of root and crown problems.',
+
+      plantingNote:
+        'Cherimoya refers specifically to Annona cherimola Mill. and is botanically distinct from the Sugar Apple and Guyabano crops already included in FarmCast. University of California Agriculture and Natural Resources reports that seedlings can produce acceptable fruit, but named varieties are normally propagated by grafting or budding onto seedling rootstock to preserve desirable characteristics. Current Kew taxonomy accepts Annona cherimola Mill. and lists Annona pubescens Salisb. and Annona tripetala Aiton as its two current synonyms.',
+
+      harvestNote:
+        'Cherimoya fruit is harvested by hand while still firm but horticulturally mature. University of California Agriculture and Natural Resources notes that maturity is commonly judged by skin-color changes, with fruit shifting from deep green toward lighter green or greenish-tan depending on cultivar. Postharvest guidance also identifies increasing smoothness and lighter coloration between the fruit segments as useful maturity indicators. Because cultivar, pollination, tree establishment and climate determine when fruiting begins, FarmCast keeps Cherimoya as guidance-only rather than assigning one automatic planting-to-harvest date.',
+
+      source: {
+        agency:
+          'University of California Agriculture and Natural Resources',
+
+        office:
+          'Cooperative Extension Ventura County',
+
+        title:
+          'Cherimoya',
+
+        url:
+          [
+            'https://',
+            'ucanr.edu/county/',
+            'cooperative-extension-ventura-county/',
+            'cherimoya'
+          ].join('')
+      }
+    },
+
   
 ];
 
