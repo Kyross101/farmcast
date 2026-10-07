@@ -16801,6 +16801,85 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Snake Fruit',
+      localName: 'Salak',
+      scientificName:
+        'Salacca zalacca (Gaertn.) Voss',
+      category: 'fruit',
+      icon: 'assets/crops/snake-fruit.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'transplanted',
+          label: 'Nursery-Raised Seedlings'
+        },
+        {
+          value: 'rooted-offshoots',
+          label: 'Rooted Offshoots'
+        },
+        {
+          value: 'air-layered-shoots',
+          label: 'Layered / Air-Layered Shoots'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Salacca zalacca (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Salacca_zalacca_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm and humid tropical growing conditions. Kew identifies Salacca zalacca as a perennial palm of the wet tropical biome. PROSEA describes Salak as a tropical fruit crop commonly grown under partial shade, especially while plants are young. Because cultivar, shade, water availability and local site conditions strongly influence growth and fruiting, FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric range.',
+
+      rainfallRange:
+        'Salak requires reliable moisture because its root system is relatively shallow. PROSEA notes that irrigation becomes important during dry periods when roots cannot reach an adequate water table. Because rainfall distribution, shade, soil and groundwater conditions strongly affect water availability, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall requirement.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA reports Salak production on soils including podzolic soils and regosols. Young palms are commonly grown under substantial shade, which may gradually be reduced as the plants become established. Because the cited production guidance does not provide one universal numeric soil-pH range, FarmCast keeps soil-pH guidance unset rather than inventing a value.',
+
+      plantingNote:
+        'Snake Fruit in this FarmCast entry refers specifically to Salacca zalacca (Gaertn.) Voss, commonly called Salak. PROSEA documents direct sowing as well as nursery-raised seedlings that are later transplanted during the rainy season. Vegetative propagation is also possible using rooted lateral offshoots or layering and air-layering of young shoots. Current Kew taxonomy accepts Salacca zalacca and lists historical names including Calamus zalacca, Salacca rumphii, Calamus salakka, Salacca blumeana and Salacca edulis as synonyms.',
+
+      harvestNote:
+        'Salak palms generally begin flowering several years after establishment rather than behaving like annual fruit crops. PROSEA reports flowering beginning at roughly three to four years after sowing and fruit maturity about five to seven months after pollination. Ripe fruit is normally harvested by cutting entire bunches, with seasonal harvest peaks depending on local rainfall and flowering patterns. Because the available maturity interval is measured from pollination rather than from sowing or transplanting, and vegetatively propagated plants may establish differently from seed-grown plants, FarmCast keeps Snake Fruit as guidance-only rather than assigning one automatic planting-to-harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Salacca zalacca (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Salacca_zalacca_(PROSEA)'
+          ].join('')
+      }
+    },
+
   
 ];
 

@@ -1,0 +1,336 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Snake Fruit</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of salak or snake fruit with
+    spiny tropical palm leaves and clusters of reddish-brown
+    scale-skinned fruits, with highlights, shadows, and depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#244e38"></stop>
+      <stop offset="0.35" stop-color="#3e7344"></stop>
+      <stop offset="0.7" stop-color="#719853"></stop>
+      <stop offset="1" stop-color="#b4ca74"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#183c30"></stop>
+      <stop offset="0.52" stop-color="#376641"></stop>
+      <stop offset="1" stop-color="#789956"></stop>
+    </linearGradient>
+
+    <linearGradient id="stemBrown" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9a7555"></stop>
+      <stop offset="0.5" stop-color="#684b3b"></stop>
+      <stop offset="1" stop-color="#3b302a"></stop>
+    </linearGradient>
+
+    <radialGradient id="fruitBrown" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#d49b69"></stop>
+      <stop offset="0.27" stop-color="#a96845"></stop>
+      <stop offset="0.62" stop-color="#774335"></stop>
+      <stop offset="1" stop-color="#482d2a"></stop>
+    </radialGradient>
+
+    <radialGradient id="fruitDark" cx="34%" cy="24%" r="76%">
+      <stop offset="0" stop-color="#b77d59"></stop>
+      <stop offset="0.35" stop-color="#87503c"></stop>
+      <stop offset="0.72" stop-color="#5c352f"></stop>
+      <stop offset="1" stop-color="#39272a"></stop>
+    </radialGradient>
+
+    <linearGradient id="scaleLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e1b584"></stop>
+      <stop offset="1" stop-color="#8b5540"></stop>
+    </linearGradient>
+
+    <filter id="softShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.1" flood-color="#15231a" flood-opacity="0.28"></feDropShadow>
+    </filter>
+
+    <filter id="fruitShadow" x="-35%" y="-35%" width="180%" height="190%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2.2" flood-color="#382626" flood-opacity="0.34"></feDropShadow>
+    </filter>
+
+  </defs>
+
+  <!-- palm crown base -->
+
+  <path d="
+    M54 119
+    C52 101 54 83 61 67
+    C67 55 73 48 80 42" fill="none" stroke="url(#stemBrown)" stroke-width="8" stroke-linecap="round" filter="url(#softShadow)"></path>
+
+  <!-- left frond -->
+
+  <path d="
+    M68 60
+    C51 47 34 35 13 25" fill="none" stroke="url(#leafDark)" stroke-width="4" stroke-linecap="round"></path>
+
+  <g fill="url(#leafGreen)" stroke="#234c36" stroke-width="0.6">
+
+    <path d="
+      M57 53
+      C48 42 41 38 34 38
+      C39 47 46 53 57 53Z"></path>
+
+    <path d="
+      M49 47
+      C41 35 34 31 27 32
+      C32 41 39 46 49 47Z"></path>
+
+    <path d="
+      M40 41
+      C33 30 25 25 19 27
+      C24 35 31 40 40 41Z"></path>
+
+    <path d="
+      M33 36
+      C27 26 20 21 14 23
+      C18 31 24 35 33 36Z"></path>
+
+    <path d="
+      M55 56
+      C45 59 38 64 34 71
+      C43 70 50 65 55 56Z"></path>
+
+    <path d="
+      M46 50
+      C36 53 29 58 25 65
+      C34 64 41 59 46 50Z"></path>
+
+    <path d="
+      M37 44
+      C28 47 21 52 17 58
+      C25 57 32 52 37 44Z"></path>
+
+  </g>
+
+  <!-- right frond -->
+
+  <path d="
+    M72 55
+    C88 42 102 31 119 24" fill="none" stroke="url(#leafDark)" stroke-width="4" stroke-linecap="round"></path>
+
+  <g fill="url(#leafGreen)" stroke="#234c36" stroke-width="0.6">
+
+    <path d="
+      M82 48
+      C89 37 97 34 104 35
+      C99 44 92 49 82 48Z"></path>
+
+    <path d="
+      M90 42
+      C97 31 104 27 111 29
+      C106 37 100 42 90 42Z"></path>
+
+    <path d="
+      M99 36
+      C105 26 112 22 118 24
+      C114 32 108 36 99 36Z"></path>
+
+    <path d="
+      M84 51
+      C94 53 102 58 106 65
+      C97 64 90 60 84 51Z"></path>
+
+    <path d="
+      M93 45
+      C103 48 110 52 114 59
+      C105 58 98 54 93 45Z"></path>
+
+  </g>
+
+  <!-- central tall frond -->
+
+  <path d="
+    M70 54
+    C69 36 70 20 74 6" fill="none" stroke="url(#leafDark)" stroke-width="4" stroke-linecap="round"></path>
+
+  <g fill="url(#leafGreen)" stroke="#234c36" stroke-width="0.6">
+
+    <path d="
+      M69 39
+      C60 31 55 24 56 17
+      C64 21 69 29 69 39Z"></path>
+
+    <path d="
+      M70 30
+      C62 22 59 15 60 10
+      C67 14 71 21 70 30Z"></path>
+
+    <path d="
+      M71 40
+      C81 33 87 27 88 20
+      C80 23 74 30 71 40Z"></path>
+
+    <path d="
+      M71 29
+      C80 22 84 16 84 10
+      C77 14 73 21 71 29Z"></path>
+
+  </g>
+
+  <!-- sharp palm spines -->
+
+  <g fill="#4e4135" opacity="0.82">
+
+    <path d="M58 71 L48 67 L57 74Z"></path>
+    <path d="M62 62 L52 57 L61 65Z"></path>
+    <path d="M70 55 L65 44 L73 54Z"></path>
+    <path d="M77 51 L85 42 L80 54Z"></path>
+    <path d="M82 62 L93 58 L84 66Z"></path>
+
+  </g>
+
+  <!-- fruit cluster stems -->
+
+  <g fill="none" stroke="#68523e" stroke-width="1.8" stroke-linecap="round">
+
+    <path d="M63 72 C60 79 57 85 54 91"></path>
+    <path d="M66 72 C66 80 65 87 65 94"></path>
+    <path d="M69 71 C74 78 77 85 80 92"></path>
+    <path d="M71 70 C80 75 87 81 93 88"></path>
+
+  </g>
+
+  <!-- salak fruit 1 -->
+
+  <g transform="translate(51 99)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -16
+      C11 -15 18 -8 18 2
+      C18 12 11 22 0 26
+      C-11 22 -18 12 -18 2
+      C-18 -8 -11 -15 0 -16Z" fill="url(#fruitBrown)" stroke="#51302c" stroke-width="1.2"></path>
+
+    <!-- scale pattern -->
+
+    <g fill="none" stroke="url(#scaleLight)" stroke-width="1" opacity="0.68">
+
+      <path d="M-13 -5 Q-8 -10 -3 -5 Q2 -10 7 -5 Q12 -10 16 -5"></path>
+      <path d="M-16 3 Q-11 -2 -6 3 Q-1 -2 4 3 Q9 -2 15 3"></path>
+      <path d="M-14 11 Q-9 6 -4 11 Q1 6 6 11 Q11 6 15 11"></path>
+      <path d="M-10 18 Q-5 13 0 18 Q5 13 10 18"></path>
+
+    </g>
+
+    <ellipse cx="-6" cy="-7" rx="3.2" ry="5.5" fill="#edbf91" opacity="0.26"></ellipse>
+
+    <path d="
+      M0 -16
+      L4 -22
+      L7 -15Z" fill="#534436"></path>
+
+  </g>
+
+  <!-- salak fruit 2 -->
+
+  <g transform="translate(67 101)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -17
+      C11 -16 19 -9 19 2
+      C19 13 12 23 0 27
+      C-12 23 -19 13 -19 2
+      C-19 -9 -11 -16 0 -17Z" fill="url(#fruitDark)" stroke="#4b2d2b" stroke-width="1.2"></path>
+
+    <g fill="none" stroke="url(#scaleLight)" stroke-width="1" opacity="0.65">
+
+      <path d="M-14 -6 Q-9 -11 -4 -6 Q1 -11 6 -6 Q11 -11 17 -6"></path>
+      <path d="M-17 2 Q-12 -3 -7 2 Q-2 -3 3 2 Q8 -3 16 2"></path>
+      <path d="M-15 10 Q-10 5 -5 10 Q0 5 5 10 Q10 5 16 10"></path>
+      <path d="M-11 18 Q-6 13 -1 18 Q4 13 11 18"></path>
+
+    </g>
+
+    <ellipse cx="-6" cy="-8" rx="3.2" ry="5.8" fill="#d9a77f" opacity="0.25"></ellipse>
+
+    <path d="
+      M0 -17
+      L4 -23
+      L7 -16Z" fill="#514235"></path>
+
+  </g>
+
+  <!-- salak fruit 3 -->
+
+  <g transform="translate(84 96) scale(0.92)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -16
+      C11 -15 18 -8 18 2
+      C18 12 11 22 0 26
+      C-11 22 -18 12 -18 2
+      C-18 -8 -11 -15 0 -16Z" fill="url(#fruitBrown)" stroke="#51302c" stroke-width="1.2"></path>
+
+    <g fill="none" stroke="url(#scaleLight)" stroke-width="1" opacity="0.67">
+
+      <path d="M-13 -5 Q-8 -10 -3 -5 Q2 -10 7 -5 Q12 -10 16 -5"></path>
+      <path d="M-16 3 Q-11 -2 -6 3 Q-1 -2 4 3 Q9 -2 15 3"></path>
+      <path d="M-14 11 Q-9 6 -4 11 Q1 6 6 11 Q11 6 15 11"></path>
+
+    </g>
+
+    <ellipse cx="-6" cy="-7" rx="3" ry="5" fill="#efc094" opacity="0.25"></ellipse>
+
+    <path d="
+      M0 -16
+      L4 -22
+      L7 -15Z" fill="#534436"></path>
+
+  </g>
+
+  <!-- salak fruit 4 -->
+
+  <g transform="translate(96 91) scale(0.78)" filter="url(#fruitShadow)">
+
+    <path d="
+      M0 -16
+      C11 -15 18 -8 18 2
+      C18 12 11 22 0 26
+      C-11 22 -18 12 -18 2
+      C-18 -8 -11 -15 0 -16Z" fill="url(#fruitDark)" stroke="#4d2e2b" stroke-width="1.2"></path>
+
+    <g fill="none" stroke="url(#scaleLight)" stroke-width="1" opacity="0.64">
+
+      <path d="M-13 -5 Q-8 -10 -3 -5 Q2 -10 7 -5 Q12 -10 16 -5"></path>
+      <path d="M-16 3 Q-11 -2 -6 3 Q-1 -2 4 3 Q9 -2 15 3"></path>
+      <path d="M-14 11 Q-9 6 -4 11 Q1 6 6 11 Q11 6 15 11"></path>
+
+    </g>
+
+  </g>
+
+  <!-- small emerging sucker -->
+
+  <g transform="translate(27 103)" filter="url(#softShadow)">
+
+    <path d="
+      M0 15
+      C-5 7 -7 -2 -5 -10
+      C-1 -5 1 2 1 9
+      C2 1 6 -6 11 -9
+      C11 -1 7 8 0 15Z" fill="url(#leafGreen)" stroke="#284e38" stroke-width="0.8"></path>
+
+  </g>
+
+  <!-- ground -->
+
+  <path d="
+    M6 117
+    C24 112 41 117 60 114
+    C80 111 102 117 123 113
+    L123 128
+    L6 128Z" fill="#735746" opacity="0.58"></path>
+
+  <!-- ground shadow -->
+
+  <ellipse cx="67" cy="118" rx="42" ry="5" fill="#26382a" opacity="0.18"></ellipse>
+
+</svg>
