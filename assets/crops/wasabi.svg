@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+
+  <title id="title">Wasabi</title>
+
+  <desc id="desc">
+    Detailed botanical illustration of Wasabi with broad heart-shaped
+    green leaves, a textured pale-green edible rhizome, small white
+    flowers, highlights, shadows and natural botanical depth.
+  </desc>
+
+  <defs>
+
+    <linearGradient id="stemGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#91ba68"></stop>
+      <stop offset="0.48" stop-color="#5b854b"></stop>
+      <stop offset="1" stop-color="#355f3c"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#acd87b"></stop>
+      <stop offset="0.42" stop-color="#60a158"></stop>
+      <stop offset="1" stop-color="#28633d"></stop>
+    </linearGradient>
+
+    <linearGradient id="leafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#78b25f"></stop>
+      <stop offset="0.5" stop-color="#41814c"></stop>
+      <stop offset="1" stop-color="#1d4f33"></stop>
+    </linearGradient>
+
+    <linearGradient id="rhizomeGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c7d995"></stop>
+      <stop offset="0.35" stop-color="#9eb873"></stop>
+      <stop offset="0.72" stop-color="#6f8d58"></stop>
+      <stop offset="1" stop-color="#4c6945"></stop>
+    </linearGradient>
+
+    <linearGradient id="rhizomeDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ca66b"></stop>
+      <stop offset="1" stop-color="#536c49"></stop>
+    </linearGradient>
+
+    <radialGradient id="flowerWhite" cx="35%" cy="28%" r="75%">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.55" stop-color="#f5f2dd"></stop>
+      <stop offset="1" stop-color="#d5d1b8"></stop>
+    </radialGradient>
+
+    <radialGradient id="flowerCenter" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#edd87d"></stop>
+      <stop offset="1" stop-color="#af9345"></stop>
+    </radialGradient>
+
+    <filter id="mainShadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#203529" flood-opacity="0.30"></feDropShadow>
+    </filter>
+
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5"></feGaussianBlur>
+    </filter>
+
+  </defs>
+
+
+  <!-- ground shadow -->
+  <ellipse cx="64" cy="112" rx="36" ry="7" fill="#1d3929" opacity="0.15" filter="url(#softBlur)"></ellipse>
+
+
+  <g filter="url(#mainShadow)">
+
+    <!-- central leaf stalks -->
+    <path d="M62 82
+             C56 64 50 48 42 34" fill="none" stroke="url(#stemGreen)" stroke-width="4.5" stroke-linecap="round"></path>
+
+    <path d="M65 81
+             C67 62 72 45 80 30" fill="none" stroke="url(#stemGreen)" stroke-width="4.5" stroke-linecap="round"></path>
+
+    <path d="M63 78
+             C62 58 62 40 63 23" fill="none" stroke="url(#stemGreen)" stroke-width="4" stroke-linecap="round"></path>
+
+
+    <!-- large left heart-shaped leaf -->
+    <path d="M42 35
+             C31 22 16 24 15 38
+             C14 53 31 63 44 68
+             C55 59 60 44 54 34
+             C51 29 46 30 42 35Z" fill="url(#leafGreen)"></path>
+
+    <path d="M42 37
+             C39 47 40 57 43 65" fill="none" stroke="#dcecb8" stroke-width="1.5" stroke-linecap="round" opacity="0.55"></path>
+
+    <path d="M41 46
+             L26 38" fill="none" stroke="#d2e6aa" stroke-width="1.1" opacity="0.42"></path>
+
+    <path d="M42 52
+             L28 55" fill="none" stroke="#d2e6aa" stroke-width="1.1" opacity="0.42"></path>
+
+
+    <!-- large right leaf -->
+    <path d="M80 31
+             C89 18 105 20 110 33
+             C115 46 101 60 86 67
+             C75 59 69 44 73 34
+             C75 29 78 28 80 31Z" fill="url(#leafDark)"></path>
+
+    <path d="M81 34
+             C83 44 84 54 85 64" fill="none" stroke="#d9eab2" stroke-width="1.5" stroke-linecap="round" opacity="0.52"></path>
+
+    <path d="M82 43
+             L98 35" fill="none" stroke="#cfe4a7" stroke-width="1.1" opacity="0.4"></path>
+
+    <path d="M83 51
+             L99 53" fill="none" stroke="#cfe4a7" stroke-width="1.1" opacity="0.4"></path>
+
+
+    <!-- upper center leaf -->
+    <path d="M63 25
+             C54 14 43 16 41 27
+             C40 39 52 47 63 51
+             C74 46 83 37 81 27
+             C79 17 69 15 63 25Z" fill="url(#leafGreen)"></path>
+
+    <path d="M63 27
+             L63 48" fill="none" stroke="#e2efbf" stroke-width="1.3" stroke-linecap="round" opacity="0.52"></path>
+
+
+    <!-- smaller lower leaves -->
+    <path d="M47 71
+             C36 65 25 68 22 78
+             C29 85 40 88 51 84
+             C53 79 52 75 47 71Z" fill="url(#leafDark)"></path>
+
+    <path d="M79 70
+             C91 64 102 68 105 78
+             C98 86 87 88 76 83
+             C74 78 75 74 79 70Z" fill="url(#leafGreen)"></path>
+
+
+    <!-- edible wasabi rhizome -->
+    <path d="M57 75
+             C55 83 54 93 56 104
+             C58 112 62 116 67 114
+             C72 111 75 103 74 93
+             C73 84 70 77 67 73
+             C64 71 60 72 57 75Z" fill="url(#rhizomeGreen)"></path>
+
+    <!-- rhizome side depth -->
+    <path d="M67 74
+             C72 81 73 90 72 99
+             C71 107 69 111 66 113
+             C69 102 68 87 67 74Z" fill="url(#rhizomeDark)" opacity="0.48"></path>
+
+
+    <!-- rhizome rings / leaf scars -->
+    <g fill="none" stroke="#637d52" stroke-width="1.4" stroke-linecap="round" opacity="0.68">
+
+      <path d="M57 82
+               C62 84 68 84 72 81"></path>
+
+      <path d="M56 89
+               C62 91 68 91 73 88"></path>
+
+      <path d="M56 96
+               C62 98 68 98 73 95"></path>
+
+      <path d="M57 103
+               C62 105 67 105 71 102"></path>
+
+    </g>
+
+    <!-- small root fibers -->
+    <path d="M60 112
+             C56 116 54 119 53 121" fill="none" stroke="#735c43" stroke-width="1.6" stroke-linecap="round"></path>
+
+    <path d="M65 114
+             C64 118 64 120 64 122" fill="none" stroke="#735c43" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <path d="M69 112
+             C73 116 75 118 77 120" fill="none" stroke="#735c43" stroke-width="1.5" stroke-linecap="round"></path>
+
+
+    <!-- flower stalk -->
+    <path d="M70 62
+             C78 53 84 46 90 40" fill="none" stroke="#67884c" stroke-width="2.8" stroke-linecap="round"></path>
+
+    <!-- flower branches -->
+    <path d="M89 41 L87 32" stroke="#769754" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <path d="M89 41 L95 34" stroke="#769754" stroke-width="1.5" stroke-linecap="round"></path>
+
+    <path d="M89 41 L99 42" stroke="#769754" stroke-width="1.5" stroke-linecap="round"></path>
+
+
+    <!-- small white wasabi flowers -->
+    <g transform="translate(87 30)">
+      <ellipse cx="0" cy="-3" rx="2" ry="3.8" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="3" cy="0" rx="2" ry="3.8" transform="rotate(90 3 0)" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="0" cy="3" rx="2" ry="3.8" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="-3" cy="0" rx="2" ry="3.8" transform="rotate(90 -3 0)" fill="url(#flowerWhite)"></ellipse>
+      <circle cx="0" cy="0" r="1.3" fill="url(#flowerCenter)"></circle>
+    </g>
+
+    <g transform="translate(96 33)">
+      <ellipse cx="0" cy="-3" rx="2" ry="3.7" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="3" cy="0" rx="2" ry="3.7" transform="rotate(90 3 0)" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="0" cy="3" rx="2" ry="3.7" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="-3" cy="0" rx="2" ry="3.7" transform="rotate(90 -3 0)" fill="url(#flowerWhite)"></ellipse>
+      <circle cx="0" cy="0" r="1.3" fill="url(#flowerCenter)"></circle>
+    </g>
+
+    <g transform="translate(101 42)">
+      <ellipse cx="0" cy="-3" rx="1.9" ry="3.5" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="3" cy="0" rx="1.9" ry="3.5" transform="rotate(90 3 0)" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="0" cy="3" rx="1.9" ry="3.5" fill="url(#flowerWhite)"></ellipse>
+      <ellipse cx="-3" cy="0" rx="1.9" ry="3.5" transform="rotate(90 -3 0)" fill="url(#flowerWhite)"></ellipse>
+      <circle cx="0" cy="0" r="1.2" fill="url(#flowerCenter)"></circle>
+    </g>
+
+  </g>
+
+
+  <!-- rhizome highlight -->
+  <path d="M59 78
+           C57 88 58 99 61 108" fill="none" stroke="#e0eab1" stroke-width="1.8" stroke-linecap="round" opacity="0.54"></path>
+
+
+  <!-- leaf highlights -->
+  <path d="M18 37
+           C22 28 32 26 40 34" fill="none" stroke="#eff5d0" stroke-width="1.4" stroke-linecap="round" opacity="0.35"></path>
+
+  <path d="M108 34
+           C104 26 94 24 84 31" fill="none" stroke="#edf4cd" stroke-width="1.4" stroke-linecap="round" opacity="0.33"></path>
+
+</svg>

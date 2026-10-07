@@ -18451,6 +18451,79 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Wasabi',
+      localName: 'Japanese Horseradish',
+      scientificName:
+        'Eutrema japonicum (Miq.) Koidz.',
+      category: 'herb',
+      icon: 'assets/crops/wasabi.svg',
+
+      plantingMethods: [
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        },
+        {
+          value: 'plantlet-division',
+          label: 'Plantlet / Crown Division'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Washington State University Extension',
+
+        title:
+          'Growing Wasabi in the Pacific Northwest',
+
+        url:
+          [
+            'https://',
+            'pubs.extension.wsu.edu/',
+            'product/',
+            'growing-wasabi-in-the-pacific-northwest/'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Wasabi is a cool-growing perennial that performs best under cool, moist and shaded conditions. Washington State University Extension describes Eutrema japonicum as a crop adapted to cool, moist temperate environments, while North Carolina State University Extension notes that it naturally grows along mountain streams and in fern-like habitats. Because suitable temperature depends strongly on production system, water temperature, shade and local climate, FarmCast keeps temperature guidance descriptive rather than assigning unsupported universal minimum and maximum values.',
+
+      rainfallRange:
+        'Wasabi requires consistent moisture and high humidity but should not be treated as needing one universal annual rainfall total. Extension guidance emphasizes continuously moist growing conditions with good drainage and oxygen around the root zone. FarmCast therefore keeps rainfall guidance descriptive instead of assigning an unsupported numeric rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'Wasabi requires consistently moist but well-aerated growing conditions and is commonly cultivated in carefully managed soil or stream-bed systems. The extension references used for this entry do not establish one universal numeric soil-pH interval that should be applied across all cultivation systems, so FarmCast keeps soilPH unset rather than inventing a value.',
+
+      plantingNote:
+        'Wasabi in this FarmCast entry refers specifically to Eutrema japonicum (Miq.) Koidz., the genuine Japanese condiment crop commonly known as Wasabi or Japanese Horseradish. It is botanically distinct from the existing FarmCast Horseradish crop, Armoracia rusticana. Washington State University Extension describes propagation through seed and vegetative plantlets produced around the crown, while North Carolina State University Extension likewise lists seed and division as recommended propagation methods. Current Kew taxonomy accepts Eutrema japonicum and lists 17 synonyms: Lunaria japonica, Wasabia japonica, Alliaria wasabi, Cochlearia wasabi, Cordatifolium wasabi, Eutrema japonicum var. sachalinense, Eutrema japonicum f. terrestre, Eutrema okinosimense, Eutrema wasabi, Eutrema wasabi var. sachalinense, Eutrema wasabi f. terrestre, Wasabia japonica var. sachalinensis, Wasabia okinosimensis, Wasabia pungens, Wasabia tenuis var. okinosimense, Wasabia wasabi and Wasabia wasabi var. sachalinensis.',
+
+      harvestNote:
+        'Wasabi is grown primarily for its thickened edible stem or rhizome, which is finely grated to make the familiar green condiment. The leaves, flowers and leaf stalks are also edible. Washington State University Extension recommends evaluating wasabi early in its second year when the enlarged stem begins approaching marketable size, while other university extension guidance reports that rhizomes commonly require around two years or more to reach mature harvest size. Because these figures describe general maturity and vary by cultivation system rather than giving one exact seed- or division-to-harvest day range, FarmCast keeps Wasabi as guidance-only rather than assigning an automatic harvest date.',
+
+      source: {
+        agency:
+          'Washington State University Extension',
+
+        title:
+          'Growing Wasabi in the Pacific Northwest',
+
+        url:
+          [
+            'https://',
+            'pubs.extension.wsu.edu/',
+            'product/',
+            'growing-wasabi-in-the-pacific-northwest/'
+          ].join('')
+      }
+    },
+
 
   
 ];
