@@ -1,0 +1,266 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="ivyGourdTitle ivyGourdDesc">
+  <title id="ivyGourdTitle">Ivy Gourd</title>
+  <desc id="ivyGourdDesc">
+    Detailed ivy gourd vine with lobed green leaves,
+    curling tendrils, a white flower, striped young fruits
+    and one ripe red fruit.
+  </desc>
+
+  <defs>
+    <linearGradient id="igStem" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#78a95c"></stop>
+      <stop offset="48%" stop-color="#4d8047"></stop>
+      <stop offset="100%" stop-color="#2b6038"></stop>
+    </linearGradient>
+
+    <linearGradient id="igLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9bd574"></stop>
+      <stop offset="42%" stop-color="#5bac58"></stop>
+      <stop offset="100%" stop-color="#24713d"></stop>
+    </linearGradient>
+
+    <linearGradient id="igLeafDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#70ba61"></stop>
+      <stop offset="100%" stop-color="#195a34"></stop>
+    </linearGradient>
+
+    <radialGradient id="igFruitGreen" cx="31%" cy="23%" r="76%">
+      <stop offset="0%" stop-color="#d8e98a"></stop>
+      <stop offset="38%" stop-color="#99c65e"></stop>
+      <stop offset="72%" stop-color="#609c46"></stop>
+      <stop offset="100%" stop-color="#39763b"></stop>
+    </radialGradient>
+
+    <radialGradient id="igFruitRed" cx="31%" cy="24%" r="77%">
+      <stop offset="0%" stop-color="#ffb072"></stop>
+      <stop offset="31%" stop-color="#ee714f"></stop>
+      <stop offset="68%" stop-color="#c4423e"></stop>
+      <stop offset="100%" stop-color="#8e2d35"></stop>
+    </radialGradient>
+
+    <linearGradient id="igFlower" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"></stop>
+      <stop offset="65%" stop-color="#f0efe4"></stop>
+      <stop offset="100%" stop-color="#d7dbc9"></stop>
+    </linearGradient>
+
+    <filter id="igShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#14321d" flood-opacity="0.23"></feDropShadow>
+    </filter>
+  </defs>
+
+  <ellipse cx="64" cy="112" rx="39" ry="6" fill="#17321e" opacity="0.12"></ellipse>
+
+  <!-- Main climbing vine -->
+  <g fill="none" stroke="url(#igStem)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 108
+         C39 95 48 81 56 66
+         C65 49 75 34 91 18" stroke-width="5"></path>
+
+    <path d="M45 87
+         C36 77 29 67 24 56" stroke-width="3.3"></path>
+
+    <path d="M57 66
+         C72 68 87 63 101 53" stroke-width="3.4"></path>
+
+    <path d="M38 96
+         C51 99 65 97 77 91" stroke-width="3"></path>
+
+    <path d="M70 44
+         C65 35 65 27 69 19" stroke-width="2.8"></path>
+  </g>
+
+  <!-- Stem highlight -->
+  <path d="M27 105
+       C41 93 50 79 58 64
+       C67 47 77 33 90 20" fill="none" stroke="#add190" stroke-width="1.05" stroke-linecap="round" opacity="0.46"></path>
+
+  <!-- Upper left leaf -->
+  <g filter="url(#igShadow)">
+    <path d="M33 59
+         C28 55 24 52 18 51
+         C21 46 25 43 29 41
+         C27 36 29 32 34 29
+         C38 34 40 37 41 41
+         C46 38 51 38 55 41
+         C51 46 48 49 44 51
+         C45 56 41 60 36 63
+         Z" fill="url(#igLeaf)" stroke="#347442" stroke-width="1.15" stroke-linejoin="round"></path>
+
+    <path d="M36 57
+         C35 50 35 42 34 33" fill="none" stroke="#d9efc7" stroke-width="1.3" opacity="0.7"></path>
+
+    <g fill="none" stroke="#b7dc9f" stroke-width="0.85" opacity="0.62">
+      <path d="M35 47 L27 44"></path>
+      <path d="M36 45 L45 42"></path>
+      <path d="M36 52 L44 51"></path>
+    </g>
+  </g>
+
+  <!-- Upper right leaf -->
+  <g filter="url(#igShadow)">
+    <path d="M92 49
+         C87 45 84 40 84 35
+         C89 35 93 36 97 39
+         C99 34 103 31 108 31
+         C108 37 107 41 105 45
+         C110 46 113 49 115 53
+         C109 56 104 57 100 56
+         C98 61 94 63 89 63
+         C89 57 90 53 92 49Z" fill="url(#igLeafDark)" stroke="#2d6a3d" stroke-width="1.15" stroke-linejoin="round"></path>
+
+    <path d="M94 57
+         C98 51 102 44 106 35" fill="none" stroke="#d3eabd" stroke-width="1.3" opacity="0.68"></path>
+
+    <g fill="none" stroke="#a9d293" stroke-width="0.85" opacity="0.6">
+      <path d="M98 50 L90 43"></path>
+      <path d="M101 46 L110 48"></path>
+      <path d="M96 54 L104 55"></path>
+    </g>
+  </g>
+
+  <!-- Center leaf -->
+  <g filter="url(#igShadow)">
+    <path d="M54 75
+         C50 70 47 67 42 65
+         C45 60 49 58 53 58
+         C52 53 55 49 60 47
+         C63 51 65 55 65 59
+         C70 57 75 59 78 63
+         C74 67 70 69 67 70
+         C67 75 63 79 58 81
+         Z" fill="url(#igLeaf)" stroke="#31703f" stroke-width="1.15"></path>
+
+    <path d="M59 75
+         C60 67 60 59 60 51" fill="none" stroke="#daefc6" stroke-width="1.3" opacity="0.7"></path>
+
+    <path d="M60 65 L50 62
+         M60 62 L70 61
+         M59 69 L68 71" fill="none" stroke="#b5da9d" stroke-width="0.85" opacity="0.62"></path>
+  </g>
+
+  <!-- Lower left leaf -->
+  <g filter="url(#igShadow)">
+    <path d="M34 89
+         C29 85 25 83 20 82
+         C22 77 26 74 30 73
+         C29 68 31 64 36 62
+         C40 66 42 70 42 74
+         C47 72 52 74 55 78
+         C51 82 47 84 44 85
+         C45 90 41 94 36 96
+         Z" fill="url(#igLeafDark)" stroke="#29643a" stroke-width="1.15"></path>
+
+    <path d="M36 91
+         C36 83 36 75 36 66" fill="none" stroke="#d0e8b9" stroke-width="1.25" opacity="0.68"></path>
+  </g>
+
+  <!-- Lower right leaf -->
+  <g filter="url(#igShadow)">
+    <path d="M82 93
+         C79 88 76 85 72 83
+         C76 79 80 77 84 78
+         C85 72 88 69 93 68
+         C96 73 97 77 96 81
+         C101 80 106 82 108 87
+         C104 90 100 92 96 92
+         C95 97 91 101 86 102
+         Z" fill="url(#igLeaf)" stroke="#31703f" stroke-width="1.15"></path>
+
+    <path d="M86 97
+         C89 89 91 81 92 72" fill="none" stroke="#d7edc2" stroke-width="1.25" opacity="0.7"></path>
+  </g>
+
+  <!-- Tendrils -->
+  <g fill="none" stroke="#5b8649" stroke-width="1.8" stroke-linecap="round">
+    <path d="M70 51
+         C77 46 83 47 83 51
+         C83 55 77 56 76 52
+         C76 49 81 48 85 49"></path>
+
+    <path d="M49 81
+         C44 75 39 75 38 78
+         C37 82 42 84 44 81
+         C46 78 43 76 40 76"></path>
+
+    <path d="M91 58
+         C97 60 99 64 97 67
+         C94 70 90 66 92 63
+         C94 61 97 62 100 65"></path>
+  </g>
+
+  <!-- Flower stalk -->
+  <path d="M72 43 C80 39 87 37 94 38" fill="none" stroke="#5a8248" stroke-width="2" stroke-linecap="round"></path>
+
+  <!-- White flower -->
+  <g filter="url(#igShadow)">
+    <g fill="url(#igFlower)" stroke="#c9cfc1" stroke-width="0.7">
+      <ellipse cx="99" cy="34" rx="5" ry="10"></ellipse>
+
+      <ellipse cx="106" cy="39" rx="5" ry="10" transform="rotate(70 106 39)"></ellipse>
+
+      <ellipse cx="103" cy="48" rx="5" ry="10" transform="rotate(145 103 48)"></ellipse>
+
+      <ellipse cx="94" cy="48" rx="5" ry="10" transform="rotate(215 94 48)"></ellipse>
+
+      <ellipse cx="91" cy="39" rx="5" ry="10" transform="rotate(290 91 39)"></ellipse>
+    </g>
+
+    <circle cx="99" cy="41" r="5" fill="#e9cc54"></circle>
+
+    <g fill="#b6902e">
+      <circle cx="97" cy="39" r="1"></circle>
+      <circle cx="101" cy="39" r="1"></circle>
+      <circle cx="99" cy="42" r="1"></circle>
+      <circle cx="96" cy="43" r="0.8"></circle>
+      <circle cx="102" cy="43" r="0.8"></circle>
+    </g>
+  </g>
+
+  <!-- Fruit stems -->
+  <g fill="none" stroke="#547842" stroke-width="2.4" stroke-linecap="round">
+    <path d="M48 82 C50 87 51 91 51 95"></path>
+    <path d="M67 67 C73 71 76 76 78 81"></path>
+    <path d="M88 62 C91 68 94 72 97 76"></path>
+  </g>
+
+  <!-- Large striped green fruit -->
+  <g filter="url(#igShadow)">
+    <ellipse cx="51" cy="101" rx="10" ry="17" transform="rotate(4 51 101)" fill="url(#igFruitGreen)" stroke="#39733c" stroke-width="1.35"></ellipse>
+
+    <g fill="none" stroke="#d5e69a" stroke-width="1.5" stroke-linecap="round" opacity="0.72">
+      <path d="M47 86 C48 94 47 104 47 114"></path>
+      <path d="M52 84 C53 94 53 105 52 117"></path>
+      <path d="M56 87 C57 96 57 105 56 112"></path>
+    </g>
+
+    <ellipse cx="47" cy="92" rx="3.2" ry="4.8" fill="#edf5bd" opacity="0.5" transform="rotate(-20 47 92)"></ellipse>
+
+    <path d="M48 84 L51 80 L54 84" fill="none" stroke="#51743e" stroke-width="1.4"></path>
+  </g>
+
+  <!-- Smaller green fruit -->
+  <g filter="url(#igShadow)">
+    <ellipse cx="79" cy="88" rx="9" ry="14" transform="rotate(-8 79 88)" fill="url(#igFruitGreen)" stroke="#3c783e" stroke-width="1.3"></ellipse>
+
+    <g fill="none" stroke="#d9e99d" stroke-width="1.3" stroke-linecap="round" opacity="0.7">
+      <path d="M75 76 C76 84 75 91 76 99"></path>
+      <path d="M80 74 C81 82 81 91 81 102"></path>
+      <path d="M84 78 C85 85 85 91 84 98"></path>
+    </g>
+
+    <ellipse cx="76" cy="81" rx="2.8" ry="3.8" fill="#edf5bd" opacity="0.48"></ellipse>
+  </g>
+
+  <!-- Ripe red fruit -->
+  <g filter="url(#igShadow)">
+    <ellipse cx="99" cy="85" rx="9.5" ry="14.5" transform="rotate(10 99 85)" fill="url(#igFruitRed)" stroke="#963538" stroke-width="1.3"></ellipse>
+
+    <path d="M96 72
+         C98 78 98 88 97 98" fill="none" stroke="#f5a275" stroke-width="1.3" stroke-linecap="round" opacity="0.5"></path>
+
+    <ellipse cx="96" cy="78" rx="3" ry="4" fill="#ffd0a3" opacity="0.42" transform="rotate(-18 96 78)"></ellipse>
+
+    <path d="M96 70 L99 67 L102 71" fill="none" stroke="#557641" stroke-width="1.4"></path>
+  </g>
+</svg>

@@ -19494,6 +19494,73 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Ivy Gourd',
+      localName: 'Tindora / Scarlet Gourd',
+      scientificName:
+        'Coccinia grandis (L.) Voigt',
+      category: 'vegetable',
+      icon: 'assets/crops/ivy-gourd.svg',
+
+      plantingMethods: [
+        {
+          value: 'stem-cuttings',
+          label: 'Stem Cuttings'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Coccinia grandis (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Coccinia_grandis_(PROSEA)'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Ivy Gourd is a perennial tropical climbing vegetable adapted to warm growing environments. PROSEA describes Coccinia grandis as occurring from the plains to moderate elevations in tropical regions and notes that relatively little is known about one universal set of optimum ecological conditions. Because the cultivation source does not establish one crop-wide numeric optimum temperature interval or absolute physiological minimum and maximum range suitable for all production systems, FarmCast keeps temperature guidance descriptive rather than assigning unsupported thresholds.',
+
+      rainfallRange:
+        'PROSEA reports that Ivy Gourd appears to benefit from well-distributed rainfall and fairly high humidity while also requiring suitable drainage. Because actual crop moisture depends on rainfall distribution, soil characteristics, irrigation and local growing conditions, FarmCast keeps rainfall guidance descriptive rather than assigning one universal annual rainfall interval.',
+
+      soilPH:
+        null,
+
+      soilNote:
+        'PROSEA recommends well-drained growing conditions and specifically notes that Ivy Gourd does not tolerate waterlogging. The cultivation guidance does not establish one precise universal numeric soil-pH range for Coccinia grandis production, so FarmCast keeps soilPH unset rather than inventing lower and upper limits.',
+
+      plantingNote:
+        'Ivy Gourd in this FarmCast entry refers specifically to Coccinia grandis (L.) Voigt, also commonly known as Tindora, Scarlet Gourd and Small Gourd. PROSEA reports that the crop is normally propagated using stem cuttings approximately 10–15 cm long, while propagation by seed is possible but less commonly practised because Ivy Gourd is dioecious and seed-grown populations produce both male and female plants. Current Kew Plants of the World Online taxonomy accepts Coccinia grandis (L.) Voigt and lists thirty-three scientific synonyms. All thirty-three current Kew synonyms, the historical Coccinia cordifolia usage and major common-name variants were checked against the current FarmCast crop dataset and script before this entry was prepared.',
+
+      harvestNote:
+        'Ivy Gourd is cultivated for edible young shoots, leaves and immature fruits. PROSEA reports that tender green fruits are used as vegetables in soups and curries and that young shoots and leaves are also eaten after cooking. Plants can produce repeated harvests while moisture and growing conditions remain favorable. Because the cited Southeast Asian cultivation guidance does not establish one universal stem-cutting-to-first-harvest interval that should be applied across environments and cultivars, Ivy Gourd remains guidance-only with no automatic FarmCast harvest date.',
+
+      source: {
+        agency:
+          'Plant Resources of South-East Asia (PROSEA)',
+
+        title:
+          'Coccinia grandis (PROSEA)',
+
+        url:
+          [
+            'https://',
+            'plantuse.plantnet.org/en/',
+            'Coccinia_grandis_(PROSEA)'
+          ].join('')
+      }
+    },
+
 
   
 ];
