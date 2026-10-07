@@ -15912,6 +15912,78 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Lotus Root',
+      localName: 'Sacred Lotus',
+      scientificName: 'Nelumbo nucifera Gaertn.',
+      category: 'root-crop',
+      icon: 'assets/crops/lotus-root.svg',
+
+      plantingMethods: [
+        {
+          value: 'rhizome-planted',
+          label: 'Planted Rhizomes'
+        },
+        {
+          value: 'seed-sown',
+          label: 'Seed Sown'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Purdue University Extension',
+
+        title:
+          'Chinese Vegetables',
+
+        url:
+          [
+            'https://',
+            'ag.purdue.edu/department/hla/',
+            'extension/extension-publications-library/',
+            'ext-pubs/ho-187-w.html'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Warm subtropical to tropical aquatic growing conditions. Kew identifies Sacred Lotus as a rhizomatous aquatic plant primarily associated with the subtropical biome and records the species as native across tropical and temperate parts of Asia, including the Philippines. Cultivars and production systems vary substantially, so FarmCast keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'A conventional annual rainfall range is not appropriate for this aquatic crop. Lotus Root is cultivated with its rhizomes established in saturated soil beneath shallow standing water. Water level, water quality, soil condition and production system are more meaningful than annual rainfall totals, so FarmCast keeps water guidance descriptive rather than inventing one universal rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows university guidance emphasizing submerged, soil-based aquatic culture rather than assigning an unsupported universal pH range.',
+
+      soilNote:
+        'Lotus Root develops its edible enlarged rhizomes in saturated soil beneath shallow water. Purdue University Extension lists Chinese Lotus among water-garden vegetables, while University of Florida IFAS recommends planting lotus rhizomes horizontally in a broad container filled with soil before submerging it in shallow water. Full sun supports vigorous growth. Because lotus can spread strongly through rhizomes, controlled growing beds or containers may be useful where unrestricted spread is undesirable.',
+
+      plantingNote:
+        'Lotus Root in this FarmCast entry refers specifically to Nelumbo nucifera Gaertn., also called Sacred Lotus or Chinese Lotus. The familiar lotus root sold as a vegetable is botanically an enlarged underground rhizome rather than a true root. Purdue University Extension lists both rhizomes and seeds as planting materials, while vegetative rhizomes provide a direct method for establishing edible-rhizome plants. Current Kew taxonomy accepts Nelumbo nucifera Gaertn. and lists historical names including Nelumbium asiaticum, Nelumbium indicum, Nelumbium speciosum, Nelumbo indica, Nelumbo speciosa and Nymphaea nelumbo.',
+
+      harvestNote:
+        'Edible Lotus cultivars are harvested for their enlarged underground rhizomes. Published lotus research describes rhizome enlargement beginning toward the latter part of the growing season, with enlarged rhizomes harvested from late summer through the following spring depending on cultivar, climate and production system. Seeds and other edible plant parts follow different harvest stages. Because Lotus is a perennial aquatic crop with cultivar- and season-dependent rhizome development rather than one universal planting-to-harvest interval, FarmCast keeps Lotus Root as guidance-only.',
+
+      source: {
+        agency:
+          'Purdue University Extension',
+
+        title:
+          'Chinese Vegetables',
+
+        url:
+          [
+            'https://',
+            'ag.purdue.edu/department/hla/',
+            'extension/extension-publications-library/',
+            'ext-pubs/ho-187-w.html'
+          ].join('')
+      }
+    },
+
   
 ];
 
