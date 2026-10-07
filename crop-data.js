@@ -15300,6 +15300,71 @@ window.FARMCAST_CROPS = [
       }
     },
 
+    {
+      name: 'Quinoa',
+      scientificName: 'Chenopodium quinoa Willd.',
+      category: 'grain',
+      icon: 'assets/crops/quinoa.svg',
+
+      plantingMethods: [
+        {
+          value: 'direct-seeded',
+          label: 'Direct Seeded'
+        }
+      ],
+
+      plantingMethodSource: {
+        agency:
+          'Oregon State University Extension Service',
+
+        title:
+          'Quinoa Production for the Willamette Valley',
+
+        url:
+          [
+            'https://',
+            'extension.oregonstate.edu/catalog/',
+            'em-9300-quinoa-production-willamette-valley'
+          ].join('')
+      },
+
+      minTemp: null,
+      maxTemp: null,
+
+      idealTempRange:
+        'Cool to moderate growing conditions during flowering and seed development. Kew identifies Quinoa as an annual crop primarily associated with the subtropical biome, while Oregon State University Extension notes that excessive heat during flowering and early seed set can prevent successful seed production in susceptible varieties. FarmCast therefore keeps temperature guidance descriptive rather than assigning one universal numeric crop-growth range.',
+
+      rainfallRange:
+        'No single numeric annual rainfall requirement is stored. Oregon State University Extension notes that Quinoa does not perform well in standing water or excessively wet soil, while adequate soil moisture remains important during establishment and seed development. FarmCast therefore keeps water guidance descriptive rather than inventing one universal rainfall requirement.',
+
+      soilPH:
+        'No universal numeric soil-pH target is stored. FarmCast follows source guidance emphasizing a suitable seedbed, good drainage, and locally appropriate soil-fertility management.',
+
+      soilNote:
+        'Quinoa should be established in a fine, well-prepared and well-drained seedbed. Oregon State University Extension notes that the small seeds require shallow placement and that fields with standing water can result in poor crop performance. Weed management is especially important during early establishment while root development temporarily slows canopy growth.',
+
+      plantingNote:
+        'Quinoa is a familiar edible pseudocereal grown for its grain-like seeds. Oregon State University Extension establishes the crop directly from seed and notes that shallow seeding supports reliable emergence. Current Kew taxonomy accepts Chenopodium quinoa Willd. and lists numerous historical synonyms, including Chenopodium album var. quinoa, Chenopodium album subsp. quinoa, Chenopodium guinoa, Chenopodium punctulatum and Chenopodium purpurascens.',
+
+      harvestNote:
+        'Oregon State University Extension reports that Quinoa varieties can require about 100–120 days to reach full maturity. Mature seed becomes hard when pressed between the fingers. Because mature seeds can begin sprouting in the panicle during late-season rain, timely harvest and crop dry-down are important. FarmCast therefore supports an automatic 100–120 day maturity window for direct-seeded Quinoa while still recommending actual seed hardness and field conditions as final harvest indicators.',
+
+      source: {
+        agency:
+          'Oregon State University Extension Service',
+
+        title:
+          'Quinoa Production for the Willamette Valley',
+
+        url:
+          [
+            'https://',
+            'extension.oregonstate.edu/catalog/',
+            'em-9300-quinoa-production-willamette-valley'
+          ].join('')
+      }
+    },
+
   
 ];
 

@@ -7498,6 +7498,35 @@ const CROP_HARVEST_WINDOWS = {
     }
   },
 
+  Quinoa: {
+    'direct-seeded': {
+      minDays: 100,
+      maxDays: 120,
+      basis:
+        'after seeding',
+      derived: false,
+
+      note:
+        'Oregon State University Extension reports that Quinoa varieties can take approximately 100–120 days to reach full maturity. Mature seeds should be hard when pressed, and field conditions should still be checked before harvest.',
+
+      source: {
+        agency:
+          'Oregon State University Extension Service',
+
+        title:
+          'Quinoa Production for the Willamette Valley',
+
+        url:
+          [
+            'https://',
+            'extension.oregonstate.edu/catalog/',
+            'em-9300-quinoa-production-willamette-valley'
+          ].join('')
+      }
+    }
+  },
+
+
 
 
 };
