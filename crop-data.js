@@ -4,10 +4,11 @@
 
 window.FARMCAST_CROPS = [
 
- {
+  {
    name: 'Tomato',
+   scientificName:
+     'Solanum lycopersicum L.',
    category: 'vegetable',
-   emoji: '🍅',
    icon: 'assets/crops/tomato.svg',
 
     plantingMethods: [
