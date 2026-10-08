@@ -106,11 +106,12 @@ window.FARMCAST_CROPS = [
     }
   },
 
- {
-   name: 'Corn',
-   category: 'grain',
-   emoji: '🌽',
-   icon: 'assets/crops/corn.svg',
+   {
+    name: 'Corn',
+    scientificName:
+      'Zea mays L.',
+    category: 'grain',
+    icon: 'assets/crops/corn.svg',
 
     plantingMethods: [
       {
