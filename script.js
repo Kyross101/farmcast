@@ -1509,7 +1509,14 @@ function renderForecastAndCalendar(forecastData, currentData){
     const cropsHtml = shuffled.map(crop => {
       const assess = assessCrop(crop, avgTemp, avgWind, isRaining);
       return `<div class="crop-card ${assess.status}" onclick="toast('${crop.name}: ${assess.reason}','${assess.status==='ideal'?'ok':assess.status==='wait'?'warn':'err'}')">
-        <div class="crop-top"><div class="crop-emoji">${crop.emoji}</div><div class="crop-name">${crop.name}</div></div>
+        
+        <div class="crop-top">
+          <div class="crop-icon">
+            ${getCropIconHtml(crop.name, 'crop-icon-img')}
+          </div>
+          <div class="crop-name">${crop.name}</div>
+        </div>
+        
         <div class="crop-badge badge-${assess.status}">${assess.status.toUpperCase()}</div>
         <div class="crop-reason">${assess.reason}</div>
       </div>`;

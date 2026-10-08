@@ -159,6 +159,8 @@ window.FARMCAST_CROPS = [
 
   {
     name: 'Okra',
+    scientificName:
+      'Abelmoschus esculentus (L.) Moench',
     category: 'vegetable',
     emoji: '🥦',
     icon: 'assets/crops/okra.svg',
@@ -209,6 +211,8 @@ window.FARMCAST_CROPS = [
 
   {
     name: 'Sitaw',
+    scientificName:
+      'Phaseolus vulgaris L.',
     category: 'vegetable',
     emoji: '🫛',
     icon: 'assets/crops/sitaw.svg',
