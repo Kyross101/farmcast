@@ -263,8 +263,9 @@ window.FARMCAST_CROPS = [
 
   {
     name: 'Ampalaya',
+    scientificName:
+      'Momordica charantia L.',
     category: 'vegetable',
-    emoji: '🥒',
     icon: 'assets/crops/ampalaya.svg',
 
     plantingMethods: [
@@ -314,8 +315,9 @@ window.FARMCAST_CROPS = [
 
   {
     name: 'Pechay',
+    scientificName:
+      'Brassica rapa L. subsp. chinensis',
     category: 'vegetable',
-    emoji: '🥬',
     icon: 'assets/crops/pechay.svg',
 
     plantingMethods: [
@@ -368,8 +370,9 @@ window.FARMCAST_CROPS = [
 
   {
     name: 'Kamote',
+    scientificName:
+      'Ipomoea batatas (L.) Lam.',
     category: 'root-crop',
-    emoji: '🍠',
     icon: 'assets/crops/kamote.svg',
 
     plantingMethods: [
