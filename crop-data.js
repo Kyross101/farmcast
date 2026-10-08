@@ -55,10 +55,11 @@ window.FARMCAST_CROPS = [
     }
   },
 
- {
+  {
    name: 'Eggplant',
+   scientificName:
+     'Solanum melongena L.',
    category: 'vegetable',
-   emoji: '🍆',
    icon: 'assets/crops/eggplant.svg',
 
     plantingMethods: [
