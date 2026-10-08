@@ -162,7 +162,6 @@ window.FARMCAST_CROPS = [
     scientificName:
       'Abelmoschus esculentus (L.) Moench',
     category: 'vegetable',
-    emoji: '🥦',
     icon: 'assets/crops/okra.svg',
 
       plantingMethods: [
@@ -214,7 +213,6 @@ window.FARMCAST_CROPS = [
     scientificName:
       'Phaseolus vulgaris L.',
     category: 'vegetable',
-    emoji: '🫛',
     icon: 'assets/crops/sitaw.svg',
 
       plantingMethods: [
