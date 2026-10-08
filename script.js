@@ -1516,7 +1516,7 @@ function renderForecastAndCalendar(forecastData, currentData){
           </div>
           <div class="crop-name">${crop.name}</div>
         </div>
-        
+
         <div class="crop-badge badge-${assess.status}">${assess.status.toUpperCase()}</div>
         <div class="crop-reason">${assess.reason}</div>
       </div>`;
@@ -4855,11 +4855,6 @@ function updateWindFlowLegend() {
 // MY CROPS — Full CRUD + Weather Assessment
 // ═══════════════════════════════════════════════════════
  
-const CROP_EMOJIS = {
-  Tomato:'🍅', Eggplant:'🍆', Corn:'🌽', Okra:'🥦', Sitaw:'🫛',
-  Ampalaya:'🥒', Pechay:'🥬', Kamote:'🍠', Rice:'🌾',
-  Garlic:'🧄', Onion:'🧅', Cabbage:'🥦'
-};
 
 // ── SHARED CROP REFERENCE HELPERS ──
 
@@ -5049,11 +5044,15 @@ function getCropIconHtml(
     `;
   }
 
-  // Temporary legacy fallback outside
-  // the shared/special crop references.
-  return escapeHtml(
-    CROP_EMOJIS[cropName] || '🌿'
-  );
+    // Generic SVG fallback for unknown
+  // or legacy crop records.
+  return `
+    <img
+      src="assets/ui/total-crops.svg"
+      alt="Crop icon"
+      class="${imageClass}"
+    >
+  `;
 }
  
 const CROP_INFO = {
