@@ -35,7 +35,8 @@ async function resolveOwnedIrrigationFieldId(value, userId) {
 
   const field = await IrrigationField.findOne({
     _id: value,
-    user: userId
+    user: userId,
+    archivedAt: null
   }).select('_id');
 
   if (!field) {

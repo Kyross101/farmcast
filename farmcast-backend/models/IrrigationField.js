@@ -14,6 +14,12 @@ const IrrigationFieldSchema = new mongoose.Schema({
   lastWatered:  { type: String, default: () => new Date().toISOString().split('T')[0] },
   wateredToday: { type: Boolean, default: false },
 
+  // Retain historical records when a field is retired.
+  archivedAt: {
+    type: Date,
+    default: null
+  },
+
   // Actual watering events.
   // Existing fields start with an empty history.
   wateringHistory: {

@@ -187,7 +187,16 @@ router.post('/:id/watering', async (req, res) => {
         throw error;
       }
 
+      if (field.archivedAt) {
+        const error = new Error(
+          'Archived fields cannot be watered or edited.'
+        );
+        error.status = 409;
+        throw error;
+      }
+
       const existing = field.wateringHistory.find(
+
         event => event.date === date
       );
 
@@ -252,6 +261,92 @@ router.post('/:id/watering', async (req, res) => {
   }
 });
 
+// Archive a field without deleting watering history.
+router.post('/:id/archive', async (req, res) => {
+  const mongoose = require('mongoose');
+
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid irrigation field ID.'
+    });
+  }
+
+  try {
+    const result = await mongoose.connection.transaction(
+      async session => {
+        const field = await IrrigationField.findOne({
+          _id: req.params.id,
+          user: req.user.id
+        }).session(session);
+
+        if (!field) {
+          return {
+            status: 404,
+            message: 'Irrigation field not found.'
+          };
+        }
+
+        // Repeated archive requests are safe.
+        if (field.archivedAt) {
+          return {
+            status: 200,
+            field: field.toObject(),
+            alreadyArchived: true
+          };
+        }
+
+        // Do not interrupt watering for linked crops.
+        const linkedCrop = await Crop.exists({
+          user: req.user.id,
+          irrigationFieldId: field._id
+        }).session(session);
+
+        if (linkedCrop) {
+          return {
+            status: 409,
+            message:
+              'Unlink active crops from this field ' +
+              'before archiving it.'
+          };
+        }
+
+        field.archivedAt = new Date();
+        field.wateredToday = false;
+
+        await field.save({ session });
+
+        return {
+          status: 200,
+          field: field.toObject(),
+          alreadyArchived: false
+        };
+      }
+    );
+
+    if (result.status !== 200) {
+      return res.status(result.status).json({
+        message: result.message
+      });
+    }
+
+    return res.json({
+      message: result.alreadyArchived
+        ? 'Field is already archived.'
+        : 'Field archived. Watering history preserved.',
+      field: result.field
+    });
+
+  } catch (error) {
+    console.error('Irrigation archive error:', error);
+
+    return res.status(500).json({
+      message:
+        'Could not confirm archiving. ' +
+        'Refresh your fields before retrying.'
+    });
+  }
+});
+
 // PUT update field — secure and account-specific
 router.put('/:id', async (req, res) => {
   try {
@@ -304,11 +399,13 @@ router.put('/:id', async (req, res) => {
     const updated = await IrrigationField.findOneAndUpdate(
       {
         _id: req.params.id,
-        user: req.user.id
+        user: req.user.id,
+        archivedAt: null
       },
       {
         $set: updates
       },
+
       {
         returnDocument: 'after',
         runValidators: true
@@ -366,6 +463,14 @@ router.delete('/:id', async (req, res) => {
           return {
             status: 404,
             message: 'Irrigation field not found.'
+          };
+        }
+
+        if (field.archivedAt) {
+          return {
+            status: 409,
+            message:
+              'Archived fields are retained for historical records.'
           };
         }
 
