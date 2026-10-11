@@ -14470,36 +14470,158 @@ function renderIrrigationPage() {
     `).join('');
   }
 
-  // Weekly Water Usage — waiting for actual irrigation history.
-  // Do not display randomly generated or estimated usage as fact.
-  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  // Weekly Water Usage — recorded events only.
+// Uses the farmer's local Monday–Sunday calendar.
+const waterChart = document.getElementById('waterChartWrap');
 
-  const waterChart = document.getElementById('waterChartWrap');
+if (waterChart) {
+  const backendLoaded = cropFieldLinkBackendEnabled === true;
 
-  if (waterChart) {
+  const now = new Date();
+  const monday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  monday.setDate(
+    monday.getDate() - ((monday.getDay() + 6) % 7)
+  );
+
+  const dayNames = [
+    'Mon', 'Tue', 'Wed', 'Thu',
+    'Fri', 'Sat', 'Sun'
+  ];
+
+  const week = dayNames.map((label, index) => {
+    const date = new Date(monday);
+
+    date.setDate(monday.getDate() + index);
+
+    const dateKey = [
+      date.getFullYear(),
+      String(date.getMonth() + 1).padStart(2, '0'),
+      String(date.getDate()).padStart(2, '0')
+    ].join('-');
+
+    return {
+      label,
+      dateKey,
+      liters: 0
+    };
+  });
+
+  let sessionCount = 0;
+
+  if (backendLoaded) {
+    irrFields.forEach(field => {
+      const seenDates = new Set();
+
+      const history = Array.isArray(field.wateringHistory)
+        ? field.wateringHistory
+        : [];
+
+      history.forEach(event => {
+        const index = week.findIndex(
+          day => day.dateKey === event.date
+        );
+
+        const liters = Number(event.liters);
+
+        if (
+          index === -1 ||
+          seenDates.has(event.date) ||
+          !Number.isFinite(liters) ||
+          liters <= 0
+        ) {
+          return;
+        }
+
+        week[index].liters += liters;
+
+        seenDates.add(event.date);
+        sessionCount++;
+      });
+    });
+  }
+
+  const maxLiters = Math.max(
+    0,
+    ...week.map(day => day.liters)
+  );
+
+  const totalLiters = week.reduce(
+    (sum, day) => sum + day.liters,
+    0
+  );
+
+  const formatLiters = value =>
+    value.toLocaleString('en-PH', {
+      maximumFractionDigits: 2
+    });
+
+  if (!backendLoaded) {
+    waterChart.innerHTML = `
+      <div class="wc-total">
+        Connect to FarmCast to view recorded weekly water usage.
+      </div>
+    `;
+  } else {
     waterChart.innerHTML = `
       <div class="wc-chart">
-        ${days.map(day => `
+        ${week.map(day => `
           <div class="wc-bar-wrap">
-            <div class="wc-val">—</div>
-            <div class="wc-bar">
-              <div class="wc-fill" style="height:0%"></div>
+
+            <div class="wc-val">
+              ${
+                day.liters > 0
+                  ? `${formatLiters(day.liters)} L`
+                  : '—'
+              }
             </div>
-            <div class="wc-day">${day}</div>
+
+            <div class="wc-bar">
+              <div
+                class="wc-fill"
+                style="height:${
+                  maxLiters > 0
+                    ? Math.round(day.liters / maxLiters * 100)
+                    : 0
+                }%"
+              ></div>
+            </div>
+
+            <div class="wc-day">${day.label}</div>
+
           </div>
         `).join('')}
       </div>
-  
+
       <div class="wc-total">
-        <strong>Weekly water usage not yet available.</strong>
+        ${
+          sessionCount > 0
+            ? `
+              <strong>
+                Recorded this week: ${formatLiters(totalLiters)} L
+              </strong>
+              · ${sessionCount} watering
+              session${sessionCount === 1 ? '' : 's'}
+            `
+            : `
+              <strong>
+                No watering sessions recorded this week.
+              </strong>
+            `
+        }
+
         <div style="margin-top:6px;line-height:1.5">
-          Daily watering history is not currently recorded.
-          Weekly totals will become available after irrigation
-          activity tracking is implemented.
+          Only confirmed watering entries are counted.
+          Unrecorded days are shown as —.
         </div>
       </div>
     `;
   }
+}
 
   // Tips
   document.getElementById(
