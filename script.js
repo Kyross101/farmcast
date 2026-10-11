@@ -22176,26 +22176,122 @@ function renderAnPerfList() {
 }
 
 function renderAnIrrEff() {
-  const fields = (typeof irrFields!=='undefined') ? irrFields : [];
-  if (fields.length===0) {
-    document.getElementById('anIrrEff').innerHTML =
-      '<div style="color:var(--text-muted);text-align:center;padding:20px;font-size:.85rem">No irrigation fields added yet.</div>';
+  const container = document.getElementById('anIrrEff');
+  if (!container) return;
+
+  if (cropFieldLinkBackendEnabled !== true) {
+    container.innerHTML =
+      '<div class="an-irr-note">Connect to FarmCast to view recorded irrigation activity.</div>';
     return;
   }
-  const effMap = { 'Drip':92, 'Sprinkler':75, 'Flood':55, 'Manual':68, 'Rain-fed':100 };
-  document.getElementById('anIrrEff').innerHTML = `
+
+  const fields = Array.isArray(irrFields) ? irrFields : [];
+
+  if (fields.length === 0) {
+    container.innerHTML =
+      '<div class="an-irr-note">No irrigation fields added yet.</div>';
+    return;
+  }
+
+  // Current local Monday–Sunday.
+  const today = new Date();
+
+  const monday = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
+
+  monday.setDate(
+    monday.getDate() - ((monday.getDay() + 6) % 7)
+  );
+
+  const nextMonday = new Date(monday);
+  nextMonday.setDate(nextMonday.getDate() + 7);
+
+  const localDateKey = date =>
+    `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+  const weekStart = localDateKey(monday);
+  const weekEnd = localDateKey(nextMonday);
+
+  const formatLiters = amount =>
+    amount.toLocaleString('en-PH', {
+      maximumFractionDigits: 2
+    });
+
+  container.innerHTML = `
     <div class="an-irr-list">
-      ${fields.map(f=>{
-        const eff = effMap[f.type]||70;
-        const col = eff>=85?'var(--green)':eff>=65?'var(--amber)':'var(--red)';
-        return `<div class="an-irr-item">
-          <div class="an-irr-top"><span class="an-irr-name">${f.name}</span><span class="an-irr-eff-val" style="color:${col}">${eff}% efficient</span></div>
-          <div class="an-irr-type">${f.type} · ${f.crop} · ${f.area} m²</div>
-          <div class="an-irr-bar-track"><div class="an-irr-bar-fill" style="width:${eff}%;background:${col}"></div></div>
-        </div>`;
+
+      ${fields.map(field => {
+        const seenDates = new Set();
+
+        const history = Array.isArray(field.wateringHistory)
+          ? field.wateringHistory
+          : [];
+
+        let liters = 0;
+        let sessions = 0;
+
+        history.forEach(entry => {
+          const date = entry?.date;
+          const amount = Number(entry?.liters);
+
+          if (
+            typeof date !== 'string' ||
+            !/^\d{4}-\d{2}-\d{2}$/.test(date) ||
+            date < weekStart ||
+            date >= weekEnd ||
+            seenDates.has(date) ||
+            !Number.isFinite(amount) ||
+            amount <= 0
+          ) return;
+
+          seenDates.add(date);
+          liters += amount;
+          sessions++;
+        });
+
+        return `
+          <div class="an-irr-item">
+
+            <div class="an-irr-top">
+
+              <span class="an-irr-name">
+                ${escapeHtml(field.name || 'Unnamed Field')}
+              </span>
+
+              <span class="an-irr-eff-val">
+                ${sessions > 0
+                  ? formatLiters(liters) + ' L'
+                  : '—'}
+              </span>
+
+            </div>
+
+            <div class="an-irr-type">
+              ${escapeHtml(field.type || 'Unspecified method')}
+              · ${escapeHtml(field.crop || 'Unspecified crop')}
+              · ${
+                sessions > 0
+                  ? sessions + ' recorded session' +
+                    (sessions === 1 ? '' : 's')
+                  : 'No sessions recorded this week'
+              }
+            </div>
+
+          </div>
+        `;
       }).join('')}
+
     </div>
-    <div class="an-irr-note">Efficiency = water delivered to crop roots vs total applied</div>`;
+
+    <div class="an-irr-note">
+      Recorded activity this Monday–Sunday only.
+      No entry does not necessarily mean no water was used.
+      Efficiency is not measured.
+    </div>
+  `;
 }
 
 function renderAnMonthlySummary() {
