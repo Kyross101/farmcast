@@ -24,20 +24,92 @@ router.get('/', async (req, res) => {
 // POST log harvest
 router.post('/', async (req, res) => {
   try {
-    const { crop, date, location, area, yield: yieldKg, quality, notes } = req.body;
-    if (!crop || !date || !location || !area || !yieldKg)
-      return res.status(400).json({ message: 'Please fill in all required fields.' });
+    const input = req.body || {};
+
+    const crop =
+      typeof input.crop === 'string'
+        ? input.crop.trim()
+        : '';
+
+    const date =
+      typeof input.date === 'string'
+        ? input.date.trim()
+        : '';
+
+    const location =
+      typeof input.location === 'string'
+        ? input.location.trim()
+        : '';
+
+    const area = Number(input.area);
+    const yieldKg = Number(input.yield);
+    const quality = input.quality || 'good';
+
+    const notes =
+      typeof input.notes === 'string'
+        ? input.notes.trim()
+        : '';
+
+    if (!crop || !date || !location) {
+      return res.status(400).json({
+        message: 'Please fill in all required harvest fields.'
+      });
+    }
+
+    const parsedDate = new Date(`${date}T00:00:00Z`);
+
+    const validDate =
+      /^\d{4}-\d{2}-\d{2}$/.test(date) &&
+      !Number.isNaN(parsedDate.getTime()) &&
+      parsedDate.toISOString().slice(0, 10) === date;
+
+    if (!validDate) {
+      return res.status(400).json({
+        message: 'Please enter a valid harvest date.'
+      });
+    }
+
+    if (
+      input.area === '' ||
+      input.yield === '' ||
+      !Number.isFinite(area) ||
+      !Number.isFinite(yieldKg) ||
+      area <= 0 ||
+      yieldKg <= 0
+    ) {
+      return res.status(400).json({
+        message: 'Harvest area and yield must be greater than zero.'
+      });
+    }
+
+    if (!['excellent', 'good', 'poor'].includes(quality)) {
+      return res.status(400).json({
+        message: 'Please select a valid harvest quality.'
+      });
+    }
 
     const record = await Harvest.create({
       user: req.user.id,
-      crop, date, location, area,
+      crop,
+      date,
+      location,
+      area,
       yield: yieldKg,
-      quality: quality || 'good',
-      notes: notes || ''
+      quality,
+      notes
     });
-    res.status(201).json({ message: `${crop} harvest logged! 🌾`, record });
+
+    return res.status(201).json({
+      message: `${crop} harvest logged successfully!`,
+      record
+    });
+
   } catch (err) {
-    res.status(500).json({ message: 'Error logging harvest.' });
+    console.error('Error logging harvest:', err);
+
+    return res.status(500).json({
+      message: 'Error logging harvest.'
+    });
   }
 });
 
