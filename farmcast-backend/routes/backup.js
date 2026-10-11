@@ -230,12 +230,126 @@ function sanitizeIrrigation(field, userId) {
           return restored;
         })
     : [];
+  
+  // Preserve the archive status from the backup.
+  // Older backups without archivedAt remain active.
+  if (
+    field.archivedAt !== undefined &&
+    field.archivedAt !== null &&
+    field.archivedAt !== ''
+  ) {
+    if (
+      typeof field.archivedAt !== 'string' ||
+      !/^\d{4}-\d{2}-\d{2}T/.test(field.archivedAt) ||
+      Number.isNaN(Date.parse(field.archivedAt))
+    ) {
+      const error = new Error(
+        'Invalid archivedAt value in irrigation backup.'
+      );
+
+      error.status = 400;
+      throw error;
+    }
+
+    clean.archivedAt = new Date(field.archivedAt);
+
+  } else {
+    clean.archivedAt = null;
+  }
 
   clean.user = userId;
 
   return clean;
 }
 
+// Restore irrigation fields with fresh MongoDB IDs.
+// Reconnect crops using the field IDs stored in the backup.
+function prepareLinkedRestore(crops, irrigationFields, userId) {
+  const fieldIdMap = new Map();
+
+  const restoredIrrigation = irrigationFields.map(field => {
+    const clean = sanitizeIrrigation(field, userId);
+
+    // Assign a new ID instead of reusing another database ID.
+    clean._id = new mongoose.Types.ObjectId();
+
+    // FarmCast exports the frontend 'id' property.
+    const oldId =
+      typeof field.id === 'string'
+        ? field.id
+        : typeof field._id === 'string'
+          ? field._id
+          : '';
+
+    if (/^[a-fA-F0-9]{24}$/.test(oldId)) {
+      const key = oldId.toLowerCase();
+
+      if (fieldIdMap.has(key)) {
+        const error = new Error(
+          'Duplicate irrigation field ID in backup.'
+        );
+
+        error.status = 400;
+        throw error;
+      }
+
+      fieldIdMap.set(key, clean);
+    }
+
+    return clean;
+  });
+
+  const restoredCrops = crops.map(crop => {
+    const clean = sanitizeCrop(crop, userId);
+    const oldLink = crop.irrigationFieldId;
+
+    // Older crops may not have any irrigation link.
+    if (
+      oldLink === undefined ||
+      oldLink === null ||
+      oldLink === ''
+    ) {
+      clean.irrigationFieldId = null;
+      return clean;
+    }
+
+    if (
+      typeof oldLink !== 'string' ||
+      !/^[a-fA-F0-9]{24}$/.test(oldLink)
+    ) {
+      const error = new Error(
+        'Invalid crop irrigation link in backup.'
+      );
+
+      error.status = 400;
+      throw error;
+    }
+
+    const linkedField = fieldIdMap.get(
+      oldLink.toLowerCase()
+    );
+
+    // Never restore broken or archived crop links.
+    if (!linkedField || linkedField.archivedAt) {
+      const error = new Error(
+        'A crop links to an absent or archived ' +
+        'irrigation field in this backup.'
+      );
+
+      error.status = 400;
+      throw error;
+    }
+
+    clean.irrigationFieldId = linkedField._id;
+
+    return clean;
+  });
+
+  return {
+    restoredCrops,
+    restoredIrrigation
+  };
+}
 
 function sanitizePestLog(
   log,
@@ -443,14 +557,26 @@ router.post(
       req.user.id;
 
 
-    const restoredCrops =
-      crops.map(
-        crop =>
-          sanitizeCrop(
-            crop,
-            userId
-          )
-      );
+    let restoredCrops;
+    let restoredIrrigation;
+
+    try {
+      ({
+        restoredCrops,
+        restoredIrrigation
+      } = prepareLinkedRestore(
+        crops,
+        irrigationFields,
+        userId
+      ));
+
+    } catch (error) {
+      return res.status(error.status || 400).json({
+        message:
+          error.message ||
+          'Invalid crop or irrigation backup links.'
+      });
+    }
 
 
     const restoredHarvests =
@@ -458,16 +584,6 @@ router.post(
         record =>
           sanitizeHarvest(
             record,
-            userId
-          )
-      );
-
-
-    const restoredIrrigation =
-      irrigationFields.map(
-        field =>
-          sanitizeIrrigation(
-            field,
             userId
           )
       );
