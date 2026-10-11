@@ -120,6 +120,137 @@ router.post('/', async (req, res) => {
   }
 });
 
+// POST record or undo one watering session.
+// Only the authenticated owner can change the field.
+router.post('/:id/watering', async (req, res) => {
+  const mongoose = require('mongoose');
+
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid irrigation field ID.'
+    });
+  }
+
+  const input =
+    req.body &&
+    typeof req.body === 'object' &&
+    !Array.isArray(req.body)
+      ? req.body
+      : {};
+
+  const action = input.action;
+  const date = String(input.date || '').trim();
+
+  const parsedDate = new Date(`${date}T00:00:00Z`);
+
+  const validDate =
+    /^\d{4}-\d{2}-\d{2}$/.test(date) &&
+    !Number.isNaN(parsedDate.getTime()) &&
+    parsedDate.toISOString().slice(0, 10) === date;
+
+  if (!validDate || !['water', 'undo'].includes(action)) {
+    return res.status(400).json({
+      message: 'Invalid watering action or date.'
+    });
+  }
+
+  const liters = Number(input.liters);
+
+  if (
+    action === 'water' &&
+    (
+      (typeof input.liters !== 'number' &&
+       typeof input.liters !== 'string') ||
+      String(input.liters).trim() === '' ||
+      !Number.isFinite(liters) ||
+      liters <= 0
+    )
+  ) {
+    return res.status(400).json({
+      message: 'Enter the actual water used in liters.'
+    });
+  }
+
+  let updatedField;
+
+  try {
+    await mongoose.connection.transaction(async session => {
+      const field = await IrrigationField.findOne({
+        _id: req.params.id,
+        user: req.user.id
+      }).session(session);
+
+      if (!field) {
+        const error = new Error('Irrigation field not found.');
+        error.status = 404;
+        throw error;
+      }
+
+      const existing = field.wateringHistory.find(
+        event => event.date === date
+      );
+
+      if (action === 'water') {
+        // Maximum one recorded session per field per date.
+        // Repeated requests do not create duplicate entries.
+        if (!existing) {
+          field.wateringHistory.push({
+            date,
+            liters,
+            previousLastWatered: field.lastWatered || '',
+            recordedAt: new Date()
+          });
+        }
+
+        field.lastWatered = date;
+        field.wateredToday = true;
+
+      } else {
+        if (!existing) {
+          const error = new Error(
+            'No recorded watering session for this date.'
+          );
+          error.status = 409;
+          throw error;
+        }
+
+        if (field.lastWatered !== date) {
+          const error = new Error(
+            'Only the latest watering session can be undone.'
+          );
+          error.status = 409;
+          throw error;
+        }
+
+        field.lastWatered =
+          existing.previousLastWatered || '';
+
+        field.wateredToday = false;
+        field.wateringHistory.pull(existing._id);
+      }
+
+      await field.save({ session });
+      updatedField = field.toObject();
+    });
+
+    return res.json({
+      message: action === 'water'
+        ? 'Watering recorded successfully.'
+        : 'Watering record undone.',
+      field: updatedField
+    });
+
+  } catch (error) {
+    console.error('Watering history error:', error);
+
+    return res.status(error.status || 500).json({
+      message: error.status
+        ? error.message
+        : 'Could not confirm watering changes. Check records before retrying.'
+    });
+  }
+});
+
 // PUT update field — secure and account-specific
 router.put('/:id', async (req, res) => {
   try {

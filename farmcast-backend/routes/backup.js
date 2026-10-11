@@ -159,30 +159,81 @@ function sanitizeHarvest(
 }
 
 
-function sanitizeIrrigation(
-  field,
-  userId
-) {
+function sanitizeIrrigation(field, userId) {
+  const clean = pickFields(field, [
+    'name',
+    'crop',
+    'area',
+    'type',
+    'freq',
+    'waterAmt',
+    'lastWatered',
+    'wateredToday'
+  ]);
 
-  return {
-    ...pickFields(
-      field,
-      [
-        'name',
-        'crop',
-        'area',
-        'type',
-        'freq',
-        'waterAmt',
-        'lastWatered',
-        'wateredToday'
-      ]
-    ),
+  const seenDates = new Set();
 
-    user:
-      userId
-  };
+  clean.wateringHistory = Array.isArray(field.wateringHistory)
+    ? field.wateringHistory
+        .filter(entry => {
+          if (
+            !entry ||
+            typeof entry.date !== 'string' ||
+            !/^\d{4}-\d{2}-\d{2}$/.test(entry.date)
+          ) {
+            return false;
+          }
 
+          const parsed = new Date(
+            `${entry.date}T00:00:00Z`
+          );
+
+          if (
+            Number.isNaN(parsed.getTime()) ||
+            parsed.toISOString().slice(0, 10) !== entry.date
+          ) {
+            return false;
+          }
+
+          const liters = Number(entry.liters);
+
+          if (
+            !Number.isFinite(liters) ||
+            liters <= 0 ||
+            seenDates.has(entry.date)
+          ) {
+            return false;
+          }
+
+          seenDates.add(entry.date);
+          return true;
+        })
+        .map(entry => {
+          const restored = {
+            date: entry.date,
+            liters: Number(entry.liters),
+
+            previousLastWatered:
+              typeof entry.previousLastWatered === 'string'
+                ? entry.previousLastWatered
+                : ''
+          };
+
+          if (
+            entry.recordedAt &&
+            !Number.isNaN(Date.parse(entry.recordedAt))
+          ) {
+            restored.recordedAt =
+              new Date(entry.recordedAt);
+          }
+
+          return restored;
+        })
+    : [];
+
+  clean.user = userId;
+
+  return clean;
 }
 
 

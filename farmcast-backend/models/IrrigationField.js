@@ -13,6 +13,36 @@ const IrrigationFieldSchema = new mongoose.Schema({
   waterAmt:     { type: Number, default: 0 },
   lastWatered:  { type: String, default: () => new Date().toISOString().split('T')[0] },
   wateredToday: { type: Boolean, default: false },
+
+  // Actual watering events.
+  // Existing fields start with an empty history.
+  wateringHistory: {
+    type: [{
+      date: {
+        type: String,
+        required: true,
+        match: /^\d{4}-\d{2}-\d{2}$/
+      },
+
+      liters: {
+        type: Number,
+        required: true,
+        min: 0.01
+      },
+
+      previousLastWatered: {
+        type: String,
+        default: ''
+      },
+
+      recordedAt: {
+        type: Date,
+        default: Date.now
+      }
+    }],
+    default: []
+  },
+
 }, { timestamps: true });
 
 module.exports = mongoose.model('IrrigationField', IrrigationFieldSchema);
