@@ -1136,7 +1136,29 @@
                   <option value="Rain">Rain-fed</option>
                 </select>
               </div>
+
             </div>
+
+            <div class="form-group">
+              <label for="cropIrrigationFieldId">
+                Linked Irrigation Field (Optional)
+              </label>
+
+              <select id="cropIrrigationFieldId">
+                <option value="">
+                  Not linked — select later
+                </option>
+              </select>
+
+              <div
+                style="font-size:.76rem;color:var(--text-muted);line-height:1.5"
+              >
+                Choose an existing irrigation field.
+                Create new fields from Irrigation Management.
+              </div>
+            </div>
+
+
             <div class="form-group">
               <label>Notes</label>
               <textarea id="cropNotes" placeholder="Additional notes about this crop…" rows="2"></textarea>

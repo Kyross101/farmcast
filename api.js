@@ -746,6 +746,11 @@ function patchScriptJsWithAPI() {
       document.getElementById('cropLocation').value.trim();
     const irrigation = 
       document.getElementById('cropIrrigation').value;
+
+    const irrigationFieldId =
+      document.getElementById('cropIrrigationFieldId')
+        ?.value || null;
+
     const notes      = 
       document.getElementById('cropNotes').value.trim();
 
@@ -753,14 +758,29 @@ function patchScriptJsWithAPI() {
       toast('Please fill in all required fields.', 'warn'); return;
     }
     try {
-      const newCrop = await fcCrops.add({ type, variety, plantingMethod, area, planted, harvest, location, irrigation, notes });
+      const newCrop = await fcCrops.add({
+        type,
+        variety,
+        plantingMethod,
+        area,
+        planted,
+        harvest,
+        location,
+        irrigation,
+        irrigationFieldId,
+        notes
+      });
+
       myCrops.push(newCrop);
       closeAddCropModal();
       renderCropsPage();
       toast(`${type} added to your crops! 🌱`, 'ok');
+      
     } catch (err) {
       toast(`Error: ${err.message}`, 'err');
+
     }
+    
   };
 
   // Override saveGrowthStage — save observation to MongoDB

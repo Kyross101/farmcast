@@ -10984,10 +10984,63 @@ document
     }
   });
 
+function populateCropIrrigationFieldSelect() {
+  const select = document.getElementById(
+    'cropIrrigationFieldId'
+  );
+
+  if (!select) return;
+
+  // Start unlinked. Never guess the correct field.
+  select.replaceChildren(
+    new Option('Not linked — select later', '')
+  );
+
+  // Only show MongoDB-backed irrigation fields.
+  const availableFields = Array.isArray(irrFields)
+    ? irrFields.filter(field =>
+        typeof field._id === 'string' &&
+        /^[a-fA-F0-9]{24}$/.test(field._id)
+      )
+    : [];
+
+  availableFields.forEach(field => {
+    const fieldName = String(
+      field.name || 'Unnamed Field'
+    );
+
+    const cropName = String(
+      field.crop || 'Unspecified crop'
+    );
+
+    const option = new Option(
+      `${fieldName} — ${cropName}`,
+      field._id
+    );
+
+    select.add(option);
+  });
+
+  if (availableFields.length === 0) {
+    const option = new Option(
+      'No saved irrigation fields available',
+      ''
+    );
+
+    option.disabled = true;
+    select.add(option);
+  }
+
+  select.value = '';
+}
+
 function openAddCropModal() {
 
   // Always sync My Crops with crop-data.js
   populateMyCropsCropSelect();
+
+  // Show the available irrigation fields.
+  populateCropIrrigationFieldSelect();
 
   document.getElementById(
     'addCropModal'
@@ -11196,6 +11249,10 @@ function saveNewCrop() {
   const irrigation =
     document.getElementById('cropIrrigation').value;
 
+  const irrigationFieldId =
+    document.getElementById('cropIrrigationFieldId')
+      ?.value || null;
+
   const notes =
     document.getElementById('cropNotes').value.trim();
 
@@ -11230,6 +11287,7 @@ function saveNewCrop() {
     harvest,
     location,
     irrigation,
+    irrigationFieldId,
     notes,
     watered: false
   });
