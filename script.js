@@ -13927,8 +13927,37 @@ const WATER_TIPS = [
   },
 ];
 
+// Use the farmer's local calendar date, not UTC.
+function getIrrigationLocalDate() {
+  const now = new Date();
+
+  return (
+    `${now.getFullYear()}-` +
+    `${String(now.getMonth() + 1).padStart(2, '0')}-` +
+    `${String(now.getDate()).padStart(2, '0')}`
+  );
+}
+
 function renderIrrigationPage() {
-  const today = new Date().toISOString().split('T')[0];
+  const today = getIrrigationLocalDate();
+
+  // A Watered Today flag is valid only for its recorded day.
+  // Correct stale flags without deleting watering dates.
+  let corrected = false;
+
+  irrFields.forEach(field => {
+    if (
+      field.wateredToday === true &&
+      field.lastWatered !== today
+    ) {
+      field.wateredToday = false;
+      corrected = true;
+    }
+  });
+
+  if (corrected) {
+    lsSave(LS_IRR_FIELDS, irrFields);
+  }
 
   // Stats
   const wateredToday = irrFields.filter(f => f.wateredToday).length;
@@ -14109,7 +14138,7 @@ function renderIrrigationPage() {
                     <span class="ifi-badge">
                       ${
                         daysAgo === 0
-                          ? 'Watered today'
+                          ? 'Not marked watered'
                           : `${daysAgo}d ago`
                       }
                     </span>
@@ -14245,22 +14274,34 @@ function renderIrrigationPage() {
 }
 
 function toggleFieldWater(id) {
-  const f = irrFields.find(f => f.id === id);
-  if (!f) return;
-  f.wateredToday = !f.wateredToday;
-  if (f.wateredToday) f.lastWatered = new Date().toISOString().split('T')[0];
+  const field = irrFields.find(
+    f => String(f._id || f.id) === String(id)
+  );
+
+  if (!field) return;
+
+  const today = getIrrigationLocalDate();
+
+  const wasWateredToday =
+    field.wateredToday === true &&
+    field.lastWatered === today;
+
+  field.wateredToday = !wasWateredToday;
+
+  if (field.wateredToday) {
+    field.lastWatered = today;
+  }
+
   lsSave(LS_IRR_FIELDS, irrFields);
+
   renderIrrigationPage();
-    toast(
-      `${f.name} marked as ${
-        f.wateredToday
-          ? 'watered'
-          : 'not watered'
-      }`,
-      f.wateredToday
-        ? 'ok'
-        : 'warn'
-    );
+
+  toast(
+    `${field.name} marked as ${
+      field.wateredToday ? 'watered' : 'not watered'
+    }`,
+    field.wateredToday ? 'ok' : 'warn'
+  );
 }
 
 function deleteField(id) {
@@ -21069,7 +21110,7 @@ function saveHarvestLog() {
     );
     return;
   }
-  
+
   const crop    = document.getElementById('hhCropType').value;
   const date    = document.getElementById('hhDate').value;
   const location= document.getElementById('hhLocation').value.trim();

@@ -1047,23 +1047,49 @@ function patchScriptJsWithAPI() {
   };
 
   toggleFieldWater = async function(id) {
-    const f = irrFields.find(f => String(f.id) === String(id) || String(f._id) === String(id));
-    if (!f) return;
-    const newVal = !f.wateredToday;
-    const today  = new Date().toISOString().split('T')[0];
-    try {
-      await fcIrrigation.update(id, {
-        wateredToday: newVal,
-        lastWatered: newVal ? today : f.lastWatered
-      });
-      f.wateredToday = newVal;
-      if (newVal) f.lastWatered = today;
-      renderIrrigationPage();
-      toast(`${f.name} marked as ${newVal ? 'watered ✅' : 'not watered'}`, newVal ? 'ok' : 'warn');
-    } catch (err) {
-      toast(`Error: ${err.message}`, 'err');
-    }
-  };
+  const field = irrFields.find(
+    f => String(f._id || f.id) === String(id)
+  );
+
+  if (!field) return;
+
+  const today = getIrrigationLocalDate();
+
+  const wasWateredToday =
+    field.wateredToday === true &&
+    field.lastWatered === today;
+
+  const newVal = !wasWateredToday;
+
+  try {
+    const updated = await fcIrrigation.update(id, {
+      wateredToday: newVal,
+      lastWatered: newVal
+        ? today
+        : field.lastWatered
+    });
+
+    // Update the display only after backend confirmation.
+    Object.assign(field, updated);
+
+    lsSave(LS_IRR_FIELDS, irrFields);
+
+    renderIrrigationPage();
+
+    toast(
+      `${field.name} marked as ${
+        newVal ? 'watered' : 'not watered'
+      }`,
+      newVal ? 'ok' : 'warn'
+    );
+
+  } catch (err) {
+    toast(
+      `Could not update irrigation: ${err.message}`,
+      'err'
+    );
+  }
+};
 
   deleteField = async function(id) {
     const f = irrFields.find(f => String(f.id) === String(id) || String(f._id) === String(id));
