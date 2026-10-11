@@ -128,35 +128,75 @@ function saveAuthUser(
 // ── BASE FETCH with JWT header ──
 async function apiFetch(endpoint, options = {}) {
   const token = getToken();
+
   const headers = {
     'Content-Type': 'application/json',
-    ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+    ...(token
+      ? { 'Authorization': `Bearer ${token}` }
+      : {}),
     ...(options.headers || {})
   };
 
-  const res = await fetch(`${API_BASE}${endpoint}`, {
-    ...options,
-    headers
-  });
+  let res;
 
-  const data = await res.json();
-
-  // Token missing, invalid, or expired.
-  if (
-    res.status === 401 ||
-    res.status === 403
-  ) {
-
-    handleExpiredFarmCastSession();
-
+  try {
+    res = await fetch(`${API_BASE}${endpoint}`, {
+      ...options,
+      headers
+    });
+  } catch (error) {
+    console.error('FarmCast API connection error:', error);
 
     throw new Error(
-      'Unauthorized'
+      'Cannot confirm a response from the FarmCast server. ' +
+      'Check your connection and saved records before retrying.'
     );
-
   }
 
-  if (!res.ok) throw new Error(data.message || 'Server error');
+  const contentType =
+    (res.headers.get('content-type') || '')
+      .toLowerCase();
+
+  let data;
+
+  if (contentType.includes('json')) {
+    try {
+      data = await res.json();
+    } catch (error) {
+      throw new Error(
+        'FarmCast server returned an invalid response.'
+      );
+    }
+  }
+
+  // Handle confirmed authentication failures.
+  if (
+    (res.status === 401 || res.status === 403) &&
+    data !== undefined
+  ) {
+    handleExpiredFarmCastSession();
+
+    throw new Error('Unauthorized');
+  }
+
+  if (!res.ok) {
+    throw new Error(
+      (
+        data &&
+        typeof data.message === 'string' &&
+        data.message.trim()
+      ) ||
+      `FarmCast server error (HTTP ${res.status}). ` +
+      'Check your records before retrying.'
+    );
+  }
+
+  if (data === undefined) {
+    throw new Error(
+      'Unexpected response from FarmCast server.'
+    );
+  }
+
   return data;
 }
 
