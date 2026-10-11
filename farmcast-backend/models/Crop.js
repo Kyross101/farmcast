@@ -75,7 +75,15 @@ growthHistory: [
   harvest:    { type: String, required: true },
   location:   { type: String, required: true },
   irrigation: { type: String, default: 'Manual' },
-  notes:      { type: String, default: '' },
+
+  // Optional link to a specific irrigation field.
+  irrigationFieldId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'IrrigationField',
+    default: null
+  },
+
+  notes: { type: String, default: '' },
   watered:    { type: Boolean, default: false },
 }, { timestamps: true });
 

@@ -10,11 +10,44 @@
 const router = require('express').Router();
 const Crop = require('../models/Crop');
 const Harvest = require('../models/Harvest');
+const IrrigationField = require('../models/IrrigationField');
 const mongoose = require('mongoose');
 const authMW = require('../middleware/auth');
 
 // All routes require authentication
 router.use(authMW);
+
+// Verify that a linked irrigation field belongs to the user.
+async function resolveOwnedIrrigationFieldId(value, userId) {
+  // Allow crops to have no linked field.
+  if (value === null || value === undefined || value === '') {
+    return null;
+  }
+
+  if (
+    typeof value !== 'string' ||
+    !/^[a-fA-F0-9]{24}$/.test(value)
+  ) {
+    const error = new Error('Invalid irrigation field ID.');
+    error.status = 400;
+    throw error;
+  }
+
+  const field = await IrrigationField.findOne({
+    _id: value,
+    user: userId
+  }).select('_id');
+
+  if (!field) {
+    const error = new Error(
+      'Irrigation field not found in your account.'
+    );
+    error.status = 404;
+    throw error;
+  }
+
+  return field._id;
+}
 
 // GET all crops
 router.get('/', async (req, res) => {
@@ -38,6 +71,7 @@ router.post('/', async (req, res) => {
       harvest,
       location,
       irrigation,
+      irrigationFieldId,
       notes
     } = req.body;
 
@@ -54,6 +88,11 @@ router.post('/', async (req, res) => {
       });
     }
 
+    const linkedFieldId = await resolveOwnedIrrigationFieldId(
+      irrigationFieldId,
+      req.user.id
+    );
+
     const crop = await Crop.create({
       user: req.user.id,
       type,
@@ -64,13 +103,26 @@ router.post('/', async (req, res) => {
       harvest,
       location,
       irrigation: irrigation || 'Manual',
+      irrigationFieldId: linkedFieldId,
       notes: notes || ''
     });
 
     res.status(201).json({ message: `${type} added successfully! 🌱`, crop });
-  } catch (err) {
-    res.status(500).json({ message: 'Error adding crop.' });
-  }
+  
+    } catch (err) {
+      if (err.status) {
+        return res.status(err.status).json({
+          message: err.message
+        });
+      }
+
+      console.error('Add crop error:', err);
+
+      return res.status(500).json({
+        message: 'Error adding crop.'
+      });
+    }
+
 });
 
 // PUT update crop (edit details or toggle watered)
@@ -88,6 +140,7 @@ router.put('/:id', async (req, res) => {
       'harvest',
       'location',
       'irrigation',
+      'irrigationFieldId',
       'notes',
       'watered',
       'currentStage',
@@ -102,6 +155,20 @@ router.put('/:id', async (req, res) => {
       }
     });
 
+    // Link or unlink only after verifying field ownership.
+    if (
+      Object.prototype.hasOwnProperty.call(
+        updates,
+        'irrigationFieldId'
+      )
+    ) {
+      updates.irrigationFieldId =
+        await resolveOwnedIrrigationFieldId(
+          updates.irrigationFieldId,
+          req.user.id
+        );
+    }
+
     const updated = await Crop.findOneAndUpdate(
       {
         _id: req.params.id,
@@ -115,9 +182,21 @@ router.put('/:id', async (req, res) => {
     );
 
     res.json({ message: 'Crop updated!', crop: updated });
-  } catch (err) {
-    res.status(500).json({ message: 'Error updating crop.' });
-  }
+
+    } catch (err) {
+      if (err.status) {
+        return res.status(err.status).json({
+          message: err.message
+        });
+      }
+
+      console.error('Update crop error:', err);
+
+      return res.status(500).json({
+        message: 'Error updating crop.'
+      });
+    }
+  
 });
 
 // Complete harvest: record yield and remove active crop atomically.
