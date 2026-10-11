@@ -22,23 +22,101 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST add field
+// POST add field — validate farmer irrigation data
 router.post('/', async (req, res) => {
   try {
-    const { name, crop, area, type, freq, waterAmt } = req.body;
-    if (!name || !crop || !area)
-      return res.status(400).json({ message: 'Please fill in all required fields.' });
+    const input = req.body || {};
+
+    const name =
+      typeof input.name === 'string'
+        ? input.name.trim()
+        : '';
+
+    const crop =
+      typeof input.crop === 'string'
+        ? input.crop.trim()
+        : '';
+
+    const type =
+      typeof input.type === 'string' && input.type.trim()
+        ? input.type.trim()
+        : 'Manual';
+
+    const validNumberInput = value =>
+      (typeof value === 'number' ||
+        typeof value === 'string') &&
+      String(value).trim() !== '';
+
+    const area = Number(input.area);
+    const freq = Number(input.freq ?? 2);
+    const waterAmt = Number(input.waterAmt ?? 0);
+
+    if (!name || !crop) {
+      return res.status(400).json({
+        message: 'Please enter a field name and crop.'
+      });
+    }
+
+    if (
+      !validNumberInput(input.area) ||
+      !Number.isFinite(area) ||
+      area <= 0
+    ) {
+      return res.status(400).json({
+        message: 'Field area must be greater than zero.'
+      });
+    }
+
+    if (
+      !validNumberInput(input.freq ?? 2) ||
+      !Number.isInteger(freq) ||
+      freq < 1
+    ) {
+      return res.status(400).json({
+        message: 'Watering frequency must be a positive whole number.'
+      });
+    }
+
+    if (
+      !validNumberInput(input.waterAmt ?? 0) ||
+      !Number.isFinite(waterAmt) ||
+      waterAmt < 0
+    ) {
+      return res.status(400).json({
+        message: 'Water amount cannot be negative.'
+      });
+    }
 
     const field = await IrrigationField.create({
       user: req.user.id,
-      name, crop, area,
-      type: type || 'Manual',
-      freq: freq || 2,
-      waterAmt: waterAmt || 0,
+      name,
+      crop,
+      area,
+      type,
+      freq,
+      waterAmt
     });
-    res.status(201).json({ message: `${name} added to irrigation! 💧`, field });
+
+    return res.status(201).json({
+      message: `${name} added to irrigation successfully!`,
+      field
+    });
+
   } catch (err) {
-    res.status(500).json({ message: 'Error adding field.' });
+    console.error('Error adding irrigation field:', err);
+
+    if (
+      err.name === 'ValidationError' ||
+      err.name === 'CastError'
+    ) {
+      return res.status(400).json({
+        message: 'Invalid irrigation field information.'
+      });
+    }
+
+    return res.status(500).json({
+      message: 'Error adding irrigation field.'
+    });
   }
 });
 
