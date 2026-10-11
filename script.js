@@ -10044,6 +10044,20 @@ function toggleCropDetails(button) {
 const expandedCropIds =
   new Set();
 
+function getCropLinkedFieldLabel(crop) {
+  const fieldId = String(crop.irrigationFieldId || '');
+
+  if (!fieldId) return 'Link Irrigation Field';
+
+  const linked = irrFields.find(
+    field => String(field._id || field.id) === fieldId
+  );
+
+  return linked
+    ? `Field: ${linked.name} · Change`
+    : 'Linked field unavailable · Change';
+}
+
 function renderCropsPage() {
   const filtered = myCrops.filter(crop => {
     if (currentCropFilter === 'all') return true;
@@ -10703,6 +10717,15 @@ function renderCropsPage() {
           </button>
         </div>
 
+        <button
+          type="button"
+          class="cdc-details-toggle"
+          onclick="openCropFieldLinkModal('${escapeHtml(crop._id || crop.id)}')"
+        >
+          <span class="material-symbols-outlined">link</span>
+          ${escapeHtml(getCropLinkedFieldLabel(crop))}
+        </button>
+
         </div> <!-- cdc-crop-details -->
         </div> <!-- crop-detail-card -->
         `;
@@ -11032,6 +11055,112 @@ function populateCropIrrigationFieldSelect() {
   }
 
   select.value = '';
+}
+
+let pendingCropFieldLinkId = null;
+let cropFieldLinkSaving = false;
+let cropFieldLinkBackendEnabled = false;
+
+function openCropFieldLinkModal(id) {
+  if (cropFieldLinkSaving) return;
+
+  if (!cropFieldLinkBackendEnabled) {
+    toast(
+      'Connect to the backend before linking fields.',
+      'warn'
+    );
+    return;
+  }
+
+  const crop = myCrops.find(
+    c => String(c._id || c.id) === String(id)
+  );
+
+  if (!crop) {
+    toast('Crop not found.', 'err');
+    return;
+  }
+
+  const modal = document.getElementById(
+    'cropFieldLinkModal'
+  );
+
+  const select = document.getElementById(
+    'cropFieldLinkSelect'
+  );
+
+  if (!modal || !select) return;
+
+  pendingCropFieldLinkId = String(crop._id || crop.id);
+
+  document.getElementById(
+    'cropFieldLinkCropName'
+  ).textContent = crop.type;
+
+  select.replaceChildren(
+    new Option('Not linked — select later', '')
+  );
+
+  const fields = irrFields.filter(
+    field =>
+      typeof field._id === 'string' &&
+      /^[a-fA-F0-9]{24}$/.test(field._id)
+  );
+
+  fields.forEach(field => {
+    select.add(
+      new Option(
+        `${field.name} — ${field.crop}`,
+        field._id
+      )
+    );
+  });
+
+  const currentId = String(
+    crop.irrigationFieldId || ''
+  );
+
+  const linkedExists = fields.some(
+    field => field._id === currentId
+  );
+
+  select.value = linkedExists ? currentId : '';
+
+  const help = document.getElementById(
+    'cropFieldLinkHelp'
+  );
+
+  help.textContent =
+    currentId && !linkedExists
+      ? 'The previously linked field is unavailable. ' +
+        'Select another field or unlink this crop.'
+      : fields.length === 0
+        ? 'No irrigation fields available. ' +
+          'Create one from Irrigation Management.'
+        : 'Choose the field belonging to this crop. ' +
+          'Changing the link does not record watering.';
+
+  modal.style.display = 'flex';
+}
+
+function closeCropFieldLinkModal() {
+  if (cropFieldLinkSaving) return;
+
+  pendingCropFieldLinkId = null;
+
+  const modal = document.getElementById(
+    'cropFieldLinkModal'
+  );
+
+  if (modal) modal.style.display = 'none';
+}
+
+// Backend-only operation.
+function saveCropFieldLink() {
+  toast(
+    'Backend connection required. No changes saved.',
+    'warn'
+  );
 }
 
 function openAddCropModal() {

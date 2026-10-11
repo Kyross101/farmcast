@@ -4681,6 +4681,77 @@
   </div>
 </div>
 
+<!-- Link existing crop to an irrigation field -->
+<div
+  class="modal-overlay"
+  id="cropFieldLinkModal"
+  onclick="if(event.target===this)closeCropFieldLinkModal()"
+>
+  <div class="modal-box" style="max-width:460px">
+
+    <div class="modal-header">
+      <div class="modal-title">
+        <span class="material-symbols-outlined">link</span>
+        Link Irrigation Field
+      </div>
+
+      <button
+        type="button"
+        class="modal-close"
+        onclick="closeCropFieldLinkModal()"
+        aria-label="Close"
+        style="background:none;border:0"
+      >
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Selected Crop</label>
+        <div id="cropFieldLinkCropName"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="cropFieldLinkSelect">
+          Irrigation Field
+        </label>
+
+        <select id="cropFieldLinkSelect">
+          <option value="">Not linked</option>
+        </select>
+      </div>
+
+      <div
+        id="cropFieldLinkHelp"
+        style="font-size:.78rem;line-height:1.5;color:var(--text-muted)"
+      >
+        Select an existing field or leave the crop unlinked.
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn-cancel"
+        onclick="closeCropFieldLinkModal()"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="button"
+        class="btn-save"
+        id="cropFieldLinkSaveBtn"
+        onclick="saveCropFieldLink()"
+      >
+        Save Link
+      </button>
+    </div>
+
+  </div>
+</div>
+
 <script src="config.js"></script>
 <script src="api.js"></script>
 <script src="crop-data.js"></script>
