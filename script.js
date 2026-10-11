@@ -14728,15 +14728,11 @@ function saveWateringSession() {
 }
 
 function deleteField(id) {
-  const f = irrFields.find(f => f.id === id);
-  if (!f || !confirm(`Delete "${f.name}" from irrigation?`)) return;
-  irrFields = irrFields.filter(f => f.id !== id);
-  lsSave(LS_IRR_FIELDS, irrFields);
-
-  renderIrrigationPage();
-  renderCropsPage();
-
-  toast(`${f.name} deleted.`, 'warn');
+  toast(
+    'Connect to the FarmCast backend to safely delete ' +
+    'irrigation fields. No data was changed.',
+    'warn'
+  );
 }
 
 function openAddFieldModal() {

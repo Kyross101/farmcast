@@ -8,6 +8,7 @@
 
 const router          = require('express').Router();
 const IrrigationField = require('../models/IrrigationField');
+const Crop = require('../models/Crop');
 const authMW          = require('../middleware/auth');
 
 router.use(authMW);
@@ -343,16 +344,97 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE field
+// DELETE only unused fields without watering history.
 router.delete('/:id', async (req, res) => {
-  try {
-    const field = await IrrigationField.findOne({ _id: req.params.id, user: req.user.id });
-    if (!field) return res.status(404).json({ message: 'Field not found.' });
+  const mongoose = require('mongoose');
 
-    await IrrigationField.findByIdAndDelete(req.params.id);
-    res.json({ message: `${field.name} deleted.` });
-  } catch (err) {
-    res.status(500).json({ message: 'Error deleting field.' });
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid irrigation field ID.'
+    });
+  }
+
+  try {
+    const result = await mongoose.connection.transaction(
+      async session => {
+        const field = await IrrigationField.findOne({
+          _id: req.params.id,
+          user: req.user.id
+        }).session(session);
+
+        if (!field) {
+          return {
+            status: 404,
+            message: 'Irrigation field not found.'
+          };
+        }
+
+        // Preserve all recorded watering sessions.
+        if (field.wateringHistory?.length > 0) {
+          return {
+            status: 409,
+            message:
+              'This field has watering history. ' +
+              'Keep it for accurate records. ' +
+              'Archiving will be added separately.'
+          };
+        }
+
+        // Do not break existing My Crops connections.
+        const linkedCrop = await Crop.exists({
+          user: req.user.id,
+          irrigationFieldId: field._id
+        }).session(session);
+
+        if (linkedCrop) {
+          return {
+            status: 409,
+            message:
+              'This field is linked to a crop. ' +
+              'Unlink the crop before deleting the field.'
+          };
+        }
+
+        const deletion = await IrrigationField.deleteOne({
+          _id: field._id,
+          user: req.user.id,
+          'wateringHistory.0': { $exists: false }
+        }).session(session);
+
+        if (deletion.deletedCount !== 1) {
+          throw new Error(
+            'Irrigation field changed during deletion.'
+          );
+        }
+
+        return {
+          status: 200,
+          name: field.name
+        };
+      }
+    );
+
+    if (result.status !== 200) {
+      return res.status(result.status).json({
+        message: result.message
+      });
+    }
+
+    return res.json({
+      message: `${result.name} deleted.`
+    });
+
+  } catch (error) {
+    console.error(
+      'Protected irrigation deletion failed:',
+      error
+    );
+
+    return res.status(500).json({
+      message:
+        'Could not confirm deletion. ' +
+        'Refresh your fields before retrying.'
+    });
   }
 });
 
