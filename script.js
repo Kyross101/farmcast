@@ -10728,27 +10728,7 @@ function toggleWater(id) {
 }
  
 function markHarvested(id) {
-  const crop = myCrops.find(
-    c => String(c.id) === String(id)
-  );
-
-  if (!crop) return;
-
-  if (!confirm(
-    `Mark ${crop.type} as harvested and remove from active crops?`
-  )) return;
-
-  myCrops = myCrops.filter(
-    c => String(c.id) !== String(id)
-  );
-
-  saveCropsLS();
-  renderCropsPage();
-
-  toast(
-    `${crop.type} marked as harvested! Great job!`,
-    'ok'
-  );
+  openLogHarvestModal(id);
 }
  
 function deleteCrop(id) {
@@ -20986,52 +20966,97 @@ function deleteHarvest(id) {
   toast(`${h.crop} harvest record deleted.`, 'warn');
 }
 
-function openLogHarvestModal() {
+let pendingCropHarvestId = null;
+let harvestCompletionInFlight = false;
 
-  const cropSelect =
-    document.getElementById(
-      'hhCropType'
-    );
+function openLogHarvestModal(cropId = null) {
+  if (harvestCompletionInFlight) return;
 
+  const activeCrop = cropId !== null
+    ? myCrops.find(
+        c => String(c._id || c.id) === String(cropId)
+      )
+    : null;
 
-  if (cropSelect) {
-
-    const crops =
-      getMyCropPickerDataset();
-
-
-    cropSelect.innerHTML =
-      '<option value="">Select crop…</option>' +
-      crops.map(crop => `
-
-        <option value="${escapeHtml(crop.name)}">
-          ${escapeHtml(crop.name)}
-        </option>
-
-      `).join('');
-
-
-    cropSelect.value = '';
-
+  if (cropId !== null && !activeCrop) {
+    toast('Crop not found.', 'err');
+    return;
   }
 
+  pendingCropHarvestId = activeCrop
+    ? String(activeCrop._id || activeCrop.id)
+    : null;
 
-  document.getElementById(
-    'logHarvestModal'
-  ).style.display =
-    'flex';
+  const cropSelect = document.getElementById('hhCropType');
+  const crops = getMyCropPickerDataset();
 
+  cropSelect.innerHTML =
+    '<option value="">Select crop…</option>' +
+    crops.map(crop => `
+      <option value="${escapeHtml(crop.name)}">
+        ${escapeHtml(crop.name)}
+      </option>
+    `).join('');
 
-  document.getElementById(
-    'hhDate'
-  ).value =
-    new Date()
-      .toISOString()
-      .split('T')[0];
+  if (
+    activeCrop &&
+    !Array.from(cropSelect.options)
+      .some(option => option.value === activeCrop.type)
+  ) {
+    const option = document.createElement('option');
+    option.value = activeCrop.type;
+    option.textContent = activeCrop.type;
+    cropSelect.appendChild(option);
+  }
 
+  cropSelect.value = activeCrop?.type || '';
+  cropSelect.disabled = Boolean(activeCrop);
+
+  const today = new Date();
+
+  document.getElementById('hhDate').value = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, '0'),
+    String(today.getDate()).padStart(2, '0')
+  ].join('-');
+
+  document.getElementById('hhLocation').value =
+    activeCrop?.location || '';
+
+  document.getElementById('hhArea').value =
+    activeCrop?.area ?? '';
+
+  document.getElementById('hhYield').value = '';
+  document.getElementById('hhQuality').value = 'good';
+  document.getElementById('hhNotes').value = '';
+
+  const modal = document.getElementById('logHarvestModal');
+
+  // The modal originally lives inside Harvest History.
+  // Move it to body so My Crops can open it too.
+  if (modal.parentElement !== document.body) {
+    document.body.appendChild(modal);
+  }
+
+  const title = modal.querySelector('.modal-title');
+
+  if (title) {
+    title.innerHTML =
+      '<span class="material-symbols-outlined">agriculture</span> ' +
+      (activeCrop ? 'Complete Crop Harvest' : 'Log Harvest');
+  }
+
+  modal.style.display = 'flex';
 }
 
-function closeLogHarvestModal() { document.getElementById('logHarvestModal').style.display = 'none'; }
+function closeLogHarvestModal() {
+  if (harvestCompletionInFlight) return;
+
+  pendingCropHarvestId = null;
+
+  document.getElementById('hhCropType').disabled = false;
+  document.getElementById('logHarvestModal').style.display = 'none';
+}
 
 function saveHarvestLog() {
   const crop    = document.getElementById('hhCropType').value;
@@ -21050,6 +21075,16 @@ function saveHarvestLog() {
   renderHarvestHistory();
   toast(`${crop} harvest logged! 🌾`, 'ok');
 }
+
+  // Linked crop completion requires confirmed backend saving.
+  if (pendingCropHarvestId) {
+    toast(
+      'Server connection required to complete this harvest. ' +
+      'Your crop has not been removed.',
+      'warn'
+    );
+    return;
+  }
 
 // ═══════════════════════════════════════════════════════
 // FARM ANALYTICS PAGE

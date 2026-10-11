@@ -8,7 +8,9 @@
 // ============================================
 
 const router = require('express').Router();
-const Crop   = require('../models/Crop');
+const Crop = require('../models/Crop');
+const Harvest = require('../models/Harvest');
+const mongoose = require('mongoose');
 const authMW = require('../middleware/auth');
 
 // All routes require authentication
@@ -115,6 +117,106 @@ router.put('/:id', async (req, res) => {
     res.json({ message: 'Crop updated!', crop: updated });
   } catch (err) {
     res.status(500).json({ message: 'Error updating crop.' });
+  }
+});
+
+// Complete harvest: record yield and remove active crop atomically.
+router.post('/:id/harvest', async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid crop ID.'
+    });
+  }
+
+  const input = req.body || {};
+  const date = String(input.date || '').trim();
+  const location = String(input.location || '').trim();
+  const area = Number(input.area);
+  const yieldKg = Number(input.yield);
+  const quality = input.quality || 'good';
+  const notes = String(input.notes || '').trim();
+
+  const parsedDate = new Date(`${date}T00:00:00Z`);
+  const validDate =
+    /^\d{4}-\d{2}-\d{2}$/.test(date) &&
+    !Number.isNaN(parsedDate.getTime()) &&
+    parsedDate.toISOString().slice(0, 10) === date;
+
+  if (
+    !validDate ||
+    !location ||
+    !Number.isFinite(area) ||
+    area <= 0 ||
+    !Number.isFinite(yieldKg) ||
+    yieldKg <= 0 ||
+    !['excellent', 'good', 'poor'].includes(quality)
+  ) {
+    return res.status(400).json({
+      message: 'Please provide valid harvest details.'
+    });
+  }
+
+  let savedRecord;
+
+  try {
+    await mongoose.connection.transaction(async session => {
+      const crop = await Crop.findOne({
+        _id: req.params.id,
+        user: req.user.id
+      }).session(session);
+
+      if (!crop) {
+        const error = new Error(
+          'Crop not found or already harvested. Check Harvest History.'
+        );
+        error.status = 404;
+        throw error;
+      }
+
+      if (date < crop.planted) {
+        const error = new Error(
+          'Harvest date cannot be earlier than planting date.'
+        );
+        error.status = 400;
+        throw error;
+      }
+
+      const records = await Harvest.create([{
+        user: req.user.id,
+        crop: crop.type,
+        date,
+        location,
+        area,
+        yield: yieldKg,
+        quality,
+        notes
+      }], { session });
+
+      savedRecord = records[0];
+
+      const deletion = await Crop.deleteOne({
+        _id: crop._id,
+        user: req.user.id
+      }).session(session);
+
+      if (deletion.deletedCount !== 1) {
+        throw new Error('Could not remove harvested crop.');
+      }
+    });
+
+    return res.status(201).json({
+      message: 'Harvest completed successfully.',
+      record: savedRecord
+    });
+
+  } catch (error) {
+    console.error('Harvest completion error:', error);
+
+    return res.status(error.status || 500).json({
+      message: error.status
+        ? error.message
+        : 'Could not confirm harvest completion. Check records before retrying.'
+    });
   }
 });
 

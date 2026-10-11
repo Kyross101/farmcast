@@ -281,6 +281,31 @@ const fcCrops = {
     return { ...data.crop, id: data.crop._id };
   },
 
+  async completeHarvest(id, harvestData) {
+    const data = await apiFetch(
+      `/crops/${encodeURIComponent(id)}/harvest`,
+      {
+        method: 'POST',
+        body: JSON.stringify(harvestData)
+      }
+    );
+
+    if (!data.record?._id) {
+      throw new Error(
+        'Harvest response could not be verified.'
+      );
+    }
+
+    return {
+      ...data,
+      record: {
+        ...data.record,
+        id: data.record._id,
+        yield: Number(data.record.yield)
+      }
+    };
+  },
+
   async delete(id) {
     return await apiFetch(`/crops/${id}`, { method: 'DELETE' });
   }
@@ -851,19 +876,9 @@ function patchScriptJsWithAPI() {
     }
   };
 
-  // Override markHarvested
-  markHarvested = async function(id) {
-    const crop = myCrops.find(c => String(c.id) === String(id) || String(c._id) === String(id));
-    if (!crop || !confirm(`Mark ${crop.type} as harvested and remove from active crops?`)) return;
-    const mongoId = crop._id || crop.id;
-    try {
-      await fcCrops.delete(mongoId);
-      myCrops = myCrops.filter(c => String(c._id) !== String(mongoId));
-      renderCropsPage();
-      toast(`${crop.type} marked as harvested! Great job! 🎉`, 'ok');
-    } catch (err) {
-      toast(`Error: ${err.message}`, 'err');
-    }
+    // Open the harvest form instead of deleting the crop.
+  markHarvested = function(id) {
+    openLogHarvestModal(id);
   };
 
   // Override deleteCrop
@@ -896,6 +911,95 @@ function patchScriptJsWithAPI() {
     if (!crop || !date || !location || !area || !yieldKg) {
       toast('Please fill in all required fields.', 'warn'); return;
     }
+
+    // Complete a crop directly from My Crops.
+    if (pendingCropHarvestId) {
+      if (harvestCompletionInFlight) return;
+
+      const cropId = pendingCropHarvestId;
+
+      const activeCrop = myCrops.find(
+        c => String(c._id || c.id) === String(cropId)
+      );
+
+      if (!activeCrop) {
+        toast('Crop not found. Refresh your records.', 'err');
+        return;
+      }
+
+      if (!confirm(
+        `Save the ${activeCrop.type} harvest and remove ` +
+        'this crop from My Crops?'
+      )) {
+        return;
+      }
+
+      harvestCompletionInFlight = true;
+
+      const saveButton = document.querySelector(
+        '#logHarvestModal .btn-save'
+      );
+
+      if (saveButton) saveButton.disabled = true;
+
+      let result;
+
+      try {
+        result = await fcCrops.completeHarvest(cropId, {
+          date,
+          location,
+          area,
+          yield: yieldKg,
+          quality,
+          notes
+        });
+      } catch (error) {
+        harvestCompletionInFlight = false;
+
+        if (saveButton) saveButton.disabled = false;
+
+        toast(
+          `${error.message} Check My Crops and Harvest History ` +
+          'before retrying.',
+          'err'
+        );
+
+        return;
+      }
+
+      // Server transaction has succeeded.
+      myCrops = myCrops.filter(
+        c => String(c._id || c.id) !== String(cropId)
+      );
+
+      const savedId = String(result.record.id);
+
+      if (!harvestHistory.some(
+        h => String(h._id || h.id) === savedId
+      )) {
+        harvestHistory.push(result.record);
+      }
+
+      // Update local display caches after confirmed saving.
+      lsSave(LS_CROPS, myCrops);
+      lsSave(LS_HARVEST, harvestHistory);
+
+      harvestCompletionInFlight = false;
+
+      if (saveButton) saveButton.disabled = false;
+
+      closeLogHarvestModal();
+      renderCropsPage();
+      renderHarvestHistory();
+
+      toast(
+        `${activeCrop.type} harvested and recorded successfully!`,
+        'ok'
+      );
+
+      return;
+    }
+
     try {
       const record = await fcHarvest.add({ crop, date, location, area, yield: yieldKg, quality, notes });
       harvestHistory.push(record);
