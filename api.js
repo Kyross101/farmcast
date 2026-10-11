@@ -780,7 +780,7 @@ function patchScriptJsWithAPI() {
       toast(`Error: ${err.message}`, 'err');
 
     }
-    
+
   };
 
   // Override saveGrowthStage — save observation to MongoDB
@@ -901,6 +901,85 @@ function patchScriptJsWithAPI() {
     }
   };
 
+  // Enable secure crop-to-irrigation linking.
+  cropFieldLinkBackendEnabled = true;
+
+  saveCropFieldLink = async function() {
+    if (
+      !pendingCropFieldLinkId ||
+      cropFieldLinkSaving
+    ) return;
+
+    const crop = myCrops.find(
+      c => String(c._id || c.id) === pendingCropFieldLinkId
+    );
+
+    if (!crop) {
+      toast('Crop not found.', 'err');
+      return;
+    }
+
+    const select = document.getElementById(
+      'cropFieldLinkSelect'
+    );
+
+    const fieldId = select.value || null;
+
+    const oldFieldId =
+      String(crop.irrigationFieldId || '');
+
+    if (oldFieldId === String(fieldId || '')) {
+      closeCropFieldLinkModal();
+      toast('No field changes needed.', 'ok');
+      return;
+    }
+
+    const button = document.getElementById(
+      'cropFieldLinkSaveBtn'
+    );
+
+    cropFieldLinkSaving = true;
+
+    if (button) button.disabled = true;
+
+    let saved = false;
+
+    try {
+      const updated = await fcCrops.update(
+        crop._id || crop.id,
+        {
+          irrigationFieldId: fieldId
+        }
+      );
+
+      Object.assign(crop, updated);
+
+      lsSave(LS_CROPS, myCrops);
+
+      saved = true;
+
+    } catch (err) {
+      toast(
+        `Could not update field link: ${err.message}`,
+        'err'
+      );
+
+    } finally {
+      cropFieldLinkSaving = false;
+
+      if (button) button.disabled = false;
+    }
+
+    if (saved) {
+      closeCropFieldLinkModal();
+      renderCropsPage();
+
+      toast(
+        'Crop linked irrigation field updated!',
+        'ok'
+      );
+    }
+  };
 
   // Override toggleWater
   toggleWater = async function(id) {
