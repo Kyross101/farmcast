@@ -10054,8 +10054,11 @@ function getCropLinkedFieldLabel(crop) {
   );
 
   return linked
-    ? `Field: ${linked.name} · Change`
+    ? linked.archivedAt
+      ? `Archived field: ${linked.name} · Change`
+      : `Field: ${linked.name} · Change`
     : 'Linked field unavailable · Change';
+
 }
 
 // Find the irrigation field explicitly linked to a crop.
@@ -10067,8 +10070,11 @@ function getCropLinkedIrrigationField(crop) {
   }
 
   return irrFields.find(
-    field => String(field._id || field.id) === fieldId
+    field =>
+      String(field._id || field.id) === fieldId &&
+      !field.archivedAt
   ) || null;
+
 }
 
 // Actual watering history determines today's crop status.
@@ -11061,8 +11067,11 @@ function populateCropIrrigationFieldSelect() {
   // Only show MongoDB-backed irrigation fields.
   const availableFields = Array.isArray(irrFields)
     ? irrFields.filter(field =>
+
         typeof field._id === 'string' &&
-        /^[a-fA-F0-9]{24}$/.test(field._id)
+        /^[a-fA-F0-9]{24}$/.test(field._id) &&
+        !field.archivedAt
+
       )
     : [];
 
@@ -11142,8 +11151,11 @@ function openCropFieldLinkModal(id) {
 
   const fields = irrFields.filter(
     field =>
+
       typeof field._id === 'string' &&
-      /^[a-fA-F0-9]{24}$/.test(field._id)
+      /^[a-fA-F0-9]{24}$/.test(field._id) &&
+      !field.archivedAt
+
   );
 
   fields.forEach(field => {
@@ -14173,6 +14185,12 @@ function getActiveIrrigationFields() {
 function renderIrrigationPage() {
   const today = getIrrigationLocalDate();
 
+  const activeFields = getActiveIrrigationFields();
+
+  const archivedFields = irrFields.filter(
+    field => !!field.archivedAt
+  );
+
   // A Watered Today flag is valid only for its recorded day.
   // Correct stale flags without deleting watering dates.
   let corrected = false;
@@ -14192,15 +14210,20 @@ function renderIrrigationPage() {
   }
 
   // Stats
-  const wateredToday = irrFields.filter(f => f.wateredToday).length;
-  const dueToday = irrFields.filter(f => {
+  const wateredToday = activeFields.filter(
+    f => f.wateredToday
+  ).length;
+
+  const dueToday = activeFields.filter(f => {
+
     if (f.wateredToday) return false;
     const last = new Date(f.lastWatered);
     const due  = new Date(last.getTime() + f.freq * 86400000);
     return due <= new Date();
   }).length;
 
-  document.getElementById('irrTotalFields').textContent  = irrFields.length;
+  document.getElementById('irrTotalFields').textContent = activeFields.length;
+
   document.getElementById('irrWateredToday').textContent = wateredToday;
   document.getElementById('irrDueToday').textContent     = dueToday;
 
@@ -14307,7 +14330,8 @@ function renderIrrigationPage() {
   }
 
   // Field list
-  document.getElementById('irrFieldList').innerHTML = irrFields.map(f => {
+  document.getElementById('irrFieldList').innerHTML = activeFields.map(f => {
+
     const last = new Date(f.lastWatered);
     const due  = new Date(last.getTime() + f.freq * 86400000);
     const isDue = due <= new Date() && !f.wateredToday;
@@ -14449,10 +14473,75 @@ function renderIrrigationPage() {
       </div>
     `;
 
-  }).join('');
+    }).join('') || `
+      <div style="padding:16px;text-align:center;color:var(--text-muted);font-size:.85rem">
+        No active irrigation fields.
+      </div>
+    `;
+
+    // Archived fields are read-only.
+    // Keep them in irrFields for historical analytics.
+    const archiveSection = document.getElementById(
+      'irrArchivedFieldsSection'
+    );
+
+    const archiveCount = document.getElementById(
+      'irrArchivedCount'
+    );
+  
+    const archiveList = document.getElementById(
+      'irrArchivedFieldList'
+    );
+  
+    if (archiveSection && archiveCount && archiveList) {
+      archiveSection.style.display =
+        archivedFields.length ? '' : 'none';
+  
+      archiveCount.textContent = String(
+        archivedFields.length
+      );
+  
+      archiveList.innerHTML = archivedFields.map(field => {
+        const historyCount =
+          Array.isArray(field.wateringHistory)
+            ? field.wateringHistory.length
+            : 0;
+  
+        return `
+          <div class="irr-field-item">
+            <div class="ifi-left">
+  
+              <div class="ifi-name">
+                ${escapeHtml(field.name || 'Unnamed Field')}
+              </div>
+  
+              <div class="ifi-meta">
+                ${escapeHtml(field.crop || 'Unspecified crop')}
+                · ${escapeHtml(field.type || 'Unspecified method')}
+              </div>
+  
+              <div class="ifi-status">
+  
+                <span class="ifi-badge">
+                  Archived
+                </span>
+  
+                <span class="ifi-freq">
+                  ${historyCount} saved watering
+                  session${historyCount === 1 ? '' : 's'}
+                </span>
+  
+              </div>
+  
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
 
   // Today's schedule
-  const scheduled = irrFields
+  const scheduled = activeFields
+
     .filter(f => {
       const last = new Date(f.lastWatered);
       const due  = new Date(last.getTime() + f.freq * 86400000);
@@ -14670,13 +14759,15 @@ function openWateringSessionModal(id) {
     f => String(f._id || f.id) === String(id)
   );
 
-  if (!field) {
-    toast('Irrigation field not found.', 'err');
+  if (!field || field.archivedAt) {
+    toast(
+      'This irrigation field is unavailable for watering.',
+      'warn'
+    );
     return;
   }
 
   pendingWaterFieldId = String(field._id || field.id);
-
   const modal =
     document.getElementById('wateringSessionModal');
 
@@ -22260,7 +22351,10 @@ function renderAnIrrEff() {
             <div class="an-irr-top">
 
               <span class="an-irr-name">
+
                 ${escapeHtml(field.name || 'Unnamed Field')}
+                ${field.archivedAt ? ' · Archived' : ''}
+
               </span>
 
               <span class="an-irr-eff-val">
