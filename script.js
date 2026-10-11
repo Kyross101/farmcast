@@ -21573,8 +21573,58 @@ function renderFarmAnalytics() {
 
 function updateAnKPIs() {
   const totalKg    = harvestHistory.reduce((s,h)=>s+Number(h.yield),0);
-  const totalWater = (typeof irrFields!=='undefined')
-    ? irrFields.reduce((s,f)=>s+(f.type!=='Rain-fed'?f.waterAmt*f.freq:0),0) : 0;
+  
+  // Actual watering sessions for this week's Monday–Sunday.
+  const waterDataAvailable =
+    cropFieldLinkBackendEnabled === true;
+
+  const weekStart = new Date();
+  weekStart.setHours(0, 0, 0, 0);
+
+  weekStart.setDate(
+    weekStart.getDate() - ((weekStart.getDay() + 6) % 7)
+  );
+
+  const nextWeekStart = new Date(weekStart);
+  nextWeekStart.setDate(nextWeekStart.getDate() + 7);
+
+  const toLocalKey = date =>
+    `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+  const startKey = toLocalKey(weekStart);
+  const endKey = toLocalKey(nextWeekStart);
+
+  let totalWater = 0;
+  let recordedSessions = 0;
+
+  if (waterDataAvailable) {
+    irrFields.forEach(field => {
+      const countedDates = new Set();
+
+      const history = Array.isArray(field.wateringHistory)
+        ? field.wateringHistory
+        : [];
+
+      history.forEach(entry => {
+        const date = entry?.date;
+        const liters = Number(entry?.liters);
+
+        if (
+          typeof date !== 'string' ||
+          date < startKey ||
+          date >= endKey ||
+          countedDates.has(date) ||
+          !Number.isFinite(liters) ||
+          liters <= 0
+        ) return;
+
+        countedDates.add(date);
+        totalWater += liters;
+        recordedSessions++;
+      });
+    });
+  }
+
   const excellent  = harvestHistory.filter(h=>h.quality==='excellent').length;
   const yieldRate  = harvestHistory.length>0 ? Math.round((excellent/harvestHistory.length)*100) : 0;
   const pestCount  = (typeof pestLogs!=='undefined') ? pestLogs.length : 0;
@@ -21582,8 +21632,21 @@ function updateAnKPIs() {
 
   document.getElementById('anTotalHarvest').textContent = totalKg.toFixed(0)+' kg';
   document.getElementById('anHarvestSub').textContent   = `from ${harvestHistory.length} harvest${harvestHistory.length!==1?'s':''}`;
-  document.getElementById('anTotalWater').textContent   = totalWater.toLocaleString()+' L';
-  document.getElementById('anWaterSub').textContent     = `across ${typeof irrFields!=='undefined'?irrFields.length:0} fields`;
+  
+  document.getElementById('anTotalWater').textContent =
+    !waterDataAvailable || recordedSessions === 0
+      ? '—'
+      : totalWater.toLocaleString('en-PH', {
+          maximumFractionDigits: 2
+        }) + ' L';
+
+  document.getElementById('anWaterSub').textContent =
+    !waterDataAvailable
+      ? 'Connect to view recorded usage'
+      : recordedSessions === 0
+        ? 'No watering sessions recorded this week'
+        : `${recordedSessions} recorded session${recordedSessions === 1 ? '' : 's'} this week`;
+
   document.getElementById('anYieldRate').textContent    = yieldRate+'%';
   document.getElementById('anYieldSub').textContent     = `${excellent} excellent of ${harvestHistory.length}`;
   
