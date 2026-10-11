@@ -14233,22 +14233,36 @@ function renderIrrigationPage() {
     `).join('');
   }
 
-  // Weekly chart (simple bar chart)
-  const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  const usage = days.map(() => Math.floor(Math.random() * 2000 + 500));
-  const maxUsage = Math.max(...usage);
-  document.getElementById('waterChartWrap').innerHTML = `
-    <div class="wc-chart">
-      ${days.map((d,i) => `
-        <div class="wc-bar-wrap">
-          <div class="wc-val">${usage[i]}L</div>
-          <div class="wc-bar"><div class="wc-fill" style="height:${Math.round((usage[i]/maxUsage)*100)}%"></div></div>
-          <div class="wc-day">${d}</div>
+  // Weekly Water Usage — waiting for actual irrigation history.
+  // Do not display randomly generated or estimated usage as fact.
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+  const waterChart = document.getElementById('waterChartWrap');
+
+  if (waterChart) {
+    waterChart.innerHTML = `
+      <div class="wc-chart">
+        ${days.map(day => `
+          <div class="wc-bar-wrap">
+            <div class="wc-val">—</div>
+            <div class="wc-bar">
+              <div class="wc-fill" style="height:0%"></div>
+            </div>
+            <div class="wc-day">${day}</div>
+          </div>
+        `).join('')}
+      </div>
+  
+      <div class="wc-total">
+        <strong>Weekly water usage not yet available.</strong>
+        <div style="margin-top:6px;line-height:1.5">
+          Daily watering history is not currently recorded.
+          Weekly totals will become available after irrigation
+          activity tracking is implemented.
         </div>
-      `).join('')}
-    </div>
-    <div class="wc-total">Total this week: ${usage.reduce((a,b)=>a+b,0).toLocaleString()}L</div>
-  `;
+      </div>
+    `;
+  }
 
   // Tips
   document.getElementById(
