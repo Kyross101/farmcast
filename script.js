@@ -21059,6 +21059,17 @@ function closeLogHarvestModal() {
 }
 
 function saveHarvestLog() {
+
+    // Linked crop completion requires confirmed backend saving.
+  if (pendingCropHarvestId) {
+    toast(
+      'Server connection required to complete this harvest. ' +
+      'Your crop has not been removed.',
+      'warn'
+    );
+    return;
+  }
+  
   const crop    = document.getElementById('hhCropType').value;
   const date    = document.getElementById('hhDate').value;
   const location= document.getElementById('hhLocation').value.trim();
@@ -21076,15 +21087,6 @@ function saveHarvestLog() {
   toast(`${crop} harvest logged! 🌾`, 'ok');
 }
 
-  // Linked crop completion requires confirmed backend saving.
-  if (pendingCropHarvestId) {
-    toast(
-      'Server connection required to complete this harvest. ' +
-      'Your crop has not been removed.',
-      'warn'
-    );
-    return;
-  }
 
 // ═══════════════════════════════════════════════════════
 // FARM ANALYTICS PAGE
