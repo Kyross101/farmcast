@@ -42,21 +42,95 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT update field
+// PUT update field — secure and account-specific
 router.put('/:id', async (req, res) => {
   try {
-    const field = await IrrigationField.findOne({ _id: req.params.id, user: req.user.id });
-    if (!field) return res.status(404).json({ message: 'Field not found.' });
+    const allowedFields = [
+      'name',
+      'crop',
+      'area',
+      'type',
+      'freq',
+      'waterAmt',
+      'lastWatered',
+      'wateredToday'
+    ];
 
-    const updated = await IrrigationField.findByIdAndUpdate(
-      req.params.id,
-      { ...req.body },
-      { returnDocument: 'after' }
+    const input =
+      req.body &&
+      typeof req.body === 'object' &&
+      !Array.isArray(req.body)
+        ? req.body
+        : {};
+
+    const requestedFields = Object.keys(input);
+
+    // Prevent updates to user, _id, or other protected fields.
+    const invalidFields = requestedFields.filter(
+      field => !allowedFields.includes(field)
     );
 
-    res.json({ message: 'Field updated!', field: updated });
+    if (invalidFields.length > 0) {
+      return res.status(400).json({
+        message: 'Request contains unsupported irrigation fields.'
+      });
+    }
+
+    if (requestedFields.length === 0) {
+      return res.status(400).json({
+        message: 'No irrigation changes provided.'
+      });
+    }
+
+    const updates = {};
+
+    allowedFields.forEach(field => {
+      if (Object.prototype.hasOwnProperty.call(input, field)) {
+        updates[field] = input[field];
+      }
+    });
+
+    // Match both the record ID and authenticated owner.
+    const updated = await IrrigationField.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        user: req.user.id
+      },
+      {
+        $set: updates
+      },
+      {
+        returnDocument: 'after',
+        runValidators: true
+      }
+    );
+
+    if (!updated) {
+      return res.status(404).json({
+        message: 'Irrigation field not found.'
+      });
+    }
+
+    return res.json({
+      message: 'Irrigation field updated successfully!',
+      field: updated
+    });
+
   } catch (err) {
-    res.status(500).json({ message: 'Error updating field.' });
+    console.error('Irrigation update error:', err);
+
+    if (
+      err.name === 'ValidationError' ||
+      err.name === 'CastError'
+    ) {
+      return res.status(400).json({
+        message: 'Invalid irrigation field information.'
+      });
+    }
+
+    return res.status(500).json({
+      message: 'Error updating irrigation field.'
+    });
   }
 });
 
