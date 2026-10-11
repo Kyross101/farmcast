@@ -981,22 +981,43 @@ function patchScriptJsWithAPI() {
     }
   };
 
-  // Override toggleWater
-  toggleWater = async function(id) {
-    const crop = myCrops.find(c => String(c.id) === String(id) || String(c._id) === String(id));
-    if (!crop) return;
-    const newWatered = !crop.watered;
-    try {
-      await fcCrops.update(id, { watered: newWatered });
-      crop.watered = newWatered;
-      renderCropsPage();
-      toast(`${crop.type} marked as ${newWatered ? 'watered ✅' : 'not watered'}`, newWatered ? 'ok' : 'warn');
-    } catch (err) {
-      toast(`Error: ${err.message}`, 'err');
-    }
-  };
+  
+  // My Crops watering uses the linked Irrigation field.
+toggleWater = function(id) {
+  if (wateringSessionInFlight) return;
 
-    // Open the harvest form instead of deleting the crop.
+  const crop = myCrops.find(
+    c => String(c._id || c.id) === String(id)
+  );
+
+  if (!crop) {
+    toast('Crop not found.', 'err');
+    return;
+  }
+
+  const field = getCropLinkedIrrigationField(crop);
+
+  // No linked field: let the farmer choose one.
+  if (!field) {
+    openCropFieldLinkModal(crop._id || crop.id);
+    return;
+  }
+
+  // Prevent duplicate field watering for the same date.
+  if (isCropWateredToday(crop)) {
+    toast(
+      'Watering is already recorded for this field today. ' +
+      'Open Irrigation Management to undo it.',
+      'ok'
+    );
+    return;
+  }
+
+  // Reuse the existing Record Watering form.
+  openWateringSessionModal(field._id || field.id);
+};
+
+  // Open the harvest form instead of deleting the crop.
   markHarvested = function(id) {
     openLogHarvestModal(id);
   };
@@ -1209,10 +1230,11 @@ function patchScriptJsWithAPI() {
       Object.assign(field, updated);
 
       lsSave(LS_IRR_FIELDS, irrFields);
+
       renderIrrigationPage();
+      renderCropsPage();
 
       toast('Watering record undone.', 'ok');
-
     } catch (err) {
       toast(
         `${err.message} Check the record before retrying.`,

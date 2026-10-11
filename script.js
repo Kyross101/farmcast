@@ -10058,6 +10058,34 @@ function getCropLinkedFieldLabel(crop) {
     : 'Linked field unavailable · Change';
 }
 
+// Find the irrigation field explicitly linked to a crop.
+function getCropLinkedIrrigationField(crop) {
+  const fieldId = String(crop?.irrigationFieldId || '');
+
+  if (!fieldId || !Array.isArray(irrFields)) {
+    return null;
+  }
+
+  return irrFields.find(
+    field => String(field._id || field.id) === fieldId
+  ) || null;
+}
+
+// Actual watering history determines today's crop status.
+function isCropWateredToday(crop) {
+  const field = getCropLinkedIrrigationField(crop);
+
+  if (!field || !Array.isArray(field.wateringHistory)) {
+    return false;
+  }
+
+  const today = getIrrigationLocalDate();
+
+  return field.wateringHistory.some(
+    entry => entry.date === today
+  );
+}
+
 function renderCropsPage() {
   const filtered = myCrops.filter(crop => {
     if (currentCropFilter === 'all') return true;
@@ -10072,7 +10100,11 @@ function renderCropsPage() {
   const growing = myCrops.filter(c => getCropStatus(c).label === 'Growing').length;
   const ready   = myCrops.filter(c => ['Ready','Overdue'].includes(getCropStatus(c).label)).length;
   const atRisk  = myCrops.filter(c => getCropStatus(c).label === 'At Risk').length;
-  const watered = myCrops.filter(c => c.watered).length;
+  
+  const watered = myCrops.filter(
+    crop => isCropWateredToday(crop)
+  ).length;
+
   document.getElementById('csbTotal').textContent   = myCrops.length;
   document.getElementById('csbGrowing').textContent = growing;
   document.getElementById('csbReady').textContent   = ready;
@@ -10098,6 +10130,10 @@ function renderCropsPage() {
  
   document.getElementById('cropsGrid').innerHTML = filtered.map(crop => {
   const st = getCropStatus(crop);
+
+  const cropWateredToday = isCropWateredToday(crop);
+  const linkedIrrigationField =
+    getCropLinkedIrrigationField(crop);
 
   const timelineCheck =
     getCropTimelineCheck(crop);
@@ -10702,9 +10738,22 @@ function renderCropsPage() {
         ${crop.notes ? `<div class="cdc-notes">"${crop.notes}"</div>` : ''}
  
         <div class="cdc-actions">
-          <button class="cdc-btn water ${crop.watered ? 'watered' : ''}" onclick="toggleWater('${crop.id}')">
-            <span class="material-symbols-outlined">${crop.watered ? 'water' : 'water_drop'}</span>
-            ${crop.watered ? 'Watered ✓' : 'Mark Watered'}
+
+          <button
+            class="cdc-btn water ${cropWateredToday ? 'watered' : ''}"
+            onclick="toggleWater('${escapeHtml(crop._id || crop.id)}')"
+          >
+            <span class="material-symbols-outlined">
+              ${cropWateredToday ? 'water' : 'water_drop'}
+            </span>
+
+            ${
+              cropWateredToday
+                ? 'Watered Today ✓'
+                : linkedIrrigationField
+                  ? 'Water Now'
+                  : 'Link to Water'
+            }
           </button>
 
           <button class="cdc-btn harvest" onclick="markHarvested('${crop.id}')">
@@ -10733,20 +10782,10 @@ function renderCropsPage() {
 }
  
 function toggleWater(id) {
-  const crop = myCrops.find(
-    c => String(c.id) === String(id)
-  );
-
-  if (!crop) return;
-
-  crop.watered = !crop.watered;
-
-  saveCropsLS();
-  renderCropsPage();
-
   toast(
-    `${crop.type} marked as ${crop.watered ? 'watered' : 'not watered'}`,
-    crop.watered ? 'ok' : 'warn'
+    'Connect to the FarmCast backend to record watering. ' +
+    'No watering status was changed.',
+    'warn'
   );
 }
  
@@ -14571,8 +14610,11 @@ function deleteField(id) {
   if (!f || !confirm(`Delete "${f.name}" from irrigation?`)) return;
   irrFields = irrFields.filter(f => f.id !== id);
   lsSave(LS_IRR_FIELDS, irrFields);
+
   renderIrrigationPage();
-  toast(`${f.name} deleted.`, 'warn');
+  renderCropsPage();
+
+  saved = true;
 }
 
 function openAddFieldModal() {
@@ -19122,7 +19164,7 @@ function exportCSV(type) {
         c.location,
         c.irrigation,
         c.notes || '',
-        c.watered
+        isCropWateredToday(c)
           ? 'Yes'
           : 'No'
       ]);
@@ -21473,7 +21515,9 @@ function updateAnKPIs() {
   ).textContent =
     active;
 
-    document.getElementById('anActiveSub').textContent    = `${typeof myCrops!=='undefined'?myCrops.filter(c=>c.watered).length:0} watered today`;
+    document.getElementById('anActiveSub').textContent    
+    = `${typeof myCrops!=='undefined'?
+    myCrops.filter(c => isCropWateredToday(c)).length
 }
 
 
