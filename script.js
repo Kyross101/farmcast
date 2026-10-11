@@ -14164,6 +14164,12 @@ function getIrrigationLocalDate() {
   );
 }
 
+function getActiveIrrigationFields() {
+  return Array.isArray(irrFields)
+    ? irrFields.filter(field => !field.archivedAt)
+    : [];
+}
+
 function renderIrrigationPage() {
   const today = getIrrigationLocalDate();
 

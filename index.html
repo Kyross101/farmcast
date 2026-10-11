@@ -2134,7 +2134,26 @@
               <div class="card-title"><span class="material-symbols-outlined">water</span>Field Irrigation Status</div>
               <div class="card-action" onclick="openAddFieldModal()"><span class="material-symbols-outlined" style="font-size:14px">add</span> Add Field</div>
             </div>
+
             <div class="irr-field-list" id="irrFieldList"></div>
+
+            <details
+              id="irrArchivedFieldsSection"
+              style="display:none;border-top:1px solid var(--border);padding:12px 16px"
+            >
+              <summary
+                style="cursor:pointer;font-size:.82rem;font-weight:700;color:var(--text-muted)"
+              >
+                Archived Fields (<span id="irrArchivedCount">0</span>)
+              </summary>
+
+              <div
+                class="irr-field-list"
+                id="irrArchivedFieldList"
+                style="padding:12px 0 0"
+              ></div>
+            </details>
+
           </div>
           <div class="card" style="margin-top:16px">
             <div class="card-header"><div class="card-title"><span class="material-symbols-outlined">bar_chart</span>Weekly Water Usage</div></div>
