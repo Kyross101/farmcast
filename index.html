@@ -4577,6 +4577,88 @@
   </div>
 </div>
 
+<!-- Actual Irrigation Watering Modal -->
+<div
+  class="modal-overlay"
+  id="wateringSessionModal"
+  onclick="if(event.target===this)closeWateringSessionModal()"
+>
+  <div class="modal-box" style="max-width:460px">
+
+    <div class="modal-header">
+      <div class="modal-title">
+        <span class="material-symbols-outlined">water_drop</span>
+        Record Watering
+      </div>
+
+      <button
+        type="button"
+        class="modal-close"
+        onclick="closeWateringSessionModal()"
+        aria-label="Close watering form"
+        style="background:none;border:0"
+      >
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="form-group">
+        <label>Field</label>
+        <div id="wateringSessionFieldName"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <div id="wateringSessionDate"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="wateringActualLiters">
+          Actual Water Used (Liters)
+        </label>
+
+        <input
+          id="wateringActualLiters"
+          type="number"
+          min="0.01"
+          step="any"
+          placeholder="Enter actual liters used"
+          inputmode="decimal"
+        >
+      </div>
+
+      <div
+        id="wateringSessionHint"
+        style="font-size:.82rem;line-height:1.5;color:var(--text-muted)"
+      ></div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn-cancel"
+        onclick="closeWateringSessionModal()"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="button"
+        class="btn-save"
+        id="wateringSessionSaveBtn"
+        onclick="saveWateringSession()"
+      >
+        <span class="material-symbols-outlined">save</span>
+        Save Watering
+      </button>
+    </div>
+
+  </div>
+</div>
+
 <script src="config.js"></script>
 <script src="api.js"></script>
 <script src="crop-data.js"></script>

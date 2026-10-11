@@ -14081,6 +14081,11 @@ function renderIrrigationPage() {
     const isDue = due <= new Date() && !f.wateredToday;
     const daysAgo = Math.floor((new Date() - last) / 86400000);
     const totalL = f.waterAmt;
+    const hasRecordedToday =
+      Array.isArray(f.wateringHistory) &&
+      f.wateringHistory.some(
+        event => event.date === today
+      );
 
     const cropIconHtml =
       getCropIconHtml(
@@ -14183,10 +14188,16 @@ function renderIrrigationPage() {
           }
 
           <button
-            class="ifi-btn${f.wateredToday ? ' done' : ''}"
+            class="ifi-btn${hasRecordedToday ? ' done' : ''}"
             onclick="toggleFieldWater('${f.id}')"
-          >
-            ${f.wateredToday ? '✓ Done' : 'Water Now'}
+            >
+              ${
+                hasRecordedToday
+                  ? 'Undo Watering'
+                  : f.wateredToday
+                    ? 'Record Liters'
+                    : 'Water Now'
+              }
           </button>
 
           <button
@@ -14288,33 +14299,83 @@ function renderIrrigationPage() {
 }
 
 function toggleFieldWater(id) {
+  toast(
+    'Connect to the FarmCast server to record watering. ' +
+    'No irrigation data was changed.',
+    'warn'
+  );
+}
+
+let pendingWaterFieldId = null;
+let wateringSessionInFlight = false;
+
+function openWateringSessionModal(id) {
+  if (wateringSessionInFlight) return;
+
   const field = irrFields.find(
     f => String(f._id || f.id) === String(id)
   );
 
-  if (!field) return;
-
-  const today = getIrrigationLocalDate();
-
-  const wasWateredToday =
-    field.wateredToday === true &&
-    field.lastWatered === today;
-
-  field.wateredToday = !wasWateredToday;
-
-  if (field.wateredToday) {
-    field.lastWatered = today;
+  if (!field) {
+    toast('Irrigation field not found.', 'err');
+    return;
   }
 
-  lsSave(LS_IRR_FIELDS, irrFields);
+  pendingWaterFieldId = String(field._id || field.id);
 
-  renderIrrigationPage();
+  const modal =
+    document.getElementById('wateringSessionModal');
 
+  if (!modal) {
+    toast('Watering form not found.', 'err');
+    return;
+  }
+
+  document.getElementById(
+    'wateringSessionFieldName'
+  ).textContent = field.name;
+
+  document.getElementById(
+    'wateringSessionDate'
+  ).textContent = getIrrigationLocalDate();
+
+  const litersInput = document.getElementById(
+    'wateringActualLiters'
+  );
+
+  // Never assume the configured amount was actually used.
+  litersInput.value = '';
+
+  const suggested = Number(field.waterAmt);
+
+  document.getElementById(
+    'wateringSessionHint'
+  ).textContent =
+    Number.isFinite(suggested) && suggested > 0
+      ? `Configured per-session amount: ${suggested} L. ` +
+        'Enter the amount actually used.'
+      : 'Enter the actual amount of water used.';
+
+  modal.style.display = 'flex';
+  litersInput.focus();
+}
+
+function closeWateringSessionModal() {
+  if (wateringSessionInFlight) return;
+
+  pendingWaterFieldId = null;
+
+  const modal =
+    document.getElementById('wateringSessionModal');
+
+  if (modal) modal.style.display = 'none';
+}
+
+// Safe fallback; overridden after successful backend loading.
+function saveWateringSession() {
   toast(
-    `${field.name} marked as ${
-      field.wateredToday ? 'watered' : 'not watered'
-    }`,
-    field.wateredToday ? 'ok' : 'warn'
+    'Server connection required. No watering was recorded.',
+    'warn'
   );
 }
 

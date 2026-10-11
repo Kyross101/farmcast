@@ -359,6 +359,27 @@ const fcIrrigation = {
     });
     return { ...data.field, id: data.field._id };
   },
+  
+  async recordWatering(id, wateringData) {
+    const data = await apiFetch(
+      `/irrigation/${encodeURIComponent(id)}/watering`,
+      {
+        method: 'POST',
+        body: JSON.stringify(wateringData)
+      }
+    );
+
+    if (!data.field?._id) {
+      throw new Error(
+        'Watering response could not be verified.'
+      );
+    }
+
+    return {
+      ...data.field,
+      id: data.field._id
+    };
+  },
 
   async delete(id) {
     return await apiFetch(`/irrigation/${id}`, { method: 'DELETE' });
@@ -1046,50 +1067,155 @@ function patchScriptJsWithAPI() {
     }
   };
 
-  toggleFieldWater = async function(id) {
-  const field = irrFields.find(
-    f => String(f._id || f.id) === String(id)
-  );
+    toggleFieldWater = async function(id) {
+    if (wateringSessionInFlight) return;
 
-  if (!field) return;
-
-  const today = getIrrigationLocalDate();
-
-  const wasWateredToday =
-    field.wateredToday === true &&
-    field.lastWatered === today;
-
-  const newVal = !wasWateredToday;
-
-  try {
-    const updated = await fcIrrigation.update(id, {
-      wateredToday: newVal,
-      lastWatered: newVal
-        ? today
-        : field.lastWatered
-    });
-
-    // Update the display only after backend confirmation.
-    Object.assign(field, updated);
-
-    lsSave(LS_IRR_FIELDS, irrFields);
-
-    renderIrrigationPage();
-
-    toast(
-      `${field.name} marked as ${
-        newVal ? 'watered' : 'not watered'
-      }`,
-      newVal ? 'ok' : 'warn'
+    const field = irrFields.find(
+      f => String(f._id || f.id) === String(id)
     );
 
-  } catch (err) {
-    toast(
-      `Could not update irrigation: ${err.message}`,
-      'err'
+    if (!field) return;
+
+    const today = getIrrigationLocalDate();
+
+    const hasRecordedToday =
+      Array.isArray(field.wateringHistory) &&
+      field.wateringHistory.some(
+        event => event.date === today
+      );
+
+    // No recorded session yet: ask for actual liters.
+    if (!hasRecordedToday) {
+      openWateringSessionModal(id);
+      return;
+    }
+
+    if (!confirm(
+      `Undo today's recorded watering for ${field.name}?`
+    )) {
+      return;
+    }
+
+    wateringSessionInFlight = true;
+
+    try {
+      const updated = await fcIrrigation.recordWatering(
+        id,
+        {
+          action: 'undo',
+          date: today
+        }
+      );
+
+      Object.assign(field, updated);
+
+      lsSave(LS_IRR_FIELDS, irrFields);
+      renderIrrigationPage();
+
+      toast('Watering record undone.', 'ok');
+
+    } catch (err) {
+      toast(
+        `${err.message} Check the record before retrying.`,
+        'err'
+      );
+
+    } finally {
+      wateringSessionInFlight = false;
+    }
+  };
+
+    saveWateringSession = async function() {
+    if (!pendingWaterFieldId || wateringSessionInFlight) {
+      return;
+    }
+
+    const input = document.getElementById(
+      'wateringActualLiters'
     );
-  }
-};
+
+    const raw = input.value.trim();
+    const liters = Number(raw);
+
+    if (
+      raw === '' ||
+      !Number.isFinite(liters) ||
+      liters <= 0
+    ) {
+      toast(
+        'Enter the actual water used in liters.',
+        'warn'
+      );
+      return;
+    }
+
+    const fieldId = pendingWaterFieldId;
+
+    const field = irrFields.find(
+      f => String(f._id || f.id) === fieldId
+    );
+
+    if (!field) {
+      toast('Irrigation field not found.', 'err');
+      return;
+    }
+
+    const date = getIrrigationLocalDate();
+
+    const saveButton = document.getElementById(
+      'wateringSessionSaveBtn'
+    );
+
+    wateringSessionInFlight = true;
+
+    if (saveButton) {
+      saveButton.disabled = true;
+    }
+
+    let saved = false;
+
+    try {
+      const updated = await fcIrrigation.recordWatering(
+        fieldId,
+        {
+          action: 'water',
+          date,
+          liters
+        }
+      );
+
+      Object.assign(field, updated);
+
+      lsSave(LS_IRR_FIELDS, irrFields);
+
+      renderIrrigationPage();
+
+      saved = true;
+
+    } catch (err) {
+      toast(
+        `${err.message} Check saved watering records ` +
+        'before retrying.',
+        'err'
+      );
+
+    } finally {
+      wateringSessionInFlight = false;
+
+      if (saveButton) {
+        saveButton.disabled = false;
+      }
+    }
+
+    if (saved) {
+      closeWateringSessionModal();
+
+      toast(
+        `${field.name} watering recorded successfully!`,
+        'ok'
+      );
+    }
+  };
 
   deleteField = async function(id) {
     const f = irrFields.find(f => String(f.id) === String(id) || String(f._id) === String(id));
