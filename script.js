@@ -14614,7 +14614,7 @@ function deleteField(id) {
   renderIrrigationPage();
   renderCropsPage();
 
-  saved = true;
+  toast(`${f.name} deleted.`, 'warn');
 }
 
 function openAddFieldModal() {
@@ -21515,9 +21515,9 @@ function updateAnKPIs() {
   ).textContent =
     active;
 
-    document.getElementById('anActiveSub').textContent    
-    = `${typeof myCrops!=='undefined'?
-    myCrops.filter(c => isCropWateredToday(c)).length
+  document.getElementById('anActiveSub').textContent =
+    `${myCrops.filter(c => isCropWateredToday(c)).length} watered today`;
+
 }
 
 

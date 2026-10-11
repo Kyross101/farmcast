@@ -1310,6 +1310,7 @@ toggleWater = function(id) {
       lsSave(LS_IRR_FIELDS, irrFields);
 
       renderIrrigationPage();
+      renderCropsPage();
 
       saved = true;
 
