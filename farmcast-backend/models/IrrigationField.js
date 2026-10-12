@@ -20,6 +20,14 @@ const IrrigationFieldSchema = new mongoose.Schema({
     default: null
   },
 
+  // Identifies which crop owns an automatically created field.
+  // Manual fields do not need this relationship.
+  sourceCropId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Crop',
+    default: null
+  },
+
   // Actual watering events.
   // Existing fields start with an empty history.
   wateringHistory: {
@@ -50,5 +58,18 @@ const IrrigationFieldSchema = new mongoose.Schema({
   },
 
 }, { timestamps: true });
+
+// Prevent multiple active auto-generated fields for one crop.
+// Manual fields and archived historical fields are excluded.
+IrrigationFieldSchema.index(
+  { user: 1, sourceCropId: 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      sourceCropId: { $type: 'objectId' },
+      archivedAt: null
+    }
+  }
+);
 
 module.exports = mongoose.model('IrrigationField', IrrigationFieldSchema);

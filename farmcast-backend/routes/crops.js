@@ -192,6 +192,7 @@ router.post('/:id/watering', async (req, res) => {
 
         let field;
         let createdField = false;
+        let cropLinkChanged = false;
 
         // Reuse an existing, active irrigation field.
         if (crop.irrigationFieldId) {
@@ -212,52 +213,66 @@ router.post('/:id/watering', async (req, res) => {
           }
 
         } else {
-          const area = Number(crop.area);
+          // Reuse a previous automatic field for this exact crop.
+          field = await IrrigationField.findOne({
+            user: req.user.id,
+            sourceCropId: crop._id,
+            archivedAt: null
+          }).session(session);
 
-          if (
-            !Number.isFinite(area) ||
-            area <= 0
-          ) {
-            const error = new Error(
-              'Crop area is missing or invalid. ' +
-              'Update My Crops before watering.'
-            );
+          if (!field) {
+            const area = Number(crop.area);
 
-            error.status = 400;
-            throw error;
+            if (
+              !Number.isFinite(area) ||
+              area <= 0
+            ) {
+              const error = new Error(
+                'Crop area is missing or invalid. ' +
+                'Update My Crops before watering.'
+              );
+
+              error.status = 400;
+              throw error;
+            }
+
+            const method = String(
+              crop.irrigation || 'Manual'
+            ).trim();
+
+            field = new IrrigationField({
+              user: req.user.id,
+
+              // Stable identity for this crop.
+              sourceCropId: crop._id,
+
+              name: [
+                crop.type,
+                crop.location
+              ].filter(Boolean).join(' — '),
+
+              crop: crop.type,
+              area,
+
+              type:
+                method === 'Rain'
+                  ? 'Rain-fed'
+                  : method,
+
+              // Never invent a watering schedule.
+              freq: null,
+              waterAmt: 0,
+
+              lastWatered: '',
+              wateredToday: false
+            });
+
+            createdField = true;
           }
 
-          const method = String(
-            crop.irrigation || 'Manual'
-          ).trim();
-
-          // Automatically prepare this crop's irrigation entry.
-          field = new IrrigationField({
-            user: req.user.id,
-
-            name: [
-              crop.type,
-              crop.location
-            ].filter(Boolean).join(' — '),
-
-            crop: crop.type,
-            area,
-
-            type:
-              method === 'Rain'
-                ? 'Rain-fed'
-                : method,
-
-            // No schedule or configured water amount was supplied.
-            freq: null,
-            waterAmt: 0,
-
-            lastWatered: '',
-            wateredToday: false
-          });
-
+          // Restore the connection to the existing/new field.
           crop.irrigationFieldId = field._id;
-          createdField = true;
+          cropLinkChanged = true;
         }
 
         // One recorded session per field per date.
@@ -289,7 +304,7 @@ router.post('/:id/watering', async (req, res) => {
 
         await field.save({ session });
 
-        if (createdField) {
+        if (cropLinkChanged) {
           await crop.save({ session });
         }
 
