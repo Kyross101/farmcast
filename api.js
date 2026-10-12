@@ -1442,7 +1442,7 @@ function patchScriptJsWithAPI() {
 
     // My Crops: save watering and automatically create/reuse
     // the related irrigation record.
-    if (pendingWaterCropId && !pendingWaterFieldId) {
+    if (pendingWaterCropId) {
       if (wateringSessionInFlight) return;
 
       const crop = myCrops.find(

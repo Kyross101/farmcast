@@ -28,10 +28,18 @@ const IrrigationFieldSchema = new mongoose.Schema({
     default: null
   },
 
-  // Actual watering events.
-  // Existing fields start with an empty history.
-  wateringHistory: {
+    // Actual watering events.
+    // Existing fields start with an empty history.
+    wateringHistory: {
     type: [{
+      // The specific crop watered.
+      // Null means a field-level watering record.
+      cropId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Crop',
+        default: null
+      },
+
       date: {
         type: String,
         required: true,

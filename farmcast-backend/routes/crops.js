@@ -293,6 +293,9 @@ router.post('/:id/watering', async (req, res) => {
           date,
           liters,
 
+          // Identify the exact crop that received water.
+          cropId: crop._id,
+
           previousLastWatered:
             field.lastWatered || '',
 

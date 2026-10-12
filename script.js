@@ -10087,9 +10087,18 @@ function isCropWateredToday(crop) {
 
   const today = getIrrigationLocalDate();
 
-  return field.wateringHistory.some(
-    entry => entry.date === today
+  const cropId = String(
+    crop._id || crop.id || ''
   );
+
+  // A watering record must explicitly belong to this crop.
+  // Field-level records and other crops do not count.
+  return Boolean(cropId) &&
+    field.wateringHistory.some(
+      entry =>
+        entry.date === today &&
+        String(entry.cropId || '') === cropId
+    );
 }
 
 function renderCropsPage() {
