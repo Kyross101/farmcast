@@ -14767,9 +14767,10 @@ function toggleFieldWater(id) {
 }
 
 let pendingWaterFieldId = null;
+let pendingWaterCropId = null;
 let wateringSessionInFlight = false;
 
-function openWateringSessionModal(id) {
+function openWateringSessionModal(id, cropId = null) {
   if (wateringSessionInFlight) return;
 
   const field = irrFields.find(
@@ -14784,13 +14785,24 @@ function openWateringSessionModal(id) {
     return;
   }
 
-  pendingWaterFieldId = String(field._id || field.id);
   const modal =
     document.getElementById('wateringSessionModal');
 
   if (!modal) {
     toast('Watering form not found.', 'err');
     return;
+  }
+
+  pendingWaterFieldId = String(field._id || field.id);
+  pendingWaterCropId = cropId ? String(cropId) : null;
+
+  const changeButton = document.getElementById(
+    'wateringChangeFieldBtn'
+  );
+
+  if (changeButton) {
+    changeButton.style.display =
+      pendingWaterCropId ? 'inline-flex' : 'none';
   }
 
   document.getElementById(
@@ -14826,11 +14838,25 @@ function closeWateringSessionModal() {
   if (wateringSessionInFlight) return;
 
   pendingWaterFieldId = null;
+  pendingWaterCropId = null;
 
   const modal =
     document.getElementById('wateringSessionModal');
-
   if (modal) modal.style.display = 'none';
+}
+
+// Change the crop's field from the watering form.
+function changeWateringFieldFromModal() {
+  if (
+    wateringSessionInFlight ||
+    cropFieldLinkSaving ||
+    !pendingWaterCropId
+  ) return;
+
+  const cropId = pendingWaterCropId;
+
+  closeWateringSessionModal();
+  openCropFieldLinkModal(cropId);
 }
 
 // Safe fallback; overridden after successful backend loading.

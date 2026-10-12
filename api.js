@@ -1052,7 +1052,10 @@ function patchScriptJsWithAPI() {
 
   // Continue directly to the existing watering recorder.
   // Watering is not recorded until Save Watering is pressed.
-  openWateringSessionModal(fieldId);
+  openWateringSessionModal(
+    fieldId,
+    crop._id || crop.id
+  );
 };
 
   
@@ -1088,7 +1091,10 @@ toggleWater = function(id) {
   }
 
   // Reuse the existing Record Watering form.
-  openWateringSessionModal(field._id || field.id);
+  openWateringSessionModal(
+    field._id || field.id,
+    crop._id || crop.id
+  );
 };
 
   // Open the harvest form instead of deleting the crop.
