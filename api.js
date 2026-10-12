@@ -1058,7 +1058,107 @@ function patchScriptJsWithAPI() {
   );
 };
 
+  // Remove only the crop-to-field association.
+  // Historical watering records remain untouched.
+  stopUsingWateringField = async function() {
+    if (
+      !pendingCropFieldLinkId ||
+      cropFieldLinkSaving
+    ) return;
+
+    const crop = myCrops.find(
+      item =>
+        String(item._id || item.id) ===
+        pendingCropFieldLinkId
+    );
   
+    if (!crop) {
+      toast(
+        'Crop not found. Refresh and try again.',
+        'err'
+      );
+      return;
+    }
+  
+    if (!crop.irrigationFieldId) {
+      toast(
+        'This crop is not using an irrigation field.',
+        'warn'
+      );
+      return;
+    }
+  
+    if (!confirm(
+      `Stop using the current field for ${crop.type}?\n\n` +
+      'Past watering records will remain saved.'
+    )) return;
+  
+    const stopButton = document.getElementById(
+      'cropFieldStopUsingBtn'
+    );
+  
+    const continueButton = document.getElementById(
+      'cropFieldLinkSaveBtn'
+    );
+  
+    cropFieldLinkSaving = true;
+  
+    if (stopButton) stopButton.disabled = true;
+    if (continueButton) continueButton.disabled = true;
+  
+    let saved = false;
+  
+    try {
+      const updated = await fcCrops.update(
+        crop._id || crop.id,
+        {
+          irrigationFieldId: null
+        }
+      );
+  
+      // Verify the backend actually removed the link.
+      if (
+        !updated ||
+        String(updated._id || updated.id) !==
+          String(crop._id || crop.id) ||
+        updated.irrigationFieldId != null
+      ) {
+        throw new Error(
+          'Could not verify that the field was unlinked.'
+        );
+      }
+  
+      Object.assign(crop, updated);
+  
+      lsSave(LS_CROPS, myCrops);
+  
+      saved = true;
+  
+    } catch (error) {
+      toast(
+        `Could not update watering field: ${error.message}. ` +
+        'Refresh before retrying.',
+        'err'
+      );
+  
+    } finally {
+      cropFieldLinkSaving = false;
+  
+      if (stopButton) stopButton.disabled = false;
+      if (continueButton) continueButton.disabled = false;
+    }
+  
+    if (!saved) return;
+  
+    closeCropFieldLinkModal();
+    renderCropsPage();
+  
+    toast(
+      'Crop is no longer using this field. Watering history was kept.',
+      'ok'
+    );
+  };
+
   // My Crops watering uses the linked Irrigation field.
 toggleWater = function(id) {
   if (wateringSessionInFlight) return;
@@ -1080,13 +1180,10 @@ toggleWater = function(id) {
     return;
   }
 
-  // Prevent duplicate field watering for the same date.
+  // Allow changing or removing the field connection
+  // without recording duplicate watering.
   if (isCropWateredToday(crop)) {
-    toast(
-      'Watering is already recorded for this field today. ' +
-      'Open Irrigation Management to undo it.',
-      'ok'
-    );
+    openCropFieldLinkModal(crop._id || crop.id);
     return;
   }
 

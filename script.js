@@ -11181,6 +11181,15 @@ function openCropFieldLinkModal(id) {
     saveBtn.disabled = fields.length === 0;
   }
 
+  const stopBtn = document.getElementById(
+    'cropFieldStopUsingBtn'
+  );
+
+  if (stopBtn) {
+    stopBtn.style.display =
+      currentId ? 'inline-block' : 'none';
+  }
+
   help.textContent =
     fields.length === 0
       ? 'No fields available yet. Open Irrigation and select Add Field first.'
@@ -11203,10 +11212,17 @@ function closeCropFieldLinkModal() {
   if (modal) modal.style.display = 'none';
 }
 
-// Backend-only operation.
+// Backend-only operations.
 function saveCropFieldLink() {
   toast(
     'Backend connection required. No changes saved.',
+    'warn'
+  );
+}
+
+function stopUsingWateringField() {
+  toast(
+    'Connect to FarmCast to change crop watering settings. Nothing changed.',
     'warn'
   );
 }
