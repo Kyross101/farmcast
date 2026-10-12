@@ -11138,7 +11138,7 @@ function openCropFieldLinkModal(id) {
   ).textContent = crop.type;
 
   select.replaceChildren(
-    new Option('Not linked — select later', '')
+    new Option('Choose a field for watering', '')
   );
 
   const fields = irrFields.filter(
@@ -11173,15 +11173,20 @@ function openCropFieldLinkModal(id) {
     'cropFieldLinkHelp'
   );
 
+  const saveBtn = document.getElementById(
+    'cropFieldLinkSaveBtn'
+  );
+
+  if (saveBtn) {
+    saveBtn.disabled = fields.length === 0;
+  }
+
   help.textContent =
-    currentId && !linkedExists
-      ? 'The previously linked field is unavailable. ' +
-        'Select another field or unlink this crop.'
-      : fields.length === 0
-        ? 'No irrigation fields available. ' +
-          'Create one from Irrigation Management.'
-        : 'Choose the field belonging to this crop. ' +
-          'Changing the link does not record watering.';
+    fields.length === 0
+      ? 'No fields available yet. Open Irrigation and select Add Field first.'
+      : currentId && !linkedExists
+        ? 'The previous field is unavailable. Choose an active field to continue.'
+        : 'Choose where you will water this crop. Next, enter the actual liters used.';
 
   modal.style.display = 'flex';
 }

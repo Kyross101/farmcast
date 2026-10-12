@@ -911,40 +911,57 @@ function patchScriptJsWithAPI() {
     ) return;
 
     const crop = myCrops.find(
-      c => String(c._id || c.id) === pendingCropFieldLinkId
+      item =>
+        String(item._id || item.id) ===
+        pendingCropFieldLinkId
     );
-
-    if (!crop) {
-      toast('Crop not found.', 'err');
-      return;
-    }
 
     const select = document.getElementById(
       'cropFieldLinkSelect'
     );
 
-    const fieldId = select.value || null;
+    const fieldId = select?.value || '';
 
-    const oldFieldId =
-      String(crop.irrigationFieldId || '');
-
-    if (oldFieldId === String(fieldId || '')) {
-      closeCropFieldLinkModal();
-      toast('No field changes needed.', 'ok');
+    if (!crop) {
+      toast(
+        'Crop not found. Refresh and try again.',
+        'err'
+      );
       return;
     }
-
-    const button = document.getElementById(
+  
+    // Only allow an existing, active field.
+    const chosenField = irrFields.find(
+      field =>
+        field._id === fieldId &&
+        !field.archivedAt
+    );
+  
+    if (!chosenField) {
+      toast(
+        'Choose an active irrigation field first.',
+        'warn'
+      );
+      return;
+    }
+  
+    const saveButton = document.getElementById(
       'cropFieldLinkSaveBtn'
     );
-
+  
     cropFieldLinkSaving = true;
-
-    if (button) button.disabled = true;
-
+  
+    if (saveButton) {
+      saveButton.disabled = true;
+    }
+  
     let saved = false;
-
+  
     try {
+      // Remember the chosen field only if it changed.
+      if (
+        String(crop.irrigationFieldId || '') !== fieldId
+      ) {
       const updated = await fcCrops.update(
         crop._id || crop.id,
         {
@@ -955,31 +972,42 @@ function patchScriptJsWithAPI() {
       Object.assign(crop, updated);
 
       lsSave(LS_CROPS, myCrops);
-
-      saved = true;
-
-    } catch (err) {
-      toast(
-        `Could not update field link: ${err.message}`,
-        'err'
-      );
-
-    } finally {
-      cropFieldLinkSaving = false;
-
-      if (button) button.disabled = false;
     }
 
-    if (saved) {
-      closeCropFieldLinkModal();
-      renderCropsPage();
+    saved = true;
 
-      toast(
-        'Crop linked irrigation field updated!',
-        'ok'
-      );
+  } catch (error) {
+    toast(
+      `Could not select field: ${error.message}`,
+      'err'
+    );
+
+  } finally {
+    cropFieldLinkSaving = false;
+
+    if (saveButton) {
+      saveButton.disabled = false;
     }
-  };
+  }
+
+  if (!saved) return;
+
+  closeCropFieldLinkModal();
+  renderCropsPage();
+
+  // Do not create a duplicate daily watering record.
+  if (isCropWateredToday(crop)) {
+    toast(
+      'Watering is already recorded for this field today.',
+      'ok'
+    );
+    return;
+  }
+
+  // Continue directly to the existing watering recorder.
+  // Watering is not recorded until Save Watering is pressed.
+  openWateringSessionModal(fieldId);
+};
 
   
   // My Crops watering uses the linked Irrigation field.
