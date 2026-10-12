@@ -10756,10 +10756,9 @@ function renderCropsPage() {
             ${
               cropWateredToday
                 ? 'Watered Today ✓'
-                : linkedIrrigationField
-                  ? 'Water Now'
-                  : 'Link to Water'
+                : 'Water Now'
             }
+
           </button>
 
           <button class="cdc-btn harvest" onclick="markHarvested('${crop.id}')">
@@ -10772,14 +10771,7 @@ function renderCropsPage() {
           </button>
         </div>
 
-        <button
-          type="button"
-          class="cdc-details-toggle"
-          onclick="openCropFieldLinkModal('${escapeHtml(crop._id || crop.id)}')"
-        >
-          <span class="material-symbols-outlined">link</span>
-          ${escapeHtml(getCropLinkedFieldLabel(crop))}
-        </button>
+    
 
         </div> <!-- cdc-crop-details -->
         </div> <!-- crop-detail-card -->
