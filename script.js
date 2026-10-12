@@ -14454,15 +14454,18 @@ function renderIrrigationPage() {
           </button>
 
           <button
-            class="ifi-del-btn"
-            onclick="deleteField('${f.id}')"
+            type="button"
+            class="ifi-btn"
+            onclick="archiveField('${f._id || f.id}')"
+            title="Keep watering history and move this field to Archived Fields"
           >
             <span
               class="material-symbols-outlined"
-              style="font-size:15px"
+              style="font-size:15px;vertical-align:middle"
             >
-              delete
+              archive
             </span>
+            Archive
           </button>
 
         </div>
@@ -14529,8 +14532,25 @@ function renderIrrigationPage() {
                 </span>
   
               </div>
-  
+
             </div>
+
+            <div class="ifi-right">
+              <button
+                type="button"
+                class="ifi-btn"
+                onclick="restoreArchivedField('${field._id || field.id}')"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  style="font-size:15px;vertical-align:middle"
+                >
+                  settings_backup_restore
+                </span>
+                Restore
+              </button>
+            </div>
+
           </div>
         `;
       }).join('');
@@ -14821,10 +14841,18 @@ function saveWateringSession() {
   );
 }
 
-function deleteField(id) {
+let irrigationArchiveActionInFlight = false;
+
+function archiveField(id) {
   toast(
-    'Connect to the FarmCast backend to safely delete ' +
-    'irrigation fields. No data was changed.',
+    'Connect to FarmCast to archive fields. Nothing changed.',
+    'warn'
+  );
+}
+
+function restoreArchivedField(id) {
+  toast(
+    'Connect to FarmCast to restore fields. Nothing changed.',
     'warn'
   );
 }

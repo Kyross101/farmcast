@@ -1413,17 +1413,108 @@ toggleWater = function(id) {
     }
   };
 
-  deleteField = async function(id) {
-    const f = irrFields.find(f => String(f.id) === String(id) || String(f._id) === String(id));
-    if (!f || !confirm(`Delete "${f.name}" from irrigation?`)) return;
-    const mongoId = f._id || f.id;
+  // Archive an active field without losing history.
+  archiveField = async function(id) {
+    if (irrigationArchiveActionInFlight) return;
+
+    const field = irrFields.find(
+      item => String(item._id || item.id) === String(id)
+    );
+  
+    if (!field || field.archivedAt) return;
+  
+    const linkedCrop = myCrops.some(
+      crop =>
+        String(crop.irrigationFieldId || '') ===
+        String(field._id || field.id)
+    );
+  
+    if (linkedCrop) {
+      toast(
+        'This field is still used by a crop. ' +
+        'Change that crop’s watering field before archiving.',
+        'warn'
+      );
+      return;
+    }
+  
+    if (!confirm(
+      `Archive "${field.name}"?\n\n` +
+      'The field will be removed from the active watering schedule. ' +
+     'Its watering history will be kept.'
+    )) return;
+  
+    irrigationArchiveActionInFlight = true;
+  
     try {
-      await fcIrrigation.delete(mongoId);
-      irrFields = irrFields.filter(f => String(f._id) !== String(mongoId));
+      const updated = await fcIrrigation.archive(
+        field._id || field.id
+      );
+  
+      Object.assign(field, updated);
+  
+      lsSave(LS_IRR_FIELDS, irrFields);
+  
       renderIrrigationPage();
-      toast(`${f.name} deleted.`, 'warn');
-    } catch (err) {
-      toast(`Error: ${err.message}`, 'err');
+      renderCropsPage();
+      renderFarmAnalytics();
+  
+      toast(
+        `${field.name} archived. Watering history preserved.`,
+        'ok'
+      );
+  
+    } catch (error) {
+      toast(
+        `Could not confirm archive: ${error.message}. ` +
+        'Refresh before retrying.',
+        'err'
+      );
+  
+    } finally {
+      irrigationArchiveActionInFlight = false;
+    }
+  };
+
+  // Restore an archived irrigation field.
+  restoreArchivedField = async function(id) {
+    if (irrigationArchiveActionInFlight) return;
+  
+    const field = irrFields.find(
+      item => String(item._id || item.id) === String(id)
+    );
+ 
+    if (!field || !field.archivedAt) return;
+  
+    irrigationArchiveActionInFlight = true;
+  
+    try {
+      const updated = await fcIrrigation.restore(
+        field._id || field.id
+      );
+  
+      Object.assign(field, updated);
+
+      lsSave(LS_IRR_FIELDS, irrFields);
+
+      renderIrrigationPage();
+      renderCropsPage();
+      renderFarmAnalytics();
+  
+      toast(
+        `${field.name} restored to active fields.`,
+        'ok'
+      );
+  
+    } catch (error) {
+      toast(
+        `Could not confirm restore: ${error.message}. ` +
+        'Refresh before retrying.',
+        'err'
+      );
+  
+    } finally {
+      irrigationArchiveActionInFlight = false;
     }
   };
 
