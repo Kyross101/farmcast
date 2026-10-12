@@ -347,6 +347,74 @@ router.post('/:id/archive', async (req, res) => {
   }
 });
 
+// Restore an archived field without deleting its history.
+router.post('/:id/restore', async (req, res) => {
+  const mongoose = require('mongoose');
+
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid irrigation field ID.'
+    });
+  }
+
+  try {
+    // Only the owner can restore an archived field.
+    const restored = await IrrigationField.findOneAndUpdate(
+      {
+        _id: req.params.id,
+        user: req.user.id,
+        archivedAt: {
+          $exists: true,
+          $ne: null
+        }
+      },
+      {
+        $set: {
+          archivedAt: null,
+          wateredToday: false
+        }
+      },
+      {
+        returnDocument: 'after',
+        runValidators: true
+      }
+    );
+
+    if (restored) {
+      return res.json({
+        message: 'Irrigation field restored.',
+        field: restored
+      });
+    }
+
+    // Do not modify an already-active field.
+    const existing = await IrrigationField.findOne({
+      _id: req.params.id,
+      user: req.user.id
+    });
+
+    if (!existing) {
+      return res.status(404).json({
+        message: 'Irrigation field not found.'
+      });
+    }
+
+    return res.json({
+      message: 'Irrigation field is already active.',
+      field: existing
+    });
+
+  } catch (error) {
+    console.error('Irrigation restore error:', error);
+
+    return res.status(500).json({
+      message:
+        'Could not confirm field restoration. ' +
+        'Refresh before retrying.'
+    });
+  }
+});
+
 // PUT update field — secure and account-specific
 router.put('/:id', async (req, res) => {
   try {

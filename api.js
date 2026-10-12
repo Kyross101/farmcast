@@ -359,6 +359,52 @@ const fcIrrigation = {
     });
     return { ...data.field, id: data.field._id };
   },
+
+  async archive(id) {
+    const data = await apiFetch(
+      `/irrigation/${encodeURIComponent(id)}/archive`,
+      {
+        method: 'POST'
+      }
+    );
+
+    if (
+      !data.field?._id ||
+      String(data.field._id) !== String(id)
+    ) {
+      throw new Error(
+        'Archive response could not be verified.'
+      );
+    }
+  
+    return {
+      ...data.field,
+      id: data.field._id
+    };
+  },
+
+  async restore(id) {
+    const data = await apiFetch(
+      `/irrigation/${encodeURIComponent(id)}/restore`,
+      {
+        method: 'POST'
+      }
+    );
+
+    if (
+      !data.field?._id ||
+      String(data.field._id) !== String(id)
+    ) {
+      throw new Error(
+        'Restore response could not be verified.'
+      );
+    }
+
+    return {
+      ...data.field,
+      id: data.field._id
+    };
+  },
   
   async recordWatering(id, wateringData) {
     const data = await apiFetch(
