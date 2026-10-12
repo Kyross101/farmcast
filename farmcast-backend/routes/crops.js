@@ -17,8 +17,12 @@ const authMW = require('../middleware/auth');
 // All routes require authentication
 router.use(authMW);
 
-// Verify that a linked irrigation field belongs to the user.
-async function resolveOwnedIrrigationFieldId(value, userId) {
+// Verify irrigation field ownership and crop-specific access.
+async function resolveOwnedIrrigationFieldId(
+  value,
+  userId,
+  cropId = null
+) {
   // Allow crops to have no linked field.
   if (value === null || value === undefined || value === '') {
     return null;
@@ -37,13 +41,31 @@ async function resolveOwnedIrrigationFieldId(value, userId) {
     _id: value,
     user: userId,
     archivedAt: null
-  }).select('_id');
+  }).select('_id sourceCropId');
 
   if (!field) {
     const error = new Error(
       'Irrigation field not found in your account.'
     );
     error.status = 404;
+    throw error;
+  }
+
+  // Automatically created fields belong to one specific crop.
+  // Manual fields have no sourceCropId and may be shared.
+  if (
+    field.sourceCropId &&
+    (
+      !cropId ||
+      String(field.sourceCropId) !== String(cropId)
+    )
+  ) {
+    const error = new Error(
+      'This irrigation field is reserved for another crop. ' +
+      'Choose a manual field or the correct crop field.'
+    );
+
+    error.status = 409;
     throw error;
   }
 
@@ -206,6 +228,20 @@ router.post('/:id/watering', async (req, res) => {
             const error = new Error(
               'The selected crop has an unavailable irrigation field. ' +
               'Review the crop watering settings before retrying.'
+            );
+
+            error.status = 409;
+            throw error;
+          }
+
+          // Defend against incorrect existing crop-to-field links.
+          if (
+            field.sourceCropId &&
+            String(field.sourceCropId) !== String(crop._id)
+          ) {
+            const error = new Error(
+              'This automatic irrigation field belongs to another crop. ' +
+              'Change the crop watering settings before retrying.'
             );
 
             error.status = 409;
@@ -387,7 +423,8 @@ router.put('/:id', async (req, res) => {
       updates.irrigationFieldId =
         await resolveOwnedIrrigationFieldId(
           updates.irrigationFieldId,
-          req.user.id
+          req.user.id,
+          req.params.id
         );
     }
 
