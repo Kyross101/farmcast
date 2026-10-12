@@ -281,6 +281,29 @@ const fcCrops = {
     return { ...data.crop, id: data.crop._id };
   },
 
+  async recordWatering(cropId, wateringData) {
+    const data = await apiFetch(
+      `/crops/${encodeURIComponent(cropId)}/watering`,
+      {
+        method: 'POST',
+        body: JSON.stringify(wateringData)
+      }
+    );
+  
+    if (
+      !data.crop?._id ||
+      String(data.crop._id) !== String(cropId) ||
+      !data.field?._id
+    ) {
+      throw new Error(
+        'Watering response could not be verified. ' +
+        'Refresh before retrying.'
+      );
+    }
+  
+    return data;
+  },
+
   async completeHarvest(id, harvestData) {
     const data = await apiFetch(
       `/crops/${encodeURIComponent(id)}/harvest`,
@@ -1160,11 +1183,12 @@ function patchScriptJsWithAPI() {
   };
 
   // My Crops watering uses the linked Irrigation field.
-toggleWater = function(id) {
+  toggleWater = function(id) {
   if (wateringSessionInFlight) return;
 
   const crop = myCrops.find(
-    c => String(c._id || c.id) === String(id)
+    item =>
+      String(item._id || item.id) === String(id)
   );
 
   if (!crop) {
@@ -1172,26 +1196,17 @@ toggleWater = function(id) {
     return;
   }
 
-  const field = getCropLinkedIrrigationField(crop);
-
-  // No linked field: let the farmer choose one.
-  if (!field) {
-    openCropFieldLinkModal(crop._id || crop.id);
-    return;
-  }
-
-  // Allow changing or removing the field connection
-  // without recording duplicate watering.
   if (isCropWateredToday(crop)) {
-    openCropFieldLinkModal(crop._id || crop.id);
+    toast(
+      'Watering already recorded for this field today. ' +
+      'Use Irrigation to review the existing record.',
+      'ok'
+    );
     return;
   }
 
-  // Reuse the existing Record Watering form.
-  openWateringSessionModal(
-    field._id || field.id,
-    crop._id || crop.id
-  );
+  // Direct watering — no mandatory field selection.
+  openCropWateringModal(crop._id || crop.id);
 };
 
   // Open the harvest form instead of deleting the crop.
@@ -1424,6 +1439,135 @@ toggleWater = function(id) {
   };
 
     saveWateringSession = async function() {
+
+    // My Crops: save watering and automatically create/reuse
+    // the related irrigation record.
+    if (pendingWaterCropId && !pendingWaterFieldId) {
+      if (wateringSessionInFlight) return;
+
+      const crop = myCrops.find(
+        item =>
+          String(item._id || item.id) ===
+          pendingWaterCropId
+      );
+
+      if (!crop) {
+        toast(
+          'Crop not found. Refresh and try again.',
+          'err'
+        );
+        return;
+      }
+
+      const input = document.getElementById(
+        'wateringActualLiters'
+      );
+
+      const raw = input?.value.trim() || '';
+      const liters = Number(raw);
+
+      if (
+        raw === '' ||
+        !Number.isFinite(liters) ||
+        liters <= 0
+      ) {
+        toast(
+          'Enter the actual water used in liters.',
+          'warn'
+        );
+        return;
+      }
+
+      const saveButton = document.getElementById(
+        'wateringSessionSaveBtn'
+      );
+
+      wateringSessionInFlight = true;
+
+      if (saveButton) {
+        saveButton.disabled = true;
+      }
+
+      let result;
+
+      try {
+        result = await fcCrops.recordWatering(
+          crop._id || crop.id,
+          {
+            date: getIrrigationLocalDate(),
+            liters
+          }
+        );
+
+      } catch (error) {
+        toast(
+          `Could not confirm watering: ${error.message} ` +
+          'Refresh your records before retrying.',
+          'err'
+        );
+
+      } finally {
+        wateringSessionInFlight = false;
+
+        if (saveButton) {
+          saveButton.disabled = false;
+        }
+      }
+
+      if (!result) return;
+
+      // Update the selected crop.
+      Object.assign(crop, {
+        ...result.crop,
+        id: result.crop._id
+      });
+
+      // Add or update the corresponding irrigation entry.
+      const savedField = {
+        ...result.field,
+        id: result.field._id
+      };
+
+      const fieldIndex = irrFields.findIndex(
+        item =>
+          String(item._id || item.id) ===
+          String(savedField._id)
+      );
+
+      if (fieldIndex === -1) {
+        irrFields.unshift(savedField);
+
+      } else {
+        Object.assign(
+          irrFields[fieldIndex],
+          savedField
+        );
+      }
+
+      lsSave(LS_CROPS, myCrops);
+      lsSave(LS_IRR_FIELDS, irrFields);
+
+      closeWateringSessionModal();
+
+      try {
+        renderCropsPage();
+        renderIrrigationPage();
+        renderFarmAnalytics();
+
+      } catch (renderError) {
+        console.error(
+          'Watering saved; dashboard refresh error:',
+          renderError
+        );
+      }
+
+      toast(
+        'Watering saved in My Crops and Irrigation.',
+        'ok'
+      );
+
+      return;
+    }
     if (!pendingWaterFieldId || wateringSessionInFlight) {
       return;
     }

@@ -4648,8 +4648,15 @@
     <div class="modal-body">
 
       <div class="form-group">
-        <label>Field</label>
+
+        <label id="wateringSessionFieldLabel">Field</label>
+
         <div id="wateringSessionFieldName"></div>
+
+        <div
+          id="wateringCropSummary"
+          style="display:none;margin-top:8px;font-size:.79rem;line-height:1.5;color:var(--text-muted)"
+        ></div>
 
         <button
           type="button"
@@ -4774,7 +4781,7 @@
       >
         Stop Using This Field
       </button>
-      
+
     </div>
 
     <div class="modal-footer">

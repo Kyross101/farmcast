@@ -14195,6 +14195,16 @@ function getActiveIrrigationFields() {
     : [];
 }
 
+function hasIrrigationSchedule(field) {
+  return (
+    field.freq !== null &&
+    field.freq !== undefined &&
+    String(field.freq).trim() !== '' &&
+    Number.isInteger(Number(field.freq)) &&
+    Number(field.freq) > 0
+  );
+}
+
 function renderIrrigationPage() {
   const today = getIrrigationLocalDate();
 
@@ -14229,10 +14239,23 @@ function renderIrrigationPage() {
 
   const dueToday = activeFields.filter(f => {
 
-    if (f.wateredToday) return false;
-    const last = new Date(f.lastWatered);
-    const due  = new Date(last.getTime() + f.freq * 86400000);
-    return due <= new Date();
+  if (
+    f.wateredToday ||
+    !hasIrrigationSchedule(f)
+  ) return false;
+
+  const last = new Date(f.lastWatered);
+
+  if (Number.isNaN(last.getTime())) {
+    return false;
+  }
+  
+  const due = new Date(
+    last.getTime() + Number(f.freq) * 86400000
+  );
+
+  return due <= new Date();
+
   }).length;
 
   document.getElementById('irrTotalFields').textContent = activeFields.length;
@@ -14345,11 +14368,33 @@ function renderIrrigationPage() {
   // Field list
   document.getElementById('irrFieldList').innerHTML = activeFields.map(f => {
 
-    const last = new Date(f.lastWatered);
-    const due  = new Date(last.getTime() + f.freq * 86400000);
-    const isDue = due <= new Date() && !f.wateredToday;
-    const daysAgo = Math.floor((new Date() - last) / 86400000);
-    const totalL = f.waterAmt;
+  const last = new Date(f.lastWatered);
+
+  const hasSchedule = hasIrrigationSchedule(f);
+
+  const due =
+    hasSchedule && !Number.isNaN(last.getTime())
+      ? new Date(
+          last.getTime() +
+          Number(f.freq) * 86400000
+        )
+      : null;
+  
+  const isDue = Boolean(
+    due &&
+    due <= new Date() &&
+    !f.wateredToday
+  );
+  
+  const daysAgo = Math.floor(
+    (new Date() - last) / 86400000
+  );
+  
+  const totalL =
+    Number(f.waterAmt) > 0
+      ? Number(f.waterAmt)
+      : null;
+  
     const hasRecordedToday =
       Array.isArray(f.wateringHistory) &&
       f.wateringHistory.some(
@@ -14420,7 +14465,9 @@ function renderIrrigationPage() {
             }
 
             <span class="ifi-freq">
-              Every ${f.freq} day${f.freq > 1 ? 's' : ''}
+              ${hasSchedule
+                ? `Every ${f.freq} day${Number(f.freq) > 1 ? 's' : ''}`
+                : 'No schedule set'}
             </span>
 
           </div>
@@ -14434,11 +14481,11 @@ function renderIrrigationPage() {
             f.type !== 'Rain-fed'
               ? `
                 <div class="ifi-amount">
-                  ${totalL}L
+                  ${totalL === null ? '—' : `${totalL}L`}
                 </div>
 
                 <div class="ifi-amt-lbl">
-                  per session
+                  ${totalL === null ? 'not configured' : 'per session'}
                 </div>
               `
               : `
@@ -14576,9 +14623,25 @@ function renderIrrigationPage() {
   const scheduled = activeFields
 
     .filter(f => {
+
+      if (f.wateredToday) return true;
+
+      if (!hasIrrigationSchedule(f)) {
+        return false;
+      }
+
       const last = new Date(f.lastWatered);
-      const due  = new Date(last.getTime() + f.freq * 86400000);
-      return due <= new Date() || f.wateredToday;
+
+      if (Number.isNaN(last.getTime())) {
+        return false;
+      }
+
+      const due = new Date(
+        last.getTime() + Number(f.freq) * 86400000
+      );
+
+      return due <= new Date();
+
     })
     .sort((a,b) => a.wateredToday - b.wateredToday);
 
@@ -14822,6 +14885,18 @@ function openWateringSessionModal(id, cropId = null) {
   }
 
   document.getElementById(
+    'wateringSessionFieldLabel'
+  ).textContent = 'Field';
+
+  const cropSummary = document.getElementById(
+    'wateringCropSummary'
+  );
+
+  if (cropSummary) {
+    cropSummary.style.display = 'none';
+  }
+  
+  document.getElementById(
     'wateringSessionFieldName'
   ).textContent = field.name;
 
@@ -14845,6 +14920,93 @@ function openWateringSessionModal(id, cropId = null) {
       ? `Configured per-session amount: ${suggested} L. ` +
         'Enter the amount actually used.'
       : 'Enter the actual amount of water used.';
+
+  modal.style.display = 'flex';
+  litersInput.focus();
+}
+
+// Open watering directly from My Crops.
+// No irrigation field selection is required.
+function openCropWateringModal(id) {
+  if (wateringSessionInFlight) return;
+
+  const crop = myCrops.find(
+    item =>
+      String(item._id || item.id) === String(id)
+  );
+
+  if (!crop || !crop._id) {
+    toast(
+      'Crop record unavailable. Refresh and try again.',
+      'warn'
+    );
+    return;
+  }
+
+  const modal = document.getElementById(
+    'wateringSessionModal'
+  );
+
+  const litersInput = document.getElementById(
+    'wateringActualLiters'
+  );
+
+  if (!modal || !litersInput) {
+    toast('Watering form not found.', 'err');
+    return;
+  }
+
+  pendingWaterFieldId = null;
+  pendingWaterCropId = String(crop._id);
+
+  document.getElementById(
+    'wateringSessionFieldLabel'
+  ).textContent = 'Crop';
+
+  document.getElementById(
+    'wateringSessionFieldName'
+  ).textContent = [
+    crop.type,
+    crop.variety
+  ].filter(Boolean).join(' — ');
+
+  const summary = document.getElementById(
+    'wateringCropSummary'
+  );
+
+  if (summary) {
+    summary.style.display = '';
+
+    summary.textContent =
+      `Location: ${crop.location || '—'} · ` +
+      `Area: ${crop.area} m² · ` +
+      `Method: ${crop.irrigation || 'Manual'}`;
+  }
+
+  // Optional management for an existing field connection.
+  const changeButton = document.getElementById(
+    'wateringChangeFieldBtn'
+  );
+
+  if (changeButton) {
+    changeButton.style.display =
+      crop.irrigationFieldId
+        ? 'inline-flex'
+        : 'none';
+  }
+
+  document.getElementById(
+    'wateringSessionDate'
+  ).textContent = getIrrigationLocalDate();
+
+  document.getElementById(
+    'wateringSessionHint'
+  ).textContent =
+    'Enter the liters you actually used. ' +
+    'FarmCast will also save this record in Irrigation. ' +
+    'No separate field setup needed.';
+
+  litersInput.value = '';
 
   modal.style.display = 'flex';
   litersInput.focus();
