@@ -126,6 +126,209 @@ router.post('/', async (req, res) => {
 
 });
 
+// Automatically record watering from My Crops.
+// Create an irrigation field only when the crop has none.
+router.post('/:id/watering', async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid crop ID.'
+    });
+  }
+
+  const input =
+    req.body &&
+    typeof req.body === 'object' &&
+    !Array.isArray(req.body)
+      ? req.body
+      : {};
+
+  const date =
+    typeof input.date === 'string'
+      ? input.date.trim()
+      : '';
+
+  const parsed = new Date(`${date}T00:00:00Z`);
+
+  const validDate =
+    /^\d{4}-\d{2}-\d{2}$/.test(date) &&
+    !Number.isNaN(parsed.getTime()) &&
+    parsed.toISOString().slice(0, 10) === date;
+
+  const rawLiters = input.liters;
+  const liters = Number(rawLiters);
+
+  if (
+    !validDate ||
+    (
+      typeof rawLiters !== 'number' &&
+      typeof rawLiters !== 'string'
+    ) ||
+    String(rawLiters).trim() === '' ||
+    !Number.isFinite(liters) ||
+    liters <= 0
+  ) {
+    return res.status(400).json({
+      message:
+        'Enter a valid watering date and actual liters used.'
+    });
+  }
+
+  try {
+    const result = await mongoose.connection.transaction(
+      async session => {
+        const crop = await Crop.findOne({
+          _id: req.params.id,
+          user: req.user.id
+        }).session(session);
+
+        if (!crop) {
+          const error = new Error(
+            'Crop not found in your account.'
+          );
+
+          error.status = 404;
+          throw error;
+        }
+
+        let field;
+        let createdField = false;
+
+        // Reuse an existing, active irrigation field.
+        if (crop.irrigationFieldId) {
+          field = await IrrigationField.findOne({
+            _id: crop.irrigationFieldId,
+            user: req.user.id,
+            archivedAt: null
+          }).session(session);
+
+          if (!field) {
+            const error = new Error(
+              'The selected crop has an unavailable irrigation field. ' +
+              'Review the crop watering settings before retrying.'
+            );
+
+            error.status = 409;
+            throw error;
+          }
+
+        } else {
+          const area = Number(crop.area);
+
+          if (
+            !Number.isFinite(area) ||
+            area <= 0
+          ) {
+            const error = new Error(
+              'Crop area is missing or invalid. ' +
+              'Update My Crops before watering.'
+            );
+
+            error.status = 400;
+            throw error;
+          }
+
+          const method = String(
+            crop.irrigation || 'Manual'
+          ).trim();
+
+          // Automatically prepare this crop's irrigation entry.
+          field = new IrrigationField({
+            user: req.user.id,
+
+            name: [
+              crop.type,
+              crop.location
+            ].filter(Boolean).join(' — '),
+
+            crop: crop.type,
+            area,
+
+            type:
+              method === 'Rain'
+                ? 'Rain-fed'
+                : method,
+
+            // No schedule or configured water amount was supplied.
+            freq: null,
+            waterAmt: 0,
+
+            lastWatered: '',
+            wateredToday: false
+          });
+
+          crop.irrigationFieldId = field._id;
+          createdField = true;
+        }
+
+        // One recorded session per field per date.
+        if (
+          field.wateringHistory.some(
+            entry => entry.date === date
+          )
+        ) {
+          const error = new Error(
+            'Watering was already recorded for this field on this date.'
+          );
+
+          error.status = 409;
+          throw error;
+        }
+
+        field.wateringHistory.push({
+          date,
+          liters,
+
+          previousLastWatered:
+            field.lastWatered || '',
+
+          recordedAt: new Date()
+        });
+
+        field.lastWatered = date;
+        field.wateredToday = true;
+
+        await field.save({ session });
+
+        if (createdField) {
+          await crop.save({ session });
+        }
+
+        return {
+          crop: crop.toObject(),
+          field: field.toObject(),
+          createdField
+        };
+      }
+    );
+
+    return res
+      .status(result.createdField ? 201 : 200)
+      .json({
+        message:
+          'Watering recorded and synced to Irrigation.',
+        ...result
+      });
+
+  } catch (error) {
+    if (error.status) {
+      return res.status(error.status).json({
+        message: error.message
+      });
+    }
+
+    console.error(
+      'Automatic crop watering error:',
+      error
+    );
+
+    return res.status(500).json({
+      message:
+        'Could not confirm watering. ' +
+        'Refresh your records before retrying.'
+    });
+  }
+});
+
 // PUT update crop (edit details or toggle watered)
 router.put('/:id', async (req, res) => {
   try {
