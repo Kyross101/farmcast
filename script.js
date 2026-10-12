@@ -11053,6 +11053,29 @@ document
     }
   });
 
+// Determine which irrigation fields a crop may select.
+// Manual fields can be shared.
+// Automatic fields belong only to their original crop.
+function isSelectableCropIrrigationField(field, cropId = null) {
+  if (
+    !field ||
+    typeof field._id !== 'string' ||
+    !/^[a-fA-F0-9]{24}$/.test(field._id) ||
+    field.archivedAt
+  ) {
+    return false;
+  }
+
+  const sourceCropId = String(field.sourceCropId || '');
+
+  // A manual field has no source crop.
+  if (!sourceCropId) return true;
+
+  // An automatic field requires a matching crop ID.
+  return Boolean(cropId) &&
+    sourceCropId === String(cropId);
+}
+
 function populateCropIrrigationFieldSelect() {
   const select = document.getElementById(
     'cropIrrigationFieldId'
@@ -11065,14 +11088,12 @@ function populateCropIrrigationFieldSelect() {
     new Option('Not linked — select later', '')
   );
 
-  // Only show MongoDB-backed irrigation fields.
+  // A newly created crop has no MongoDB ID yet.
+  // Show manual fields only, never another crop's
+  // automatically generated irrigation field.
   const availableFields = Array.isArray(irrFields)
     ? irrFields.filter(field =>
-
-        typeof field._id === 'string' &&
-        /^[a-fA-F0-9]{24}$/.test(field._id) &&
-        !field.archivedAt
-
+        isSelectableCropIrrigationField(field)
       )
     : [];
 
@@ -11150,13 +11171,13 @@ function openCropFieldLinkModal(id) {
     new Option('Choose a field for watering', '')
   );
 
-  const fields = irrFields.filter(
-    field =>
-
-      typeof field._id === 'string' &&
-      /^[a-fA-F0-9]{24}$/.test(field._id) &&
-      !field.archivedAt
-
+  // Show manual fields and the selected crop's
+  // own automatic irrigation field only.
+  const fields = irrFields.filter(field =>
+    isSelectableCropIrrigationField(
+      field,
+      crop._id || crop.id
+    )
   );
 
   fields.forEach(field => {
@@ -11199,13 +11220,12 @@ function openCropFieldLinkModal(id) {
       currentId ? 'inline-block' : 'none';
   }
 
-  help.textContent =
-    fields.length === 0
-      ? 'No fields available yet. Open Irrigation and select Add Field first.'
-      : currentId && !linkedExists
-        ? 'The previous field is unavailable. Choose an active field to continue.'
-        : 'Choose where you will water this crop. Next, enter the actual liters used.';
-
+    help.textContent =
+    currentId && !linkedExists
+      ? 'The previous field is unavailable. Choose another field, or use Water Now to record watering.'
+      : fields.length === 0
+        ? 'No suitable fields available. You can still use Water Now without setting up a field.'
+        : 'Choose a field to use for this crop. You can also record watering directly with Water Now.';
   modal.style.display = 'flex';
 }
 
