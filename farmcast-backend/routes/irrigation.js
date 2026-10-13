@@ -201,47 +201,132 @@ router.post('/:id/watering', async (req, res) => {
       );
 
       if (action === 'water') {
-        // Maximum one recorded session per field per date.
-        // Repeated requests do not create duplicate entries.
+
+        // One watering session per field per date.
+        // Repeated requests must not change existing records.
         if (!existing) {
+
+          // Auto-generated fields must respect the
+          // original crop's planting date.
+          if (field.sourceCropId) {
+            const sourceCrop = await Crop.findOne({
+              _id: field.sourceCropId,
+              user: req.user.id
+            })
+              .select('planted')
+              .session(session);
+
+            if (!sourceCrop) {
+              const error = new Error(
+                'The original crop is no longer active. ' +
+                'Review this irrigation field before watering.'
+              );
+
+              error.status = 409;
+              throw error;
+            }
+
+            const plantedDate =
+              typeof sourceCrop.planted === 'string'
+                ? sourceCrop.planted.trim()
+                : '';
+
+            const parsedPlanted = new Date(
+              `${plantedDate}T00:00:00Z`
+            );
+
+            const validPlantedDate =
+              /^\d{4}-\d{2}-\d{2}$/.test(plantedDate) &&
+              !Number.isNaN(parsedPlanted.getTime()) &&
+              parsedPlanted.toISOString().slice(0, 10) ===
+                plantedDate;
+
+            if (!validPlantedDate) {
+              const error = new Error(
+                'Crop planting date is invalid. ' +
+                'Update My Crops before watering.'
+              );
+
+              error.status = 409;
+              throw error;
+            }
+
+            if (date < plantedDate) {
+              const error = new Error(
+                'Watering date cannot be earlier than ' +
+                'the crop planting date.'
+              );
+
+              error.status = 400;
+              throw error;
+            }
+          }
+
+          const previousLastWatered =
+            field.lastWatered || '';
+
           field.wateringHistory.push({
             date,
             liters,
 
-            // Automatically attribute watering to the crop
-            // only when this field was created for that crop.
-            // Manual shared fields remain field-level records.
             cropId: field.sourceCropId || null,
 
-            previousLastWatered: field.lastWatered || '',
+            previousLastWatered,
             recordedAt: new Date()
           });
+
+          // Never move the latest watering date backward.
+          if (
+            !previousLastWatered ||
+            date > previousLastWatered
+          ) {
+            field.lastWatered = date;
+          }
+
+          // Existing compatibility flag.
+          // Local-date accuracy will be handled separately.
+          field.wateredToday = true;
         }
 
-        field.lastWatered = date;
-        field.wateredToday = true;
-
       } else {
+
         if (!existing) {
           const error = new Error(
             'No recorded watering session for this date.'
           );
+
           error.status = 409;
           throw error;
         }
 
-        if (field.lastWatered !== date) {
+        // Undo only the most recently ADDED session.
+        // This preserves the previousLastWatered snapshot,
+        // even when older dates were added later.
+        const latestEntry =
+          field.wateringHistory[
+            field.wateringHistory.length - 1
+          ];
+
+        if (
+          String(latestEntry?._id) !==
+          String(existing._id)
+        ) {
           const error = new Error(
-            'Only the latest watering session can be undone.'
+            'Only the most recently recorded watering ' +
+            'session can be undone.'
           );
+
           error.status = 409;
           throw error;
         }
 
+        // Restore the date from before this session.
         field.lastWatered =
           existing.previousLastWatered || '';
 
         field.wateredToday = false;
+
+        // Remove only the selected event.
         field.wateringHistory.pull(existing._id);
       }
 
