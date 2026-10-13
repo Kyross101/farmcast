@@ -1185,12 +1185,61 @@ let tasks = [
 ];
 
 // ── TOAST ──
-function toast(msg, type='ok'){
+function toast(msg, type = 'ok') {
+  const root = document.getElementById(
+    'toast-root'
+  );
+
+  if (!root) return;
+
+  const message = String(msg);
+  const key = `${type}:${message}`;
+
+  // Do not show multiple identical active notifications.
+  const alreadyVisible = Array.from(
+    root.querySelectorAll('.toast')
+  ).some(el =>
+    el.dataset.toastKey === key
+  );
+
+  if (alreadyVisible) return;
+
   const el = document.createElement('div');
-  el.className = `toast ${type==='warn'?' warn':type==='err'?' err':''}`;
-  el.innerHTML = `<span class="material-symbols-outlined" style="font-size:18px">${type==='ok'?'check_circle':type==='warn'?'warning':'error'}</span>${msg}`;
-  document.getElementById('toast-root').appendChild(el);
-  setTimeout(()=>el.remove(), 3500);
+
+  el.className = `toast ${
+    type === 'warn'
+      ? ' warn'
+      : type === 'err'
+        ? ' err'
+        : ''
+  }`;
+
+  el.dataset.toastKey = key;
+
+  const icon = document.createElement('span');
+
+  icon.className =
+    'material-symbols-outlined';
+
+  icon.style.fontSize = '18px';
+
+  icon.textContent =
+    type === 'ok'
+      ? 'check_circle'
+      : type === 'warn'
+        ? 'warning'
+        : 'error';
+
+  el.appendChild(icon);
+
+  // Treat all messages as plain text, not executable HTML.
+  el.appendChild(
+    document.createTextNode(message)
+  );
+
+  root.appendChild(el);
+
+  setTimeout(() => el.remove(), 3500);
 }
 
 // ── NAV ──
@@ -14390,6 +14439,70 @@ function renderIrrigationHistoryDetails(
         ? entry.notes.trim()
         : '';
 
+    const fieldIdText = String(
+      field._id || field.id || ''
+    );
+
+    const linkedCrops = Array.isArray(myCrops)
+      ? myCrops.filter(crop =>
+          String(crop.irrigationFieldId || '') ===
+          fieldIdText
+        )
+      : [];
+
+    const confirmedCrop = entry.cropId
+      ? myCrops.find(c =>
+          String(c._id || c.id) ===
+          String(entry.cropId)
+        )
+      : null;
+
+    const attributionLabel = entry.cropId
+      ? 'Credited to: ' +
+        escapeHtml(
+          confirmedCrop?.type || 'Previously linked crop'
+        )
+      : 'Field only — not credited to a crop';
+
+    const canAssign =
+      !entry.cropId &&
+      !field.archivedAt &&
+      /^[a-f0-9]{24}$/i.test(fieldIdText) &&
+      linkedCrops.length > 0;
+
+    const cropOptions = linkedCrops.map(c =>
+      '<option value="' +
+        escapeHtml(c._id || c.id) + '">' +
+        escapeHtml(c.type || 'Crop') +
+        ' — ' +
+        escapeHtml(c.location || 'Farm') +
+      '</option>'
+    ).join('');
+
+    const attributionHtml =
+      '<div class="ifi-history-meta">' +
+        attributionLabel +
+      '</div>' +
+      (
+        canAssign
+          ? '<div class="ifi-history-assign" ' +
+            'style="display:flex;flex-wrap:wrap;' +
+            'align-items:center;gap:8px;margin-top:8px">' +
+            '<select aria-label="Crop for watering" ' +
+            'style="min-width:130px;flex:1">' +
+            '<option value="">Choose crop</option>' +
+            cropOptions +
+            '</select>' +
+            '<button type="button" class="ifi-btn" ' +
+            'onclick="' +
+            'attributeHistoryWatering(\'' +
+            fieldIdText + '\',\'' +
+            entry.date + '\',this)">' +
+            'Confirm crop</button>' +
+            '</div>'
+          : ''
+      );
+
     return `
       <div class="ifi-history-record">
 
@@ -14434,6 +14547,8 @@ function renderIrrigationHistoryDetails(
             : ''
         }
 
+        ${attributionHtml}
+
       </div>
     `;
   }).join('');
@@ -14460,6 +14575,13 @@ function renderIrrigationHistoryDetails(
       </div>
     </details>
   `;
+}
+
+function attributeHistoryWatering() {
+  toast(
+    'Connect to FarmCast before attributing crop watering.',
+    'warn'
+  );
 }
 
 function renderIrrigationPage() {
@@ -15364,6 +15486,53 @@ function openWateringSessionModal(id, cropId = null) {
       pendingWaterCropId ? 'inline-flex' : 'none';
   }
 
+  const cropGroup = document.getElementById(
+    'wateringTargetCropGroup'
+  );
+
+  const cropSelect = document.getElementById(
+    'wateringTargetCrop'
+  );
+
+  if (cropGroup && cropSelect) {
+    const linkedCrops = myCrops.filter(crop =>
+      String(crop.irrigationFieldId || '') ===
+      String(field._id || field.id)
+    );
+
+    if (cropId || field.sourceCropId) {
+      cropGroup.style.display = 'none';
+      cropSelect.replaceChildren();
+
+    } else {
+      cropGroup.style.display = '';
+
+      cropSelect.replaceChildren(
+        new Option(
+          'Choose a crop or Field only',
+          ''
+        ),
+        new Option(
+          'Field only (not counted in My Crops)',
+          '__field_only__'
+        )
+      );
+
+      linkedCrops.forEach(crop => {
+        cropSelect.add(
+          new Option(
+            `${crop.type} — ${crop.location || 'Farm'}`,
+            String(crop._id || crop.id)
+          )
+        );
+      });
+
+      if (!linkedCrops.length) {
+        cropSelect.value = '__field_only__';
+      }
+    }
+  }
+
   document.getElementById(
     'wateringSessionFieldLabel'
   ).textContent = 'Field';
@@ -15443,6 +15612,14 @@ function openCropWateringModal(id) {
 
   pendingWaterFieldId = null;
   pendingWaterCropId = String(crop._id);
+
+  const cropGroup = document.getElementById(
+    'wateringTargetCropGroup'
+  );
+
+  if (cropGroup) {
+    cropGroup.style.display = 'none';
+  }
 
   document.getElementById(
     'wateringSessionFieldLabel'

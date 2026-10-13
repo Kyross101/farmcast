@@ -155,6 +155,23 @@ router.post('/:id/watering', async (req, res) => {
     });
   }
 
+  // Optional crop attribution for direct Irrigation watering.
+  const requestedCropId =
+    action === 'water' &&
+    input.cropId != null &&
+    String(input.cropId).trim() !== ''
+      ? String(input.cropId).trim()
+      : null;
+
+  if (
+    requestedCropId &&
+    !mongoose.isValidObjectId(requestedCropId)
+  ) {
+    return res.status(400).json({
+      message: 'Invalid crop selected for watering.'
+    });
+  }
+
   const liters = Number(input.liters);
 
   if (
@@ -359,6 +376,68 @@ router.post('/:id/watering', async (req, res) => {
             }
           }
 
+          // Verify that the selected crop belongs to
+          // this farmer and is linked to this field.
+          let recordedCropId =
+            field.sourceCropId || null;
+
+          if (requestedCropId) {
+            const linkedCrop = await Crop.findOne({
+              _id: requestedCropId,
+              user: req.user.id,
+              irrigationFieldId: field._id
+            })
+              .select('_id planted')
+              .session(session);
+
+            if (
+              !linkedCrop ||
+              (
+                field.sourceCropId &&
+                String(field.sourceCropId) !==
+                  String(linkedCrop._id)
+              )
+            ) {
+              const error = new Error(
+                'The selected crop is not linked to this field.'
+              );
+
+              error.status = 409;
+              throw error;
+            }
+
+            const planted =
+              String(linkedCrop.planted || '');
+
+            const parsed = new Date(
+              `${planted}T00:00:00Z`
+            );
+
+            if (
+              !/^\d{4}-\d{2}-\d{2}$/.test(planted) ||
+              Number.isNaN(parsed.getTime()) ||
+              parsed.toISOString().slice(0, 10) !== planted
+            ) {
+              const error = new Error(
+                'The selected crop has an invalid planting date.'
+              );
+
+              error.status = 409;
+              throw error;
+            }
+
+            if (date < planted) {
+              const error = new Error(
+                'Watering cannot be dated before crop planting.'
+              );
+
+              error.status = 400;
+              throw error;
+            }
+
+            recordedCropId = linkedCrop._id;
+          }
+
           const previousLastWatered =
             field.lastWatered || '';
 
@@ -368,7 +447,7 @@ router.post('/:id/watering', async (req, res) => {
 
             // Attribute watering to its crop only
             // when this is an automatic crop-owned field.
-            cropId: field.sourceCropId || null,
+            cropId: recordedCropId,
 
             // Actual optional watering details.
             areaWatered,
@@ -453,6 +532,143 @@ router.post('/:id/watering', async (req, res) => {
       message: error.status
         ? error.message
         : 'Could not confirm watering changes. Check records before retrying.'
+    });
+  }
+});
+
+// Attribute an existing field-only watering session
+// to a farmer-confirmed, linked crop.
+//
+// Does not add another session or modify liters.
+router.post('/:id/watering/attribute-crop', async (req, res) => {
+  const mongoose = require('mongoose');
+
+  const fieldId = req.params.id;
+  const cropId = String(req.body?.cropId || '').trim();
+  const date = String(req.body?.date || '').trim();
+
+  const parsedDate = new Date(`${date}T00:00:00Z`);
+
+  if (
+    !mongoose.isValidObjectId(fieldId) ||
+    !mongoose.isValidObjectId(cropId) ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(date) ||
+    Number.isNaN(parsedDate.getTime()) ||
+    parsedDate.toISOString().slice(0, 10) !== date
+  ) {
+    return res.status(400).json({
+      message: 'A valid crop, field, and date are required.'
+    });
+  }
+
+  try {
+    let updatedField;
+
+    await mongoose.connection.transaction(async session => {
+      const field = await IrrigationField.findOne({
+        _id: fieldId,
+        user: req.user.id,
+        archivedAt: null
+      }).session(session);
+
+      if (!field) {
+        const error = new Error(
+          'Active irrigation field not found.'
+        );
+
+        error.status = 404;
+        throw error;
+      }
+
+      const crop = await Crop.findOne({
+        _id: cropId,
+        user: req.user.id,
+        irrigationFieldId: field._id
+      })
+        .select('_id planted')
+        .session(session);
+
+      if (
+        !crop ||
+        (
+          field.sourceCropId &&
+          String(field.sourceCropId) !==
+            String(crop._id)
+        )
+      ) {
+        const error = new Error(
+          'This crop is not linked to the selected field.'
+        );
+
+        error.status = 409;
+        throw error;
+      }
+
+      const planted = String(crop.planted || '');
+
+      const parsedPlanted = new Date(
+        `${planted}T00:00:00Z`
+      );
+
+      if (
+        !/^\d{4}-\d{2}-\d{2}$/.test(planted) ||
+        Number.isNaN(parsedPlanted.getTime()) ||
+        parsedPlanted.toISOString().slice(0, 10) !== planted ||
+        date < planted
+      ) {
+        const error = new Error(
+          'Watering date is incompatible with the crop planting date.'
+        );
+
+        error.status = 400;
+        throw error;
+      }
+
+      const entry = field.wateringHistory.find(
+        item => item.date === date
+      );
+
+      if (!entry) {
+        const error = new Error(
+          'No watering record exists for that field and date.'
+        );
+
+        error.status = 404;
+        throw error;
+      }
+
+      if (entry.cropId) {
+        if (String(entry.cropId) !== String(crop._id)) {
+          const error = new Error(
+            'This watering record already belongs to another crop.'
+          );
+
+          error.status = 409;
+          throw error;
+        }
+
+        // Repeating the same crop attribution is safe.
+      } else {
+        entry.cropId = crop._id;
+
+        await field.save({ session });
+      }
+
+      updatedField = field.toObject();
+    });
+
+    return res.json({
+      message: 'Existing watering attributed to crop.',
+      field: updatedField
+    });
+
+  } catch (error) {
+    console.error('Watering attribution error:', error);
+
+    return res.status(error.status || 500).json({
+      message: error.status
+        ? error.message
+        : 'Could not confirm crop attribution. Refresh and check history.'
     });
   }
 });

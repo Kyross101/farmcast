@@ -450,6 +450,30 @@ const fcIrrigation = {
     };
   },
 
+  async attributeWatering(id, date, cropId) {
+    const data = await apiFetch(
+      `/irrigation/${encodeURIComponent(id)}/watering/attribute-crop`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ date, cropId })
+      }
+    );
+
+    if (
+      !data.field?._id ||
+      String(data.field._id) !== String(id)
+    ) {
+      throw new Error(
+        'Crop attribution response could not be verified.'
+      );
+    }
+
+    return {
+      ...data.field,
+      id: data.field._id
+    };
+  },
+
   async delete(id) {
     return await apiFetch(`/irrigation/${id}`, { method: 'DELETE' });
   }
@@ -973,6 +997,128 @@ function patchScriptJsWithAPI() {
   // Enable secure crop-to-irrigation linking.
   cropFieldLinkBackendEnabled = true;
 
+  // Associate an existing field-only record with a crop.
+  // Requires the farmer's explicit confirmation.
+  async function confirmWateringCropAttribution(
+    field,
+    date,
+    crop
+  ) {
+    if (wateringSessionInFlight) return;
+
+    const cropId = String(crop?._id || crop?.id || '');
+    const fieldId = String(field?._id || field?.id || '');
+
+    const entry = field?.wateringHistory?.find(
+      item => item.date === date
+    );
+
+    if (!cropId || !fieldId || !entry || entry.cropId) {
+      toast(
+        'The watering record is no longer field-only. Refresh first.',
+        'warn'
+      );
+      return;
+    }
+
+    const recordedLiters = Number(entry.liters);
+
+    if (!confirm(
+      `Was the existing ${recordedLiters} L watering ` +
+      `on ${date} actually used for ${crop.type} ` +
+      `(${crop.location || 'unknown location'})?\n\n` +
+      'Only confirm if this crop truly received that water. ' +
+      'No new liters will be added.'
+    )) {
+      return;
+    }
+
+    wateringSessionInFlight = true;
+
+    try {
+      const updated = await fcIrrigation.attributeWatering(
+        fieldId,
+        date,
+        cropId
+      );
+
+      // Backend confirmed the existing record's association.
+      Object.assign(field, updated);
+
+      try {
+        lsSave(LS_IRR_FIELDS, irrFields);
+
+        renderCropsPage();
+        renderIrrigationPage();
+        renderFarmAnalytics();
+
+        toast(
+          `${recordedLiters} L record attributed to ${crop.type}. ` +
+          'Check My Crops and Irrigation History.',
+          'ok'
+        );
+
+      } catch (renderError) {
+        console.error(
+          'Crop association saved, but screen refresh failed:',
+          renderError
+        );
+
+        toast(
+          'Crop association saved on the server. ' +
+          'Reload FarmCast to refresh the display.',
+          'warn'
+        );
+      }
+
+    } catch (error) {
+      toast(
+        `Could not confirm crop association: ${error.message}. ` +
+        'Refresh history before retrying.',
+        'err'
+      );
+
+    } finally {
+      wateringSessionInFlight = false;
+    }
+  }
+
+  // Used by the crop selector in Irrigation History.
+  attributeHistoryWatering = async function(
+    fieldId,
+    date,
+    button
+  ) {
+    const field = irrFields.find(
+      f => String(f._id || f.id) === String(fieldId)
+    );
+
+    const cropId =
+      button?.closest('.ifi-history-assign')
+        ?.querySelector('select')?.value || '';
+
+    const crop = myCrops.find(
+      item =>
+        String(item._id || item.id) === String(cropId) &&
+        String(item.irrigationFieldId || '') ===
+          String(fieldId)
+    );
+
+    if (!field || !crop) {
+      toast(
+        'Choose a linked crop for this record.',
+        'warn'
+      );
+      return;
+    }
+
+    await confirmWateringCropAttribution(
+      field,
+      date,
+      crop
+    );
+  };
+
   saveCropFieldLink = async function() {
     if (
       !pendingCropFieldLinkId ||
@@ -1197,7 +1343,7 @@ function patchScriptJsWithAPI() {
   };
 
   // My Crops watering uses the linked Irrigation field.
-  toggleWater = function(id) {
+  toggleWater = async function(id) {
   if (wateringSessionInFlight) return;
 
   const crop = myCrops.find(
@@ -1219,12 +1365,34 @@ function patchScriptJsWithAPI() {
     return;
   }
 
+  const linkedField =
+    getCropLinkedIrrigationField(crop);
+
+  const today = getIrrigationLocalDate();
+
+  const fieldOnlyEntry =
+    linkedField?.wateringHistory?.find(
+      entry =>
+        entry.date === today &&
+        !entry.cropId
+    );
+
+  // Reuse existing saved liters after explicit confirmation.
+  // Never create a duplicate watering record.
+  if (fieldOnlyEntry) {
+    await confirmWateringCropAttribution(
+      linkedField,
+      today,
+      crop
+    );
+    return;
+  }
+
   if (hasLinkedFieldWateringConflict(crop)) {
     toast(
-      'The linked irrigation field already has a ' +
-      'watering record today. The existing record ' +
-      'belongs to another crop or the field itself. ' +
-      'No new watering was recorded.',
+      'This field already has watering recorded ' +
+      'today for another crop. Review Irrigation ' +
+      'History before trying again.',
       'warn'
     );
     return;
@@ -1586,6 +1754,66 @@ function patchScriptJsWithAPI() {
       }
     }
 
+    // A manual irrigation field must have an explicit
+    // crop choice or an explicit Field only selection.
+    let selectedIrrigationCropId = null;
+
+    if (!pendingWaterCropId && pendingWaterFieldId) {
+      const selectedField = irrFields.find(
+        item =>
+          String(item._id || item.id) ===
+          String(pendingWaterFieldId)
+      );
+
+      if (!selectedField) {
+        toast(
+          'Irrigation field not found. Refresh and try again.',
+          'err'
+        );
+        return;
+      }
+
+      if (selectedField.sourceCropId) {
+        selectedIrrigationCropId =
+          String(selectedField.sourceCropId);
+
+      } else {
+        const cropSelect = document.getElementById(
+          'wateringTargetCrop'
+        );
+
+        const selectedValue = cropSelect?.value || '';
+
+        if (!selectedValue) {
+          toast(
+            'Choose which crop was watered, or Field only.',
+            'warn'
+          );
+          return;
+        }
+
+        if (selectedValue !== '__field_only__') {
+          const matchingCrop = myCrops.find(
+            item =>
+              String(item._id || item.id) ===
+                selectedValue &&
+              String(item.irrigationFieldId || '') ===
+                String(pendingWaterFieldId)
+          );
+
+          if (!matchingCrop) {
+            toast(
+              'Selected crop is not linked to this field.',
+              'warn'
+            );
+            return;
+          }
+
+          selectedIrrigationCropId = selectedValue;
+        }
+      }
+    }
+
     // Refresh the displayed date before confirmation.
     // This also covers a form left open across midnight.
     const sessionDateDisplay = document.getElementById(
@@ -1639,6 +1867,23 @@ function patchScriptJsWithAPI() {
     if (wateringDetails.notes) {
       confirmationLines.push(
         `Notes: ${wateringDetails.notes}`
+      );
+    }
+
+    if (!pendingWaterCropId) {
+      const targetCrop = myCrops.find(
+        item =>
+          String(item._id || item.id) ===
+          String(selectedIrrigationCropId)
+      );
+
+      confirmationLines.push(
+        'Credited to: ' +
+        (
+          targetCrop
+            ? `${targetCrop.type} — ${targetCrop.location || 'Farm'}`
+            : 'Field only (not a specific crop)'
+        )
       );
     }
 
@@ -1860,6 +2105,7 @@ function patchScriptJsWithAPI() {
           action: 'water',
           date,
           liters,
+          cropId: selectedIrrigationCropId,
 
           // Optional farmer-entered details.
           ...wateringDetails
