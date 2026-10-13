@@ -1357,11 +1357,52 @@ function patchScriptJsWithAPI() {
   }
 
   if (isCropWateredToday(crop)) {
-    toast(
-      'This crop already has a confirmed watering ' +
-      'record today. View the details in Irrigation.',
-      'ok'
+    const field = getCropLinkedIrrigationField(crop);
+
+    const history = Array.isArray(field?.wateringHistory)
+      ? field.wateringHistory
+      : [];
+
+    const today = getIrrigationLocalDate();
+    const cropId = String(crop._id || crop.id);
+
+    // Find today's record for this exact crop.
+    const recorded = history.find(
+      entry =>
+        entry.date === today &&
+        String(entry.cropId || '') === cropId
     );
+
+    // Backend permits Undo only for the latest
+    // added watering session.
+    const latest = history[history.length - 1];
+
+    if (
+      !recorded?._id ||
+      String(latest?._id || '') !==
+        String(recorded._id)
+    ) {
+      toast(
+        'Only the latest confirmed watering session can ' +
+        'be undone. Check Irrigation History first.',
+        'warn'
+      );
+      return;
+    }
+
+    const cropLabel = [
+      crop.type,
+      crop.variety
+    ].filter(Boolean).join(' — ');
+
+    // Reuse Irrigation's existing backend Undo.
+    // It already refreshes My Crops, Irrigation
+    // and Farm Analytics.
+    await toggleFieldWater(
+      String(field._id || field.id),
+      cropLabel
+    );
+
     return;
   }
 
@@ -1572,7 +1613,10 @@ function patchScriptJsWithAPI() {
     }
   };
 
-      toggleFieldWater = async function(id) {
+    toggleFieldWater = async function(
+      id,
+      cropLabel = ''
+    ) {
     if (wateringSessionInFlight) return;
 
     const field = irrFields.find(
@@ -1597,8 +1641,11 @@ function patchScriptJsWithAPI() {
     }
 
     if (!confirm(
-      `Undo today's recorded watering for ${field.name}?`
+      `Undo today's watering for ${cropLabel || field.name}?\n\n` +
+      'The record will also be updated in My Crops, ' +
+      'Irrigation History, and Farm Analytics.'
     )) {
+
       return;
     }
 

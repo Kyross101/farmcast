@@ -10836,12 +10836,12 @@ function renderCropsPage() {
             onclick="toggleWater('${escapeHtml(crop._id || crop.id)}')"
           >
             <span class="material-symbols-outlined">
-              ${cropWateredToday ? 'water' : 'water_drop'}
+              ${cropWateredToday ? 'undo' : 'water_drop'}
             </span>
 
             ${
               cropWateredToday
-                ? 'Watered Today ✓'
+                ? 'Watered Today ✓ · Undo'
                 : 'Water Now'
             }
 
