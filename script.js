@@ -22162,15 +22162,62 @@ async function initApp() {
   const backendReady =
     await loadAllDataFromBackend();
 
-  // Use backend CRUD only when backend data loaded successfully.
-  // Otherwise keep the existing localStorage CRUD functions.
+  // Never fall back to local-only CRUD for
+  // server-managed farm records.
+  window.FARMCAST_SERVER_DATA_READY =
+    Boolean(backendReady);
+
+  // Install backend handlers even when initial
+  // loading failed, preventing local-only saves.
+  patchScriptJsWithAPI();
+
+  const oldNotice = document.getElementById(
+    'farmcastBackendReadOnlyNotice'
+  );
+
   if (backendReady) {
-    patchScriptJsWithAPI();
+    oldNotice?.remove();
+
   } else {
     console.warn(
-      '⚠️ FarmCast is using local crop data because the backend is unavailable.'
+      'FarmCast server unavailable. ' +
+      'Cached farm records are read-only.'
     );
+
+    if (!oldNotice) {
+      const notice = document.createElement('div');
+
+      notice.id = 'farmcastBackendReadOnlyNotice';
+      notice.setAttribute('role', 'alert');
+
+      notice.textContent =
+        'FarmCast is offline: saved farm records may be outdated. ' +
+        'Synced crop, irrigation, and harvest changes are disabled. ' +
+        'Reconnect and reload to continue.';
+
+      Object.assign(notice.style, {
+        position: 'fixed',
+        zIndex: '9999',
+        top: '12px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: 'min(94vw, 640px)',
+        boxSizing: 'border-box',
+        background: '#26201a',
+        color: '#ffe4b2',
+        border: '1px solid #a87b37',
+        borderRadius: '10px',
+        padding: '12px 16px',
+        fontSize: '13px',
+        lineHeight: '1.45',
+        textAlign: 'center',
+        boxShadow: '0 6px 20px rgba(0,0,0,.25)'
+      });
+
+      document.body.appendChild(notice);
+    }
   }
+
   // 4. Start with default page
   const user = getAuthUser();
   const defaultPage = appSettings.defaultPage || 'dashboard';

@@ -127,6 +127,22 @@ function saveAuthUser(
 
 // ── BASE FETCH with JWT header ──
 async function apiFetch(endpoint, options = {}) {
+  const method = String(
+    options.method || 'GET'
+  ).toUpperCase();
+
+  // If initial backend loading failed,
+  // never allow server-managed data changes.
+  if (
+    window.FARMCAST_SERVER_DATA_READY === false &&
+    ['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
+  ) {
+    throw new Error(
+      'FarmCast is showing cached records in read-only mode. ' +
+      'Reconnect to the backend and reload before saving changes.'
+    );
+  }
+
   const token = getToken();
 
   const headers = {
