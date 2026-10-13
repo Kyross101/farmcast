@@ -1067,8 +1067,22 @@ function patchScriptJsWithAPI() {
   // Do not create a duplicate daily watering record.
   if (isCropWateredToday(crop)) {
     toast(
-      'Watering is already recorded for this field today.',
+      'Watering is already recorded for this crop today. ' +
+      'Review its saved details in Irrigation History.',
       'ok'
+    );
+    return;
+  }
+
+  // A shared/manual field may already have a watering
+  // session belonging to another crop or the field itself.
+  if (hasLinkedFieldWateringConflict(crop)) {
+    toast(
+      'This irrigation field already has a watering ' +
+      'record today. FarmCast currently allows one ' +
+      'session per field per date. Review Irrigation ' +
+      'History before recording anything else.',
+      'warn'
     );
     return;
   }
@@ -1198,9 +1212,20 @@ function patchScriptJsWithAPI() {
 
   if (isCropWateredToday(crop)) {
     toast(
-      'Watering already recorded for this field today. ' +
-      'Use Irrigation to review the existing record.',
+      'This crop already has a confirmed watering ' +
+      'record today. View the details in Irrigation.',
       'ok'
+    );
+    return;
+  }
+
+  if (hasLinkedFieldWateringConflict(crop)) {
+    toast(
+      'The linked irrigation field already has a ' +
+      'watering record today. The existing record ' +
+      'belongs to another crop or the field itself. ' +
+      'No new watering was recorded.',
+      'warn'
     );
     return;
   }
@@ -1525,6 +1550,42 @@ function patchScriptJsWithAPI() {
     // and subsequent backend request.
     const sessionDate = getIrrigationLocalDate();
 
+    // Recheck local records before asking the farmer
+    // to confirm a new crop watering session.
+    if (pendingWaterCropId) {
+      const selectedCrop = myCrops.find(
+        item =>
+          String(item._id || item.id) ===
+          String(pendingWaterCropId)
+      );
+
+      if (!selectedCrop) {
+        toast(
+          'Crop record is unavailable. Refresh and try again.',
+          'err'
+        );
+        return;
+      }
+
+      const linkedField =
+        getCropLinkedIrrigationField(selectedCrop);
+
+      const existingSession =
+        linkedField?.wateringHistory?.some(
+          entry => entry?.date === sessionDate
+        ) || false;
+
+      if (existingSession) {
+        toast(
+          'This linked field already has a watering ' +
+          'record for today. Review Irrigation History ' +
+          'before saving another session.',
+          'warn'
+        );
+        return;
+      }
+    }
+
     // Refresh the displayed date before confirmation.
     // This also covers a form left open across midnight.
     const sessionDateDisplay = document.getElementById(
@@ -1741,7 +1802,7 @@ function patchScriptJsWithAPI() {
 
       return;
     }
-    
+
     if (!pendingWaterFieldId || wateringSessionInFlight) {
       return;
     }

@@ -10101,6 +10101,34 @@ function isCropWateredToday(crop) {
     );
 }
 
+// Check whether another crop or a field-level session
+// already occupies today's watering slot.
+//
+// Current rule: one watering session per field per date.
+// Do not mark this crop watered because of another record.
+function hasLinkedFieldWateringConflict(
+  crop,
+  date = getIrrigationLocalDate()
+) {
+  const field = getCropLinkedIrrigationField(crop);
+
+  if (!field || !Array.isArray(field.wateringHistory)) {
+    return false;
+  }
+
+  const cropId = String(
+    crop?._id || crop?.id || ''
+  );
+
+  return field.wateringHistory.some(entry =>
+    entry?.date === date &&
+    (
+      !cropId ||
+      String(entry.cropId || '') !== cropId
+    )
+  );
+}
+
 function renderCropsPage() {
   const filtered = myCrops.filter(crop => {
     if (currentCropFilter === 'all') return true;
