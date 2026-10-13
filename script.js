@@ -14262,6 +14262,39 @@ function hasIrrigationSchedule(field) {
   );
 }
 
+// Calculate irrigation due date using calendar days.
+// No invented clock time and no timezone offset errors.
+function getIrrigationDueDateKey(field) {
+  if (!hasIrrigationSchedule(field)) {
+    return '';
+  }
+
+  const lastDate =
+    typeof field?.lastWatered === 'string'
+      ? field.lastWatered
+      : '';
+
+  const dueDate = new Date(
+    `${lastDate}T00:00:00Z`
+  );
+
+  if (
+    !/^\d{4}-\d{2}-\d{2}$/.test(lastDate) ||
+    Number.isNaN(dueDate.getTime()) ||
+    dueDate.toISOString().slice(0, 10) !== lastDate
+  ) {
+    return '';
+  }
+
+  dueDate.setUTCDate(
+    dueDate.getUTCDate() + Number(field.freq)
+  );
+
+  return Number.isNaN(dueDate.getTime())
+    ? ''
+    : dueDate.toISOString().slice(0, 10);
+}
+
 // Determine whether a field has a real watering record
 // for the requested calendar date.
 function hasWateringHistoryOnDate(field, date) {
@@ -14498,79 +14531,6 @@ function renderIrrigationPage() {
   document.getElementById('irrWateredToday').textContent = wateredToday;
   document.getElementById('irrDueToday').textContent     = dueToday;
 
-  // Rain chance
-  const rainChance = currentWeather ? (currentWeather.main.humidity > 80 ? '60%' : currentWeather.main.humidity > 60 ? '30%' : '10%') : '--%';
-  document.getElementById('irrRainChance').textContent = rainChance;
-
-  // Recommendation banner
-  let recClass = 'ok';
-
-  let recTitle =
-    'Go ahead with watering';
-
-  let recSub =
-    'Current conditions are good for irrigation.';
-
-  let recIcon =
-    'assets/ui/watered.svg';
-
-
-  if (currentWeather) {
-
-    const h =
-      currentWeather.main.humidity;
-
-    const desc =
-      currentWeather.weather[0]
-        .description
-        .toLowerCase();
-
-    const isRain =
-      desc.includes('rain');
-
-
-    if (isRain) {
-
-      recClass = 'warn';
-
-      recTitle =
-        'Skip irrigation today';
-
-      recSub =
-        'It is currently raining. Natural rainfall should be sufficient.';
-
-      recIcon =
-        'assets/ui/irrigation-rain.svg';
-
-    } else if (h > 85) {
-
-      recClass = 'warn';
-
-      recTitle =
-        'Reduce watering';
-
-      recSub =
-        `High humidity (${h}%) — over-watering risk. Water only crops that are visibly dry.`;
-
-      recIcon =
-        'assets/ui/at-risk.svg';
-
-    } else if (
-      currentWeather.main.temp > 33
-    ) {
-
-      recTitle =
-        'Increase watering frequency';
-
-      recSub =
-        'High temperature detected. Water crops in early morning and late afternoon.';
-
-      recIcon =
-        'assets/ui/quick-soil-temp.svg';
-    }
-  }
-
-
   // ==========================================
   // IRRIGATION WEATHER CONTEXT
   // ==========================================
@@ -14647,8 +14607,14 @@ function renderIrrigationPage() {
     }
   }
 
-  recEl.className =
-    `irr-recommendation fade-in fade-in-1 ${recClass}`;
+  const recEl = document.getElementById(
+    'irrRecommendation'
+  );
+
+  if (recEl) {
+    recEl.className =
+      `irr-recommendation fade-in fade-in-1 ${recClass}`;
+  }
 
   document.getElementById(
     'irrRecTitle'
@@ -14672,36 +14638,28 @@ function renderIrrigationPage() {
   }
 
   // Field list
-  document.getElementById('irrFieldList').innerHTML = activeFields.map(f => {
-
-  const last = new Date(f.lastWatered);
-
   const hasSchedule = hasIrrigationSchedule(f);
 
-  const due =
-    hasSchedule && !Number.isNaN(last.getTime())
-      ? new Date(
-          last.getTime() +
-          Number(f.freq) * 86400000
-        )
-      : null;
-  
+  const dueDateKey = getIrrigationDueDateKey(f);
+
   const isDue = Boolean(
-    due &&
-    due <= new Date() &&
+    dueDateKey &&
+    dueDateKey <= today &&
     !f.wateredToday
   );
-  
-  // A new field may have no recorded watering date.
-  // Never display NaN or a made-up elapsed time.
-  const daysAgo = Number.isNaN(last.getTime())
-    ? null
-    : Math.max(
+
+  // Count calendar days instead of elapsed hours.
+  const daysAgo = f.lastWatered
+    ? Math.max(
         0,
-        Math.floor(
-          (Date.now() - last.getTime()) / 86400000
+        Math.round(
+          (
+            Date.parse(`${today}T00:00:00Z`) -
+            Date.parse(`${f.lastWatered}T00:00:00Z`)
+          ) / 86400000
         )
-      );
+      )
+    : null;
   
   const totalL =
     Number(f.waterAmt) > 0
@@ -14977,30 +14935,27 @@ function renderIrrigationPage() {
     }
 
   // Today's schedule
+  // Today's schedule is based on actual calendar dates.
+  // Fields already watered today remain visible.
   const scheduled = activeFields
-
     .filter(f => {
-
-      if (f.wateredToday) return true;
-
-      if (!hasIrrigationSchedule(f)) {
-        return false;
+      if (f.wateredToday) {
+        return true;
       }
 
-      const last = new Date(f.lastWatered);
+      const dueDateKey =
+        getIrrigationDueDateKey(f);
 
-      if (Number.isNaN(last.getTime())) {
-        return false;
-      }
-
-      const due = new Date(
-        last.getTime() + Number(f.freq) * 86400000
+      return Boolean(
+        dueDateKey &&
+        dueDateKey <= today
       );
-
-      return due <= new Date();
-
     })
-    .sort((a,b) => a.wateredToday - b.wateredToday);
+    .sort(
+      (a, b) =>
+        Number(a.wateredToday) -
+        Number(b.wateredToday)
+    );
 
   // ==========================================
   // TODAY'S IRRIGATION SCHEDULE
