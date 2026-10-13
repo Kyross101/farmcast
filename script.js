@@ -14278,6 +14278,115 @@ function getLatestConfirmedIrrigationDate(field) {
   return latest;
 }
 
+// Display actual watering records in a compact,
+// expandable and read-only history section.
+function renderIrrigationHistoryDetails(field) {
+  const history = Array.isArray(field?.wateringHistory)
+    ? field.wateringHistory
+        .filter(entry =>
+          entry &&
+          typeof entry.date === 'string' &&
+          /^\d{4}-\d{2}-\d{2}$/.test(entry.date) &&
+          Number.isFinite(Number(entry.liters)) &&
+          Number(entry.liters) > 0
+        )
+        .slice()
+        .sort((a, b) => b.date.localeCompare(a.date))
+    : [];
+
+  if (history.length === 0) {
+    return '';
+  }
+
+  const soilLabels = {
+    dry: 'Dry',
+    'slightly-dry': 'Slightly Dry',
+    moist: 'Moist'
+  };
+
+  const records = history.map(entry => {
+    const area = Number(entry.areaWatered);
+
+    const hasArea =
+      entry.areaWatered !== null &&
+      entry.areaWatered !== undefined &&
+      entry.areaWatered !== '' &&
+      Number.isFinite(area) &&
+      area > 0;
+
+    const method =
+      typeof entry.irrigationMethod === 'string'
+        ? entry.irrigationMethod.trim()
+        : '';
+
+    const soil = soilLabels[entry.soilCondition] || '';
+
+    const notes =
+      typeof entry.notes === 'string'
+        ? entry.notes.trim()
+        : '';
+
+    return `
+      <div class="ifi-history-record">
+
+        <div class="ifi-history-head">
+          <span>${escapeHtml(entry.date)}</span>
+          <strong>${escapeHtml(entry.liters)} L</strong>
+        </div>
+
+        ${
+          hasArea || method || soil
+            ? `
+              <div class="ifi-history-meta">
+                ${
+                  hasArea
+                    ? `<span>Area: ${escapeHtml(entry.areaWatered)} m²</span>`
+                    : ''
+                }
+
+                ${
+                  method
+                    ? `<span>Method: ${escapeHtml(method)}</span>`
+                    : ''
+                }
+
+                ${
+                  soil
+                    ? `<span>Soil: ${escapeHtml(soil)}</span>`
+                    : ''
+                }
+              </div>
+            `
+            : ''
+        }
+
+        ${
+          notes
+            ? `
+              <div class="ifi-history-notes">
+                Notes: ${escapeHtml(notes)}
+              </div>
+            `
+            : ''
+        }
+
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <details class="ifi-history">
+      <summary>
+        View Watering History (${history.length})
+      </summary>
+
+      <div class="ifi-history-list">
+        ${records}
+      </div>
+    </details>
+  `;
+}
+
 function renderIrrigationPage() {
   const today = getIrrigationLocalDate();
 
@@ -14551,6 +14660,8 @@ function renderIrrigationPage() {
 
           </div>
 
+          ${renderIrrigationHistoryDetails(f)}
+
         </div>
 
 
@@ -14674,6 +14785,8 @@ function renderIrrigationPage() {
                 </span>
   
               </div>
+
+              ${renderIrrigationHistoryDetails(field)}
 
             </div>
 

@@ -4035,6 +4035,81 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 .ifi-del-btn   { background: none; border: none; cursor: pointer; color: var(--text-dim); display: flex; align-items: center; padding: 2px; }
 .ifi-del-btn:hover { color: var(--red); }
 
+/* Expandable Irrigation Watering History */
+.irr-field-item .ifi-left {
+  min-width: 0;
+}
+
+.ifi-history {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  max-width: 100%;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.ifi-history > summary {
+  display: list-item;
+  cursor: pointer;
+  color: var(--blue);
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.ifi-history > summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.ifi-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ifi-history-record {
+  padding: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  min-width: 0;
+}
+
+.ifi-history-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 0.76rem;
+}
+
+.ifi-history-head strong {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.ifi-history-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  margin-top: 6px;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.ifi-history-notes {
+  margin-top: 7px;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 /* Schedule */
 .irr-schedule-list { padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
 .irr-sched-item {
