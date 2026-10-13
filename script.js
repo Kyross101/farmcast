@@ -14243,15 +14243,55 @@ function hasWateringHistoryOnDate(field, date) {
     );
 }
 
+// Get the latest verified watering date from actual records.
+// Never treat an old default lastWatered value as proof.
+function getLatestConfirmedIrrigationDate(field) {
+  const history = Array.isArray(field?.wateringHistory)
+    ? field.wateringHistory
+    : [];
+
+  let latest = '';
+
+  history.forEach(entry => {
+    const date = typeof entry?.date === 'string'
+      ? entry.date.trim()
+      : '';
+
+    const liters = Number(entry?.liters);
+    const parsedDate = new Date(`${date}T00:00:00Z`);
+
+    if (
+      !/^\d{4}-\d{2}-\d{2}$/.test(date) ||
+      Number.isNaN(parsedDate.getTime()) ||
+      parsedDate.toISOString().slice(0, 10) !== date ||
+      !Number.isFinite(liters) ||
+      liters <= 0
+    ) {
+      return;
+    }
+
+    if (date > latest) {
+      latest = date;
+    }
+  });
+
+  return latest;
+}
+
 function renderIrrigationPage() {
   const today = getIrrigationLocalDate();
 
-  // Create display-only copies of active fields.
-  // Never trust a stored wateredToday boolean.
-  // Never modify watering history or cached backend data.
+  // Build display-only copies from confirmed records.
+  // Preserve the original backend data and history.
   const activeFields = getActiveIrrigationFields()
     .map(field => ({
       ...field,
+
+      // Use only confirmed watering dates for display
+      // and scheduling, not historical default values.
+      lastWatered: getLatestConfirmedIrrigationDate(
+        field
+      ),
 
       wateredToday: hasWateringHistoryOnDate(
         field,
