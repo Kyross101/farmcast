@@ -223,7 +223,7 @@ router.post('/:id/watering', async (req, res) => {
       (
         !['number', 'string'].includes(typeof rawArea) ||
         !Number.isFinite(areaWatered) ||
-        areaWatered <= 0
+        areaWatered < 0.01
       )
     ) ||
     typeof rawMethod !== 'string' ||
@@ -422,6 +422,25 @@ router.post('/:id/watering', async (req, res) => {
           // Restore the connection to the existing/new field.
           crop.irrigationFieldId = field._id;
           cropLinkChanged = true;
+        }
+
+        // If a crop uses an existing irrigation field,
+        // validate the entered area against that field too.
+        const linkedFieldArea = Number(field.area);
+
+        if (
+          areaWatered !== null &&
+          Number.isFinite(linkedFieldArea) &&
+          linkedFieldArea > 0 &&
+          areaWatered > linkedFieldArea
+        ) {
+          const error = new Error(
+            'Area watered cannot exceed the ' +
+            'linked irrigation field area.'
+          );
+
+          error.status = 400;
+          throw error;
         }
 
         // One recorded session per field per date.

@@ -14280,7 +14280,10 @@ function getLatestConfirmedIrrigationDate(field) {
 
 // Display actual watering records in a compact,
 // expandable and read-only history section.
-function renderIrrigationHistoryDetails(field) {
+function renderIrrigationHistoryDetails(
+  field,
+  openHistoryIds = new Set()
+) {
   const history = Array.isArray(field?.wateringHistory)
     ? field.wateringHistory
         .filter(entry =>
@@ -14374,8 +14377,19 @@ function renderIrrigationHistoryDetails(field) {
     `;
   }).join('');
 
+  const fieldId = String(
+    field._id || field.id || ''
+  );
+
+  const isExpanded =
+    fieldId && openHistoryIds.has(fieldId);
+
   return `
-    <details class="ifi-history">
+    <details
+      class="ifi-history"
+      data-field-id="${escapeHtml(fieldId)}"
+      ${isExpanded ? 'open' : ''}
+    >
       <summary>
         View Watering History (${history.length})
       </summary>
@@ -14389,6 +14403,19 @@ function renderIrrigationHistoryDetails(field) {
 
 function renderIrrigationPage() {
   const today = getIrrigationLocalDate();
+
+  // Remember which field histories are currently expanded.
+  // These IDs control presentation only, never database data.
+  const openHistoryIds = new Set(
+    Array.from(
+      document.querySelectorAll(
+        '#irrFieldList .ifi-history[open][data-field-id], ' +
+        '#irrArchivedFieldList .ifi-history[open][data-field-id]'
+      )
+    )
+      .map(element => element.dataset.fieldId)
+      .filter(Boolean)
+  );
 
   // Build display-only copies from confirmed records.
   // Preserve the original backend data and history.
@@ -14660,7 +14687,10 @@ function renderIrrigationPage() {
 
           </div>
 
-          ${renderIrrigationHistoryDetails(f)}
+          ${renderIrrigationHistoryDetails(
+            f,
+            openHistoryIds
+          )}
 
         </div>
 
@@ -14786,7 +14816,10 @@ function renderIrrigationPage() {
   
               </div>
 
-              ${renderIrrigationHistoryDetails(field)}
+              ${renderIrrigationHistoryDetails(
+                field,
+                openHistoryIds
+              )}
 
             </div>
 

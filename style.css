@@ -4190,6 +4190,140 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
 
 }
 
+/* ==========================================
+   WATER NOW MODAL — RESPONSIVE FINAL POLISH
+   ========================================== */
+
+/* Keep the modal header and Save controls visible. */
+#wateringSessionModal .modal-box {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+
+  overflow: hidden;
+}
+
+/* The form content scrolls independently. */
+#wateringSessionModal .modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  scrollbar-width: thin;
+}
+
+/* Prevent the header and footer from shrinking. */
+#wateringSessionModal .modal-header,
+#wateringSessionModal .modal-footer {
+  flex-shrink: 0;
+  background: var(--bg2);
+}
+
+#wateringSessionModal .modal-header {
+  position: relative;
+  z-index: 1;
+}
+
+/* Space out the four optional fields. */
+#wateringSessionExtraFields .form-group +
+.form-group {
+  margin-top: 14px;
+}
+
+/* Inputs must fit inside the modal. */
+#wateringSessionModal .form-group input,
+#wateringSessionModal .form-group select,
+#wateringSessionModal .form-group textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Better notes entry. */
+#wateringSessionModal textarea {
+  resize: vertical;
+  min-height: 76px;
+  max-height: 180px;
+}
+
+/* Keep the action buttons readable. */
+#wateringSessionModal .modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+}
+
+#wateringSessionModal .modal-footer .btn-save,
+#wateringSessionModal .modal-footer .btn-cancel {
+  min-height: 44px;
+  justify-content: center;
+}
+
+#wateringSessionSaveBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Mobile phones */
+@media (max-width: 640px) {
+
+  #wateringSessionModal {
+    align-items: center;
+    padding: 12px;
+    overflow: hidden;
+  }
+
+  #wateringSessionModal .modal-box {
+    width: 100%;
+
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+
+    margin: 0 auto;
+  }
+
+  #wateringSessionModal .modal-header {
+    padding: 14px;
+  }
+
+  #wateringSessionModal .modal-body {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  #wateringSessionModal .modal-footer {
+    padding: 12px 14px;
+  }
+
+  #wateringSessionModal .modal-footer button {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  #wateringSessionModal .modal-title {
+    min-width: 0;
+    font-size: 0.95rem;
+  }
+
+  #wateringSessionExtraFields .form-group +
+  .form-group {
+    margin-top: 12px;
+  }
+
+}
+
 /* Schedule */
 .irr-schedule-list { padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
 .irr-sched-item {

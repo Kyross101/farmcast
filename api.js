@@ -1499,6 +1499,87 @@ function patchScriptJsWithAPI() {
       return;
     }
 
+    // Validate actual liters before asking for confirmation.
+    const litersElement = document.getElementById(
+      'wateringActualLiters'
+    );
+
+    const litersText =
+      litersElement?.value.trim() ?? '';
+
+    const actualLiters = Number(litersText);
+
+    if (
+      litersText === '' ||
+      !Number.isFinite(actualLiters) ||
+      actualLiters < 0.01
+    ) {
+      toast(
+        'Enter the actual water used in liters.',
+        'warn'
+      );
+      return;
+    }
+
+    // Use the same local date in the confirmation
+    // and subsequent backend request.
+    const sessionDate = getIrrigationLocalDate();
+
+    const selectedName = document.getElementById(
+      'wateringSessionFieldName'
+    )?.textContent?.trim() || 'Selected crop or field';
+
+    const soilLabels = {
+      dry: 'Dry',
+      'slightly-dry': 'Slightly Dry',
+      moist: 'Moist'
+    };
+
+    const confirmationLines = [
+      `Record watering for ${selectedName}?`,
+      '',
+      `Date: ${sessionDate}`,
+      `Actual water used: ${actualLiters} L`
+    ];
+
+    if (wateringDetails.areaWatered !== null) {
+      confirmationLines.push(
+        `Area watered: ${wateringDetails.areaWatered} m²`
+      );
+    }
+
+    if (wateringDetails.irrigationMethod) {
+      confirmationLines.push(
+        `Method: ${wateringDetails.irrigationMethod}`
+      );
+    }
+
+    if (wateringDetails.soilCondition) {
+      confirmationLines.push(
+        'Soil: ' +
+        (
+          soilLabels[wateringDetails.soilCondition] ||
+          wateringDetails.soilCondition
+        )
+      );
+    }
+
+    if (wateringDetails.notes) {
+      confirmationLines.push(
+        `Notes: ${wateringDetails.notes}`
+      );
+    }
+
+    confirmationLines.push(
+      '',
+      'Save this watering record to Irrigation History?'
+    );
+
+    // Nothing is sent to the server until confirmed.
+    if (!confirm(confirmationLines.join('\n'))) {
+      return;
+    }
+
     // My Crops: save watering and automatically create/reuse
     // the related irrigation record.
     if (pendingWaterCropId) {
@@ -1554,7 +1635,7 @@ function patchScriptJsWithAPI() {
         result = await fcCrops.recordWatering(
           crop._id || crop.id,
           {
-            date: getIrrigationLocalDate(),
+            date: sessionDate,
             liters,
 
             // Optional farmer-entered details.
@@ -1665,7 +1746,7 @@ function patchScriptJsWithAPI() {
       return;
     }
 
-    const date = getIrrigationLocalDate();
+    const date = sessionDate;
 
     const saveButton = document.getElementById(
       'wateringSessionSaveBtn'
