@@ -207,6 +207,12 @@ router.post('/:id/watering', async (req, res) => {
           field.wateringHistory.push({
             date,
             liters,
+
+            // Automatically attribute watering to the crop
+            // only when this field was created for that crop.
+            // Manual shared fields remain field-level records.
+            cropId: field.sourceCropId || null,
+
             previousLastWatered: field.lastWatered || '',
             recordedAt: new Date()
           });
