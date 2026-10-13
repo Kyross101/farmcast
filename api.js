@@ -1440,6 +1440,24 @@ function patchScriptJsWithAPI() {
 
     saveWateringSession = async function() {
 
+    // Prevent duplicate requests or saving without
+    // a selected crop/irrigation field.
+    if (
+      wateringSessionInFlight ||
+      (!pendingWaterCropId && !pendingWaterFieldId)
+    ) {
+      return;
+    }
+
+    // Read farmer-entered optional details once.
+    // Used by both My Crops and Irrigation.
+    const wateringDetails =
+      getWateringSessionExtraDetails();
+
+    if (!wateringDetails) {
+      return;
+    }
+
     // My Crops: save watering and automatically create/reuse
     // the related irrigation record.
     if (pendingWaterCropId) {
@@ -1469,7 +1487,7 @@ function patchScriptJsWithAPI() {
       if (
         raw === '' ||
         !Number.isFinite(liters) ||
-        liters <= 0
+        liters < 0.01
       ) {
         toast(
           'Enter the actual water used in liters.',
@@ -1491,11 +1509,15 @@ function patchScriptJsWithAPI() {
       let result;
 
       try {
+
         result = await fcCrops.recordWatering(
           crop._id || crop.id,
           {
             date: getIrrigationLocalDate(),
-            liters
+            liters,
+
+            // Optional farmer-entered details.
+            ...wateringDetails
           }
         );
 
@@ -1582,7 +1604,7 @@ function patchScriptJsWithAPI() {
     if (
       raw === '' ||
       !Number.isFinite(liters) ||
-      liters <= 0
+      liters < 0.01
     ) {
       toast(
         'Enter the actual water used in liters.',
@@ -1617,12 +1639,16 @@ function patchScriptJsWithAPI() {
     let saved = false;
 
     try {
+
       const updated = await fcIrrigation.recordWatering(
         fieldId,
         {
           action: 'water',
           date,
-          liters
+          liters,
+
+          // Optional farmer-entered details.
+          ...wateringDetails
         }
       );
 

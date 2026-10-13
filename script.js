@@ -14928,6 +14928,111 @@ let pendingWaterFieldId = null;
 let pendingWaterCropId = null;
 let wateringSessionInFlight = false;
 
+// Reset and reveal optional watering inputs.
+// Never assume values from previous watering sessions.
+function prepareWateringSessionExtraFields() {
+  const container = document.getElementById(
+    'wateringSessionExtraFields'
+  );
+
+  const ids = [
+    'wateringAreaWatered',
+    'wateringIrrigationMethod',
+    'wateringSoilCondition',
+    'wateringNotes'
+  ];
+
+  if (
+    !container ||
+    ids.some(id => !document.getElementById(id))
+  ) {
+    toast(
+      'Watering details form is unavailable. Refresh and try again.',
+      'err'
+    );
+    return false;
+  }
+
+  ids.forEach(id => {
+    document.getElementById(id).value = '';
+  });
+
+  container.style.display = 'block';
+
+  return true;
+}
+
+// Read only what the farmer actually entered.
+// Returns null when the form contains invalid details.
+function getWateringSessionExtraDetails() {
+  const areaInput = document.getElementById(
+    'wateringAreaWatered'
+  );
+
+  const methodInput = document.getElementById(
+    'wateringIrrigationMethod'
+  );
+
+  const soilInput = document.getElementById(
+    'wateringSoilCondition'
+  );
+
+  const notesInput = document.getElementById(
+    'wateringNotes'
+  );
+
+  if (
+    !areaInput ||
+    !methodInput ||
+    !soilInput ||
+    !notesInput
+  ) {
+    toast(
+      'Watering details form is unavailable. Refresh and try again.',
+      'err'
+    );
+    return null;
+  }
+
+  const rawArea = areaInput.value.trim();
+
+  const areaWatered =
+    rawArea === '' ? null : Number(rawArea);
+
+  const irrigationMethod = methodInput.value.trim();
+  const soilCondition = soilInput.value.trim();
+  const notes = notesInput.value.trim();
+
+  if (
+    (
+      areaWatered !== null &&
+      (
+        !Number.isFinite(areaWatered) ||
+        areaWatered < 0.01
+      )
+    ) ||
+    irrigationMethod.length > 60 ||
+    !['', 'dry', 'slightly-dry', 'moist'].includes(
+      soilCondition
+    ) ||
+    notes.length > 500
+  ) {
+    toast(
+      'Check the area watered, irrigation method, ' +
+      'soil condition, and notes.',
+      'warn'
+    );
+    return null;
+  }
+
+  return {
+    areaWatered,
+    irrigationMethod,
+    soilCondition,
+    notes
+  };
+}
+
 function openWateringSessionModal(id, cropId = null) {
   if (wateringSessionInFlight) return;
 
@@ -14989,6 +15094,11 @@ function openWateringSessionModal(id, cropId = null) {
 
   // Never assume the configured amount was actually used.
   litersInput.value = '';
+
+  // Reset and reveal the optional details.
+  if (!prepareWateringSessionExtraFields()) {
+    return;
+  }
 
   const suggested = Number(field.waterAmt);
 
@@ -15086,6 +15196,11 @@ function openCropWateringModal(id) {
     'No separate field setup needed.';
 
   litersInput.value = '';
+
+  // The same optional details are available from My Crops.
+  if (!prepareWateringSessionExtraFields()) {
+    return;
+  }
 
   modal.style.display = 'flex';
   litersInput.focus();
