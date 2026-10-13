@@ -179,6 +179,24 @@ router.post('/:id/watering', async (req, res) => {
   const rawLiters = input.liters;
   const liters = Number(rawLiters);
 
+  // Validate the required watering information
+  // before processing any optional details.
+  if (
+    !validDate ||
+    (
+      typeof rawLiters !== 'number' &&
+      typeof rawLiters !== 'string'
+    ) ||
+    String(rawLiters).trim() === '' ||
+    !Number.isFinite(liters) ||
+    liters < 0.01
+  ) {
+    return res.status(400).json({
+      message:
+        'Enter a valid watering date and actual liters used.'
+    });
+  }
+
   // Optional details entered by the farmer.
   // Never invent or automatically assume these values.
   const rawArea = input.areaWatered;
