@@ -212,6 +212,43 @@ router.post('/:id/watering', async (req, res) => {
           throw error;
         }
 
+        // Validate the actual planting date before watering.
+        const plantedDate =
+          typeof crop.planted === 'string'
+            ? crop.planted.trim()
+            : '';
+
+        const parsedPlanted = new Date(
+          `${plantedDate}T00:00:00Z`
+        );
+
+        const validPlantedDate =
+          /^\d{4}-\d{2}-\d{2}$/.test(plantedDate) &&
+          !Number.isNaN(parsedPlanted.getTime()) &&
+          parsedPlanted.toISOString().slice(0, 10) ===
+            plantedDate;
+
+        if (!validPlantedDate) {
+          const error = new Error(
+            'Crop planting date is invalid. ' +
+            'Update My Crops before recording watering.'
+          );
+
+          error.status = 409;
+          throw error;
+        }
+
+        // A crop cannot be watered before it was planted.
+        if (date < plantedDate) {
+          const error = new Error(
+            'Watering date cannot be earlier than ' +
+            'the crop planting date.'
+          );
+
+          error.status = 400;
+          throw error;
+        }
+
         let field;
         let createdField = false;
         let cropLinkChanged = false;
@@ -338,7 +375,21 @@ router.post('/:id/watering', async (req, res) => {
           recordedAt: new Date()
         });
 
-        field.lastWatered = date;
+        // Preserve the latest known watering date.
+        // Older entries must not move lastWatered backward.
+        const previousLastWatered = String(
+          field.lastWatered || ''
+        );
+
+        if (
+          !previousLastWatered ||
+          date > previousLastWatered
+        ) {
+          field.lastWatered = date;
+        }
+
+        // Retain the current status behavior for now.
+        // Local-date status handling will be reviewed next.
         field.wateredToday = true;
 
         await field.save({ session });
