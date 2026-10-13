@@ -14571,10 +14571,81 @@ function renderIrrigationPage() {
   }
 
 
-  const recEl =
-    document.getElementById(
-      'irrRecommendation'
+  // ==========================================
+  // IRRIGATION WEATHER CONTEXT
+  // ==========================================
+
+  // Humidity comes directly from the weather API.
+  // Never estimate rain probability from humidity.
+  const reportedHumidity =
+    currentWeather?.main?.humidity;
+
+  const validHumidity =
+    typeof reportedHumidity === 'number' &&
+    Number.isFinite(reportedHumidity) &&
+    reportedHumidity >= 0 &&
+    reportedHumidity <= 100;
+
+  const humidityElement = document.getElementById(
+    'irrHumidity'
+  );
+
+  if (humidityElement) {
+    humidityElement.textContent =
+      validHumidity
+        ? `${Math.round(reportedHumidity)}%`
+        : '—';
+  }
+
+  // Weather provides context, not proof that a crop
+  // needs more or less irrigation.
+  // The farmer should check the actual soil condition.
+  let recClass = 'ok';
+
+  let recTitle =
+    'Check soil moisture before watering';
+
+  let recSub =
+    'Inspect the soil and consider your crop needs ' +
+    'before deciding whether to irrigate.';
+
+  let recIcon =
+    'assets/ui/watered.svg';
+
+  // Rain reported by the current weather data.
+  // Do not assume that rainfall is sufficient.
+  if (
+    currentWeather &&
+    Array.isArray(currentWeather.weather)
+  ) {
+    const reportedRain = currentWeather.weather.some(
+      entry =>
+        entry &&
+        (
+          entry.main === 'Rain' ||
+          (
+            typeof entry.description === 'string' &&
+            entry.description
+              .toLowerCase()
+              .includes('rain')
+          )
+        )
     );
+
+    if (reportedRain) {
+      recClass = 'warn';
+
+      recTitle =
+        'Rain reported for your selected location';
+
+      recSub =
+        'Check actual rainfall and soil moisture ' +
+        'before deciding whether watering is needed.';
+
+      recIcon =
+        'assets/ui/irrigation-rain.svg';
+    }
+  }
 
   recEl.className =
     `irr-recommendation fade-in fade-in-1 ${recClass}`;
@@ -14772,7 +14843,7 @@ function renderIrrigationPage() {
                 : `
                   <div class="ifi-amount ifi-rain-fed-icon">
                     <img
-                      src="assets/ui/irrigation-rain.svg"
+                      src="assets/ui/quick-water.svg"
                       alt=""
                       class="ifi-rain-fed-img"
                     >
@@ -14931,20 +15002,80 @@ function renderIrrigationPage() {
     })
     .sort((a,b) => a.wateredToday - b.wateredToday);
 
-  const schedEl = document.getElementById('irrScheduleList');
-  if (scheduled.length === 0) {
-    schedEl.innerHTML = '<div style="color:var(--text-muted);padding:16px;font-size:.85rem;text-align:center">No irrigation scheduled for today.</div>';
-  } else {
-    schedEl.innerHTML = scheduled.map((f,i) => `
-      <div class="irr-sched-item${f.wateredToday?' done':''}">
-        <div class="isi-time">${['5:00 AM','6:00 AM','7:00 AM','8:00 AM','4:00 PM','5:00 PM'][i] || '—'}</div>
-        <div class="isi-info">
-          <div class="isi-name">${f.name}</div>
-          <div class="isi-meta">${f.crop} · ${f.type}</div>
+  // ==========================================
+  // TODAY'S IRRIGATION SCHEDULE
+  // ==========================================
+
+  // There is no farmer-entered clock time
+  // in the current irrigation field schema.
+  // Display real status instead of invented times.
+  const schedEl = document.getElementById(
+    'irrScheduleList'
+  );
+
+  if (schedEl) {
+    if (scheduled.length === 0) {
+      schedEl.innerHTML = `
+        <div
+          style="
+            color:var(--text-muted);
+            padding:16px;
+            font-size:.85rem;
+            text-align:center;
+          "
+        >
+          No irrigation due or recorded for today.
         </div>
-        <div class="isi-check${f.wateredToday?' ok':''}">${f.wateredToday ? '✓' : '○'}</div>
-      </div>
-    `).join('');
+      `;
+
+    } else {
+      schedEl.innerHTML = scheduled.map(f => {
+        const isWatered = Boolean(f.wateredToday);
+
+        const statusText =
+          isWatered ? 'Watered' : 'Due';
+
+        const fieldName = escapeHtml(
+          f.name || 'Unnamed Field'
+        );
+
+        const cropName = escapeHtml(
+          f.crop || 'Unspecified crop'
+        );
+
+        const methodName = escapeHtml(
+          f.type || 'Unspecified method'
+        );
+
+        return `
+          <div
+            class="irr-sched-item${isWatered ? ' done' : ''}"
+          >
+
+            <div class="isi-time">
+              ${statusText}
+            </div>
+
+            <div class="isi-info">
+              <div class="isi-name">
+                ${fieldName}
+              </div>
+
+              <div class="isi-meta">
+                ${cropName} · ${methodName}
+              </div>
+            </div>
+
+            <div
+              class="isi-check${isWatered ? ' ok' : ''}"
+            >
+              ${isWatered ? '✓' : '○'}
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
   }
 
   // Weekly Water Usage — recorded events only.
