@@ -212,6 +212,24 @@ router.post('/:id/watering', async (req, res) => {
           throw error;
         }
 
+        // If the farmer enters an area, it must not
+        // exceed the recorded size of this crop.
+        const cropArea = Number(crop.area);
+
+        if (
+          areaWatered !== null &&
+          Number.isFinite(cropArea) &&
+          cropArea > 0 &&
+          areaWatered > cropArea
+        ) {
+          const error = new Error(
+            'Area watered cannot exceed the crop area.'
+          );
+
+          error.status = 400;
+          throw error;
+        }
+
         // Validate the actual planting date before watering.
         const plantedDate =
           typeof crop.planted === 'string'
@@ -366,8 +384,14 @@ router.post('/:id/watering', async (req, res) => {
           date,
           liters,
 
-          // Identify the exact crop that received water.
+          // Exact crop receiving the water.
           cropId: crop._id,
+
+          // Optional details entered by the farmer.
+          areaWatered,
+          irrigationMethod,
+          soilCondition,
+          notes,
 
           previousLastWatered:
             field.lastWatered || '',
@@ -433,6 +457,61 @@ router.post('/:id/watering', async (req, res) => {
     });
   }
 });
+
+  // Optional details entered by the farmer.
+  // Never invent or automatically assume these values.
+  const rawArea = input.areaWatered;
+
+  const blankArea =
+    rawArea === undefined ||
+    rawArea === null ||
+    (
+      typeof rawArea === 'string' &&
+      rawArea.trim() === ''
+    );
+
+  const areaWatered =
+    blankArea ? null : Number(rawArea);
+
+  const rawMethod = input.irrigationMethod ?? '';
+  const rawSoil = input.soilCondition ?? '';
+  const rawNotes = input.notes ?? '';
+
+  // Reject invalid values before writing to MongoDB.
+  if (
+    (
+      !blankArea &&
+      (
+        !['number', 'string'].includes(typeof rawArea) ||
+        !Number.isFinite(areaWatered) ||
+        areaWatered <= 0
+      )
+    ) ||
+    typeof rawMethod !== 'string' ||
+    typeof rawSoil !== 'string' ||
+    typeof rawNotes !== 'string'
+  ) {
+    return res.status(400).json({
+      message: 'Enter valid optional watering details.'
+    });
+  }
+
+  const irrigationMethod = rawMethod.trim();
+  const soilCondition = rawSoil.trim();
+  const notes = rawNotes.trim();
+
+  if (
+    irrigationMethod.length > 60 ||
+    !['', 'dry', 'slightly-dry', 'moist'].includes(
+      soilCondition
+    ) ||
+    notes.length > 500
+  ) {
+    return res.status(400).json({
+      message:
+        'Check the irrigation method, soil condition, and notes.'
+    });
+  }
 
 // PUT update crop (edit details or toggle watered)
 router.put('/:id', async (req, res) => {
