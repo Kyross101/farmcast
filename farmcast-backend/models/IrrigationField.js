@@ -11,8 +11,18 @@ const IrrigationFieldSchema = new mongoose.Schema({
   type:         { type: String, default: 'Manual' },
   freq:         { type: Number, default: 2 },
   waterAmt:     { type: Number, default: 0 },
-  lastWatered:  { type: String, default: () => new Date().toISOString().split('T')[0] },
-  wateredToday: { type: Boolean, default: false },
+
+  // No actual watering date exists when a field is created.
+  // A date is saved only after confirmed watering.
+  lastWatered: {
+    type: String,
+    default: ''
+  },
+
+  wateredToday: {
+    type: Boolean,
+    default: false
+  },
 
   // Retain historical records when a field is retired.
   archivedAt: {

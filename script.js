@@ -14417,9 +14417,16 @@ function renderIrrigationPage() {
     !f.wateredToday
   );
   
-  const daysAgo = Math.floor(
-    (new Date() - last) / 86400000
-  );
+  // A new field may have no recorded watering date.
+  // Never display NaN or a made-up elapsed time.
+  const daysAgo = Number.isNaN(last.getTime())
+    ? null
+    : Math.max(
+        0,
+        Math.floor(
+          (Date.now() - last.getTime()) / 86400000
+        )
+      );
   
   const totalL =
     Number(f.waterAmt) > 0
@@ -14483,11 +14490,15 @@ function renderIrrigationPage() {
                   `
                   : `
                     <span class="ifi-badge">
+
                       ${
-                        daysAgo === 0
-                          ? 'Not marked watered'
-                          : `${daysAgo}d ago`
+                        daysAgo === null
+                          ? 'No watering recorded yet'
+                          : daysAgo === 0
+                            ? 'Not marked watered'
+                            : `${daysAgo}d ago`
                       }
+
                     </span>
                   `
             }
