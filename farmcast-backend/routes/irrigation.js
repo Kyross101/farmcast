@@ -164,12 +164,77 @@ router.post('/:id/watering', async (req, res) => {
        typeof input.liters !== 'string') ||
       String(input.liters).trim() === '' ||
       !Number.isFinite(liters) ||
-      liters <= 0
+      liters < 0.01
     )
   ) {
     return res.status(400).json({
       message: 'Enter the actual water used in liters.'
     });
+  }
+
+  // Optional farmer-entered watering details.
+  // Undo does not need these fields.
+  let areaWatered = null;
+  let irrigationMethod = '';
+  let soilCondition = '';
+  let notes = '';
+
+  if (action === 'water') {
+    const rawArea = input.areaWatered;
+
+    const blankArea =
+      rawArea === undefined ||
+      rawArea === null ||
+      (
+        typeof rawArea === 'string' &&
+        rawArea.trim() === ''
+      );
+
+    areaWatered = blankArea
+      ? null
+      : Number(rawArea);
+
+    const rawMethod = input.irrigationMethod ?? '';
+    const rawSoil = input.soilCondition ?? '';
+    const rawNotes = input.notes ?? '';
+
+    if (
+      (
+        !blankArea &&
+        (
+          (
+            typeof rawArea !== 'string' &&
+            typeof rawArea !== 'number'
+          ) ||
+          !Number.isFinite(areaWatered) ||
+          areaWatered < 0.01
+        )
+      ) ||
+      typeof rawMethod !== 'string' ||
+      typeof rawSoil !== 'string' ||
+      typeof rawNotes !== 'string'
+    ) {
+      return res.status(400).json({
+        message: 'Enter valid optional watering details.'
+      });
+    }
+
+    irrigationMethod = rawMethod.trim();
+    soilCondition = rawSoil.trim();
+    notes = rawNotes.trim();
+
+    if (
+      irrigationMethod.length > 60 ||
+      !['', 'dry', 'slightly-dry', 'moist'].includes(
+        soilCondition
+      ) ||
+      notes.length > 500
+    ) {
+      return res.status(400).json({
+        message:
+          'Check the irrigation method, soil condition, and notes.'
+      });
+    }
   }
 
   let updatedField;
@@ -192,6 +257,25 @@ router.post('/:id/watering', async (req, res) => {
           'Archived fields cannot be watered or edited.'
         );
         error.status = 409;
+        throw error;
+      }
+
+      // An optional watered area cannot exceed
+      // the registered size of this irrigation field.
+      const fieldArea = Number(field.area);
+
+      if (
+        action === 'water' &&
+        areaWatered !== null &&
+        Number.isFinite(fieldArea) &&
+        fieldArea > 0 &&
+        areaWatered > fieldArea
+      ) {
+        const error = new Error(
+          'Area watered cannot exceed the field area.'
+        );
+
+        error.status = 400;
         throw error;
       }
 
@@ -269,7 +353,15 @@ router.post('/:id/watering', async (req, res) => {
             date,
             liters,
 
+            // Attribute watering to its crop only
+            // when this is an automatic crop-owned field.
             cropId: field.sourceCropId || null,
+
+            // Actual optional watering details.
+            areaWatered,
+            irrigationMethod,
+            soilCondition,
+            notes,
 
             previousLastWatered,
             recordedAt: new Date()
