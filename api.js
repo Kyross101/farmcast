@@ -13,6 +13,105 @@ function saveToken(token)  { localStorage.setItem('fc_token', token); }
 function removeToken()     { localStorage.removeItem('fc_token'); }
 function getAuthUser()     { return JSON.parse(localStorage.getItem('fc_authUser') || 'null'); }
 
+// Capture the account identity of this dashboard tab.
+// Different tabs share localStorage, but must not
+// reuse another farmer's authentication session.
+const farmCastTabToken = getToken();
+
+const farmCastTabUser = getAuthUser();
+
+const farmCastTabUserId = String(
+  farmCastTabUser?.id ||
+  farmCastTabUser?._id ||
+  ''
+);
+
+let farmCastTabReloadRequested = false;
+
+function isFarmCastTabSessionCurrent() {
+
+  // Existing startup logic handles missing sessions.
+  if (!farmCastTabToken || !farmCastTabUserId) {
+    return true;
+  }
+
+  const activeUser = getAuthUser();
+
+  const activeUserId = String(
+    activeUser?.id ||
+    activeUser?._id ||
+    ''
+  );
+
+  const activeToken = getToken();
+
+  const cacheOwnerId = localStorage.getItem(
+    'fc_cache_owner_id'
+  );
+
+  return (
+    activeUserId === farmCastTabUserId &&
+    activeToken === farmCastTabToken &&
+    (
+      !cacheOwnerId ||
+      cacheOwnerId === farmCastTabUserId
+    )
+  );
+}
+
+function reloadFarmCastTabIfAccountChanged() {
+
+  if (isFarmCastTabSessionCurrent()) {
+    return false;
+  }
+
+  // Prevent further server-managed modifications
+  // from this stale browser tab.
+  window.FARMCAST_SERVER_DATA_READY = false;
+
+  if (!farmCastTabReloadRequested) {
+    farmCastTabReloadRequested = true;
+
+    // A fresh page must load the current account
+    // and its corresponding server records.
+    window.location.reload();
+  }
+
+  return true;
+}
+
+function requireFarmCastTabSession() {
+
+  if (reloadFarmCastTabIfAccountChanged()) {
+    throw new Error(
+      'The FarmCast account changed in another browser tab. ' +
+      'Reloading this page to protect your farm records.'
+    );
+  }
+}
+
+// React when login/logout changes in another tab.
+window.addEventListener('storage', event => {
+
+  if (
+    event.key === null ||
+    [
+      'fc_token',
+      'fc_authUser',
+      'fc_cache_owner_id'
+    ].includes(event.key)
+  ) {
+    reloadFarmCastTabIfAccountChanged();
+  }
+
+});
+
+// Also check when returning to a suspended tab.
+window.addEventListener(
+  'focus',
+  reloadFarmCastTabIfAccountChanged
+);
+
 let farmCastSessionExpiryHandled =
   false;
 
@@ -127,6 +226,8 @@ function saveAuthUser(
 
 // ── BASE FETCH with JWT header ──
 async function apiFetch(endpoint, options = {}) {
+  requireFarmCastTabSession();
+
   const method = String(
     options.method || 'GET'
   ).toUpperCase();
@@ -212,6 +313,10 @@ async function apiFetch(endpoint, options = {}) {
       'Unexpected response from FarmCast server.'
     );
   }
+
+  // The account may have changed while
+  // this network request was running.
+  requireFarmCastTabSession();
 
   return data;
 }
