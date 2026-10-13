@@ -14234,32 +14234,34 @@ function hasIrrigationSchedule(field) {
   );
 }
 
+// Determine whether a field has a real watering record
+// for the requested calendar date.
+function hasWateringHistoryOnDate(field, date) {
+  return Array.isArray(field?.wateringHistory) &&
+    field.wateringHistory.some(
+      entry => entry?.date === date
+    );
+}
+
 function renderIrrigationPage() {
   const today = getIrrigationLocalDate();
 
-  const activeFields = getActiveIrrigationFields();
+  // Create display-only copies of active fields.
+  // Never trust a stored wateredToday boolean.
+  // Never modify watering history or cached backend data.
+  const activeFields = getActiveIrrigationFields()
+    .map(field => ({
+      ...field,
+
+      wateredToday: hasWateringHistoryOnDate(
+        field,
+        today
+      )
+    }));
 
   const archivedFields = irrFields.filter(
     field => !!field.archivedAt
   );
-
-  // A Watered Today flag is valid only for its recorded day.
-  // Correct stale flags without deleting watering dates.
-  let corrected = false;
-
-  irrFields.forEach(field => {
-    if (
-      field.wateredToday === true &&
-      field.lastWatered !== today
-    ) {
-      field.wateredToday = false;
-      corrected = true;
-    }
-  });
-
-  if (corrected) {
-    lsSave(LS_IRR_FIELDS, irrFields);
-  }
 
   // Stats
   const wateredToday = activeFields.filter(
@@ -14424,11 +14426,8 @@ function renderIrrigationPage() {
       ? Number(f.waterAmt)
       : null;
   
-    const hasRecordedToday =
-      Array.isArray(f.wateringHistory) &&
-      f.wateringHistory.some(
-        event => event.date === today
-      );
+    // Already calculated from real watering history.
+    const hasRecordedToday = f.wateredToday;
 
     const cropIconHtml =
       getCropIconHtml(
