@@ -1379,14 +1379,14 @@ function patchScriptJsWithAPI() {
     }
   };
 
-    toggleFieldWater = async function(id) {
+      toggleFieldWater = async function(id) {
     if (wateringSessionInFlight) return;
 
     const field = irrFields.find(
       f => String(f._id || f.id) === String(id)
     );
 
-    if (!field) return;
+    if (!field || field.archivedAt) return;
 
     const today = getIrrigationLocalDate();
 
@@ -1396,7 +1396,8 @@ function patchScriptJsWithAPI() {
         event => event.date === today
       );
 
-    // No recorded session yet: ask for actual liters.
+    // If no watering was recorded today,
+    // open the form to record actual liters.
     if (!hasRecordedToday) {
       openWateringSessionModal(id);
       return;
@@ -1410,7 +1411,11 @@ function patchScriptJsWithAPI() {
 
     wateringSessionInFlight = true;
 
+    let undoConfirmed = false;
+    let refreshFailed = false;
+
     try {
+      // Undo the record on the backend first.
       const updated = await fcIrrigation.recordWatering(
         id,
         {
@@ -1419,22 +1424,58 @@ function patchScriptJsWithAPI() {
         }
       );
 
-      Object.assign(field, updated);
+      // The backend returned a verified updated field.
+      // Any subsequent UI failure must not be treated
+      // as an unsuccessful database operation.
+      undoConfirmed = true;
 
-      lsSave(LS_IRR_FIELDS, irrFields);
+      try {
+        Object.assign(field, updated);
 
-      renderIrrigationPage();
-      renderCropsPage();
+        lsSave(LS_IRR_FIELDS, irrFields);
 
-      toast('Watering record undone.', 'ok');
+        // Update all dependent sections.
+        renderIrrigationPage();
+        renderCropsPage();
+        renderFarmAnalytics();
+
+      } catch (refreshError) {
+        refreshFailed = true;
+
+        console.error(
+          'Watering undone, but screen refresh failed:',
+          refreshError
+        );
+      }
+
     } catch (err) {
+      // The server did not confirm the Undo operation.
+      // Do not automatically send another request.
       toast(
-        `${err.message} Check the record before retrying.`,
+        `${err.message} Check watering history ` +
+        'before retrying.',
         'err'
       );
 
     } finally {
       wateringSessionInFlight = false;
+    }
+
+    if (undoConfirmed) {
+      if (refreshFailed) {
+        toast(
+          'Watering was undone on the server, but ' +
+          'the screen could not refresh. Reload to ' +
+          'view the latest records.',
+          'warn'
+        );
+
+      } else {
+        toast(
+          'Watering record undone successfully.',
+          'ok'
+        );
+      }
     }
   };
 
