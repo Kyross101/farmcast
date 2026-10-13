@@ -1637,9 +1637,10 @@ function patchScriptJsWithAPI() {
     }
 
     let saved = false;
+    let refreshFailed = false;
 
     try {
-
+      // Record the actual watering details on the server.
       const updated = await fcIrrigation.recordWatering(
         fieldId,
         {
@@ -1652,16 +1653,37 @@ function patchScriptJsWithAPI() {
         }
       );
 
-      Object.assign(field, updated);
-
-      lsSave(LS_IRR_FIELDS, irrFields);
-
-      renderIrrigationPage();
-      renderCropsPage();
-
+      // The server returned a verified watering record.
+      // Mark the save as successful BEFORE refreshing UI.
       saved = true;
 
+      try {
+        // Update the local irrigation record.
+        Object.assign(field, updated);
+
+        lsSave(LS_IRR_FIELDS, irrFields);
+
+        // Refresh all dependent sections.
+        renderIrrigationPage();
+        renderCropsPage();
+        renderFarmAnalytics();
+
+      } catch (refreshError) {
+
+        // A screen rendering error does not mean
+        // that the database transaction failed.
+        refreshFailed = true;
+
+        console.error(
+          'Watering saved, but screen refresh failed:',
+          refreshError
+        );
+      }
+
     } catch (err) {
+
+      // This handles an unconfirmed server response.
+      // Do not automatically retry a watering request.
       toast(
         `${err.message} Check saved watering records ` +
         'before retrying.',
@@ -1669,6 +1691,7 @@ function patchScriptJsWithAPI() {
       );
 
     } finally {
+
       wateringSessionInFlight = false;
 
       if (saveButton) {
@@ -1677,12 +1700,25 @@ function patchScriptJsWithAPI() {
     }
 
     if (saved) {
+
       closeWateringSessionModal();
 
-      toast(
-        `${field.name} watering recorded successfully!`,
-        'ok'
-      );
+      if (refreshFailed) {
+
+        toast(
+          'Watering was saved on the server, but the ' +
+          'screen could not refresh. Reload to view ' +
+          'the latest records.',
+          'warn'
+        );
+
+      } else {
+
+        toast(
+          `${field.name} watering recorded successfully!`,
+          'ok'
+        );
+      }
     }
   };
 
