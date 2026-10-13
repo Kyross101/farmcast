@@ -319,16 +319,6 @@ function prepareFarmCastCacheForUser(
     );
 
 
-  const legacyAccountMismatch =
-    Boolean(
-      !previousUserId &&
-      cachedEmail &&
-      nextEmail &&
-      cachedEmail !==
-        nextEmail
-    );
-
-
   if (
     changedKnownAccount
   ) {
