@@ -1525,7 +1525,18 @@ function patchScriptJsWithAPI() {
     // and subsequent backend request.
     const sessionDate = getIrrigationLocalDate();
 
+    // Refresh the displayed date before confirmation.
+    // This also covers a form left open across midnight.
+    const sessionDateDisplay = document.getElementById(
+      'wateringSessionDate'
+    );
+
+    if (sessionDateDisplay) {
+      sessionDateDisplay.textContent = sessionDate;
+    }
+
     const selectedName = document.getElementById(
+
       'wateringSessionFieldName'
     )?.textContent?.trim() || 'Selected crop or field';
 
@@ -1658,60 +1669,79 @@ function patchScriptJsWithAPI() {
         }
       }
 
-      if (!result) return;
+    if (!result) return;
 
-      // Update the selected crop.
-      Object.assign(crop, {
-        ...result.crop,
-        id: result.crop._id
-      });
-
-      // Add or update the corresponding irrigation entry.
-      const savedField = {
-        ...result.field,
-        id: result.field._id
-      };
-
-      const fieldIndex = irrFields.findIndex(
-        item =>
-          String(item._id || item.id) ===
-          String(savedField._id)
-      );
-
-      if (fieldIndex === -1) {
-        irrFields.unshift(savedField);
-
-      } else {
-        Object.assign(
-          irrFields[fieldIndex],
-          savedField
-        );
-      }
-
-      lsSave(LS_CROPS, myCrops);
-      lsSave(LS_IRR_FIELDS, irrFields);
-
-      closeWateringSessionModal();
+      // The backend has already confirmed that watering
+      // was saved in My Crops and Irrigation.
+      let refreshFailed = false;
 
       try {
+        // Update the selected crop.
+        Object.assign(crop, {
+          ...result.crop,
+          id: result.crop._id
+        });
+
+        // Update or insert its linked irrigation field.
+        const savedField = {
+          ...result.field,
+          id: result.field._id
+        };
+
+        const fieldIndex = irrFields.findIndex(
+          item =>
+            String(item._id || item.id) ===
+            String(savedField._id)
+        );
+
+        if (fieldIndex === -1) {
+          irrFields.unshift(savedField);
+        } else {
+          Object.assign(
+            irrFields[fieldIndex],
+            savedField
+          );
+        }
+
+        // Refresh the local compatibility cache.
+        lsSave(LS_CROPS, myCrops);
+        lsSave(LS_IRR_FIELDS, irrFields);
+
+        // Refresh the affected FarmCast sections.
         renderCropsPage();
         renderIrrigationPage();
         renderFarmAnalytics();
 
-      } catch (renderError) {
+      } catch (refreshError) {
+        refreshFailed = true;
+
         console.error(
-          'Watering saved; dashboard refresh error:',
-          renderError
+          'Crop watering saved but UI refresh failed:',
+          refreshError
         );
       }
 
-      toast(
-        'Watering saved in My Crops and Irrigation.',
-        'ok'
-      );
+      // Saving is complete. Close the confirmation form.
+      closeWateringSessionModal();
+
+      if (refreshFailed) {
+        toast(
+          'Watering was saved on the server in My Crops ' +
+          'and Irrigation, but the screen could not fully ' +
+          'refresh. Reload to view the latest records.',
+          'warn'
+        );
+
+      } else {
+        toast(
+          'Watering saved in My Crops and Irrigation.',
+          'ok'
+        );
+      }
 
       return;
     }
+    
     if (!pendingWaterFieldId || wateringSessionInFlight) {
       return;
     }

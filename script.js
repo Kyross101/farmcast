@@ -14608,9 +14608,26 @@ function renderIrrigationPage() {
     Number(f.waterAmt) > 0
       ? Number(f.waterAmt)
       : null;
-  
-    // Already calculated from real watering history.
-    const hasRecordedToday = f.wateredToday;
+
+  // Get the latest actual liters from confirmed history.
+  // Never treat configured waterAmt as measured usage.
+  const latestSavedEntry =
+    Array.isArray(f.wateringHistory)
+      ? f.wateringHistory.find(entry =>
+          entry &&
+          entry.date === f.lastWatered &&
+          Number.isFinite(Number(entry.liters)) &&
+          Number(entry.liters) >= 0.01
+        )
+      : null;
+
+  const latestSavedLiters =
+    latestSavedEntry
+      ? Number(latestSavedEntry.liters)
+      : null;
+
+  // Already calculated from real watering history.
+  const hasRecordedToday = f.wateredToday;
 
     const cropIconHtml =
       getCropIconHtml(
@@ -14624,7 +14641,7 @@ function renderIrrigationPage() {
         <div class="ifi-left">
 
           <div class="ifi-name">
-            ${f.name}
+            ${escapeHtml(f.name || 'Unnamed Field')}
           </div>
 
           <div class="ifi-meta">
@@ -14634,7 +14651,9 @@ function renderIrrigationPage() {
             </span>
 
             <span>
-              ${f.crop} · ${f.area} m² · ${f.type}
+              ${escapeHtml(f.crop || 'Unspecified crop')}
+              · ${escapeHtml(f.area)} m²
+              · ${escapeHtml(f.type || 'Unspecified method')}
             </span>
 
           </div>
@@ -14698,29 +14717,43 @@ function renderIrrigationPage() {
         <div class="ifi-right">
 
           ${
-            f.type !== 'Rain-fed'
+            latestSavedLiters !== null
               ? `
                 <div class="ifi-amount">
-                  ${totalL === null ? '—' : `${totalL}L`}
+                  ${escapeHtml(latestSavedLiters)} L
                 </div>
 
                 <div class="ifi-amt-lbl">
-                  ${totalL === null ? 'not configured' : 'per session'}
+                  last used · ${escapeHtml(latestSavedEntry.date)}
                 </div>
               `
-              : `
-                <div class="ifi-amount ifi-rain-fed-icon">
-                  <img
-                    src="assets/ui/irrigation-rain.svg"
-                    alt=""
-                    class="ifi-rain-fed-img"
-                  >
-                </div>
+              : f.type !== 'Rain-fed'
+                ? `
+                  <div class="ifi-amount">
+                    ${totalL === null ? '—' : `${totalL} L`}
+                  </div>
 
-                <div class="ifi-amt-lbl">
-                  rain-fed
-                </div>
-              `
+                  <div class="ifi-amt-lbl">
+                    ${
+                      totalL === null
+                        ? 'not configured'
+                        : 'configured per session'
+                    }
+                  </div>
+                `
+                : `
+                  <div class="ifi-amount ifi-rain-fed-icon">
+                    <img
+                      src="assets/ui/irrigation-rain.svg"
+                      alt=""
+                      class="ifi-rain-fed-img"
+                    >
+                  </div>
+
+                  <div class="ifi-amt-lbl">
+                    rain-fed
+                  </div>
+                `
           }
 
           <button

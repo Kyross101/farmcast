@@ -280,9 +280,22 @@ router.post('/:id/watering', async (req, res) => {
       }
 
       const existing = field.wateringHistory.find(
-
         event => event.date === date
       );
+
+      // A field can have only one watering record per date.
+      // Never report a new recording as successful
+      // when the existing record was left unchanged.
+      if (action === 'water' && existing) {
+        const error = new Error(
+          'Watering is already recorded for this field ' +
+          'on this date. Check Watering History to review ' +
+          'the saved liters before trying again.'
+        );
+
+        error.status = 409;
+        throw error;
+      }
 
       if (action === 'water') {
 
