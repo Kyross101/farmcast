@@ -4691,7 +4691,107 @@
           step="any"
           placeholder="Enter actual liters used"
           inputmode="decimal"
+          required
         >
+      </div>
+
+      <!--
+        Optional watering details.
+        Temporarily hidden until B4 connects
+        all inputs to the backend saving flow.
+      -->
+      <div
+        id="wateringSessionExtraFields"
+        style="display:none"
+      >
+
+        <!-- Actual area watered -->
+        <div class="form-group">
+          <label for="wateringAreaWatered">
+            Area Watered (m²)
+            <small>(Optional)</small>
+          </label>
+
+          <input
+            id="wateringAreaWatered"
+            type="number"
+            min="0.01"
+            step="any"
+            inputmode="decimal"
+            placeholder="Enter area actually watered"
+          >
+        </div>
+
+        <!-- Method actually used -->
+        <div class="form-group">
+          <label for="wateringIrrigationMethod">
+            Irrigation Method
+            <small>(Optional)</small>
+          </label>
+
+          <select id="wateringIrrigationMethod">
+            <option value="">
+              Select method
+            </option>
+            <option value="Manual">
+              Manual Watering
+            </option>
+            <option value="Drip">
+              Drip Irrigation
+            </option>
+            <option value="Sprinkler">
+              Sprinkler
+            </option>
+            <option value="Flood">
+              Flood Irrigation
+            </option>
+            <option value="Rain-fed">
+              Rain-fed
+            </option>
+            <option value="Other">
+              Other
+            </option>
+          </select>
+        </div>
+
+        <!-- Soil observation -->
+        <div class="form-group">
+          <label for="wateringSoilCondition">
+            Soil Condition
+            <small>(Optional)</small>
+          </label>
+
+          <select id="wateringSoilCondition">
+            <option value="">
+              Not specified
+            </option>
+            <option value="dry">
+              Dry
+            </option>
+            <option value="slightly-dry">
+              Slightly Dry
+            </option>
+            <option value="moist">
+              Moist
+            </option>
+          </select>
+        </div>
+
+        <!-- Farmer observations -->
+        <div class="form-group">
+          <label for="wateringNotes">
+            Notes
+            <small>(Optional)</small>
+          </label>
+
+          <textarea
+            id="wateringNotes"
+            rows="3"
+            maxlength="500"
+            placeholder="Additional observations about watering..."
+          ></textarea>
+        </div>
+
       </div>
 
       <div
