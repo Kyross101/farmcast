@@ -306,54 +306,16 @@ function prepareFarmCastCacheForUser(
 
 
   /*
-   * Migration safety for browsers that
-   * already contain old unowned cache.
+   * An older FarmCast browser may contain
+   * agricultural data without a known owner.
+   *
+   * We must not assume that cached data
+   * belongs to the next account logging in.
    */
-  let cachedSettings =
-    null;
-
-
-  try {
-
-    cachedSettings =
-      JSON.parse(
-        localStorage.getItem(
-          'fc_settings'
-        ) ||
-        'null'
-      );
-
-  } catch {
-
-    cachedSettings =
-      null;
-
-  }
-
-
-  const cachedEmail =
-    String(
-      cachedSettings?.email ||
-      ''
-    )
-      .trim()
-      .toLowerCase();
-
-
-  const nextEmail =
-    String(
-      user?.email ||
-      ''
-    )
-      .trim()
-      .toLowerCase();
-
-
   const changedKnownAccount =
     Boolean(
       previousUserId &&
-      previousUserId !==
-        nextUserId
+      previousUserId !== nextUserId
     );
 
 
@@ -402,24 +364,34 @@ function prepareFarmCastCacheForUser(
     );
 
   } else if (
-    legacyAccountMismatch
+    !previousUserId
   ) {
 
     /*
-     * Old cache existed before account
-     * ownership tracking. Its real owner
-     * cannot be proven, so do not move it
-     * into another account.
+     * Legacy browser data has no verified
+     * account owner.
+     *
+     * Preserve it separately, but never
+     * show it as another farmer's records.
+     *
+     * The preserved cache uses:
+     * fc_account_legacy_unowned__<originalKey>
      */
-    clearFarmCastUserScopedCache();
 
+    const legacyParkedSuccessfully =
+      parkFarmCastUserScopedCache(
+        'legacy_unowned'
+      );
+
+    if (!legacyParkedSuccessfully) {
+      clearFarmCastUserScopedCache();
+    }
 
     restoreFarmCastUserScopedCache(
       nextUserId
     );
 
   }
-
 
   localStorage.setItem(
     FARMCAST_CACHE_OWNER_KEY,
