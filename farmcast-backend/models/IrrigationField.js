@@ -50,6 +50,42 @@ const IrrigationFieldSchema = new mongoose.Schema({
         default: null
       },
 
+      // Actual area watered by the farmer, in m².
+      // Blank means the area was not recorded.
+      areaWatered: {
+        type: Number,
+        min: 0.01,
+        default: null
+      },
+
+      // The method actually used for this session.
+      irrigationMethod: {
+        type: String,
+        trim: true,
+        maxlength: 60,
+        default: ''
+      },
+
+      // Optional observation made by the farmer.
+      soilCondition: {
+        type: String,
+        enum: [
+          '',
+          'dry',
+          'slightly-dry',
+          'moist'
+        ],
+        default: ''
+      },
+
+      // Optional watering observations.
+      notes: {
+        type: String,
+        trim: true,
+        maxlength: 500,
+        default: ''
+      },
+
       date: {
         type: String,
         required: true,
