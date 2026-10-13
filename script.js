@@ -14505,25 +14505,19 @@ function renderIrrigationPage() {
     f => f.wateredToday
   ).length;
 
+  // Count irrigation fields due by local calendar date.
+  // Do not rely on elapsed hours or invented times.
   const dueToday = activeFields.filter(f => {
+    if (f.wateredToday) {
+      return false;
+    }
 
-  if (
-    f.wateredToday ||
-    !hasIrrigationSchedule(f)
-  ) return false;
+    const dueDateKey = getIrrigationDueDateKey(f);
 
-  const last = new Date(f.lastWatered);
-
-  if (Number.isNaN(last.getTime())) {
-    return false;
-  }
-  
-  const due = new Date(
-    last.getTime() + Number(f.freq) * 86400000
-  );
-
-  return due <= new Date();
-
+    return Boolean(
+      dueDateKey &&
+      dueDateKey <= today
+    );
   }).length;
 
   document.getElementById('irrTotalFields').textContent = activeFields.length;
@@ -14637,10 +14631,19 @@ function renderIrrigationPage() {
       recIcon;
   }
 
-  // Field list
-  const hasSchedule = hasIrrigationSchedule(f);
+  // ==========================================
+  // IRRIGATION FIELD LIST
+  // ==========================================
 
-  const dueDateKey = getIrrigationDueDateKey(f);
+  // Render each active irrigation field.
+  // The callback is required because the HTML
+  // template below uses the field variable "f".
+  document.getElementById('irrFieldList').innerHTML =
+    activeFields.map(f => {
+
+      const hasSchedule = hasIrrigationSchedule(f);
+
+      const dueDateKey = getIrrigationDueDateKey(f);
 
   const isDue = Boolean(
     dueDateKey &&
