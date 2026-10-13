@@ -227,7 +227,76 @@ function sanitizeIrrigation(field, userId) {
               new Date(entry.recordedAt);
           }
 
+          // Preserve actual farmer-recorded watering details.
+          if (
+            entry.areaWatered != null &&
+            entry.areaWatered !== ''
+          ) {
+            const area = Number(entry.areaWatered);
+
+            if (
+              !Number.isFinite(area) ||
+              area < 0.01
+            ) {
+              const error = new Error(
+                'Invalid watered area in backup.'
+              );
+              error.status = 400;
+              throw error;
+            }
+
+            restored.areaWatered = area;
+          }
+
+          if (entry.irrigationMethod != null) {
+            if (
+              typeof entry.irrigationMethod !== 'string' ||
+              entry.irrigationMethod.length > 60
+            ) {
+              const error = new Error(
+                'Invalid watering method in backup.'
+              );
+              error.status = 400;
+              throw error;
+            }
+
+            restored.irrigationMethod =
+              entry.irrigationMethod;
+          }
+
+          if (entry.soilCondition != null) {
+            if (
+              !['', 'dry', 'slightly-dry', 'moist']
+                .includes(entry.soilCondition)
+            ) {
+              const error = new Error(
+                'Invalid soil condition in backup.'
+              );
+              error.status = 400;
+              throw error;
+            }
+
+            restored.soilCondition =
+              entry.soilCondition;
+          }
+
+          if (entry.notes != null) {
+            if (
+              typeof entry.notes !== 'string' ||
+              entry.notes.length > 500
+            ) {
+              const error = new Error(
+                'Invalid watering notes in backup.'
+              );
+              error.status = 400;
+              throw error;
+            }
+
+            restored.notes = entry.notes;
+          }
+
           return restored;
+
         })
     : [];
   
@@ -266,6 +335,7 @@ function sanitizeIrrigation(field, userId) {
 // Reconnect crops using the field IDs stored in the backup.
 function prepareLinkedRestore(crops, irrigationFields, userId) {
   const fieldIdMap = new Map();
+  const cropIdMap = new Map();
 
   const restoredIrrigation = irrigationFields.map(field => {
     const clean = sanitizeIrrigation(field, userId);
@@ -299,8 +369,33 @@ function prepareLinkedRestore(crops, irrigationFields, userId) {
     return clean;
   });
 
-  const restoredCrops = crops.map(crop => {
+    const restoredCrops = crops.map(crop => {
     const clean = sanitizeCrop(crop, userId);
+
+    // Use fresh IDs for the restored account.
+    clean._id = new mongoose.Types.ObjectId();
+
+    const oldCropId =
+      typeof crop.id === 'string'
+        ? crop.id
+        : typeof crop._id === 'string'
+          ? crop._id
+          : '';
+
+    if (/^[a-fA-F0-9]{24}$/.test(oldCropId)) {
+      const key = oldCropId.toLowerCase();
+
+      if (cropIdMap.has(key)) {
+        const error = new Error(
+          'Duplicate crop ID in backup.'
+        );
+        error.status = 400;
+        throw error;
+      }
+
+      cropIdMap.set(key, clean);
+    }
+
     const oldLink = crop.irrigationFieldId;
 
     // Older crops may not have any irrigation link.
@@ -343,6 +438,113 @@ function prepareLinkedRestore(crops, irrigationFields, userId) {
     clean.irrigationFieldId = linkedField._id;
 
     return clean;
+  });
+
+  // Reconnect old crop references to fresh MongoDB IDs.
+  // Never reuse another account's original record IDs.
+  irrigationFields.forEach((sourceField, index) => {
+
+    const restoredField = restoredIrrigation[index];
+
+    const resolveCropId = (oldCropId, label) => {
+
+      if (
+        typeof oldCropId !== 'string' ||
+        !/^[a-fA-F0-9]{24}$/.test(oldCropId)
+      ) {
+        const error = new Error(
+          label + ' contains an invalid crop ID.'
+        );
+        error.status = 400;
+        throw error;
+      }
+
+      const restoredCrop = cropIdMap.get(
+        oldCropId.toLowerCase()
+      );
+
+      if (!restoredCrop) {
+        const error = new Error(
+          label +
+          ' refers to a crop missing from this backup.'
+        );
+        error.status = 400;
+        throw error;
+      }
+
+      return restoredCrop;
+    };
+
+    // Preserve the owner of an auto-created field.
+    if (
+      sourceField.sourceCropId != null &&
+      sourceField.sourceCropId !== ''
+    ) {
+      const owningCrop = resolveCropId(
+        sourceField.sourceCropId,
+        'Irrigation field ownership'
+      );
+
+      if (
+        !owningCrop.irrigationFieldId ||
+        String(owningCrop.irrigationFieldId) !==
+          String(restoredField._id)
+      ) {
+        const error = new Error(
+          'Automatically created field must belong ' +
+          'to its linked crop.'
+        );
+        error.status = 400;
+        throw error;
+      }
+
+      restoredField.sourceCropId = owningCrop._id;
+    }
+
+    // Reconnect each historical session to its crop.
+    restoredField.wateringHistory.forEach(session => {
+
+      const original = (
+        Array.isArray(sourceField.wateringHistory)
+          ? sourceField.wateringHistory
+          : []
+      ).find(
+        item =>
+          item &&
+          item.date === session.date
+      );
+
+      if (
+        !original ||
+        original.cropId === undefined ||
+        original.cropId === null ||
+        original.cropId === ''
+      ) {
+        session.cropId = null;
+        return;
+      }
+
+      const linkedCrop = resolveCropId(
+        original.cropId,
+        'Watering session'
+      );
+
+      if (
+        !linkedCrop.irrigationFieldId ||
+        String(linkedCrop.irrigationFieldId) !==
+          String(restoredField._id)
+      ) {
+        const error = new Error(
+          'A watering session crop is not linked ' +
+          'to its field.'
+        );
+        error.status = 400;
+        throw error;
+      }
+
+      session.cropId = linkedCrop._id;
+    });
+
   });
 
   return {
