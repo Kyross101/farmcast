@@ -509,15 +509,16 @@ router.post('/:id/restore', async (req, res) => {
 // PUT update field — secure and account-specific
 router.put('/:id', async (req, res) => {
   try {
+    // Only editable field details are accepted here.
+    // Watering status and dates must be managed through
+    // confirmed watering history, not manual updates.
     const allowedFields = [
       'name',
       'crop',
       'area',
       'type',
       'freq',
-      'waterAmt',
-      'lastWatered',
-      'wateredToday'
+      'waterAmt'
     ];
 
     const input =
