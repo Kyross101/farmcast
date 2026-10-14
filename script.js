@@ -13750,9 +13750,77 @@ function renderCalPage() {
 
 }
 
+
+function renderCalMonthSummary() {
+
+  const plantedCount =
+    myCrops.filter(crop => {
+
+      const date =
+        new Date(crop.planted);
+
+      return (
+        date.getFullYear() === calYear &&
+        date.getMonth() === calMonth
+      );
+
+    }).length;
+
+  const expectedHarvestCount =
+    myCrops.filter(crop => {
+
+      if (
+        !hasValidCropHarvestDate(crop)
+      ) {
+        return false;
+      }
+
+      const date =
+        new Date(
+          `${crop.harvest}T00:00:00`
+        );
+
+      return (
+        date.getFullYear() === calYear &&
+        date.getMonth() === calMonth
+      );
+
+    }).length;
+
+  const show = (id, value) => {
+
+    const element =
+      document.getElementById(id);
+
+    if (element) {
+      element.textContent =
+        String(value);
+    }
+
+  };
+
+  show(
+    'calActiveCropsCount',
+    myCrops.length
+  );
+
+  show(
+    'calMonthPlantedCount',
+    plantedCount
+  );
+
+  show(
+    'calMonthHarvestCount',
+    expectedHarvestCount
+  );
+
+}
+
+
 function renderCalGrid() {
   const title = `${MONTH_NAMES[calMonth]} ${calYear}`;
   document.getElementById('calMonthTitle').textContent = title;
+  renderCalMonthSummary();
 
   const firstDay = new Date(calYear, calMonth, 1).getDay(); // 0=Sun
   const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
@@ -13818,9 +13886,35 @@ function renderCalGrid() {
     const isToday = dateKey === todayKey;
     const isSelected = calSelectedDate === dateKey;
     const events = cropEvents[d] || [];
-    const dotsHtml = events.slice(0,3).map(e =>
-      `<div class="cal-dot ${e.color}" title="${e.type==='planted'?'Planted':'Harvest'}: ${e.crop}"></div>`
-    ).join('');
+
+    
+    const shownDots =
+      events.slice(0, 3).map(e =>
+        `<div
+           class="cal-dot ${e.color}"
+           title="${e.type === 'planted'
+             ? 'Planted'
+             : 'Harvest'}: ${e.crop}"
+        ></div>`
+      ).join('');
+
+    const extraCount =
+      Math.max(
+        0,
+        events.length - 3
+      );
+
+    const dotsHtml =
+      shownDots +
+      (
+        extraCount
+          ? `<span
+              class="cal-dot-more"
+              title="${extraCount} additional crop events"
+            >+${extraCount}</span>`
+          : ''
+      );
+
 
     html += `<div class="cal-cell${isToday?' today':''}${isSelected?' selected':''}" onclick="selectCalDate('${dateKey}', ${d})">
       <div class="cal-cell-num">${d}</div>
