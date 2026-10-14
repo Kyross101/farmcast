@@ -1887,7 +1887,7 @@ function addTask() {
 
   saveTasksLS();
   renderTasks();
-  
+
   toast(
 
     'Task saved on this device!',
@@ -14202,75 +14202,9 @@ function renderCalPage() {
 }
 
 
-function renderCalMonthSummary() {
-
-  const plantedCount =
-    myCrops.filter(crop => {
-
-      const date =
-        parseFarmCastCropDate(crop.planted);
-
-      return Boolean(
-        date &&
-        date.getFullYear() === calYear &&
-        date.getMonth() === calMonth
-      );
-
-    }).length;
-
-  const expectedHarvestCount =
-    myCrops.filter(crop => {
-
-      if (
-        !hasValidCropHarvestDate(crop)
-      ) {
-        return false;
-      }
-
-      const date =
-        parseFarmCastCropDate(crop.harvest);
-
-      return (
-        date.getFullYear() === calYear &&
-        date.getMonth() === calMonth
-      );
-
-    }).length;
-
-  const show = (id, value) => {
-
-    const element =
-      document.getElementById(id);
-
-    if (element) {
-      element.textContent =
-        String(value);
-    }
-
-  };
-
-  show(
-    'calActiveCropsCount',
-    myCrops.length
-  );
-
-  show(
-    'calMonthPlantedCount',
-    plantedCount
-  );
-
-  show(
-    'calMonthHarvestCount',
-    expectedHarvestCount
-  );
-
-}
-
-
 function renderCalGrid() {
   const title = `${MONTH_NAMES[calMonth]} ${calYear}`;
   document.getElementById('calMonthTitle').textContent = title;
-  renderCalMonthSummary();
 
   const firstDay = new Date(calYear, calMonth, 1).getDay(); // 0=Sun
   const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
