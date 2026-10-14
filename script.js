@@ -1668,36 +1668,19 @@ function renderFarmCastTodayOverview() {
       ).length
     : 0;
 
-  // Farmer's local date plus seven days.
-  const now = new Date();
-
-  const endDate = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 7
-  );
-
-  const endKey = [
-    endDate.getFullYear(),
-    String(
-      endDate.getMonth() + 1
-    ).padStart(2, '0'),
-    String(
-      endDate.getDate()
-    ).padStart(2, '0')
-  ].join('-');
 
   /*
-   * Count only crops with valid estimated
-   * harvest dates that have been reached
-   * or fall within the next seven days.
-   *
-   * This does not confirm crop ripeness.
-   */
+ * Reuse My Crops' existing Ready/Overdue
+ * status calculation.
+ *
+ * This is an estimated date reminder,
+ * not confirmation of crop ripeness.
+ */
   const harvestChecks = myCrops.filter(
     crop =>
-      hasValidCropHarvestDate(crop) &&
-      String(crop.harvest).trim() <= endKey
+      ['Ready', 'Overdue'].includes(
+        getCropStatus(crop).label
+      )
   ).length;
 
   const today = getIrrigationLocalDate();
@@ -1789,7 +1772,7 @@ function renderFarmCastTodayOverview() {
 
       <button
         type="button"
-        onclick="goToFarmCastQuickStartPage('my-crops')"
+        onclick="openFarmCastHarvestReview()"
       >
         Open
       </button>
@@ -1827,6 +1810,34 @@ function renderFarmCastTodayOverview() {
       before taking action.
     </p>
   `;
+}
+
+
+/*
+ * Dashboard -> Harvest Date Review
+ *
+ * Opens My Crops using the existing
+ * Ready to Harvest filter.
+ */
+function openFarmCastHarvestReview() {
+
+  // Open the My Crops module first.
+  goToFarmCastQuickStartPage('my-crops');
+
+  // Find the existing Ready to Harvest tab.
+  const readyTab = document.querySelector(
+    '#page-my-crops .cft[data-filter="ready"]'
+  );
+
+  // Reuse the existing filter function.
+  if (readyTab) {
+
+    filterCrops(
+      readyTab,
+      'ready'
+    );
+
+  }
 }
 
 
@@ -2131,7 +2142,7 @@ function addTask() {
   renderFarmCastTodayOverview();
 
   toast(
-    
+
     'Task saved on this device!',
     'ok'
 

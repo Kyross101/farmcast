@@ -1074,8 +1074,16 @@
       <div class="crops-toolbar fade-in fade-in-1">
         <div class="crops-filter-tabs">
           <div class="cft active" onclick="filterCrops(this,'all')">All Crops</div>
+          
           <div class="cft" onclick="filterCrops(this,'growing')">Growing</div>
-          <div class="cft" onclick="filterCrops(this,'ready')">Ready to Harvest</div>
+          <div
+  class="cft"
+  data-filter="ready"
+  onclick="filterCrops(this,'ready')"
+>
+  Ready to Harvest
+</div>
+          
           <div class="cft" onclick="filterCrops(this,'at-risk')">At Risk</div>
         </div>
         <button class="btn-add-crop" onclick="openAddCropModal()">
