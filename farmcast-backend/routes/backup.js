@@ -171,206 +171,177 @@ function sanitizeIrrigation(field, userId) {
     'wateredToday'
   ]);
 
+  // Older backups may omit wateringHistory.
+  // An explicitly malformed history must be rejected.
+  const history = field.wateringHistory === undefined
+    ? []
+    : field.wateringHistory;
+
+  if (!Array.isArray(history)) {
+    const error = new Error(
+      'Invalid watering history in backup. Expected an array.'
+    );
+    error.status = 400;
+    throw error;
+  }
+
   const seenDates = new Set();
 
-  clean.wateringHistory = Array.isArray(field.wateringHistory)
-    ? field.wateringHistory
-        .filter(entry => {
-          if (
-            !entry ||
-            typeof entry.date !== 'string' ||
-            !/^\d{4}-\d{2}-\d{2}$/.test(entry.date)
-          ) {
-            return false;
-          }
+  clean.wateringHistory = history.map((entry, index) => {
+    const label = 'Watering history entry ' + (index + 1);
 
-          const parsed = new Date(
-            `${entry.date}T00:00:00Z`
-          );
+    if (
+      !entry ||
+      typeof entry !== 'object' ||
+      Array.isArray(entry) ||
+      typeof entry.date !== 'string' ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(entry.date)
+    ) {
+      const error = new Error(
+        label + ' has an invalid date.'
+      );
+      error.status = 400;
+      throw error;
+    }
 
-          if (
-            Number.isNaN(parsed.getTime()) ||
-            parsed.toISOString().slice(0, 10) !== entry.date
-          ) {
-            return false;
-          }
+    const parsed = new Date(
+      entry.date + 'T00:00:00Z'
+    );
 
-          const liters = Number(entry.liters);
+    if (
+      Number.isNaN(parsed.getTime()) ||
+      parsed.toISOString().slice(0, 10) !== entry.date
+    ) {
+      const error = new Error(
+        label + ' has an invalid calendar date.'
+      );
+      error.status = 400;
+      throw error;
+    }
 
-          if (
-            !Number.isFinite(liters) ||
-            liters <= 0 ||
-            seenDates.has(entry.date)
-          ) {
-            return false;
-          }
+    const liters = Number(entry.liters);
 
-          seenDates.add(entry.date);
-          return true;
-        })
-        .map(entry => {
-          const restored = {
-            date: entry.date,
-            liters: Number(entry.liters),
+    if (
+      !Number.isFinite(liters) ||
+      liters <= 0
+    ) {
+      const error = new Error(
+        label + ' has invalid liters.'
+      );
+      error.status = 400;
+      throw error;
+    }
 
-            previousLastWatered:
-              typeof entry.previousLastWatered === 'string'
-                ? entry.previousLastWatered
-                : ''
-          };
+    if (seenDates.has(entry.date)) {
+      const error = new Error(
+        'Duplicate watering date in backup: ' +
+        entry.date
+      );
+      error.status = 400;
+      throw error;
+    }
 
-                    if (
-            entry.recordedAt &&
-            !Number.isNaN(Date.parse(entry.recordedAt))
-          ) {
-            restored.recordedAt =
-              new Date(entry.recordedAt);
-          }
+    seenDates.add(entry.date);
 
-          // Preserve actual farmer-recorded watering details.
-          if (
-            entry.areaWatered != null &&
-            entry.areaWatered !== ''
-          ) {
-            const area = Number(entry.areaWatered);
+    const restored = {
+      date: entry.date,
+      liters,
+      previousLastWatered:
+        typeof entry.previousLastWatered === 'string'
+          ? entry.previousLastWatered
+          : ''
+    };
 
-            if (
-              !Number.isFinite(area) ||
-              area < 0.01
-            ) {
-              const error = new Error(
-                'Invalid watered area in backup.'
-              );
-              error.status = 400;
-              throw error;
-            }
+    if (
+      entry.recordedAt != null &&
+      entry.recordedAt !== ''
+    ) {
+      if (
+        typeof entry.recordedAt !== 'string' ||
+        Number.isNaN(Date.parse(entry.recordedAt))
+      ) {
+        const error = new Error(
+          label + ' has invalid recordedAt.'
+        );
+        error.status = 400;
+        throw error;
+      }
 
-            restored.areaWatered = area;
-          }
+      restored.recordedAt =
+        new Date(entry.recordedAt);
+    }
 
-          if (entry.irrigationMethod != null) {
-            if (
-              typeof entry.irrigationMethod !== 'string' ||
-              entry.irrigationMethod.length > 60
-            ) {
-              const error = new Error(
-                'Invalid watering method in backup.'
-              );
-              error.status = 400;
-              throw error;
-            }
+    if (
+      entry.areaWatered != null &&
+      entry.areaWatered !== ''
+    ) {
+      const area = Number(entry.areaWatered);
 
-            restored.irrigationMethod =
-              entry.irrigationMethod;
-          }
+      if (
+        !Number.isFinite(area) ||
+        area < 0.01
+      ) {
+        const error = new Error(
+          label + ' has invalid area watered.'
+        );
+        error.status = 400;
+        throw error;
+      }
 
-          if (entry.soilCondition != null) {
-            if (
-              !['', 'dry', 'slightly-dry', 'moist']
-                .includes(entry.soilCondition)
-            ) {
-              const error = new Error(
-                'Invalid soil condition in backup.'
-              );
-              error.status = 400;
-              throw error;
-            }
+      restored.areaWatered = area;
+    }
 
-            restored.soilCondition =
-              entry.soilCondition;
-          }
+    if (entry.irrigationMethod != null) {
+      if (
+        typeof entry.irrigationMethod !== 'string' ||
+        entry.irrigationMethod.length > 60
+      ) {
+        const error = new Error(
+          label + ' has invalid irrigation method.'
+        );
+        error.status = 400;
+        throw error;
+      }
 
-          if (entry.notes != null) {
-            if (
-              typeof entry.notes !== 'string' ||
-              entry.notes.length > 500
-            ) {
-              const error = new Error(
-                'Invalid watering notes in backup.'
-              );
-              error.status = 400;
-              throw error;
-            }
+      restored.irrigationMethod =
+        entry.irrigationMethod;
+    }
 
-            restored.notes = entry.notes;
-          }
+    if (entry.soilCondition != null) {
+      if (
+        !['', 'dry', 'slightly-dry', 'moist']
+          .includes(entry.soilCondition)
+      ) {
+        const error = new Error(
+          label + ' has invalid soil condition.'
+        );
+        error.status = 400;
+        throw error;
+      }
 
-          return restored;
+      restored.soilCondition =
+        entry.soilCondition;
+    }
 
-          // Preserve actual farmer-recorded watering details.
-          if (
-            entry.areaWatered != null &&
-            entry.areaWatered !== ''
-          ) {
-            const area = Number(entry.areaWatered);
+    if (entry.notes != null) {
+      if (
+        typeof entry.notes !== 'string' ||
+        entry.notes.length > 500
+      ) {
+        const error = new Error(
+          label + ' has invalid notes.'
+        );
+        error.status = 400;
+        throw error;
+      }
 
-            if (
-              !Number.isFinite(area) ||
-              area < 0.01
-            ) {
-              const error = new Error(
-                'Invalid watered area in backup.'
-              );
-              error.status = 400;
-              throw error;
-            }
+      restored.notes = entry.notes;
+    }
 
-            restored.areaWatered = area;
-          }
+    return restored;
+  });
 
-          if (entry.irrigationMethod != null) {
-            if (
-              typeof entry.irrigationMethod !== 'string' ||
-              entry.irrigationMethod.length > 60
-            ) {
-              const error = new Error(
-                'Invalid watering method in backup.'
-              );
-              error.status = 400;
-              throw error;
-            }
-
-            restored.irrigationMethod =
-              entry.irrigationMethod;
-          }
-
-          if (entry.soilCondition != null) {
-            if (
-              !['', 'dry', 'slightly-dry', 'moist']
-                .includes(entry.soilCondition)
-            ) {
-              const error = new Error(
-                'Invalid soil condition in backup.'
-              );
-              error.status = 400;
-              throw error;
-            }
-
-            restored.soilCondition =
-              entry.soilCondition;
-          }
-
-          if (entry.notes != null) {
-            if (
-              typeof entry.notes !== 'string' ||
-              entry.notes.length > 500
-            ) {
-              const error = new Error(
-                'Invalid watering notes in backup.'
-              );
-              error.status = 400;
-              throw error;
-            }
-
-            restored.notes = entry.notes;
-          }
-
-          return restored;
-
-        })
-    : [];
-  
-  // Preserve the archive status from the backup.
+  // Preserve archive status from the backup.
   // Older backups without archivedAt remain active.
   if (
     field.archivedAt !== undefined &&
@@ -385,12 +356,12 @@ function sanitizeIrrigation(field, userId) {
       const error = new Error(
         'Invalid archivedAt value in irrigation backup.'
       );
-
       error.status = 400;
       throw error;
     }
 
-    clean.archivedAt = new Date(field.archivedAt);
+    clean.archivedAt =
+      new Date(field.archivedAt);
 
   } else {
     clean.archivedAt = null;
