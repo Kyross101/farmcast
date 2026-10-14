@@ -1451,6 +1451,51 @@ function renderPestAlerts() {
 }
 
 
+
+/*
+ * Shared recorded harvest total.
+ * Uses actual saved harvest records only.
+ */
+function getFarmCastRecordedHarvestKg() {
+
+  return Array.isArray(harvestHistory)
+    ? harvestHistory.reduce(
+        (sum, record) => {
+
+          const kg = Number(record?.yield);
+
+          return sum + (
+            Number.isFinite(kg) && kg > 0
+              ? kg
+              : 0
+          );
+
+        },
+        0
+      )
+    : 0;
+
+}
+
+/*
+ * Display harvest amounts consistently
+ * to one decimal place, matching the
+ * current harvest form's 0.1 kg step.
+ */
+function formatFarmCastYieldKg(value) {
+
+  const amount = Number(value);
+
+  return Number.isFinite(amount)
+    ? amount.toLocaleString('en-PH', {
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1
+      })
+    : '—';
+
+}
+
+
 /*
  * Dashboard Farm Statistics
  *
@@ -1532,20 +1577,8 @@ function renderDashboardFarmStats() {
   // Actual Harvest History records.
   const harvestRecords = harvestHistory.length;
 
-  const harvestKg = harvestHistory.reduce(
-    (sum, record) => {
-
-      const amount = Number(record?.yield);
-
-      return sum + (
-        Number.isFinite(amount) && amount > 0
-          ? amount
-          : 0
-      );
-
-    },
-    0
-  );
+  const harvestKg =
+  getFarmCastRecordedHarvestKg();
 
   setStat(
     'qsActiveCrops',
@@ -1572,9 +1605,9 @@ function renderDashboardFarmStats() {
     'qsHarvestRecords',
     'qsHarvestRecordsSub',
     harvestRecords,
-    `${harvestKg.toLocaleString('en-PH', {
-      maximumFractionDigits: 2
-    })} kg total recorded yield`
+
+    `${formatFarmCastYieldKg(harvestKg)} kg total recorded yield`
+
   );
 
 }
@@ -23302,7 +23335,9 @@ function renderHarvestHistory() {
 }
 
 function updateHHStats() {
-  const totalKg   = harvestHistory.reduce((s,h) => s + Number(h.yield), 0);
+
+  const totalKg = getFarmCastRecordedHarvestKg();
+
   const thisMonth = harvestHistory.filter(h => {
     const d = new Date(h.date), n = new Date();
     return d.getMonth() === n.getMonth() && d.getFullYear() === n.getFullYear();
@@ -23312,7 +23347,7 @@ function updateHHStats() {
   const bestCrop = Object.entries(byYield).sort((a,b)=>b[1]-a[1])[0];
 
   document.getElementById('hhTotalHarvests').textContent = harvestHistory.length;
-  document.getElementById('hhTotalKg').textContent       = totalKg.toFixed(1) + ' kg';
+  document.getElementById('hhTotalKg').textContent       = formatFarmCastYieldKg(totalKg) + ' kg';
   document.getElementById('hhThisMonth').textContent     = thisMonth;
 
   const bestCropEl =
@@ -23462,7 +23497,8 @@ function renderHHYieldChart() {
     <div class="hyc-bars">
       ${sorted.map(([crop,kg],i) => `
         <div class="hyc-bar-wrap">
-          <div class="hyc-val">${kg.toFixed(0)} kg</div>
+
+          <div class="hyc-val">${formatFarmCastYieldKg(kg)} kg</div>
           <div class="hyc-bar-outer">
             <div class="hyc-bar-fill" style="height:${Math.round((kg/maxY)*100)}%;background:${colors[i%colors.length]}"></div>
           </div>
@@ -23482,7 +23518,9 @@ function renderHHYieldChart() {
         
         </div>`).join('')}
     </div>
-    <div class="hyc-total">Combined yield: <strong>${harvestHistory.reduce((s,h)=>s+Number(h.yield),0).toFixed(1)} kg</strong> from ${harvestHistory.length} harvests</div>`;
+    <div class="hyc-total">Combined yield: 
+    <strong>${formatFarmCastYieldKg(getFarmCastRecordedHarvestKg())} kg
+    </strong> from ${harvestHistory.length} harvests</div>`;
 }
 
 function filterHarvest(el, filter) {
@@ -23641,7 +23679,7 @@ function renderFarmAnalytics() {
 
 function updateAnKPIs() {
 
-  const totalKg    = harvestHistory.reduce((s,h)=>s+Number(h.yield),0);
+  const totalKg = getFarmCastRecordedHarvestKg();
   
   /*
    * Irrigation and Farm Analytics must
@@ -23666,7 +23704,7 @@ function updateAnKPIs() {
   const pestCount  = (typeof pestLogs!=='undefined') ? pestLogs.length : 0;
   const active     = (typeof myCrops!=='undefined') ? myCrops.length : 0;
 
-  document.getElementById('anTotalHarvest').textContent = totalKg.toFixed(0)+' kg';
+  document.getElementById('anTotalHarvest').textContent = formatFarmCastYieldKg(totalKg)+' kg';
   document.getElementById('anHarvestSub').textContent   = `from ${harvestHistory.length} harvest${harvestHistory.length!==1?'s':''}`;
   
   document.getElementById('anTotalWater').textContent =
@@ -24199,7 +24237,7 @@ function renderAnPerfList() {
 
 
           <span class="an-perf-kg">
-            ${kg.toFixed(0)} kg
+            ${formatFarmCastYieldKg(kg)} kg
           </span>
 
         </div>
@@ -24366,7 +24404,7 @@ function renderAnMonthlySummary() {
               >
 
               <span>
-                ${m.totalKg.toFixed(0)} kg
+                ${formatFarmCastYieldKg(m.totalKg)} kg
               </span>
 
             </span>
