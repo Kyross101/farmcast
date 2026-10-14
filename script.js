@@ -1497,6 +1497,133 @@ function formatFarmCastYieldKg(value) {
 
 
 /*
+ * First-time Farmer Guidance
+ *
+ * Optional, account-specific and device-local.
+ * Does not modify server-managed farm records.
+ */
+function getFarmCastFirstRunHintKey() {
+
+  const id = String(
+    farmCastTabUserId || ''
+  ).toLowerCase();
+
+  return (
+    farmCastTabToken &&
+    /^[a-f0-9]{24}$/.test(id)
+  )
+    ? `fc_first_run_hint_${id}`
+    : null;
+
+}
+
+
+function renderFarmCastFirstRunHint() {
+
+  const hint = document.getElementById(
+    'fcFirstRunHint'
+  );
+
+  if (!hint) return;
+
+  // Hide first. Only show after verification.
+  hint.hidden = true;
+
+  if (
+    window.FARMCAST_SERVER_DATA_READY !== true ||
+    !Array.isArray(myCrops) ||
+    !Array.isArray(irrFields) ||
+    !Array.isArray(harvestHistory) ||
+    !isFarmCastTabSessionCurrent()
+  ) {
+    return;
+  }
+
+  const key = getFarmCastFirstRunHintKey();
+
+  if (!key) return;
+
+  let seen = false;
+
+  try {
+    seen = Boolean(
+      localStorage.getItem(key)
+    );
+  } catch (error) {
+    return;
+  }
+
+  /*
+   * If this farmer already has actual records,
+   * mark the initial guidance as completed.
+   *
+   * Even if the farmer removes those records
+   * later, do not show the welcome hint again.
+   */
+  if (
+    myCrops.length > 0 ||
+    irrFields.length > 0 ||
+    harvestHistory.length > 0
+  ) {
+
+    if (!seen) {
+
+      try {
+        localStorage.setItem(
+          key,
+          'completed'
+        );
+      } catch (error) {
+        // Local storage may be unavailable.
+      }
+
+    }
+
+    return;
+  }
+
+  // New account with no saved records yet.
+  if (!seen) {
+    hint.hidden = false;
+  }
+
+}
+
+
+function dismissFarmCastFirstRunHint() {
+
+  const hint = document.getElementById(
+    'fcFirstRunHint'
+  );
+
+  const key = getFarmCastFirstRunHintKey();
+
+  if (
+    !key ||
+    !isFarmCastTabSessionCurrent()
+  ) {
+    return;
+  }
+
+  try {
+
+    localStorage.setItem(
+      key,
+      'dismissed'
+    );
+
+  } catch (error) {
+    // Still hide for the current page session.
+  }
+
+  if (hint) {
+    hint.hidden = true;
+  }
+
+}
+
+
+/*
  * Dashboard Farm Statistics
  *
  * Uses confirmed farmer records from:
@@ -1508,10 +1635,13 @@ function formatFarmCastYieldKg(value) {
 function renderDashboardFarmStats() {
 
   const ready =
-    window.FARMCAST_SERVER_DATA_READY === true &&
-    Array.isArray(myCrops) &&
-    Array.isArray(irrFields) &&
-    Array.isArray(harvestHistory);
+  window.FARMCAST_SERVER_DATA_READY === true &&
+  Array.isArray(myCrops) &&
+  Array.isArray(irrFields) &&
+  Array.isArray(harvestHistory);
+
+// Update the optional welcome hint.
+renderFarmCastFirstRunHint();
 
   const setStat = (
     valueId,

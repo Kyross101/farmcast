@@ -395,6 +395,55 @@
             </div>
 
             
+            <!-- First-time Farmer Guidance -->
+            <div
+              class="fc-first-run-hint"
+              id="fcFirstRunHint"
+              hidden
+            >
+              <img
+                src="assets/ui/stage-seedling.svg"
+                alt=""
+                class="fc-first-run-hint-icon"
+              >
+
+              <div class="fc-first-run-hint-copy">
+                <strong>New to FarmCast?</strong>
+
+                <span>
+                  No farm records yet. Follow the guide,
+                  or add your first crop.
+                </span>
+              </div>
+
+              <div class="fc-first-run-hint-actions">
+
+                <button
+                  type="button"
+                  onclick="openFarmCastQuickStart()"
+                >
+                  View Guide
+                </button>
+
+                <button
+                  type="button"
+                  onclick="goToFarmCastQuickStartPage('my-crops')"
+                > 
+                  My Crops
+                </button>
+
+                <button
+                  type="button"
+                  class="fc-first-run-dismiss"
+                  onclick="dismissFarmCastFirstRunHint()"
+                  aria-label="Dismiss getting started suggestion"
+                >
+                  Dismiss
+                </button>
+
+              </div>
+            </div>
+            
             <div class="quick-stats-grid">
 
               <!-- Active Crops -->

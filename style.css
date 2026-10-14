@@ -12215,3 +12215,94 @@ button.fc-quickstart-help-entry {
   }
 
 }
+
+
+
+/* ======================================
+   PHASE 3B — FIRST-TIME FARMER HINT
+   ====================================== */
+
+.fc-first-run-hint[hidden] {
+  display: none !important;
+}
+
+.fc-first-run-hint {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+  margin: 0 14px 12px;
+  padding: 12px;
+
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+
+  background: var(--bg3);
+}
+
+.fc-first-run-hint-icon {
+  width: 30px;
+  height: 30px;
+
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.fc-first-run-hint-copy {
+  flex: 1 1 180px;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.fc-first-run-hint-copy span {
+  color: var(--text-muted);
+}
+
+.fc-first-run-hint-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.fc-first-run-hint-actions button {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+
+  color: var(--text);
+  font: inherit;
+  font-size: 0.73rem;
+
+  padding: 7px 9px;
+  cursor: pointer;
+}
+
+.fc-first-run-hint-actions button:hover {
+  border-color: var(--green);
+}
+
+.fc-first-run-hint-actions .fc-first-run-dismiss {
+  color: var(--text-muted);
+  background: transparent;
+}
+
+/* Mobile adjustment */
+@media (max-width: 600px) {
+
+  .fc-first-run-hint {
+    margin: 0 10px 10px;
+  }
+
+  .fc-first-run-hint-actions {
+    width: 100%;
+  }
+
+}
