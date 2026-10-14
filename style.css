@@ -11980,3 +11980,238 @@ body.light-mode { --bg: #f4f6f9; --bg2: #ffffff; --bg3: #eef1f5; --text: #1a1f2e
   }
 
 }
+
+
+/* ======================================
+   FARMCAST — FARMER QUICK START
+   ====================================== */
+
+.fc-quickstart-trigger,
+.fc-quickstart-step-link,
+.fc-quickstart-close {
+  font: inherit;
+  cursor: pointer;
+}
+
+.fc-quickstart-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 6px 9px;
+
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+
+  font-size: 0.75rem;
+}
+
+.fc-quickstart-trigger .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.fc-quickstart-trigger:hover,
+.fc-quickstart-step-link:hover {
+  border-color: var(--green);
+}
+
+button.fc-quickstart-help-entry {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+}
+
+.fc-quickstart-help-entry > span:nth-child(2) {
+  display: block;
+  flex: 1;
+}
+
+.fc-quickstart-help-entry .hli-title,
+.fc-quickstart-help-entry .hli-sub {
+  display: block;
+}
+
+.fc-quickstart-help-arrow {
+  margin-left: auto;
+  color: var(--text-muted);
+}
+
+/* Guide dialog */
+
+.fc-quickstart-dialog {
+  width: min(94vw, 650px);
+  max-height: 86vh;
+  max-height: 86dvh;
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+
+  color: var(--text);
+  background: var(--bg2);
+
+  border: 1px solid var(--border2);
+  border-radius: var(--r);
+
+  box-shadow:
+    0 18px 60px rgba(0, 0, 0, 0.45);
+
+  overscroll-behavior: contain;
+}
+
+.fc-quickstart-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+/* Dialog header */
+
+.fc-quickstart-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.fc-quickstart-eyebrow {
+  display: block;
+  color: var(--green);
+
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.fc-quickstart-head h2 {
+  margin-top: 3px;
+  font-size: 1.25rem;
+}
+
+.fc-quickstart-head p {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.fc-quickstart-close {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--bg3);
+  color: var(--text);
+
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+}
+
+/* Guide steps */
+
+.fc-quickstart-steps {
+  list-style: none;
+  padding: 12px 20px;
+
+  display: grid;
+  gap: 8px;
+}
+
+.fc-quickstart-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+
+.fc-quickstart-number {
+  flex: 0 0 25px;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 700;
+  color: var(--green);
+}
+
+.fc-quickstart-step-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.fc-quickstart-step h3 {
+  font-size: 0.87rem;
+}
+
+.fc-quickstart-step p {
+  margin-top: 3px;
+
+  line-height: 1.4;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.fc-quickstart-step-link {
+  flex-shrink: 0;
+  padding: 8px;
+
+  border: 1px solid var(--border2);
+  background: var(--bg2);
+  color: var(--text);
+
+  border-radius: var(--r-sm);
+  font-size: 0.75rem;
+}
+
+.fc-quickstart-note {
+  margin: 0 20px 20px;
+  padding: 12px;
+
+  color: var(--text-muted);
+  background: var(--bg3);
+  border-radius: var(--r-sm);
+
+  line-height: 1.5;
+  font-size: 0.76rem;
+}
+
+/* Mobile screens */
+
+@media (max-width: 600px) {
+
+  .fc-quickstart-head {
+    padding: 16px;
+  }
+
+  .fc-quickstart-steps {
+    padding: 10px 12px;
+  }
+
+  .fc-quickstart-step {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .fc-quickstart-step-copy {
+    flex-basis: calc(100% - 40px);
+  }
+
+  .fc-quickstart-step-link {
+    width: 100%;
+  }
+
+  .fc-quickstart-note {
+    margin: 0 12px 12px;
+  }
+
+}

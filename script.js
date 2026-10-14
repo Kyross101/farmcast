@@ -18064,6 +18064,109 @@ function openFarmCastRepository() {
 }
 
 
+/*
+ * FarmCast Farmer Quick Start
+ *
+ * Read-only navigation guide.
+ * Does not modify farmer records.
+ */
+function openFarmCastQuickStart() {
+
+  const dialog = document.getElementById(
+    'farmCastQuickStartDialog'
+  );
+
+  if (!dialog) return;
+
+  if (
+    typeof dialog.showModal !== 'function'
+  ) {
+
+    toast(
+      'Quick Start is not supported by this browser.',
+      'warn'
+    );
+
+    return;
+  }
+
+  if (!dialog.open) {
+    dialog.showModal();
+  }
+}
+
+
+function closeFarmCastQuickStart() {
+
+  const dialog = document.getElementById(
+    'farmCastQuickStartDialog'
+  );
+
+  if (dialog?.open) {
+    dialog.close();
+  }
+}
+
+
+/*
+ * Open existing FarmCast modules.
+ * Only explicitly allowed pages can
+ * be opened through the guide.
+ */
+function goToFarmCastQuickStartPage(
+  pageId,
+  sectionId = ''
+) {
+
+  const allowedPages = [
+    'settings',
+    'my-crops',
+    'irrigation',
+    'planting-calendar',
+    'harvest-history',
+    'farm-analytics'
+  ];
+
+  if (!allowedPages.includes(pageId)) {
+    return;
+  }
+
+  const nav = document.querySelector(
+    `.nav-item[data-page="${pageId}"]`
+  );
+
+  if (!nav) return;
+
+  closeFarmCastQuickStart();
+
+  // Reuse existing page navigation.
+  setNav(nav, pageId);
+
+  // Navigate to the correct Settings section.
+  if (
+    pageId === 'settings' &&
+    ['s-profile', 's-location'].includes(
+      sectionId
+    )
+  ) {
+
+    const sectionNav =
+      document.querySelector(
+        `.settings-nav-item[onclick*="'${sectionId}'"]`
+      );
+
+    if (sectionNav) {
+
+      showSettingsSection(
+        sectionNav,
+        sectionId
+      );
+
+    }
+  }
+}
+
+
 function showFarmCastAbout() {
 
   toast(

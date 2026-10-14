@@ -369,7 +369,29 @@
         <div class="col-side">
           <div class="card fade-in fade-in-1">
             <div class="card-header">
-              <div class="card-title"><span class="material-symbols-outlined">analytics</span>Quick Stats</div>
+
+              
+            <div class="card-title">
+              <span class="material-symbols-outlined">
+                analytics
+              </span>
+              Quick Stats
+            </div>
+
+            <button
+              type="button"
+              class="fc-quickstart-trigger"
+              onclick="openFarmCastQuickStart()"
+              aria-haspopup="dialog"
+              aria-controls="farmCastQuickStartDialog"
+            >
+              <span
+                class="material-symbols-outlined"
+                aria-hidden="true"
+              >help_outline</span>
+              Guide
+            </button>
+
             </div>
 
             
@@ -3892,6 +3914,36 @@
 
                 <div class="help-links">
 
+                  
+                  <button
+                    type="button"
+                    class="help-link-item fc-quickstart-help-entry"
+                    onclick="openFarmCastQuickStart()"
+                    aria-haspopup="dialog"
+                    aria-controls="farmCastQuickStartDialog"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      aria-hidden="true"
+                    >menu_book</span>
+
+                    <span>
+                      <span class="hli-title">
+                        Getting Started
+                      </span>
+
+                      <span class="hli-sub">
+                        Quick guide for new FarmCast farmers
+                      </span>
+                    </span>
+
+                    <span
+                      class="material-symbols-outlined fc-quickstart-help-arrow"
+                      aria-hidden="true"
+                    >chevron_right</span>
+                  </button>
+
+
                   <div
                     class="help-link-item"
                     onclick="openFarmCastBugReport()"
@@ -4957,6 +5009,188 @@
 
   </div>
 </div>
+
+
+<!-- FarmCast Farmer Quick Start -->
+<dialog
+  id="farmCastQuickStartDialog"
+  class="fc-quickstart-dialog"
+  aria-labelledby="farmCastQuickStartTitle"
+  aria-describedby="farmCastQuickStartIntro"
+>
+  <div class="fc-quickstart-head">
+    <div>
+      <span class="fc-quickstart-eyebrow">
+        FARMCAST QUICK START
+      </span>
+
+      <h2 id="farmCastQuickStartTitle">
+        Getting Started
+      </h2>
+
+      <p id="farmCastQuickStartIntro">
+        Six simple steps to begin using your
+        farm records.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="fc-quickstart-close"
+      onclick="closeFarmCastQuickStart()"
+      aria-label="Close getting started guide"
+    >
+      <span
+        class="material-symbols-outlined"
+        aria-hidden="true"
+      >close</span>
+    </button>
+  </div>
+
+  <ol class="fc-quickstart-steps">
+
+    <!-- Step 1 -->
+    <li class="fc-quickstart-step">
+      <span class="fc-quickstart-number">1</span>
+
+      <div class="fc-quickstart-step-copy">
+        <h3>Farm Profile</h3>
+        <p>
+          Add your farm details in Settings
+          and select Save Profile.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="fc-quickstart-step-link"
+        onclick="goToFarmCastQuickStartPage('settings','s-profile')"
+      >
+        Open Profile
+      </button>
+    </li>
+
+    <!-- Step 2 -->
+    <li class="fc-quickstart-step">
+      <span class="fc-quickstart-number">2</span>
+
+      <div class="fc-quickstart-step-copy">
+        <h3>Farm Location</h3>
+        <p>
+          Choose GPS or search for your
+          location, then save the correct
+          farm location.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="fc-quickstart-step-link"
+        onclick="goToFarmCastQuickStartPage('settings','s-location')"
+      >
+        Open Location
+      </button>
+    </li>
+
+    <!-- Step 3 -->
+    <li class="fc-quickstart-step">
+      <span class="fc-quickstart-number">3</span>
+
+      <div class="fc-quickstart-step-copy">
+        <h3>Add Your First Crop</h3>
+        <p>
+          Choose Add Crop. Enter the planting
+          method, planting date, field and
+          other required details.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="fc-quickstart-step-link"
+        onclick="goToFarmCastQuickStartPage('my-crops')"
+      >
+        Open My Crops
+      </button>
+    </li>
+
+    <!-- Step 4 -->
+    <li class="fc-quickstart-step">
+      <span class="fc-quickstart-number">4</span>
+
+      <div class="fc-quickstart-step-copy">
+        <h3>Record Watering</h3>
+        <p>
+          Use Water Now in My Crops or
+          Irrigation. Enter the actual liters
+          used and confirm the record.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="fc-quickstart-step-link"
+        onclick="goToFarmCastQuickStartPage('irrigation')"
+      >
+        Open Irrigation
+      </button>
+    </li>
+
+    <!-- Step 5 -->
+    <li class="fc-quickstart-step">
+      <span class="fc-quickstart-number">5</span>
+
+      <div class="fc-quickstart-step-copy">
+        <h3>Planting Calendar</h3>
+        <p>
+          Review saved planting dates and
+          expected harvest dates. Unknown
+          estimates remain unavailable.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="fc-quickstart-step-link"
+        onclick="goToFarmCastQuickStartPage('planting-calendar')"
+      >
+        Open Calendar
+      </button>
+    </li>
+
+    <!-- Step 6 -->
+    <li class="fc-quickstart-step">
+      <span class="fc-quickstart-number">6</span>
+
+      <div class="fc-quickstart-step-copy">
+        <h3>Harvest History</h3>
+        <p>
+          Record the actual harvest date,
+          area, yield in kilograms and
+          quality. Review saved harvests.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="fc-quickstart-step-link"
+        onclick="goToFarmCastQuickStartPage('harvest-history')"
+      >
+        Open Harvests
+      </button>
+    </li>
+
+  </ol>
+
+  <p class="fc-quickstart-note">
+    FarmCast does not automatically confirm
+    watering, crop health or harvest amounts.
+    Save only what you actually observe.
+    If the backend is offline, reconnect
+    and reload before changing farm records.
+  </p>
+</dialog>
+
 
 <script src="config.js"></script>
 <script src="api.js"></script>
