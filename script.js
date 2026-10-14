@@ -1404,19 +1404,6 @@ function displayWeatherData(data){
   dot.className = `condition-dot ${cond.type==='warn'?' warn':cond.type==='danger'?' danger':''}`;
   document.getElementById('farmCondText').innerHTML = cond.text;
 
-  // Quick stats
-  const waterNeed = humidity < 40 ? 'High' : humidity < 65 ? 'Moderate' : 'Low';
-  document.getElementById('waterNeed').textContent = waterNeed;
-  document.getElementById('waterNeed').className = `qs-value ${humidity<40?'qs-red':humidity<65?'qs-amber':'qs-blue'}`;
-  const soilTemp = (temp - 3 + Math.random()*2).toFixed(1);
-  document.getElementById('soilTemp').textContent = `${soilTemp}°C`;
-  
-  // UV estimate
-  const isDay = Date.now()/1000 > data.sys.sunrise && Date.now()/1000 < data.sys.sunset;
-  const uv = isDay ? Math.max(0, Math.round(10 - cloud/12)) : 0;
-  document.getElementById('uvIndex').textContent = uv;
-  document.getElementById('uvLabel').textContent = uv <= 2 ? 'Low' : uv <= 5 ? 'Moderate' : uv <= 7 ? 'High' : 'Very High';
-
   // Pest monitoring advisory
   renderPestAlerts(); 
 
@@ -1467,6 +1454,136 @@ function renderPestAlerts() {
   `;
 
 }
+
+
+/*
+ * Dashboard Farm Statistics
+ *
+ * Uses confirmed farmer records from:
+ * My Crops, Irrigation and Harvest History.
+ *
+ * Do not present cached data as verified
+ * when the initial backend load failed.
+ */
+function renderDashboardFarmStats() {
+
+  const ready =
+    window.FARMCAST_SERVER_DATA_READY === true &&
+    Array.isArray(myCrops) &&
+    Array.isArray(irrFields) &&
+    Array.isArray(harvestHistory);
+
+  const setStat = (
+    valueId,
+    subId,
+    value,
+    sub
+  ) => {
+
+    const valueEl =
+      document.getElementById(valueId);
+
+    const subEl =
+      document.getElementById(subId);
+
+    if (valueEl) {
+      valueEl.textContent = String(value);
+    }
+
+    if (subEl) {
+      subEl.textContent = sub;
+    }
+
+  };
+
+  // Backend data was not verified on startup.
+  if (!ready) {
+
+    [
+      ['qsActiveCrops', 'qsActiveCropsSub'],
+      ['qsWateredCrops', 'qsWateredCropsSub'],
+      ['qsReadyCrops', 'qsReadyCropsSub'],
+      ['qsHarvestRecords', 'qsHarvestRecordsSub']
+    ].forEach(([id, sub]) => {
+
+      setStat(
+        id,
+        sub,
+        '—',
+        'Reconnect and reload to verify'
+      );
+
+    });
+
+    return;
+  }
+
+  // Actual number of active crops.
+  const active = myCrops.length;
+
+  // Match My Crops' existing status filter.
+  const readyCrops = myCrops.filter(
+    crop =>
+      ['Ready', 'Overdue'].includes(
+        getCropStatus(crop).label
+      )
+  ).length;
+
+  // Only confirmed, crop-attributed watering.
+  const wateredCrops = myCrops.filter(
+    crop => isCropWateredToday(crop)
+  ).length;
+
+  // Actual Harvest History records.
+  const harvestRecords = harvestHistory.length;
+
+  const harvestKg = harvestHistory.reduce(
+    (sum, record) => {
+
+      const amount = Number(record?.yield);
+
+      return sum + (
+        Number.isFinite(amount) && amount > 0
+          ? amount
+          : 0
+      );
+
+    },
+    0
+  );
+
+  setStat(
+    'qsActiveCrops',
+    'qsActiveCropsSub',
+    active,
+    `${readyCrops} ready or overdue`
+  );
+
+  setStat(
+    'qsWateredCrops',
+    'qsWateredCropsSub',
+    wateredCrops,
+    `of ${active} active crops`
+  );
+
+  setStat(
+    'qsReadyCrops',
+    'qsReadyCropsSub',
+    readyCrops,
+    'Ready or overdue crops'
+  );
+
+  setStat(
+    'qsHarvestRecords',
+    'qsHarvestRecordsSub',
+    harvestRecords,
+    `${harvestKg.toLocaleString('en-PH', {
+      maximumFractionDigits: 2
+    })} kg total recorded yield`
+  );
+
+}
+
 
 // ── RENDER TASKS ──
 function renderTasks(){
@@ -11726,6 +11843,7 @@ function setNav(el, pageId) {
     case 'dashboard':
 
     renderTasks();
+    renderDashboardFarmStats();
 
 
     /*
@@ -16161,29 +16279,6 @@ displayWeatherData = function(data) {
   banner.className = `farm-condition${cond.type==='warn'?' warn':cond.type==='danger'?' danger':''}`;
   banner.querySelector('.condition-dot').className = `condition-dot${cond.type==='warn'?' warn':cond.type==='danger'?' danger':''}`;
   document.getElementById('farmCondText').innerHTML = cond.text;
-
-  const waterNeed = humidity < 40 ? 'High' : humidity < 65 ? 'Moderate' : 'Low';
-  document.getElementById('waterNeed').textContent  = waterNeed;
-  document.getElementById('waterNeed').className    = `qs-value ${humidity<40?'qs-red':humidity<65?'qs-amber':'qs-blue'}`;
-  const soilC = tempC - 3 + Math.random()*2;
-  document.getElementById('soilTemp').textContent   = displayTemp(soilC);
-
-  // Fix Active Crops quick stat
-  const activeCropsEl = document.getElementById('qsActiveCrops');
-  if (activeCropsEl && typeof myCrops !== 'undefined') {
-    activeCropsEl.textContent = myCrops.length;
-    const readyCount = myCrops.filter(c => {
-      const s = getCropStatus(c);
-      return s.label === 'Ready' || s.label === 'Overdue';
-    }).length;
-    const subEl = activeCropsEl.nextElementSibling;
-    if (subEl) subEl.textContent = `${readyCount} ready to harvest`;
-  }
-
-  const isDay = Date.now()/1000 > data.sys.sunrise && Date.now()/1000 < data.sys.sunset;
-  const uv = isDay ? Math.max(0, Math.round(10 - cloud/12)) : 0;
-  document.getElementById('uvIndex').textContent = uv;
-  document.getElementById('uvLabel').textContent = uv<=2?'Low':uv<=5?'Moderate':uv<=7?'High':'Very High';
 
   renderPestAlerts();
 
@@ -23018,8 +23113,10 @@ async function initApp() {
   const navEl = document.querySelector(`[data-page="${defaultPage}"]`);
   if (navEl) setNav(navEl, defaultPage);
   else {
+
     document.getElementById('page-dashboard').style.display = 'block';
     renderTasks();
+    renderDashboardFarmStats();
 
     fetchWeather(
       appSettings.city ||

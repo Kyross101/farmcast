@@ -372,14 +372,17 @@
               <div class="card-title"><span class="material-symbols-outlined">analytics</span>Quick Stats</div>
             </div>
 
+            
             <div class="quick-stats-grid">
 
+              <!-- Active Crops -->
               <div class="qs-box">
                 <div class="qs-icon">
                   <img
                     src="assets/ui/stage-seedling.svg"
                     alt=""
-                    class="qs-icon-img">
+                    class="qs-icon-img"
+                  >
                 </div>
 
                 <div class="qs-label">
@@ -388,91 +391,88 @@
 
                 <div
                   class="qs-value qs-green"
-                  id="qsActiveCrops">
-                  6
-                </div>
+                  id="qsActiveCrops"
+                >—</div>
 
-                <div class="qs-sub">
-                  3 ready to harvest
+                <div class="qs-sub" id="qsActiveCropsSub">
+                  Loading farm records
                 </div>
               </div>
 
-
+              <!-- Crops Watered Today -->
               <div class="qs-box">
                 <div class="qs-icon">
                   <img
                     src="assets/ui/quick-water.svg"
                     alt=""
-                    class="qs-icon-img">
+                    class="qs-icon-img"
+                  >
                 </div>
 
                 <div class="qs-label">
-                  Water Need
+                  Crops Watered Today
                 </div>
 
                 <div
                   class="qs-value qs-blue"
-                  id="waterNeed">
-                  --
-                </div>
+                  id="qsWateredCrops"
+                >—</div>
 
-                <div class="qs-sub">
-                  today
+                <div class="qs-sub" id="qsWateredCropsSub">
+                  Loading farm records
                 </div>
               </div>
 
-
+              <!-- Ready to Harvest -->
               <div class="qs-box">
                 <div class="qs-icon">
                   <img
-                    src="assets/ui/quick-soil-temp.svg"
+                    src="assets/ui/analytics-harvest.svg"
                     alt=""
-                    class="qs-icon-img">
+                    class="qs-icon-img"
+                  >
                 </div>
 
                 <div class="qs-label">
-                  Soil Temp
+                  Ready to Harvest
                 </div>
 
                 <div
                   class="qs-value qs-amber"
-                  id="soilTemp">
-                  --°C
-                </div>
+                  id="qsReadyCrops"
+                >—</div>
 
-                <div class="qs-sub">
-                  estimated
+                <div class="qs-sub" id="qsReadyCropsSub">
+                  Loading farm records
                 </div>
               </div>
 
-
+              <!-- Recorded Harvests -->
               <div class="qs-box">
                 <div class="qs-icon">
                   <img
-                    src="assets/ui/quick-uv.svg"
+                    src="assets/ui/analytics-yield.svg"
                     alt=""
-                    class="qs-icon-img">
+                    class="qs-icon-img"
+                  >
                 </div>
 
                 <div class="qs-label">
-                  UV Index
+                  Recorded Harvests
                 </div>
 
                 <div
                   class="qs-value qs-red"
-                  id="uvIndex">
-                  --
-                </div>
+                  id="qsHarvestRecords"
+                >—</div>
 
-                <div
-                  class="qs-sub"
-                  id="uvLabel">
-                  --
+                <div class="qs-sub" id="qsHarvestRecordsSub">
+                  Loading farm records
                 </div>
-
-              </div>
+             </div>
 
             </div>
+
           </div>
  
           <div class="card fade-in fade-in-2">
