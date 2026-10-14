@@ -107,7 +107,29 @@ function sanitizeCrop(
 
   clean.user =
     userId;
+  
+  
+  /*
+   * Never silently replace malformed crop
+   * growth history with an empty array.
+   * Older backups may omit this property.
+   */
+  if (
+    crop.growthHistory !== undefined &&
+    (
+      !Array.isArray(crop.growthHistory) ||
+      crop.growthHistory.some(
+        entry => !isPlainObject(entry)
+      )
+    )
+  ) {
+    const error = new Error(
+      'Invalid crop growth history in backup.'
+    );
 
+    error.status = 400;
+    throw error;
+  }
 
   clean.growthHistory =
     Array.isArray(
@@ -793,6 +815,36 @@ router.post(
             'FarmCast restore payload exceeds supported record limits.'
         });
 
+    }
+    
+    
+    /*
+     * Reject malformed collection records before
+     * preparing a destructive MongoDB restore.
+     */
+    const restoreCollections = {
+      crops,
+      harvestHistory,
+      irrigationFields,
+      pestLogs,
+      scannerHistory
+    };
+
+    const invalidCollection =
+      Object.entries(restoreCollections)
+        .find(([, records]) =>
+          records.some(
+            record => !isPlainObject(record)
+          )
+        );
+
+    if (invalidCollection) {
+      return res.status(400).json({
+        message:
+          'Invalid record in ' +
+          invalidCollection[0] +
+          ' backup collection.'
+      });
     }
 
 

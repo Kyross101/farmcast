@@ -18751,6 +18751,324 @@ function validateFarmCastBackupRecords(
 }
 
 
+function validateFarmCastBackupRelations(
+  backup,
+  errors
+) {
+  const {
+    crops,
+    irrigationFields
+  } = backup.data;
+
+  const isMongoId = value =>
+    typeof value === 'string' &&
+    /^[a-f0-9]{24}$/i.test(value);
+
+  const recordId = record =>
+    typeof record.id === 'string'
+      ? record.id
+      : typeof record._id === 'string'
+        ? record._id
+        : '';
+
+  const idKey = value =>
+    value.toLowerCase();
+
+  const cropMap = new Map();
+  const fieldMap = new Map();
+
+  // Check crop IDs.
+  crops.forEach((crop, index) => {
+    const id = recordId(crop);
+
+    if (!isMongoId(id)) return;
+
+    const key = idKey(id);
+
+    if (cropMap.has(key)) {
+      errors.push(
+        `crops[${index}] has a duplicate ID.`
+      );
+    } else {
+      cropMap.set(key, crop);
+    }
+  });
+
+  // Check irrigation field IDs.
+  irrigationFields.forEach((field, index) => {
+    const id = recordId(field);
+
+    if (!isMongoId(id)) return;
+
+    const key = idKey(id);
+
+    if (fieldMap.has(key)) {
+      errors.push(
+        `irrigationFields[${index}] has a duplicate ID.`
+      );
+    } else {
+      fieldMap.set(key, field);
+    }
+  });
+
+  // Check crop-to-irrigation links.
+  crops.forEach((crop, index) => {
+    const link = crop.irrigationFieldId;
+
+    if (link == null || link === '') return;
+
+    const linkedField = isMongoId(link)
+      ? fieldMap.get(idKey(link))
+      : null;
+
+    if (!linkedField || linkedField.archivedAt) {
+      errors.push(
+        `crops[${index}] has an invalid irrigation link.`
+      );
+    }
+  });
+
+  irrigationFields.forEach((field, index) => {
+    const label =
+      `irrigationFields[${index}]`;
+
+    const fieldId = recordId(field);
+
+    // Archived field date.
+    if (
+      field.archivedAt != null &&
+      field.archivedAt !== '' &&
+      (
+        typeof field.archivedAt !== 'string' ||
+        !/^\d{4}-\d{2}-\d{2}T/.test(
+          field.archivedAt
+        ) ||
+        Number.isNaN(
+          Date.parse(field.archivedAt)
+        )
+      )
+    ) {
+      errors.push(
+        `${label} has an invalid archive date.`
+      );
+    }
+
+    // Automatically generated field ownership.
+    if (
+      field.sourceCropId != null &&
+      field.sourceCropId !== ''
+    ) {
+      const owner = isMongoId(field.sourceCropId)
+        ? cropMap.get(idKey(field.sourceCropId))
+        : null;
+
+      if (
+        !owner ||
+        !isMongoId(fieldId) ||
+        !isMongoId(owner.irrigationFieldId) ||
+        idKey(owner.irrigationFieldId) !==
+          idKey(fieldId)
+      ) {
+        errors.push(
+          `${label} has an invalid owner crop.`
+        );
+      }
+    }
+
+    // Older records can omit watering history.
+    const history =
+      field.wateringHistory === undefined
+        ? []
+        : field.wateringHistory;
+
+    if (!Array.isArray(history)) {
+      errors.push(
+        `${label} has malformed watering history.`
+      );
+      return;
+    }
+
+    const dates = new Set();
+
+    history.forEach((entry, sessionIndex) => {
+      const sessionLabel =
+        `${label}.wateringHistory[${sessionIndex}]`;
+
+      if (!isPlainBackupObject(entry)) {
+        errors.push(
+          `${sessionLabel} is invalid.`
+        );
+        return;
+      }
+
+      // Validate actual watering date.
+      const date = entry.date;
+
+      const validFormat =
+        typeof date === 'string' &&
+        /^\d{4}-\d{2}-\d{2}$/.test(date);
+
+      const parsed = validFormat
+        ? new Date(`${date}T00:00:00Z`)
+        : null;
+
+      if (
+        !parsed ||
+        Number.isNaN(parsed.getTime()) ||
+        parsed.toISOString().slice(0, 10) !== date
+      ) {
+        errors.push(
+          `${sessionLabel} has an invalid date.`
+        );
+      } else if (dates.has(date)) {
+        errors.push(
+          `${sessionLabel} repeats a date.`
+        );
+      } else {
+        dates.add(date);
+      }
+
+      // Validate actual liters.
+      const liters = Number(entry.liters);
+
+      if (
+        !Number.isFinite(liters) ||
+        liters < 0.01
+      ) {
+        errors.push(
+          `${sessionLabel} has invalid liters.`
+        );
+      }
+
+      // Validate actual watered area.
+      if (
+        entry.areaWatered != null &&
+        entry.areaWatered !== ''
+      ) {
+        const area = Number(entry.areaWatered);
+
+        if (
+          !Number.isFinite(area) ||
+          area < 0.01
+        ) {
+          errors.push(
+            `${sessionLabel} has invalid watered area.`
+          );
+        }
+      }
+
+      // Validate recording timestamp.
+      if (
+        entry.recordedAt != null &&
+        entry.recordedAt !== '' &&
+        (
+          typeof entry.recordedAt !== 'string' ||
+          Number.isNaN(
+            Date.parse(entry.recordedAt)
+          )
+        )
+      ) {
+        errors.push(
+          `${sessionLabel} has invalid recording time.`
+        );
+      }
+
+      // Validate actual irrigation method.
+      if (
+        entry.irrigationMethod != null &&
+        (
+          typeof entry.irrigationMethod !== 'string' ||
+          entry.irrigationMethod.length > 60
+        )
+      ) {
+        errors.push(
+          `${sessionLabel} has invalid irrigation method.`
+        );
+      }
+
+      // Validate farmer's soil observation.
+      if (
+        entry.soilCondition != null &&
+        ![
+          '',
+          'dry',
+          'slightly-dry',
+          'moist'
+        ].includes(entry.soilCondition)
+      ) {
+        errors.push(
+          `${sessionLabel} has invalid soil condition.`
+        );
+      }
+
+      // Validate optional farmer notes.
+      if (
+        entry.notes != null &&
+        (
+          typeof entry.notes !== 'string' ||
+          entry.notes.length > 500
+        )
+      ) {
+        errors.push(
+          `${sessionLabel} has invalid notes.`
+        );
+      }
+
+      // Prevent silently normalized prior dates.
+      if (
+        entry.previousLastWatered != null &&
+        typeof entry.previousLastWatered !== 'string'
+      ) {
+        errors.push(
+          `${sessionLabel} has invalid previous watering date.`
+        );
+      }
+
+      // Verify the crop that received the water.
+      if (
+        entry.cropId != null &&
+        entry.cropId !== ''
+      ) {
+        const linkedCrop = isMongoId(entry.cropId)
+          ? cropMap.get(idKey(entry.cropId))
+          : null;
+
+        if (
+          !linkedCrop ||
+          !isMongoId(fieldId) ||
+          !isMongoId(linkedCrop.irrigationFieldId) ||
+          idKey(linkedCrop.irrigationFieldId) !==
+            idKey(fieldId)
+        ) {
+          errors.push(
+            `${sessionLabel} has an invalid crop association.`
+          );
+        }
+      }
+    });
+  });
+
+  // Keep exports within server restore limits.
+  const limits = {
+    crops: 500,
+    harvestHistory: 5000,
+    irrigationFields: 1000,
+    pestLogs: 5000,
+    scannerHistory: 50
+  };
+
+  Object.entries(limits).forEach(
+    ([name, limit]) => {
+      if (backup.data[name].length > limit) {
+        errors.push(
+          `${name} exceeds the restore limit of ${limit}.`
+        );
+      }
+    }
+  );
+}
+
+
 function validateFarmCastBackup(
   backup
 ) {
@@ -19041,10 +19359,28 @@ function validateFarmCastBackup(
    * Validate the actual records before
    * allowing a destructive restore.
    */
+  
+  /*
+   * Do not inspect individual records if the
+   * backup structure itself is malformed.
+   */
+  if (errors.length > 0) {
+    return {
+      valid: false,
+      errors
+    };
+  }
+
   validateFarmCastBackupRecords(
     backup,
     errors
   );
+
+  validateFarmCastBackupRelations(
+    backup,
+    errors
+  );
+
 
 
   return {
@@ -19914,9 +20250,48 @@ async function restoreFarmCastBackup() {
 
 }
 
+
 async function exportFarmCastBackup() {
 
   try {
+
+    /*
+     * All collections must be loaded correctly.
+     * Never mistake missing records for empty records.
+     */
+    if (
+      typeof myCrops === 'undefined' ||
+      !Array.isArray(myCrops) ||
+
+      typeof harvestHistory === 'undefined' ||
+      !Array.isArray(harvestHistory) ||
+
+      typeof irrFields === 'undefined' ||
+      !Array.isArray(irrFields) ||
+
+      typeof pestLogs === 'undefined' ||
+      !Array.isArray(pestLogs) ||
+
+      typeof tasks === 'undefined' ||
+      !Array.isArray(tasks) ||
+
+      typeof notifications === 'undefined' ||
+      !Array.isArray(notifications)
+    ) {
+      throw new Error(
+        'FarmCast records are not completely loaded. ' +
+        'Reload before exporting.'
+      );
+    }
+
+    if (
+      !appSettings ||
+      typeof appSettings !== 'object'
+    ) {
+      throw new Error(
+        'FarmCast settings are unavailable for backup.'
+      );
+    }
 
     const scannerBackup =
       await getBackupScannerHistory();
@@ -20187,10 +20562,18 @@ async function exportFarmCastBackup() {
     );
 
 
+    
+    const reason =
+      typeof error?.message === 'string' &&
+      error.message.trim()
+        ? error.message.trim().slice(0, 180)
+        : 'Please reload and try again.';
+
     toast(
-      'Could not create the FarmCast backup.',
+      `FarmCast backup blocked: ${reason}`,
       'err'
     );
+
 
   }
 
