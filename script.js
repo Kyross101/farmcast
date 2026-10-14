@@ -17612,73 +17612,38 @@ function showFarmCastAbout() {
 // ═══ DATA EXPORT ═══
 
 async function getBackupScannerHistory() {
+  // A complete server-backed backup must include
+  // the authoritative Plant Scanner History.
+  // Never silently use an empty or stale local fallback.
 
-  /*
-   * Scanner history is loaded only when
-   * the scanner page is opened.
-   *
-   * For a true backup, try the backend
-   * directly even if that page has not
-   * been visited during this session.
-   */
-  try {
-
-    if (
-      typeof fcScanHistory !==
-        'undefined' &&
-      typeof fcScanHistory.getAll ===
-        'function'
-    ) {
-
-      const syncedHistory =
-        await fcScanHistory.getAll();
-
-
-      if (
-        Array.isArray(
-          syncedHistory
-        )
-      ) {
-
-        return syncedHistory;
-
-      }
-
-    }
-
-  } catch (error) {
-
-    console.warn(
-      'Scanner history backup is using local fallback:',
-      error
+  if (
+    window.FARMCAST_SERVER_DATA_READY !== true
+  ) {
+    throw new Error(
+      'FarmCast server data is not ready. ' +
+      'Reconnect and reload before exporting.'
     );
-
   }
 
-
-  try {
-
-    const localHistory =
-      JSON.parse(
-        localStorage.getItem(
-          'fc_scanHistory'
-        ) ||
-        '[]'
-      );
-
-
-    return Array.isArray(
-      localHistory
-    )
-      ? localHistory
-      : [];
-
-  } catch {
-
-    return [];
-
+  if (
+    typeof fcScanHistory === 'undefined' ||
+    typeof fcScanHistory.getAll !== 'function'
+  ) {
+    throw new Error(
+      'Plant Scanner History service is unavailable.'
+    );
   }
 
+  const history =
+    await fcScanHistory.getAll();
+
+  if (!Array.isArray(history)) {
+    throw new Error(
+      'Plant Scanner History returned invalid data.'
+    );
+  }
+
+  return history;
 }
 
 
@@ -20079,6 +20044,23 @@ async function exportFarmCastBackup() {
 
     };
 
+
+    /*
+     * Validate the actual backup before downloading.
+     * Do not export an invalid FarmCast backup.
+     */
+    const backupCheck =
+      validateFarmCastBackup(backup);
+
+    if (!backupCheck.valid) {
+      throw new Error(
+        'Backup failed validation: ' +
+        (
+          backupCheck.errors[0] ||
+          'unknown error'
+        )
+      );
+    }
 
     /*
      * Authentication/session information
