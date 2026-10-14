@@ -12306,3 +12306,100 @@ button.fc-quickstart-help-entry {
   }
 
 }
+
+
+
+/* ======================================
+   PHASE 4A — TODAY'S FARM OVERVIEW
+   ====================================== */
+
+.fc-today-overview .card-header {
+  padding: 14px 16px 10px;
+}
+
+.fc-today-overview-content {
+  padding: 8px 12px 12px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.fc-today-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 2px;
+}
+
+.fc-today-row + .fc-today-row {
+  border-top: 1px solid var(--border);
+}
+
+.fc-today-row > .material-symbols-outlined {
+  flex: 0 0 22px;
+  font-size: 20px;
+  color: var(--green);
+}
+
+.fc-today-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.fc-today-copy strong {
+  color: var(--text);
+  font-size: 0.78rem;
+}
+
+.fc-today-copy span {
+  overflow-wrap: anywhere;
+  font-size: 0.73rem;
+}
+
+.fc-today-row button {
+  flex: 0 0 auto;
+
+  padding: 7px 9px;
+
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+
+  background: var(--bg3);
+  color: var(--text);
+
+  font: inherit;
+  font-size: 0.73rem;
+
+  cursor: pointer;
+}
+
+.fc-today-row button:hover,
+.fc-today-row button:focus-visible {
+  border-color: var(--green);
+}
+
+.fc-today-note {
+  padding: 8px 2px 0;
+  border-top: 1px solid var(--border);
+
+  line-height: 1.45;
+  font-size: 0.72rem;
+}
+
+/* Smaller mobile screens */
+
+@media (max-width: 400px) {
+
+  .fc-today-overview .card-header {
+    padding: 12px;
+  }
+
+  .fc-today-overview-content {
+    padding: 6px 10px 10px;
+  }
+
+}
