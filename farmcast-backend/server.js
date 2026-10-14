@@ -71,9 +71,32 @@ app.use('/api/scanhistory', require('./routes/scanhistory'));
 app.use('/api/advisories',  require('./routes/advisories'));
 
 // ── HEALTH CHECK ──
+
 app.get('/health', (req, res) => {
-  res.json({ message: '🌾 FarmCast API is running!', status: 'ok' });
+  /*
+   * A running Express server does not always
+   * mean MongoDB is connected.
+   */
+  const databaseConnected =
+    mongoose.connection.readyState === 1;
+
+  return res
+    .status(databaseConnected ? 200 : 503)
+    .json({
+      message: databaseConnected
+        ? 'FarmCast API and database are ready.'
+        : 'FarmCast database is unavailable.',
+
+      status: databaseConnected
+        ? 'ok'
+        : 'degraded',
+
+      database: databaseConnected
+        ? 'connected'
+        : 'unavailable'
+    });
 });
+
 
 // ── SERVE LOGIN PAGE (default) ──
 app.get('/', (req, res) => {

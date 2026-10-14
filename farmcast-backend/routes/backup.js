@@ -680,35 +680,43 @@ function sanitizeScan(
   }
 
 
+  
   /*
-   * Preserve the original scan time.
+   * Preserve the original Plant Scanner date.
    *
-   * Older local records:
-   *   timestamp
+   * Current server records use timestamp.
+   * Older backups may contain createdAt.
    *
-   * Existing MongoDB backups:
-   *   createdAt
+   * Reject invalid timestamps instead of
+   * silently replacing them with the date
+   * when Restore is performed.
    */
   const originalTimestamp =
-    scan.timestamp ||
-    scan.createdAt;
-
+    scan.timestamp ?? scan.createdAt;
 
   if (
-    originalTimestamp &&
-    !Number.isNaN(
-      Date.parse(
-        originalTimestamp
-      )
-    )
+    originalTimestamp !== undefined &&
+    originalTimestamp !== null &&
+    originalTimestamp !== ''
   ) {
-
-    clean.timestamp =
-      new Date(
-        originalTimestamp
+    if (
+      typeof originalTimestamp !== 'string' ||
+      Number.isNaN(
+        Date.parse(originalTimestamp)
+      )
+    ) {
+      const error = new Error(
+        'Invalid Plant Scanner timestamp in backup.'
       );
 
+      error.status = 400;
+      throw error;
+    }
+
+    clean.timestamp =
+      new Date(originalTimestamp);
   }
+
 
 
   clean.user =
@@ -852,10 +860,27 @@ router.post(
       req.user.id;
 
 
+    
     let restoredCrops;
     let restoredIrrigation;
+    let restoredHarvests;
+    let restoredPests;
+    let restoredScans;
+    let restoredSettings;
 
+    /*
+     * Validate and prepare all records BEFORE
+     * starting the MongoDB restore transaction.
+     *
+     * This covers:
+     * - Crop and irrigation relationships
+     * - Harvest records
+     * - Pest records
+     * - Plant Scanner timestamp validation
+     * - Supported farm settings
+     */
     try {
+
       ({
         restoredCrops,
         restoredIrrigation
@@ -865,55 +890,61 @@ router.post(
         userId
       ));
 
+      restoredHarvests =
+        harvestHistory.map(
+          record =>
+            sanitizeHarvest(
+              record,
+              userId
+            )
+        );
+
+      restoredPests =
+        pestLogs.map(
+          log =>
+            sanitizePestLog(
+              log,
+              userId
+            )
+        );
+
+      restoredScans =
+        scannerHistory.map(
+          scan =>
+            sanitizeScan(
+              scan,
+              userId
+            )
+        );
+
+      restoredSettings =
+        sanitizeRestoreSettings(
+          settings
+        );
+
     } catch (error) {
-      return res.status(error.status || 400).json({
-        message:
-          error.message ||
-          'Invalid crop or irrigation backup links.'
-      });
+
+      console.warn(
+        'FarmCast restore preflight rejected:',
+        error.message
+      );
+
+      return res
+        .status(error.status || 400)
+        .json({
+          message:
+            error.message ||
+            'Backup records failed restore validation.'
+        });
+
     }
 
 
-    const restoredHarvests =
-      harvestHistory.map(
-        record =>
-          sanitizeHarvest(
-            record,
-            userId
-          )
-      );
 
-
-    const restoredPests =
-      pestLogs.map(
-        log =>
-          sanitizePestLog(
-            log,
-            userId
-          )
-      );
-
-
-    const restoredScans =
-      scannerHistory.map(
-        scan =>
-          sanitizeScan(
-            scan,
-            userId
-          )
-      );
-    
-    const restoredSettings =
-        sanitizeRestoreSettings(
-           settings
-        );
-
-
-    const session =
-      await mongoose.startSession();
-
+    let session = null;
 
     try {
+      session = await mongoose.startSession();
 
       /*
        * Either the whole server workspace
@@ -1126,11 +1157,33 @@ router.post(
         });
 
 
+    
     } finally {
 
-      await session.endSession();
+      /*
+       * Always try to release the session.
+       *
+       * Cleanup errors must not hide the
+       * original restore result.
+       */
+      if (session) {
+
+        try {
+          await session.endSession();
+
+        } catch (cleanupError) {
+
+          console.error(
+            'Could not close FarmCast restore session:',
+            cleanupError
+          );
+
+        }
+
+      }
 
     }
+
 
   }
 );
