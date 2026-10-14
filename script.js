@@ -1625,254 +1625,6 @@ function dismissFarmCastFirstRunHint() {
 
 
 /*
- * Phase 4A — Today's Farm Overview
- *
- * Based on verified farm records and
- * the farmer's manual task list only.
- *
- * This is not an automatic watering,
- * crop-health or harvest instruction.
- */
-function renderFarmCastTodayOverview() {
-
-  const content = document.getElementById(
-    'fcTodayOverviewContent'
-  );
-
-  if (!content) return;
-
-  const ready =
-    window.FARMCAST_SERVER_DATA_READY === true &&
-    Array.isArray(myCrops) &&
-    Array.isArray(irrFields) &&
-    Array.isArray(harvestHistory) &&
-    isFarmCastTabSessionCurrent();
-
-  if (!ready) {
-
-    content.textContent =
-      'Farm records are unavailable. ' +
-      'Reconnect and reload.';
-
-    return;
-  }
-
-  // Manual, device-local farmer tasks.
-  // These are not automatically scheduled
-  // farm activities.
-  const pendingTasks = Array.isArray(tasks)
-    ? tasks.filter(task =>
-        typeof task?.label === 'string' &&
-        task.label.trim() &&
-        task.done !== true
-      ).length
-    : 0;
-
-
-  /*
- * Reuse My Crops' existing Ready/Overdue
- * status calculation.
- *
- * This is an estimated date reminder,
- * not confirmation of crop ripeness.
- */
-  const harvestChecks = myCrops.filter(
-    crop =>
-      ['Ready', 'Overdue'].includes(
-        getCropStatus(crop).label
-      )
-  ).length;
-
-  const today = getIrrigationLocalDate();
-
-  /*
-   * Match Irrigation's existing schedule
-   * calculation.
-   *
-   * Use confirmed watering history,
-   * not unverified default lastWatered dates.
-   */
-  const irrigationChecks =
-    getActiveIrrigationFields()
-      .filter(field => {
-
-        if (
-          hasWateringHistoryOnDate(
-            field,
-            today
-          )
-        ) {
-          return false;
-        }
-
-        const lastConfirmed =
-          getLatestConfirmedIrrigationDate(
-            field
-          );
-
-        if (!lastConfirmed) {
-          return false;
-        }
-
-        const dueKey =
-          getIrrigationDueDateKey({
-            ...field,
-            lastWatered: lastConfirmed
-          });
-
-        return Boolean(
-          dueKey &&
-          dueKey <= today
-        );
-
-      }).length;
-
-  // All displayed values are calculated
-  // counts. No user text is injected here.
-  content.innerHTML = `
-    <div class="fc-today-row">
-
-      <span
-        class="material-symbols-outlined"
-        aria-hidden="true"
-      >checklist</span>
-
-      <div class="fc-today-copy">
-        <strong>Manual Tasks</strong>
-
-        <span>
-          ${pendingTasks} unfinished
-          · saved on this device
-        </span>
-      </div>
-
-      <button
-        type="button"
-        onclick="openFarmCastOverviewTasks()"
-      >
-        View
-      </button>
-    </div>
-
-    <div class="fc-today-row">
-
-      <span
-        class="material-symbols-outlined"
-        aria-hidden="true"
-      >event_available</span>
-
-      <div class="fc-today-copy">
-        <strong>Harvest Date Review</strong>
-
-        <span>
-          ${harvestChecks} estimated
-          date(s) reached or within 7 days
-        </span>
-      </div>
-
-      <button
-        type="button"
-        onclick="openFarmCastHarvestReview()"
-      >
-        Open
-      </button>
-    </div>
-
-    <div class="fc-today-row">
-
-      <span
-        class="material-symbols-outlined"
-        aria-hidden="true"
-      >water_drop</span>
-
-      <div class="fc-today-copy">
-        <strong>
-          Irrigation Schedule Check
-        </strong>
-
-        <span>
-          ${irrigationChecks}
-          field schedule(s) to review
-        </span>
-      </div>
-
-      <button
-        type="button"
-        onclick="goToFarmCastQuickStartPage('irrigation')"
-      >
-        Open
-      </button>
-    </div>
-
-    <p class="fc-today-note">
-      Dates and schedules are reminders
-      only. Check crop and soil conditions
-      before taking action.
-    </p>
-  `;
-}
-
-
-/*
- * Dashboard -> Harvest Date Review
- *
- * Opens My Crops using the existing
- * Ready to Harvest filter.
- */
-function openFarmCastHarvestReview() {
-
-  // Open the My Crops module first.
-  goToFarmCastQuickStartPage('my-crops');
-
-  // Find the existing Ready to Harvest tab.
-  const readyTab = document.querySelector(
-    '#page-my-crops .cft[data-filter="ready"]'
-  );
-
-  // Reuse the existing filter function.
-  if (readyTab) {
-
-    filterCrops(
-      readyTab,
-      'ready'
-    );
-
-  }
-}
-
-
-/*
- * Open the existing manual-task section.
- * Expand it first if the farmer collapsed it.
- */
-function openFarmCastOverviewTasks() {
-
-  const list = document.getElementById(
-    'taskList'
-  );
-
-  const card = list?.closest('.card');
-
-  const header = card?.querySelector(
-    '.card-header'
-  );
-
-  if (
-    list?.classList.contains('collapsed') &&
-    header
-  ) {
-
-    toggleCard(header);
-  }
-
-  card?.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
-}
-
-
-/*
  * Dashboard Farm Statistics
  *
  * Uses confirmed farmer records from:
@@ -1891,9 +1643,6 @@ function renderDashboardFarmStats() {
 
 // Update the optional welcome hint.
 renderFarmCastFirstRunHint();
-
-// Update today's verified farm overview.
-renderFarmCastTodayOverview();
 
   const setStat = (
     valueId,
@@ -2088,8 +1837,7 @@ function toggleTask(index) {
     tasks[index].done !== true;
 
   saveTasksLS();
-  renderTasks();
-  renderFarmCastTodayOverview();
+  renderTasks(); 
 
 }
 
@@ -2139,8 +1887,7 @@ function addTask() {
 
   saveTasksLS();
   renderTasks();
-  renderFarmCastTodayOverview();
-
+  
   toast(
 
     'Task saved on this device!',
