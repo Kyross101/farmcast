@@ -7,6 +7,7 @@
 
 const router  = require('express').Router();
 const Harvest = require('../models/Harvest');
+const mongoose = require('mongoose');
 const authMW  = require('../middleware/auth');
 
 router.use(authMW);
@@ -113,17 +114,50 @@ router.post('/', async (req, res) => {
   }
 });
 
-// DELETE harvest record
-router.delete('/:id', async (req, res) => {
-  try {
-    const record = await Harvest.findOne({ _id: req.params.id, user: req.user.id });
-    if (!record) return res.status(404).json({ message: 'Record not found.' });
 
-    await Harvest.findByIdAndDelete(req.params.id);
-    res.json({ message: `${record.crop} harvest record deleted.` });
-  } catch (err) {
-    res.status(500).json({ message: 'Error deleting record.' });
+// DELETE harvest record — owner-scoped operation.
+router.delete('/:id', async (req, res) => {
+
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid harvest record ID.'
+    });
+  }
+
+  try {
+
+    const record =
+      await Harvest.findOneAndDelete({
+        _id: req.params.id,
+        user: req.user.id
+      });
+
+    if (!record) {
+      return res.status(404).json({
+        message: 'Record not found.'
+      });
+    }
+
+    return res.json({
+      message:
+        `${record.crop} harvest record deleted.`
+    });
+
+  } catch (error) {
+
+    console.error(
+      'Harvest deletion error:',
+      error
+    );
+
+    return res.status(500).json({
+      message:
+        'Could not confirm record deletion. ' +
+        'Refresh before retrying.'
+    });
+
   }
 });
+
 
 module.exports = router;

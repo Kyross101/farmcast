@@ -96,20 +96,23 @@ router.post('/', async (req, res) => {
   
 });
 
-// DELETE one scan
+
+// DELETE one scanner record — owner-scoped.
 router.delete('/:id', async (req, res) => {
+
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid scan ID.'
+    });
+  }
+
   try {
 
-    if (!mongoose.isValidObjectId(req.params.id)) {
-      return res.status(400).json({
-        message: 'Invalid scan ID.'
+    const scan =
+      await ScanHistory.findOneAndDelete({
+        _id: req.params.id,
+        user: req.user.id
       });
-    }
-
-    const scan = await ScanHistory.findOne({
-      _id: req.params.id,
-      user: req.user.id
-    });
 
     if (!scan) {
       return res.status(404).json({
@@ -117,20 +120,26 @@ router.delete('/:id', async (req, res) => {
       });
     }
 
-    await ScanHistory.findByIdAndDelete(
-      req.params.id
-    );
-
-    res.json({
+    return res.json({
       message: 'Scan deleted.'
     });
 
-  } catch (err) {
-    res.status(500).json({
-      message: 'Error deleting scan.'
+  } catch (error) {
+
+    console.error(
+      'Scan deletion error:',
+      error
+    );
+
+    return res.status(500).json({
+      message:
+        'Could not confirm scan deletion. ' +
+        'Refresh before retrying.'
     });
+
   }
 });
+
 
 // DELETE all scans (clear history)
 router.delete('/', async (req, res) => {

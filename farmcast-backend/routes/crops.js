@@ -72,6 +72,62 @@ async function resolveOwnedIrrigationFieldId(
   return field._id;
 }
 
+
+async function detachCropIrrigationReferences(
+  cropId,
+  userId,
+  session
+) {
+  /*
+   * A harvested or deleted crop no longer
+   * exists in the active Crop collection.
+   *
+   * Keep the irrigation fields and actual
+   * watering history. Only detach references
+   * that would otherwise become broken.
+   */
+
+  // Detach auto-created field ownership.
+  await IrrigationField.updateMany(
+    {
+      user: userId,
+      sourceCropId: cropId
+    },
+    {
+      $set: {
+        sourceCropId: null
+      }
+    },
+    {
+      session
+    }
+  );
+
+  // Preserve watering dates, liters, area,
+  // method, soil condition and farmer notes.
+  // Only clear references to the removed crop.
+  await IrrigationField.updateMany(
+    {
+      user: userId,
+      'wateringHistory.cropId': cropId
+    },
+    {
+      $set: {
+        'wateringHistory.$[watering].cropId': null
+      }
+    },
+    {
+      session,
+      arrayFilters: [
+        {
+          'watering.cropId': cropId
+        }
+      ]
+    }
+  );
+}
+ 
+
 // GET all crops
 router.get('/', async (req, res) => {
   try {
@@ -693,6 +749,21 @@ router.post('/:id/harvest', async (req, res) => {
       if (deletion.deletedCount !== 1) {
         throw new Error('Could not remove harvested crop.');
       }
+      
+      /*
+       * A completed harvest removes the crop
+       * from active My Crops.
+       *
+       * Preserve historical irrigation data
+       * and prevent broken MongoDB references.
+       */
+      await detachCropIrrigationReferences(
+        crop._id,
+        req.user.id,
+        session
+      );
+
+
     });
 
     return res.status(201).json({
@@ -711,17 +782,79 @@ router.post('/:id/harvest', async (req, res) => {
   }
 });
 
-// DELETE crop
-router.delete('/:id', async (req, res) => {
-  try {
-    const crop = await Crop.findOne({ _id: req.params.id, user: req.user.id });
-    if (!crop) return res.status(404).json({ message: 'Crop not found.' });
 
-    await Crop.findByIdAndDelete(req.params.id);
-    res.json({ message: `${crop.type} deleted successfully.` });
-  } catch (err) {
-    res.status(500).json({ message: 'Error deleting crop.' });
+// DELETE crop and safely detach irrigation references.
+router.delete('/:id', async (req, res) => {
+
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid crop ID.'
+    });
+  }
+
+  let deletedCropType = '';
+
+  try {
+
+    await mongoose.connection.transaction(
+      async session => {
+
+        /*
+         * The owner restriction is included
+         * inside the actual deletion query.
+         */
+        const crop = await Crop.findOneAndDelete({
+          _id: req.params.id,
+          user: req.user.id
+        }).session(session);
+
+        if (!crop) {
+          const error = new Error(
+            'Crop not found.'
+          );
+
+          error.status = 404;
+          throw error;
+        }
+
+        /*
+         * Retain irrigation history while
+         * removing references to this crop.
+         */
+        await detachCropIrrigationReferences(
+          crop._id,
+          req.user.id,
+          session
+        );
+
+        deletedCropType = crop.type;
+
+      }
+    );
+
+    return res.json({
+      message:
+        `${deletedCropType} deleted successfully.`
+    });
+
+  } catch (error) {
+
+    console.error(
+      'Crop deletion error:',
+      error
+    );
+
+    return res
+      .status(error.status || 500)
+      .json({
+        message: error.status
+          ? error.message
+          : 'Could not confirm crop deletion. ' +
+            'Refresh your records before retrying.'
+      });
+
   }
 });
+
 
 module.exports = router;

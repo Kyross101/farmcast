@@ -1576,13 +1576,65 @@ function patchScriptJsWithAPI() {
     // Use MongoDB _id for API call
     const mongoId = crop._id || crop.id;
     try {
+
+      
       await fcCrops.delete(mongoId);
-      myCrops = myCrops.filter(c => String(c._id) !== String(mongoId) && String(c.id) !== String(mongoId));
+
+      myCrops = myCrops.filter(
+        c =>
+          String(c._id || c.id) !==
+          String(mongoId)
+      );
+
+      lsSave(LS_CROPS, myCrops);
+
+      /*
+       * Crop deletion also updates irrigation
+       * references in MongoDB. Fetch the new
+       * field data to prevent stale UI records.
+       */
+      try {
+
+        irrFields =
+          await fcIrrigation.getAll();
+
+        lsSave(
+          LS_IRR_FIELDS,
+          irrFields
+        );
+
+      } catch (syncError) {
+
+        console.warn(
+          'Crop deleted; irrigation refresh failed:',
+          syncError
+        );
+
+        toast(
+          'Crop deleted. Refresh to update irrigation history.',
+          'warn'
+        );
+
+      }
+
       renderCropsPage();
-      toast(`${crop.type} deleted.`, 'warn');
+
+      if (
+        typeof renderIrrigationPage === 'function'
+      ) {
+        renderIrrigationPage();
+      }
+
+      toast(
+        `${crop.type} deleted.`,
+        'warn'
+      );
+
+
     } catch (err) {
       toast(`Error: ${err.message}`, 'err');
     }
+
   };
 
   // ── HARVEST ──
@@ -1668,9 +1720,45 @@ function patchScriptJsWithAPI() {
         harvestHistory.push(result.record);
       }
 
+      
       // Update local display caches after confirmed saving.
       lsSave(LS_CROPS, myCrops);
       lsSave(LS_HARVEST, harvestHistory);
+
+      /*
+       * Refresh irrigation references after
+       * the harvest transaction succeeds.
+       */
+      try {
+
+        irrFields =
+          await fcIrrigation.getAll();
+
+        lsSave(
+          LS_IRR_FIELDS,
+          irrFields
+        );
+
+        if (
+          typeof renderIrrigationPage === 'function'
+        ) {
+          renderIrrigationPage();
+        }
+
+      } catch (syncError) {
+
+        console.warn(
+          'Harvest saved; irrigation refresh failed:',
+          syncError
+        );
+
+        toast(
+          'Harvest saved. Refresh to update irrigation history.',
+          'warn'
+        );
+
+      }
+
 
       harvestCompletionInFlight = false;
 

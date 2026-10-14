@@ -7,6 +7,7 @@
 
 const router  = require('express').Router();
 const PestLog = require('../models/PestLog');
+const mongoose = require('mongoose');
 const authMW  = require('../middleware/auth');
 
 router.use(authMW);
@@ -41,17 +42,49 @@ router.post('/', async (req, res) => {
   }
 });
 
-// DELETE pest log
-router.delete('/:id', async (req, res) => {
-  try {
-    const log = await PestLog.findOne({ _id: req.params.id, user: req.user.id });
-    if (!log) return res.status(404).json({ message: 'Log not found.' });
 
-    await PestLog.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Pest log deleted.' });
-  } catch (err) {
-    res.status(500).json({ message: 'Error deleting log.' });
+// DELETE pest log — owner-scoped operation.
+router.delete('/:id', async (req, res) => {
+
+  if (!mongoose.isValidObjectId(req.params.id)) {
+    return res.status(400).json({
+      message: 'Invalid pest-log ID.'
+    });
+  }
+
+  try {
+
+    const log =
+      await PestLog.findOneAndDelete({
+        _id: req.params.id,
+        user: req.user.id
+      });
+
+    if (!log) {
+      return res.status(404).json({
+        message: 'Log not found.'
+      });
+    }
+
+    return res.json({
+      message: 'Pest log deleted.'
+    });
+
+  } catch (error) {
+
+    console.error(
+      'Pest log deletion error:',
+      error
+    );
+
+    return res.status(500).json({
+      message:
+        'Could not confirm pest log deletion. ' +
+        'Refresh before retrying.'
+    });
+
   }
 });
+
 
 module.exports = router;
