@@ -3172,6 +3172,30 @@ const fcScanHistory = {
     return scans.map(s => ({ ...s, id: s._id }));
   },
 
+  
+  /*
+   * Dedicated retrieval for backup exports.
+   * Unlike the normal history view, this
+   * must detect unsupported record counts.
+   */
+  async getForBackup() {
+    const scans =
+      await apiFetch('/scanhistory?backup=1');
+
+    if (!Array.isArray(scans)) {
+      throw new Error(
+        'Scanner backup data is invalid.'
+      );
+    }
+
+    return scans.map(scan => ({
+      ...scan,
+      id: scan._id
+    }));
+  },
+
+
+
   async save(scanData) {
     const data = await apiFetch('/scanhistory', {
       method: 'POST',

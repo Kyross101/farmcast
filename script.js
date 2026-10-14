@@ -17627,15 +17627,15 @@ async function getBackupScannerHistory() {
 
   if (
     typeof fcScanHistory === 'undefined' ||
-    typeof fcScanHistory.getAll !== 'function'
+    typeof fcScanHistory.getForBackup !== 'function'
   ) {
     throw new Error(
       'Plant Scanner History service is unavailable.'
     );
   }
 
-  const history =
-    await fcScanHistory.getAll();
+    const history =
+      await fcScanHistory.getForBackup();
 
   if (!Array.isArray(history)) {
     throw new Error(
@@ -17645,6 +17645,108 @@ async function getBackupScannerHistory() {
 
   return history;
 }
+
+
+async function getFreshFarmCastBackupCollections() {
+  if (
+    window.FARMCAST_SERVER_DATA_READY !== true
+  ) {
+    throw new Error(
+      'FarmCast server data is not ready for backup. Reload.'
+    );
+  }
+
+  /*
+   * Ensure that all required server services
+   * are available before collecting records.
+   */
+  const services = [
+    typeof fcCrops !== 'undefined' &&
+      fcCrops.getAll,
+
+    typeof fcHarvest !== 'undefined' &&
+      fcHarvest.getAll,
+
+    typeof fcIrrigation !== 'undefined' &&
+      fcIrrigation.getAll,
+
+    typeof fcPests !== 'undefined' &&
+      fcPests.getAll
+  ];
+
+  if (
+    services.some(
+      service => typeof service !== 'function'
+    )
+  ) {
+    throw new Error(
+      'A required FarmCast backup service is unavailable.'
+    );
+  }
+
+  /*
+   * Protect against changes of account
+   * during the backup request.
+   */
+  if (
+    typeof requireFarmCastTabSession ===
+      'function'
+  ) {
+    requireFarmCastTabSession();
+  }
+
+  /*
+   * Read authoritative records from the server
+   * instead of trusting old browser arrays.
+   */
+  const [
+    crops,
+    harvestHistory,
+    irrigationFields,
+    pestLogs,
+    scannerHistory
+  ] = await Promise.all([
+    fcCrops.getAll(),
+    fcHarvest.getAll(),
+    fcIrrigation.getAll(),
+    fcPests.getAll(),
+    getBackupScannerHistory()
+  ]);
+
+  if (
+    typeof requireFarmCastTabSession ===
+      'function'
+  ) {
+    requireFarmCastTabSession();
+  }
+
+  /*
+   * Reject any incomplete or invalid response.
+   */
+  if (
+    window.FARMCAST_SERVER_DATA_READY !== true ||
+    ![
+      crops,
+      harvestHistory,
+      irrigationFields,
+      pestLogs,
+      scannerHistory
+    ].every(Array.isArray)
+  ) {
+    throw new Error(
+      'Fresh FarmCast server records could not be verified.'
+    );
+  }
+
+  return {
+    crops,
+    harvestHistory,
+    irrigationFields,
+    pestLogs,
+    scannerHistory
+  };
+}
+
 
 
 function cleanBackupRecord(
@@ -20293,8 +20395,8 @@ async function exportFarmCastBackup() {
       );
     }
 
-    const scannerBackup =
-      await getBackupScannerHistory();
+    const serverSnapshot =
+      await getFreshFarmCastBackupCollections();
 
 
     const exportedAt =
@@ -20311,65 +20413,47 @@ async function exportFarmCastBackup() {
       exportedAt,
 
 
+      
       data: {
 
         crops:
           cleanBackupCollection(
-            typeof myCrops !==
-              'undefined'
-              ? myCrops
-              : []
+            serverSnapshot.crops
           ),
-
 
         harvestHistory:
           cleanBackupCollection(
-            typeof harvestHistory !==
-              'undefined'
-              ? harvestHistory
-              : []
+            serverSnapshot.harvestHistory
           ),
-
 
         irrigationFields:
           cleanBackupCollection(
-            typeof irrFields !==
-              'undefined'
-              ? irrFields
-              : []
+            serverSnapshot.irrigationFields
           ),
-
 
         pestLogs:
           cleanBackupCollection(
-            typeof pestLogs !==
-              'undefined'
-              ? pestLogs
-              : []
+            serverSnapshot.pestLogs
           ),
 
-
+        /*
+         * Tasks and notifications are currently
+         * managed locally, so preserve them.
+         */
         tasks:
-          Array.isArray(
-            tasks
-          )
+          Array.isArray(tasks)
             ? tasks
             : [],
 
-
         notifications:
-          Array.isArray(
-            notifications
-          )
+          Array.isArray(notifications)
             ? notifications
             : [],
 
-
         scannerHistory:
           cleanBackupCollection(
-            scannerBackup
+            serverSnapshot.scannerHistory
           ),
-
 
         settings:
           cleanBackupSettings(
@@ -20454,7 +20538,26 @@ async function exportFarmCastBackup() {
         2
       );
 
+    
+    /*
+     * Do not offer an export larger than
+     * the current 50 MB restore file limit.
+     */
+    const backupSizeBytes =
+      new Blob([json]).size;
 
+    if (
+      backupSizeBytes >
+      50 * 1024 * 1024
+    ) {
+      throw new Error(
+        'Backup exceeds the 50 MB restore limit. ' +
+        'No file was created.'
+      );
+    }
+
+
+    
     const blob =
       new Blob(
         [json],
@@ -20543,7 +20646,8 @@ async function exportFarmCastBackup() {
 
 
     toast(
-      'FarmCast backup downloaded!',
+      'FarmCast backup download started. ' +
+      'Check Downloads to confirm it was saved.',
       'ok'
     );
 
@@ -20551,7 +20655,8 @@ async function exportFarmCastBackup() {
     addNotification(
       'system',
       'FarmCast Backup Created',
-      'A complete FarmCast workspace backup was downloaded successfully.'
+      'A validated FarmCast backup download was started. ' +
+      'Confirm that the file was saved.'
     );
 
   } catch (error) {

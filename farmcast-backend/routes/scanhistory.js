@@ -14,16 +14,49 @@ const authMW      = require('../middleware/auth');
 router.use(authMW);
 
 // GET all scan history (newest first)
+
+ // GET scan history (newest first).
+ // Backup requests must not silently truncate records.
 router.get('/', async (req, res) => {
   try {
-    const scans = await ScanHistory.find({ user: req.user.id })
+    const backupRequest =
+      req.query.backup === '1';
+
+    const scans = await ScanHistory.find({
+      user: req.user.id
+    })
       .sort({ createdAt: -1 })
-      .limit(50);
-    res.json(scans);
+      .limit(backupRequest ? 51 : 50);
+
+    /*
+     * Normal UI keeps its existing 50-record view.
+     * Backup mode checks one extra record so it
+     * can detect unsupported, incomplete exports.
+     */
+    if (backupRequest && scans.length > 50) {
+      return res.status(409).json({
+        message:
+          'More than 50 scan records exist. ' +
+          'The current restore limit cannot ' +
+          'preserve every scan. A complete ' +
+          'backup cannot be created.'
+      });
+    }
+
+    return res.json(scans);
+
   } catch (err) {
-    res.status(500).json({ message: 'Error fetching scan history.' });
+    console.error(
+      'ScanHistory fetch error:',
+      err
+    );
+
+    return res.status(500).json({
+      message: 'Error fetching scan history.'
+    });
   }
 });
+
 
 // POST save scan result
 router.post('/', async (req, res) => {
