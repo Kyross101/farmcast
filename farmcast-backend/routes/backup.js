@@ -219,13 +219,83 @@ function sanitizeIrrigation(field, userId) {
                 : ''
           };
 
-          if (
+                    if (
             entry.recordedAt &&
             !Number.isNaN(Date.parse(entry.recordedAt))
           ) {
             restored.recordedAt =
               new Date(entry.recordedAt);
           }
+
+          // Preserve actual farmer-recorded watering details.
+          if (
+            entry.areaWatered != null &&
+            entry.areaWatered !== ''
+          ) {
+            const area = Number(entry.areaWatered);
+
+            if (
+              !Number.isFinite(area) ||
+              area < 0.01
+            ) {
+              const error = new Error(
+                'Invalid watered area in backup.'
+              );
+              error.status = 400;
+              throw error;
+            }
+
+            restored.areaWatered = area;
+          }
+
+          if (entry.irrigationMethod != null) {
+            if (
+              typeof entry.irrigationMethod !== 'string' ||
+              entry.irrigationMethod.length > 60
+            ) {
+              const error = new Error(
+                'Invalid watering method in backup.'
+              );
+              error.status = 400;
+              throw error;
+            }
+
+            restored.irrigationMethod =
+              entry.irrigationMethod;
+          }
+
+          if (entry.soilCondition != null) {
+            if (
+              !['', 'dry', 'slightly-dry', 'moist']
+                .includes(entry.soilCondition)
+            ) {
+              const error = new Error(
+                'Invalid soil condition in backup.'
+              );
+              error.status = 400;
+              throw error;
+            }
+
+            restored.soilCondition =
+              entry.soilCondition;
+          }
+
+          if (entry.notes != null) {
+            if (
+              typeof entry.notes !== 'string' ||
+              entry.notes.length > 500
+            ) {
+              const error = new Error(
+                'Invalid watering notes in backup.'
+              );
+              error.status = 400;
+              throw error;
+            }
+
+            restored.notes = entry.notes;
+          }
+
+          return restored;
 
           // Preserve actual farmer-recorded watering details.
           if (
