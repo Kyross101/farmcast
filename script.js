@@ -14705,6 +14705,140 @@ function attributeHistoryWatering() {
   );
 }
 
+
+/*
+ * FarmCast shared weekly watering summary.
+ *
+ * Same Monday-Sunday calculation for
+ * Irrigation and Farm Analytics.
+ *
+ * Include archived irrigation fields.
+ * Count only confirmed watering entries.
+ */
+function getFarmCastWeeklyWaterSummary(
+  now = new Date()
+) {
+
+  const available =
+    window.FARMCAST_SERVER_DATA_READY === true &&
+    cropFieldLinkBackendEnabled === true &&
+    Array.isArray(irrFields);
+
+  const monday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  monday.setDate(
+    monday.getDate() -
+    ((monday.getDay() + 6) % 7)
+  );
+
+  const dayNames = [
+    'Mon', 'Tue', 'Wed', 'Thu',
+    'Fri', 'Sat', 'Sun'
+  ];
+
+  const week = dayNames.map(
+    (label, index) => {
+
+      const date = new Date(monday);
+
+      date.setDate(
+        monday.getDate() + index
+      );
+
+      return {
+        label,
+
+        dateKey: [
+          date.getFullYear(),
+          String(
+            date.getMonth() + 1
+          ).padStart(2, '0'),
+          String(
+            date.getDate()
+          ).padStart(2, '0')
+        ].join('-'),
+
+        liters: 0
+      };
+
+    }
+  );
+
+  const byField = new Map();
+
+  let totalLiters = 0;
+  let sessionCount = 0;
+
+  if (available) {
+
+    irrFields.forEach(field => {
+
+      const seenDates = new Set();
+
+      let liters = 0;
+      let sessions = 0;
+
+      const history =
+        Array.isArray(field.wateringHistory)
+          ? field.wateringHistory
+          : [];
+
+      history.forEach(entry => {
+
+        const date = entry?.date;
+
+        const index = week.findIndex(
+          day => day.dateKey === date
+        );
+
+        const amount =
+          Number(entry?.liters);
+
+        if (
+          index === -1 ||
+          seenDates.has(date) ||
+          !Number.isFinite(amount) ||
+          amount <= 0
+        ) {
+          return;
+        }
+
+        seenDates.add(date);
+
+        week[index].liters += amount;
+
+        totalLiters += amount;
+        sessionCount++;
+
+        liters += amount;
+        sessions++;
+
+      });
+
+      byField.set(field, {
+        liters,
+        sessions
+      });
+
+    });
+
+  }
+
+  return {
+    available,
+    week,
+    totalLiters,
+    sessionCount,
+    byField
+  };
+
+}
+
+
 function renderIrrigationPage() {
   const today = getIrrigationLocalDate();
 
@@ -15279,90 +15413,32 @@ function renderIrrigationPage() {
     }
   }
 
-  // Weekly Water Usage — recorded events only.
+// Weekly Water Usage — recorded events only.
 // Uses the farmer's local Monday–Sunday calendar.
 const waterChart = document.getElementById('waterChartWrap');
 
 if (waterChart) {
-  const backendLoaded = cropFieldLinkBackendEnabled === true;
+  
+  const waterSummary =
+    getFarmCastWeeklyWaterSummary();
 
-  const now = new Date();
-  const monday = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate()
-  );
+  const backendLoaded =
+    waterSummary.available;
 
-  monday.setDate(
-    monday.getDate() - ((monday.getDay() + 6) % 7)
-  );
+  const week =
+    waterSummary.week;
 
-  const dayNames = [
-    'Mon', 'Tue', 'Wed', 'Thu',
-    'Fri', 'Sat', 'Sun'
-  ];
+  const sessionCount =
+    waterSummary.sessionCount;
 
-  const week = dayNames.map((label, index) => {
-    const date = new Date(monday);
-
-    date.setDate(monday.getDate() + index);
-
-    const dateKey = [
-      date.getFullYear(),
-      String(date.getMonth() + 1).padStart(2, '0'),
-      String(date.getDate()).padStart(2, '0')
-    ].join('-');
-
-    return {
-      label,
-      dateKey,
-      liters: 0
-    };
-  });
-
-  let sessionCount = 0;
-
-  if (backendLoaded) {
-    irrFields.forEach(field => {
-      const seenDates = new Set();
-
-      const history = Array.isArray(field.wateringHistory)
-        ? field.wateringHistory
-        : [];
-
-      history.forEach(event => {
-        const index = week.findIndex(
-          day => day.dateKey === event.date
-        );
-
-        const liters = Number(event.liters);
-
-        if (
-          index === -1 ||
-          seenDates.has(event.date) ||
-          !Number.isFinite(liters) ||
-          liters <= 0
-        ) {
-          return;
-        }
-
-        week[index].liters += liters;
-
-        seenDates.add(event.date);
-        sessionCount++;
-      });
-    });
-  }
+  const totalLiters =
+    waterSummary.totalLiters;
 
   const maxLiters = Math.max(
     0,
     ...week.map(day => day.liters)
   );
 
-  const totalLiters = week.reduce(
-    (sum, day) => sum + day.liters,
-    0
-  );
 
   const formatLiters = value =>
     value.toLocaleString('en-PH', {
@@ -15372,7 +15448,7 @@ if (waterChart) {
   if (!backendLoaded) {
     waterChart.innerHTML = `
       <div class="wc-total">
-        Connect to FarmCast to view recorded weekly water usage.
+        Reconnect and reload FarmCast to view verified weekly water usage.
       </div>
     `;
   } else {
@@ -23326,58 +23402,26 @@ function renderFarmAnalytics() {
 }
 
 function updateAnKPIs() {
+
   const totalKg    = harvestHistory.reduce((s,h)=>s+Number(h.yield),0);
   
-  // Actual watering sessions for this week's Monday–Sunday.
+  /*
+   * Irrigation and Farm Analytics must
+   * display the same recorded water totals.
+   */
+  const waterSummary =
+    getFarmCastWeeklyWaterSummary();
+
   const waterDataAvailable =
-    cropFieldLinkBackendEnabled === true;
+    waterSummary.available;
 
-  const weekStart = new Date();
-  weekStart.setHours(0, 0, 0, 0);
+  const totalWater =
+    waterSummary.totalLiters;
 
-  weekStart.setDate(
-    weekStart.getDate() - ((weekStart.getDay() + 6) % 7)
-  );
+  const recordedSessions =
+    waterSummary.sessionCount;
 
-  const nextWeekStart = new Date(weekStart);
-  nextWeekStart.setDate(nextWeekStart.getDate() + 7);
 
-  const toLocalKey = date =>
-    `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-
-  const startKey = toLocalKey(weekStart);
-  const endKey = toLocalKey(nextWeekStart);
-
-  let totalWater = 0;
-  let recordedSessions = 0;
-
-  if (waterDataAvailable) {
-    irrFields.forEach(field => {
-      const countedDates = new Set();
-
-      const history = Array.isArray(field.wateringHistory)
-        ? field.wateringHistory
-        : [];
-
-      history.forEach(entry => {
-        const date = entry?.date;
-        const liters = Number(entry?.liters);
-
-        if (
-          typeof date !== 'string' ||
-          date < startKey ||
-          date >= endKey ||
-          countedDates.has(date) ||
-          !Number.isFinite(liters) ||
-          liters <= 0
-        ) return;
-
-        countedDates.add(date);
-        totalWater += liters;
-        recordedSessions++;
-      });
-    });
-  }
 
   const excellent  = harvestHistory.filter(h=>h.quality==='excellent').length;
   const yieldRate  = harvestHistory.length>0 ? Math.round((excellent/harvestHistory.length)*100) : 0;
@@ -23396,7 +23440,7 @@ function updateAnKPIs() {
 
   document.getElementById('anWaterSub').textContent =
     !waterDataAvailable
-      ? 'Connect to view recorded usage'
+      ? 'Reconnect and reload to view usage'
       : recordedSessions === 0
         ? 'No watering sessions recorded this week'
         : `${recordedSessions} recorded session${recordedSessions === 1 ? '' : 's'} this week`;
@@ -23408,7 +23452,6 @@ function updateAnKPIs() {
     'anPestCount'
   ).textContent =
     pestCount;
-
 
   const anPestSub =
     document.getElementById(
@@ -23933,13 +23976,23 @@ function renderAnIrrEff() {
   const container = document.getElementById('anIrrEff');
   if (!container) return;
 
-  if (cropFieldLinkBackendEnabled !== true) {
+  
+  const waterSummary =
+    getFarmCastWeeklyWaterSummary();
+
+  if (!waterSummary.available) {
+
     container.innerHTML =
-      '<div class="an-irr-note">Connect to FarmCast to view recorded irrigation activity.</div>';
+      '<div class="an-irr-note">' +
+      'Reconnect and reload FarmCast to view ' +
+      'verified watering activity.' +
+      '</div>';
+
     return;
   }
 
-  const fields = Array.isArray(irrFields) ? irrFields : [];
+  const fields = irrFields;
+
 
   if (fields.length === 0) {
     container.innerHTML =
@@ -23978,33 +24031,13 @@ function renderAnIrrEff() {
     <div class="an-irr-list">
 
       ${fields.map(field => {
-        const seenDates = new Set();
+        
+        const {
+          liters = 0,
+          sessions = 0
+        } = waterSummary.byField.get(field) || {};
 
-        const history = Array.isArray(field.wateringHistory)
-          ? field.wateringHistory
-          : [];
 
-        let liters = 0;
-        let sessions = 0;
-
-        history.forEach(entry => {
-          const date = entry?.date;
-          const amount = Number(entry?.liters);
-
-          if (
-            typeof date !== 'string' ||
-            !/^\d{4}-\d{2}-\d{2}$/.test(date) ||
-            date < weekStart ||
-            date >= weekEnd ||
-            seenDates.has(date) ||
-            !Number.isFinite(amount) ||
-            amount <= 0
-          ) return;
-
-          seenDates.add(date);
-          liters += amount;
-          sessions++;
-        });
 
         return `
           <div class="an-irr-item">
