@@ -1122,7 +1122,7 @@ router.post(
         .status(500)
         .json({
           message:
-            'FarmCast workspace restore failed. Existing server data was preserved.'
+            'FarmCast restore could not be confirmed. Refresh and verify farm records before retrying.'
         });
 
 

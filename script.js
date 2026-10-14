@@ -19933,8 +19933,88 @@ function buildRestoredSettingsPreservingAccount(
 
 }
 
+
+async function getVerifiedRestoredFarmCastWorkspace(
+  expectedCounts
+) {
+  const keys = [
+    'crops',
+    'harvestHistory',
+    'irrigationFields',
+    'pestLogs',
+    'scannerHistory'
+  ];
+
+  /*
+   * The backend must acknowledge all five
+   * server-backed collection counts.
+   */
+  if (
+    !expectedCounts ||
+    keys.some(
+      key =>
+        !Number.isInteger(expectedCounts[key]) ||
+        expectedCounts[key] < 0
+    )
+  ) {
+    throw new Error(
+      'Restore response is missing valid record counts.'
+    );
+  }
+
+  /*
+   * Retrieve records again after MongoDB
+   * successfully completes the restore.
+   *
+   * These contain the new MongoDB IDs.
+   */
+  const records =
+    await getFreshFarmCastBackupCollections();
+
+  /*
+   * Verify that each collection contains
+   * exactly the acknowledged record count.
+   */
+  for (const key of keys) {
+    if (
+      records[key].length !==
+      expectedCounts[key]
+    ) {
+      throw new Error(
+        'Read-back mismatch for ' + key +
+        ': expected ' + expectedCounts[key] +
+        ', received ' + records[key].length + '.'
+      );
+    }
+  }
+
+  /*
+   * Confirm that the newly generated
+   * crop and irrigation IDs are linked
+   * consistently after restoration.
+   */
+  const relationErrors = [];
+
+  validateFarmCastBackupRelations(
+    { data: records },
+    relationErrors
+  );
+
+  if (relationErrors.length > 0) {
+    throw new Error(
+      'Restored farm links could not be verified: ' +
+      relationErrors[0]
+    );
+  }
+
+  return records;
+}
+
+
+
 function persistFarmCastBackupLocally(
-  backup
+  backup,
+  serverRecords
 ) {
 
   const data =
@@ -19977,7 +20057,7 @@ function persistFarmCastBackupLocally(
 
     [
       LS_CROPS,
-      data.crops
+      serverRecords.crops
     ],
 
     [
@@ -19990,9 +20070,10 @@ function persistFarmCastBackupLocally(
       data.tasks
     ],
 
+     // Pest Logs — new server records.
     [
       LS_PEST_LOGS,
-      data.pestLogs
+      serverRecords.pestLogs
     ],
 
     [
@@ -20000,9 +20081,10 @@ function persistFarmCastBackupLocally(
       counters.nextPestLogId
     ],
 
+    // Irrigation — fresh MongoDB field IDs.
     [
       LS_IRR_FIELDS,
-      data.irrigationFields
+      serverRecords.irrigationFields
     ],
 
     [
@@ -20010,9 +20092,10 @@ function persistFarmCastBackupLocally(
       counters.nextFieldId
     ],
 
+    // Harvest — restored backend records.
     [
       LS_HARVEST,
-      data.harvestHistory
+      serverRecords.harvestHistory
     ],
 
     [
@@ -20071,6 +20154,27 @@ async function restoreFarmCastBackup() {
 
     return;
 
+  }
+
+  
+  /*
+   * Never initiate a destructive restore
+   * while server records are unavailable.
+   */
+  if (
+    window.FARMCAST_SERVER_DATA_READY !== true
+  ) {
+    setRestoreBackupStatus(
+      'The server is not ready. Reconnect and reload before restoring.',
+      'error'
+    );
+
+    toast(
+      'Reconnect before restoring your backup.',
+      'err'
+    );
+
+    return;
   }
 
 
@@ -20217,7 +20321,7 @@ async function restoreFarmCastBackup() {
      * changed unless the server restore
      * succeeds completely.
      */
-    await fcBackup.restore({
+    const restoreResponse = await fcBackup.restore({
 
       crops:
         data.crops,
@@ -20242,14 +20346,30 @@ async function restoreFarmCastBackup() {
     });
 
 
+    
+    /*
+     * The server has acknowledged the restore.
+     * Read back the new database records before
+     * updating the browser's local cache.
+     */
     serverRestored =
       true;
 
+    const freshRecords =
+      await getVerifiedRestoredFarmCastWorkspace(
+        restoreResponse?.counts
+      );
 
+    /*
+     * Save only the freshly verified
+     * server-backed records locally.
+     */
     const restoredSettings =
       persistFarmCastBackupLocally(
-        backup
+        backup,
+        freshRecords
       );
+
 
 
     appSettings = {
@@ -20302,13 +20422,13 @@ async function restoreFarmCastBackup() {
        * still return from MongoDB.
        */
       setRestoreBackupStatus(
-        'Server restore succeeded, but this browser could not save the local copy. Reloading from the server…',
+        'Server acknowledged the restore, but read-back or browser caching could not be verified. Reloading to check the records…',
         'error'
       );
 
 
       toast(
-        'Server data restored. Reloading FarmCast…',
+        'Restore acknowledged. Reloading to verify records…',
         'warn'
       );
 
@@ -20327,26 +20447,33 @@ async function restoreFarmCastBackup() {
 
 
     setRestoreBackupStatus(
-      'Restore failed. Your existing FarmCast server data was preserved.',
+      'Restore outcome could not be confirmed. Reload and inspect records before attempting another restore.',
       'error'
     );
 
 
     toast(
-      'FarmCast restore failed. No server data was replaced.',
+      'Restore result is uncertain. Verify records before retrying.',
       'err'
     );
 
 
-    setRestoreBackupActionEnabled(
-      true
-    );
+    
+    /*
+     * An uncertain response must not invite
+     * an immediate second destructive restore.
+     */
+    pendingFarmCastBackup = null;
 
+    setRestoreBackupActionEnabled(
+      false
+    );
 
     if (restoreButton) {
       restoreButton.textContent =
         'Restore';
     }
+
 
   }
 
