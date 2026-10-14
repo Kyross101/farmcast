@@ -9417,28 +9417,55 @@ let nextCropId = 1;
 let currentCropFilter = 'all';
 
 
-// Check whether the farmer record
-// has a usable harvest date.
-function hasValidCropHarvestDate(crop) {
 
-  const harvest =
-    String(
-      crop?.harvest || ''
-    ).trim();
+/*
+ * Parse agricultural calendar dates consistently.
+ * Uses the farmer's local calendar date.
+ * Rejects invalid values such as February 30.
+ */
+function parseFarmCastCropDate(value) {
 
-  if (!harvest) {
-    return false;
+  if (typeof value !== 'string') {
+    return null;
   }
 
-  const harvestDate =
-    new Date(
-      `${harvest}T00:00:00`
-    );
+  const text = value.trim();
 
-  return !Number.isNaN(
-    harvestDate.getTime()
-  );
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+    return null;
+  }
+
+  const [year, month, day] =
+    text.split('-').map(Number);
+
+  const result =
+    new Date(year, month - 1, day);
+
+  if (
+    result.getFullYear() !== year ||
+    result.getMonth() !== month - 1 ||
+    result.getDate() !== day
+  ) {
+    return null;
+  }
+
+  return result;
 }
+
+/*
+ * Only verified calendar dates can appear
+ * as expected harvest dates.
+ */
+function hasValidCropHarvestDate(crop) {
+
+  return (
+    parseFarmCastCropDate(
+      crop?.harvest
+    ) !== null
+  );
+
+}
+
 
 
 // Get crop status based on dates and weather conditions
@@ -13757,9 +13784,10 @@ function renderCalMonthSummary() {
     myCrops.filter(crop => {
 
       const date =
-        new Date(crop.planted);
+        parseFarmCastCropDate(crop.planted);
 
-      return (
+      return Boolean(
+        date &&
         date.getFullYear() === calYear &&
         date.getMonth() === calMonth
       );
@@ -13776,9 +13804,7 @@ function renderCalMonthSummary() {
       }
 
       const date =
-        new Date(
-          `${crop.harvest}T00:00:00`
-        );
+        parseFarmCastCropDate(crop.harvest);
 
       return (
         date.getFullYear() === calYear &&
@@ -13831,8 +13857,15 @@ function renderCalGrid() {
   const cropEvents = {};
   myCrops.forEach(crop => {
     // Planted date
-    const pd = new Date(crop.planted);
-    if (pd.getFullYear() === calYear && pd.getMonth() === calMonth) {
+    const pd =
+      parseFarmCastCropDate(crop.planted);
+
+    if (
+      pd &&
+      pd.getFullYear() === calYear &&
+      pd.getMonth() === calMonth
+    ) {
+      
       const key = pd.getDate();
       if (!cropEvents[key]) cropEvents[key] = [];
       cropEvents[key].push({
@@ -13849,9 +13882,7 @@ function renderCalGrid() {
     ) {
 
     const hd =
-      new Date(
-        `${crop.harvest}T00:00:00`
-      );
+      parseFarmCastCropDate(crop.harvest);
 
     if (
       hd.getFullYear() === calYear &&
@@ -13970,15 +14001,13 @@ function renderCalList() {
       if (plantedValue) {
 
         const plantedDate =
-          new Date(
-            `${plantedValue}T00:00:00`
-          );
+          parseFarmCastCropDate(plantedValue);
 
 
         if (
-          !Number.isNaN(
-            plantedDate.getTime()
-          ) &&
+
+          plantedDate &&
+
           plantedDate.getFullYear() ===
             calYear &&
           plantedDate.getMonth() ===
@@ -14006,9 +14035,7 @@ function renderCalList() {
       ) {
 
         const harvestDate =
-          new Date(
-            `${crop.harvest}T00:00:00`
-          );
+          parseFarmCastCropDate(crop.harvest);
 
 
         if (
