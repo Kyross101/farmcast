@@ -1176,13 +1176,8 @@ const PESTS = [
 ];
 
 // ── TASKS ──
-let tasks = [
-  { label:'Spray Fertilizer',  time:'7:00 AM', done:false, priority:'high'   },
-  { label:'Harvest Okra',      time:'8:00 AM', done:false, priority:'med'    },
-  { label:'Check Irrigation',  time:'9:00 AM', done:false, priority:'med'    },
-  { label:'Weed Tomato Beds',  time:'3:00 PM', done:false, priority:'low'    },
-  { label:'Record Soil Temp',  time:'5:00 PM', done:true,  priority:'low'    },
-];
+// Only tasks explicitly created by the farmer.
+let tasks = [];
 
 // ── TOAST ──
 function toast(msg, type = 'ok') {
@@ -1586,34 +1581,141 @@ function renderDashboardFarmStats() {
 
 
 // ── RENDER TASKS ──
-function renderTasks(){
-  document.getElementById('taskList').innerHTML = tasks.map((t,i) => `
-    <div class="task-item${t.done?' done':''}" onclick="toggleTask(${i})">
-      <div class="task-priority tp-${t.priority}"></div>
-      <div class="task-check"></div>
-      <div class="task-label">${t.label}</div>
-      <div class="task-time">${t.time}</div>
-    </div>
-  `).join('');
+
+function renderTasks() {
+
+  const list =
+    document.getElementById('taskList');
+
+  if (!list) return;
+
+  if (
+    !Array.isArray(tasks) ||
+    tasks.length === 0
+  ) {
+
+    list.innerHTML = `
+      <div style="
+        padding:16px;
+        color:var(--text-muted);
+        font-size:.85rem;
+        line-height:1.5;
+      ">
+        No tasks yet. Select Add to create
+        your own farm task.
+      </div>
+    `;
+
+    return;
+  }
+
+  list.innerHTML = tasks.map(
+    (task, index) => {
+
+      const priority =
+        ['low', 'med', 'high'].includes(
+          task?.priority
+        )
+          ? task.priority
+          : 'low';
+
+      return `
+        <div
+          class="task-item${
+            task?.done === true
+              ? ' done'
+              : ''
+          }"
+          onclick="toggleTask(${index})"
+        >
+
+          <div
+            class="task-priority tp-${priority}"
+          ></div>
+
+          <div class="task-check"></div>
+
+          <div class="task-label">
+            ${escapeHtml(task?.label || '')}
+          </div>
+
+          <div class="task-time">
+            ${escapeHtml(
+              task?.time || 'No time set'
+            )}
+          </div>
+
+        </div>
+      `;
+
+    }
+  ).join('');
 }
 
-function toggleTask(i) {
-  if (!tasks[i]) return;
 
-  tasks[i].done = !tasks[i].done;
+function toggleTask(index) {
+
+  if (
+    !LS_TASKS ||
+    reloadFarmCastTabIfAccountChanged()
+  ) {
+    return;
+  }
+
+  if (
+    !Number.isInteger(index) ||
+    !tasks[index]
+  ) {
+    return;
+  }
+
+  tasks[index].done =
+    tasks[index].done !== true;
 
   saveTasksLS();
   renderTasks();
 }
 
-function addTask() {
-  const label = prompt('New task name:');
 
-  if (!label) return;
+function addTask() {
+
+  if (
+    !LS_TASKS ||
+    reloadFarmCastTabIfAccountChanged()
+  ) {
+
+    toast(
+      'Log in again to manage your tasks.',
+      'warn'
+    );
+
+    return;
+  }
+
+  const input = prompt(
+    'What farm task would you like to add?'
+  );
+
+  if (input === null) return;
+
+  const label = input.trim();
+
+  if (
+    !label ||
+    label.length > 100
+  ) {
+
+    toast(
+      'Enter a task name (1–100 characters).',
+      'warn'
+    );
+
+    return;
+  }
 
   tasks.push({
-    label: label.trim(),
-    time: 'TBD',
+    label,
+    time: 'No time set',
     done: false,
     priority: 'low'
   });
@@ -1621,8 +1723,12 @@ function addTask() {
   saveTasksLS();
   renderTasks();
 
-  toast('Task added!', 'ok');
+  toast(
+    'Task saved on this device!',
+    'ok'
+  );
 }
+
 
 // ── RENDER FORECAST + CALENDAR ──
 function renderForecastAndCalendar(forecastData, currentData){
@@ -11751,7 +11857,20 @@ function saveNewCrop() {
 
 const LS_CROPS      = 'fc_myCrops';
 const LS_CROPS_ID   = 'fc_nextCropId';
-const LS_TASKS      = 'fc_tasks';
+
+/*
+ * Keep personal tasks separate by account.
+ *
+ * The old fc_tasks storage remains untouched,
+ * because its original account owner cannot
+ * be verified.
+ */
+const LS_TASKS =
+  farmCastTabToken &&
+  /^[a-fA-F0-9]{24}$/.test(farmCastTabUserId)
+    ? `fc_tasks_user_${farmCastTabUserId.toLowerCase()}`
+    : null;
+
 const LS_PEST_LOGS  = 'fc_pestLogs';
 const LS_IRR_FIELDS = 'fc_irrFields';
 const LS_IRR_FID    = 'fc_nextFieldId';
@@ -11782,10 +11901,30 @@ nextCropId =
     1
   );
 
-tasks      = lsLoad(LS_TASKS,     tasks);  // keep default tasks as fallback
+const savedFarmTasks = LS_TASKS
+  ? lsLoad(LS_TASKS, [])
+  : [];
 
-function saveCropsLS() { lsSave(LS_CROPS, myCrops); lsSave(LS_CROPS_ID, nextCropId); }
-function saveTasksLS() { lsSave(LS_TASKS, tasks); }
+tasks = Array.isArray(savedFarmTasks)
+  ? savedFarmTasks
+  : [];
+
+function saveCropsLS() {
+  lsSave(LS_CROPS, myCrops);
+  lsSave(LS_CROPS_ID, nextCropId);
+}
+
+function saveTasksLS() {
+
+  if (
+    !LS_TASKS ||
+    reloadFarmCastTabIfAccountChanged()
+  ) {
+    return;
+  }
+
+  lsSave(LS_TASKS, tasks);
+}
 
 function setNav(el, pageId) {
   // Remove active state from navigation
@@ -21363,10 +21502,12 @@ function clearLocalFarmWorkspaceData() {
    * would make those records return.
    */
 
-  lsSave(
-    LS_CROPS,
-    []
-  );
+  if (LS_TASKS) {
+    lsSave(
+      LS_TASKS,
+      []
+    );
+  }
 
   lsSave(
     LS_CROPS_ID,
