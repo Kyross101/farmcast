@@ -12406,3 +12406,78 @@ button.fc-quickstart-help-entry {
   }
 
 }
+
+
+
+/* =========================================
+   PHASE 5B-2
+   RESPONSIVE DASHBOARD QUICK STATS
+   ========================================= */
+
+/* Keep stats inside their assigned width */
+
+#page-dashboard .quick-stats-grid {
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+}
+
+#page-dashboard .qs-box {
+  min-width: 0;
+}
+
+/* Allow longer labels to wrap */
+
+#page-dashboard .qs-label,
+#page-dashboard .qs-sub {
+  overflow-wrap: break-word;
+}
+
+/* Dell / Small Laptop Layout */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+
+  /* Give Quick Stats the full side area */
+
+  #page-dashboard .col-side > .card:first-child {
+    grid-column: 1 / -1;
+  }
+
+}
+
+/* Wider laptop: 4 Quick Stats in one row */
+
+@media (min-width: 950px) and (max-width: 1100px) {
+
+  #page-dashboard .quick-stats-grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+/* Small smartphone layout */
+
+@media (max-width: 360px) {
+
+  #page-dashboard .quick-stats-grid {
+    padding: 10px;
+    gap: 7px;
+  }
+
+  #page-dashboard .qs-box {
+    padding: 10px;
+  }
+
+  #page-dashboard .qs-label {
+    letter-spacing: 0.3px;
+  }
+
+  /* Keep Quick Stats title and Guide apart */
+
+  #page-dashboard
+  .col-side > .card:first-child
+  .card-header {
+    gap: 8px;
+  }
+
+}
