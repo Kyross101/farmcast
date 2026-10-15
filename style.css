@@ -12481,3 +12481,114 @@ button.fc-quickstart-help-entry {
   }
 
 }
+
+
+/* =========================================
+   PHASE 5B-3A — ADD CROP MODAL RESPONSIVE QA
+   ========================================= */
+
+/* Prevent the entire modal from scrolling. */
+#addCropModal {
+  align-items: center;
+  overflow: hidden;
+}
+
+#addCropModal .modal-box {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  overflow: hidden;
+}
+
+/* Keep the header and action buttons available. */
+#addCropModal .modal-header,
+#addCropModal .modal-footer {
+  flex: 0 0 auto;
+  background: var(--bg2);
+}
+
+/* The form is the only vertically scrollable part. */
+#addCropModal .modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+#addCropModal .form-group {
+  min-width: 0;
+}
+
+#addCropModal .form-group input,
+#addCropModal .form-group select,
+#addCropModal .form-group textarea,
+#addCropModal .crop-picker-trigger {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+#addCropModal .modal-footer {
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+#addCropModal .modal-footer .btn-cancel,
+#addCropModal .modal-footer .btn-save {
+  min-height: 44px;
+  justify-content: center;
+}
+
+/* Tablet and compact laptop */
+@media (max-width: 900px) {
+  #addCropModal {
+    padding: 12px;
+  }
+
+  #addCropModal .modal-box {
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    margin: 0 auto;
+  }
+
+  #addCropModal .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 640px) {
+  #addCropModal .modal-header,
+  #addCropModal .modal-body {
+    padding: 14px;
+  }
+
+  #addCropModal .modal-body {
+    gap: 12px;
+  }
+
+  #addCropModal .modal-footer {
+    padding: 12px 14px;
+  }
+
+  #addCropModal .modal-footer button {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  #addCropModal .modal-title {
+    min-width: 0;
+    font-size: 0.95rem;
+  }
+
+  #addCropModal .form-group input,
+  #addCropModal .form-group select,
+  #addCropModal .form-group textarea {
+    font-size: 16px;
+  }
+}
+
