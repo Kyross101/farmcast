@@ -12592,3 +12592,124 @@ button.fc-quickstart-help-entry {
   }
 }
 
+
+/* =========================================
+   PHASE 5B-3B
+   HARVEST MODAL RESPONSIVE IMPROVEMENT
+   ========================================= */
+
+/* Keep the Harvest modal inside the viewport. */
+#logHarvestModal {
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Use a fixed modal shell with a scrollable body. */
+#logHarvestModal .modal-box {
+  display: flex;
+  flex-direction: column;
+
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+
+  overflow: hidden;
+}
+
+/* Header and footer stay outside the scroll area. */
+#logHarvestModal .modal-header,
+#logHarvestModal .modal-footer {
+  flex: 0 0 auto;
+  background: var(--bg2);
+}
+
+/* Allow only the form contents to scroll. */
+#logHarvestModal .modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+/* Prevent fields from overflowing narrow screens. */
+#logHarvestModal .form-group {
+  min-width: 0;
+}
+
+#logHarvestModal .form-group input,
+#logHarvestModal .form-group select,
+#logHarvestModal .form-group textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Keep action buttons accessible. */
+#logHarvestModal .modal-footer {
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+#logHarvestModal .modal-footer .btn-cancel,
+#logHarvestModal .modal-footer .btn-save {
+  min-height: 44px;
+  justify-content: center;
+}
+
+/* Tablet and small laptop */
+@media (max-width: 900px) {
+  #logHarvestModal {
+    padding: 12px;
+  }
+
+  #logHarvestModal .modal-box {
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+
+    margin: 0 auto;
+  }
+
+  #logHarvestModal .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Small smartphone layout */
+@media (max-width: 640px) {
+  #logHarvestModal .modal-header {
+    padding: 14px;
+  }
+
+  #logHarvestModal .modal-body {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  #logHarvestModal .modal-footer {
+    padding: 12px 14px;
+  }
+
+  #logHarvestModal .modal-footer button {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  #logHarvestModal .modal-title {
+    min-width: 0;
+    font-size: 0.95rem;
+  }
+
+  #logHarvestModal .form-group input,
+  #logHarvestModal .form-group select,
+  #logHarvestModal .form-group textarea {
+    font-size: 16px;
+  }
+}
+
+
