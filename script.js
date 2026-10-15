@@ -18132,6 +18132,266 @@ function openFarmCastRepository() {
 }
 
 
+
+/*
+ * Phase 5A — Bilingual Quick Start
+ *
+ * Only the Getting Started Guide is
+ * translated. The main FarmCast UI
+ * remains in English.
+ */
+const FARMCAST_GUIDE_TEXT = {
+
+  en: {
+    eyebrow: 'FARMCAST QUICK START',
+    title: 'Getting Started',
+    intro:
+      'Six simple steps to begin using your farm records.',
+    languageLabel: 'Guide language',
+    close: 'Close getting started guide',
+
+    note:
+      'FarmCast does not automatically confirm ' +
+      'watering, crop health or harvest amounts. ' +
+      'Save only what you actually observe. ' +
+      'If the backend is offline, reconnect and ' +
+      'reload before changing farm records.',
+
+    steps: [
+      [
+        'Farm Profile',
+        'Add your farm details in Settings ' +
+          'and select Save Profile.',
+        'Open Profile'
+      ],
+      [
+        'Farm Location',
+        'Choose GPS or search for your location, ' +
+          'then save the correct farm location.',
+        'Open Location'
+      ],
+      [
+        'Add Your First Crop',
+        'Choose Add Crop. Enter the planting method, ' +
+          'planting date, field and other required details.',
+        'Open My Crops'
+      ],
+      [
+        'Record Watering',
+        'Use Water Now in My Crops or Irrigation. ' +
+          'Enter the actual liters used and confirm the record.',
+        'Open Irrigation'
+      ],
+      [
+        'Planting Calendar',
+        'Review saved planting dates and expected ' +
+          'harvest dates. Unknown estimates remain unavailable.',
+        'Open Calendar'
+      ],
+      [
+        'Harvest History',
+        'Record the actual harvest date, area, yield ' +
+          'in kilograms and quality. Review saved harvests.',
+        'Open Harvests'
+      ]
+    ]
+  },
+
+  fil: {
+    eyebrow: 'MABILIS NA GABAY NG FARMCAST',
+    title: 'Paano Magsimula',
+    intro:
+      'Anim na simpleng hakbang para magamit ' +
+      'ang mga tala ng iyong sakahan.',
+    languageLabel: 'Wika ng gabay',
+    close: 'Isara ang gabay',
+
+    note:
+      'Hindi awtomatikong kinukumpirma ng FarmCast ' +
+      'ang pagdidilig, kalusugan ng pananim, o dami ' +
+      'ng ani. Itala lamang ang aktuwal na naobserbahan. ' +
+      'Kung hindi konektado ang server, kumonekta ' +
+      'muli at i-reload bago baguhin ang mga tala.',
+
+    steps: [
+      [
+        'Profile ng Sakahan',
+        'Sa Settings, ilagay ang detalye ng sakahan ' +
+          'at pindutin ang Save Profile.',
+        'Buksan ang Profile'
+      ],
+      [
+        'Lokasyon ng Sakahan',
+        'Gamitin ang GPS o maghanap ng lokasyon. ' +
+          'Tiyaking tama ang lokasyon bago i-save.',
+        'Buksan ang Lokasyon'
+      ],
+      [
+        'Idagdag ang Unang Pananim',
+        'Sa My Crops, pindutin ang Add Crop. Ilagay ' +
+          'ang paraan at petsa ng pagtatanim, lokasyon, ' +
+          'at iba pang kailangang detalye.',
+        'Buksan ang My Crops'
+      ],
+      [
+        'Itala ang Pagdidilig',
+        'Gamitin ang Water Now sa My Crops o Irrigation. ' +
+          'Ilagay ang aktuwal na litro ng tubig ' +
+          'at kumpirmahin ang tala.',
+        'Buksan ang Irrigation'
+      ],
+      [
+        'Kalendaryo ng Pagtatanim',
+        'Tingnan ang naka-save na petsa ng pagtatanim ' +
+          'at inaasahang anihan. Kung walang maaasahang ' +
+          'tantiya, walang petsang ipapakita.',
+        'Buksan ang Kalendaryo'
+      ],
+      [
+        'Kasaysayan ng Ani',
+        'Itala ang aktuwal na petsa, lawak, kilo, ' +
+          'at kalidad ng ani. Tingnan ang naka-save ' +
+          'na mga tala.',
+        'Buksan ang Harvest History'
+      ]
+    ]
+  }
+
+};
+
+
+/*
+ * Update only the Quick Start dialog.
+ * Preserve the existing button actions.
+ */
+function setFarmCastQuickStartLanguage(lang) {
+
+  if (
+    !Object.hasOwn(
+      FARMCAST_GUIDE_TEXT,
+      lang
+    )
+  ) {
+    return;
+  }
+
+  const dialog =
+    document.getElementById(
+      'farmCastQuickStartDialog'
+    );
+
+  if (!dialog) return;
+
+  const words = FARMCAST_GUIDE_TEXT[lang];
+
+  const steps = dialog.querySelectorAll(
+    '.fc-quickstart-step'
+  );
+
+  if (steps.length !== words.steps.length) {
+    return;
+  }
+
+  const setText = (selector, value) => {
+
+    const element =
+      dialog.querySelector(selector);
+
+    if (element) {
+      element.textContent = value;
+    }
+
+  };
+
+  // Header and description.
+  setText(
+    '.fc-quickstart-eyebrow',
+    words.eyebrow
+  );
+
+  setText(
+    '#farmCastQuickStartTitle',
+    words.title
+  );
+
+  setText(
+    '#farmCastQuickStartIntro',
+    words.intro
+  );
+
+  setText(
+    '.fc-guide-language-label',
+    words.languageLabel
+  );
+
+  setText(
+    '.fc-quickstart-note',
+    words.note
+  );
+
+  // Translate the six guide steps.
+  steps.forEach((step, index) => {
+
+    const [
+      title,
+      description,
+      action
+    ] = words.steps[index];
+
+    const titleEl = step.querySelector('h3');
+    const descEl = step.querySelector('p');
+
+    const actionEl = step.querySelector(
+      '.fc-quickstart-step-link'
+    );
+
+    if (titleEl) {
+      titleEl.textContent = title;
+    }
+
+    if (descEl) {
+      descEl.textContent = description;
+    }
+
+    if (actionEl) {
+      actionEl.textContent = action;
+    }
+
+  });
+
+  // Accessible close button label.
+  const closeButton = dialog.querySelector(
+    '.fc-quickstart-close'
+  );
+
+  if (closeButton) {
+    closeButton.setAttribute(
+      'aria-label',
+      words.close
+    );
+  }
+
+  // Update the selected language button.
+  dialog.querySelectorAll(
+    '[data-guide-language]'
+  ).forEach(button => {
+
+    const selected =
+      button.dataset.guideLanguage === lang;
+
+    button.setAttribute(
+      'aria-pressed',
+      String(selected)
+    );
+
+  });
+
+  // Language applies only within this dialog.
+  dialog.setAttribute('lang', lang);
+
+}
+
+
 /*
  * FarmCast Farmer Quick Start
  *
