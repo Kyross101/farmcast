@@ -159,7 +159,6 @@ router.post('/', async (req, res) => {
       !plantingMethod ||
       !area ||
       !planted ||
-      !harvest ||
       !location
     ) {
       return res.status(400).json({

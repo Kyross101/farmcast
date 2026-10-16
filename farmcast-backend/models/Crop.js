@@ -17,13 +17,10 @@ const CropSchema = new mongoose.Schema({
 
   plantingMethod: {
     type: String,
-    enum: [
-      'direct-seeded',
-      'transplanted',
-      'cloves',
-      'cuttings'
-    ],
-    required: true
+    required: true,
+    trim: true,
+    maxlength: 80,
+    match: /^[a-z]+(?:-[a-z]+)*$/
   },
   
   currentStage: {
@@ -72,7 +69,10 @@ growthHistory: [
 
   area:       { type: Number, required: true },
   planted:    { type: String, required: true },
-  harvest:    { type: String, required: true },
+  harvest: {
+    type: String,
+    default: ''
+  },
   location:   { type: String, required: true },
   irrigation: { type: String, default: 'Manual' },
 

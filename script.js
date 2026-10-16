@@ -18872,13 +18872,20 @@ function validateFarmCastBackupRecords(
     backup.data;
 
 
-  const plantingMethods =
-    new Set([
-      'direct-seeded',
-      'transplanted',
-      'cloves',
-      'cuttings'
-    ]);
+  const plantingMethods = new Set([
+    'direct-seeded',
+    'transplanted',
+    'cloves',
+    'cuttings',
+
+    ...CROPS.flatMap(crop =>
+      Array.isArray(crop.plantingMethods)
+        ? crop.plantingMethods.map(
+            method => method.value
+          )
+        : []
+    )
+  ]);
 
 
   const cropStages =
@@ -19006,9 +19013,10 @@ function validateFarmCastBackupRecords(
 
 
         if (
-          !isBackupDate(
-            crop.harvest
-          )
+          crop.harvest !== undefined &&
+          crop.harvest !== null &&
+          crop.harvest !== '' &&
+          !isBackupDate(crop.harvest)
         ) {
 
           errors.push(

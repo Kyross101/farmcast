@@ -968,9 +968,21 @@ function patchScriptJsWithAPI() {
     const notes      = 
       document.getElementById('cropNotes').value.trim();
 
-    if (!type || !area || !planted || !harvest || !location) {
-      toast('Please fill in all required fields.', 'warn'); return;
+    if (
+      !type ||
+      !plantingMethod ||
+      !Number.isFinite(area) ||
+      area <= 0 ||
+      !planted ||
+      !location
+    ) {
+      toast(
+        'Please fill in all required fields.',
+        'warn'
+      );
+      return;
     }
+
     try {
       const newCrop = await fcCrops.add({
         type,
