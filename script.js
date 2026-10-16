@@ -16964,12 +16964,62 @@ function updateDailyBriefingUI() {
 }
 
 // ═══ SETTINGS NAVIGATION ═══
+
+// =========================================
+// SETTINGS CATEGORY NAVIGATION IMPROVEMENT
+// =========================================
+
 function showSettingsSection(el, sectionId) {
-  document.querySelectorAll('.settings-nav-item').forEach(n => n.classList.remove('active'));
-  document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
+  const page = document.getElementById(
+    'page-settings'
+  );
+
+  const targetSection = document.getElementById(
+    sectionId
+  );
+
+  if (!el || !page || !targetSection) {
+    console.warn(
+      'FarmCast Settings section not found:',
+      sectionId
+    );
+    return;
+  }
+
+  // Only one Settings category may be active.
+  page.querySelectorAll(
+    '.settings-nav-item'
+  ).forEach(item => {
+    item.classList.remove('active');
+  });
+
+  page.querySelectorAll(
+    '.settings-section'
+  ).forEach(section => {
+    section.classList.remove('active');
+  });
+
   el.classList.add('active');
-  document.getElementById(sectionId).classList.add('active');
+  targetSection.classList.add('active');
+
+  // Align the new section near the top
+  // of FarmCast's own Settings scroll area.
+  const pageRect = page.getBoundingClientRect();
+  const targetRect =
+    targetSection.getBoundingClientRect();
+
+  const targetScrollTop =
+    page.scrollTop +
+    targetRect.top -
+    pageRect.top -
+    12;
+
+  page.scrollTo({
+    top: Math.max(0, targetScrollTop),
+    behavior: 'auto'
+  });
 }
+
 
 // ═══ PROFILE SETTINGS ═══
 function setAvatar(
@@ -17771,8 +17821,23 @@ function openManageFavoriteCrops() {
 function renderManageFavoriteCrops() {
   if (!Array.isArray(favManagerDraft)) return;
 
+  
   const root = document.getElementById('favManageResults');
   if (!root) return;
+
+  // Keep the current list position while selecting crops.
+  const previousScrollTop = root.scrollTop;
+  
+  // Remember which crop button had keyboard focus.
+  const focusedElement = document.activeElement;
+  
+  const focusedCropName =
+    focusedElement?.matches?.(
+      '#favManageResults button[data-fav-name]'
+    )
+      ? focusedElement.dataset.favName
+      : null;
+
 
   const search = (
     document.getElementById('favManageSearch')?.value || ''
@@ -17856,8 +17921,51 @@ function renderManageFavoriteCrops() {
           </button>
         `;
       }).join('')
+    
     : '<p class="fc-fav-empty">No matching crops.</p>';
+
+  // Restore the list's previous scroll position.
+  root.scrollTop = previousScrollTop;
+  
+  // Restore focus after the crop buttons are rebuilt.
+  if (focusedCropName) {
+    const matchingButton = [
+      ...root.querySelectorAll(
+        'button[data-fav-name]'
+      )
+    ].find(button =>
+      button.dataset.favName === focusedCropName
+    );
+  
+    if (matchingButton) {
+      matchingButton.focus({
+        preventScroll: true
+      });
+    } else {
+      // The crop may disappear under "Selected only".
+      document.getElementById(
+        'favManageSelectedOnly'
+      )?.focus({
+        preventScroll: true
+      });
+    }
+  }
 }
+
+
+// Start at the top when search or filters change.
+function refreshFavoriteCropResults() {
+  const results = document.getElementById(
+    'favManageResults'
+  );
+
+  if (results) {
+    results.scrollTop = 0;
+  }
+
+  renderManageFavoriteCrops();
+}
+
 
 // Handle clicking any crop in the dialog.
 function handleFavoriteCropChoice(event) {
