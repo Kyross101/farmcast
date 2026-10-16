@@ -5315,34 +5315,42 @@
       Search crops
     </label>
 
+    
     <input
       id="favManageSearch"
       type="search"
       placeholder="Search by crop name or local name..."
-      oninput="renderManageFavoriteCrops()"
+      oninput="refreshFavoriteCropResults()"
       autocomplete="off"
     >
+
 
     <div class="fc-fav-filter-row">
       <label for="favManageCategory">
         Category
       </label>
 
+      
       <select
         id="favManageCategory"
-        onchange="renderManageFavoriteCrops()"
+        onchange="refreshFavoriteCropResults()"
       >
+
         <option value="all">
           All categories
         </option>
       </select>
 
       <label class="fc-fav-selected-only">
-        <input
-          id="favManageSelectedOnly"
-          type="checkbox"
-          onchange="renderManageFavoriteCrops()"
-        >
+
+        
+      <input
+        id="favManageSelectedOnly"
+        type="checkbox"
+        onchange="refreshFavoriteCropResults()"
+      >
+
+
         Selected only
       </label>
     </div>
