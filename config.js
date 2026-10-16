@@ -4,6 +4,6 @@
 
 window.FARMCAST_CONFIG = {
   API_URL: 'https://tracy-trainer-alphabetical-hart.trycloudflare.com/api', //  5000,   & "C:\Users\HP PROBOOK 450 G5\Downloads\cloudflared.exe" tunnel --url http://127.0.0.1:5000
-  AI_URL: 'https://standing-closure-sue-planner.trycloudflare.com',  // 8000,   & "C:\Users\HP PROBOOK 450 G5\Downloads\cloudflared.exe" tunnel --url http://127.0.0.1:8000
+  AI_URL: 'https://farms-hold-mtv-jungle.trycloudflare.com',  // 8000,   & "C:\Users\HP PROBOOK 450 G5\Downloads\cloudflared.exe" tunnel --url http://127.0.0.1:8000
 
 };
