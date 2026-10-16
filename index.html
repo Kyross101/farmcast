@@ -3580,29 +3580,40 @@
               </div>
             </div>
 
-            <div class="settings-card">
-
-              <div class="sc-header">
-                Favorite Crops
-              </div>
+            
+            <div class="settings-card fc-favorite-settings-card">
+              <div class="sc-header">Favorite Crops</div>
 
               <div class="sc-body">
+                <p class="sr-sub">
+                  Your favorites appear first when choosing a crop in My Crops.
+                </p>
 
-                <div
-                  class="sr-sub"
-                  style="margin-bottom:14px"
-                >
-                  Select the crops you use most often.
-                  Favorites will appear first when choosing a crop in My Crops.
+                <div class="fc-fav-summary-bar">
+                  <span id="favSummaryCount"
+                        class="fc-fav-summary-count"
+                        aria-live="polite">
+                    0 selected
+                  </span>
+
+                  <button
+                    type="button"
+                    class="fc-fav-manage-btn"
+                    onclick="openManageFavoriteCrops()"
+                    aria-haspopup="dialog"
+                    aria-controls="favManageDialog">
+                    <span class="material-symbols-outlined"
+                          aria-hidden="true">tune</span>
+                    Manage Favorites
+                  </button>
                 </div>
-                <div class="fav-crops-grid" id="favCropsGrid">
-                  <!-- filled by JS -->
+
+                <div id="favCropsGrid"
+                  class="fc-fav-summary-list"
+                  aria-label="Saved favorite crops"></div>
                 </div>
-                <button class="settings-save-btn" onclick="saveFavCrops()">
-                  <span class="material-symbols-outlined">save</span> Save Preferences
-                </button>
               </div>
-            </div>
+
 
             <div class="settings-card">
               <div class="sc-header">Calendar View</div>
