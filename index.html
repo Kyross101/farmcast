@@ -5278,6 +5278,109 @@
 </dialog>
 
 
+<!-- =========================================
+     FARMCAST — MANAGE FAVORITE CROPS
+     ========================================= -->
+
+<dialog
+  id="favManageDialog"
+  class="fc-fav-dialog"
+  aria-labelledby="favManageTitle"
+  onclose="resetManageFavoriteCrops()"
+>
+  <div class="fc-fav-dialog-head">
+    <div>
+      <h2 id="favManageTitle">
+        Manage Favorite Crops
+      </h2>
+      <p>
+        Select your preferred crops.
+        Changes apply only after Save.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="fc-fav-dialog-close"
+      onclick="closeManageFavoriteCrops()"
+      aria-label="Close without saving"
+    >×</button>
+  </div>
+
+  <div class="fc-fav-dialog-tools">
+    <label
+      class="fc-fav-search-label"
+      for="favManageSearch"
+    >
+      Search crops
+    </label>
+
+    <input
+      id="favManageSearch"
+      type="search"
+      placeholder="Search by crop name or local name..."
+      oninput="renderManageFavoriteCrops()"
+      autocomplete="off"
+    >
+
+    <div class="fc-fav-filter-row">
+      <label for="favManageCategory">
+        Category
+      </label>
+
+      <select
+        id="favManageCategory"
+        onchange="renderManageFavoriteCrops()"
+      >
+        <option value="all">
+          All categories
+        </option>
+      </select>
+
+      <label class="fc-fav-selected-only">
+        <input
+          id="favManageSelectedOnly"
+          type="checkbox"
+          onchange="renderManageFavoriteCrops()"
+        >
+        Selected only
+      </label>
+    </div>
+
+    <div
+      id="favManageResultInfo"
+      class="fc-fav-result-info"
+      role="status"
+    ></div>
+  </div>
+
+  <div
+    id="favManageResults"
+    class="fc-fav-dialog-results"
+    aria-label="Available favorite crops"
+    onclick="handleFavoriteCropChoice(event)"
+  ></div>
+
+  <div class="fc-fav-dialog-footer">
+    <button
+      type="button"
+      class="fc-fav-btn-cancel"
+      onclick="closeManageFavoriteCrops()"
+    >
+      Cancel
+    </button>
+
+    <button
+      type="button"
+      class="fc-fav-btn-save"
+      onclick="saveManageFavoriteCrops()"
+    >
+      Save Favorites
+    </button>
+  </div>
+</dialog>
+
+
 <script src="config.js"></script>
 <script src="api.js"></script>
 <script src="crop-data.js"></script>

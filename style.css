@@ -13283,3 +13283,313 @@ button.fc-quickstart-help-entry {
 }
 
 
+/* =========================================
+   FAVORITES — COMPACT SUMMARY & MANAGER
+   ========================================= */
+
+.fc-favorite-settings-card .fc-fav-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.fc-fav-summary-count {
+  color: var(--text-muted);
+  font-size: .82rem;
+}
+
+.fc-fav-summary-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.fc-fav-summary-chip,
+.fc-fav-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 100%;
+  padding: 7px 11px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 999px;
+  font-size: .8rem;
+  color: var(--text);
+}
+
+.fc-fav-summary-chip > span {
+  overflow-wrap: anywhere;
+}
+
+.fc-fav-empty {
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+
+.fc-fav-more {
+  color: var(--green);
+}
+
+/* Main management button */
+
+.fc-fav-manage-btn,
+.fc-fav-btn-save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid rgba(63,185,80,.3);
+  border-radius: var(--r-sm);
+  background: var(--green-dim);
+  color: var(--green);
+  font: inherit;
+  font-size: .84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.fc-fav-manage-btn:hover,
+.fc-fav-btn-save:hover {
+  border-color: var(--green);
+}
+
+/* Modal shell */
+
+.fc-fav-dialog {
+  width: min(94vw, 760px);
+  max-width: 760px;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+
+  color: var(--text);
+  background: var(--bg2);
+
+  border: 1px solid var(--border2);
+  border-radius: var(--r);
+
+  box-shadow: 0 20px 70px rgba(0,0,0,.55);
+  overflow: hidden;
+}
+
+.fc-fav-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.fc-fav-dialog::backdrop {
+  background: rgba(0,0,0,.75);
+}
+
+/* Header and footer */
+
+.fc-fav-dialog-head,
+.fc-fav-dialog-footer {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+}
+
+.fc-fav-dialog-head {
+  border-bottom: 1px solid var(--border);
+}
+
+.fc-fav-dialog-head h2 {
+  font-size: 1.1rem;
+}
+
+.fc-fav-dialog-head p {
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin-top: 5px;
+  line-height: 1.45;
+}
+
+.fc-fav-dialog-close {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  background: var(--bg3);
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Search and filters */
+
+.fc-fav-dialog-tools {
+  flex: 0 0 auto;
+  padding: 14px 20px;
+}
+
+.fc-fav-search-label,
+.fc-fav-filter-row > label:first-child {
+  color: var(--text-muted);
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+#favManageSearch,
+#favManageCategory {
+  min-height: 44px;
+  padding: 9px 12px;
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  font: inherit;
+  font-size: 16px;
+}
+
+#favManageSearch {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.fc-fav-filter-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+#favManageCategory {
+  max-width: 230px;
+  min-width: 0;
+}
+
+.fc-fav-selected-only {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .84rem;
+  cursor: pointer;
+}
+
+.fc-fav-selected-only input {
+  accent-color: var(--green);
+  width: 17px;
+  height: 17px;
+}
+
+.fc-fav-result-info {
+  margin-top: 10px;
+  font-size: .78rem;
+  color: var(--text-muted);
+}
+
+/* Independently scrollable crop results */
+
+.fc-fav-dialog-results {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+
+  flex: 1 1 auto;
+  min-height: 0;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  padding: 14px 20px;
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.fc-fav-dialog-results .fc-fav-choice {
+  flex: 0 0 auto;
+  font-family: inherit;
+  text-align: left;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.fc-fav-check {
+  margin-left: 2px;
+  font-weight: 700;
+}
+
+/* Keyboard accessibility */
+
+.fc-fav-choice:focus-visible,
+.fc-fav-manage-btn:focus-visible,
+.fc-fav-dialog button:focus-visible,
+.fc-fav-dialog input:focus-visible,
+.fc-fav-dialog select:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* Action buttons */
+
+.fc-fav-dialog-footer {
+  justify-content: flex-end;
+}
+
+.fc-fav-btn-cancel {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  background: var(--bg3);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Mobile phones */
+
+@media (max-width: 640px) {
+  .fc-fav-dialog {
+    width: 96vw;
+    max-height: calc(100dvh - 20px);
+  }
+
+  .fc-fav-dialog-head,
+  .fc-fav-dialog-footer {
+    padding: 12px 14px;
+  }
+
+  .fc-fav-dialog-tools {
+    padding: 12px 14px;
+  }
+
+  .fc-fav-dialog-results {
+    padding: 12px 14px;
+  }
+
+  .fc-fav-filter-row > label:first-child {
+    width: 100%;
+  }
+
+  #favManageCategory {
+    flex: 1 1 140px;
+  }
+
+  .fc-fav-manage-btn {
+    width: 100%;
+  }
+
+  .fc-fav-dialog-footer > button {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+

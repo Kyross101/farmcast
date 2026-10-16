@@ -17668,61 +17668,255 @@ function sortCropsByFavoritePreference(
 
 }
 
-function renderFavCropsGrid() {
 
-  const el =
-    document.getElementById(
-      'favCropsGrid'
+// =========================================
+// FAVORITE CROPS — COMPACT SUMMARY + MANAGER
+// =========================================
+
+let favManagerDraft = null;
+let favManagerFocusReturn = null;
+
+// Show only a compact summary in Settings.
+function renderFavCropsGrid() {
+  const root = document.getElementById('favCropsGrid');
+  const count = document.getElementById('favSummaryCount');
+
+  if (!root) return;
+
+  const favorites = Array.isArray(appSettings.favCrops)
+    ? appSettings.favCrops
+    : [];
+
+  if (count) {
+    count.textContent = `${favorites.length} selected`;
+  }
+
+  if (!favorites.length) {
+    root.innerHTML =
+      '<span class="fc-fav-empty">No favorites selected yet.</span>';
+    return;
+  }
+
+  // Show up to 6 crops in the Settings summary.
+  const shown = favorites.slice(0, 6);
+  const extra = favorites.length - shown.length;
+
+  root.innerHTML = shown.map(name => `
+    <span class="fc-fav-summary-chip">
+      ${getCropIconHtml(name, 'fav-crop-icon-img')}
+      <span>${escapeHtml(name)}</span>
+    </span>
+  `).join('') + (
+    extra > 0
+      ? `<span class="fc-fav-more">+${extra} more</span>`
+      : ''
+  );
+}
+
+// Open a separate editing session.
+// Do not change saved favorites yet.
+function openManageFavoriteCrops() {
+  const dialog = document.getElementById('favManageDialog');
+
+  if (!dialog || typeof dialog.showModal !== 'function') {
+    toast('Favorite Crops manager is unavailable.', 'warn');
+    return;
+  }
+
+  if (dialog.open) return;
+
+  favManagerDraft = Array.isArray(appSettings.favCrops)
+    ? [...appSettings.favCrops]
+    : [];
+
+  favManagerFocusReturn = document.activeElement;
+
+  const search = document.getElementById('favManageSearch');
+  const category = document.getElementById('favManageCategory');
+  const selectedOnly = document.getElementById(
+    'favManageSelectedOnly'
+  );
+
+  if (search) search.value = '';
+  if (selectedOnly) selectedOnly.checked = false;
+
+  // Build categories from FarmCast's real dataset.
+  if (category) {
+    const categories = [
+      ...new Set(
+        getMyCropPickerDataset()
+          .map(c => c.category)
+          .filter(Boolean)
+      )
+    ].sort();
+
+    category.replaceChildren(
+      new Option('All categories', 'all'),
+      ...categories.map(cat => new Option(
+        cat.replace(/-/g, ' ')
+          .replace(/\b\w/g, x => x.toUpperCase()),
+        cat
+      ))
     );
 
-  if (!el) return;
-
-
-  const crops =
-    getMyCropPickerDataset();
-
-
-  el.innerHTML =
-    crops.map(crop => `
-
-      <div
-        class="fav-crop-item${
-          appSettings.favCrops.includes(
-            crop.name
-          )
-            ? ' selected'
-            : ''
-        }"
-        onclick="toggleFavCrop(
-          this,
-          decodeURIComponent(
-            '${encodeURIComponent(crop.name)}'
-          )
-        )"
-      >
-
-        ${getCropIconHtml(
-          crop.name,
-          'fav-crop-icon-img'
-        )}
-
-        <span>
-          ${escapeHtml(crop.name)}
-        </span>
-
-      </div>
-
-    `).join('');
-}
-
-function toggleFavCrop(el, crop) {
-  el.classList.toggle('selected');
-  if (appSettings.favCrops.includes(crop)) {
-    appSettings.favCrops = appSettings.favCrops.filter(c => c !== crop);
-  } else {
-    appSettings.favCrops.push(crop);
+    category.value = 'all';
   }
+
+  dialog.showModal();
+  renderManageFavoriteCrops();
+  search?.focus();
 }
+
+// Search, filter, and display selectable crops.
+function renderManageFavoriteCrops() {
+  if (!Array.isArray(favManagerDraft)) return;
+
+  const root = document.getElementById('favManageResults');
+  if (!root) return;
+
+  const search = (
+    document.getElementById('favManageSearch')?.value || ''
+  ).trim().toLowerCase();
+
+  const category = document.getElementById(
+    'favManageCategory'
+  )?.value || 'all';
+
+  const selectedOnly = document.getElementById(
+    'favManageSelectedOnly'
+  )?.checked || false;
+
+  const selectedSet = new Set(favManagerDraft);
+
+  const selectedOrder = new Map(
+    favManagerDraft.map((name, index) => [name, index])
+  );
+
+  const matching = getMyCropPickerDataset()
+    .filter(crop =>
+      (category === 'all' || crop.category === category) &&
+      (!selectedOnly || selectedSet.has(crop.name)) &&
+      [crop.name, crop.localName, crop.category]
+        .some(value =>
+          String(value || '')
+            .toLowerCase()
+            .includes(search)
+        )
+    )
+    .sort((a, b) => {
+      const aSelected = selectedSet.has(a.name);
+      const bSelected = selectedSet.has(b.name);
+
+      // Selected favorites appear first.
+      if (aSelected !== bSelected) {
+        return aSelected ? -1 : 1;
+      }
+
+      if (aSelected) {
+        return (
+          selectedOrder.get(a.name) -
+          selectedOrder.get(b.name)
+        );
+      }
+
+      return a.name.localeCompare(b.name);
+    });
+
+  const info = document.getElementById('favManageResultInfo');
+
+  if (info) {
+    info.textContent =
+      `${matching.length} shown · ${favManagerDraft.length} selected`;
+  }
+
+  root.innerHTML = matching.length
+    ? matching.map(crop => {
+        const selected = selectedSet.has(crop.name);
+
+        return `
+          <button
+            type="button"
+            class="fav-crop-item fc-fav-choice${
+              selected ? ' selected' : ''
+            }"
+            data-fav-name="${encodeURIComponent(crop.name)}"
+            aria-pressed="${selected}"
+          >
+            ${getCropIconHtml(
+              crop.name,
+              'fav-crop-icon-img'
+            )}
+
+            <span>${escapeHtml(crop.name)}</span>
+
+            <span
+              class="fc-fav-check"
+              aria-hidden="true"
+            >${selected ? '✓' : ''}</span>
+          </button>
+        `;
+      }).join('')
+    : '<p class="fc-fav-empty">No matching crops.</p>';
+}
+
+// Handle clicking any crop in the dialog.
+function handleFavoriteCropChoice(event) {
+  const button = event.target.closest(
+    'button[data-fav-name]'
+  );
+
+  if (!button) return;
+
+  toggleFavCrop(
+    button,
+    decodeURIComponent(button.dataset.favName)
+  );
+}
+
+// Update the temporary selection only.
+function toggleFavCrop(button, cropName) {
+  if (!Array.isArray(favManagerDraft)) return;
+
+  if (favManagerDraft.includes(cropName)) {
+    favManagerDraft = favManagerDraft.filter(
+      name => name !== cropName
+    );
+  } else {
+    favManagerDraft.push(cropName);
+  }
+
+  renderManageFavoriteCrops();
+}
+
+// Cancel without changing saved preferences.
+function closeManageFavoriteCrops() {
+  document.getElementById('favManageDialog')?.close();
+}
+
+// Also called when Escape closes the dialog.
+function resetManageFavoriteCrops() {
+  favManagerDraft = null;
+
+  if (favManagerFocusReturn?.isConnected) {
+    favManagerFocusReturn.focus();
+  }
+
+  favManagerFocusReturn = null;
+}
+
+// Commit the selection only when Save is clicked.
+function saveManageFavoriteCrops() {
+  if (!Array.isArray(favManagerDraft)) return;
+
+  appSettings.favCrops = [...favManagerDraft];
+
+  renderFavCropsGrid();
+  closeManageFavoriteCrops();
+
+  // Reuse FarmCast's existing local + cloud save.
+  saveFavCrops();
+}
+
 
 function saveFavCrops() {
 
