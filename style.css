@@ -167,7 +167,31 @@ html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--bg);colo
   cursor:pointer;transition:all 0.2s;margin-bottom:2px;
   border:1px solid transparent;
 }
-.nav-item:hover{background:rgba(255,255,255,0.05);color:var(--text);}
+
+
+/* =========================================
+   FARMCAST SIDEBAR HOVER FIX
+   ========================================= */
+
+/* Show hover effects only on desktop
+   devices with a real mouse pointer. */
+@media (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  .nav-item:not(.active):hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+  }
+}
+
+/* Mobile and touch devices use the
+   selected page state instead of hover. */
+@media (max-width: 768px) {
+  .sidebar .nav-item.active {
+    background: var(--green-dim);
+    color: var(--green);
+    border-color: rgba(63, 185, 80, 0.2);
+  }
+}
+
 .nav-item.active{
   background:var(--green-dim);color:var(--green);
   border-color:rgba(63,185,80,0.2);
