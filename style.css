@@ -12954,4 +12954,308 @@ button.fc-quickstart-help-entry {
 }
 
 
+/* ==========================================
+   PHASE 5B-4B
+   FARMCAST RESPONSIVE CONSISTENCY BATCH
+   ========================================== */
+
+/* ==========================================
+   1. HARVEST HISTORY
+   ========================================== */
+
+#page-harvest-history .hh-toolbar,
+#page-harvest-history .hh-toolbar-right {
+  min-width: 0;
+}
+
+#page-harvest-history .hh-stats-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+#page-harvest-history .hh-stat-box {
+  min-width: 0;
+}
+
+#page-harvest-history .hhs-val {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+#page-harvest-history .hh-best-crop-value {
+  max-width: 100%;
+}
+
+/* Preserve the existing scrollable table. */
+#page-harvest-history .hh-table-wrap {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================
+   2. FARM ANALYTICS KPI CARDS
+   ========================================== */
+
+#page-farm-analytics .an-kpi-row {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+#page-farm-analytics .an-kpi-box {
+  min-width: 0;
+}
+
+#page-farm-analytics .an-kpi-info {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+#page-farm-analytics .an-kpi-val,
+#page-farm-analytics .an-kpi-lbl,
+#page-farm-analytics .an-kpi-sub {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+#page-farm-analytics .an-grid,
+#page-farm-analytics .an-grid > * {
+  min-width: 0;
+}
+
+/* ==========================================
+   3. IRRIGATION SUMMARY CARDS
+   ========================================== */
+
+#page-irrigation .irr-stats-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+#page-irrigation .irr-stat-box {
+  min-width: 0;
+}
+
+#page-irrigation .irr-stat-box > div:last-child {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+#page-irrigation .isb-val,
+#page-irrigation .isb-lbl {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   4. IRRIGATION AND PEST ADVISORIES
+   ========================================== */
+
+#page-irrigation .irr-recommendation,
+#page-pest-alerts .pest-alert-banner {
+  min-width: 0;
+}
+
+#page-irrigation .irr-rec-text,
+#page-pest-alerts .pab-text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+#page-irrigation .irr-rec-text strong,
+#page-irrigation .irr-rec-text span,
+#page-pest-alerts .pab-text strong,
+#page-pest-alerts .pab-text span {
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   5. MEDIUM DESKTOP / SMALL LAPTOP
+   ========================================== */
+
+@media (min-width: 901px) and (max-width: 1200px) {
+
+  #page-farm-analytics .an-kpi-row {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  #page-farm-analytics .an-kpi-box {
+    gap: 10px;
+  }
+
+}
+
+/* ==========================================
+   6. TABLET RESPONSIVE LAYOUT
+   ========================================== */
+
+@media (max-width: 1100px) {
+
+  #page-harvest-history .hh-stats-row,
+  #page-irrigation .irr-stats-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+/* ==========================================
+   7. SMALL TABLET / LARGE PHONE
+   ========================================== */
+
+@media (max-width: 900px) {
+
+  #page-farm-analytics .an-kpi-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  #page-harvest-history .hh-toolbar {
+    min-width: 0;
+  }
+
+}
+
+/* ==========================================
+   8. MOBILE — 640px AND BELOW
+   ========================================== */
+
+@media (max-width: 640px) {
+
+  /* Harvest filters can scroll horizontally. */
+  #page-harvest-history .hh-toolbar {
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  #page-harvest-history .hh-filter-tabs {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding-bottom: 6px;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  #page-harvest-history .hft {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  #page-harvest-history .hh-toolbar-right {
+    width: 100%;
+    min-width: 0;
+    gap: 10px;
+  }
+
+  #page-harvest-history .hh-sort-select {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  #page-harvest-history .hh-stat-box {
+    padding: 14px 10px;
+    gap: 5px;
+  }
+
+  #page-harvest-history .hhs-val {
+    font-size: 1.15rem;
+  }
+
+  /* More balanced Analytics cards. */
+  #page-farm-analytics .an-kpi-box {
+    padding: 12px;
+    gap: 9px;
+  }
+
+  #page-farm-analytics .an-kpi-val {
+    font-size: 1.12rem;
+    line-height: 1.3;
+  }
+
+  /* Compact advisory banners. */
+  #page-irrigation .irr-recommendation,
+  #page-pest-alerts .pest-alert-banner {
+    padding: 12px;
+    gap: 10px;
+  }
+
+}
+
+/* ==========================================
+   9. SMALL SMARTPHONES — 480px AND BELOW
+   ========================================== */
+
+@media (max-width: 480px) {
+
+  /* Harvest History toolbar */
+  #page-harvest-history .hh-toolbar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #page-harvest-history .hh-sort-select,
+  #page-harvest-history .hh-toolbar-right .btn-add-crop {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+  }
+
+  #page-harvest-history .hh-toolbar-right .btn-add-crop {
+    justify-content: center;
+  }
+
+  /* Irrigation: vertical stat card contents */
+  #page-irrigation .irr-stat-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  #page-irrigation .isb-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  #page-irrigation .isb-icon-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  #page-irrigation .isb-val {
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+
+  /* Analytics: vertical KPI card contents */
+  #page-farm-analytics .an-kpi-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  #page-farm-analytics .an-kpi-info {
+    width: 100%;
+  }
+
+  #page-farm-analytics .an-kpi-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  #page-farm-analytics .an-kpi-icon-img {
+    width: 25px;
+    height: 25px;
+  }
+
+}
+
 
