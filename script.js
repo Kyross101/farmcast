@@ -4544,10 +4544,18 @@ async function loadPagasaStormWatch() {
         </p>
 
         <small>
-          No Outside-PAR tropical cyclone was
-          detected from the available PAGASA
-          Daily Weather data.
+          ${
+            data?.sources?.dailyWeather === true
+              ? `No Outside-PAR tropical cyclone was
+                 identified in the available PAGASA
+                  Daily Weather data.`
+              : `PAGASA Daily Weather information is
+                 currently unavailable or could not
+                 be verified. Outside-PAR cyclone
+                 status cannot be confirmed.`
+          }
         </small>
+
       </div>
     </div>
   `;
@@ -27318,47 +27326,86 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let pagasaRefreshInProgress = false;
 
-  setInterval(async () => {
+  // =========================================
+// FARMCAST PAGASA SMART REFRESH
+// =========================================
+
+// Prevent overlapping advisory requests.
+  async function refreshPagasaWhenAvailable() {
     if (
       document.visibilityState === 'hidden' ||
       pagasaRefreshInProgress
     ) {
       return;
     }
-
+  
     pagasaRefreshInProgress = true;
-
+  
     try {
-      // Dashboard Government Advisories
+      // Refresh Government Advisories.
       await loadOfficialAdvisories();
-
-      // Also update Storm Watch when it is
-      // the active Weather Maps layer.
+  
+      // Refresh Storm Watch only when the
+      // Weather Maps page and storm layer are open.
       const mapsPage = document.getElementById(
         'page-weather-maps'
       );
-
+  
       const mapsVisible =
         mapsPage &&
         getComputedStyle(mapsPage).display !== 'none';
-
+  
       if (
         mapsVisible &&
         currentMapLayerName === 'pagasa-storm'
       ) {
         await loadPagasaStormWatch();
       }
-
+  
     } catch (error) {
       console.warn(
-        'PAGASA scheduled refresh failed:',
+        'FarmCast PAGASA refresh error:',
         error
       );
-
+  
     } finally {
       pagasaRefreshInProgress = false;
     }
-  }, PAGASA_REFRESH_MS);
+  }
+  
+  // Regular refresh while the tab is active.
+  setInterval(
+    refreshPagasaWhenAvailable,
+    PAGASA_REFRESH_MS
+  );
+  
+  // Refresh immediately when returning
+  // to FarmCast from another browser tab.
+  document.addEventListener(
+    'visibilitychange',
+    () => {
+      if (document.visibilityState === 'visible') {
+        refreshPagasaWhenAvailable();
+      }
+    }
+  );
+  
+  // Retry when internet connectivity returns.
+  window.addEventListener(
+    'online',
+    refreshPagasaWhenAvailable
+  );
+  
+  // Refresh if the browser restores the page
+  // from its back/forward cache.
+  window.addEventListener(
+    'pageshow',
+    event => {
+      if (event.persisted) {
+        refreshPagasaWhenAvailable();
+      }
+    }
+  );
 
   // Enable desktop drag scrolling
   enableHorizontalDragScroll();
