@@ -18,6 +18,11 @@ const PAGASA_TROPICAL_CYCLONE_ADVISORY_URL =
 const FARMCAST_RECENT_WINDOW_MS =
   24 * 60 * 60 * 1000;
 
+// Maximum time for each PAGASA source request.
+// Prevent a stalled source from blocking the
+// advisory endpoint indefinitely.
+const PAGASA_SOURCE_TIMEOUT_MS = 10_000; 
+
 
 // ------------------------------------------------------------
 // Convert PAGASA directory date:
@@ -169,7 +174,10 @@ async function fetchPagasaWeatherAdvisories() {
   const response = await fetch(PAGASA_ADVISORY_INDEX, {
     headers: {
       'User-Agent': 'FarmCast/1.0'
-    }
+    },
+    signal: AbortSignal.timeout(
+      PAGASA_SOURCE_TIMEOUT_MS
+    )
   });
 
   if (!response.ok) {
@@ -224,6 +232,7 @@ async function fetchPagasaWeatherAdvisories() {
 // TCB#10_francisco.pdf
 // ------------------------------------------------------------
 async function fetchPagasaTropicalCycloneBulletins() {
+
   const response =
     await fetch(
       PAGASA_TROPICAL_CYCLONE_INDEX,
@@ -231,7 +240,10 @@ async function fetchPagasaTropicalCycloneBulletins() {
         headers: {
           'User-Agent':
             'FarmCast/1.0'
-        }
+        },
+        signal: AbortSignal.timeout(
+          PAGASA_SOURCE_TIMEOUT_MS
+        )
       }
     );
 
@@ -364,6 +376,7 @@ async function fetchPagasaTropicalCycloneBulletins() {
 // bulletin directory.
 // ------------------------------------------------------------
 async function fetchPagasaOutsideParCyclone() {
+
   const response =
     await fetch(
       PAGASA_DAILY_WEATHER_URL,
@@ -371,7 +384,10 @@ async function fetchPagasaOutsideParCyclone() {
         headers: {
           'User-Agent':
             'FarmCast/1.0'
-        }
+        },
+        signal: AbortSignal.timeout(
+          PAGASA_SOURCE_TIMEOUT_MS
+        )
       }
     );
 
