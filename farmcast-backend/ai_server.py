@@ -139,6 +139,10 @@ DISEASE_CROP_MAPPING = {
     "grape": "Grape",
     "cherry": "Cherry",
     "blueberry": "Blueberry",
+    "broccoli": "Broccoli",
+    "peach": "Peach",
+    "plum": "Plum",
+    "squash": "Squash",
 }
 
 HEALTHY_LABELS = {
@@ -168,6 +172,10 @@ NEUTRAL_LEAF_LABELS = {
     "grape leaf",
     "cherry leaf",
     "blueberry leaf",
+    "broccoli leaf",
+    "peach leaf",
+    "plum leaf",
+    "squash leaf",
 }
 
 def map_crop_label(yolo_label):
