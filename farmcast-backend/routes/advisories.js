@@ -63,6 +63,70 @@ function parsePagasaDate(value) {
     : date;
 }
 
+
+// =========================================
+// PAGASA DAILY WEATHER ISSUANCE DATE
+// =========================================
+
+function parsePagasaWeatherIssueTime(text) {
+  const match = String(text || '').match(
+    /Issued at:\s*(\d{1,2}):(\d{2})\s*(AM|PM),?\s*(\d{1,2})\s+([A-Za-z]+),?\s+(\d{4})/i
+  );
+
+  if (!match) return null;
+
+  const months = [
+    'january', 'february', 'march',
+    'april', 'may', 'june',
+    'july', 'august', 'september',
+    'october', 'november', 'december'
+  ];
+
+  const monthIndex = months.indexOf(
+    match[5].toLowerCase()
+  );
+
+  const hour = Number(match[1]);
+  const minute = Number(match[2]);
+  const day = Number(match[4]);
+  const year = Number(match[6]);
+
+  if (
+    monthIndex < 0 ||
+    hour < 1 ||
+    hour > 12 ||
+    minute > 59 ||
+    day < 1 ||
+    day > 31
+  ) {
+    return null;
+  }
+
+  const hour24 =
+    hour % 12 +
+    (match[3].toUpperCase() === 'PM' ? 12 : 0);
+
+  const iso = [
+    year,
+    '-',
+    String(monthIndex + 1).padStart(2, '0'),
+    '-',
+    String(day).padStart(2, '0'),
+    'T',
+    String(hour24).padStart(2, '0'),
+    ':',
+    String(minute).padStart(2, '0'),
+    ':00+08:00'
+  ].join('');
+
+  const parsed = new Date(iso);
+
+  return Number.isNaN(parsed.getTime())
+    ? null
+    : parsed;
+}
+
+
 // ------------------------------------------------------------
 // Clean storm names taken from PAGASA bulletin filenames.
 // ------------------------------------------------------------
@@ -445,6 +509,35 @@ async function fetchPagasaOutsideParCyclone() {
           issuedMatch[1] || ''
         ).trim()
       : '';
+  
+  
+  // Use the actual PAGASA Daily Weather issue time,
+  // not the time FarmCast fetched the webpage.
+  const issuedDate =
+    parsePagasaWeatherIssueTime(normalizedText);
+  
+  if (!issuedDate) {
+    console.warn(
+      'PAGASA Daily Weather issue time could not be verified.'
+    );
+    return null;
+  }
+  
+  const issueAgeMs =
+    Date.now() - issuedDate.getTime();
+  
+  // Reject future-dated or outdated observations.
+  if (
+    issueAgeMs < -15 * 60 * 1000 ||
+    issueAgeMs > FARMCAST_RECENT_WINDOW_MS
+  ) {
+    console.warn(
+      'PAGASA Daily Weather cyclone report is stale or future-dated.'
+    );
+    return null;
+  }
+
+  
 
   const synopsisMatch =
     normalizedText.match(
@@ -504,12 +597,61 @@ function getRecentLatestCycloneBulletins(
   const latestByStorm =
     new Map();
 
+  
   for (
     const bulletin of bulletins
   ) {
-    const age =
-      now -
-      bulletin.issuedAt.getTime();
+
+  /*
+   * The PAGASA public-file index exposes
+   * file modification timestamps.
+   *
+   * A modified PDF is not necessarily a
+   * newly issued tropical cyclone bulletin.
+   *
+   * Flag an unusually large gap between
+   * consecutive bulletin numbers for the
+   * same storm rather than presenting the
+   * newer file modification as confirmed
+   * recent issuance.
+   */
+
+  const previousBulletin =
+    bulletin.bulletinNumber > 1
+      ? bulletins.find(candidate =>
+          candidate !== bulletin &&
+          candidate.stormName.toLowerCase() ===
+            bulletin.stormName.toLowerCase() &&
+          candidate.bulletinNumber ===
+            bulletin.bulletinNumber - 1
+        )
+      : null;
+
+  if (previousBulletin) {
+    const gapMs =
+      bulletin.issuedAt.getTime() -
+      previousBulletin.issuedAt.getTime();
+
+    const MAX_SEQUENCE_GAP_MS =
+      72 * 60 * 60 * 1000;
+
+    if (gapMs > MAX_SEQUENCE_GAP_MS) {
+      console.warn(
+        '[PAGASA] Suspicious bulletin file timestamp:',
+        bulletin.filename,
+        'Gap from previous bulletin:',
+        Math.round(gapMs / 3600000),
+        'hours. Excluding from recent feed pending verification.'
+      );
+
+      continue;
+    }
+  }
+
+  const age =
+    now -
+    bulletin.issuedAt.getTime();
+
 
     if (
       age < 0 ||
@@ -546,8 +688,18 @@ function getRecentLatestCycloneBulletins(
 // ------------------------------------------------------------
 // GET /api/advisories
 // ------------------------------------------------------------
+
 router.get('/', async (req, res) => {
+
+  // Advisory responses must not be cached
+  // as if they were permanent weather data.
+  res.set(
+    'Cache-Control',
+    'no-store, max-age=0'
+  );
+
   try {
+
     let files = [];
     let weatherAdvisorySourceAvailable =
       false;
@@ -665,6 +817,9 @@ router.get('/', async (req, res) => {
           issuedAt:
             bulletin.issuedAt.toISOString(),
 
+          timeSource:
+            'directory-modified',
+
           validUntil:
             null,
 
@@ -684,10 +839,68 @@ router.get('/', async (req, res) => {
 
     
 
+    
+// Include recent Outside-PAR cyclones from
+// PAGASA Daily Weather in the Dashboard feed.
+
+const outsideParAdvisories =
+  outsideParCyclone?.issuedAt
+    ? [
+        {
+          id: [
+            'pagasa-outside-par',
+            String(
+              outsideParCyclone.stormName || 'unnamed'
+            ).toLowerCase().replace(/\s+/g, '-'),
+            outsideParCyclone.issuedAt
+          ].join('-'),
+
+          source: 'DOST-PAGASA',
+
+          type: 'tropical-cyclone-outside-par',
+
+          title: [
+            'Tropical Cyclone Outside PAR',
+            outsideParCyclone.classification,
+            outsideParCyclone.stormName || ''
+          ].filter(Boolean).join(' — '),
+
+          message:
+            'PAGASA is monitoring this tropical cyclone ' +
+            'outside the Philippine Area of Responsibility. ' +
+            'Refer to the official advisory for its latest ' +
+            'position, forecast track, and possible impacts.',
+
+          location:
+            outsideParCyclone.location ||
+            'Outside Philippine Area of Responsibility',
+
+          issuedAt:
+            outsideParCyclone.issuedAt,
+
+          validUntil: null,
+
+          sourceUrl:
+            outsideParCyclone.sourceUrl,
+
+          stormName:
+            outsideParCyclone.stormName,
+
+          timeSource:
+            'daily-weather-issued'
+        }
+      ]
+    : [];
+
+    // Combine both official cyclone feeds and
+    // general PAGASA advisories.
     const combinedAdvisories = [
+      ...outsideParAdvisories,
       ...cycloneAdvisories,
       ...advisories
     ].sort((a, b) => {
+
+
       const aTime =
         new Date(
           a.issuedAt || 0

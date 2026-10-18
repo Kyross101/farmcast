@@ -4201,9 +4201,14 @@ async function loadPagasaStormWatch() {
 
   try {
     const response =
-      await fetch(
-        `${window.FARMCAST_CONFIG.API_URL}/advisories`
-      );
+      
+  await fetch(
+    `${window.FARMCAST_CONFIG.API_URL}/advisories`,
+    {
+      cache: 'no-store'
+    }
+  );
+
 
     if (!response.ok) {
       throw new Error(
@@ -22962,9 +22967,16 @@ function updateOfficialAdvisorySummary(
 
 async function loadOfficialAdvisories() {
   try {
-    const response = await fetch(
-      `${window.FARMCAST_CONFIG.API_URL}/advisories`
-    );
+    const response = 
+    
+    
+  await fetch(
+    `${window.FARMCAST_CONFIG.API_URL}/advisories`,
+    {
+      cache: 'no-store'
+    }
+  );
+
 
     if (!response.ok) {
       throw new Error(
@@ -23294,7 +23306,13 @@ function renderOfficialAdvisories(advisories) {
           </span>
 
             <span class="official-meta-item">
-              <span class="official-meta-label">Issued</span>
+              
+            <span class="official-meta-label">
+              ${advisory.timeSource === 'directory-modified'
+                ? 'File updated'
+                : 'Issued'}
+            </span>
+
 
               <span class="official-meta-value">
 
@@ -27244,13 +27262,63 @@ function enableHorizontalDragScroll() {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Load official government advisories
+  // Load official government advisories.
   loadOfficialAdvisories();
+
+  // Refresh official weather information
+  // every 15 minutes while FarmCast is open.
+  const PAGASA_REFRESH_MS = 15 * 60 * 1000;
+
+  let pagasaRefreshInProgress = false;
+
+  setInterval(async () => {
+    if (
+      document.visibilityState === 'hidden' ||
+      pagasaRefreshInProgress
+    ) {
+      return;
+    }
+
+    pagasaRefreshInProgress = true;
+
+    try {
+      // Dashboard Government Advisories
+      await loadOfficialAdvisories();
+
+      // Also update Storm Watch when it is
+      // the active Weather Maps layer.
+      const mapsPage = document.getElementById(
+        'page-weather-maps'
+      );
+
+      const mapsVisible =
+        mapsPage &&
+        getComputedStyle(mapsPage).display !== 'none';
+
+      if (
+        mapsVisible &&
+        currentMapLayerName === 'pagasa-storm'
+      ) {
+        await loadPagasaStormWatch();
+      }
+
+    } catch (error) {
+      console.warn(
+        'PAGASA scheduled refresh failed:',
+        error
+      );
+
+    } finally {
+      pagasaRefreshInProgress = false;
+    }
+  }, PAGASA_REFRESH_MS);
 
   // Enable desktop drag scrolling
   enableHorizontalDragScroll();
+
 
   const sidebar = document.getElementById('mainSidebar');
 
