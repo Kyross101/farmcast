@@ -600,6 +600,29 @@ router.put(
 
       }
 
+      // Prevent blank or null coordinates.
+      for (const field of ['lat', 'lon']) {
+        if (
+          Object.prototype.hasOwnProperty.call(
+            updates,
+            field
+          ) &&
+          (
+            updates[field] === null ||
+            (
+              typeof updates[field] === 'string' &&
+              updates[field].trim() === ''
+            )
+          )
+        ) {
+          return res.status(400).json({
+            message: field === 'lat'
+              ? 'Latitude is required.'
+              : 'Longitude is required.'
+          });
+        }
+      }
+
 
       /*
        * Validate coordinates whenever

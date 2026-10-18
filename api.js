@@ -2657,6 +2657,15 @@ function patchScriptJsWithAPI() {
           .trim() ||
         '';
 
+      // Do not treat blank coordinates as 0.
+      if (lat === '' || lon === '') {
+        toast(
+          'Select a farm location with valid latitude and longitude.',
+          'warn'
+        );
+        return;
+      }
+
 
       const latitude =
         Number(
