@@ -126,6 +126,10 @@ DISEASE_CROP_MAPPING = {
     "cabbage": "Cabbage",
     "potato": "Potato",
     "cassava": "Cassava",
+    "banana": "Banana",
+    "cucumber": "Cucumber",
+    "ginger": "Ginger",
+    "strawberry": "Strawberry",
 }
 
 HEALTHY_LABELS = {
@@ -143,6 +147,10 @@ NEUTRAL_LEAF_LABELS = {
     "rice leaf",
     "cabbage leaf",
     "potato leaf",
+    "banana leaf",
+    "cucumber leaf",
+    "ginger leaf",
+    "strawberry leaf",
 }
 
 def map_crop_label(yolo_label):
