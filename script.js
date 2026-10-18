@@ -4292,7 +4292,14 @@ async function loadPagasaStormWatch() {
       return;
     }
 
-    if (!stormAdvisories.length) {
+    
+  /*
+   * Prefer a verified, recent Outside-PAR report.
+   * Recent TCB entries remain available on the
+   * Dashboard Government Advisories section.
+   */
+  if (!stormAdvisories.length || outsideParCyclone) {
+
 
   if (outsideParCyclone) {
 
@@ -4440,6 +4447,30 @@ async function loadPagasaStormWatch() {
         `
         : '';
 
+    
+    // Explain if other recent bulletin entries exist.
+    const additionalBulletinsNote =
+      stormAdvisories.length > 0
+        ? `
+          <div class="pagasa-storm-window-note">
+            <strong>
+              Other recent PAGASA bulletins
+            </strong>
+    
+            <div>
+              ${stormAdvisories.length} other
+              recent bulletin ${
+                stormAdvisories.length === 1
+                  ? 'entry is'
+                  : 'entries are'
+              } available in Dashboard →
+              Government Advisories.
+            </div>
+          </div>
+        `
+        : '';
+
+
     content.innerHTML = `
       <div class="pagasa-storm-active">
 
@@ -4482,12 +4513,16 @@ async function loadPagasaStormWatch() {
           Source: DOST-PAGASA Daily Weather
         </div>
 
+        
         ${officialLinkHtml}
+
+        ${additionalBulletinsNote}
 
       </div>
     `;
 
     return;
+
   }
 
 
