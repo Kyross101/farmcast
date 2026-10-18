@@ -125,12 +125,14 @@ DISEASE_CROP_MAPPING = {
     "rice": "Rice",
     "cabbage": "Cabbage",
     "potato": "Potato",
+    "cassava": "Cassava",
 }
 
 HEALTHY_LABELS = {
     "tomato healthy",
     "corn healthy",
     "potato healthy",
+    "cassava healthy",
 }
 
 NEUTRAL_LEAF_LABELS = {
