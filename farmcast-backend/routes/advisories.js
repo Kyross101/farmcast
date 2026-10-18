@@ -844,6 +844,47 @@ router.get('/', async (req, res) => {
       );
     }
 
+    
+    // =========================================
+    // PAGASA ALL-SOURCES FAIL-SAFE
+    // =========================================
+
+    // Never report a successful official-data
+    // check if every PAGASA source failed.
+
+    if (
+      !weatherAdvisorySourceAvailable &&
+      !cycloneSourceAvailable &&
+      !dailyWeatherSourceAvailable
+    ) {
+
+      console.warn(
+        'FarmCast PAGASA: All official sources unavailable.'
+      );
+
+      return res.status(503).json({
+        success: false,
+
+        source: 'DOST-PAGASA',
+
+        message:
+          'All PAGASA advisory sources are currently unavailable.',
+
+        sources: {
+          weatherAdvisories: false,
+          tropicalCycloneBulletins: false,
+          dailyWeather: false
+        },
+
+        outsideParCyclone: null,
+
+        count: 0,
+
+        advisories: []
+      });
+    }
+
+
 
     const now =
       Date.now();
