@@ -737,65 +737,113 @@ router.get('/', async (req, res) => {
 
   try {
 
+    
+    // =========================================
+    // PAGASA PARALLEL SOURCE FETCHING
+    // =========================================
+
+    // Request all three PAGASA sources together.
+    // One failed source must not stop the others.
+    const [
+      weatherResult,
+      cycloneResult,
+      dailyResult
+    ] = await Promise.allSettled([
+      fetchPagasaWeatherAdvisories(),
+      fetchPagasaTropicalCycloneBulletins(),
+      fetchPagasaOutsideParCyclone()
+    ]);
+
+    // =========================================
+    // SOURCE 1 — WEATHER ADVISORIES
+    // =========================================
+
     let files = [];
-    let weatherAdvisorySourceAvailable =
-      false;
 
-    try {
-      files =
-        await fetchPagasaWeatherAdvisories();
+    let weatherAdvisorySourceAvailable = false;
 
-      weatherAdvisorySourceAvailable =
-        true;
-    } catch (advisoryError) {
+    if (
+      weatherResult.status === 'fulfilled' &&
+      Array.isArray(weatherResult.value)
+    ) {
+      files = weatherResult.value;
+
+      weatherAdvisorySourceAvailable = true;
+
+    } else {
       console.error(
         'PAGASA weather advisory source error:',
-        advisoryError.message
+        weatherResult.status === 'rejected'
+          ? weatherResult.reason?.message ||
+            String(weatherResult.reason)
+          : 'Unexpected response format'
       );
     }
+
+    // =========================================
+    // SOURCE 2 — TROPICAL CYCLONE BULLETINS
+    // =========================================
 
     let cycloneBulletins = [];
-    let cycloneSourceAvailable =
-      false;
 
-    try {
-      const allCycloneBulletins =
-        await fetchPagasaTropicalCycloneBulletins();
+    let cycloneSourceAvailable = false;
 
-      cycloneBulletins =
-        getRecentLatestCycloneBulletins(
-          allCycloneBulletins
+    if (
+      cycloneResult.status === 'fulfilled' &&
+      Array.isArray(cycloneResult.value)
+    ) {
+
+      try {
+        // Keep the existing 24-hour filtering
+        // and suspicious PDF-date protection.
+        cycloneBulletins =
+          getRecentLatestCycloneBulletins(
+            cycloneResult.value
+          );
+
+        cycloneSourceAvailable = true;
+
+      } catch (error) {
+        console.error(
+          'PAGASA cyclone bulletin processing error:',
+          error.message
         );
+      }
 
-      cycloneSourceAvailable =
-        true;
-
-    } catch (cycloneError) {
+    } else {
       console.error(
         'PAGASA tropical cyclone source error:',
-        cycloneError.message
+        cycloneResult.status === 'rejected'
+          ? cycloneResult.reason?.message ||
+            String(cycloneResult.reason)
+          : 'Unexpected response format'
       );
     }
 
-        let outsideParCyclone =
-      null;
+    // =========================================
+    // SOURCE 3 — DAILY WEATHER / OUTSIDE PAR
+    // =========================================
 
-    let dailyWeatherSourceAvailable =
-      false;
+    let outsideParCyclone = null;
 
-    try {
-      outsideParCyclone =
-        await fetchPagasaOutsideParCyclone();
+    let dailyWeatherSourceAvailable = false;
 
-      dailyWeatherSourceAvailable =
-        true;
+    if (dailyResult.status === 'fulfilled') {
 
-    } catch (dailyWeatherError) {
+      outsideParCyclone = dailyResult.value;
+
+      // A null value can mean no Outside-PAR
+      // cyclone was found in parsed source data.
+      dailyWeatherSourceAvailable = true;
+
+    } else {
       console.error(
         'PAGASA daily weather source error:',
-        dailyWeatherError.message
+        dailyResult.reason?.message ||
+          String(dailyResult.reason)
       );
     }
+
 
     const now =
       Date.now();
