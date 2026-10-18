@@ -23244,10 +23244,19 @@ function renderOfficialAdvisories(advisories) {
       ? (Date.now() - issuedTime) / (1000 * 60 * 60)
       : null;
 
+    // A recently modified PDF is not
+    // necessarily a newly issued advisory.
+    const isDirectoryTimestamp =
+      advisory.timeSource === 'directory-modified';
+
     const advisoryStatus =
-      ageHours !== null && ageHours <= 3
-        ? 'NEW'
-        : 'RECENT';
+      isDirectoryTimestamp
+        ? 'FILE UPDATED'
+        : ageHours !== null &&
+          ageHours >= 0 &&
+          ageHours <= 3
+          ? 'NEW'
+          : 'RECENT';
 
     const advisoryStatusClass =
       advisoryStatus === 'NEW'

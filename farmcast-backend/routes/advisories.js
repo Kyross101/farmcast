@@ -445,6 +445,23 @@ async function fetchPagasaOutsideParCyclone() {
   // No Outside-PAR cyclone found
   // in the PAGASA Daily Weather content.
   if (!cycloneMatch) {
+
+    // PAGASA mentions an Outside-PAR cyclone,
+    // but FarmCast could not read its details.
+    // This is a parsing problem, not proof
+    // that no cyclone exists.
+    if (
+      /TROPICAL CYCLONE OUTSIDE PAR AS OF/i
+        .test(normalizedText)
+    ) {
+      throw new Error(
+        'PAGASA Outside-PAR cyclone data was ' +
+        'present but could not be parsed.'
+      );
+    }
+
+    // No recognizable Outside-PAR cyclone
+    // section was found.
     return null;
   }
 
@@ -517,10 +534,10 @@ async function fetchPagasaOutsideParCyclone() {
     parsePagasaWeatherIssueTime(normalizedText);
   
   if (!issuedDate) {
-    console.warn(
-      'PAGASA Daily Weather issue time could not be verified.'
+    throw new Error(
+      'PAGASA Daily Weather issue time ' +
+      'could not be verified.'
     );
-    return null;
   }
   
   const issueAgeMs =
@@ -531,10 +548,10 @@ async function fetchPagasaOutsideParCyclone() {
     issueAgeMs < -15 * 60 * 1000 ||
     issueAgeMs > FARMCAST_RECENT_WINDOW_MS
   ) {
-    console.warn(
-      'PAGASA Daily Weather cyclone report is stale or future-dated.'
+    throw new Error(
+      'PAGASA Daily Weather cyclone report ' +
+      'is stale or future-dated.'
     );
-    return null;
   }
 
   
@@ -565,9 +582,13 @@ async function fetchPagasaOutsideParCyclone() {
     status:
       'Outside PAR',
 
+
     asOf,
 
     issuedText,
+
+    // Verified issue time from PAGASA Daily Weather.
+    issuedAt: issuedDate.toISOString(),
 
     location,
 
@@ -785,6 +806,10 @@ router.get('/', async (req, res) => {
       location: 'See official advisory for affected areas',
 
       issuedAt: file.issuedAt.toISOString(),
+
+      // This is the public file modification time,
+      // not necessarily the PDF's issue time.
+      timeSource: 'directory-modified',
 
       validUntil: null,
 
