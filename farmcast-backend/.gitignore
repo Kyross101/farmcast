@@ -31,3 +31,12 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# FarmCast AI Training Artifacts
+/runs/
+*.cache
+*.zip
+
+# Local AI Training Data
+/datasets/**/images/
+/datasets/**/labels/
